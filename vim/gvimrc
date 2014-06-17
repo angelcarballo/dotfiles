@@ -1,0 +1,4 @@
+"" General
+set antialias
+set visualbell " nada de beeps
+set guioptions-=T  " ocultar barra de herramientas

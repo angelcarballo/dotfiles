@@ -1,0 +1,105 @@
+"" NOTAS 
+
+" gu (sobre seleccion visual) -> minusculas
+" gU (sobre seleccion visual) -> mayusculas
+" [Ctr-r][+] -> Pegar desde OS
+" ZZ (normal mode) -> guardar y cerrar
+" & (normal mode) -> repetir la ultima sustitucion  \\
+" DWM - Gestion de ventanas
+"    C-N = nueva ventana como master
+"    C-C = cierra ventana sin guardar
+"    C-J = siguiente ventana
+"    C-K = ventana anterior
+"    C-Space = poner buffer actual como principal
+"    C-M = maximizar ventana actual
+
+""""""""""""""""""" VUNDLE """""""""""""""""""""
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+Plugin 'gmarik/Vundle.vim' " let Vundle manage Vundle, required
+Plugin 'tpope/vim-fugitive'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+""""""""""""""""""" /VUNDLE """""""""""""""""""""
+
+
+"" Especifico para tipos de archivo
+augroup inc
+autocmd BufRead,BufNewFile *.inc set filetype=php
+augroup END
+
+"" General
+syntax enable
+set encoding=utf-8
+set nu " numeros de linea
+set showcmd " muestra comandos incompletos
+set ruler " muestra la posicion del cursor
+set scrolloff=5 " dejar siempre espacio alrededor del cursor
+let mapleader="," " cambiar <leader> de \ a ,
+filetype plugin indent on
+set foldmethod=marker " marcar los pliegues manualmente con triples llaves (o :zf)
+
+"" Whitespace
+set nowrap
+set tabstop=2 shiftwidth=2 
+set expandtab " usar espacios en lugar de tabs
+set backspace=indent,eol,start " backspace a traves de cualquier cosa
+
+"" Busqueda
+set hlsearch " resaltar resultados de busqueda
+set incsearch " busqueda incremental
+set ignorecase " busqueda independiente de may/min...
+set smartcase " excepto si el termino tiene al menos una mayuscula
+
+"" Apariencia
+set background=dark
+colorscheme codeschool
+set scrolloff=5 " dejar marjen tras la ultima fila
+
+"" Log y deshacer
+set history=1000
+set undolevels=1000
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.lock
+set title
+set visualbell " flash en pantalla en lugar de *beep*
+set noerrorbells " sin aviso en errores (solo flash al llegar al final/principio de archivo)
+
+"" Backup
+set nobackup
+set noswapfile
+
+" Set font according to system
+if has("mac")
+  set guifont=Monaco:h12
+elseif has("unix")
+  set gfn=Monospace\ 10
+elseif has("win32")
+  set gfn=Consolas:h11
+endif
+
+"" Backups
+if has("win32")
+  set backupdir=~/vimfiles/_backup    " archivos de backup
+  set directory=~/vimfiles/_temp      " archivos de swap
+else
+  set backupdir=~/.vim/_backup    " archivos de backup
+  set directory=~/.vim/_temp      " archivos de swap
+endif
+
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" Ctrl-P config
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/doc/* 
