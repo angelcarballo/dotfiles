@@ -1,3 +1,5 @@
 vim/.netrwhist
+vim/backup/*
+vim/temp/*
 vim/bundle/*
 !vim/bundle/Vundle.vim
