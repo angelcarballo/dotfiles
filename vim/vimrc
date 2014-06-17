@@ -26,6 +26,11 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim' " let Vundle manage Vundle, required
 Plugin 'tpope/vim-fugitive'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Lokaltog/powerline'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-rails'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -90,11 +95,11 @@ endif
 
 "" Backups
 if has("win32")
-  set backupdir=~/vimfiles/_backup    " archivos de backup
-  set directory=~/vimfiles/_temp      " archivos de swap
+  set backupdir=~/vimfiles/backup    " archivos de backup
+  set directory=~/vimfiles/temp      " archivos de swap
 else
-  set backupdir=~/.vim/_backup    " archivos de backup
-  set directory=~/.vim/_temp      " archivos de swap
+  set backupdir=~/.vim/backup    " archivos de backup
+  set directory=~/.vim/temp      " archivos de swap
 endif
 
 " Quickly edit/reload the vimrc file
