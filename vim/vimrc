@@ -28,9 +28,9 @@ Plugin 'gmarik/Vundle.vim' " let Vundle manage Vundle, required
 Plugin 'tpope/vim-fugitive'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'Lokaltog/powerline'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-rails'
+Plugin 'kien/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
