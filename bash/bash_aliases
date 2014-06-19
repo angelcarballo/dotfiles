@@ -1,0 +1,15 @@
+### Alias
+
+# Comunes
+alias c='clear'
+alias ll='ls -l'
+alias ll='ls -l'
+
+# Atajos Mac
+alias flushdns='dscacheutil -flushcache'
+
+# Rails
+alias be='bundle exec'
+alias rs='bundle exec rails s --debugger'
+alias rc='bundle exec rails c'
+alias migrate='bundle exec rake db:migrate'

@@ -1,5 +1,6 @@
-# Modo VIM en cosola
+# Modo VIM en cosola y editor
 set -o vi
+export EDITOR=vim
 
 # Enable rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi # Enable shims and autocompletion add to your profile:
@@ -26,18 +27,8 @@ function parse_git_branch {
 # Prompt
 PS1="$WHITE\w$YELLOW\$(parse_git_branch)$WHITE $ "
 
+# Load aliases
+if [ -f ~/.bash_aliases ]; then
+  source ~/.bash_aliases 
+fi
 
-### Alias
-
-# Comunes
-alias c='clear'
-alias ll='ls -l'
-alias ll='ls -l'
-
-# Atajos Mac
-alias flushdns='dscacheutil -flushcache'
-
-# Rails
-alias be='bundle exec'
-alias rs='bundle exec rails s --debugger'
-alias rc='bundle exec rails c'

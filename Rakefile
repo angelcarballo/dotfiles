@@ -20,6 +20,10 @@ task :bootstrap do
   update_link 'ruby/gemrc', '.gemrc'
   update_link 'ruby/irbrc', '.irbrc'
 
+  # Bash
+  update_link 'bash/bashrc', '.bashrc'
+  update_link 'bash/bash_aliases', '.bash_aliases'
+
   # Mac OSX defaults
   verbose(false) { sh "#{Dir.pwd}/osx/set-defaults.sh" }
 
