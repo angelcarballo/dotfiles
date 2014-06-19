@@ -5,13 +5,6 @@
 " [Ctr-r][+] -> Pegar desde OS
 " ZZ (normal mode) -> guardar y cerrar
 " & (normal mode) -> repetir la ultima sustitucion  \\
-" DWM - Gestion de ventanas
-"    C-N = nueva ventana como master
-"    C-C = cierra ventana sin guardar
-"    C-J = siguiente ventana
-"    C-K = ventana anterior
-"    C-Space = poner buffer actual como principal
-"    C-M = maximizar ventana actual
 
 """"""""""""""""""" VUNDLE """""""""""""""""""""
 

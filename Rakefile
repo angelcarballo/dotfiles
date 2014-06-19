@@ -1,47 +1,41 @@
-task :default => [:update_submodules, :link]
+task :default => [:update_submodules, :bootstrap]
 
 task :update_submodules do
-  sh "git submodule update --init"
-end
-
-task :link do
-  home_dir = Dir.respond_to?(:home) ? Dir.home : ENV['HOME']
-  source_dir = Dir.pwd
-  puts "Linking scripts and config dir..."
-
-#  if RUBY_PLATFORM.downcase.include? "w32"
-#    `cd %HOMEPATH% && del _vimrc`
-#    `cd %HOMEPATH% && del _gvimrc`
-#    `cd %HOMEPATH% && copy #{windows_path File.join(source_dir, 'vimrc')}  _vimrc` 
-#    `cd %HOMEPATH% && copy #{windows_path File.join(source_dir, 'gvimrc')} _gvimrc`
-#    `xcopy /E /C #{windows_path source_dir} #{windows_path File.join(ENV['HOME'], 'vimfiles')}`
-#    puts "xcopy /E /C #{windows_path source_dir} #{windows_path File.join(ENV['HOME'], 'vimfiles')}"
-#  else
-#    vimdir = File.join(home_dir, '.vim')
-#    File.exist?(vimdir) ? warn('Vim dir already exists') : ln_s(Dir.pwd, File.join(home_dir, '.vim'))
-#    %w(vimrc gvimrc).each do |script|
-#      dotfile = File.join(home_dir, ".#{script}")
-#      File.exist?(dotfile) ? warn("#{script} already exists") : ln_s(File.join(vimdir, script), dotfile)
-#    end
-#  end
-end
-
-def windows_path(path)
-  path.gsub '/' , '\\'
-end
-
-def link_folder(source_dir, destination)
-  if RUBY_PLATFORM.downcase.include? "w32"
-    `xcopy /E /C #{windows_path source_dir} #{destination_dir}`  # /E: recursivo  /C: no detenerse en los errores
-  else
-    ln_s source_dir, destination
+  print 'Updating submodules... '
+  verbose false do
+    sh "git submodule update --init"
   end
+  puts 'done!'
 end
 
-def link(source, destination)
-  if RUBY_PLATFORM.downcase.include? "w32"
-    `xcopy /E /C #{windows_path source} #{destination}`  # /E: recursivo  /C: no detenerse en los errores
-  else # mac, linux
-    ln_s source, destination
+task :bootstrap do
+  print 'Installing... '
+
+  # Vim
+  update_link 'vim', '.vim'
+  update_link 'vim/vimrc', '.vimrc'
+  update_link 'vim/gvimrc', '.gvimrc'
+
+  # Ruby
+  update_link 'ruby/gemrc', '.gemrc'
+  update_link 'ruby/irbrc', '.irbrc'
+
+  # Mac OSX defaults
+  verbose(false) { sh "#{Dir.pwd}/osx/set-defaults.sh" }
+
+  puts 'done!'
+end
+
+def home_dir
+  Dir.respond_to?(:home) ? Dir.home : ENV['HOME']
+end
+
+def update_link(origin, dest)
+  origin = "#{Dir.pwd}/#{origin}"
+  dest = "#{home_dir}/#{dest}"
+
+  verbose false do
+    rm dest if File.exists? dest
+    ln_s origin, dest
   end
 end
