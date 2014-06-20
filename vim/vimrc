@@ -18,14 +18,15 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 Plugin 'gmarik/Vundle.vim' " let Vundle manage Vundle, required
-Plugin 'tpope/vim-fugitive'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'majutsushi/tagbar'
-Plugin 'tpope/vim-rails'
-Plugin 'kien/ctrlp.vim'
-Plugin 'bling/vim-airline'
-Plugin 'fholgado/minibufexpl.vim'
+Plugin 'tpope/vim-fugitive' " git integration
+Plugin 'cakebaker/scss-syntax.vim' " scss syntax
+Plugin 'Valloric/YouCompleteMe' " autocompletion
+Plugin 'majutsushi/tagbar' " ctags integration
+Plugin 'tpope/vim-rails' "rails integration
+Plugin 'kien/ctrlp.vim' " fuzzy finder
+Plugin 'bling/vim-airline' " better status bar
+" Plugin 'fholgado/minibufexpl.vim' " buffer explorer
+Plugin 'SirVer/ultisnips' " snippets support
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -105,12 +106,6 @@ endif
 " Vim Airline (fancy status bar)
 set laststatus=2 " para mostrar siempre barra de estado
 
-" MiniBufferExplorer
-map <leader>e :MBEOpen<cr>
-map <leader>c :MBEClose<cr>
-noremap <leader>j :MBEbf<CR>
-noremap <leader>k :MBEbb<CR>
-
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -118,3 +113,5 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " Open TabBar
 nmap <silent> <leader>t :TagbarToggle<CR>
 
+" Untisnips
+let g:UltiSnipsExpandTrigger="<leader><leader>"
