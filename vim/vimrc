@@ -17,16 +17,16 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-Plugin 'gmarik/Vundle.vim' " let Vundle manage Vundle, required
-Plugin 'tpope/vim-fugitive' " git integration
+Plugin 'gmarik/Vundle.vim'         " let Vundle manage Vundle, required
+Plugin 'tpope/vim-fugitive'        " git integration
 Plugin 'cakebaker/scss-syntax.vim' " scss syntax
-Plugin 'Valloric/YouCompleteMe' " autocompletion
-Plugin 'majutsushi/tagbar' " ctags integration
-Plugin 'tpope/vim-rails' "rails integration
-Plugin 'kien/ctrlp.vim' " fuzzy finder
-Plugin 'bling/vim-airline' " better status bar
-" Plugin 'fholgado/minibufexpl.vim' " buffer explorer
-Plugin 'SirVer/ultisnips' " snippets support
+Plugin 'Valloric/YouCompleteMe'    " autocompletion
+Plugin 'majutsushi/tagbar'         " ctags integration
+Plugin 'tpope/vim-rails'           " rails integration
+Plugin 'kien/ctrlp.vim'            " fuzzy finder
+Plugin 'bling/vim-airline'         " better status bar
+Plugin 'SirVer/ultisnips'          " snippets support
+Plugin 'godlygeek/tabular'         " alinear codigo
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -43,13 +43,13 @@ augroup END
 "" General
 syntax enable
 set encoding=utf-8
-set nu " numeros de linea
-set showcmd " muestra comandos incompletos
-set ruler " muestra la posicion del cursor
-set scrolloff=5 " dejar siempre espacio alrededor del cursor
-let mapleader="," " cambiar <leader> de \ a ,
+set nu                    " numeros de linea
+set showcmd               " muestra comandos incompletos
+set ruler                 " muestra la posicion del cursor
+set scrolloff=5           " dejar siempre espacio alrededor del cursor
+let mapleader=","         " cambiar <leader> de \ a ,
 filetype plugin indent on
-set foldmethod=marker " marcar los pliegues manualmente con triples llaves (o :zf)
+set foldmethod=marker     " marcar los pliegues manualmente con triples llaves (o :zf)
 
 "" Whitespace
 set nowrap
@@ -58,10 +58,10 @@ set expandtab " usar espacios en lugar de tabs
 set backspace=indent,eol,start " backspace a traves de cualquier cosa
 
 "" Busqueda
-set hlsearch " resaltar resultados de busqueda
-set incsearch " busqueda incremental
+set hlsearch   " resaltar resultados de busqueda
+set incsearch  " busqueda incremental
 set ignorecase " busqueda independiente de may/min...
-set smartcase " excepto si el termino tiene al menos una mayuscula
+set smartcase  " excepto si el termino tiene al menos una mayuscula
 
 "" Apariencia
 set background=dark
@@ -72,14 +72,14 @@ set scrolloff=5 " dejar marjen tras la ultima fila
 set history=1000
 set undolevels=1000
 set title
-set visualbell " flash en pantalla en lugar de *beep*
+set visualbell   " flash en pantalla en lugar de *beep*
 set noerrorbells " sin aviso en errores (solo flash al llegar al final/principio de archivo)
 
 "" Archivos a ignorar
-set wildignore+=*.swp,*.bak,*.pyc,*.class,*.lock " Comunes
-set wildignore+=*/tmp/*,*.so,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.zip,*.exe  " Windows
-set wildignore+=*/bundle/*,*/temp/*,*/backup/*,*/doc/*  " Vim
+set wildignore+=*.swp,*.bak,*.pyc,*.class,*.lock       " Comunes
+set wildignore+=*/tmp/*,*.so,*.zip                     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.zip,*.exe                  " Windows
+set wildignore+=*/bundle/*,*/temp/*,*/backup/*,*/doc/* " Vim
 
 "" Backup
 set nobackup
