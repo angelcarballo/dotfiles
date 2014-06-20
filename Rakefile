@@ -1,3 +1,5 @@
+require './lib/os'
+
 task :default => [:update_submodules, :bootstrap]
 
 task :update_submodules do
@@ -15,19 +17,26 @@ task :bootstrap do
   update_link 'vim', '.vim'
   update_link 'vim/vimrc', '.vimrc'
   update_link 'vim/gvimrc', '.gvimrc'
+  verbose(false) { sh "vim +PluginInstall +qall" }  # install vundle plugins
 
   # Ruby
   update_link 'ruby/gemrc', '.gemrc'
   update_link 'ruby/irbrc', '.irbrc'
 
   # Bash
-  update_link 'bash/bashrc', '.bashrc'
+  update_link 'bash/bash_profile', '.bash_profile'
   update_link 'bash/bash_aliases', '.bash_aliases'
 
   # Mac OSX defaults
-  verbose(false) { sh "#{Dir.pwd}/osx/set-defaults.sh" }
+  verbose(false) { sh "#{Dir.pwd}/osx/set-defaults.sh" } if OS.mac?
 
   puts 'done!'
+end
+
+
+task :install_dep do
+  sh "sudo aptitude install cmake python-dev exuberant-tags" if OS.linux?
+  sh "brew install ctags" if OS.mac?
 end
 
 def home_dir
@@ -43,3 +52,4 @@ def update_link(origin, dest)
     ln_s origin, dest
   end
 end
+

@@ -1,3 +1,6 @@
+# Paths, solo comunes a todas las plataformas
+export PATH=$HOME/.rbenv/bin:$PATH
+
 # Modo VIM en cosola y editor
 set -o vi
 export EDITOR=vim
@@ -19,13 +22,13 @@ GREEN="\[\033[0;32m\]"
 WHITE='\e[0;37m'
 
 # Parseo de rama git
-function parse_git_branch {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "("${ref#refs/heads/}")"
-}
+# function parse_git_branch {
+#   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+#   echo "("${ref#refs/heads/}")"
+# }
 
 # Prompt
-PS1="$WHITE\w$YELLOW\$(parse_git_branch)$WHITE $ "
+# PS1="$WHITE\w$YELLOW\$(parse_git_branch)$WHITE $ "
 
 # Load aliases
 if [ -f ~/.bash_aliases ]; then

@@ -24,6 +24,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-rails'
 Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'fholgado/minibufexpl.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -68,10 +70,15 @@ set scrolloff=5 " dejar marjen tras la ultima fila
 "" Log y deshacer
 set history=1000
 set undolevels=1000
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.lock
 set title
 set visualbell " flash en pantalla en lugar de *beep*
 set noerrorbells " sin aviso en errores (solo flash al llegar al final/principio de archivo)
+
+"" Archivos a ignorar
+set wildignore+=*.swp,*.bak,*.pyc,*.class,*.lock " Comunes
+set wildignore+=*/tmp/*,*.so,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.zip,*.exe  " Windows
+set wildignore+=*/bundle/*,*/temp/*,*/backup/*,*/doc/*  " Vim
 
 "" Backup
 set nobackup
@@ -95,9 +102,19 @@ else
   set directory=~/.vim/temp      " archivos de swap
 endif
 
+" Vim Airline (fancy status bar)
+set laststatus=2 " para mostrar siempre barra de estado
+
+" MiniBufferExplorer
+map <leader>e :MBEOpen<cr>
+map <leader>c :MBEClose<cr>
+noremap <leader>j :MBEbf<CR>
+noremap <leader>k :MBEbb<CR>
+
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-" Ctrl-P config
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/doc/* 
+" Open TabBar
+nmap <silent> <leader>t :TagbarToggle<CR>
+
