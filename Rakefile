@@ -24,7 +24,7 @@ task :bootstrap do
   update_link 'ruby/irbrc', '.irbrc'
 
   # Bash
-  update_link 'bash/bash_profile', '.bash_profile'
+  update_link 'bash/bash_common', '.bash_common'
   update_link 'bash/bash_aliases', '.bash_aliases'
 
   # Mac OSX defaults
