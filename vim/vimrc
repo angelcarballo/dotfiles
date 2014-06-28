@@ -17,16 +17,28 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-Plugin 'gmarik/Vundle.vim'         " let Vundle manage Vundle, required
-Plugin 'tpope/vim-fugitive'        " git integration
-Plugin 'cakebaker/scss-syntax.vim' " scss syntax
-Plugin 'Valloric/YouCompleteMe'    " autocompletion
-Plugin 'majutsushi/tagbar'         " ctags integration
-Plugin 'tpope/vim-rails'           " rails integration
-Plugin 'kien/ctrlp.vim'            " fuzzy finder
-Plugin 'bling/vim-airline'         " better status bar
-Plugin 'SirVer/ultisnips'          " snippets support
-Plugin 'godlygeek/tabular'         " alinear codigo
+Plugin 'gmarik/Vundle.vim'                " let Vundle manage Vundle, required
+Plugin 'tpope/vim-fugitive'               " git integration
+Plugin 'cakebaker/scss-syntax.vim'        " SCSS syntax
+Plugin 'Valloric/YouCompleteMe'           " autocompletion
+Plugin 'majutsushi/tagbar'                " ctags integration
+Plugin 'tpope/vim-rails'                  " rails integration
+Plugin 'kien/ctrlp.vim'                   " fuzzy finder
+Plugin 'bling/vim-airline'                " better status bar
+Plugin 'SirVer/ultisnips'                 " snippets support
+Plugin 'godlygeek/tabular'                " alinear codigo
+Plugin 'pangloss/vim-javascript'          " soporte mejorado para JavaScript
+Plugin 'tpope/vim-endwise'                " agrega etiquetas de cierre (end) en ruby
+Plugin 'tpope/vim-commentary'             " comentar/descomentar codigo
+Plugin 'ervandew/supertab'                " se usa solo para que YCM y UntSnips funcionen bien juntos
+Plugin 'othree/html5.vim'                 " soporte HTML5
+Plugin 'Townk/vim-autoclose'              " autocierre de parentesis, llaves, ...
+Plugin 'ZoomWin'                          " para hacer zoom en el buffer activo
+Plugin 'ap/vim-css-color'                 " resalta los colores en archivos CSS
+Plugin 'kana/vim-textobj-user'            " soporte para objetos de texto personalizados (dependencia de rubyblock)
+Plugin 'nelstrom/vim-textobj-rubyblock'   " resalta los colores en archivos CSS
+Plugin 'altercation/vim-colors-solarized' " colorscheme
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -103,6 +115,9 @@ else
   set directory=~/.vim/temp      " archivos de swap
 endif
 
+"" Activar matchit
+runtime macros/matchit.vim
+
 " Vim Airline (fancy status bar)
 set laststatus=2 " para mostrar siempre barra de estado
 
@@ -110,8 +125,14 @@ set laststatus=2 " para mostrar siempre barra de estado
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-" Open TabBar
+" Open TagBar
 nmap <silent> <leader>t :TagbarToggle<CR>
 
-" Untisnips
-let g:UltiSnipsExpandTrigger="<leader><leader>"
+" Hace que SuperTab rediriga a YCM. UltSnippets redirige a su vez a supertab
+" si no hay ningún snippet
+let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-Tab>'
+
+" Zoom
+nmap <silent> <leader>z :ZoomWin<CR>
