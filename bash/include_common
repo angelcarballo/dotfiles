@@ -1,0 +1,5 @@
+
+# Load bash_profile
+if [ -f ~/.bash_common ]; then
+  source ~/.bash_common
+fi
