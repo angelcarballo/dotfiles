@@ -5,6 +5,9 @@
 " [Ctr-r][+] -> Pegar desde OS
 " ZZ (normal mode) -> guardar y cerrar
 " & (normal mode) -> repetir la ultima sustitucion  \\
+" gc<movimiento> para comentar y descomentar
+" <leader-z> para hacer zoom en el buffer actual
+" ar/ir son bloques ruby (externo e interno respectivamente)
 
 """"""""""""""""""" VUNDLE """""""""""""""""""""
 
@@ -38,6 +41,7 @@ Plugin 'ap/vim-css-color'                 " resalta los colores en archivos CSS
 Plugin 'kana/vim-textobj-user'            " soporte para objetos de texto personalizados (dependencia de rubyblock)
 Plugin 'nelstrom/vim-textobj-rubyblock'   " resalta los colores en archivos CSS
 Plugin 'altercation/vim-colors-solarized' " colorscheme
+Plugin 'mustache/vim-mustache-handlebars' " mustache support
 
 
 " All of your Plugins must be added before the following line
