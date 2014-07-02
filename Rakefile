@@ -27,6 +27,10 @@ task :bootstrap do
   update_link 'bash/bash_common', '.bash_common'
   update_link 'bash/bash_aliases', '.bash_aliases'
 
+  # Link bash profile
+  if OS.linux?
+  end
+
   # Mac OSX defaults
   verbose(false) { sh "#{Dir.pwd}/osx/set-defaults.sh" } if OS.mac?
 
