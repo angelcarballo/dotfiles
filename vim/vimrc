@@ -142,3 +142,7 @@ let g:SuperTabDefaultCompletionType = '<C-Tab>'
 
 " Zoom
 nmap <silent> <leader>z :ZoomWin<CR>
+
+" Navegacion de tabs
+nmap <D-j> :tabn<CR>
+nmap <D-k> :tabp<CR>
