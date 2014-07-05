@@ -10,7 +10,8 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi # Enable shims and a
 eval "$(rbenv init -)" # enable rbenv
 
 # Ruby
-export RUBYOPT=-Ku
+# export RUBYOPT=-Ku
+export RAILS_ENV=development
 
 # Colores varios
 export CLICOLOR=1

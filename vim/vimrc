@@ -23,7 +23,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'                " let Vundle manage Vundle, required
 Plugin 'tpope/vim-fugitive'               " git integration
 Plugin 'cakebaker/scss-syntax.vim'        " SCSS syntax
-Plugin 'Valloric/YouCompleteMe'           " autocompletion
 Plugin 'SirVer/ultisnips'                 " snippets support
 Plugin 'ervandew/supertab'                " se usa solo para que YCM y UntSnips funcionen bien juntos
 Plugin 'majutsushi/tagbar'                " ctags integration
@@ -42,6 +41,7 @@ Plugin 'kana/vim-textobj-user'            " soporte para objetos de texto person
 Plugin 'nelstrom/vim-textobj-rubyblock'   " resalta los colores en archivos CSS
 Plugin 'altercation/vim-colors-solarized' " colorscheme
 Plugin 'mustache/vim-mustache-handlebars' " mustache support
+Plugin 'tpope/vim-surround'               " funciones para cambiar 'surroundings'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -124,7 +124,9 @@ runtime macros/matchit.vim
 " Vim Airline (fancy status bar)
 set laststatus=2 " para mostrar siempre barra de estado
 
-" Quickly edit/reload the vimrc file
+"""""""" Mappings """"""""
+
+" Quickly edit/source the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
@@ -134,15 +136,12 @@ nmap <silent> <leader>t :TagbarToggle<CR>
 " Open File Explorer
 nmap <silent> <leader>e :Explore<CR>
 
-" Hace que SuperTab rediriga a YCM. UltSnippets redirige a su vez a supertab
-" si no hay ningún snippet
-let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-Tab>'
-
 " Zoom
 nmap <silent> <leader>z :ZoomWin<CR>
 
 " Navegacion de tabs
 nmap <D-j> :tabn<CR>
 nmap <D-k> :tabp<CR>
+
+" Guardar todos los documentos
+nmap <D-s> :wa<CR>
