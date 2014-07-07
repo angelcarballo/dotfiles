@@ -8,6 +8,8 @@
 " gc<movimiento> para comentar y descomentar
 " <leader-z> para hacer zoom en el buffer actual
 " ar/ir son bloques ruby (externo e interno respectivamente)
+" <c-o> / <c-i> ir al buffer anterior/siguiente
+" vip -> selectionar parrafo completo
 
 """"""""""""""""""" VUNDLE """""""""""""""""""""
 
