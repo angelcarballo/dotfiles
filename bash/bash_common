@@ -9,8 +9,8 @@ export EDITOR=vim
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi # Enable shims and autocompletion add to your profile:
 eval "$(rbenv init -)" # enable rbenv
 
-# Ruby/Rails
-export RUBYOPT=-Ku
+# Ruby
+# export RUBYOPT=-Ku
 export RAILS_ENV=development
 
 # Colores varios
