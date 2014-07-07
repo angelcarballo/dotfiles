@@ -37,9 +37,9 @@ Plugin 'tpope/vim-commentary'             " comentar/descomentar codigo
 Plugin 'othree/html5.vim'                 " soporte HTML5
 Plugin 'jiangmiao/auto-pairs'             " autocierre de parentesis, llaves...
 Plugin 'ZoomWin'                          " para hacer zoom en el buffer activo
-Plugin 'ap/vim-css-color'                 " resalta los colores en archivos CSS
+Plugin 'gorodinskiy/vim-coloresque'       " resalta los colores en archivos CSS
 Plugin 'kana/vim-textobj-user'            " soporte para objetos de texto personalizados (dependencia de rubyblock)
-Plugin 'nelstrom/vim-textobj-rubyblock'   " resalta los colores en archivos CSS
+Plugin 'nelstrom/vim-textobj-rubyblock'   " objetos de texto ruby
 Plugin 'altercation/vim-colors-solarized' " colorscheme
 Plugin 'mustache/vim-mustache-handlebars' " mustache support
 
