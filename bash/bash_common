@@ -31,6 +31,8 @@ function parse_git_branch {
 # Prompt
 PS1="$WHITE\w$YELLOW\$(parse_git_branch)$WHITE $ "
 
+export TERM=screen-256color
+
 # Load aliases
 if [ -f ~/.bash_aliases ]; then
   source ~/.bash_aliases 
