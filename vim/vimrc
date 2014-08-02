@@ -19,8 +19,6 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " Plugins basicos
 Plugin 'gmarik/Vundle.vim'                " let Vundle manage Vundle, required
@@ -35,21 +33,24 @@ Plugin 'pangloss/vim-javascript'          " soporte mejorado para JavaScript
 Plugin 'othree/html5.vim'                 " soporte HTML5
 Plugin 'mustache/vim-mustache-handlebars' " mustache support
 
-" Extras
+" Apariencia y navegacion
+Plugin 'ZoomWin'                          " para hacer zoom en el buffer activo
+Plugin 'bling/vim-airline'                " better status bar
+Plugin 'gorodinskiy/vim-coloresque'       " resalta los colores en archivos CSS
+
+" Autocompletado de codigo
 Plugin 'SirVer/ultisnips'                 " snippets support
 Plugin 'ervandew/supertab'                " se usa solo para que YCM y UntSnips funcionen bien juntos
-Plugin 'majutsushi/tagbar'                " ctags integration
-Plugin 'bling/vim-airline'                " better status bar
-Plugin 'godlygeek/tabular'                " alinear codigo
 Plugin 'tpope/vim-endwise'                " agrega etiquetas de cierre (end) en ruby
-Plugin 'tpope/vim-commentary'             " comentar/descomentar codigo
 Plugin 'jiangmiao/auto-pairs'             " autocierre de parentesis, llaves...
-Plugin 'ZoomWin'                          " para hacer zoom en el buffer activo
-Plugin 'gorodinskiy/vim-coloresque'       " resalta los colores en archivos CSS
+Plugin 'docunext/closetag.vim'            " cierra etiquetas html/eruby
+
+" Extras
+Plugin 'majutsushi/tagbar'                " ctags integration
+Plugin 'godlygeek/tabular'                " alinear codigo
+Plugin 'tpope/vim-commentary'             " comentar/descomentar codigo
 Plugin 'kana/vim-textobj-user'            " soporte para objetos de texto personalizados (dependencia de rubyblock)
 Plugin 'nelstrom/vim-textobj-rubyblock'   " objetos de texto ruby
-Plugin 'mustache/vim-mustache-handlebars' " mustache support
-Plugin 'docunext/closetag.vim'            " cierra etiquetas html/eruby
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
