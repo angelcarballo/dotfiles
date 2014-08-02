@@ -48,6 +48,8 @@ Plugin 'ZoomWin'                          " para hacer zoom en el buffer activo
 Plugin 'gorodinskiy/vim-coloresque'       " resalta los colores en archivos CSS
 Plugin 'kana/vim-textobj-user'            " soporte para objetos de texto personalizados (dependencia de rubyblock)
 Plugin 'nelstrom/vim-textobj-rubyblock'   " objetos de texto ruby
+Plugin 'mustache/vim-mustache-handlebars' " mustache support
+Plugin 'docunext/closetag.vim'            " cierra etiquetas html/eruby
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -90,6 +92,11 @@ colorscheme codeschool
 " let g:seoul256_background = 235
 " colorscheme  seoul256
 set scrolloff=5 " dejar marjen tras la ultima fila
+
+"" Evitar artefactos en terminal
+if &term == "xterm"
+    set term=xterm-256color
+endif
 
 "" Log y deshacer
 set history=1000

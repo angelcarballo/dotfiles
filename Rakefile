@@ -17,7 +17,8 @@ task :bootstrap do
   update_link 'vim', '.vim'
   update_link 'vim/vimrc', '.vimrc'
   update_link 'vim/gvimrc', '.gvimrc'
-  verbose(false) { sh "vim +PluginInstall +qall" }  # install vundle plugins
+  verbose(false) { sh "vim +PluginInstall! +qall" }  # install and/or update vundle plugins
+  verbose(false) { sh "vim +PluginClean! +qall" }  # clean unused vundle plugins
 
   # Ruby
   update_link 'ruby/gemrc', '.gemrc'
@@ -26,6 +27,9 @@ task :bootstrap do
   # Bash
   update_link 'bash/bash_common', '.bash_common'
   update_link 'bash/bash_aliases', '.bash_aliases'
+
+  # Tmux
+  update_link 'tmux/tmux.conf', '.tmux.conf'
 
   # Link bash profile
   if OS.linux?
