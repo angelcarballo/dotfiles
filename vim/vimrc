@@ -1,15 +1,15 @@
-"" NOTAS
+"" NOTES
 
-" gu (sobre seleccion visual) -> minusculas
-" gU (sobre seleccion visual) -> mayusculas
-" [Ctr-r][+] -> Pegar desde OS
-" ZZ (normal mode) -> guardar y cerrar
-" & (normal mode) -> repetir la ultima sustitucion  \\
-" gc<movimiento> para comentar y descomentar
-" <leader-z> para hacer zoom en el buffer actual
-" ar/ir son bloques ruby (externo e interno respectivamente)
-" <c-o> / <c-i> ir al buffer anterior/siguiente
-" vip -> selectionar parrafo completo
+" gu (over visual selection) -> downcase
+" gU (over visual selection) -> upcase
+" [Ctr-r][+]                 -> Paste from OS
+" ZZ (normal mode)           -> save and close
+" & (normal mode)            -> repeat last substitution
+" gc<movimiento>             -> comment/uncomment
+" <leader-z>                 -> zoom on current buffer
+" ar/ir                      -> motions for ruby blocks  (outer and inner respectively)
+" <c-o> / <c-i>              -> go to next / previous buffer
+" vip                        -> select full paragraph
 
 """"""""""""""""""" VUNDLE """""""""""""""""""""
 
@@ -24,33 +24,33 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'                " let Vundle manage Vundle, required
 Plugin 'tpope/vim-fugitive'               " git integration
 Plugin 'kien/ctrlp.vim'                   " fuzzy finder
-Plugin 'tpope/vim-surround'               " funciones para cambiar 'surroundings'
+Plugin 'tpope/vim-surround'               " alter surroundings (), [], '', {}
 
 " Integraciones
 Plugin 'tpope/vim-rails'                  " rails integration
 Plugin 'cakebaker/scss-syntax.vim'        " SCSS syntax
-Plugin 'pangloss/vim-javascript'          " soporte mejorado para JavaScript
-Plugin 'othree/html5.vim'                 " soporte HTML5
+Plugin 'pangloss/vim-javascript'          " improved js support
+Plugin 'othree/html5.vim'                 " HTML5 support
 Plugin 'mustache/vim-mustache-handlebars' " mustache support
 
 " Apariencia y navegacion
-Plugin 'ZoomWin'                          " para hacer zoom en el buffer activo
+Plugin 'ZoomWin'                          " zoom on current buffer
 Plugin 'bling/vim-airline'                " better status bar
-Plugin 'gorodinskiy/vim-coloresque'       " resalta los colores en archivos CSS
+Plugin 'gorodinskiy/vim-coloresque'       " show css colors
 
 " Autocompletado de codigo
 Plugin 'SirVer/ultisnips'                 " snippets support
-Plugin 'ervandew/supertab'                " se usa solo para que YCM y UntSnips funcionen bien juntos
-Plugin 'tpope/vim-endwise'                " agrega etiquetas de cierre (end) en ruby
-Plugin 'jiangmiao/auto-pairs'             " autocierre de parentesis, llaves...
-Plugin 'docunext/closetag.vim'            " cierra etiquetas html/eruby
+Plugin 'ervandew/supertab'                " magic code autocomplete!
+Plugin 'tpope/vim-endwise'                " autoclose for vim blocks
+Plugin 'jiangmiao/auto-pairs'             " autoclose for (, [, {
+Plugin 'docunext/closetag.vim'            " autoclose for html tags
 
 " Extras
 Plugin 'majutsushi/tagbar'                " ctags integration
-Plugin 'godlygeek/tabular'                " alinear codigo
-Plugin 'tpope/vim-commentary'             " comentar/descomentar codigo
-Plugin 'kana/vim-textobj-user'            " soporte para objetos de texto personalizados (dependencia de rubyblock)
-Plugin 'nelstrom/vim-textobj-rubyblock'   " objetos de texto ruby
+Plugin 'godlygeek/tabular'                " code align (like on this comment)
+Plugin 'tpope/vim-commentary'             " comment/uncomment code
+Plugin 'kana/vim-textobj-user'            " custom text objects
+Plugin 'nelstrom/vim-textobj-rubyblock'   " custom text objects (ruby)
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -59,7 +59,7 @@ filetype plugin indent on    " required
 """"""""""""""""""" /VUNDLE """""""""""""""""""""
 
 
-"" Especifico para tipos de archivo
+"" Inc files are php files
 augroup inc
 autocmd BufRead,BufNewFile *.inc set filetype=php
 augroup END
@@ -67,54 +67,33 @@ augroup END
 "" General
 syntax enable
 set encoding=utf-8
-set nu                    " numeros de linea
-set showcmd               " muestra comandos incompletos
-set ruler                 " muestra la posicion del cursor
-set scrolloff=5           " dejar siempre espacio alrededor del cursor
-let mapleader=","         " cambiar <leader> de \ a ,
-filetype plugin indent on
-set foldmethod=marker     " marcar los pliegues manualmente con triples llaves (o :zf)
+set nu                    " show line numbers
+set showcmd               " show complete commands
+set ruler                 " show cursor position
+set scrolloff=5           " leave space after the current line
+let mapleader=","         " map <leader> to ,
+filetype plugin indent on " autoindent by file type
+set iskeyword-=.          " make motions stop on '.'
 
 "" Whitespace
 set nowrap
-set tabstop=2 shiftwidth=2
-set expandtab " usar espacios en lugar de tabs
+set tabstop=2 shiftwidth=2     " two space tabs
+set expandtab                  " usar espacios en lugar de tabs
 set backspace=indent,eol,start " backspace a traves de cualquier cosa
 
 "" Busqueda
-set hlsearch   " resaltar resultados de busqueda
-set incsearch  " busqueda incremental
-set ignorecase " busqueda independiente de may/min...
-set smartcase  " excepto si el termino tiene al menos una mayuscula
+set hlsearch   " higlight search results
+set incsearch  " incremental search
+set ignorecase " ignore case on search ...
+set smartcase  " ... except if query contains uppercase characters
 
-"" Apariencia
+"" Look & Feel
 set background=dark
 colorscheme codeschool
-" let g:seoul256_background = 235
-" colorscheme  seoul256
-set scrolloff=5 " dejar marjen tras la ultima fila
-
-"" Evitar artefactos en terminal
-if &term == "xterm"
-    set term=xterm-256color
-endif
-
-"" Log y deshacer
-set history=1000
-set undolevels=1000
-set title
-set visualbell   " flash en pantalla en lugar de *beep*
-set noerrorbells " sin aviso en errores (solo flash al llegar al final/principio de archivo)
-
-"" Archivos a ignorar
-set wildignore+=*.swp,*.bak,*.pyc,*.class,*.lock       " Comunes
-set wildignore+=*/tmp/*,*.so,*.zip                     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.zip,*.exe                  " Windows
-set wildignore+=*/bundle/*,*/temp/*,*/backup/*,*/doc/* " Vim
-
-"" Backup
-set nobackup
-set noswapfile
+set title        " show current file on title
+set visualbell   " visual flash
+set noerrorbells " no flash on errors, only al beginning/end of file
+set laststatus=2 " always show status bar (Airline)
 
 " Set font according to system
 if has("mac")
@@ -125,7 +104,17 @@ elseif has("win32")
   set gfn=Consolas:h11
 endif
 
-"" Backups
+"" Undo & Logging
+set history=1000
+set undolevels=1000
+
+"" Archivos a ignorar
+set wildignore+=*.swp,*.bak,*.pyc,*.class,*.lock       " Common
+set wildignore+=*/tmp/*,*.so,*.zip                     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.zip,*.exe                  " Windows
+set wildignore+=*/bundle/*,*/temp/*,*/backup/*,*/doc/* " Vim
+
+"" Backup
 if has("win32")
   set backupdir=~/vimfiles/backup    " archivos de backup
   set directory=~/vimfiles/temp      " archivos de swap
@@ -133,12 +122,12 @@ else
   set backupdir=~/.vim/backup    " archivos de backup
   set directory=~/.vim/temp      " archivos de swap
 endif
+" set nobackup      " make no backups
+" set noswapfile    " dont use swap files
 
-"" Activar matchit
+"" Activate  matchit
 runtime macros/matchit.vim
 
-" Vim Airline (fancy status bar)
-set laststatus=2 " para mostrar siempre barra de estado
 
 """""""" Mappings """"""""
 
@@ -155,6 +144,9 @@ nmap <silent> <leader>e :Explore<CR>
 " Zoom
 nmap <silent> <leader>z :ZoomWin<CR>
 
-" Navegacion de tabs
+" Better tab navigation
 nmap <D-j> :tabn<CR>
 nmap <D-k> :tabp<CR>
+
+
+
