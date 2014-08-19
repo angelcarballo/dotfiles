@@ -1,7 +1,6 @@
 require './lib/os'
 
-task :default => [:update_submodules, :bootstrap]
-task :update => [:update_code, :update_submodules, :bootstrap]
+task :default => [:update, :bootstrap]
 
 task :update do
   print 'Pulling changes... '
