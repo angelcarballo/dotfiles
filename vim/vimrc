@@ -113,6 +113,7 @@ set wildignore+=*.swp,*.bak,*.pyc,*.class,*.lock       " Common
 set wildignore+=*/tmp/*,*.so,*.zip                     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.zip,*.exe                  " Windows
 set wildignore+=*/bundle/*,*/temp/*,*/backup/*,*/doc/* " Vim
+set wildignore+=*/_site/*                              " Jekyll
 
 "" Backup
 if has("win32")
