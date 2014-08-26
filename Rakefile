@@ -1,8 +1,12 @@
 require './lib/os'
 
-task :default => [:update_submodules, :bootstrap]
+task :default => [:update, :bootstrap]
 
-task :update_submodules do
+task :update do
+  print 'Pulling changes... '
+  verbose false do
+    sh "git pull"
+  end
   print 'Updating submodules... '
   verbose false do
     sh "git submodule update --init"
@@ -30,10 +34,6 @@ task :bootstrap do
 
   # Tmux
   update_link 'tmux/tmux.conf', '.tmux.conf'
-
-  # Link bash profile
-  if OS.linux?
-  end
 
   # Mac OSX defaults
   verbose(false) { sh "#{Dir.pwd}/osx/set-defaults.sh" } if OS.mac?
