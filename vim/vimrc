@@ -32,6 +32,7 @@ Plugin 'cakebaker/scss-syntax.vim'        " SCSS syntax
 Plugin 'pangloss/vim-javascript'          " improved js support
 Plugin 'othree/html5.vim'                 " HTML5 support
 Plugin 'mustache/vim-mustache-handlebars' " mustache support
+Plugin 'pprovost/vim-markdown-jekyll'     " jekyll style markdown support
 
 " Apariencia y navegacion
 Plugin 'ZoomWin'                          " zoom on current buffer
@@ -108,7 +109,7 @@ endif
 set history=1000
 set undolevels=1000
 
-"" Archivos a ignorar
+"" Files to ignore
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*.lock       " Common
 set wildignore+=*/tmp/*,*.so,*.zip                     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.zip,*.exe                  " Windows
