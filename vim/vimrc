@@ -20,26 +20,27 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" Plugins basicos
+" Basic plugins
 Plugin 'gmarik/Vundle.vim'                " let Vundle manage Vundle, required
 Plugin 'tpope/vim-fugitive'               " git integration
 Plugin 'kien/ctrlp.vim'                   " fuzzy finder
 Plugin 'tpope/vim-surround'               " alter surroundings (), [], '', {}
 
-" Integraciones
+" Languages and frameworks
 Plugin 'tpope/vim-rails'                  " rails integration
+Plugin 'thoughtbot/vim-rspec'             " run rspec test from vim
 Plugin 'cakebaker/scss-syntax.vim'        " SCSS syntax
 Plugin 'pangloss/vim-javascript'          " improved js support
 Plugin 'othree/html5.vim'                 " HTML5 support
 Plugin 'mustache/vim-mustache-handlebars' " mustache support
 Plugin 'pprovost/vim-markdown-jekyll'     " jekyll style markdown support
 
-" Apariencia y navegacion
+" Look & Feel, Navigation
 Plugin 'ZoomWin'                          " zoom on current buffer
 Plugin 'bling/vim-airline'                " better status bar
 Plugin 'gorodinskiy/vim-coloresque'       " show css colors
 
-" Autocompletado de codigo
+" Autocompletion
 Plugin 'SirVer/ultisnips'                 " snippets support
 Plugin 'ervandew/supertab'                " magic code autocomplete!
 Plugin 'tpope/vim-endwise'                " autoclose for vim blocks
@@ -130,12 +131,23 @@ endif
 "" Activate  matchit
 runtime macros/matchit.vim
 
+"" Vim-Notes
+:let g:notes_directories = ['~/Documents/Notes']
+
+"" Vim-Rspec
+let g:rspec_command = "be rspec {spec}"
 
 """""""" Mappings """"""""
 
 " Quickly edit/source the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" RSpec.vim mappings
+map <Leader>tf :call RunCurrentSpecFile()<CR>
+map <Leader>tc :call RunNearestSpec()<CR>
+map <Leader>tl :call RunLastSpec()<CR>
+map <Leader>ta :call RunAllSpecs()<CR>
 
 " Open TagBar
 nmap <silent> <leader>t :TagbarToggle<CR>
