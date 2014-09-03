@@ -90,11 +90,12 @@ set smartcase  " ... except if query contains uppercase characters
 
 "" Look & Feel
 set background=dark
+let g:solarized_termcolors=256 " makes solarized look good on terminal vim
 colorscheme solarized
-set title        " show current file on title
-set visualbell   " visual flash
-set noerrorbells " no flash on errors, only al beginning/end of file
-set laststatus=2 " always show status bar (Airline)
+set title                      " show current file on title
+set visualbell                 " visual flash
+set noerrorbells               " no flash on errors, only al beginning/end of file
+set laststatus=2               " always show status bar (Airline)
 
 " Set font according to system
 if has("mac")
