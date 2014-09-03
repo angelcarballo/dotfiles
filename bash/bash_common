@@ -1,5 +1,5 @@
 # Paths, solo comunes a todas las plataformas
-export PATH=$HOME/.rbenv/bin:$PATH
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 # Modo VIM en cosola y editor
 set -o vi
@@ -33,17 +33,14 @@ PS1="$WHITE\w$YELLOW\$(parse_git_branch)$WHITE $ "
 
 export TERM=screen-256color
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    eval `dircolors ~/.dircolors/solarized`
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+# enable dircolors and related aliases
+test -e ~/.dircolors && eval `dircolors -b ~/.dircolors`
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 
 # Load aliases
