@@ -37,6 +37,7 @@ Plugin 'mustache/vim-mustache-handlebars' " mustache support
 Plugin 'ZoomWin'                          " zoom on current buffer
 Plugin 'bling/vim-airline'                " better status bar
 Plugin 'gorodinskiy/vim-coloresque'       " show css colors
+Plugin 'altercation/vim-colors-solarized' " soalrized colorscheme
 
 " Autocompletado de codigo
 Plugin 'SirVer/ultisnips'                 " snippets support
@@ -89,7 +90,7 @@ set smartcase  " ... except if query contains uppercase characters
 
 "" Look & Feel
 set background=dark
-colorscheme codeschool
+colorscheme solarized
 set title        " show current file on title
 set visualbell   " visual flash
 set noerrorbells " no flash on errors, only al beginning/end of file
