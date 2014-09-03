@@ -29,6 +29,7 @@ task :bootstrap do
   update_link 'ruby/irbrc', '.irbrc'
 
   # Bash
+  update_link 'bash/dircolors', '.dircolors'
   update_link 'bash/bash_common', '.bash_common'
   update_link 'bash/bash_aliases', '.bash_aliases'
 
