@@ -1,14 +1,14 @@
-snippet erb	"html eruby tag"
+snippet erb	"html eruby tag" w
 <%= $1 %>
 endsnippet
 
-snippet t "basic html tag" b
+snippet t "basic html tag" bw
 <${1:div}>
 	$2
 </${1/(\w+).*/$1/}>
 endsnippet
 
-snippet it "basic inline html tag"
+snippet it "basic inline html tag" w
 <${1:div}>$2</${1/(\w+).*/$1/}>
 endsnippet
 

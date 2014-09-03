@@ -36,9 +36,7 @@ Plugin 'mustache/vim-mustache-handlebars' " mustache support
 Plugin 'pprovost/vim-markdown-jekyll'     " jekyll style markdown support
 
 " Look & Feel, Navigation
-Plugin 'ZoomWin'                          " zoom on current buffer
 Plugin 'bling/vim-airline'                " better status bar
-Plugin 'gorodinskiy/vim-coloresque'       " show css colors
 Plugin 'altercation/vim-colors-solarized' " soalrized colorscheme
 
 " Autocompletion
@@ -52,8 +50,8 @@ Plugin 'docunext/closetag.vim'            " autoclose for html tags
 Plugin 'majutsushi/tagbar'                " ctags integration
 Plugin 'godlygeek/tabular'                " code align (like on this comment)
 Plugin 'tpope/vim-commentary'             " comment/uncomment code
-Plugin 'kana/vim-textobj-user'            " custom text objects
-Plugin 'nelstrom/vim-textobj-rubyblock'   " custom text objects (ruby)
+" Plugin 'kana/vim-textobj-user'            " custom text objects
+" Plugin 'nelstrom/vim-textobj-rubyblock'   " custom text objects (ruby)
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -76,7 +74,6 @@ set ruler                 " show cursor position
 set scrolloff=5           " leave space after the current line
 let mapleader=","         " map <leader> to ,
 filetype plugin indent on " autoindent by file type
-set iskeyword-=.          " make motions stop on '.'
 
 "" Whitespace
 set nowrap
@@ -127,14 +124,9 @@ else
   set backupdir=~/.vim/backup    " archivos de backup
   set directory=~/.vim/temp      " archivos de swap
 endif
-" set nobackup      " make no backups
-" set noswapfile    " dont use swap files
 
 "" Activate  matchit
 runtime macros/matchit.vim
-
-"" Vim-Notes
-:let g:notes_directories = ['~/Documents/Notes']
 
 "" Vim-Rspec
 let g:rspec_command = "be rspec {spec}"
