@@ -21,10 +21,11 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Basic plugins
-Plugin 'gmarik/Vundle.vim'                " let Vundle manage Vundle, required
-Plugin 'tpope/vim-fugitive'               " git integration
-Plugin 'kien/ctrlp.vim'                   " fuzzy finder
-Plugin 'tpope/vim-surround'               " alter surroundings (), [], '', {}
+Plugin 'gmarik/Vundle.vim'     " let Vundle manage Vundle, required
+Plugin 'tpope/vim-fugitive'    " git integration
+Plugin 'kien/ctrlp.vim'        " fuzzy finder
+Plugin 'tpope/vim-surround'    " alter surroundings (), [], '', {}
+Plugin 'tommcdo/vim-exchange'  " text exchange operator (cx..)
 
 " Languages and frameworks
 Plugin 'tpope/vim-rails'                  " rails integration
