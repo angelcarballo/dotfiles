@@ -37,8 +37,10 @@ Plugin 'mustache/vim-mustache-handlebars' " mustache support
 Plugin 'pprovost/vim-markdown-jekyll'     " jekyll style markdown support
 
 " Look & Feel, Navigation
+Plugin 'tpope/vim-vinegar'                " better status bar
 Plugin 'bling/vim-airline'                " better status bar
 Plugin 'altercation/vim-colors-solarized' " soalrized colorscheme
+Plugin 'yggdroot/indentLine'              " show indentation lines
 
 " Autocompletion
 Plugin 'SirVer/ultisnips'                 " snippets support
@@ -127,11 +129,15 @@ else
   set directory=~/.vim/temp      " archivos de swap
 endif
 
-"" Activate  matchit
+"" Activate matchit
 runtime macros/matchit.vim
 
 "" Vim-Rspec
 let g:rspec_command = "be rspec {spec}"
+
+"" IndentLine options
+let g:indentLine_char = '︙'
+let g:indentLine_faster = 1
 
 """""""" Mappings """"""""
 
