@@ -13,6 +13,7 @@ alias be='bundle exec'
 alias rs='bundle exec rails s --debugger'
 alias rc='bundle exec rails c'
 alias migrate='bundle exec rake db:migrate'
+alias deploy='bundle exec cap deploy'
 
 # Git
 alias gs='git status'
