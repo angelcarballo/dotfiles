@@ -10,6 +10,8 @@
 " ar/ir                      -> motions for ruby blocks  (outer and inner respectively)
 " <c-o> / <c-i>              -> go to next / previous buffer
 " vip                        -> select full paragraph
+" vip                        -> select full paragraph
+" {{{ ... }}}                -> manually mark fold region
 
 """"""""""""""""""" VUNDLE """""""""""""""""""""
 
@@ -136,8 +138,8 @@ runtime macros/matchit.vim
 let g:rspec_command = "be rspec {spec}"
 
 "" IndentLine options
-let g:indentLine_char = '︙'
-let g:indentLine_faster = 1
+" let g:indentLine_char = '︙'
+" let g:indentLine_faster = 1
 
 """""""" Mappings """"""""
 
