@@ -10,6 +10,10 @@
 " ar/ir                      -> motions for ruby blocks  (outer and inner respectively)
 " <c-o> / <c-i>              -> go to next / previous buffer
 " vip                        -> select full paragraph
+" vip                        -> select full paragraph
+" {{{ ... }}}                -> manually mark fold region
+" :9t.                       -> copy line 9 under current line
+" :t9                        -> copy the current line under line 9
 
 """"""""""""""""""" VUNDLE """""""""""""""""""""
 
@@ -162,8 +166,13 @@ nmap <silent> <leader>e :Explore<CR>
 nmap <silent> <leader>z :ZoomWin<CR>
 
 " Better tab navigation
-nmap <D-j> :tabn<CR>
-nmap <D-k> :tabp<CR>
+if has("mac")
+  nmap <D-j> :tabn<CR>
+  nmap <D-k> :tabp<CR>
+else
+  nmap <C-j> :tabn<CR>
+  nmap <C-k> :tabp<CR>
+endif
 
 
 
