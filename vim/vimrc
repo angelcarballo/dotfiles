@@ -99,6 +99,7 @@ set title                      " show current file on title
 set visualbell                 " visual flash
 set noerrorbells               " no flash on errors, only al beginning/end of file
 set laststatus=2               " always show status bar (Airline)
+set listchars=tab:▸\ ,eol:¬    " symbols for invisible characters 
 
 " Set font according to system
 if has("mac")
@@ -136,8 +137,8 @@ runtime macros/matchit.vim
 let g:rspec_command = "be rspec {spec}"
 
 "" IndentLine options
-let g:indentLine_char = '︙'
-let g:indentLine_faster = 1
+" let g:indentLine_char = '︙'
+" let g:indentLine_faster = 1
 
 """""""" Mappings """"""""
 
