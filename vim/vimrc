@@ -5,8 +5,7 @@
 " [Ctr-r][+]                 -> Paste from OS
 " ZZ (normal mode)           -> save and close
 " & (normal mode)            -> repeat last substitution
-" gc<movimiento>             -> comment/uncomment
-" <leader-z>                 -> zoom on current buffer
+" gc<motion>                 -> comment/uncomment
 " ar/ir                      -> motions for ruby blocks  (outer and inner respectively)
 " <c-o> / <c-i>              -> go to next / previous buffer
 " vip                        -> select full paragraph
@@ -45,6 +44,7 @@ Plugin 'tpope/vim-vinegar'                " better status bar
 Plugin 'bling/vim-airline'                " better status bar
 Plugin 'altercation/vim-colors-solarized' " soalrized colorscheme
 Plugin 'yggdroot/indentLine'              " show indentation lines
+Plugin 'vim-scripts/zoomWin'              " zoom support for splits
 
 " Autocompletion
 Plugin 'SirVer/ultisnips'                 " snippets support
@@ -54,9 +54,9 @@ Plugin 'jiangmiao/auto-pairs'             " autoclose for (, [, {
 Plugin 'docunext/closetag.vim'            " autoclose for html tags
 
 " Extras
-Plugin 'majutsushi/tagbar'                " ctags integration
 Plugin 'godlygeek/tabular'                " code align (like on this comment)
 Plugin 'tpope/vim-commentary'             " comment/uncomment code
+" Plugin 'majutsushi/tagbar'                " ctags integration
 " Plugin 'kana/vim-textobj-user'            " custom text objects
 " Plugin 'nelstrom/vim-textobj-rubyblock'   " custom text objects (ruby)
 
@@ -156,16 +156,14 @@ map <Leader>tc :call RunNearestSpec()<CR>
 map <Leader>tl :call RunLastSpec()<CR>
 map <Leader>ta :call RunAllSpecs()<CR>
 
-" Open TagBar
-nmap <silent> <leader>t :TagbarToggle<CR>
-
 " Open File Explorer
-nmap <silent> <leader>e :Explore<CR>
+nmap <silent> <leader>ei :Explore<CR>
 
 " Zoom
-nmap <silent> <leader>z :ZoomWin<CR>
+nmap <silent> <leader>f :ZoomWin<CR>
 
 " Better tab navigation
+nmap <silent> <leader>et :Texplore<CR>
 if has("mac")
   nmap <D-j> :tabn<CR>
   nmap <D-k> :tabp<CR>
