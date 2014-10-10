@@ -162,6 +162,9 @@ nmap <silent> <leader>ei :Explore<CR>
 " Zoom
 nmap <silent> <leader>f :ZoomWin<CR>
 
+" Remove Trailing Whitespace
+nmap <silent> <leader>rw :%s/\s\+$//<CR>
+
 " Better tab navigation
 nmap <silent> <leader>et :Texplore<CR>
 if has("mac")
