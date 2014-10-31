@@ -36,6 +36,10 @@ task :bootstrap do
   # Tmux
   update_link 'tmux/tmux.conf', '.tmux.conf'
 
+  # Git
+  verbose(false) { sh "#{Dir.pwd}/git/set-config.sh" }
+  verbose(false) { sh "#{Dir.pwd}/git/set-aliases.sh" }
+
   # Mac OSX defaults
   verbose(false) { sh "#{Dir.pwd}/osx/set-defaults.sh" } if OS.mac?
 

@@ -66,7 +66,6 @@ filetype plugin indent on    " required
 
 """"""""""""""""""" /VUNDLE """""""""""""""""""""
 
-
 "" Inc files are php files
 augroup inc
 autocmd BufRead,BufNewFile *.inc set filetype=php
@@ -96,6 +95,7 @@ set ignorecase " ignore case on search ...
 set smartcase  " ... except if query contains uppercase characters
 
 "" Look & Feel
+set t_Co=256                   " enable colors on terminal
 set background=dark
 let g:solarized_termcolors=256 " makes solarized look good on terminal vim
 colorscheme solarized
