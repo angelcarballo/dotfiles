@@ -40,7 +40,7 @@ Plugin 'mustache/vim-mustache-handlebars' " mustache support
 Plugin 'pprovost/vim-markdown-jekyll'     " jekyll style markdown support
 
 " Look & Feel, Navigation
-Plugin 'tpope/vim-vinegar'                " better status bar
+Plugin 'tpope/vim-vinegar'                " file explorer improvements
 Plugin 'bling/vim-airline'                " better status bar
 Plugin 'altercation/vim-colors-solarized' " soalrized colorscheme
 Plugin 'yggdroot/indentLine'              " show indentation lines
