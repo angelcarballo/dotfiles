@@ -8,13 +8,11 @@ task :update do
   verbose(false) { sh "git pull" }
   print 'Updating submodules... '
   verbose(false) { sh "git submodule update --init" }
-  puts 'done!'
+  puts 'Done!'
 end
 
 desc 'Link config files on HOME folder'
 task :link do
-  print 'Installing... '
-
   # Vim
   update_link 'vim', '.vim'
   update_link 'vim/vimrc', '.vimrc'
@@ -32,7 +30,7 @@ task :link do
   # Tmux
   update_link 'tmux/tmux.conf', '.tmux.conf'
 
-  puts 'done!'
+  puts 'Done!'
 end
 
 desc 'Install dependencies'
@@ -70,6 +68,8 @@ end
 def update_link(origin, dest)
   origin = "#{Dir.pwd}/#{origin}"
   dest = "#{home_dir}/#{dest}"
+
+  puts "Linking #{origin} to #{dest}"
 
   verbose false do
     rm dest if File.exists? dest
