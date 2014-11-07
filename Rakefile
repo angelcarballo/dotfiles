@@ -30,6 +30,9 @@ task :link do
   # Tmux
   update_link 'tmux/tmux.conf', '.tmux.conf'
 
+  # Tmux
+  update_link 'rspec/rspec.conf', '.rspec'
+
   puts 'Done!'
 end
 
