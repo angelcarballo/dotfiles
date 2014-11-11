@@ -93,7 +93,7 @@ set smartcase  " ... except if query contains uppercase characters
 "" Look & Feel
 set t_Co=256                   " enable colors on terminal
 set background=dark
-" let g:solarized_termcolors=256 " makes solarized look good on terminal vim
+let g:solarized_termcolors=256 " makes solarized look good on terminal vim
 colorscheme solarized
 set title                      " show current file on title
 set visualbell                 " visual flash
