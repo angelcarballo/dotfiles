@@ -69,6 +69,7 @@ augroup END
 "" General
 syntax enable
 set encoding=utf-8
+set hidden                " hide buffers instead of closing them
 set nu                    " show line numbers
 set showcmd               " show complete commands
 set ruler                 " show cursor position
