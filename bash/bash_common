@@ -31,8 +31,6 @@ function parse_git_branch {
 # Prompt
 PS1="$WHITE\w$YELLOW\$(parse_git_branch)$WHITE $ "
 
-export TERM=screen-256color
-
 # enable dircolors and related aliases
 test -e ~/.dircolors && eval `dircolors -b ~/.dircolors`
 alias ls='ls --color=auto'

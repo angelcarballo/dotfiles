@@ -91,9 +91,9 @@ set ignorecase " ignore case on search ...
 set smartcase  " ... except if query contains uppercase characters
 
 "" Look & Feel
-set t_Co=256                   " enable colors on terminal
+
 set background=dark
-let g:solarized_termcolors=256 " makes solarized look good on terminal vim
+" let g:solarized_termcolors=256 " makes solarized look good on terminal vim
 colorscheme solarized
 set title                      " show current file on title
 set visualbell                 " visual flash
@@ -128,8 +128,7 @@ runtime macros/matchit.vim
 let g:rspec_command = "be rspec {spec}"
 
 "" IndentLine options
-" let g:indentLine_char = '︙'
-" let g:indentLine_faster = 1
+let g:indentLine_char = '·'
 
 """""""" Mappings """"""""
 
