@@ -56,6 +56,11 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # Speed Up animations
 defaults write com.apple.dock expose-animation-duration -float 0.15
 
+# Skip verification of disk images (dmg, iso, ...)
+defaults write com.apple.frameworks.diskimages skip-verify -bool true 
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true 
+defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
 ###############################################################################
 # Google Chrome & Google Chrome Canary                                        #
 ###############################################################################
