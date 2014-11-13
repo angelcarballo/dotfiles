@@ -53,9 +53,8 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 # Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-# Empty Trash securely by default
-# defaults write com.apple.finder EmptyTrashSecurely -bool true
-
+# Speed Up animations
+defaults write com.apple.dock expose-animation-duration -float 0.15
 
 ###############################################################################
 # Google Chrome & Google Chrome Canary                                        #
