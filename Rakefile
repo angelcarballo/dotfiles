@@ -13,25 +13,28 @@ end
 
 desc 'Link config files on HOME folder'
 task :link do
-  # Vim
+  # vim
   update_link 'vim', '.vim'
   update_link 'vim/vimrc', '.vimrc'
   update_link 'vim/gvimrc', '.gvimrc'
 
-  # Ruby
+  # ruby
   update_link 'ruby/gemrc', '.gemrc'
   update_link 'ruby/irbrc', '.irbrc'
 
-  # Bash
+  # bash
   update_link 'bash/dircolors/solarized', '.dircolors'
   update_link 'bash/bash_common', '.bash_common'
   update_link 'bash/bash_aliases', '.bash_aliases'
 
-  # Tmux
+  # tmux
   update_link 'tmux/tmux.conf', '.tmux.conf'
 
-  # Tmux
+  # rspec
   update_link 'rspec/rspec.conf', '.rspec'
+
+  # rbenv
+  update_link 'rbenv/default-gems', '.rbenv/default-gems'
 
   puts 'Done!'
 end

@@ -124,6 +124,14 @@ endif
 "" Activate matchit
 runtime macros/matchit.vim
 
+" Make the 81st column stand out
+highlight ColorColumn ctermbg=white
+call matchadd('ColorColumn', '\%81v', 100)
+
+
+
+"""""""" Plugin Options """"""""
+
 "" Vim-Rspec
 let g:rspec_command = "be rspec {spec}"
 
