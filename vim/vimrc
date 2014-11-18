@@ -51,6 +51,7 @@ Plugin 'jiangmiao/auto-pairs'             " autoclose for (, [, {
 Plugin 'docunext/closetag.vim'            " autoclose for html tags
 
 " Extras
+Plugin 'scrooloose/syntastic'             " syntax checking
 Plugin 'godlygeek/tabular'                " code align (like on this comment)
 Plugin 'tpope/vim-commentary'             " comment/uncomment code
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
@@ -129,6 +130,8 @@ highlight ColorColumn ctermbg=white
 call matchadd('ColorColumn', '\%81v', 100)
 
 
+" Abbreviations
+ab tilde ~
 
 """""""" Plugin Options """"""""
 
