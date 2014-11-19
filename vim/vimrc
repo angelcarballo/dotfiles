@@ -15,6 +15,7 @@
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set wildignore-=doc           " to avoid helptags errors on plugin install
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -55,6 +56,7 @@ Plugin 'scrooloose/syntastic'             " syntax checking
 Plugin 'godlygeek/tabular'                " code align (like on this comment)
 Plugin 'tpope/vim-commentary'             " comment/uncomment code
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
+Plugin 'rking/ag.vim'                     " ag searcher integration
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

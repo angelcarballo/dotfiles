@@ -44,7 +44,12 @@ end
 
 desc 'Install dependencies'
 task :install_dep do
-  sh "sudo aptitude install build-essential git-core" if OS.linux?
+  if OS.linux?
+    sh "sudo aptitude install build-essential git-core silversearcher-ag"
+  end
+  if OS.mac?
+    sh "brew install the_silver_searcher imagemagick"
+  end
 end
 
 namespace :setup do
