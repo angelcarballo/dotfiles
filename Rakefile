@@ -36,6 +36,9 @@ task :link do
   # rbenv
   update_link 'rbenv/default-gems', '.rbenv/default-gems'
 
+  # git
+  update_link 'git/gitignore_global', '.gitignore_global'
+
   puts 'Done!'
 end
 
@@ -46,8 +49,7 @@ end
 
 namespace :setup do
   desc 'Run all setup tasks'
-  task :all => [:vim, :git, :osx] do
-  end
+  task :all => [:vim, :git, :osx]
 
   desc 'Vim related configuration (plugin installation and cleanup)'
   task :vim do
