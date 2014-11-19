@@ -1,6 +1,5 @@
 # Tmux session files
-tmux.sh
-tmux
+.tmux-session
 
 # Compiled source
 *.com
