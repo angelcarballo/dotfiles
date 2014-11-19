@@ -36,18 +36,25 @@ task :link do
   # rbenv
   update_link 'rbenv/default-gems', '.rbenv/default-gems'
 
+  # git
+  update_link 'git/gitignore_global', '.gitignore_global'
+
   puts 'Done!'
 end
 
 desc 'Install dependencies'
 task :install_dep do
-  sh "sudo aptitude install build-essential git-core" if OS.linux?
+  if OS.linux?
+    sh "sudo aptitude install build-essential git-core silversearcher-ag"
+  end
+  if OS.mac?
+    sh "brew install the_silver_searcher imagemagick"
+  end
 end
 
 namespace :setup do
   desc 'Run all setup tasks'
-  task :all => [:vim, :git, :osx] do
-  end
+  task :all => [:vim, :git, :osx]
 
   desc 'Vim related configuration (plugin installation and cleanup)'
   task :vim do
