@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Tmux Session (ts)
+
+# This script looks for a .tmux-session file in the current folder
+# and executes it. Starts a new tmux session if the file is missing.
+
+session_file=${PWD}/.tmux-session
+
+if [ -f $session_file ]; then
+  echo 'session file found, loading'
+  $session_file
+else
+  echo 'missing session file, loading new session'
+  tmux new-session
+fi
+
+
