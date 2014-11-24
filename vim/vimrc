@@ -53,7 +53,7 @@ Plugin 'jiangmiao/auto-pairs'             " autoclose for (, [, {
 Plugin 'docunext/closetag.vim'            " autoclose for html tags
 
 " Extras
-Plugin 'scrooloose/syntastic'             " syntax checking
+" Plugin 'scrooloose/syntastic'             " syntax checking
 Plugin 'godlygeek/tabular'                " code align (like on this comment)
 Plugin 'tpope/vim-commentary'             " comment/uncomment code
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
@@ -171,4 +171,4 @@ nmap <C-J> :tabn<CR>
 nmap <C-K> :tabp<CR>
 
 " Toggle Syntastic
-nmap <silent> <leader>ts :SyntasticToggleMode<CR>
+" nmap <silent> <leader>ts :SyntasticToggleMode<CR>
