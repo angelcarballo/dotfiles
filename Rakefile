@@ -9,10 +9,12 @@ task :update do
   print 'Updating submodules... '
   verbose(false) { sh "git submodule update --init" }
   puts 'Done!'
+  Rake::Task['link'].execute
 end
 
 desc 'Link config files on HOME folder'
 task :link do
+  print 'Linking config files... '
   # vim
   update_link 'vim', '.vim'
   update_link 'vim/vimrc', '.vimrc'
@@ -52,10 +54,10 @@ task :install_dep do
   end
 end
 
-namespace :setup do
-  desc 'Run all setup tasks'
-  task :all => [:vim, :git, :osx]
+desc 'Run all setup tasks'
+task setup: ['setup:vim', 'setup:git', 'setup:osx']
 
+namespace :setup do
   desc 'Vim related configuration (plugin installation and cleanup)'
   task :vim do
     verbose(false) { sh "vim +PluginInstall! +qall" }  # install and/or update vundle plugins
@@ -81,8 +83,6 @@ end
 def update_link(origin, dest)
   origin = "#{Dir.pwd}/#{origin}"
   dest = "#{home_dir}/#{dest}"
-
-  puts "Linking #{origin} to #{dest}"
 
   verbose false do
     rm dest if File.exists? dest
