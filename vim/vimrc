@@ -3,9 +3,9 @@
 " gu (over visual selection) -> downcase
 " gU (over visual selection) -> upcase
 " [Ctr-r][+]                 -> Paste from OS
+" set [no]paste              -> Paste mode to avoid indentation, auto-pairs..
 " ZZ (normal mode)           -> save and close
 " & (normal mode)            -> repeat last substitution
-" gc<motion>                 -> comment/uncomment
 " <c-o> / <c-i>              -> go to next / previous buffer
 " {{{ ... }}}                -> manually mark fold region
 " :9t.                       -> copy line 9 under current line
@@ -146,11 +146,23 @@ let g:rspec_command = "be rspec {spec}"
 "" IndentLine options
 let g:indentLine_char = '·'
 
+"" Split window on UltiSnipsEdit
+let g:UltiSnipsEditSplit="horizontal"
+
+"" UltiSnips Options
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippet="<c-º>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 """""""" Mappings """"""""
 
 " Quickly edit/source the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" Quickly edit snippets
+nmap <silent> <leader>es :UltiSnipsEdit<CR>
 
 " RSpec.vim mappings
 map <Leader>tf :call RunCurrentSpecFile()<CR>
@@ -169,8 +181,9 @@ nmap <silent> <leader>rw :%s/\s\+$//<CR>
 
 " Better tab navigation
 nmap <silent> <leader>et :Texplore<CR>
-nmap <C-J> :tabn<CR>
-nmap <C-K> :tabp<CR>
+
+" Execute current file
+map <Leader>x :Dispatch %:p<CR>
 
 " Toggle Syntastic
 " nmap <silent> <leader>ts :SyntasticToggleMode<CR>
