@@ -15,6 +15,7 @@ alias rsd='bundle exec rails s --debugger'
 alias rc='bundle exec rails c'
 alias migrate='bundle exec rake db:migrate'
 alias deploy='bundle exec cap deploy'
+alias deploym='bundle exec cap deploy:migrate'
 
 # Git
 alias gs='git status'

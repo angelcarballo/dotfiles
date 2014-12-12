@@ -37,6 +37,7 @@ Plugin 'othree/html5.vim'                 " HTML5 support
 Plugin 'mustache/vim-mustache-handlebars' " mustache support
 Plugin 'pprovost/vim-markdown-jekyll'     " jekyll style markdown support
 Plugin 'elzr/vim-json'                    " json support
+Plugin 'guns/vim-clojure-static'          " clojure support
 
 " Look & Feel, Navigation
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
@@ -58,6 +59,7 @@ Plugin 'godlygeek/tabular'                " code align (like on this comment)
 Plugin 'tpope/vim-commentary'             " comment/uncomment code
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
 Plugin 'rking/ag.vim'                     " ag searcher integration
+Plugin 'tpope/vim-dispatch'               " run processes in the background
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -73,7 +75,7 @@ augroup END
 "" General
 syntax enable
 set encoding=utf-8
-set hidden                " hide buffers instead of closing them
+" set hidden                " hide buffers instead of closing them
 set nu                    " show line numbers
 set showcmd               " show complete commands
 set ruler                 " show cursor position

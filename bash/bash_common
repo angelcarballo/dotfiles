@@ -1,5 +1,5 @@
 # Paths, solo comunes a todas las plataformas
-export PATH="$HOME/src/dotfiles/bin:$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$HOME/.rbenv/bin:$PATH"
 
 # Modo VIM en cosola y editor
 set -o vi
@@ -43,6 +43,6 @@ alias egrep='egrep --color=auto'
 
 # Load aliases
 if [ -f ~/.bash_aliases ]; then
-  source ~/.bash_aliases 
+  source ~/.bash_aliases
 fi
 
