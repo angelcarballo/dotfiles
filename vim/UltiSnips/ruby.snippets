@@ -7,16 +7,14 @@ snippet #!
 # encoding: utf-8
 endsnippet
 
-snippet req
-require '${1}'
+snippet block "{|obj| .. }"
+{|${1:obj}| ${0} }
 endsnippet
 
-snippet reqr
-require_relative '${1}'
-endsnippet
-
-snippet block "{|var| .. }"
-{|${1:obj}| ${2:block}  } ${0}
+snippet blockdo "do |obj| .. end"
+do |${1:obj}|
+	${0}
+end
 endsnippet
 
 snippet case
