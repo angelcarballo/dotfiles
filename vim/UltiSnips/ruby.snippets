@@ -1,0 +1,69 @@
+snippet enc
+# encoding: utf-8
+endsnippet
+
+snippet #!
+#!/usr/bin/env ruby
+# encoding: utf-8
+endsnippet
+
+snippet req
+require '${1}'
+endsnippet
+
+snippet reqr
+require_relative '${1}'
+endsnippet
+
+snippet block "{|var| .. }"
+{|${1:obj}| ${2:block}  } ${0}
+endsnippet
+
+snippet case
+case ${1:object}
+when ${2:condition}
+	${0}
+end
+endsnippet
+
+snippet def
+def ${1:method_name}
+	${0}
+end
+endsnippet
+
+snippet if
+if ${1:condition}
+	${0}
+end
+endsnippet
+
+snippet ifelse
+if ${1:condition}
+	${2}
+else
+	${0}
+end
+endsnippet
+
+snippet class "class .. end"
+class ${1:`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
+	${0}
+end
+endsnippet
+
+snippet class "class .. initialize .. end"
+class ${1:`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
+	def initialize(${2:args})
+		${0}
+	end
+end
+endsnippet
+
+snippet class "class .. < ParentClass .. initialize .. end"
+class ${1:`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`} < ${2:ParentClass}
+	def initialize(${3:args})
+		${0}
+	end
+end
+endsnippet
