@@ -72,6 +72,11 @@ augroup inc
 autocmd BufRead,BufNewFile *.inc set filetype=php
 augroup END
 
+"" Md files are markdown files
+augroup md
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+augroup END
+
 "" General
 syntax enable
 set encoding=utf-8
@@ -131,7 +136,7 @@ endif
 runtime macros/matchit.vim
 
 " Make the 81st column stand out
-highlight ColorColumn ctermbg=white
+highlight ColorColumn ctermbg=black
 call matchadd('ColorColumn', '\%81v', 100)
 
 

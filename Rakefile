@@ -47,10 +47,10 @@ end
 desc 'Install dependencies'
 task :install_dep do
   if OS.linux?
-    sh "sudo aptitude install build-essential git-core silversearcher-ag"
+    sh "sudo aptitude install build-essential git-core silversearcher-ag autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev"
   end
   if OS.mac?
-    sh "brew install the_silver_searcher imagemagick"
+    sh "brew install the_silver_searcher imagemagick openssl libyaml"
   end
 end
 
@@ -73,6 +73,15 @@ namespace :setup do
   desc 'Mac OS X defaults'
   task :osx do
     verbose(false) { sh "#{Dir.pwd}/osx/set-defaults.sh" } if OS.mac?
+  end
+end
+
+namespace :install do
+  desc 'Install rbenv & ruby-build'
+  task :rbenv do
+    `git clone https://github.com/sstephenson/rbenv.git ~/.rbenv`
+    `git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build`
+
   end
 end
 
