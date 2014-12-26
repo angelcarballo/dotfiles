@@ -25,7 +25,7 @@ function parse_git_branch {
 }
 
 # Prompt
-PS1="$WHITE\w$YELLOW\$(parse_git_branch)$WHITE $ "
+PS1="$WHITE\h:\w$YELLOW\$(parse_git_branch)$WHITE $ "
 
 # enable dircolors and related aliases
 test -e ~/.dircolors && eval `dircolors -b ~/.dircolors`
