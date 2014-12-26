@@ -10,6 +10,7 @@
 " {{{ ... }}}                -> manually mark fold region
 " :9t.                       -> copy line 9 under current line
 " :t9                        -> copy the current line under line 9
+" windo diffthis/diffoff     -> diff current buffers/disable diff
 
 """"""""""""""""""" VUNDLE """""""""""""""""""""
 
@@ -154,11 +155,14 @@ let g:indentLine_char = '·'
 "" Split window on UltiSnipsEdit
 let g:UltiSnipsEditSplit="horizontal"
 
-"" UltiSnips Options
+"" UltiSnips options
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippet="<c-º>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+"" Airline options
+let g:airline_powerline_fonts = 1
 
 """""""" Mappings """"""""
 
