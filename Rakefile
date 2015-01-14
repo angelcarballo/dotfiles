@@ -77,11 +77,11 @@ namespace :setup do
 end
 
 namespace :install do
-  desc 'Install rbenv & ruby-build'
+  desc 'Install rbenv, ruby-build and ruby-default-gems'
   task :rbenv do
     `git clone https://github.com/sstephenson/rbenv.git ~/.rbenv`
     `git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build`
-
+    `git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems`
   end
 end
 
