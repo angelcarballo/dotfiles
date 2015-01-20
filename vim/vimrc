@@ -181,6 +181,8 @@ map <Leader>ta :call RunAllSpecs()<CR>
 
 " Open File Explorer
 nmap <silent> <leader>ei :Explore<CR>
+nmap <silent> <leader>es :Sex<CR>
+nmap <silent> <leader>ev :Vex<CR>
 
 " Zoom
 nmap <silent> <leader>f :ZoomWin<CR>
