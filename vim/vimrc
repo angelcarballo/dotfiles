@@ -89,6 +89,7 @@ set scrolloff=5           " leave space after the current line
 set foldmethod=marker     " fold using {{{ .. }}} markers
 let mapleader=","         " map <leader> to ,
 filetype plugin indent on " autoindent by file type
+set mouse=a               " enable mouse support in (a)ll modes
 
 "" Whitespace
 set nowrap
