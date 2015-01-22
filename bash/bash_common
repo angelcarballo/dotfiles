@@ -1,23 +1,23 @@
-# Paths, solo comunes a todas las plataformas
+# Paths common to all platforms
 export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$HOME/.rbenv/bin:$PATH"
 
-# Modo VIM en cosola y editor
+# Vim everywhere
 set -o vi
 export EDITOR=vim
 
 # Enable rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi # Enable shims and autocompletion add to your profile:
 
-# Colores varios
+# List colors
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
-# Colores prompt
+# Prompt colors
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
 WHITE='\e[0;37m'
 
-# Parseo de rama git
+# Get current branch name if any
 function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "("${ref#refs/heads/}")"
@@ -26,7 +26,7 @@ function parse_git_branch {
 # Prompt
 PS1="$WHITE\h:\w$YELLOW\$(parse_git_branch)$WHITE $ "
 
-# enable dircolors and related aliases
+# Enable dircolors and related aliases
 test -e ~/.dircolors && eval `dircolors -b ~/.dircolors`
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
