@@ -36,6 +36,7 @@ task :link do
   update_link 'rspec/rspec.conf', '.rspec'
 
   # rbenv
+  sh "mkdir -p #{home_dir}/.rbenv"
   update_link 'rbenv/default-gems', '.rbenv/default-gems'
 
   # git
@@ -44,18 +45,31 @@ task :link do
   puts 'Done!'
 end
 
-desc 'Install dependencies'
-task :install_dep do
-  if OS.linux?
-    sh "sudo aptitude install build-essential git-core silversearcher-ag autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev"
+namespace :install do
+
+  desc 'Install dependencies'
+  task :dep do
+    if OS.linux?
+      sh "sudo aptitude install build-essential git-core silversearcher-ag autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev"
+    end
+    if OS.mac?
+      sh "brew install the_silver_searcher imagemagick openssl libyaml"
+    end
   end
-  if OS.mac?
-    sh "brew install the_silver_searcher imagemagick openssl libyaml"
+
+  desc 'Install rbenv && ruby-build && rbenv-default-gems'
+  task :rbenv do
+    verbose(false) {
+      sh "git clone https://github.com/sstephenson/rbenv.git ~/.rbenv"
+      sh "git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build"
+      sh "git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems"
+    }
   end
+
 end
 
 desc 'Run all setup tasks'
-task setup: ['setup:vim', 'setup:git', 'setup:osx']
+task :setup => ['setup:vim', 'setup:git', 'setup:osx']
 
 namespace :setup do
   desc 'Vim related configuration (plugin installation and cleanup)'
