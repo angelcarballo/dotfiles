@@ -94,8 +94,8 @@ set mouse=a               " enable mouse support in (a)ll modes
 "" Whitespace
 set nowrap
 set tabstop=2 shiftwidth=2     " two space tabs
-set expandtab                  " usar espacios en lugar de tabs
-set backspace=indent,eol,start " backspace a traves de cualquier cosa
+set expandtab                  " use spaces instead of tabs
+set backspace=indent,eol,start " backspace through everything
 
 "" Busqueda
 set hlsearch   " higlight search results
@@ -106,7 +106,6 @@ set smartcase  " ... except if query contains uppercase characters
 "" Look & Feel
 
 set background=dark
-" let g:solarized_termcolors=256 " makes solarized look good on terminal vim
 colorscheme solarized
 set visualbell                 " visual flash
 set noerrorbells               " no flash on errors, only al beginning/end of file
@@ -148,7 +147,7 @@ ab tilde ~
 """""""" Plugin Options """"""""
 
 "" Vim-Rspec
-let g:rspec_command = "be rspec {spec}"
+let g:rspec_command = "Dispatch rspec {spec}"
 
 "" IndentLine options
 let g:indentLine_char = '·'
@@ -168,8 +167,8 @@ let g:airline_powerline_fonts = 1
 """""""" Mappings """"""""
 
 " Quickly edit/source the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <silent> <leader>eV :e $MYVIMRC<CR>
+nmap <silent> <leader>sV :so $MYVIMRC<CR>
 
 " Quickly edit snippets
 nmap <silent> <leader>es :UltiSnipsEdit<CR>
