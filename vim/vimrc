@@ -28,6 +28,7 @@ Plugin 'tpope/vim-fugitive'    " git integration
 Plugin 'kien/ctrlp.vim'        " fuzzy finder
 Plugin 'tpope/vim-surround'    " alter surroundings (), [], '', {}
 Plugin 'tommcdo/vim-exchange'  " text exchange operator (cx..)
+Plugin 'kana/vim-textobj-user' " custom text object support
 
 " Languages and frameworks
 Plugin 'tpope/vim-rails'                  " rails integration
@@ -39,6 +40,7 @@ Plugin 'mustache/vim-mustache-handlebars' " mustache support
 Plugin 'pprovost/vim-markdown-jekyll'     " jekyll style markdown support
 Plugin 'elzr/vim-json'                    " json support
 Plugin 'guns/vim-clojure-static'          " clojure support
+Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
 
 " Look & Feel, Navigation
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
@@ -77,6 +79,9 @@ augroup END
 augroup md
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 augroup END
+
+"" Dispatch default commands
+autocmd FileType ruby let b:dispatch = 'ruby %'
 
 "" General
 syntax enable
@@ -195,8 +200,8 @@ nmap <silent> <leader>rw :%s/\s\+$//<CR>
 " Better tab navigation
 nmap <silent> <leader>et :Texplore<CR>
 
-" Execute current file
-map <Leader>x :Dispatch %:p<CR>
+" Execute dispatch for current file (based on filetype)
+map <Leader>x :Dispatch<CR>
 
 " Toggle Syntastic
 " nmap <silent> <leader>ts :SyntasticToggleMode<CR>
