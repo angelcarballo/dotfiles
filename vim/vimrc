@@ -80,6 +80,9 @@ augroup md
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 augroup END
 
+"" Dispatch default commands
+autocmd FileType ruby let b:dispatch = 'ruby %'
+
 "" General
 syntax enable
 set encoding=utf-8
@@ -195,8 +198,8 @@ nmap <silent> <leader>rw :%s/\s\+$//<CR>
 " Better tab navigation
 nmap <silent> <leader>et :Texplore<CR>
 
-" Execute current file
-map <Leader>x :Dispatch %:p<CR>
+" Execute dispatch for current file (based on filetype)
+map <Leader>x :Dispatch<CR>
 
 " Toggle Syntastic
 " nmap <silent> <leader>ts :SyntasticToggleMode<CR>
