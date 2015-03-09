@@ -9,11 +9,13 @@ alias ll='ls -l'
 alias flushdns='dscacheutil -flushcache'
 
 # Rails
+alias brake='bundle exec rake'
 alias be='bundle exec'
 alias rs='bundle exec rails s'
 alias rsd='bundle exec rails s --debugger'
 alias rc='bundle exec rails c'
 alias migrate='bundle exec rake db:migrate'
+alias dtp='bundle exec rake db:test:prepare'
 alias deploy='bundle exec cap deploy'
 alias deploym='bundle exec cap deploy:migrate'
 
