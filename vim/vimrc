@@ -154,7 +154,7 @@ ab tilde ~
 """""""" Plugin Options """"""""
 
 "" Vim-Rspec
-let g:rspec_command = "Dispatch rspec {spec}"
+let g:rspec_command = "Dispatch bundle exec rspec {spec}"
 
 "" IndentLine options
 let g:indentLine_char = '·'
