@@ -62,7 +62,8 @@ Plugin 'godlygeek/tabular'                " code align (like on this comment)
 Plugin 'tpope/vim-commentary'             " comment/uncomment code
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
 Plugin 'rking/ag.vim'                     " ag searcher integration
-Plugin 'tpope/vim-dispatch'               " run processes in the background
+Plugin 'tpope/vim-dispatch'               " run processes on the background
+Plugin 'benmills/vimux'                   " run processes on a tmux split
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -153,8 +154,8 @@ ab tilde ~
 
 """""""" Plugin Options """"""""
 
-"" Vim-Rspec
-let g:rspec_command = "Dispatch bundle exec rspec {spec}"
+"" Vim-Rspec, call specs on a tmux pane with vimux
+let g:rspec_command = "call VimuxRunCommand(\"bundle exec rspec {spec}\")"
 
 "" IndentLine options
 let g:indentLine_char = '·'
