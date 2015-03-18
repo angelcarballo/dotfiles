@@ -180,7 +180,7 @@ nmap <silent> <leader>eV :e $MYVIMRC<CR>
 nmap <silent> <leader>sV :so $MYVIMRC<CR>
 
 " Quickly edit snippets
-nmap <silent> <leader>es :UltiSnipsEdit<CR>
+nmap <silent> <leader>eS :UltiSnipsEdit<CR>
 
 " RSpec.vim mappings
 map <Leader>tf :call RunCurrentSpecFile()<CR>
