@@ -1,12 +1,11 @@
 gem_group :development do
-  gem 'byebug'
+  gem 'pry-rails'
   gem 'guard-rspec', require: false
   gem 'rspec-rails'
   gem 'annotate'
 end
 
 gem_group :test do
-  gem 'byebug'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers', require: false

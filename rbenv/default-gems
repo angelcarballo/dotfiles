@@ -1,4 +1,4 @@
 bundler
 pry
+pry-byebug
 awesome_print
-byebug

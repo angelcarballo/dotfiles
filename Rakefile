@@ -35,6 +35,9 @@ task :link do
   # rspec
   update_link 'rspec/rspec.conf', '.rspec'
 
+  # ore
+  update_link 'ore', '.ore'
+
   # rbenv
   sh "mkdir -p #{home_dir}/.rbenv"
   update_link 'rbenv/default-gems', '.rbenv/default-gems'
