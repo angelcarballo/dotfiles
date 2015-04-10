@@ -32,6 +32,7 @@ Plugin 'kana/vim-textobj-user' " custom text object support
 
 " Languages and frameworks
 Plugin 'tpope/vim-rails'                  " rails integration
+Plugin 'tpope/vim-bundler'                  " rails integration
 Plugin 'thoughtbot/vim-rspec'             " run rspec test from vim
 Plugin 'cakebaker/scss-syntax.vim'        " SCSS syntax
 Plugin 'pangloss/vim-javascript'          " improved js support
@@ -149,7 +150,6 @@ runtime macros/matchit.vim
 highlight ColorColumn ctermbg=black
 call matchadd('ColorColumn', '\%81v', 100)
 
-
 " Abbreviations
 ab tilde ~
 
@@ -172,6 +172,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "" Airline options
 let g:airline_powerline_fonts = 1
+let g:airline_detect_paste=1
 
 """""""" Mappings """"""""
 
@@ -199,11 +200,15 @@ nmap <silent> <leader>f :ZoomWin<CR>
 " Remove Trailing Whitespace
 nmap <silent> <leader>rw :%s/\s\+$//<CR>
 
-" Better tab navigation
-nmap <silent> <leader>et :Texplore<CR>
-
 " Execute dispatch for current file (based on filetype)
 map <Leader>x :Dispatch<CR>
+
+" Easier last change shortcut
+nmap <silent> <leader>lc `[
+
+" Toggle paste mode
+nmap <silent> <leader>tp :set paste<CR>
+nmap <silent> <leader>tP :set nopaste<CR>
 
 " Toggle Syntastic
 " nmap <silent> <leader>ts :SyntasticToggleMode<CR>

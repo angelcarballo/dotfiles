@@ -5,5 +5,5 @@ git: true
 rubygems_tasks: false
 rdoc: false
 authors:
-    - Angel
+    - Angel Carballo
 email: contact@angelcarballo.com

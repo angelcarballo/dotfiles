@@ -3,7 +3,6 @@
 # Comunes
 alias c='clear'
 alias ll='ls -l'
-alias ll='ls -l'
 
 # Atajos Mac
 alias flushdns='dscacheutil -flushcache'
@@ -24,10 +23,14 @@ alias gs='git status'
 alias gp='git pull'
 alias gps='git push'
 alias ga='git add -A .'
-alias gc='git ci -m'
-alias gca='git ci -a -m'
+alias gc='git ci'
+alias gca='git ci -a'
 alias gb='git branch'
 alias gd='git diff'
 
 # Tmux
 alias tks='tmux kill-session -t '
+
+# Docker & boot2docker
+alias dockerenv='eval `boot2docker shellinit 2>/dev/null`'
+

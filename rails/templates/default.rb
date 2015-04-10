@@ -3,14 +3,15 @@ gem_group :development do
   gem 'guard-rspec', require: false
   gem 'rspec-rails'
   gem 'annotate'
+  gem 'factory_girl_rails', '~> 4.0' # needs to be in dev for factory generators
 end
 
 gem_group :test do
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers', require: false
-  gem 'factory_girl_rails', '~> 4.0'
   gem 'capybara'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 # Use sass on application.css
@@ -44,14 +45,21 @@ EOF
   gsub_file(
     'spec/rails_helper.rb',
     'config.fixture_path = "#{::Rails.root}/spec/fixtures"',
-    '# config.fixture_path = "#{::Rails.root}/spec/fixtures"',
+    '# config.fixture_path = "#{::Rails.root}/spec/fixtures"'
   )
 
   # Don't infer spec types
   gsub_file(
     'spec/rails_helper.rb',
     'config.infer_spec_type_from_file_location!',
-    '# config.infer_spec_type_from_file_location!',
+    '# config.infer_spec_type_from_file_location!'
+  )
+
+  # Require all support files
+  gsub_file(
+    'spec/rails_helper.rb',
+    "# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }",
+    "Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }"
   )
 
   # Add ControllerMacros
@@ -59,9 +67,8 @@ EOF
 module FactoryMacros
   def attributes_with_foreign_keys(*args)
     ·FactoryGirl.build(*args).attributes.delete_if do |k, v|
-    · · %w(id type created_at updated_at).member? k
-   ·  end
-    end
+  · · %w(id type created_at updated_at).member? k
+ ·  end
   end
 end"
 
