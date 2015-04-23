@@ -23,10 +23,11 @@ alias gs='git status'
 alias gp='git pull'
 alias gps='git push'
 alias ga='git add -A .'
-alias gc='git ci'
-alias gca='git ci -a'
+alias gc='git commit'
+alias gca='git commit -a'
 alias gb='git branch'
 alias gd='git diff'
+alias gcb='git checkout -b'
 
 # Tmux
 alias tks='tmux kill-session -t '
