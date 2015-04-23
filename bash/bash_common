@@ -26,14 +26,14 @@ function parse_git_branch {
 # Prompt
 PS1="$WHITE\h:\w$YELLOW\$(parse_git_branch)$WHITE $ "
 
-# Enable dircolors and related aliases
-test -e ~/.dircolors && eval `dircolors -b ~/.dircolors`
-alias ls='ls --color=auto'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+# # Enable dircolors and related aliases
+# # test -e ~/.dircolors && eval `dircolors -b ~/.dircolors`
+# alias ls='ls --G=auto'
+# alias dir='dir --G=auto'
+# alias vdir='vdir --G=auto'
+# alias grep='grep --G=auto'
+# alias fgrep='fgrep --G=auto'
+# alias egrep='egrep --G=auto'
 
 
 # Load aliases
