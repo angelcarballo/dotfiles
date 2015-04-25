@@ -49,7 +49,6 @@ task :link do
 end
 
 namespace :install do
-
   desc 'Install dependencies'
   task :dep do
     if OS.linux?
@@ -60,14 +59,6 @@ namespace :install do
     end
   end
 
-  desc 'Install irb-config'
-  task :irbconfig do
-    verbose(false) {
-      sh "git clone git://github.com/nviennot/irb-config.git ~/.irb"
-      sh "cd ~/.irb && make install"
-    }
-  end
-
   desc 'Install rbenv && ruby-build && rbenv-default-gems'
   task :rbenv do
     verbose(false) {
@@ -76,7 +67,6 @@ namespace :install do
       sh "git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems"
     }
   end
-
 end
 
 desc 'Run all setup tasks'
