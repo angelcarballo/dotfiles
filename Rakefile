@@ -22,7 +22,6 @@ task :link do
 
   # ruby
   update_link 'ruby/gemrc', '.gemrc'
-  update_link 'ruby/irbrc', '.irbrc'
 
   # bash
   update_link 'bash/dircolors/solarized', '.dircolors'
@@ -58,6 +57,14 @@ namespace :install do
     if OS.mac?
       sh "brew install the_silver_searcher imagemagick openssl libyaml"
     end
+  end
+
+  desc 'Install irb-config'
+  task :irbconfig do
+    verbose(false) {
+      sh "git clone git://github.com/nviennot/irb-config.git ~/.irb"
+      sh "cd ~/.irb && make install"
+    }
   end
 
   desc 'Install rbenv && ruby-build && rbenv-default-gems'
