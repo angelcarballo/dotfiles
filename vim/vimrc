@@ -33,14 +33,12 @@ Plugin 'kana/vim-textobj-user' " custom text object support
 " Languages and frameworks
 Plugin 'tpope/vim-rails'                  " rails integration
 Plugin 'tpope/vim-bundler'                  " rails integration
-Plugin 'thoughtbot/vim-rspec'             " run rspec test from vim
 Plugin 'cakebaker/scss-syntax.vim'        " SCSS syntax
 Plugin 'pangloss/vim-javascript'          " improved js support
 Plugin 'othree/html5.vim'                 " HTML5 support
 Plugin 'mustache/vim-mustache-handlebars' " mustache support
 Plugin 'pprovost/vim-markdown-jekyll'     " jekyll style markdown support
 Plugin 'elzr/vim-json'                    " json support
-Plugin 'guns/vim-clojure-static'          " clojure support
 Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
 Plugin 'whatyouhide/vim-textobj-erb'      " erb block text object
 
@@ -59,13 +57,12 @@ Plugin 'jiangmiao/auto-pairs'             " autoclose for (, [, {
 Plugin 'docunext/closetag.vim'            " autoclose for html tags
 
 " Extras
-" Plugin 'scrooloose/syntastic'             " syntax checking
 Plugin 'godlygeek/tabular'                " code align (like on this comment)
 Plugin 'tpope/vim-commentary'             " comment/uncomment code
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
 Plugin 'rking/ag.vim'                     " ag searcher integration
 Plugin 'tpope/vim-dispatch'               " run processes on the background
-Plugin 'benmills/vimux'                   " run processes on a tmux split
+Plugin 'ervandew/screen'                  " run processes on tmux/screen
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -112,7 +109,6 @@ set ignorecase " ignore case on search ...
 set smartcase  " ... except if query contains uppercase characters
 
 "" Look & Feel
-
 set background=dark
 colorscheme solarized
 set visualbell                 " visual flash
@@ -152,11 +148,9 @@ call matchadd('ColorColumn', '\%81v', 100)
 
 " Abbreviations
 ab tilde ~
+ab pry binding.pry
 
 """""""" Plugin Options """"""""
-
-"" Vim-Rspec, call specs on a tmux pane with vimux
-let g:rspec_command = "call VimuxRunCommand(\"bundle exec rspec {spec}\")"
 
 "" IndentLine options
 let g:indentLine_char = '·'
@@ -183,11 +177,11 @@ nmap <silent> <leader>sV :so $MYVIMRC<CR>
 " Quickly edit snippets
 nmap <silent> <leader>eS :UltiSnipsEdit<CR>
 
-" RSpec.vim mappings
-map <Leader>tf :call RunCurrentSpecFile()<CR>
-map <Leader>tc :call RunNearestSpec()<CR>
-map <Leader>tl :call RunLastSpec()<CR>
-map <Leader>ta :call RunAllSpecs()<CR>
+" Rspec tests and Rails console on tmux pane
+command -nargs=? -complete=shellcmd W  :w | :call ScreenShellSend("load '".@%."';")
+map <Leader>c :ScreenShellVertical bundle exec rails c<CR>
+map <Leader>tc :w<CR> :call ScreenShellSend("rspec ".@% . ':' . line('.'))<CR>
+map <Leader>tf :w<CR> :call ScreenShellSend("rspec ".@%)<CR>
 
 " Open File Explorer
 nmap <silent> <leader>ei :Explore<CR>
@@ -209,6 +203,3 @@ nmap <silent> <leader>lc `[
 " Toggle paste mode
 nmap <silent> <leader>tp :set paste<CR>
 nmap <silent> <leader>tP :set nopaste<CR>
-
-" Toggle Syntastic
-" nmap <silent> <leader>ts :SyntasticToggleMode<CR>
