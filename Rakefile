@@ -22,6 +22,7 @@ task :link do
 
   # ruby
   update_link 'ruby/gemrc', '.gemrc'
+  update_link 'ruby/pryrc', '.pryrc'
 
   # bash
   update_link 'bash/dircolors/solarized', '.dircolors'

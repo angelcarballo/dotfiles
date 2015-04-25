@@ -148,7 +148,7 @@ call matchadd('ColorColumn', '\%81v', 100)
 
 " Abbreviations
 ab tilde ~
-ab pry binding.pry
+ab pry require 'pry'; binding.pry
 
 """""""" Plugin Options """"""""
 
