@@ -41,7 +41,6 @@ Plugin 'pprovost/vim-markdown-jekyll'     " jekyll style markdown support
 Plugin 'elzr/vim-json'                    " json support
 Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
 Plugin 'whatyouhide/vim-textobj-erb'      " erb block text object
-Plugin 'thoughtbot/vim-rspec'             " run rspec test from vim
 
 " Look & Feel, Navigation
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
@@ -63,7 +62,7 @@ Plugin 'tpope/vim-commentary'             " comment/uncomment code
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
 Plugin 'rking/ag.vim'                     " ag searcher integration
 Plugin 'tpope/vim-dispatch'               " run processes on the background
-Plugin 'benmills/vimux'                   " run processes on split tmux pane
+Plugin 'ervandew/screen'                  " send command to tmux/screen
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -179,11 +178,10 @@ nmap <silent> <leader>sV :so $MYVIMRC<CR>
 nmap <silent> <leader>eS :UltiSnipsEdit<CR>
 
 " Rspec tests and Rails console on tmux pane
-let g:rspec_command = "call VimuxRunCommand(\"bundle exec rspec {spec}\")"
-map <Leader>sf :call RunCurrentSpecFile()<CR>
-map <Leader>sc :call RunNearestSpec()<CR>
-map <Leader>sl :call RunLastSpec()<CR>
-map <Leader>sa :call RunAllSpecs()"
+command -nargs=? -complete=shellcmd W  :w | :call ScreenShellSend("load '".@%."';")
+map <Leader>sp :ScreenShellVertical bundle exec rails c test<CR>
+map <Leader>sc :w<CR> :call ScreenShellSend("require 'rspec-console'; RSpecConsole.run '".@% . ':' . line('.') . "'")<CR>
+map <Leader>sf :w<CR> :call ScreenShellSend("require 'rspec-console'; RSpecConsole.run '".@% . "'")<CR>
 
 " Open File Explorer
 nmap <silent> <leader>ei :Explore<CR>
