@@ -63,6 +63,7 @@ Plugin 'tpope/vim-commentary'             " comment/uncomment code
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
 Plugin 'rking/ag.vim'                     " ag searcher integration
 Plugin 'tpope/vim-dispatch'               " run processes on the background
+Plugin 'benmills/vimux'                   " run processes on split tmux pane
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -178,10 +179,11 @@ nmap <silent> <leader>sV :so $MYVIMRC<CR>
 nmap <silent> <leader>eS :UltiSnipsEdit<CR>
 
 " Rspec tests and Rails console on tmux pane
-map <Leader>tf :call RunCurrentSpecFile()<CR>
-map <Leader>tc :call RunNearestSpec()<CR>
-map <Leader>tl :call RunLastSpec()<CR>
-map <Leader>ta :call RunAllSpecs()"
+let g:rspec_command = "call VimuxRunCommand(\"bundle exec rspec {spec}\")"
+map <Leader>sf :call RunCurrentSpecFile()<CR>
+map <Leader>sc :call RunNearestSpec()<CR>
+map <Leader>sl :call RunLastSpec()<CR>
+map <Leader>sa :call RunAllSpecs()"
 
 " Open File Explorer
 nmap <silent> <leader>ei :Explore<CR>
@@ -203,3 +205,8 @@ nmap <silent> <leader>lc `[
 " Toggle paste mode
 nmap <silent> <leader>tp :set paste<CR>
 nmap <silent> <leader>tP :set nopaste<CR>
+
+" Better tab navigation
+nnoremap <Leader>tp :tabprevious<CR>
+nnoremap <Leader>tn   :tabnext<CR>
+nnoremap <Leader>nt     :tabnew<CR>
