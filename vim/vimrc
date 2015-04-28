@@ -41,6 +41,7 @@ Plugin 'pprovost/vim-markdown-jekyll'     " jekyll style markdown support
 Plugin 'elzr/vim-json'                    " json support
 Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
 Plugin 'whatyouhide/vim-textobj-erb'      " erb block text object
+Plugin 'thoughtbot/vim-rspec'             " run rspec test from vim
 
 " Look & Feel, Navigation
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
@@ -62,7 +63,6 @@ Plugin 'tpope/vim-commentary'             " comment/uncomment code
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
 Plugin 'rking/ag.vim'                     " ag searcher integration
 Plugin 'tpope/vim-dispatch'               " run processes on the background
-Plugin 'ervandew/screen'                  " run processes on tmux/screen
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -148,7 +148,7 @@ call matchadd('ColorColumn', '\%81v', 100)
 
 " Abbreviations
 ab tilde ~
-ab pry require 'pry'; binding.pry
+ab bpry require 'pry'; binding.pry
 
 """""""" Plugin Options """"""""
 
@@ -178,10 +178,10 @@ nmap <silent> <leader>sV :so $MYVIMRC<CR>
 nmap <silent> <leader>eS :UltiSnipsEdit<CR>
 
 " Rspec tests and Rails console on tmux pane
-command -nargs=? -complete=shellcmd W  :w | :call ScreenShellSend("load '".@%."';")
-map <Leader>c :ScreenShellVertical bundle exec rails c<CR>
-map <Leader>tc :w<CR> :call ScreenShellSend("rspec ".@% . ':' . line('.'))<CR>
-map <Leader>tf :w<CR> :call ScreenShellSend("rspec ".@%)<CR>
+map <Leader>tf :call RunCurrentSpecFile()<CR>
+map <Leader>tc :call RunNearestSpec()<CR>
+map <Leader>tl :call RunLastSpec()<CR>
+map <Leader>ta :call RunAllSpecs()"
 
 " Open File Explorer
 nmap <silent> <leader>ei :Explore<CR>
