@@ -15,7 +15,7 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 # Prompt colors
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
-WHITE='\e[0;37m'
+COLOR_RESET="\[\e[0m\]"
 
 # Get current branch name if any
 function parse_git_branch {
@@ -24,16 +24,16 @@ function parse_git_branch {
 }
 
 # Prompt
-PS1="$WHITE\h:\w$YELLOW\$(parse_git_branch)$WHITE $ "
+PS1="$COLOR_RESET\u:\w $YELLOW\$(parse_git_branch)$COLOR_RESET $ "
 
 # # Enable dircolors and related aliases
-# # test -e ~/.dircolors && eval `dircolors -b ~/.dircolors`
-# alias ls='ls --G=auto'
-# alias dir='dir --G=auto'
-# alias vdir='vdir --G=auto'
-# alias grep='grep --G=auto'
-# alias fgrep='fgrep --G=auto'
-# alias egrep='egrep --G=auto'
+test -e ~/.dircolors && eval `dircolors -b ~/.dircolors`
+alias ls='ls --color'
+alias dir='dir --color'
+alias vdir='vdir --color'
+alias grep='grep --color'
+alias fgrep='fgrep --color'
+alias egrep='egrep --color'
 
 
 # Load aliases
