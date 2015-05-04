@@ -95,6 +95,7 @@ set foldmethod=marker     " fold using {{{ .. }}} markers
 let mapleader=","         " map <leader> to ,
 filetype plugin indent on " autoindent by file type
 set mouse=a               " enable mouse support in (a)ll modes
+set clipboard=unnamed     " pass yank to system clipboard
 
 "" Whitespace
 set nowrap
@@ -147,8 +148,8 @@ highlight ColorColumn ctermbg=black
 call matchadd('ColorColumn', '\%81v', 100)
 
 " Abbreviations
-ab tilde ~
-ab bpry require 'pry'; binding.pry
+ab rpry  require 'pry'; binding.pry
+ab bpry  require 'pry'; binding.pry
 
 """""""" Plugin Options """"""""
 
@@ -160,7 +161,6 @@ let g:UltiSnipsEditSplit="horizontal"
 
 "" UltiSnips options
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippet="<c-º>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -189,7 +189,7 @@ nmap <silent> <leader>es :Sex<CR>
 nmap <silent> <leader>ev :Vex<CR>
 
 " Zoom
-nmap <silent> <leader>f :ZoomWin<CR>
+nmap <silent> <leader>z :ZoomWin<CR>
 
 " Remove Trailing Whitespace
 nmap <silent> <leader>rw :%s/\s\+$//<CR>
@@ -205,10 +205,14 @@ nmap <silent> <leader>tp :set paste<CR>
 nmap <silent> <leader>tP :set nopaste<CR>
 
 " Better tab navigation
-nnoremap <Leader>th :tabprevious<CR>
-nnoremap <Leader>tl   :tabnext<CR>
-nnoremap <Leader>tn     :tabnew<CR>
+nmap <Leader>th :tabprevious<CR>
+nmap <Leader>tl   :tabnext<CR>
+nmap <Leader>tn     :tabnew<CR>
 
 " Better buffer navigation
-nnoremap <leader>n :bn<CR>
-nnoremap <leader>p :bp<CR>
+nmap <leader>n :bn<CR>
+nmap <leader>p :bp<CR>
+
+" Quick save/quit
+nmap <leader>w :wa!<CR>
+nmap <leader>q :wqa!<CR>
