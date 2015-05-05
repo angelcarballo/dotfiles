@@ -27,7 +27,7 @@ function parse_git_branch {
 PS1="$COLOR_RESET\u:\w $YELLOW\$(parse_git_branch)$COLOR_RESET $ "
 
 # # Enable dircolors and related aliases
-test -e ~/.dircolors && eval `dircolors -b ~/.dircolors`
+# test -e ~/.dircolors && eval `dircolors -b ~/.dircolors`
 alias ls='ls -G'
 alias dir='dir -G'
 alias vdir='vdir -G'
