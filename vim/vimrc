@@ -48,6 +48,7 @@ Plugin 'bling/vim-airline'                " better status bar
 Plugin 'altercation/vim-colors-solarized' " soalrized colorscheme
 Plugin 'yggdroot/indentLine'              " show indentation lines
 Plugin 'vim-scripts/zoomWin'              " zoom support for splits
+Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
 
 " Autocompletion
 Plugin 'SirVer/ultisnips'                 " snippets support
