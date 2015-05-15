@@ -28,6 +28,8 @@ alias gc='git commit'
 alias gca='git commit -a'
 alias gb='git branch'
 alias gd='git diff'
+alias gdh='git diff HEAD'
+alias gco='git checkout '
 alias gcb='git checkout -b'
 
 # Tmux
@@ -35,4 +37,7 @@ alias tks='tmux kill-session -t '
 
 # Docker & boot2docker
 alias dockerenv='eval `boot2docker shellinit 2>/dev/null`'
+
+# Vim
+alias v='vim .'
 

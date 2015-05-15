@@ -148,10 +148,6 @@ runtime macros/matchit.vim
 highlight ColorColumn ctermbg=black
 call matchadd('ColorColumn', '\%81v', 100)
 
-" Abbreviations
-ab rpry  require 'pry'; binding.pry
-ab bpry  require 'pry'; binding.pry
-
 """""""" Plugin Options """"""""
 
 "" IndentLine options
@@ -211,9 +207,12 @@ nmap <Leader>tl   :tabnext<CR>
 nmap <Leader>tn     :tabnew<CR>
 
 " Better buffer navigation
-nmap <leader>n :bn<CR>
-nmap <leader>p :bp<CR>
+nmap <silent> <leader>j :bn<CR>
+nmap <silent> <leader>k :bp<CR>
 
 " Quick save/quit
-nmap <leader>w :wa!<CR>
-nmap <leader>q :wqa!<CR>
+nmap <silent> <leader>w :wa!<CR>
+nmap <silent> <leader>q :wq!<CR>
+
+" Quick no-highlight
+nmap <silent> <leader>h :nohl<CR>
