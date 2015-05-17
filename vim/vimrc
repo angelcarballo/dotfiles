@@ -64,6 +64,7 @@ Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
 Plugin 'rking/ag.vim'                     " ag searcher integration
 Plugin 'tpope/vim-dispatch'               " run processes on the background
 Plugin 'thoughtbot/vim-rspec'             " run processes on the background
+Plugin 'airblade/vim-gitgutter'           " realtime git-diff
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
