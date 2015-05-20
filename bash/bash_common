@@ -35,6 +35,10 @@ alias grep='grep -G'
 alias fgrep='fgrep -G'
 alias egrep='egrep -G'
 
+# Load git autocompletion
+if [ -f ~/.git-completion.bash  ]; then
+  . ~/.git-completion.bash
+fi
 
 # Load aliases
 if [ -f ~/.bash_aliases ]; then
