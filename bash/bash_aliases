@@ -22,6 +22,7 @@ alias deploym='bundle exec cap deploy:migrate'
 # Git
 alias gs='git status'
 alias gp='git pull'
+alias gl='git log'
 alias gps='git push'
 alias ga='git add -A .'
 alias gc='git commit'
