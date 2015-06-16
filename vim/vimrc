@@ -49,7 +49,7 @@ Plugin 'altercation/vim-colors-solarized' " soalrized colorscheme
 Plugin 'yggdroot/indentLine'              " show indentation lines
 Plugin 'vim-scripts/zoomWin'              " zoom support for splits
 Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
-Plugin 'fholgado/minibufexpl.vim'         " buffer navigation
+Plugin 'jeetsukumaran/vim-buffergator'    " buffer navigation
 
 " Autocompletion
 Plugin 'SirVer/ultisnips'                 " snippets support
