@@ -149,8 +149,8 @@ set noswapfile " disable swap files, let git do the work
 runtime macros/matchit.vim
 
 " Make the 81st column stand out
-highlight ColorColumn ctermbg=black
-call matchadd('ColorColumn', '\%81v', 100)
+" highlight ColorColumn ctermbg=black
+" call matchadd('ColorColumn', '\%81v', 100)
 
 """""""" Plugin Options """"""""
 
@@ -182,14 +182,12 @@ nmap <silent> <leader>eS :UltiSnipsEdit<CR>
 nnoremap <leader><leader> <c-^>
 
 " Use arrows to navigate buffers and tabs
-nnoremap <Up> :ZoomWin<CR>
-nnoremap <Down> :ZoomWin<CR>
 nnoremap <Left> :bp<CR>
 nnoremap <Right> :bn<CR>
 
 " Vromm configuration
 let g:vroom_map_keys = 0
-let g:vroom_cucumber_path = 'bundle exec rspec '
+let g:vroom_cucumber_path = 'rspec '
 let g:vroom_use_vimux  = 1
 " Rspec and turnip tests on tmux
 map <Leader>sf :VroomRunTestFile<CR>
@@ -226,4 +224,3 @@ nmap <silent> <leader>s :AgFromSearch<CR>
 
 """""""" Abbreviations """"""""
 ab bpry require 'pry'; binding.pry
-
