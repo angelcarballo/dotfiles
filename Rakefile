@@ -28,6 +28,8 @@ task :link do
   update_link 'bash/dircolors/solarized', '.dircolors'
   update_link 'bash/bash_common', '.bash_common'
   update_link 'bash/bash_aliases', '.bash_aliases'
+  update_link 'bash/editrc', '.editrc'
+  update_link 'bash/inputrc', '.inputrc'
 
   # tmux
   update_link 'tmux/tmux.conf', '.tmux.conf'

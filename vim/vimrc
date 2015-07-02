@@ -68,6 +68,7 @@ Plugin 'skalnik/vim-vroom'                " ruby test runner
 Plugin 'tpope/vim-dispatch'               " run processes on the background
 Plugin 'airblade/vim-gitgutter'           " realtime git-diff
 Plugin 'tpope/vim-repeat'                 " extend repeat support
+Plugin 'AndrewRadev/switch.vim'           " easy switches
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -170,6 +171,9 @@ let g:airline_powerline_fonts = 1
 let g:airline_detect_paste=1
 
 """""""" Mappings """"""""
+
+" Avoid Esc
+imap jj <Esc>
 
 " Quickly edit/source the vimrc file
 nmap <silent> <leader>eV :e $MYVIMRC<CR>
