@@ -17,7 +17,9 @@ task :link do
   print 'Linking config files... '
   # vim
   update_link 'vim', '.vim'
+  update_link 'vim', '.nvim'
   update_link 'vim/vimrc', '.vimrc'
+  update_link 'vim/vimrc', '.nvimrc'
   update_link 'vim/gvimrc', '.gvimrc'
 
   # ruby

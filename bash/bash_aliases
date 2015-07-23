@@ -32,6 +32,8 @@ alias gd='git diff'
 alias gdh='git diff HEAD'
 alias gco='git checkout '
 alias gcb='git checkout -b'
+alias gclean='git clean -fd'
+alias greset='git reset --hard HEAD'
 
 # Tmux
 alias tks='tmux kill-session -t '
@@ -40,5 +42,5 @@ alias tks='tmux kill-session -t '
 alias dockerenv='eval `boot2docker shellinit 2>/dev/null`'
 
 # Vim
-alias v='vim .'
+alias v='nvim .'
 

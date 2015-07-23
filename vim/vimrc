@@ -69,6 +69,7 @@ Plugin 'tpope/vim-dispatch'               " run processes on the background
 Plugin 'airblade/vim-gitgutter'           " realtime git-diff
 Plugin 'tpope/vim-repeat'                 " extend repeat support
 Plugin 'AndrewRadev/switch.vim'           " easy switches
+Plugin 'floobits/floobits-neovim'         " collaborative editing plugin
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
