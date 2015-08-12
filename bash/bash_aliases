@@ -10,7 +10,7 @@ alias flushdns='dscacheutil -flushcache'
 # Rails
 alias brake='bundle exec rake'
 alias be='bundle exec'
-alias ber='bundle exec rspec'
+alias ber='bundle exec rspec --fail-fast'
 alias rs='bundle exec rails server'
 alias rsd='bundle exec rails server --debugger'
 alias rc='bundle exec rails console'
@@ -42,5 +42,5 @@ alias tks='tmux kill-session -t '
 alias dockerenv='eval `boot2docker shellinit 2>/dev/null`'
 
 # Vim
-alias v='nvim .'
+alias v='vim .'
 

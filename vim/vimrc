@@ -23,12 +23,12 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Basic plugins
-Plugin 'gmarik/Vundle.vim'     " let Vundle manage Vundle, required
-Plugin 'tpope/vim-fugitive'    " git integration
-Plugin 'kien/ctrlp.vim'        " fuzzy finder
-Plugin 'tpope/vim-surround'    " alter surroundings (), [], '', {}
-Plugin 'tommcdo/vim-exchange'  " text exchange operator (cx..)
-Plugin 'kana/vim-textobj-user' " custom text object support
+Plugin 'gmarik/Vundle.vim'                " let Vundle manage Vundle, required
+Plugin 'tpope/vim-fugitive'               " git integration
+Plugin 'kien/ctrlp.vim'                   " fuzzy finder
+Plugin 'tpope/vim-surround'               " alter surroundings (), [], '', {}
+Plugin 'tommcdo/vim-exchange'             " text exchange operator (cx..)
+Plugin 'kana/vim-textobj-user'            " custom text object support
 
 " Languages and frameworks
 Plugin 'tpope/vim-rails'                  " rails integration
@@ -69,7 +69,7 @@ Plugin 'tpope/vim-dispatch'               " run processes on the background
 Plugin 'airblade/vim-gitgutter'           " realtime git-diff
 Plugin 'tpope/vim-repeat'                 " extend repeat support
 Plugin 'AndrewRadev/switch.vim'           " easy switches
-Plugin 'floobits/floobits-neovim'         " collaborative editing plugin
+Plugin 'ecomba/vim-ruby-refactoring'      " easier ruby refactoring
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -189,11 +189,13 @@ nnoremap <leader><leader> <c-^>
 " Use arrows to navigate buffers and tabs
 nnoremap <Left> :bp<CR>
 nnoremap <Right> :bn<CR>
+nmap <silent> <leader>tn :tabNext<CR>
 
 " Vromm configuration
 let g:vroom_map_keys = 0
 let g:vroom_cucumber_path = 'rspec '
 let g:vroom_use_vimux  = 1
+
 " Rspec and turnip tests on tmux
 map <Leader>sf :VroomRunTestFile<CR>
 map <Leader>sc :VroomRunNearestTest<CR>
@@ -225,7 +227,13 @@ nmap <silent> <leader>q :q!<CR>
 nmap <silent> <leader>h :nohl<CR>
 
 " Quick AG last search
-nmap <silent> <leader>s :AgFromSearch<CR>
+nmap <silent> <leader>f :AgFromSearch<CR>
+
+" Quick ruby extract method
+vnoremap <leader>cm :RExtractMethod<CR>
+
+" Check spelling
+nmap <silent> <leader>cs :setlocal spell spelllang=en_us<CR>
 
 """""""" Abbreviations """"""""
 ab bpry require 'pry'; binding.pry
