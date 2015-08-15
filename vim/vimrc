@@ -240,5 +240,8 @@ vnoremap <leader>cm :RExtractMethod<CR>
 " Check spelling
 nmap <silent> <leader>cs :setlocal spell spelllang=en_us<CR>
 
+" Search selected text using Ag
+vnoremap <silent> * y:Ag <C-R>"<CR>:copen<CR>"
+
 """""""" Abbreviations """"""""
 ab bpry require 'pry'; binding.pry
