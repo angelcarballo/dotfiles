@@ -50,7 +50,6 @@ Plugin 'kana/vim-textobj-entire'          " entire buffer text object
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
 Plugin 'bling/vim-airline'                " better status bar
 Plugin 'yggdroot/indentLine'              " show indentation lines
-Plugin 'vim-scripts/zoomWin'              " zoom support for splits
 Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
 Plugin 'jeetsukumaran/vim-buffergator'    " buffer navigation
 Plugin 'edkolev/tmuxline.vim'             " tmux statusbar color matching
@@ -231,9 +230,6 @@ nmap <silent> <leader>q :q!<CR>
 " Quick no-highlight
 nmap <silent> <leader>h :nohl<CR>
 
-" Quick AG last search
-nmap <silent> <leader>f :AgFromSearch<CR>
-
 " Quick ruby extract method
 vnoremap <leader>cm :RExtractMethod<CR>
 
@@ -245,3 +241,18 @@ vnoremap <silent> * y:Ag <C-R>"<CR>:copen<CR>"
 
 """""""" Abbreviations """"""""
 ab bpry require 'pry'; binding.pry
+
+"""""""" Zoom panes """"""""""
+function! s:ZoomToggle() abort
+  if exists('t:zoomed') && t:zoomed
+    execute t:zoom_winrestcmd
+    let t:zoomed = 0
+  else
+    let t:zoom_winrestcmd = winrestcmd()
+    resize
+    vertical resize
+    let t:zoomed = 1
+  endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <silent> <leader>f :ZoomToggle<CR>
