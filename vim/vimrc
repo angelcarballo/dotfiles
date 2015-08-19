@@ -224,8 +224,8 @@ nmap <silent> <leader>tp :set paste<CR>
 nmap <silent> <leader>tP :set nopaste<CR>
 
 " Quick save/quit
-nmap <silent> <leader>w :w!<CR>
-nmap <silent> <leader>q :q!<CR>
+nmap <leader>w :w!<CR>
+nmap <leader>q :q!<CR>
 
 " Quick no-highlight
 nmap <silent> <leader>h :nohl<CR>
@@ -238,6 +238,12 @@ nmap <silent> <leader>cs :setlocal spell spelllang=en_us<CR>
 
 " Search selected text using Ag
 vnoremap <silent> * y:Ag <C-R>"<CR>:copen<CR>"
+
+" Fugitive
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gp :Gpush<CR>
+nmap <leader>gd :Gdiff<CR>
 
 """""""" Abbreviations """"""""
 ab bpry require 'pry'; binding.pry
