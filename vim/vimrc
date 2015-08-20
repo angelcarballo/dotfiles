@@ -103,6 +103,7 @@ let mapleader=","         " map <leader> to ,
 filetype plugin indent on " autoindent by file type
 set mouse=a               " enable mouse support in (a)ll modes
 set clipboard=unnamed     " pass yank to system clipboard
+set relativenumber        " display relative line numbers
 
 "" Whitespace
 set nowrap
@@ -262,3 +263,15 @@ function! s:ZoomToggle() abort
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <leader>f :ZoomToggle<CR>
+
+
+"""""""" Relative number toggling """"""""""
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
