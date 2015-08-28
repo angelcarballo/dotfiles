@@ -39,6 +39,7 @@ Plugin 'othree/html5.vim'                 " HTML5 support
 Plugin 'mustache/vim-mustache-handlebars' " mustache support
 Plugin 'pprovost/vim-markdown-jekyll'     " jekyll style markdown support
 Plugin 'elzr/vim-json'                    " json support
+Plugin 'rodjek/vim-puppet'                " puppet support
 
 " Text objects
 Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
@@ -66,7 +67,7 @@ Plugin 'docunext/closetag.vim'            " autoclose for html tags
 Plugin 'godlygeek/tabular'                " code align (like on this comment)
 Plugin 'tpope/vim-commentary'             " comment/uncomment code
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
-Plugin 'rking/ag.vim'                     " ag searcher integration
+Plugin 'gabesoft/vim-ags'                 " ag searcher integration
 Plugin 'benmills/vimux'                   " tmux intergation
 Plugin 'skalnik/vim-vroom'                " ruby test runner
 Plugin 'tpope/vim-dispatch'               " run processes on the background
@@ -236,9 +237,6 @@ vnoremap <leader>cm :RExtractMethod<CR>
 
 " Check spelling
 nmap <silent> <leader>cs :setlocal spell spelllang=en_us<CR>
-
-" Search selected text using Ag
-vnoremap <silent> * y:Ag <C-R>"<CR>:copen<CR>"
 
 " Fugitive
 nmap <leader>gs :Gstatus<CR>
