@@ -247,8 +247,11 @@ nmap <leader>gc :Gcommit<CR>
 nmap <leader>gp :Gpush<CR>
 nmap <leader>gd :Gdiff<CR>
 
-"""""""" Abbreviations """"""""
+" Abbreviations
 ab bpry require 'pry'; binding.pry
+
+" Pasting over a selection does not replace the clipboard
+xnoremap <expr> p 'pgv"'.v:register.'y'
 
 """""""" Zoom panes """"""""""
 function! s:ZoomToggle() abort
