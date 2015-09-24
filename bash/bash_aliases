@@ -9,8 +9,10 @@ alias flushdns='dscacheutil -flushcache'
 
 # Rails
 alias brake='bundle exec rake'
+alias b='bundle'
 alias be='bundle exec'
-alias ber='bundle exec rspec --fail-fast'
+alias ber='bundle exec rspec --color'
+alias berf='bundle exec rspec --color --fail-fast'
 alias rs='bundle exec rails server'
 alias rsd='bundle exec rails server --debugger'
 alias rc='bundle exec rails console'
