@@ -233,7 +233,7 @@ nmap <leader>w :w!<CR>
 nmap <leader>q :q!<CR>
 
 " Quick no-highlight
-nmap <silent> <leader>h :nohl<CR>
+nmap <silent> HH :nohl<CR>
 
 " Quick ruby extract method
 vnoremap <leader>cm :RExtractMethod<CR>
