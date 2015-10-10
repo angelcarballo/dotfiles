@@ -33,6 +33,10 @@ task :link do
   update_link 'bash/editrc', '.editrc'
   update_link 'bash/inputrc', '.inputrc'
 
+  # zsh
+  update_link 'zsh', '.zsh'
+  update_link 'zsh/zshrc', '.zshrc'
+
   # tmux
   update_link 'tmux/tmux.conf', '.tmux.conf'
 
@@ -59,7 +63,7 @@ namespace :install do
       sh "sudo aptitude install build-essential git-core silversearcher-ag autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev"
     end
     if OS.mac?
-      sh "brew install the_silver_searcher imagemagick openssl libyaml"
+      sh "brew install the_silver_searcher imagemagick openssl libyaml zsh zsh-completions"
     end
   end
 
