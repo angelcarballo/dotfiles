@@ -256,6 +256,9 @@ xnoremap <expr> p 'pgv"'.v:register.'y'
 " Search and replace current selection
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
 
+" Search visual selected text with Ags
+vnoremap <C-f> "hy:Ags "<C-r>h"<CR>
+
 """""""" Zoom panes """"""""""
 function! s:ZoomToggle() abort
   if exists('t:zoomed') && t:zoomed
