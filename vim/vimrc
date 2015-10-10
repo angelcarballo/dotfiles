@@ -253,6 +253,9 @@ ab bpry require 'pry'; binding.pry
 " Pasting over a selection does not replace the clipboard
 xnoremap <expr> p 'pgv"'.v:register.'y'
 
+" Search and replace current selection
+vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
+
 """""""" Zoom panes """"""""""
 function! s:ZoomToggle() abort
   if exists('t:zoomed') && t:zoomed
