@@ -128,6 +128,10 @@ set laststatus=2               " always show status bar (Airline)
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list
 
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
 "" Colorscheme
 colorscheme solarized
 let g:solarized_contrast="low"
@@ -144,7 +148,7 @@ set wildignore+=*/bundle/*,*/temp/*,*/backup/*,*/doc/* " Vim
 set wildignore+=*/_site/*                              " Jekyll
 
 "" Backup paths, the double trailing slash avoids name collisions (stores the
-"" "full paths instead of filenames
+"" full paths instead of filenames
 if has("win32")
   set backupdir=~/vimfiles/backup//
   set directory=~/vimfiles/temp//
@@ -177,6 +181,23 @@ let g:airline_detect_paste=1
 
 "" Tmuxline options"
 let g:tmuxline_preset = 'tmux'
+
+"" Ags (The Silver Searcher)
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor " Use Ag over Grep
+
+  " Use ag in CtrlP for listing files
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden
+        \ --ignore .git
+        \ --ignore .svn
+        \ --ignore .hg
+        \ --ignore .DS_Store
+        \ --ignore "**/*.pyc"
+        \ -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 
 """""""" Mappings """"""""
