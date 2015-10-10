@@ -99,6 +99,7 @@ set showcmd               " show complete commands
 set ruler                 " show cursor position
 set scrolloff=5           " leave space after the current line
 set foldmethod=marker     " fold using {{{ .. }}} markers
+set diffopt+=vertical     " Always use vertical diffs
 let mapleader=","         " map <leader> to ,
 filetype plugin indent on " autoindent by file type
 set clipboard=unnamed     " pass yank to system clipboard
