@@ -2,8 +2,6 @@
 
 " gu (over visual selection) -> downcase
 " gU (over visual selection) -> upcase
-" [Ctr-r][+]                 -> Paste from OS
-" set [no]paste              -> Paste mode to avoid indentation, auto-pairs..
 " ZZ (normal mode)           -> save and close
 " & (normal mode)            -> repeat last substitution
 " <c-o> / <c-i>              -> go to next / previous buffer
@@ -29,6 +27,7 @@ Plugin 'kien/ctrlp.vim'                   " fuzzy finder
 Plugin 'tpope/vim-surround'               " alter surroundings (), [], '', {}
 Plugin 'tommcdo/vim-exchange'             " text exchange operator (cx..)
 Plugin 'kana/vim-textobj-user'            " custom text object support
+Plugin 'ConradIrwin/vim-bracketed-paste'  " toggle paste mode automatically
 
 " Languages and frameworks
 Plugin 'tpope/vim-rails'                  " rails integration
@@ -223,10 +222,6 @@ map <Leader>x :Dispatch<CR>
 
 " Easier last change shortcut
 nmap <silent> <leader>lc `[
-
-" Toggle paste mode
-nmap <silent> <leader>tp :set paste<CR>
-nmap <silent> <leader>tP :set nopaste<CR>
 
 " Quick save/quit
 nmap <leader>w :w!<CR>
