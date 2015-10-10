@@ -14,7 +14,6 @@
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
-set wildignore-=doc           " to avoid helptags errors on plugin install
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -105,8 +104,8 @@ filetype plugin indent on " autoindent by file type
 set clipboard=unnamed     " pass yank to system clipboard
 set mouse+=a              " enable mouse support in (a)ll modes
 if &term =~ '^screen'
-    " tmux knows the extended mouse mode
-    set ttymouse=xterm2
+  " tmux knows the extended mouse mode
+  set ttymouse=xterm2
 endif
 
 "" Whitespace
@@ -115,7 +114,7 @@ set tabstop=2 shiftwidth=2     " two space tabs
 set expandtab                  " use spaces instead of tabs
 set backspace=indent,eol,start " backspace through everything
 
-"" Busqueda
+"" Search
 set hlsearch   " higlight search results
 set incsearch  " incremental search
 set ignorecase " ignore case on search ...
@@ -129,8 +128,7 @@ set laststatus=2               " always show status bar (Airline)
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list
 
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
+" Open new vertical split panes to right
 set splitright
 
 "" Colorscheme
