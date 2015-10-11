@@ -52,6 +52,7 @@ Plugin 'yggdroot/indentLine'              " show indentation lines
 Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
 Plugin 'jeetsukumaran/vim-buffergator'    " buffer navigation
 Plugin 'altercation/vim-colors-solarized' " solarized color scheme
+Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
 
 " Tmux statusbar color matching
 " Plugin 'edkolev/tmuxline.vim'
