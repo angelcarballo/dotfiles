@@ -45,5 +45,6 @@ alias tks='tmux kill-session -t '
 alias dockerenv='eval `boot2docker shellinit 2>/dev/null`'
 
 # Vim
+alias vim='/usr/local/bin/vim'
 alias v='vim .'
 
