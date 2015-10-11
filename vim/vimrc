@@ -51,8 +51,11 @@ Plugin 'bling/vim-airline'                " better status bar
 Plugin 'yggdroot/indentLine'              " show indentation lines
 Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
 Plugin 'jeetsukumaran/vim-buffergator'    " buffer navigation
-Plugin 'edkolev/tmuxline.vim'             " tmux statusbar color matching
 Plugin 'altercation/vim-colors-solarized' " solarized color scheme
+
+" Tmux statusbar color matching
+" Plugin 'edkolev/tmuxline.vim'
+" let g:tmuxline_preset = 'tmux'
 
 " Autocompletion
 Plugin 'SirVer/ultisnips'                 " snippets support
@@ -168,9 +171,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "" Airline options
 let g:airline_powerline_fonts = 1
 let g:airline_detect_paste=1
-
-"" Tmuxline options"
-let g:tmuxline_preset = 'tmux'
 
 "" Ags (The Silver Searcher)
 if executable('ag')

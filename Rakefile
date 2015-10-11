@@ -38,6 +38,7 @@ task :link do
   update_link 'zsh/zshrc', '.zshrc'
 
   # tmux
+  update_link 'tmux', '.tmux'
   update_link 'tmux/tmux.conf', '.tmux.conf'
 
   # rspec
