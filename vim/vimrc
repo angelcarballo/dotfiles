@@ -92,6 +92,8 @@ autocmd FileType ruby let b:dispatch = 'ruby %'
 
 "" General
 syntax enable
+let mapleader=","         " map <leader> to ,
+filetype plugin indent on " autoindent by file type
 set encoding=utf-8
 set nu                    " show line numbers
 set showcmd               " show complete commands
@@ -99,12 +101,12 @@ set ruler                 " show cursor position
 set scrolloff=5           " leave space after the current line
 set foldmethod=marker     " fold using {{{ .. }}} markers
 set diffopt+=vertical     " Always use vertical diffs
-let mapleader=","         " map <leader> to ,
-filetype plugin indent on " autoindent by file type
 set clipboard=unnamed     " pass yank to system clipboard
 set mouse+=a              " enable mouse support in (a)ll modes
-if &term =~ '^screen'
+set noswapfile            " disable swap files, let git do the work
+
   " tmux knows the extended mouse mode
+if &term =~ '^screen'
   set ttymouse=xterm2
 endif
 
@@ -133,7 +135,6 @@ set splitright
 
 "" Colorscheme
 colorscheme solarized
-let g:solarized_contrast="low"
 
 "" Undo & Logging
 set history=1000
@@ -146,16 +147,6 @@ set wildignore+=*\\tmp\\*,*.zip,*.exe                  " Windows
 set wildignore+=*/bundle/*,*/temp/*,*/backup/*,*/doc/* " Vim
 set wildignore+=*/_site/*                              " Jekyll
 
-"" Backup paths, the double trailing slash avoids name collisions (stores the
-"" full paths instead of filenames
-if has("win32")
-  set backupdir=~/vimfiles/backup//
-  set directory=~/vimfiles/temp//
-else
-  set backupdir=~/.vim/backup//
-  set directory=~/.vim/temp//
-endif
-set noswapfile " disable swap files, let git do the work
 
 "" Activate matchit
 runtime macros/matchit.vim
@@ -273,6 +264,9 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
 
 " Search visual selected text with Ags
 vnoremap <C-f> "hy:Ags "<C-r>h"<CR>
+
+" Altern between light/dark background
+call togglebg#map("<F6>")
 
 """""""" Zoom panes """"""""""
 function! s:ZoomToggle() abort

@@ -15,20 +15,37 @@ if [[ $CURRENT_OS == 'OS X' ]]; then
   antigen bundle brew
 fi
 
-
 # Tell antigen that you're done.
 antigen apply
 
-# Pure theme
-source ~/.zsh/async.zsh
-source ~/.zsh/pure.zsh
+# Theme
+source ~/.zsh/angelcarballo.zsh-theme
 
 # Aliases
 source ~/.bash_aliases
 
 # Vim everywhere
-set -o vi
+bindkey -v
+export VISUAL=vim
 export EDITOR=vim
+export KEYTIMEOUT=1  # reduce delay when changing modes
+
+# ctrl-w removed word backwards
+bindkey '^w' backward-kill-word
+
+# ctrl-r starts searching history backward
+bindkey '^r' history-incremental-search-backward
+
+# easier cd into frequent directories
+setopt auto_cd
+cdpath=($HOME/thoughtbot $HOME/src)
 
 # Paths common to all platforms
 export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$HOME/.rbenv/bin:$PATH"
+
+# Enable rbenv
+eval "$(rbenv init -)"
+
+# Load local config if present
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+

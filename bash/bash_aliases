@@ -9,7 +9,7 @@ alias flushdns='dscacheutil -flushcache'
 
 # Rails
 alias brake='bundle exec rake'
-alias b='bundle'
+alias bi='bundle install'
 alias be='bundle exec'
 alias ber='bundle exec rspec --color'
 alias bers='bundle exec spring rspec --color'
