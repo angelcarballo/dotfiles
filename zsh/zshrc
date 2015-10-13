@@ -6,7 +6,6 @@ antigen use oh-my-zsh
 
 # Antigen Bundles
 antigen bundle git-extras                          # extra git commands
-antigen bundle web-search                          # adds google cmd
 antigen bundle ssh-agent                           # For SSH, starting ssh-agent is annoying
 antigen bundle zsh-users/zsh-syntax-highlighting   # Syntax highlighting bundle.
 
