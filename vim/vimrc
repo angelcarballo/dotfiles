@@ -302,7 +302,7 @@ onoremap in' :<c-u>normal! f'vi'<cr>
 onoremap in' :<c-u>normal! f'vi'<cr>
 
 " Altern between light/dark background
-call togglebg#map("<F6>")
+call togglebg#map("<F2>")
 
 "}}}
 
