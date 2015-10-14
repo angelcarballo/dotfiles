@@ -1,16 +1,4 @@
-"" NOTES
-
-" gu (over visual selection) -> downcase
-" gU (over visual selection) -> upcase
-" ZZ (normal mode)           -> save and close
-" & (normal mode)            -> repeat last substitution
-" <c-o> / <c-i>              -> go to next / previous buffer
-" {{{ ... }}}                -> manually mark fold region
-" :9t.                       -> copy line 9 under current line
-" :t9                        -> copy the current line under line 9
-" windo diffthis/diffoff     -> diff current buffers/disable diff
-
-""""""""""""""""""" VUNDLE """""""""""""""""""""
+" Vundle Plugins and configuration ---------------------------------------------{{{
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -54,10 +42,6 @@ Plugin 'jeetsukumaran/vim-buffergator'    " buffer navigation
 Plugin 'altercation/vim-colors-solarized' " solarized color scheme
 Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
 
-" Tmux statusbar color matching
-" Plugin 'edkolev/tmuxline.vim'
-" let g:tmuxline_preset = 'tmux'
-
 " Autocompletion
 Plugin 'SirVer/ultisnips'                 " snippets support
 Plugin 'ervandew/supertab'                " magic code autocomplete!
@@ -84,79 +68,98 @@ Plugin 'ludovicchabant/vim-gutentags'     " automatic tag updater
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-""""""""""""""""""" /VUNDLE """""""""""""""""""""
+"}}}
 
-"" Md files are markdown files
-augroup md
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-augroup END
 
-"" Dispatch default commands
-autocmd FileType ruby let b:dispatch = 'ruby %'
-
-"" General
+" General settings ------------------------------------------------------------{{{
 syntax enable
-let mapleader=","         " map <leader> to ,
-filetype plugin indent on " autoindent by file type
-set encoding=utf-8
-set nu                    " show line numbers
-set showcmd               " show complete commands
-set ruler                 " show cursor position
-set scrolloff=5           " leave space after the current line
-set foldmethod=marker     " fold using {{{ .. }}} markers
-set diffopt+=vertical     " Always use vertical diffs
-set clipboard=unnamed     " pass yank to system clipboard
-set mouse+=a              " enable mouse support in (a)ll modes
-set noswapfile            " disable swap files, let git do the work
+let mapleader=","                 " map <leader> to ,
+filetype plugin indent on         " autoindent by file type
+set encoding=utf-8                " use UTF8 by default"
+set nu                            " show line numbers
+set showcmd                       " show complete commands
+set ruler                         " show cursor position
+set scrolloff=5                   " leave space after the current line
+set foldmethod=marker             " fold using {{{ .. }}} markers
+set diffopt+=vertical             " Always use vertical diffs
+set clipboard=unnamed             " pass yank to system clipboard
+set mouse+=a                      " enable mouse support in (a)ll modes
+set noswapfile                    " disable swap files, let git do the work
+set splitright                    " Open new vertical split panes to right
+set history=1000                  " max history
+set undolevels=1000               " max undo levels"
+set hlsearch                      " higlight search results
+set incsearch                     " incremental search
+set ignorecase                    " ignore case on search ...
+set smartcase                     " ... except if query contains uppercase characters
+set nowrap                        " dont wrap lines
+set tabstop=2 shiftwidth=2        " two space tabs
+set expandtab                     " use spaces instead of tabs
+set backspace=indent,eol,start    " backspace through everything
+runtime macros/matchit.vim        " allow % to match more than just single characters
+"}}}
 
-  " tmux knows the extended mouse mode
-if &term =~ '^screen'
-  set ttymouse=xterm2
-endif
 
-"" Whitespace
-set nowrap
-set tabstop=2 shiftwidth=2     " two space tabs
-set expandtab                  " use spaces instead of tabs
-set backspace=indent,eol,start " backspace through everything
-
-"" Search
-set hlsearch   " higlight search results
-set incsearch  " incremental search
-set ignorecase " ignore case on search ...
-set smartcase  " ... except if query contains uppercase characters
-
-"" Look & Feel
+" Look & Feel ------------------------------------------------------------------{{{
 set background=dark
 set visualbell                 " visual flash
 set noerrorbells               " no flash on errors, only al beginning/end of file
 set laststatus=2               " always show status bar (Airline)
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
-set list
+set list                       " show extra whitespace
+colorscheme solarized          " Colorscheme
+"}}}
 
-" Open new vertical split panes to right
-set splitright
 
-"" Colorscheme
-colorscheme solarized
-
-"" Undo & Logging
-set history=1000
-set undolevels=1000
-
-"" Files to ignore
+" Files to ignore -------------------------------------------------------------{{{
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*.lock       " Common
 set wildignore+=*/tmp/*,*.so,*.zip                     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.zip,*.exe                  " Windows
 set wildignore+=*/bundle/*,*/temp/*,*/backup/*,*/doc/* " Vim
 set wildignore+=*/_site/*                              " Jekyll
+"}}}
 
 
-"" Activate matchit
-runtime macros/matchit.vim
+" Tmux related -----------------------------------------------------------------{{{
+
+" tmux knows the extended mouse mode
+if &term =~ '^screen'
+  set ttymouse=xterm2
+endif
+
+"}}}
 
 
-"""""""" Plugin Options """"""""
+" Markdown Filetype -------------------------------------------------------------{{{
+augroup md
+  "" .md files are markdown files
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+augroup END
+"}}}
+
+
+" Ruby Filetype -----------------------------------------------------------------{{{
+augroup rubygroup
+  autocmd!
+  autocmd FileType ruby let b:dispatch = 'ruby %'
+  autocmd FileType ruby setlocal spell
+  autocmd FileType ruby :iabbrev <buffer> bpry require 'pry'; binding.pry
+  autocmd FileType ruby :iabbrev <buffer> classdescription 
+        \#== Description
+        \<CR>#
+        \<CR>#== Responsibilities
+        \<CR>#
+        \<CR>#== Rationale
+        \<CR>#
+augroup END
+"}}}
+
+
+" Plugin options ---------------------------------------------------------------{{{
+
+"" Vim-ruby options
+let ruby_spellcheck_strings = 1   " enable spellcheck inside ruby strings
+let ruby_minlines = 100           " avoid syntax errors while scrolling on large files
 
 "" IndentLine options
 let g:indentLine_char = '·'
@@ -173,9 +176,15 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:airline_powerline_fonts = 1
 let g:airline_detect_paste=1
 
+" Vromm configuration
+let g:vroom_map_keys = 0
+let g:vroom_cucumber_path = 'rspec '
+let g:vroom_use_vimux  = 1
+
 "" Ags (The Silver Searcher)
 if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor " Use Ag over Grep
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden
@@ -185,23 +194,20 @@ if executable('ag')
         \ --ignore .DS_Store
         \ --ignore "**/*.pyc"
         \ -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
 
+"}}}
 
-"""""""" Mappings """"""""
 
-" Avoid Esc
-imap jj <Esc>
+" Global mappings ---------------------------------------------------------------{{{
 
 " Quickly edit/source the vimrc file
-nmap <silent> <leader>eV :e $MYVIMRC<CR>
-nmap <silent> <leader>sV :so $MYVIMRC<CR>
+nnoremap <silent> <leader>eV :e $MYVIMRC<CR>
+nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Quickly edit snippets
-nmap <silent> <leader>eS :UltiSnipsEdit<CR>
+nnoremap <silent> <leader>eS :UltiSnipsEdit<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -209,12 +215,7 @@ nnoremap <leader><leader> <c-^>
 " Use arrows to navigate buffers and tabs
 nnoremap <Left> :bp<CR>
 nnoremap <Right> :bn<CR>
-nmap <silent> <leader>tn :tabNext<CR>
-
-" Vromm configuration
-let g:vroom_map_keys = 0
-let g:vroom_cucumber_path = 'rspec '
-let g:vroom_use_vimux  = 1
+nnoremap <silent> <leader>tn :tabNext<CR>
 
 " Rspec and turnip tests on tmux
 map <Leader>sf :VroomRunTestFile<CR>
@@ -222,40 +223,34 @@ map <Leader>sc :VroomRunNearestTest<CR>
 map <Leader>sl :VroomRunLastTest<CR>
 
 " Open File Explorer
-nmap <silent> <leader>ei :Explore<CR>
-nmap <silent> <leader>es :Sex<CR>
-nmap <silent> <leader>ev :Vex<CR>
+nnoremap <silent> <leader>ei :Explore<CR>
+nnoremap <silent> <leader>es :Sex<CR>
+nnoremap <silent> <leader>ev :Vex<CR>
 
 " Remove Trailing Whitespace
-nmap <silent> <leader>rw :%s/\s\+$//<CR>
+nnoremap <silent> <leader>rw :%s/\s\+$//<CR>
 
 " Execute dispatch for current file (based on filetype)
 map <Leader>x :Dispatch<CR>
 
 " Easier last change shortcut
-nmap <silent> <leader>lc `[
+nnoremap <silent> <leader>lc `[
 
 " Quick save/quit
-nmap <leader>w :w!<CR>
-nmap <leader>q :q!<CR>
-
-" Quick no-highlight
-nmap <silent> HH :nohl<CR>
+nnoremap <leader>w :w!<CR>
+nnoremap <leader>q :q!<CR>
 
 " Quick ruby extract method
 vnoremap <leader>cm :RExtractMethod<CR>
 
 " Check spelling
-nmap <silent> <leader>cs :setlocal spell spelllang=en_us<CR>
+nnoremap <silent> <leader>cs :setlocal spell spelllang=en_us<CR>
 
 " Fugitive
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gp :Gpush<CR>
-nmap <leader>gd :Gdiff<CR>
-
-" Abbreviations
-ab bpry require 'pry'; binding.pry
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gd :Gdiff<CR>
 
 " Pasting over a selection does not replace the clipboard
 xnoremap <expr> p 'pgv"'.v:register.'y'
@@ -266,8 +261,41 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
 " Search visual selected text with Ags
 vnoremap <C-f> "hy:Ags "<C-r>h"<CR>
 
+" move lines up and down
+nnoremap + ddkP
+nnoremap - ddp
+
+" delete lines and word from insert mode
+inoremap <c-d> <esc>ddi
+inoremap <c-w> <esc>bdiwi
+
+" uppercase current word
+inoremap <c-u> <esc>gUiwea
+
+" quick surround current word
+nmap <leader>' ysiw"
+nmap <leader>( ysiw(
+nmap <leader>) ysiw)
+nmap <leader>] ysiw]
+nmap <leader>} ysiw}
+
+" quick beginning/end of line
+nnoremap H _
+nnoremap L $
+
+" motions for in next ..
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap in[ :<c-u>normal! f[vi[<cr>
+onoremap in{ :<c-u>normal! f{vi{<cr>
+onoremap in' :<c-u>normal! f"vi"<cr>
+
 " Altern between light/dark background
 call togglebg#map("<F6>")
+
+"}}}
+
+
+" Custom functions ---------------------------------------------------------------{{{
 
 """""""" Zoom panes """"""""""
 function! s:ZoomToggle() abort
@@ -292,3 +320,5 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " absolute path  (/something/src/foo.txt)
   nnoremap <leader>cF :let @*=expand("%:p")<CR>
 endif
+
+"}}}
