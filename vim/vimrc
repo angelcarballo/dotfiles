@@ -155,7 +155,8 @@ augroup rubygroup
         \<CR>#
 augroup END
 "}}}
-"
+
+
 " Scala Filetype -----------------------------------------------------------------{{{
 augroup scalagroup
   autocmd!
