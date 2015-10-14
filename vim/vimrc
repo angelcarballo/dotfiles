@@ -64,7 +64,10 @@ Plugin 'tpope/vim-repeat'                 " extend repeat support
 Plugin 'AndrewRadev/switch.vim'           " easy switches
 Plugin 'ecomba/vim-ruby-refactoring'      " easier ruby refactoring
 Plugin 'ludovicchabant/vim-gutentags'     " automatic tag updater
+Plugin 'tpope/gem-ctags'                  " include tags from installed gems
 Plugin 'danro/rename.vim'                 " rename current file
+Plugin 'christoomey/vim-titlecase'        " titlecase text objects
+
 
 
 " All of your Plugins must be added before the following line
