@@ -26,6 +26,8 @@ Plugin 'mustache/vim-mustache-handlebars' " mustache support
 Plugin 'pprovost/vim-markdown-jekyll'     " jekyll style markdown support
 Plugin 'elzr/vim-json'                    " json support
 Plugin 'rodjek/vim-puppet'                " puppet support
+Plugin 'tmux-plugins/vim-tmux'            " tmux syntax support
+Plugin 'derekwyatt/vim-scala'             " scala syntax support
 
 " Text objects
 Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
@@ -151,6 +153,13 @@ augroup rubygroup
         \<CR>#
         \<CR>#== Rationale
         \<CR>#
+augroup END
+"}}}
+"
+" Scala Filetype -----------------------------------------------------------------{{{
+augroup scalagroup
+  autocmd!
+  autocmd FileType scala let b:dispatch = 'scala -nc %'
 augroup END
 "}}}
 
