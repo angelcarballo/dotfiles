@@ -283,7 +283,8 @@ inoremap <c-w> <esc>bdiwi
 inoremap <c-u> <esc>gUiwea
 
 " quick surround current word
-nmap <leader>' ysiw"
+nmap <leader>' ysiw'
+nmap <leader>" ysiw"
 nmap <leader>( ysiw(
 nmap <leader>) ysiw)
 nmap <leader>] ysiw]
@@ -297,7 +298,8 @@ nnoremap L $
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap in[ :<c-u>normal! f[vi[<cr>
 onoremap in{ :<c-u>normal! f{vi{<cr>
-onoremap in' :<c-u>normal! f"vi"<cr>
+onoremap in' :<c-u>normal! f'vi'<cr>
+onoremap in' :<c-u>normal! f'vi'<cr>
 
 " Altern between light/dark background
 call togglebg#map("<F6>")
