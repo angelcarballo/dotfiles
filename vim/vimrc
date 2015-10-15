@@ -1,7 +1,7 @@
 " Vundle Plugins and configuration ---------------------------------------------{{{
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible                          " be iMproved, required
+filetype off                              " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -34,12 +34,12 @@ Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
 Plugin 'whatyouhide/vim-textobj-erb'      " erb block text object
 Plugin 'suan/vim-instant-markdown'        " markdown preview
 Plugin 'kana/vim-textobj-entire'          " entire buffer text object
+Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
 
 " Look & Feel, Navigation
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
 Plugin 'bling/vim-airline'                " better status bar
 Plugin 'yggdroot/indentLine'              " show indentation lines
-Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
 Plugin 'jeetsukumaran/vim-buffergator'    " buffer navigation
 Plugin 'altercation/vim-colors-solarized' " solarized color scheme
 Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
@@ -51,28 +51,28 @@ Plugin 'tpope/vim-endwise'                " autoclose for vim blocks
 Plugin 'jiangmiao/auto-pairs'             " autoclose for (, [, {
 Plugin 'docunext/closetag.vim'            " autoclose for html tags
 
-" Extras
-Plugin 'godlygeek/tabular'                " code align (like on this comment)
-Plugin 'tpope/vim-commentary'             " comment/uncomment code
+" Third party integration
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
 Plugin 'gabesoft/vim-ags'                 " ag searcher integration
 Plugin 'benmills/vimux'                   " tmux intergation
+Plugin 'ludovicchabant/vim-gutentags'     " automatic tag updater
+Plugin 'tpope/gem-ctags'                  " include tags from installed gems
+
+" Extras
+Plugin 'godlygeek/tabular'                " code align (like on this comment)
+Plugin 'tpope/vim-commentary'             " comment/uncomment code
 Plugin 'skalnik/vim-vroom'                " ruby test runner
 Plugin 'tpope/vim-dispatch'               " run processes on the background
 Plugin 'airblade/vim-gitgutter'           " realtime git-diff
 Plugin 'tpope/vim-repeat'                 " extend repeat support
 Plugin 'AndrewRadev/switch.vim'           " easy switches
 Plugin 'ecomba/vim-ruby-refactoring'      " easier ruby refactoring
-Plugin 'ludovicchabant/vim-gutentags'     " automatic tag updater
-Plugin 'tpope/gem-ctags'                  " include tags from installed gems
 Plugin 'danro/rename.vim'                 " rename current file
 Plugin 'christoomey/vim-titlecase'        " titlecase text objects
 
-
-
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()                         " required
+filetype plugin indent on                 " required
 
 "}}}
 
