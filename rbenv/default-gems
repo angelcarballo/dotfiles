@@ -3,3 +3,4 @@ gem-ctags
 pry
 pry-byebug
 awesome_print
+pre-commit
