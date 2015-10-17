@@ -52,6 +52,8 @@ Plugin 'ervandew/supertab'                " magic code autocomplete!
 Plugin 'tpope/vim-endwise'                " autoclose for vim blocks
 Plugin 'jiangmiao/auto-pairs'             " autoclose for (, [, {
 Plugin 'docunext/closetag.vim'            " autoclose for html tags
+Plugin 'mattn/webapi-vim'                 " call external api's
+Plugin 'christoomey/vim-quicklink'        " quick get links via google
 
 " Third party integration
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
@@ -139,14 +141,6 @@ endif
 "}}}
 
 
-" Markdown Filetype -------------------------------------------------------------{{{
-augroup md
-  "" .md files are markdown files
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-augroup END
-"}}}
-
-
 " Ruby Filetype -----------------------------------------------------------------{{{
 augroup rubygroup
   autocmd!
@@ -174,6 +168,7 @@ augroup END
 " Markdown Filetype --------------------------------------------------------------{{{
 augroup markdowngroup
   autocmd!
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd FileType markdown set wrap
   autocmd FileType markdown setlocal spell
 augroup END
