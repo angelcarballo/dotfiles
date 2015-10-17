@@ -6,14 +6,17 @@ My collection of dotfiles. If you want to reuse any of this, clone the repositor
 Key Features
 ------------
 
-* Vim - Vim is awesome, and I use it for almost everything. My vimrc is heavy on ruby and tmux related plugins, and I try to keep as readable as possible. Installation and maintenance is done using Vundler.
+* [Vim] - Vim is awesome, and I use it for almost everything. My vimrc is heavy on ruby and tmux related plugins, and I try to keep as readable as possible. Installation and maintenance is done using Vundler.
 
 * [Tmux] - I use Tmux next to Vim to achieve a single terminal workflow. These two are made for each other.
 
-* [Zsh] - Recently moved to Zsh from Bash, so not a lot going on yet. A few plugins managed using Antigen, and my own minimal theme based on pure.
+* [Zsh] - Recently moved to Zsh from Bash, so not a lot going on yet. A few plugins managed using [Antigen], and my own minimal theme based on [pure].
 
 [Tmux]: https://tmux.github.io/
 [Zsh]: http://www.zsh.org/
+[Vim]: http://www.vim.org/
+[Antigen]: https://github.com/zsh-users/antigen
+[pure]: https://github.com/sindresorhus/pure
 
 Setup
 -----
@@ -52,7 +55,7 @@ Since both Vim and Tmux are using the Solarized color scheme, you'll need to set
 * [Solarized for iTerm2]
 * [Powerline Fonts]
 
-[Solarized for iTerm2]: : https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
+[Solarized for iTerm2]: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
 [Powerline Fonts]: https://github.com/powerline/fonts
 
 References
