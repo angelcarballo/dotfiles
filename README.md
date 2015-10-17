@@ -28,7 +28,7 @@ If you want to use Zsh, set it as your default shell:
 chsh -s $(which zsh)
 ```
 
-Keeping multiple machines in sync, just run `rake` and it will update the repo and keep your links in good shape.
+Keeping multiple machines in sync, just run `rake` and it will update the repo and keep your dotfiles in good shape.
 
 Local changes and extra commands
 --------------------------------
