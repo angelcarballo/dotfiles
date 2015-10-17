@@ -71,6 +71,8 @@ Plugin 'AndrewRadev/switch.vim'           " easy switches
 Plugin 'ecomba/vim-ruby-refactoring'      " easier ruby refactoring
 Plugin 'danro/rename.vim'                 " rename current file
 Plugin 'christoomey/vim-titlecase'        " titlecase text objects
+Plugin 'christoomey/vim-system-copy'      " send commands to tmux
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()                         " required
@@ -90,7 +92,6 @@ set ruler                         " show cursor position
 set scrolloff=5                   " leave space after the current line
 set foldmethod=marker             " fold using {{{ .. }}} markers
 set diffopt+=vertical             " Always use vertical diffs
-set clipboard=unnamed             " pass yank to system clipboard
 set mouse+=a                      " enable mouse support in (a)ll modes
 set noswapfile                    " disable swap files, let git do the work
 set splitright                    " Open new vertical split panes to right
@@ -278,9 +279,6 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gd :Gdiff<CR>
-
-" Pasting over a selection does not replace the clipboard
-xnoremap <expr> p 'pgv"'.v:register.'y'
 
 " Search and replace current selection
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
