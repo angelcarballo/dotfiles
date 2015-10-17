@@ -1,7 +1,7 @@
 Dotfiles
 ========
 
-My collection of dotfiles. If you want to reuse any of this, clone the repository and review the code, there's probably a lot of stuff you should remove.
+My collection of dotfiles. If you want to reuse any of this, clone the repository and review the code, it's probably better to pick an choose what you need.
 
 Key Features
 ------------
@@ -33,25 +33,9 @@ Keeping multiple machines in sync, just run `rake` and it will update the repo a
 Local changes and extra commands
 --------------------------------
 
-Zsh will try to source `~/.zshrc.local`. Put your local settings, env vars, etc. there if you need them for a particular machine but don't want them in your dotfiles.
-
-Mine looks like this:
+Zsh will try to source `~/.zshrc.local`. Put your local settings, env vars, etc. there if you need them for a particular machine but don't want them in your dotfiles. For example:
 
 ```shell
-### Path Heroku Toolbelt
-export PATH="$PATH:/usr/local/heroku/bin"
-
-### Path PostgresApp
-export PATH="$PATH/Applications/Postgres.app/Contents/MacOS/bin"
-
-### Path JDK
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
-
-### AWS Command Line Tools
-export EC2_BASE=/opt/ec2
-export AWS_ACCESS_KEY_ID= ...
-export AWS_SECRET_ACCESS_KEY= ...
-
 # Git
 export GIT_AUTHOR_NAME="Angel Carballo"
 export GIT_AUTHOR_EMAIL="contact@angelcarballo.com"
