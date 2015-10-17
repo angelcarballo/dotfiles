@@ -48,3 +48,11 @@ Since both Vim and Tmux are using the Solarized color scheme, you'll need to set
 
 * Solarized for iTerm2: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
 * Powerline Fonts: https://github.com/powerline/fonts
+
+References
+----------
+
+* Tim Pope: https://github.com/tpope
+* Chris Toomey: hChris Toomey: https://github.com/christoomey/dotfilesttps://github.com/christoomey/dotfiles
+* Steve Losh: http://learnvimscriptthehardway.stevelosh.com
+* Thoughbot: https://github.com/thoughtbot/dotfiles
