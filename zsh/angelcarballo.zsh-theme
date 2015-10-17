@@ -1,3 +1,5 @@
+# based on: https://github.com/sindresorhus/pure
+
 autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' check-for-changes false
