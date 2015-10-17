@@ -28,6 +28,8 @@ Plugin 'elzr/vim-json'                    " json support
 Plugin 'rodjek/vim-puppet'                " puppet support
 Plugin 'tmux-plugins/vim-tmux'            " tmux syntax support
 Plugin 'derekwyatt/vim-scala'             " scala syntax support
+Plugin 'plasticboy/vim-markdown'          " markdown support
+
 
 " Text objects
 Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
@@ -168,6 +170,15 @@ augroup END
 "}}}
 
 
+" Markdown Filetype --------------------------------------------------------------{{{
+augroup markdowngroup
+  autocmd!
+  autocmd FileType markdown set wrap
+  autocmd FileType markdown setlocal spell
+augroup END
+"}}}
+
+
 " Plugin options ---------------------------------------------------------------{{{
 
 "" Vim-ruby options
@@ -193,6 +204,9 @@ let g:airline_detect_paste=1
 let g:vroom_map_keys = 0
 let g:vroom_cucumber_path = 'rspec '
 let g:vroom_use_vimux  = 1
+
+" Markdown options
+let g:vim_markdown_folding_disabled=1
 
 "" Ags (The Silver Searcher)
 if executable('ag')
