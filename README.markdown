@@ -6,7 +6,7 @@ My collection of dotfiles. If you want to reuse any of this, clone the repositor
 Key Features
 ------------
 
-* [Vim] - Vim is awesome, and I use it for almost everything. My vimrc is heavy on ruby and tmux related plugins, and I try to keep as readable as possible. Installation and maintenance is done using Vundler.
+* [Vim] - Vim is awesome, and I use it for almost everything. My vimrc is heavy on ruby and tmux related plugins, and I try to keep as readable as possible. Installation and maintenance is done using [Vundler].
 
 * [Tmux] - I use Tmux next to Vim to achieve a single terminal workflow. These two are made for each other.
 
@@ -17,6 +17,7 @@ Key Features
 [Vim]: http://www.vim.org/
 [Antigen]: https://github.com/zsh-users/antigen
 [pure]: https://github.com/sindresorhus/pure
+[Vundler]: https://github.com/VundleVim/Vundle.vim
 
 Setup
 -----
