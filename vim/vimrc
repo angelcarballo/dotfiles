@@ -17,6 +17,8 @@ Plugin 'kana/vim-textobj-user'            " custom text object support
 Plugin 'ConradIrwin/vim-bracketed-paste'  " toggle paste mode automatically
 
 " Languages and frameworks
+Plugin 'vim-ruby/vim-ruby'                " ruby integration
+Plugin 'tpope/vim-rbenv'                  " rbenv integration
 Plugin 'tpope/vim-rails'                  " rails integration
 Plugin 'tpope/vim-bundler'                " bundler integration
 Plugin 'cakebaker/scss-syntax.vim'        " SCSS syntax
