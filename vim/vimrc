@@ -58,7 +58,6 @@ Plugin 'christoomey/vim-quicklink'        " quick get links via google
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
 Plugin 'gabesoft/vim-ags'                 " ag searcher integration
 Plugin 'benmills/vimux'                   " tmux intergation
-Plugin 'slowness/vimux-interp'            " vimux for repl's
 Plugin 'ludovicchabant/vim-gutentags'     " automatic tag updater
 Plugin 'tpope/gem-ctags'                  " include tags from installed gems
 
@@ -249,7 +248,7 @@ map <leader>sl :VroomRunLastTest<CR>
 vnoremap <leader>tx :call VimuxSlime()<CR>
 
 " Send current line to tmux
-noremap <leader>tl V:call VimuxSlime()<CR>
+noremap <leader>tx V:call VimuxSlime()<CR>
 
 " Send whole file to tmux
 noremap<leader>tf vae:call VimuxSlime()<CR>
