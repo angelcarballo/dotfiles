@@ -68,6 +68,6 @@ References
 * [Thoughbot]
 
 [Tim Pope]: https://github.com/tpope
-[Chris Toomey]: https://github.com/christoomey/dotfilesttps://github.com/christoomey/dotfiles
+[Chris Toomey]: https://github.com/christoomey/dotfiles
 [Steve Losh]: http://learnvimscriptthehardway.stevelosh.com
 [Thoughbot]: https://github.com/thoughtbot/dotfiles
