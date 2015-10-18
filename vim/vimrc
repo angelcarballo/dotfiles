@@ -42,7 +42,6 @@ Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
 Plugin 'bling/vim-airline'                " better status bar
 Plugin 'yggdroot/indentLine'              " show indentation lines
-Plugin 'jeetsukumaran/vim-buffergator'    " buffer navigation
 Plugin 'altercation/vim-colors-solarized' " solarized color scheme
 Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
 
@@ -59,6 +58,7 @@ Plugin 'christoomey/vim-quicklink'        " quick get links via google
 Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
 Plugin 'gabesoft/vim-ags'                 " ag searcher integration
 Plugin 'benmills/vimux'                   " tmux intergation
+Plugin 'slowness/vimux-interp'            " vimux for repl's
 Plugin 'ludovicchabant/vim-gutentags'     " automatic tag updater
 Plugin 'tpope/gem-ctags'                  " include tags from installed gems
 
@@ -126,7 +126,7 @@ colorscheme solarized          " Colorscheme
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*.lock       " Common
 set wildignore+=*/tmp/*,*.so,*.zip                     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.zip,*.exe                  " Windows
-set wildignore+=*/bundle/*,*/temp/*,*/backup/*,*/doc/* " Vim
+set wildignore+=*/temp/*,*/backup/*         " Vim
 set wildignore+=*/_site/*                              " Jekyll
 "}}}
 
@@ -216,6 +216,7 @@ if executable('ag')
         \ --ignore .hg
         \ --ignore .DS_Store
         \ --ignore bundle
+        \ --ignore doc
         \ -g ""'
   let g:ctrlp_use_caching = 0
 endif
@@ -238,12 +239,26 @@ nnoremap <leader><leader> <c-^>
 " Use arrows to navigate buffers and tabs
 nnoremap <Left> :bp<CR>
 nnoremap <Right> :bn<CR>
-nnoremap <silent> <leader>tn :tabNext<CR>
 
 " Rspec and turnip tests on tmux
-map <Leader>sf :VroomRunTestFile<CR>
-map <Leader>sc :VroomRunNearestTest<CR>
-map <Leader>sl :VroomRunLastTest<CR>
+map <leader>sf :VroomRunTestFile<CR>
+map <leader>sc :VroomRunNearestTest<CR>
+map <leader>sl :VroomRunLastTest<CR>
+
+" Send visual selection to tmux
+vnoremap <leader>tx :call VimuxSlime()<CR>
+
+" Send current line to tmux
+noremap <leader>tl V:call VimuxSlime()<CR>
+
+" Send whole file to tmux
+noremap<leader>tf vae:call VimuxSlime()<CR>
+
+" Other tmux interactions
+nnoremap <leader>to :VimuxRunCommand("")<CR>
+nnoremap <leader>ti :VimuxInspectRunner<CR>
+nnoremap <leader>tc :VimuxCloseRunner<CR>
+nnoremap <leader>tz :VimuxZoomRunner<CR>
 
 " Open File Explorer
 nnoremap <silent> <leader>ei :Explore<CR>
@@ -254,10 +269,13 @@ nnoremap <silent> <leader>ev :Vex<CR>
 nnoremap <silent> <leader>rw :%s/\s\+$//<CR>
 
 " Execute dispatch for current file (based on filetype)
-map <Leader>x :Dispatch<CR>
+map <leader>x :Dispatch<CR>
 
 " Easier last change shortcut
 nnoremap <silent> <leader>lc `[
+
+" Use ctrlp to find buffer
+nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 
 " Quick save/quit
 nnoremap <leader>w :w!<CR>
@@ -342,5 +360,12 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " absolute path  (/something/src/foo.txt)
   nnoremap <leader>cF :let @*=expand("%:p")<CR>
 endif
+
+
+"""""""" Send text to tmux """"""""""
+function! VimuxSlime() range
+  let cmds = escape(join(getline("'<","'>"),";"),'`')
+  call VimuxRunCommand(cmds)
+endfunction
 
 "}}}
