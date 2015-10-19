@@ -281,6 +281,7 @@ nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 " Quick save/quit
 nnoremap <leader>w :w!<CR>
 nnoremap <leader>q :q!<CR>
+nnoremap <leader>wq :wq<CR>
 
 " Quick ruby extract method
 vnoremap <leader>cm :RExtractMethod<CR>
@@ -361,7 +362,6 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " absolute path  (/something/src/foo.txt)
   nnoremap <leader>cF :let @*=expand("%:p")<CR>
 endif
-
 
 """""""" Send text to tmux """"""""""
 function! VimuxSlime() range
