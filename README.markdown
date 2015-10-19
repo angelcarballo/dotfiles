@@ -53,13 +53,14 @@ export GIT_AUTHOR_EMAIL="contact@angelcarballo.com"
 Goodies
 -------
 
-Since both Vim and Tmux are using the Solarized color scheme, you'll need to setup the right profile for your terminal. Also, install a Powerline enabled font if you want nice icons on your Vim statusbar.
+Since both Vim and Tmux are using the [Solarized] color scheme, you'll need to setup the right profile for your terminal. Also, install a Powerline enabled font if you want nice icons on your Vim statusbar.
 
 * [Solarized for iTerm2]
 * [Powerline Fonts]
 
 [Solarized for iTerm2]: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
 [Powerline Fonts]: https://github.com/powerline/fonts
+[Solarized]: http://ethanschoonover.com/solarized
 
 References
 ----------
