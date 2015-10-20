@@ -32,7 +32,6 @@ Plugin 'tmux-plugins/vim-tmux'            " tmux syntax support
 Plugin 'derekwyatt/vim-scala'             " scala syntax support
 Plugin 'plasticboy/vim-markdown'          " markdown support
 
-
 " Text objects
 Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
 Plugin 'whatyouhide/vim-textobj-erb'      " erb block text object
@@ -75,6 +74,8 @@ Plugin 'ecomba/vim-ruby-refactoring'      " easier ruby refactoring
 Plugin 'danro/rename.vim'                 " rename current file
 Plugin 'christoomey/vim-titlecase'        " titlecase text objects
 Plugin 'christoomey/vim-system-copy'      " send commands to tmux
+Plugin 'xolox/vim-notes'                  " easy note taking
+Plugin 'xolox/vim-misc'                   " required by vim-notes
 
 
 " All of your Plugins must be added before the following line
@@ -206,12 +207,12 @@ let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#ctrlp#color_template = 'visual'
 
-" Vromm configuration
+"" Vromm configuration
 let g:vroom_map_keys = 0
 let g:vroom_cucumber_path = 'rspec '
 let g:vroom_use_vimux  = 1
 
-" Markdown options
+"" Markdown options
 let g:vim_markdown_folding_disabled=1
 
 "" Ags (The Silver Searcher)
@@ -230,6 +231,11 @@ if executable('ag')
         \ -g ""'
   let g:ctrlp_use_caching = 0
 endif
+
+"" Vim-Notes options
+let g:notes_directories = ['~/Dropbox/notes']
+let g:notes_tab_indents = 0
+let g:notes_smart_quotes = 0
 
 "}}}
 
@@ -339,6 +345,11 @@ onoremap in[ :<c-u>normal! f[vi[<cr>
 onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap in' :<c-u>normal! f'vi'<cr>
 onoremap in' :<c-u>normal! f'vi'<cr>
+
+" vim-notes mappings
+nnoremap <leader>rn :RecentNotes<CR>
+nnoremap <leader>sn :SearchNotes 
+nnoremap <leader>on :Note 
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
