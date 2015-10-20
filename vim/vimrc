@@ -120,6 +120,9 @@ set laststatus=2               " always show status bar (Airline)
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
 colorscheme solarized          " Colorscheme
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
 "}}}
 
 

@@ -73,7 +73,7 @@ namespace :install do
       sh "sudo aptitude install build-essential git-core silversearcher-ag autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev"
     end
     if OS.mac?
-      sh "brew install the_silver_searcher imagemagick openssl libyaml zsh zsh-completions"
+      sh "brew bundle"
     end
   end
 
