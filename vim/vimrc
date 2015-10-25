@@ -45,6 +45,7 @@ Plugin 'bling/vim-airline'                " better status bar
 Plugin 'yggdroot/indentLine'              " show indentation lines
 Plugin 'altercation/vim-colors-solarized' " solarized color scheme
 Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
+Plugin 'edkolev/tmuxline.vim'             " apply vim colorscheme to tmux status line
 
 " Autocompletion
 Plugin 'SirVer/ultisnips'                 " snippets support
@@ -116,7 +117,7 @@ runtime macros/matchit.vim        " allow % to match more than just single chara
 
 
 " Look & Feel ------------------------------------------------------------------{{{
-set background=dark
+set background=light
 set visualbell                 " visual flash
 set noerrorbells               " no flash on errors, only al beginning/end of file
 set laststatus=2               " always show status bar (Airline)
@@ -388,7 +389,7 @@ endif
 
 """""""" Send text to tmux """"""""""
 function! VimuxSlime() range
-  let cmds = escape(join(getline("'<","'>"),";"),'`')
+  let cmds = join(getline("'<","'>"), '')
   call VimuxRunCommand(cmds)
 endfunction
 
