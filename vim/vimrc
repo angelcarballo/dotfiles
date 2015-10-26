@@ -156,11 +156,11 @@ augroup rubygroup
   autocmd FileType ruby nnoremap <leader>vs :vsplit <C-r>=substitute(expand("%"), '^lib\(.*\)\.rb$', 'spec\1_spec.rb', "")<cr><cr>
   autocmd FileType ruby :iabbrev <buffer> bpry require 'pry'; binding.pry
   autocmd FileType ruby :iabbrev <buffer> classdescription #== Description
-        \<CR>#
-        \<CR>#== Responsibilities
-        \<CR>#
-        \<CR>#== Rationale
-        \<CR>#
+        \<CR>
+        \<CR>== Responsibilities
+        \<CR>
+        \<CR>== Rationale
+        \<CR>
 augroup END
 "}}}
 

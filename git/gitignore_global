@@ -42,3 +42,5 @@ Thumbs.db
 # Other
 tags
 .tags
+tags.lock
+tags.temp
