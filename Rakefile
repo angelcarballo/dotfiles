@@ -83,6 +83,7 @@ namespace :install do
       sh "git clone https://github.com/sstephenson/rbenv.git ~/.rbenv"
       sh "git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build"
       sh "git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems"
+      sh "git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags"
     }
   end
 end
