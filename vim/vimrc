@@ -350,8 +350,8 @@ onoremap in' :<c-u>normal! f'vi'<cr>
 
 " vim-notes mappings
 nnoremap <leader>rn :RecentNotes<CR>
-nnoremap <leader>sn :SearchNotes 
-nnoremap <leader>on :Note 
+nnoremap <leader>sn :SearchNotes<space>
+nnoremap <leader>on :Note<space>
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
