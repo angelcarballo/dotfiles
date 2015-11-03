@@ -2,6 +2,7 @@
 
 # Comunes
 alias c='clear'
+alias celar='clear'
 alias ll='ls -lh'
 
 # Atajos Mac

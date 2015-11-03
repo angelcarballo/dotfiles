@@ -117,7 +117,7 @@ runtime macros/matchit.vim        " allow % to match more than just single chara
 
 
 " Look & Feel ------------------------------------------------------------------{{{
-set background=light
+set background=dark
 set visualbell                 " visual flash
 set noerrorbells               " no flash on errors, only al beginning/end of file
 set laststatus=2               " always show status bar (Airline)
