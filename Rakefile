@@ -96,8 +96,17 @@ namespace :setup do
 
   desc 'Git related configuration'
   task :git do
-    verbose(false) { sh "#{Dir.pwd}/git/set-config.sh" }
-    verbose(false) { sh "#{Dir.pwd}/git/set-aliases.sh" }
+    verbose(false) {
+      sh "mkdir -p ~/.git_template/hooks"
+      sh "cp #{Dir.pwd}/git/hooks/ctags ~/.git_template/hooks/ctags"
+      sh "cp #{Dir.pwd}/git/hooks/hook ~/.git_template/hooks/post-commit"
+      sh "cp #{Dir.pwd}/git/hooks/hook ~/.git_template/hooks/post-merge"
+      sh "cp #{Dir.pwd}/git/hooks/hook ~/.git_template/hooks/post-checkout"
+      sh "chmod +x ~/.git_template/hooks/*"
+
+      sh "#{Dir.pwd}/git/set-config.sh"
+      sh "#{Dir.pwd}/git/set-aliases.sh"
+    }
   end
 
   desc 'Mac OS X defaults'

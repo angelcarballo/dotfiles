@@ -18,6 +18,7 @@ Plugin 'ConradIrwin/vim-bracketed-paste'  " toggle paste mode automatically
 
 " Languages and frameworks
 Plugin 'vim-ruby/vim-ruby'                " ruby integration
+Plugin 'tpope/vim-rake'                   " rake integration
 Plugin 'tpope/vim-rbenv'                  " rbenv integration
 Plugin 'tpope/vim-rails'                  " rails integration
 Plugin 'tpope/vim-bundler'                " bundler integration
