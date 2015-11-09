@@ -6,10 +6,10 @@ desc 'Initial setup (get dependencies, rbenv and run all setup tasks)'
 task :bootstrap => ['install', 'setup', 'link']
 
 desc 'Run all install tasks'
-task :install => ['install:dep', 'install:rbenv']
+task :install => ['install:dep', 'install:rbenv', 'install:tmux']
 
 desc 'Run all setup tasks'
-task :setup => ['setup:vim', 'setup:git', 'setup:osx']
+task :setup => ['setup:vim', 'setup:git', 'setup:osx', 'setup:tmux']
 
 desc 'Upadate repo and submodules'
 task :update do
@@ -84,6 +84,13 @@ namespace :install do
       sh "git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build"
       sh "git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems"
       sh "git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags"
+    }
+  end
+
+  desc 'Install tmux plugin manager'
+  task :tmux do
+    verbose(false) {
+      sh "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
     }
   end
 end
