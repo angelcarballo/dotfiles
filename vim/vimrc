@@ -246,13 +246,17 @@ let g:notes_smart_quotes = 0
 
 " Quickly edit/source the vimrc file
 nnoremap <silent> <leader>eV :e $MYVIMRC<CR>
-nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
+nnoremap <silent> <leader>sV :so $MYVIMRC<CR>
 
 " Quickly edit snippets
 nnoremap <silent> <leader>eS :UltiSnipsEdit<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
+
+" Splits
+nnoremap <leader>sv :vsp<CR>
+nnoremap <leader>sh :sp<CR>
 
 " Use arrows to navigate buffers and tabs
 nnoremap <Left> :bp<CR>

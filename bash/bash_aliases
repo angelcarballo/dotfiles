@@ -38,6 +38,8 @@ alias gco='git checkout '
 alias gcb='git checkout -b'
 alias gclean='git clean -fd'
 alias greset='git reset --hard HEAD'
+alias go='git open'
+alias gom='git open origin master'
 
 # Tmux
 alias tks='tmux kill-session -t '
