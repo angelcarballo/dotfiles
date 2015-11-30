@@ -37,7 +37,7 @@ alias gdh='git diff HEAD'
 alias gco='git checkout '
 alias gcb='git checkout -b'
 alias gclean='git clean -fd'
-alias greset='git reset --hard HEAD'
+alias gr='git reset --hard HEAD'
 alias go='git open'
 alias gom='git open origin master'
 
