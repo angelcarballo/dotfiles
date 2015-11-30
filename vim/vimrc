@@ -210,21 +210,6 @@ let g:airline_detect_paste = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#ctrlp#color_template = 'visual'
-let g:airline_section_b = ''
-let g:airline_section_y = airline#section#create(['branch'])
-let g:airline_mode_map = {
-      \ '__' : '-',
-      \ 'n'  : 'N',
-      \ 'i'  : 'I',
-      \ 'R'  : 'R',
-      \ 'c'  : 'C',
-      \ 'v'  : 'V',
-      \ 'V'  : 'V',
-      \ '' : 'V',
-      \ 's'  : 'S',
-      \ 'S'  : 'S',
-      \ '' : 'S',
-      \ }
 
 "" Vromm configuration
 let g:vroom_map_keys = 0
