@@ -78,6 +78,7 @@ Plugin 'christoomey/vim-titlecase'        " titlecase text objects
 Plugin 'christoomey/vim-system-copy'      " send commands to tmux
 Plugin 'xolox/vim-notes'                  " easy note taking
 Plugin 'xolox/vim-misc'                   " required by vim-notes
+Plugin 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 
 
 " All of your Plugins must be added before the following line
