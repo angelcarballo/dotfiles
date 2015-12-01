@@ -58,11 +58,12 @@ Plugin 'mattn/webapi-vim'                 " call external api's
 Plugin 'christoomey/vim-quicklink'        " quick get links via google
 
 " Third party integration
-Plugin 'christoomey/vim-tmux-navigator'   " navigate to tmux panes from vim
-Plugin 'gabesoft/vim-ags'                 " ag searcher integration
-Plugin 'benmills/vimux'                   " tmux intergation
-Plugin 'ludovicchabant/vim-gutentags'     " automatic tag updater
-Plugin 'tpope/gem-ctags'                  " include tags from installed gems
+Plugin 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from vim
+Plugin 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
+Plugin 'gabesoft/vim-ags'                   " ag searcher integration
+Plugin 'benmills/vimux'                     " tmux intergation
+Plugin 'ludovicchabant/vim-gutentags'       " automatic tag updater
+Plugin 'tpope/gem-ctags'                    " include tags from installed gems
 
 " Extras
 Plugin 'godlygeek/tabular'                " code align (like on this comment)
