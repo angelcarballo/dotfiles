@@ -39,7 +39,7 @@ Plugin 'whatyouhide/vim-textobj-erb'      " erb block text object
 Plugin 'suan/vim-instant-markdown'        " markdown preview
 Plugin 'kana/vim-textobj-entire'          " entire buffer text object
 Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
-Plugin 'tpope/vim-abolish'                " coercions, plurals, camelcase, ...
+Plugin 'tpope/vim-abolish'                " coercions, plurals, camelcase [crs, crm, crc, cru]
 
 " Look & Feel, Navigation
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
@@ -56,7 +56,7 @@ Plugin 'tpope/vim-endwise'                " autoclose for vim blocks
 Plugin 'jiangmiao/auto-pairs'             " autoclose for (, [, {
 Plugin 'docunext/closetag.vim'            " autoclose for html tags
 Plugin 'mattn/webapi-vim'                 " call external api's
-Plugin 'christoomey/vim-quicklink'        " quick get links via google
+Plugin 'christoomey/vim-quicklink'        " quick get links via google [C-k]
 
 " Third party integration
 Plugin 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from vim
