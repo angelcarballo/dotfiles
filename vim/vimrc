@@ -278,7 +278,7 @@ vnoremap <leader>tx :call VimuxSlime()<CR>
 noremap <leader>tx V:call VimuxSlime()<CR>
 
 " Send whole file to tmux
-noremap<leader>tf vae:call VimuxSlime()<CR>
+noremap <leader>tf ggVG:call VimuxSlime()<CR>
 
 " Other tmux interactions
 nnoremap <leader>to :VimuxRunCommand("")<CR>
