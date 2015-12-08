@@ -39,6 +39,7 @@ Plugin 'whatyouhide/vim-textobj-erb'      " erb block text object
 Plugin 'suan/vim-instant-markdown'        " markdown preview
 Plugin 'kana/vim-textobj-entire'          " entire buffer text object
 Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
+Plugin 'tpope/vim-abolish'                " coercions, plurals, camelcase, ...
 
 " Look & Feel, Navigation
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
