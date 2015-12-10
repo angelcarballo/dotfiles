@@ -9,7 +9,7 @@ desc 'Run all install tasks'
 task :install => ['install:dep', 'install:rbenv', 'install:tmux']
 
 desc 'Run all setup tasks'
-task :setup => ['setup:vim', 'setup:git', 'setup:osx', 'setup:tmux']
+task :setup => ['setup:vim', 'setup:git', 'setup:osx']
 
 desc 'Upadate repo and submodules'
 task :update do
