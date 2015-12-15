@@ -216,7 +216,8 @@ let g:airline#extensions#ctrlp#color_template = 'visual'
 
 "" Vromm configuration
 let g:vroom_map_keys = 0
-let g:vroom_cucumber_path = 'rspec '
+let g:vroom_cucumber_path = 'spring rspec '
+let g:vroom_spec_command  = 'spring rspec '
 let g:vroom_use_vimux  = 1
 
 "" Markdown options
@@ -349,6 +350,10 @@ nmap <leader>} ysiw}
 " quick beginning/end of line
 nnoremap H _
 nnoremap L $
+
+" tab management
+nnoremap <c-n> :tabnext<cr>
+nnoremap <c-t> :tabnew<cr>
 
 " motions for in next ..
 onoremap in( :<c-u>normal! f(vi(<cr>
