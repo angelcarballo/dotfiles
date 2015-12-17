@@ -2,7 +2,9 @@
 
 autoload -Uz vcs_info
 
-zstyle ':vcs_info:*' check-for-changes false
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr +
+zstyle ':vcs_info:*' unstagedstr +
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' formats ' (%b%c%u%B)'
