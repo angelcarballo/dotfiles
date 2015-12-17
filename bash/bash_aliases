@@ -26,7 +26,10 @@ alias deploym='bundle exec cap deploy:migrate'
 # Git
 alias gs='git status'
 alias gp='git pull'
-alias gl='git log'
+alias gl='git log --oneline --decorate --graph --all'
+alias gll="git log --pretty=format:'%h - %an [%ar] %s'"
+alias gsm='git log -E -i --grep '
+alias gsc='git log -S '
 alias gps='git push'
 alias ga='git add -A .'
 alias gc='git commit'
@@ -40,6 +43,7 @@ alias gclean='git clean -fd'
 alias gr='git reset --hard HEAD'
 alias go='git open'
 alias gom='git open origin master'
+alias grl='git reflog'
 
 # Tmux
 alias tks='tmux kill-session -t '
