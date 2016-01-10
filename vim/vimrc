@@ -218,6 +218,7 @@ let g:airline#extensions#ctrlp#color_template = 'visual'
 let g:vroom_map_keys = 0
 let g:vroom_cucumber_path = 'rspec '
 let g:vroom_use_vimux  = 1
+let g:VimuxRunnerType = "window"
 
 "" Markdown options
 let g:vim_markdown_folding_disabled=1
@@ -342,16 +343,16 @@ inoremap <c-w> <esc>bdiwi
 inoremap <c-u> <esc>gUiwea
 
 " quick surround current word
-nmap <leader>' ysiw'
-nmap <leader>" ysiw"
-nmap <leader>( ysiw(
-nmap <leader>) ysiw)
-nmap <leader>] ysiw]
-nmap <leader>} ysiw}
+nnoremap <leader>' ysiw'
+nnoremap <leader>" ysiw"
+nnoremap <leader>( ysiw(
+nnoremap <leader>) ysiw)
+nnoremap <leader>] ysiw]
+nnoremap <leader>} ysiw}
 
 " quick beginning/end of line
-nnoremap H _
-nnoremap L $
+nnoremap <c-h> _
+nnoremap <c-l> $
 
 " motions for in next ..
 onoremap in( :<c-u>normal! f(vi(<cr>
