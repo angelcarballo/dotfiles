@@ -1,6 +1,8 @@
 set nocompatible                          " be iMproved, required
 filetype off                              " required
 
+" Plugins  ------------------------------------------------------------{{{
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -41,7 +43,6 @@ Plugin 'tpope/vim-abolish'                " coercions, plurals, camelcase [crs, 
 
 " Look & Feel, Navigation
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
-Plugin 'bling/vim-airline'                " better status bar
 Plugin 'yggdroot/indentLine'              " show indentation lines
 Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
 
@@ -123,7 +124,7 @@ runtime macros/matchit.vim        " allow % to match more than just single chara
 set background=dark
 set visualbell                 " visual flash
 set noerrorbells               " no flash on errors, only al beginning/end of file
-set laststatus=2               " always show status bar (Airline)
+set laststatus=2               " always show status bar
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
 
@@ -133,6 +134,18 @@ colorscheme hybrid
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
+
+" statusline
+function! CurrentBranch()
+  return exists('*fugitive#head') ? '⭠ ' . fugitive#head() . ' ' : ''
+endfunction
+set statusline=
+set statusline+=\ %{CurrentBranch()} " git branch
+set statusline+=\ %<%f%m\                                " file path, modified flag
+set statusline+=\ %=\%l/%L\             " current row/total rows
+set statusline+=%r " read-only flag
+hi StatusLine ctermfg=8 ctermbg=10 cterm=italic
+hi StatusLineNC ctermfg=15 ctermbg=8 cterm=none
 "}}}
 
 
@@ -208,15 +221,6 @@ let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-"" Airline options
-let g:airline_powerline_fonts = 1
-let g:airline_detect_paste = 1
-let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#wordcount#enabled = 0
-let g:airline#extensions#ctrlp#color_template = 'visual'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
 
 "" Vromm configuration
 let g:vroom_map_keys = 0
