@@ -140,11 +140,11 @@ function! CurrentBranch()
   return exists('*fugitive#head') ? '⭠ ' . fugitive#head() . ' ' : ''
 endfunction
 set statusline=
-set statusline+=\ %{CurrentBranch()} " git branch
-set statusline+=\ %<%f%m\                                " file path, modified flag
-set statusline+=\ %=\%l/%L\             " current row/total rows
-set statusline+=%r " read-only flag
-hi StatusLine ctermfg=8 ctermbg=10 cterm=italic
+set statusline+=\ %{CurrentBranch()}  " git branch
+set statusline+=\ %<%f%m\             " file path, modified flag
+set statusline+=\ %=\%l/%L\           " current row/total rows
+set statusline+=%r                    " read-only flag
+hi StatusLine ctermfg=15 ctermbg=8 cterm=bold
 hi StatusLineNC ctermfg=15 ctermbg=8 cterm=none
 "}}}
 
