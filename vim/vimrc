@@ -44,7 +44,6 @@ Plugin 'tpope/vim-vinegar'                " file explorer improvements
 Plugin 'bling/vim-airline'                " better status bar
 Plugin 'yggdroot/indentLine'              " show indentation lines
 Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
-Plugin 'edkolev/tmuxline.vim'             " apply vim colorscheme to tmux status line
 
 " Colorschemes
 Plugin 'w0ng/vim-hybrid'                  " hybrid colorscheme
