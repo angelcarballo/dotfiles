@@ -176,6 +176,7 @@ augroup rubygroup
   autocmd FileType ruby setl sw=2 sts=2 ts=2 tw=80 " Two spaces per tab
   autocmd FileType ruby nnoremap <leader>vs :vsplit <C-r>=substitute(expand("%"), '^lib\(.*\)\.rb$', 'spec\1_spec.rb', "")<cr><cr>
   autocmd FileType ruby :iabbrev <buffer> bpry require 'pry'; binding.pry
+  autocmd FileType ruby vnoremap <leader>th :Tabularize /=><CR>
   autocmd FileType ruby :iabbrev <buffer> classdescription #== Description
         \<CR>
         \<CR>== Responsibilities
@@ -225,6 +226,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "" Vromm configuration
 let g:vroom_map_keys = 0
 let g:vroom_cucumber_path = 'rspec '
+let g:vroom_spec_command  = 'rspec '
 let g:vroom_use_vimux  = 1
 let g:VimuxRunnerType = "window"
 
@@ -357,6 +359,10 @@ nnoremap <leader>( ysiw(
 nnoremap <leader>) ysiw)
 nnoremap <leader>] ysiw]
 nnoremap <leader>} ysiw}
+
+" tab management
+nnoremap <c-n> :tabnext<cr>
+nnoremap <c-t> :tabnew<cr>
 
 " motions for in next ..
 onoremap in( :<c-u>normal! f(vi(<cr>
