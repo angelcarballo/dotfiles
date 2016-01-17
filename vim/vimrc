@@ -45,6 +45,7 @@ Plugin 'tpope/vim-abolish'                " coercions, plurals, camelcase [crs, 
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
 Plugin 'yggdroot/indentLine'              " show indentation lines
 Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
+Plugin 'ap/vim-buftabline'                " show buffers on tabbar
 
 " Colorschemes
 Plugin 'w0ng/vim-hybrid'                  " hybrid colorscheme
@@ -146,6 +147,12 @@ set statusline+=\ %r                    " read-only flag
 set statusline+=\ %{CurrentBranch()}  " git branch
 hi StatusLine ctermfg=15 ctermbg=8 cterm=bold
 hi StatusLineNC ctermfg=15 ctermbg=8 cterm=none
+
+" tabbar
+hi TabLineFill ctermfg=8
+hi TabLine ctermfg=8 ctermbg=15
+hi TabLineSel ctermfg=193 ctermbg=65
+
 "}}}
 
 
@@ -263,6 +270,10 @@ let g:notes_smart_quotes = 0
 " Quick : on normal mode
 nmap ; :
 
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
+
 " Quickly edit/source the vimrc file
 nnoremap <silent> <leader>eV :e $MYVIMRC<CR>
 nnoremap <silent> <leader>sV :so $MYVIMRC<CR>
@@ -360,9 +371,8 @@ nnoremap <leader>) ysiw)
 nnoremap <leader>] ysiw]
 nnoremap <leader>} ysiw}
 
-" tab management
-nnoremap <c-n> :tabnext<cr>
-nnoremap <c-t> :tabnew<cr>
+" buffer management
+nnoremap <c-n> :bnext<cr>
 
 " motions for in next ..
 onoremap in( :<c-u>normal! f(vi(<cr>
