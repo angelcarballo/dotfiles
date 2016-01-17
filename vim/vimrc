@@ -137,13 +137,13 @@ autocmd VimResized * :wincmd =
 
 " statusline
 function! CurrentBranch()
-  return exists('*fugitive#head') ? '⭠ ' . fugitive#head() . ' ' : ''
+  return exists('*fugitive#head') ? ' ⭠ ' . fugitive#head() . ' ' : ''
 endfunction
 set statusline=
-set statusline+=\ %{CurrentBranch()}  " git branch
 set statusline+=\ %<%f%m\             " file path, modified flag
 set statusline+=\ %=\%l/%L\           " current row/total rows
-set statusline+=%r                    " read-only flag
+set statusline+=\ %r                    " read-only flag
+set statusline+=\ %{CurrentBranch()}  " git branch
 hi StatusLine ctermfg=15 ctermbg=8 cterm=bold
 hi StatusLineNC ctermfg=15 ctermbg=8 cterm=none
 "}}}
