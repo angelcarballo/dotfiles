@@ -325,6 +325,8 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gp :Gpush
+nnoremap <leader>gw :Gwrite<CR>
+nnoremap <leader>gr :Gread<CR>
 
 " Search and replace current selection
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
@@ -354,10 +356,6 @@ nmap <leader>} ysiw}
 " quick beginning/end of line
 nnoremap H _
 nnoremap L $
-
-" tab management
-nnoremap <c-n> :tabnext<cr>
-nnoremap <c-t> :tabnew<cr>
 
 " motions for in next ..
 onoremap in( :<c-u>normal! f(vi(<cr>
