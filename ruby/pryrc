@@ -2,7 +2,6 @@ require 'rubygems'
 
 Pry.editor = 'vim'
 Pry.config.color = true
-Pry.config.theme = "solarized"
 
 if defined?(PryByebug)
   Pry.commands.alias_command 'c', 'continue'

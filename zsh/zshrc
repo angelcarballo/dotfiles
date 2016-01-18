@@ -7,7 +7,7 @@ antigen use oh-my-zsh
 # Antigen Bundles
 antigen bundle git-extras                          # extra git commands
 antigen bundle ssh-agent                           # For SSH, starting ssh-agent is annoying
-antigen bundle zsh-users/zsh-syntax-highlighting   # Syntax highlighting bundle.
+# antigen bundle zsh-users/zsh-syntax-highlighting   # Syntax highlighting bundle.
 
 # OS specific bundles
 if [[ $CURRENT_OS == 'OS X' ]]; then

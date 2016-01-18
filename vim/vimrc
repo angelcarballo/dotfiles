@@ -1,7 +1,7 @@
-" Vundle Plugins and configuration ---------------------------------------------{{{
-
 set nocompatible                          " be iMproved, required
 filetype off                              " required
+
+" Plugins  ------------------------------------------------------------{{{
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -43,11 +43,12 @@ Plugin 'tpope/vim-abolish'                " coercions, plurals, camelcase [crs, 
 
 " Look & Feel, Navigation
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
-Plugin 'bling/vim-airline'                " better status bar
 Plugin 'yggdroot/indentLine'              " show indentation lines
-Plugin 'altercation/vim-colors-solarized' " solarized color scheme
 Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
-" Plugin 'edkolev/tmuxline.vim'             " apply vim colorscheme to tmux status line
+Plugin 'ap/vim-buftabline'                " show buffers on tabbar
+
+" Colorschemes
+Plugin 'w0ng/vim-hybrid'                  " hybrid colorscheme
 
 " Autocompletion
 Plugin 'SirVer/ultisnips'                 " snippets support
@@ -124,13 +125,34 @@ runtime macros/matchit.vim        " allow % to match more than just single chara
 set background=dark
 set visualbell                 " visual flash
 set noerrorbells               " no flash on errors, only al beginning/end of file
-set laststatus=2               " always show status bar (Airline)
+set laststatus=2               " always show status bar
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
-colorscheme solarized          " Colorscheme
+
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
+colorscheme hybrid
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
+
+" statusline
+function! CurrentBranch()
+  return exists('*fugitive#head') ? ' ⭠ ' . fugitive#head() . ' ' : ''
+endfunction
+set statusline=
+set statusline+=\ %<%f%m\             " file path, modified flag
+set statusline+=\ %=\%l/%L\           " current row/total rows
+set statusline+=\ %r                    " read-only flag
+set statusline+=\ %{CurrentBranch()}  " git branch
+hi StatusLine ctermfg=15 ctermbg=8 cterm=bold
+hi StatusLineNC ctermfg=15 ctermbg=8 cterm=none
+
+" tabbar
+hi TabLineFill ctermfg=8
+hi TabLine ctermfg=8 ctermbg=15
+hi TabLineSel ctermfg=193 ctermbg=65
+
 "}}}
 
 
@@ -208,18 +230,12 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-"" Airline options
-let g:airline_powerline_fonts = 1
-let g:airline_detect_paste = 1
-let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#wordcount#enabled = 0
-let g:airline#extensions#ctrlp#color_template = 'visual'
-
 "" Vromm configuration
 let g:vroom_map_keys = 0
 let g:vroom_cucumber_path = 'rspec '
 let g:vroom_spec_command  = 'rspec '
 let g:vroom_use_vimux  = 1
+let g:VimuxRunnerType = "window"
 
 "" Markdown options
 let g:vim_markdown_folding_disabled=1
@@ -253,6 +269,10 @@ let g:notes_smart_quotes = 0
 
 " Quick : on normal mode
 nmap ; :
+
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
 
 " Quickly edit/source the vimrc file
 nnoremap <silent> <leader>eV :e $MYVIMRC<CR>
@@ -346,16 +366,19 @@ inoremap <c-w> <esc>bdiwi
 inoremap <c-u> <esc>gUiwea
 
 " quick surround current word
-nmap <leader>' ysiw'
-nmap <leader>" ysiw"
-nmap <leader>( ysiw(
-nmap <leader>) ysiw)
-nmap <leader>] ysiw]
-nmap <leader>} ysiw}
+nnoremap <leader>' ysiw'
+nnoremap <leader>" ysiw"
+nnoremap <leader>( ysiw(
+nnoremap <leader>) ysiw)
+nnoremap <leader>] ysiw]
+nnoremap <leader>} ysiw}
 
 " quick beginning/end of line
 nnoremap H _
 nnoremap L $
+
+" buffer management
+nnoremap <c-n> :bnext<cr>
 
 " motions for in next ..
 onoremap in( :<c-u>normal! f(vi(<cr>
@@ -371,9 +394,6 @@ nnoremap <leader>on :Note<space>
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
-
-" Altern between light/dark background
-call togglebg#map("<F2>")
 
 "}}}
 
