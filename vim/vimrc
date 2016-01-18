@@ -289,8 +289,9 @@ nnoremap <leader>sv :vsp<CR>
 nnoremap <leader>sh :sp<CR>
 
 " Use arrows to navigate buffers and tabs
-nnoremap <Left> :bp<CR>
-nnoremap <Right> :bn<CR>
+nnoremap <Left> :bprevious<CR>
+nnoremap <Right> :bnext<CR>
+nnoremap <c-n> :bnext<cr>
 
 " Rspec and turnip tests on tmux
 map <leader>sf :VroomRunTestFile<CR>
@@ -376,9 +377,6 @@ nnoremap <leader>} ysiw}
 " quick beginning/end of line
 nnoremap H _
 nnoremap L $
-
-" buffer management
-nnoremap <c-n> :bnext<cr>
 
 " motions for in next ..
 onoremap in( :<c-u>normal! f(vi(<cr>
