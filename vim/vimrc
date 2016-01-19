@@ -181,7 +181,7 @@ augroup rubygroup
   autocmd!
   autocmd FileType ruby let b:dispatch = 'ruby %'
   autocmd FileType ruby setl sw=2 sts=2 ts=2 tw=80 " Two spaces per tab
-  autocmd FileType ruby nnoremap <leader>vs :vsplit <C-r>=substitute(expand("%"), '^lib\(.*\)\.rb$', 'spec\1_spec.rb', "")<cr><cr>
+  autocmd FileType ruby nnoremap <leader>vs :vsplit <C-r>=substitute(expand("%"), '^\(.*\)\.rb$', 'spec\/\1_spec.rb', "")<cr><cr>
   autocmd FileType ruby :iabbrev <buffer> bpry require 'pry'; binding.pry
   autocmd FileType ruby vnoremap <leader>th :Tabularize /=><CR>
   autocmd FileType ruby :iabbrev <buffer> classdescription #== Description
