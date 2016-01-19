@@ -46,7 +46,7 @@ Plugin 'tpope/vim-vinegar'                " file explorer improvements
 Plugin 'yggdroot/indentLine'              " show indentation lines
 Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
 Plugin 'ap/vim-buftabline'                " show buffers on tabbar
-Plugin 'qpkorr/vim-bufkill'               " better buffer killing/unloading
+Plugin 'moll/vim-bbye'                    " better buffer killing/unloading
 
 " Colorschemes
 Plugin 'w0ng/vim-hybrid'                  " hybrid colorscheme
@@ -292,7 +292,7 @@ nnoremap <leader>sh :sp<CR>
 nnoremap <Left> :bprevious<CR>
 nnoremap <Right> :bnext<CR>
 nnoremap <c-n> :bnext<cr>
-nnoremap <silent> <leader>d :BD<CR>
+nnoremap <silent> <leader>d :Bdelete<CR>
 
 " Rspec and turnip tests on tmux
 map <leader>sf :VroomRunTestFile<CR>
