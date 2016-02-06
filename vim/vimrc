@@ -45,7 +45,6 @@ Plugin 'tpope/vim-abolish'                " coercions, plurals, camelcase [crs, 
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
 Plugin 'yggdroot/indentLine'              " show indentation lines
 Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
-Plugin 'ap/vim-buftabline'                " show buffers on tabbar
 
 " Colorschemes
 Plugin 'w0ng/vim-hybrid'                  " hybrid colorscheme
