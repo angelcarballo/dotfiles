@@ -137,7 +137,7 @@ autocmd VimResized * :wincmd =
 
 " statusline
 function! CurrentBranch()
-  return exists('*fugitive#head') ? ' ⭠ ' . fugitive#head() . ' ' : ''
+  return exists('*fugitive#head') ? '  ' . fugitive#head() . ' ' : ''
 endfunction
 set statusline=
 set statusline+=\ %<%f%m\             " file path, modified flag
@@ -178,9 +178,8 @@ endif
 augroup rubygroup
   autocmd!
   autocmd FileType ruby let b:dispatch = 'ruby %'
-  autocmd FileType ruby setlocal spell
   autocmd FileType ruby setl sw=2 sts=2 ts=2 tw=80 " Two spaces per tab
-  autocmd FileType ruby nnoremap <leader>vs :vsplit <C-r>=substitute(expand("%"), '^lib\(.*\)\.rb$', 'spec\1_spec.rb', "")<cr><cr>
+  autocmd FileType ruby nnoremap <leader>vs :vsplit <C-r>=substitute(expand("%"), '^\(.*\)\.rb$', 'spec\/\1_spec.rb', "")<cr><cr>
   autocmd FileType ruby :iabbrev <buffer> bpry require 'pry'; binding.pry
   autocmd FileType ruby vnoremap <leader>th :Tabularize /=><CR>
   autocmd FileType ruby :iabbrev <buffer> classdescription #== Description
@@ -288,8 +287,10 @@ nnoremap <leader>sv :vsp<CR>
 nnoremap <leader>sh :sp<CR>
 
 " Use arrows to navigate buffers and tabs
-nnoremap <Left> :bp<CR>
-nnoremap <Right> :bn<CR>
+nnoremap <Left> :bprevious<CR>
+nnoremap <Right> :bnext<CR>
+nnoremap <c-n> :bnext<cr>
+nnoremap <silent> <leader>d :Bdelete<CR>
 
 " Rspec and turnip tests on tmux
 map <leader>sf :VroomRunTestFile<CR>
@@ -344,6 +345,8 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gp :Gpush
+nnoremap <leader>gw :Gwrite<CR>
+nnoremap <leader>gr :Gread<CR>
 
 " Search and replace current selection
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
@@ -370,8 +373,9 @@ nnoremap <leader>) ysiw)
 nnoremap <leader>] ysiw]
 nnoremap <leader>} ysiw}
 
-" buffer management
-nnoremap <c-n> :bnext<cr>
+" quick beginning/end of line
+nnoremap H _
+nnoremap L $
 
 " motions for in next ..
 onoremap in( :<c-u>normal! f(vi(<cr>
