@@ -249,6 +249,7 @@ if executable('ag')
         \ --ignore bundle
         \ --ignore doc
         \ --ignore tmp
+        \ --ignore public
         \ -g ""'
   let g:ctrlp_use_caching = 0
 endif
