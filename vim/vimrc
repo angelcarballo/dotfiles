@@ -133,15 +133,37 @@ colorscheme hybrid
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-" statusline
+" higlight trailing spaces
+match ErrorMsg '\s\+$'
+
+" current git branch function for statusline
 function! CurrentBranch()
   return exists('*fugitive#head') ? '  ' . fugitive#head() . ' ' : ''
 endfunction
+
+"recalculate the trailing whitespace warning when idle, and after saving
+autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+
+" trailing space detection for statusline
+function! StatuslineTrailingSpaceWarning()
+  if !exists("b:statusline_trailing_space_warning")
+    if search('\s\+$', 'nw') != 0
+      let b:statusline_trailing_space_warning = ' Trailing space '
+    else
+      let b:statusline_trailing_space_warning = ''
+    endif
+  endif
+  return b:statusline_trailing_space_warning
+endfunction
+
 set statusline=
-set statusline+=\ %<%f%m\             " file path, modified flag
-set statusline+=\ %=\%l/%L\           " current row/total rows
-set statusline+=\ %r                    " read-only flag
-set statusline+=\ %{CurrentBranch()}  " git branch
+set statusline+=\ %<%f%m\                           " file path, modified flag
+set statusline+=\ %=\%l/%L\                         " current row/total rows
+set statusline+=%#error#                            " error color
+set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing space warning
+set statusline+=%*                                  " reset default color
+set statusline+=\ %r                                " read-only flag
+set statusline+=\ %{CurrentBranch()}                " git branch
 hi StatusLine ctermfg=15 ctermbg=8 cterm=bold
 hi StatusLineNC ctermfg=15 ctermbg=8 cterm=none
 
