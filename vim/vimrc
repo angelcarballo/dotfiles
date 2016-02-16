@@ -36,17 +36,13 @@ Plugin 'plasticboy/vim-markdown'          " markdown support
 " Text objects
 Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
 Plugin 'whatyouhide/vim-textobj-erb'      " erb block text object
-Plugin 'suan/vim-instant-markdown'        " markdown preview
 Plugin 'kana/vim-textobj-entire'          " entire buffer text object
 Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
-Plugin 'tpope/vim-abolish'                " coercions, plurals, camelcase [crs, crm, crc, cru]
 
 " Look & Feel, Navigation
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
 Plugin 'yggdroot/indentLine'              " show indentation lines
 Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
-Plugin 'ap/vim-buftabline'                " show buffers on tabbar
-Plugin 'moll/vim-bbye'                    " better buffer killing/unloading
 
 " Colorschemes
 Plugin 'w0ng/vim-hybrid'                  " hybrid colorscheme
@@ -78,11 +74,11 @@ Plugin 'tpope/vim-repeat'                 " extend repeat support
 Plugin 'AndrewRadev/switch.vim'           " easy switches
 Plugin 'ecomba/vim-ruby-refactoring'      " easier ruby refactoring
 Plugin 'danro/rename.vim'                 " rename current file
-Plugin 'christoomey/vim-titlecase'        " titlecase text objects
 Plugin 'christoomey/vim-system-copy'      " send commands to tmux
 Plugin 'xolox/vim-notes'                  " easy note taking
 Plugin 'xolox/vim-misc'                   " required by vim-notes
 Plugin 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
+Plugin 'suan/vim-instant-markdown'        " markdown preview
 
 
 " All of your Plugins must be added before the following line
@@ -182,8 +178,8 @@ augroup rubygroup
   autocmd FileType ruby let b:dispatch = 'ruby %'
   autocmd FileType ruby setl sw=2 sts=2 ts=2 tw=80 " Two spaces per tab
   autocmd FileType ruby nnoremap <leader>vs :vsplit <C-r>=substitute(expand("%"), '^\(.*\)\.rb$', 'spec\/\1_spec.rb', "")<cr><cr>
-  autocmd FileType ruby :iabbrev <buffer> bpry require 'pry'; binding.pry
   autocmd FileType ruby vnoremap <leader>th :Tabularize /=><CR>
+  autocmd FileType ruby :iabbrev <buffer> bpry require 'pry'; binding.pry
   autocmd FileType ruby :iabbrev <buffer> classdescription #== Description
         \<CR>
         \<CR>== Responsibilities
@@ -235,7 +231,6 @@ let g:vroom_map_keys = 0
 let g:vroom_cucumber_path = 'rspec '
 let g:vroom_spec_command  = 'rspec '
 let g:vroom_use_vimux  = 1
-let g:VimuxRunnerType = "window"
 
 "" Markdown options
 let g:vim_markdown_folding_disabled=1
@@ -253,6 +248,7 @@ if executable('ag')
         \ --ignore .DS_Store
         \ --ignore bundle
         \ --ignore doc
+        \ --ignore tmp
         \ -g ""'
   let g:ctrlp_use_caching = 0
 endif
@@ -334,7 +330,6 @@ nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 " Quick save/quit
 nnoremap <leader>w :w!<CR>
 nnoremap <leader>q :q!<CR>
-nnoremap <leader>wq :wq<CR>
 
 " Quick ruby extract method
 vnoremap <leader>cm :RExtractMethod<CR>
@@ -355,10 +350,6 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
 
 " Search visual selected text with Ags
 vnoremap <C-f> "hy:Ags "<C-r>h"<CR>
-
-" move lines up and down
-nnoremap + ddkP
-nnoremap - ddp
 
 " delete lines and word from insert mode
 inoremap <c-d> <esc>ddi
@@ -381,10 +372,13 @@ nnoremap L $
 
 " motions for in next ..
 onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap in) :<c-u>normal! f(vi(<cr>
 onoremap in[ :<c-u>normal! f[vi[<cr>
+onoremap in] :<c-u>normal! f[vi[<cr>
 onoremap in{ :<c-u>normal! f{vi{<cr>
+onoremap in} :<c-u>normal! f{vi{<cr>
 onoremap in' :<c-u>normal! f'vi'<cr>
-onoremap in' :<c-u>normal! f'vi'<cr>
+onoremap in" :<c-u>normal! f"vi"<cr>
 
 " vim-notes mappings
 nnoremap <leader>rn :RecentNotes<CR>
@@ -393,6 +387,10 @@ nnoremap <leader>on :Note<space>
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
+
+" move around using visual lines, usefull when wrap is enabled
+nnoremap <silent> k gk
+nnoremap <silent> j gj
 
 "}}}
 
