@@ -415,6 +415,9 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <silent> k gk
 nnoremap <silent> j gj
 
+" beautify json
+nnoremap <leader>ij :%!python -m json.tool<CR>
+
 "}}}
 
 
