@@ -37,7 +37,7 @@ bindkey '^r' history-incremental-search-backward
 
 # easier cd into frequent directories
 setopt auto_cd
-cdpath=($HOME/thoughtbot $HOME/src)
+cdpath=($HOME/src)
 
 # dont share history
 setopt no_share_history
