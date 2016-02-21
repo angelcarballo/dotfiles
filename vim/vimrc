@@ -91,6 +91,7 @@ filetype plugin indent on                 " required
 " General settings ------------------------------------------------------------{{{
 syntax enable
 let mapleader=","                 " map <leader> to ,
+let g:netrw_liststyle=3           " set tree view for netrw
 filetype plugin indent on         " autoindent by file type
 set encoding=utf-8                " use UTF8 by default"
 set nu                            " show line numbers
