@@ -43,6 +43,7 @@ Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
 Plugin 'tpope/vim-vinegar'                " file explorer improvements
 Plugin 'yggdroot/indentLine'              " show indentation lines
 Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle' " search visual selected text with '*'
 
 " Colorschemes
 Plugin 'w0ng/vim-hybrid'                  " hybrid colorscheme
@@ -72,13 +73,12 @@ Plugin 'tpope/vim-dispatch'               " run processes on the background
 Plugin 'airblade/vim-gitgutter'           " realtime git-diff
 Plugin 'tpope/vim-repeat'                 " extend repeat support
 Plugin 'AndrewRadev/switch.vim'           " easy switches
-Plugin 'ecomba/vim-ruby-refactoring'      " easier ruby refactoring
-Plugin 'danro/rename.vim'                 " rename current file
 Plugin 'christoomey/vim-system-copy'      " send commands to tmux
 Plugin 'xolox/vim-notes'                  " easy note taking
 Plugin 'xolox/vim-misc'                   " required by vim-notes
 Plugin 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 Plugin 'suan/vim-instant-markdown'        " markdown preview
+Plugin 'AndrewRadev/splitjoin.vim'        " splip/join statements
 
 
 " All of your Plugins must be added before the following line
@@ -312,7 +312,6 @@ nnoremap <leader>sh :sp<CR>
 nnoremap <Left> :bprevious<CR>
 nnoremap <Right> :bnext<CR>
 nnoremap <c-n> :bnext<cr>
-nnoremap <silent> <leader>d :Bdelete<CR>
 
 " Rspec and turnip tests on tmux
 map <leader>sf :VroomRunTestFile<CR>
