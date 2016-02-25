@@ -287,9 +287,6 @@ let g:notes_smart_quotes = 0
 
 " Global mappings ---------------------------------------------------------------{{{
 
-" Quick : on normal mode
-nmap ; :
-
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
