@@ -351,9 +351,6 @@ nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>w :w!<CR>
 nnoremap <leader>q :q!<CR>
 
-" Quick ruby extract method
-vnoremap <leader>cm :RExtractMethod<CR>
-
 " Check spelling
 nnoremap <silent> <leader>cs :setlocal spell spelllang=en_us<CR>
 
@@ -364,6 +361,8 @@ nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gp :Gpush
 nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gr :Gread<CR>
+nnoremap <leader>gb :Gbrowse<CR>
+vnoremap <leader>gb :Gbrowse<CR>
 
 " Search and replace current selection
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
