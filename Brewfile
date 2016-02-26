@@ -14,3 +14,6 @@ brew "zsh-completions"
 
 # remove ANSI codes, usefull for tmux-logging
 brew "ansifilter"
+
+# better diff formatting
+brew "diff-so-fancy"
