@@ -3,7 +3,13 @@
 # Tmux Session (ts)
 # source: https://github.com/thoughtbot/dotfiles/blob/master/bin/tat
 
-session_name="$(basename "$PWD" | tr . -)"
+current_folder="$(basename "$PWD" | tr . -)"
+
+if [ $# -eq 0 ]; then
+  session_name=$current_folder
+else
+  session_name=$1
+fi
 
 session_exists() {
   tmux list-sessions | sed -E 's/:.*$//' | grep -q "^$session_name$"
