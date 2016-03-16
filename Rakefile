@@ -6,7 +6,7 @@ desc 'Initial setup (get dependencies, rbenv and run all setup tasks)'
 task :bootstrap => ['install', 'setup', 'link']
 
 desc 'Run all install tasks'
-task :install => ['install:dep', 'install:rbenv', 'install:tmux']
+task :install => ['install:dep', 'install:rbenv', 'install:tmux', 'install:spacemacs']
 
 desc 'Run all setup tasks'
 task :setup => ['setup:vim', 'setup:git', 'setup:osx']
@@ -63,6 +63,9 @@ task :link do
   # git
   update_link 'git/gitignore_global', '.gitignore_global'
 
+  # spacemacs
+  update_link 'emacs/spacemacs', '.spacemacs'
+
   puts 'Done!'
 end
 
@@ -91,6 +94,13 @@ namespace :install do
   task :tmux do
     verbose(false) {
       sh "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+    }
+  end
+
+  desc 'Install spacemacs'
+  task :spacemacs do
+    verbose(false) {
+      sh "git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d"
     }
   end
 end
