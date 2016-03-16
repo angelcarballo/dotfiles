@@ -30,6 +30,7 @@ values."
                       auto-completion-complete-with-key-sequence "tab"
                       auto-completion-complete-with-key-sequence-delay 0.1
                       auto-completion-private-snippets-directory nil)
+     (shell :variables shell-default-shell 'ansi-term)
      emacs-lisp
      git
      ;; better-defaults
@@ -250,7 +251,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
-  (global-company-mode) ; autocomplete everywhere
+  ;; (global-company-mode) ; autocomplete everywhere
   (spacemacs/toggle-smartparens-globally-on) ; autom complete parens everywhere
   (global-hl-line-mode -1) ; Disable current line highlight
   )
