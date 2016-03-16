@@ -36,8 +36,9 @@ values."
            ruby-test-runner 'rspec)
      emacs-lisp
      git
+     markdown
+     ranger
      ;; better-defaults
-     ;; markdown
      ;; org
      ;; spell-checking
      ;; syntax-checking
