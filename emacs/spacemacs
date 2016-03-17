@@ -30,20 +30,23 @@ values."
                       auto-completion-complete-with-key-sequence "tab"
                       auto-completion-complete-with-key-sequence-delay 0.1
                       auto-completion-private-snippets-directory nil)
-     (shell :variables shell-default-shell 'ansi-term)
+     (shell :variables
+            shell-default-shell 'ansi-term
+            shell-default-term-shell "/usr/local/bin/zsh")
      (ruby :variables
            ruby-version-manager 'rbenv
            ruby-test-runner 'rspec)
      ruby-on-rails
      emacs-lisp
+     version-control
      git
+     github
      markdown
      ranger
      ;; better-defaults
      ;; org
      ;; spell-checking
      ;; syntax-checking
-     ;; version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -192,7 +195,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -217,7 +220,7 @@ values."
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
-   dotspacemacs-highlight-delimiters 'all
+   dotspacemacs-highlight-delimiters 'current
    ;; If non nil advises quit functions to keep server open when quitting.
    ;; (default nil)
    dotspacemacs-persistent-server nil
@@ -244,7 +247,20 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  )
+  (setq-default
+
+   ;; Avy
+   avy-all-windows 'all-frames
+
+   ;; Ranger
+   ranger-override-dired t
+
+   ;; Use Emacs terminfo, not system terminfo
+   system-uses-terminfo nil
+
+   ;; Whitespace mode
+   ;; whitespace-style '(face tabs tab-mark newline-mark)
+   ))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -256,7 +272,6 @@ you should place you code here."
   ;; (global-company-mode) ; autocomplete everywhere
   (spacemacs/toggle-smartparens-globally-on) ; autom complete parens everywhere
   (global-hl-line-mode -1) ; disable current line highlight
-  (avy-all-windows) ; use avy-word / SPC SPC across all frames
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
