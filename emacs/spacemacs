@@ -286,6 +286,9 @@ you should place you code here."
 
   ;; stop asking whether to save newly added abbrev when quitting emacs
   (setq save-abbrevs nil)
+
+  ;; H goes to beginning of the line
+  (define-key evil-normal-state-map (kbd "H") (kbd "^"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
