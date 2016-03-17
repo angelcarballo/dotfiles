@@ -34,6 +34,7 @@ values."
      (ruby :variables
            ruby-version-manager 'rbenv
            ruby-test-runner 'rspec)
+     ruby-on-rails
      emacs-lisp
      git
      markdown
@@ -254,7 +255,8 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
   ;; (global-company-mode) ; autocomplete everywhere
   (spacemacs/toggle-smartparens-globally-on) ; autom complete parens everywhere
-  (global-hl-line-mode -1) ; Disable current line highlight
+  (global-hl-line-mode -1) ; disable current line highlight
+  (avy-all-windows) ; use avy-word / SPC SPC across all frames
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
