@@ -269,9 +269,22 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
-  ;; (global-company-mode) ; autocomplete everywhere
-  (spacemacs/toggle-smartparens-globally-on) ; autom complete parens everywhere
-  (global-hl-line-mode -1) ; disable current line highlight
+
+  ; autom complete parens everywhere
+  (spacemacs/toggle-smartparens-globally-on)
+
+  ; disable current line highlight
+  (global-hl-line-mode -1)
+
+  ;; Emacs abbreviations
+  (define-abbrev-table 'global-abbrev-table '(
+                                              ("bpry" "bundle exec pry; binding.pry")
+                                              ))
+  ;; turn on abbrev mode globally
+  (setq-default abbrev-mode t)
+
+  ;; stop asking whether to save newly added abbrev when quitting emacs
+  (setq save-abbrevs nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
