@@ -289,6 +289,13 @@ you should place you code here."
 
   ;; H goes to beginning of the line
   (define-key evil-normal-state-map (kbd "H") (kbd "^"))
+
+  ;; j/k move using visual lines, usefull when wrap is enabled
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
+  ;; Don't move cursor back after exiting insert mode
+  (setq evil-move-cursor-back nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
