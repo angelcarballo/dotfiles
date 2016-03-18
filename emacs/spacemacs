@@ -305,7 +305,13 @@ you should place you code here."
                                    '("~/Dropbox/org")))
 
   ;; Don't backup files, let Git do the work
-  (setq make-backup-files nil) 
+  (setq make-backup-files nil)
+
+  ;; Don't ask when opening large files
+  (setq large-file-warning-threshold nil)
+
+  ;; Consider '_' part of words
+  (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 
   )
 
