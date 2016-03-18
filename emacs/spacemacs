@@ -43,8 +43,8 @@ values."
      github
      markdown
      ranger
+     org
      ;; better-defaults
-     ;; org
      ;; spell-checking
      ;; syntax-checking
      )
@@ -296,7 +296,15 @@ you should place you code here."
 
   ;; Don't move cursor back after exiting insert mode
   (setq evil-move-cursor-back nil)
+
+  ;; Restore vim jump forward
+  (define-key evil-motion-state-map [C-i] 'evil-jump-forward)
+
+  ;; Org mode configuration
+  (with-eval-after-load 'org (setq org-agenda-files
+                                   '("~/Dropbox/org")))
   )
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
