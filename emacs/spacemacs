@@ -44,8 +44,8 @@ values."
      markdown
      ranger
      org
+     spell-checking
      ;; better-defaults
-     ;; spell-checking
      ;; syntax-checking
      )
    ;; List of additional packages that will be installed without being
@@ -151,7 +151,7 @@ values."
    dotspacemacs-display-default-layout nil
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-resume-layouts t
    ;; Location where to auto-save files. Possible values are `original' to
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
@@ -312,6 +312,10 @@ you should place you code here."
 
   ;; Consider '_' part of words
   (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+
+  ;; Don't enable spell checker by default
+  (setq-default dotspacemacs-configuration-layers
+                '((spell-checking :variables spell-checking-enable-by-default nil)))
 
   )
 
