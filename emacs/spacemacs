@@ -151,7 +151,7 @@ values."
    dotspacemacs-display-default-layout nil
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts t
+   dotspacemacs-auto-resume-layouts nil
    ;; Location where to auto-save files. Possible values are `original' to
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
@@ -316,6 +316,9 @@ you should place you code here."
   ;; Don't enable spell checker by default
   (setq-default dotspacemacs-configuration-layers
                 '((spell-checking :variables spell-checking-enable-by-default nil)))
+
+  (add-to-list 'default-frame-alist '(height . 50))
+  (add-to-list 'default-frame-alist '(width . 150))
 
   )
 
