@@ -23,7 +23,16 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     osx
+
+     ;; languages/major modes
+     (ruby :variables
+           ruby-version-manager 'rbenv
+           ruby-test-runner 'rspec)
+     ruby-on-rails
+     emacs-lisp
+     yaml
+     markdown
+
      (auto-completion :variables
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'cycle
@@ -33,18 +42,15 @@ values."
      (shell :variables
             shell-default-shell 'ansi-term
             shell-default-term-shell "/usr/local/bin/zsh")
-     (ruby :variables
-           ruby-version-manager 'rbenv
-           ruby-test-runner 'rspec)
-     ruby-on-rails
-     emacs-lisp
+
      version-control
      git
      github
-     markdown
      ranger
      org
      spell-checking
+     osx
+
      ;; better-defaults
      ;; syntax-checking
      )
