@@ -323,9 +323,12 @@ you should place you code here."
   (setq-default dotspacemacs-configuration-layers
                 '((spell-checking :variables spell-checking-enable-by-default nil)))
 
+  ;; Set default frame size
   (add-to-list 'default-frame-alist '(height . 50))
   (add-to-list 'default-frame-alist '(width . 150))
 
+  ;; Enable company autocompletion everywhere
+  (global-company-mode)
   )
 
 
