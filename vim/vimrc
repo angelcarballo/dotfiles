@@ -348,7 +348,8 @@ nnoremap <silent> <leader>p :CtrlP<CR>
 nnoremap <silent> <leader>bb :CtrlPBuffer<CR>
 
 " Quick save/quit
-nnoremap <leader>fs :w!<CR>
+nnoremap <leader>fs :w<CR>
+nnoremap <leader>fc :wq<CR>
 nnoremap <leader>q :q!<CR>
 
 " Check spelling
