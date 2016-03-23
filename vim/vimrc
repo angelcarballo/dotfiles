@@ -92,7 +92,7 @@ filetype plugin indent on                 " required
 
 " General settings ------------------------------------------------------------{{{
 syntax enable
-let mapleader=","                 " map <leader> to ,
+let mapleader = "\<Space>"        " map <leader> to SPACE
 let g:netrw_liststyle=3           " set tree view for netrw
 filetype plugin indent on         " autoindent by file type
 set encoding=utf-8                " use UTF8 by default"
@@ -199,8 +199,6 @@ endif
 augroup rubygroup
   autocmd!
   autocmd FileType ruby let b:dispatch = 'ruby %'
-  autocmd FileType ruby nnoremap <leader>vs :vsplit <C-r>=substitute(expand("%"), '^\(.*\)\.rb$', 'spec\/\1_spec.rb', "")<cr><cr>
-  autocmd FileType ruby vnoremap <leader>th :Tabularize /=><CR>
   autocmd FileType ruby :iabbrev <buffer> bpry require 'pry'; binding.pry
   autocmd FileType ruby :iabbrev <buffer> classdescription #== Description
         \<CR>
@@ -302,13 +300,12 @@ nnoremap <silent> <leader>eS :UltiSnipsEdit<CR>
 nnoremap <leader><leader> <c-^>
 
 " Splits
-nnoremap <leader>sv :vsp<CR>
-nnoremap <leader>sh :sp<CR>
+nnoremap <leader>wv :vsp<CR>
+nnoremap <leader>ws :sp<CR>
 
 " Use arrows to navigate buffers and tabs
-nnoremap <Left> :bprevious<CR>
-nnoremap <Right> :bnext<CR>
-nnoremap <c-n> :bnext<cr>
+nnoremap <leader>bp :bprevious<CR>
+nnoremap <leader>bn :bnext<CR>
 
 " Rspec and turnip tests on tmux
 map <leader>sf :VroomRunTestFile<CR>
@@ -344,11 +341,14 @@ map <leader>x :Dispatch<CR>
 " Easier last change shortcut
 nnoremap <silent> <leader>lc `[
 
+" Map regular ctrlp file search
+nnoremap <silent> <leader>p :CtrlP<CR>
+
 " Use ctrlp to find buffer
-nnoremap <silent> <leader>b :CtrlPBuffer<CR>
+nnoremap <silent> <leader>bb :CtrlPBuffer<CR>
 
 " Quick save/quit
-nnoremap <leader>w :w!<CR>
+nnoremap <leader>fs :w!<CR>
 nnoremap <leader>q :q!<CR>
 
 " Check spelling
@@ -403,9 +403,6 @@ onoremap in" :<c-u>normal! f"vi"<cr>
 nnoremap <leader>rn :RecentNotes<CR>
 nnoremap <leader>sn :SearchNotes<space>
 nnoremap <leader>on :Note<space>
-
-" turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
 
 " move around using visual lines, usefull when wrap is enabled
 nnoremap <silent> k gk
