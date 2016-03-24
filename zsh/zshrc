@@ -29,11 +29,24 @@ export VISUAL=vim
 export EDITOR=vim
 export KEYTIMEOUT=1  # reduce delay when changing modes
 
+# Custom functions
+source ~/.zsh/custom-functions.zsh
+
+# Altern between foreground/background with Ctrl-z (see custom-functions.zsh)
+bindkey '^z' fancy-ctrl-z
+
+# Complete words from tmux pane(s)
+bindkey '^xt' tmux-pane-words-prefix
+bindkey '^x^x' tmux-pane-words-anywhere
+
 # ctrl-w removed word backwards
 bindkey '^w' backward-kill-word
 
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward
+
+# quickly move up one level
+bindkey -s '^u' '^qcd ..\n'
 
 # easier cd into frequent directories
 setopt auto_cd
