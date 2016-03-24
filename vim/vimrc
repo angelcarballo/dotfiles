@@ -40,11 +40,12 @@ Plugin 'kana/vim-textobj-entire'          " entire buffer text object
 Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
 
 " Look & Feel, Navigation
-Plugin 'tpope/vim-vinegar'                " file explorer improvements
-Plugin 'yggdroot/indentLine'              " show indentation lines
-Plugin 'bronson/vim-visual-star-search'   " search visual selected text with '*'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle' " search visual selected text with '*'
-Plugin 'terryma/vim-expand-region'        " visual expandable regions
+Plugin 'tpope/vim-vinegar'                 " file explorer improvements
+Plugin 'yggdroot/indentLine'               " show indentation lines
+Plugin 'bronson/vim-visual-star-search'    " search visual selected text with '*'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
+Plugin 'terryma/vim-expand-region'         " visual expandable regions
+Plugin 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
 
 " Colorschemes
 Plugin 'w0ng/vim-hybrid'                  " hybrid colorscheme
@@ -415,6 +416,9 @@ nnoremap <leader>d :Dash<cr>
 
 " clear search highlights
 nnoremap <silent> <leader>cs :nohl<cr>
+
+" altern between implementation and spec
+nnoremap <leader>a :OpenAlternate<cr>
 
 "}}}
 
