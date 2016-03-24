@@ -119,6 +119,7 @@ set nowrap                      " dont wrap lines
 set backspace=indent,eol,start  " backspace through everything
 set wildmenu                    " visual autocomplete for command menu
 set lazyredraw                  " redraw only when needed
+set formatoptions+=j            " delete comment character when joining commented lines"
 runtime macros/matchit.vim      " allow % to match more than just single characters
 
 "}}}
