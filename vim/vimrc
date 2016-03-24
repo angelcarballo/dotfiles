@@ -302,8 +302,9 @@ nnoremap <leader><leader> <c-^>
 " Splits
 nnoremap <leader>wv :vsp<CR>
 nnoremap <leader>ws :sp<CR>
+nnoremap <leader>ww <c-w>w
 
-" Use arrows to navigate buffers and tabs
+" Buffer navigation
 nnoremap <leader>bp :bprevious<CR>
 nnoremap <leader>bn :bnext<CR>
 
@@ -313,10 +314,10 @@ map <leader>sc :VroomRunNearestTest<CR>
 map <leader>sl :VroomRunLastTest<CR>
 
 " Send visual selection to tmux
-vnoremap <leader>tx :call VimuxSlime()<CR>
+vnoremap <leader>tt :call VimuxSlime()<CR>
 
 " Send current line to tmux
-noremap <leader>tx V:call VimuxSlime()<CR>
+noremap <leader>tt V:call VimuxSlime()<CR>
 
 " Send whole file to tmux
 noremap <leader>tf ggVG:call VimuxSlime()<CR>
@@ -341,7 +342,7 @@ map <leader>x :Dispatch<CR>
 " Easier last change shortcut
 nnoremap <silent> <leader>lc `[
 
-" Map regular ctrlp file search
+" Regular ctrlp file search
 nnoremap <silent> <leader>p :CtrlP<CR>
 
 " Use ctrlp to find buffer
