@@ -65,6 +65,7 @@ Plugin 'gabesoft/vim-ags'                   " ag searcher integration
 Plugin 'benmills/vimux'                     " tmux intergation
 Plugin 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plugin 'tpope/gem-ctags'                    " include tags from installed gems
+Plugin 'rizzatti/dash.vim'                  " dash integration (documentation helper)
 
 " Extras
 Plugin 'godlygeek/tabular'                " code align (like on this comment)
@@ -201,11 +202,11 @@ augroup rubygroup
   autocmd FileType ruby let b:dispatch = 'ruby %'
   autocmd FileType ruby :iabbrev <buffer> bpry require 'pry'; binding.pry
   autocmd FileType ruby :iabbrev <buffer> classdescription #== Description
-        \<CR>
-        \<CR>== Responsibilities
-        \<CR>
-        \<CR>== Rationale
-        \<CR>
+        \<cr>
+        \<cr>== Responsibilities
+        \<cr>
+        \<cr>== Rationale
+        \<cr>
 augroup END
 "}}}
 
@@ -290,87 +291,87 @@ nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
 
 " Quickly edit/source the vimrc file
-nnoremap <silent> <leader>eV :e $MYVIMRC<CR>
-nnoremap <silent> <leader>sV :so $MYVIMRC<CR>
+nnoremap <silent> <leader>eV :e $MYVIMRC<cr>
+nnoremap <silent> <leader>sV :so $MYVIMRC<cr>
 
 " Quickly edit snippets
-nnoremap <silent> <leader>eS :UltiSnipsEdit<CR>
+nnoremap <silent> <leader>eS :UltiSnipsEdit<cr>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
 " Splits
-nnoremap <leader>wv :vsp<CR>
-nnoremap <leader>ws :sp<CR>
+nnoremap <leader>wv :vsp<cr>
+nnoremap <leader>ws :sp<cr>
 nnoremap <leader>ww <c-w>w
 
 " Buffer navigation
-nnoremap <leader>bp :bprevious<CR>
-nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>bp :bprevious<cr>
+nnoremap <leader>bn :bnext<cr>
 
 " Rspec and turnip tests on tmux
-map <leader>sf :VroomRunTestFile<CR>
-map <leader>sc :VroomRunNearestTest<CR>
-map <leader>sl :VroomRunLastTest<CR>
+map <leader>sf :VroomRunTestFile<cr>
+map <leader>sc :VroomRunNearestTest<cr>
+map <leader>sl :VroomRunLastTest<cr>
 
 " Send visual selection to tmux
-vnoremap <leader>tt :call VimuxSlime()<CR>
+vnoremap <leader>tt :call VimuxSlime()<cr>
 
 " Send current line to tmux
-noremap <leader>tt V:call VimuxSlime()<CR>
+noremap <leader>tt V:call VimuxSlime()<cr>
 
 " Send whole file to tmux
-noremap <leader>tf ggVG:call VimuxSlime()<CR>
+noremap <leader>tf ggVG:call VimuxSlime()<cr>
 
 " Other tmux interactions
-nnoremap <leader>to :VimuxRunCommand("")<CR>
-nnoremap <leader>ti :VimuxInspectRunner<CR>
-nnoremap <leader>tc :VimuxCloseRunner<CR>
-nnoremap <leader>tz :VimuxZoomRunner<CR>
+nnoremap <leader>to :VimuxRunCommand("")<cr>
+nnoremap <leader>ti :VimuxInspectRunner<cr>
+nnoremap <leader>tc :VimuxCloseRunner<cr>
+nnoremap <leader>tz :VimuxZoomRunner<cr>
 
 " Open File Explorer
-nnoremap <silent> <leader>ei :Explore<CR>
-nnoremap <silent> <leader>es :Sex<CR>
-nnoremap <silent> <leader>ev :Vex<CR>
+nnoremap <silent> <leader>ei :Explore<cr>
+nnoremap <silent> <leader>es :Sex<cr>
+nnoremap <silent> <leader>ev :Vex<cr>
 
 " Remove Trailing Whitespace
-nnoremap <silent> <leader>rw :%s/\s\+$//<CR>
+nnoremap <silent> <leader>rw :%s/\s\+$//<cr>
 
 " Execute dispatch for current file (based on filetype)
-map <leader>x :Dispatch<CR>
+map <leader>x :Dispatch<cr>
 
 " Easier last change shortcut
 nnoremap <silent> <leader>lc `[
 
 " Regular ctrlp file search
-nnoremap <silent> <leader>p :CtrlP<CR>
+nnoremap <silent> <leader>p :CtrlP<cr>
 
 " Use ctrlp to find buffer
-nnoremap <silent> <leader>bb :CtrlPBuffer<CR>
+nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
 
 " Quick save/quit
-nnoremap <leader>fs :w<CR>
-nnoremap <leader>fc :wq<CR>
-nnoremap <leader>q :q!<CR>
+nnoremap <leader>fs :w<cr>
+nnoremap <leader>fc :wq<cr>
+nnoremap <leader>q :q!<cr>
 
 " Check spelling
-nnoremap <silent> <leader>cs :setlocal spell spelllang=en_us<CR>
+nnoremap <silent> <leader>cs :setlocal spell spelllang=en_us<cr>
 
 " Fugitive
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gp :Gpush
-nnoremap <leader>gw :Gwrite<CR>
-nnoremap <leader>gr :Gread<CR>
-nnoremap <leader>gb :Gbrowse<CR>
-vnoremap <leader>gb :Gbrowse<CR>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gr :Gread<cr>
+nnoremap <leader>gb :Gbrowse<cr>
+vnoremap <leader>gb :Gbrowse<cr>
 
 " Search and replace current selection
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
 
 " Search visual selected text with Ags
-vnoremap <C-f> "hy:Ags "<C-r>h"<CR>
+vnoremap <C-f> "hy:Ags "<C-r>h"<cr>
 
 " delete lines and word from insert mode
 inoremap <c-d> <esc>ddi
@@ -402,7 +403,7 @@ onoremap in' :<c-u>normal! f'vi'<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
 
 " vim-notes mappings
-nnoremap <leader>rn :RecentNotes<CR>
+nnoremap <leader>rn :RecentNotes<cr>
 nnoremap <leader>sn :SearchNotes<space>
 nnoremap <leader>on :Note<space>
 
@@ -411,11 +412,14 @@ nnoremap <silent> k gk
 nnoremap <silent> j gj
 
 " beautify json
-nnoremap <leader>ij :%!python -m json.tool<CR>
+nnoremap <leader>ij :%!python -m json.tool<cr>
 
 " quick region expand in visual mode
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" open dash for keyword under cursor (only OSX)
+nnoremap <leader>d :Dash<cr>
 
 "}}}
 
@@ -435,15 +439,15 @@ function! s:ZoomToggle() abort
   endif
 endfunction
 command! ZoomToggle call s:ZoomToggle()
-nnoremap <silent> <leader>f :ZoomToggle<CR>
+nnoremap <silent> <leader>f :ZoomToggle<cr>
 
 """""""" Copy current file path """"""""""
 if has("mac") || has("gui_macvim") || has("gui_mac")
   " relative path  (src/foo.txt)
-  nnoremap <leader>cf :let @*=expand("%")<CR>
+  nnoremap <leader>cf :let @*=expand("%")<cr>
 
   " absolute path  (/something/src/foo.txt)
-  nnoremap <leader>cF :let @*=expand("%:p")<CR>
+  nnoremap <leader>cF :let @*=expand("%:p")<cr>
 endif
 
 """""""" Send text to tmux """"""""""
