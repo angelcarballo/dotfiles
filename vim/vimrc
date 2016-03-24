@@ -304,6 +304,7 @@ nnoremap <leader><leader> <c-^>
 nnoremap <leader>wv :vsp<cr>
 nnoremap <leader>ws :sp<cr>
 nnoremap <leader>ww <c-w>w
+nnoremap <leader>wc :q
 
 " Buffer navigation
 nnoremap <leader>bp :bprevious<cr>
@@ -351,11 +352,11 @@ nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
 
 " Quick save/quit
 nnoremap <leader>fs :w<cr>
-nnoremap <leader>fc :wq<cr>
-nnoremap <leader>q :q!<cr>
+nnoremap <leader>wq :wq<cr>
+nnoremap <leader>q :q<cr>
 
 " Check spelling
-nnoremap <silent> <leader>cs :setlocal spell spelllang=en_us<cr>
+nnoremap <silent> <leader>cS :setlocal spell spelllang=en_us<cr>
 
 " Fugitive
 nnoremap <leader>gs :Gstatus<cr>
@@ -392,16 +393,6 @@ nnoremap <leader>} ysiw}
 nnoremap H _
 nnoremap L $
 
-" motions for in next ..
-onoremap in( :<c-u>normal! f(vi(<cr>
-onoremap in) :<c-u>normal! f(vi(<cr>
-onoremap in[ :<c-u>normal! f[vi[<cr>
-onoremap in] :<c-u>normal! f[vi[<cr>
-onoremap in{ :<c-u>normal! f{vi{<cr>
-onoremap in} :<c-u>normal! f{vi{<cr>
-onoremap in' :<c-u>normal! f'vi'<cr>
-onoremap in" :<c-u>normal! f"vi"<cr>
-
 " vim-notes mappings
 nnoremap <leader>rn :RecentNotes<cr>
 nnoremap <leader>sn :SearchNotes<space>
@@ -421,8 +412,25 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " open dash for keyword under cursor (only OSX)
 nnoremap <leader>d :Dash<cr>
 
+" clear search highlights
+nnoremap <silent> <leader>cs :nohl<cr>
+
 "}}}
 
+" Global motions ---------------------------------------------------------------{{{
+
+" motions for in next ..
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap in) :<c-u>normal! f(vi(<cr>
+onoremap in[ :<c-u>normal! f[vi[<cr>
+onoremap in] :<c-u>normal! f[vi[<cr>
+onoremap in{ :<c-u>normal! f{vi{<cr>
+onoremap in} :<c-u>normal! f{vi{<cr>
+onoremap in' :<c-u>normal! f'vi'<cr>
+onoremap in" :<c-u>normal! f"vi"<cr>
+
+
+"}}}
 
 " Custom functions ---------------------------------------------------------------{{{
 
