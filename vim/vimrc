@@ -416,6 +416,12 @@ nnoremap <silent> <leader>cs :nohl<cr>
 " altern between implementation and spec
 nnoremap <leader>a :OpenAlternate<cr>
 
+" resize panes with cursor keys
+nnoremap <Left> :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
+nnoremap <Up> :resize -2<CR>
+nnoremap <Down> :resize +2<CR>
+
 "}}}
 " Global motions ---------------------------------------------------------------{{{
 
