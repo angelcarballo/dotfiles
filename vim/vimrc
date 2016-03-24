@@ -1,5 +1,5 @@
 set nocompatible                          " be iMproved, required
-filetype off                              " required
+filetype off                              " required by Vundle
 
 " Plugins  ------------------------------------------------------------{{{
 
@@ -90,9 +90,8 @@ call vundle#end()                         " required
 filetype plugin indent on                 " required
 
 "}}}
-
-
 " General settings ------------------------------------------------------------{{{
+
 syntax enable
 let mapleader = "\<Space>"        " map <leader> to SPACE
 let g:netrw_liststyle=3           " set tree view for netrw
@@ -118,10 +117,10 @@ set backspace=indent,eol,start    " backspace through everything
 set wildmenu                      " visual autocomplete for command menu
 set lazyredraw                    " redraw only when needed
 runtime macros/matchit.vim        " allow % to match more than just single characters
+
 "}}}
-
-
 " Look & Feel ------------------------------------------------------------------{{{
+
 set background=dark
 set visualbell                 " visual flash
 set noerrorbells               " no flash on errors, only al beginning/end of file
@@ -176,17 +175,15 @@ hi TabLine ctermfg=8 ctermbg=15
 hi TabLineSel ctermfg=193 ctermbg=65
 
 "}}}
-
-
 " Files to ignore -------------------------------------------------------------{{{
+
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*.lock       " Common
 set wildignore+=*/tmp/*,*.so,*.zip                     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.zip,*.exe                  " Windows
 set wildignore+=*/temp/*,*/backup/*                    " Vim
 set wildignore+=*/_site/*                              " Jekyll
+
 "}}}
-
-
 " Tmux related -----------------------------------------------------------------{{{
 
 " tmux knows the extended mouse mode
@@ -195,9 +192,8 @@ if &term =~ '^screen'
 endif
 
 "}}}
-
-
 " Ruby Filetype -----------------------------------------------------------------{{{
+
 augroup rubygroup
   autocmd!
   autocmd FileType ruby let b:dispatch = 'ruby %'
@@ -209,28 +205,27 @@ augroup rubygroup
         \<cr>== Rationale
         \<cr>
 augroup END
+
 "}}}
-
-
 " Scala Filetype -----------------------------------------------------------------{{{
+
 augroup scalagroup
   autocmd!
   autocmd BufRead,BufNewFile *.hocon set filetype=yaml
   autocmd FileType scala let b:dispatch = 'scala -nc %'
 augroup END
+
 "}}}
-
-
 " Markdown Filetype --------------------------------------------------------------{{{
+
 augroup markdowngroup
   autocmd!
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd FileType markdown set wrap
   autocmd FileType markdown setlocal spell
 augroup END
+
 "}}}
-
-
 " Plugin options ---------------------------------------------------------------{{{
 
 "" Vim-ruby options
@@ -283,8 +278,6 @@ let g:notes_tab_indents = 0
 let g:notes_smart_quotes = 0
 
 "}}}
-
-
 " Global mappings ---------------------------------------------------------------{{{
 
 " Auto indent pasted text
@@ -421,7 +414,6 @@ nnoremap <silent> <leader>cs :nohl<cr>
 nnoremap <leader>a :OpenAlternate<cr>
 
 "}}}
-
 " Global motions ---------------------------------------------------------------{{{
 
 " motions for in next ..
@@ -436,7 +428,6 @@ onoremap in" :<c-u>normal! f"vi"<cr>
 
 
 "}}}
-
 " Custom functions ---------------------------------------------------------------{{{
 
 """""""" Zoom panes """"""""""
