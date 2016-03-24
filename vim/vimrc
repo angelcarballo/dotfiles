@@ -346,6 +346,7 @@ nnoremap <silent> <leader>lc `[
 
 " Regular ctrlp file search
 nnoremap <silent> <leader>p :CtrlP<cr>
+nnoremap <silent> <leader>ff :CtrlP<cr>
 
 " Use ctrlp to find buffer
 nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
