@@ -90,6 +90,58 @@ call vundle#end()                         " required
 filetype plugin indent on                 " required
 
 "}}}
+" Plugin options ---------------------------------------------------------------{{{
+
+"" Vim-ruby options
+let ruby_spellcheck_strings = 1   " enable spellcheck inside ruby strings
+let ruby_minlines = 100           " avoid syntax errors while scrolling on large files
+
+"" IndentLine options
+let g:indentLine_char = '·'
+
+"" Split window on UltiSnipsEdit
+let g:UltiSnipsEditSplit="horizontal"
+
+"" UltiSnips options
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+"" Vromm configuration
+let g:vroom_map_keys = 0
+let g:vroom_cucumber_path = 'spring rspec --fail-fast'
+let g:vroom_spec_command  = 'spring rspec --fail-fast'
+let g:vroom_use_vimux  = 1
+
+"" Markdown options
+let g:vim_markdown_folding_disabled=1
+
+"" Ags (The Silver Searcher)
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden
+        \ --ignore .git
+        \ --ignore .svn
+        \ --ignore .hg
+        \ --ignore .DS_Store
+        \ --ignore bundle
+        \ --ignore doc
+        \ --ignore tmp
+        \ --ignore public
+        \ --ignore log
+        \ -g ""'
+  let g:ctrlp_use_caching = 0
+endif
+
+"" Vim-Notes options
+let g:notes_directories = ['~/Dropbox/notes']
+let g:notes_tab_indents = 0
+let g:notes_smart_quotes = 0
+
+"}}}
 " General settings ------------------------------------------------------------{{{
 
 syntax enable
@@ -120,7 +172,12 @@ set backspace=indent,eol,start  " backspace through everything
 set wildmenu                    " visual autocomplete for command menu
 set lazyredraw                  " redraw only when needed
 set formatoptions+=j            " delete comment character when joining commented lines"
+
 runtime macros/matchit.vim      " allow % to match more than just single characters
+
+if &term =~ '^screen'
+  set ttymouse=xterm2           " tmux knows the extended mouse mode
+endif
 
 "}}}
 " Look & Feel ------------------------------------------------------------------{{{
@@ -188,101 +245,43 @@ set wildignore+=*/temp/*,*/backup/*                    " Vim
 set wildignore+=*/_site/*                              " Jekyll
 
 "}}}
-" Tmux related -----------------------------------------------------------------{{{
+" Custom functions ---------------------------------------------------------------{{{
 
-" tmux knows the extended mouse mode
-if &term =~ '^screen'
-  set ttymouse=xterm2
+"""""""" Zoom panes """"""""""
+function! s:ZoomToggle() abort
+  if exists('t:zoomed') && t:zoomed
+    execute t:zoom_winrestcmd
+    let t:zoomed = 0
+  else
+    let t:zoom_winrestcmd = winrestcmd()
+    resize
+    vertical resize
+    let t:zoomed = 1
+  endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <silent> <leader>f :ZoomToggle<cr>
+
+"""""""" Copy current file path """"""""""
+if has("mac") || has("gui_macvim") || has("gui_mac")
+  " relative path  (src/foo.txt)
+  nnoremap <leader>cf :let @*=expand("%")<cr>
+
+  " absolute path  (/something/src/foo.txt)
+  nnoremap <leader>cF :let @*=expand("%:p")<cr>
+
+  " relative path with line number
+  nnoremap <leader>cl :let @+=join([expand('%'),  line(".")], ':')<cr>
 endif
 
-"}}}
-" Ruby Filetype -----------------------------------------------------------------{{{
-
-augroup rubygroup
-  autocmd!
-  autocmd FileType ruby let b:dispatch = 'ruby %'
-  autocmd FileType ruby :iabbrev <buffer> bpry require 'pry'; binding.pry
-  autocmd FileType ruby :iabbrev <buffer> classdescription #== Description
-        \<cr>
-        \<cr>== Responsibilities
-        \<cr>
-        \<cr>== Rationale
-        \<cr>
-augroup END
+"""""""" Send text to tmux """"""""""
+function! VimuxSlime() range
+  let cmds = join(getline("'<","'>"), '')
+  call VimuxRunCommand(cmds)
+endfunction
 
 "}}}
-" Scala Filetype -----------------------------------------------------------------{{{
-
-augroup scalagroup
-  autocmd!
-  autocmd BufRead,BufNewFile *.hocon set filetype=yaml
-  autocmd FileType scala let b:dispatch = 'scala -nc %'
-augroup END
-
-"}}}
-" Markdown Filetype --------------------------------------------------------------{{{
-
-augroup markdowngroup
-  autocmd!
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-  autocmd FileType markdown set wrap
-  autocmd FileType markdown setlocal spell
-augroup END
-
-"}}}
-" Plugin options ---------------------------------------------------------------{{{
-
-"" Vim-ruby options
-let ruby_spellcheck_strings = 1   " enable spellcheck inside ruby strings
-let ruby_minlines = 100           " avoid syntax errors while scrolling on large files
-
-"" IndentLine options
-let g:indentLine_char = '·'
-
-"" Split window on UltiSnipsEdit
-let g:UltiSnipsEditSplit="horizontal"
-
-"" UltiSnips options
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-"" Vromm configuration
-let g:vroom_map_keys = 0
-let g:vroom_cucumber_path = 'spring rspec --fail-fast'
-let g:vroom_spec_command  = 'spring rspec --fail-fast'
-let g:vroom_use_vimux  = 1
-
-"" Markdown options
-let g:vim_markdown_folding_disabled=1
-
-"" Ags (The Silver Searcher)
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden
-        \ --ignore .git
-        \ --ignore .svn
-        \ --ignore .hg
-        \ --ignore .DS_Store
-        \ --ignore bundle
-        \ --ignore doc
-        \ --ignore tmp
-        \ --ignore public
-        \ --ignore log
-        \ -g ""'
-  let g:ctrlp_use_caching = 0
-endif
-
-"" Vim-Notes options
-let g:notes_directories = ['~/Dropbox/notes']
-let g:notes_tab_indents = 0
-let g:notes_smart_quotes = 0
-
-"}}}
-" Global mappings ---------------------------------------------------------------{{{
+" Keybindings ---------------------------------------------------------------{{{
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
@@ -302,7 +301,7 @@ nnoremap <leader><leader> <c-^>
 nnoremap <leader>wv :vsp<cr>
 nnoremap <leader>ws :sp<cr>
 nnoremap <leader>ww <c-w>w
-nnoremap <leader>wc :q
+nnoremap <leader>wc :q<cr>
 
 " Buffer navigation
 nnoremap <leader>bp :bprevious<cr>
@@ -424,7 +423,7 @@ nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
 
 "}}}
-" Global motions ---------------------------------------------------------------{{{
+" Motions ---------------------------------------------------------------{{{
 
 " motions for in next ..
 onoremap in( :<c-u>normal! f(vi(<cr>
@@ -438,39 +437,37 @@ onoremap in" :<c-u>normal! f"vi"<cr>
 
 
 "}}}
-" Custom functions ---------------------------------------------------------------{{{
+" Filetype: Ruby -----------------------------------------------------------------{{{
 
-"""""""" Zoom panes """"""""""
-function! s:ZoomToggle() abort
-  if exists('t:zoomed') && t:zoomed
-    execute t:zoom_winrestcmd
-    let t:zoomed = 0
-  else
-    let t:zoom_winrestcmd = winrestcmd()
-    resize
-    vertical resize
-    let t:zoomed = 1
-  endif
-endfunction
-command! ZoomToggle call s:ZoomToggle()
-nnoremap <silent> <leader>f :ZoomToggle<cr>
+augroup rubygroup
+  autocmd!
+  autocmd FileType ruby let b:dispatch = 'ruby %'
+  autocmd FileType ruby :iabbrev <buffer> bpry require 'pry'; binding.pry
+  autocmd FileType ruby :iabbrev <buffer> classdescription #== Description
+        \<cr>
+        \<cr>== Responsibilities
+        \<cr>
+        \<cr>== Rationale
+        \<cr>
+augroup END
 
-"""""""" Copy current file path """"""""""
-if has("mac") || has("gui_macvim") || has("gui_mac")
-  " relative path  (src/foo.txt)
-  nnoremap <leader>cf :let @*=expand("%")<cr>
+"}}}
+" Filetype: Scala -----------------------------------------------------------------{{{
 
-  " absolute path  (/something/src/foo.txt)
-  nnoremap <leader>cF :let @*=expand("%:p")<cr>
+augroup scalagroup
+  autocmd!
+  autocmd BufRead,BufNewFile *.hocon set filetype=yaml
+  autocmd FileType scala let b:dispatch = 'scala -nc %'
+augroup END
 
-  " relative path with line number
-  nnoremap <leader>cl :let @+=join([expand('%'),  line(".")], ':')<cr>
-endif
+"}}}
+" Filetype: Markdown --------------------------------------------------------------{{{
 
-"""""""" Send text to tmux """"""""""
-function! VimuxSlime() range
-  let cmds = join(getline("'<","'>"), '')
-  call VimuxRunCommand(cmds)
-endfunction
+augroup markdowngroup
+  autocmd!
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd FileType markdown set wrap
+  autocmd FileType markdown setlocal spell
+augroup END
 
 "}}}
