@@ -15,6 +15,7 @@ Plugin 'tpope/vim-surround'               " alter surroundings (), [], '', {}
 Plugin 'tommcdo/vim-exchange'             " text exchange operator (cx..)
 Plugin 'kana/vim-textobj-user'            " custom text object support
 Plugin 'ConradIrwin/vim-bracketed-paste'  " toggle paste mode automatically
+Plugin 'tpope/vim-sleuth'                 " autoset indent options based on file type
 
 " Languages and frameworks
 Plugin 'vim-ruby/vim-ruby'                " ruby integration
@@ -82,7 +83,6 @@ Plugin 'xolox/vim-misc'                   " required by vim-notes
 Plugin 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 Plugin 'suan/vim-instant-markdown'        " markdown preview
 Plugin 'AndrewRadev/splitjoin.vim'        " splip/join statements
-Plugin 'tpope/vim-sleuth'                 " autoset indent options based on file type
 
 
 " All of your Plugins must be added before the following line
@@ -281,82 +281,36 @@ function! VimuxSlime() range
 endfunction
 
 "}}}
-" Keybindings ---------------------------------------------------------------{{{
+"Keybindings (leader) ---------------------------------------------------------------{{{
 
-" Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
-
-" Quickly edit/source the vimrc file
-nnoremap <silent> <leader>eV :e $MYVIMRC<cr>
-nnoremap <silent> <leader>sV :so $MYVIMRC<cr>
-
-" Quickly edit snippets
-nnoremap <silent> <leader>eS :UltiSnipsEdit<cr>
-
-" Switch between the last two files
+" <leader> - Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
-" Splits
-nnoremap <leader>wv :vsp<cr>
-nnoremap <leader>ws :sp<cr>
-nnoremap <leader>ww <c-w>w
-nnoremap <leader>wc :q<cr>
+" a - Alternate file
+nnoremap <silent> <leader>a :OpenAlternate<cr>
 
-" Buffer navigation
-nnoremap <leader>bp :bprevious<cr>
-nnoremap <leader>bn :bnext<cr>
+" b - Buffers
+nnoremap <silent> <leader>bp :bprevious<cr>
+nnoremap <silent> <leader>bn :bnext<cr>
+nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
 
-" Rspec and turnip tests on tmux
-map <leader>sf :VroomRunTestFile<cr>
-map <leader>sc :VroomRunNearestTest<cr>
-map <leader>sl :VroomRunLastTest<cr>
+" c - Clear
+nnoremap <silent> <leader>cs :nohl<cr>
 
-" Send visual selection to tmux
-vnoremap <leader>tt :call VimuxSlime()<cr>
+" d - Dash (open documentation for keyword)
+nnoremap <leader>d :Dash<cr>
 
-" Send current line to tmux
-noremap <leader>tt V:call VimuxSlime()<cr>
-
-" Send whole file to tmux
-noremap <leader>tf ggVG:call VimuxSlime()<cr>
-
-" Other tmux interactions
-nnoremap <leader>to :VimuxRunCommand("")<cr>
-nnoremap <leader>ti :VimuxInspectRunner<cr>
-nnoremap <leader>tc :VimuxCloseRunner<cr>
-nnoremap <leader>tz :VimuxZoomRunner<cr>
-
-" Open File Explorer
+" e - Explore
 nnoremap <silent> <leader>ei :Explore<cr>
 nnoremap <silent> <leader>es :Sex<cr>
 nnoremap <silent> <leader>ev :Vex<cr>
 
-" Remove Trailing Whitespace
-nnoremap <silent> <leader>rw :%s/\s\+$//<cr>
-
-" Execute dispatch for current file (based on filetype)
-map <leader>x :Dispatch<cr>
-
-" Easier last change shortcut
-nnoremap <silent> <leader>lc `[
-
-" Regular ctrlp file search
-nnoremap <silent> <leader>p :CtrlP<cr>
+" f - File
+nnoremap <leader>fs :w<cr>
+nnoremap <leader>fc :wq<cr>
 nnoremap <silent> <leader>ff :CtrlP<cr>
 
-" Use ctrlp to find buffer
-nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
-
-" Quick save/quit
-nnoremap <leader>fs :w<cr>
-nnoremap <leader>wq :wq<cr>
-nnoremap <leader>q :q<cr>
-
-" Check spelling
-nnoremap <silent> <leader>cS :setlocal spell spelllang=en_us<cr>
-
-" Fugitive
+" g - Git
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gd :Gdiff<cr>
@@ -365,6 +319,66 @@ nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gb :Gbrowse<cr>
 vnoremap <leader>gb :Gbrowse<cr>
+
+" i - Indent
+nnoremap <leader>ij :%!python -m json.tool<cr>
+
+" l - Last change (jump)
+nnoremap <silent> <leader>lc `[
+
+" n - Notes
+nnoremap <leader>nr :RecentNotes<cr>
+nnoremap <leader>ns :SearchNotes<space>
+nnoremap <leader>nn :Note<space>
+
+
+" q - Quit
+nnoremap <leader>q :q!<cr>
+
+" r - Remove
+nnoremap <silent> <leader>rw :%s/\s\+$//<cr>
+
+" s - Specs
+nnoremap <silent> <leader>sf :VroomRunTestFile<cr>
+nnoremap <silent> <leader>sc :VroomRunNearestTest<cr>
+nnoremap <silent> <leader>sl :VroomRunLastTest<cr>
+
+" S - Snippets
+nnoremap <silent> <leader>se :UltiSnipsEdit<cr>
+
+" t - Tmux
+
+" Send visual selection to tmux
+vnoremap <silent> <leader>tt :call VimuxSlime()<cr>
+" Send current line to tmux
+noremap <silent> <leader>tt V:call VimuxSlime()<cr>
+" Send whole file to tmux
+noremap <silent> <leader>tf ggVG:call VimuxSlime()<cr>
+" Other tmux interactions
+nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
+nnoremap <silent> <leader>ti :VimuxInspectRunner<cr>
+nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
+nnoremap <silent> <leader>tz :VimuxZoomRunner<cr>
+
+" T - Toggle
+nnoremap <leader>ts :setlocal spell spelllang=en_us<cr>
+
+" V - Vimrc
+nnoremap <leader>Ve :e $MYVIMRC<cr>
+nnoremap <leader>Vs :so $MYVIMRC<cr>
+
+" w - Windows
+nnoremap <silent> <leader>wv :vsp<cr>
+nnoremap <silent> <leader>ws :sp<cr>
+nnoremap <silent> <leader>ww <c-w>w
+nnoremap <silent> <leader>wc :q<cr>
+
+"}}}
+" Keybindings (other) ---------------------------------------------------------------{{{
+
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
 
 " Search and replace current selection
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
@@ -379,46 +393,21 @@ inoremap <c-w> <esc>bdiwi
 " uppercase current word
 inoremap <c-u> <esc>gUiwea
 
-" quick surround current word
-nnoremap <leader>' ysiw'
-nnoremap <leader>" ysiw"
-nnoremap <leader>( ysiw(
-nnoremap <leader>) ysiw)
-nnoremap <leader>] ysiw]
-nnoremap <leader>} ysiw}
-
 " quick beginning/end of line
 nnoremap H _
 nnoremap L $
-
-" vim-notes mappings
-nnoremap <leader>rn :RecentNotes<cr>
-nnoremap <leader>sn :SearchNotes<space>
-nnoremap <leader>on :Note<space>
 
 " move around using visual lines, usefull when wrap is enabled
 nnoremap <silent> k gk
 nnoremap <silent> j gj
 
-" beautify json
-nnoremap <leader>ij :%!python -m json.tool<cr>
-
 " quick region expand in visual mode
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" open dash for keyword under cursor (only OSX)
-nnoremap <leader>d :Dash<cr>
-
-" clear search highlights
-nnoremap <silent> <leader>cs :nohl<cr>
-
-" altern between implementation and spec
-nnoremap <leader>a :OpenAlternate<cr>
-
 " resize panes with cursor keys
-nnoremap <Left> :vertical resize +2<CR>
-nnoremap <Right> :vertical resize -2<CR>
+nnoremap <Left> :vertical resize -2<CR>
+nnoremap <Right> :vertical resize +2<CR>
 nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
 
