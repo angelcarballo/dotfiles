@@ -48,6 +48,7 @@ Plugin 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only whi
 Plugin 'terryma/vim-expand-region'         " visual expandable regions
 Plugin 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
 Plugin 'vim-scripts/BufOnly.vim'           " kill all buffers but current
+Plugin 'qpkorr/vim-bufkill'                " better buffer closing/killing/unloading
 
 " Colorschemes
 Plugin 'w0ng/vim-hybrid'                  " hybrid colorscheme
@@ -84,7 +85,6 @@ Plugin 'xolox/vim-misc'                   " required by vim-notes
 Plugin 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 Plugin 'suan/vim-instant-markdown'        " markdown preview
 Plugin 'AndrewRadev/splitjoin.vim'        " splip/join statements
-Plugin 'qpkorr/vim-bufkill'               " better buffer closing/killing/unloading
 
 
 " All of your Plugins must be added before the following line
