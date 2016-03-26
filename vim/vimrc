@@ -47,6 +47,7 @@ Plugin 'bronson/vim-visual-star-search'    " search visual selected text with '*
 Plugin 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
 Plugin 'terryma/vim-expand-region'         " visual expandable regions
 Plugin 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
+Plugin 'vim-scripts/BufOnly.vim'           " kill all buffers but current
 
 " Colorschemes
 Plugin 'w0ng/vim-hybrid'                  " hybrid colorscheme
@@ -83,6 +84,7 @@ Plugin 'xolox/vim-misc'                   " required by vim-notes
 Plugin 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 Plugin 'suan/vim-instant-markdown'        " markdown preview
 Plugin 'AndrewRadev/splitjoin.vim'        " splip/join statements
+Plugin 'qpkorr/vim-bufkill'               " better buffer closing/killing/unloading
 
 
 " All of your Plugins must be added before the following line
@@ -155,7 +157,7 @@ set encoding=utf-8              " use UTF8 by default
 set nu                          " show line numbers
 set showcmd                     " show complete commands
 set ruler                       " show cursor position
-set scrolloff=5                 " leave space after the current line
+set scrolloff=3                 " leave space after the current line
 set foldmethod=marker           " fold using {{{ .. }}} markers
 set diffopt+=vertical           " Always use vertical diffs
 set mouse+=a                    " enable mouse support in (a)ll modes
@@ -174,10 +176,6 @@ set lazyredraw                  " redraw only when needed
 set formatoptions+=j            " delete comment character when joining commented lines"
 
 runtime macros/matchit.vim      " allow % to match more than just single characters
-
-if &term =~ '^screen'
-  set ttymouse=xterm2           " tmux knows the extended mouse mode
-endif
 
 "}}}
 " Look & Feel ------------------------------------------------------------------{{{
@@ -298,6 +296,10 @@ nnoremap <silent> <leader>a :OpenAlternate<cr>
 " b - Buffers
 nnoremap <silent> <leader>bp :bprevious<cr>
 nnoremap <silent> <leader>bn :bnext<cr>
+nnoremap <silent> <leader>bd :BD<cr>
+nnoremap <silent> <leader>bk :BW<cr>
+nnoremap <silent> <leader>bK :Bonly<cr>
+nnoremap <silent> <leader>bl :buffers<cr>
 nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
 
 " c - Clear
