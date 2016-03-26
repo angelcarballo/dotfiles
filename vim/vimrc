@@ -1,7 +1,7 @@
+" Plugins  ------------------------------------------------------------{{{
+
 set nocompatible                          " be iMproved, required
 filetype off                              " required by Vundle
-
-" Plugins  ------------------------------------------------------------{{{
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -285,6 +285,12 @@ endfunction
 
 " <leader> - Switch between the last two files
 nnoremap <leader><leader> <c-^>
+
+" / - Search in project
+nnoremap <leader>/ :Ags ""<left>
+
+" * - Search in project for word under cursor
+nnoremap <leader>* :Ags ""<left><c-r><c-w><cr>
 
 " a - Alternate file
 nnoremap <silent> <leader>a :OpenAlternate<cr>
