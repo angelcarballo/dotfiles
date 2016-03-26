@@ -111,9 +111,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "" Vromm configuration
 let g:vroom_map_keys = 0
-let g:vroom_cucumber_path = 'spring rspec --fail-fast'
-let g:vroom_spec_command  = 'spring rspec --fail-fast'
-let g:vroom_use_vimux  = 1
+let g:vroom_cucumber_path = 'rspec'
+let g:vroom_spec_command  = 'rspec'
+let g:vroom_use_vimux = 1
+let g:vroom_options={'options':'--fail-fast'}
 
 "" Markdown options
 let g:vim_markdown_folding_disabled=1
@@ -278,6 +279,33 @@ function! VimuxSlime() range
   call VimuxRunCommand(cmds)
 endfunction
 
+
+"""""""" Elable/Disable spring for rspec tests """"""""""
+function! ToggleSpring()
+    if g:vroom_use_spring
+      let g:vroom_use_spring=0
+      echo 'Spring OFF'
+    else
+      let g:vroom_use_spring=1
+      echo 'Spring ON'
+    endif
+endfunction
+let g:vroom_use_spring=0
+
+"""""""" Elable/Disable fail-fast option for rspec tests """"""""""
+function! ToggleFailFast()
+  if g:vroom_use_fail_fast
+    let g:vroom_use_fail_fast=0
+    let g:vroom_options={'options':'--fail-fast'}
+    echo '--fail_fast OFF'
+  else
+    let g:vroom_use_fail_fast=1
+    let g:vroom_options={'options':'--fail-fast'}
+    echo '--fail_fast ON'
+  endif
+endfunction
+let g:vroom_use_fail_fast=1
+
 "}}}
 "Keybindings (leader) ---------------------------------------------------------------{{{
 
@@ -347,9 +375,10 @@ nnoremap <leader>Q :qall!<cr>
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>
 
 " s - Specs
-nnoremap <silent> <leader>sf :VroomRunTestFile<cr>
-nnoremap <silent> <leader>sc :VroomRunNearestTest<cr>
-nnoremap <silent> <leader>sl :VroomRunLastTest<cr>
+nnoremap <silent> <leader>sa :call vroom#RunTestFile(g:vroom_options)<cr>
+nnoremap <silent> <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
+nnoremap <silent> <leader>sc :call vroom#RunNearestTest(g:vroom_options)<cr>
+nnoremap <silent> <leader>sl :call vroom#RunLastTest()<cr>
 
 " S - Snippets
 nnoremap <silent> <leader>se :UltiSnipsEdit<cr>
@@ -369,7 +398,10 @@ nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
 nnoremap <silent> <leader>tz :VimuxZoomRunner<cr>
 
 " T - Toggle
-nnoremap <leader>ts :setlocal spell spelllang=en_us<cr>
+nnoremap <leader>ts :setlocal spell! spelllang=en_us<cr>
+nnoremap <leader>tl :set wrap! wrap?<cr>
+nnoremap <leader>trs :call ToggleSpring()<cr>
+nnoremap <leader>trf :call ToggleFailFast()<cr>
 
 " V - Vimrc
 nnoremap <leader>Ve :e $MYVIMRC<cr>
