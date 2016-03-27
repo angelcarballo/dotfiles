@@ -333,8 +333,10 @@ nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
 " c - Clear
 nnoremap <silent> <leader>cs :nohl<cr>
 
-" d - Dash (open documentation for keyword)
-nnoremap <leader>d :Dash<cr>
+" d - Diff/Dash
+nnoremap <leader>dd :Dash<cr>
+xnoremap <leader>dp :diffput<cr>
+xnoremap <leader>dg :diffget<cr>
 
 " e - Explore
 nnoremap <silent> <leader>ei :Explore<cr>
@@ -400,6 +402,7 @@ nnoremap <silent> <leader>tz :VimuxZoomRunner<cr>
 " T - Toggle
 nnoremap <leader>ts :setlocal spell! spelllang=en_us<cr>
 nnoremap <leader>tl :set wrap! wrap?<cr>
+nnoremap <leader>tr :set relativenumber! relativenumber?<cr>
 nnoremap <leader>trs :call ToggleSpring()<cr>
 nnoremap <leader>trf :call ToggleFailFast()<cr>
 
