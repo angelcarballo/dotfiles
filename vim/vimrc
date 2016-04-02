@@ -355,8 +355,9 @@ nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gp :Gpush
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
-nnoremap <leader>gb :Gbrowse<cr>
-vnoremap <leader>gb :Gbrowse<cr>
+nnoremap <leader>gb :Gblame HEAD<cr>
+nnoremap <leader>gh :Gbrowse<cr>
+vnoremap <leader>gh :Gbrowse<cr>
 
 " i - Indent
 nnoremap <leader>ij :%!python -m json.tool<cr>
