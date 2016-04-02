@@ -45,9 +45,6 @@ bindkey '^w' backward-kill-word
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward
 
-# quickly move up one level
-bindkey -s '^u' '^qcd ..\n'
-
 # easier cd into frequent directories
 setopt auto_cd
 cdpath=($HOME/src)
