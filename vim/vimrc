@@ -142,7 +142,6 @@ endif
 "" Vim-Notes options
 let g:notes_directories = ['~/Dropbox/notes']
 let g:notes_tab_indents = 0
-let g:notes_smart_quotes = 0
 
 "}}}
 " General settings ------------------------------------------------------------{{{
@@ -374,6 +373,7 @@ nnoremap <silent> <leader>lc `[
 nnoremap <leader>nr :RecentNotes<cr>
 nnoremap <leader>ns :SearchNotes<space>
 nnoremap <leader>nn :Note<space>
+vnoremap <leader>nc :NoteFromSelectedText<space>
 
 " q - Quit
 nnoremap <leader>q :q<cr>
@@ -418,11 +418,12 @@ nnoremap <leader>Ve :e $MYVIMRC<cr>
 nnoremap <leader>Vs :so $MYVIMRC<cr>
 
 " w - Windows
-nnoremap <silent> <leader>wv :vsp<cr>
-nnoremap <silent> <leader>ws :sp<cr>
-nnoremap <silent> <leader>ww <c-w>w
 nnoremap <silent> <leader>wc :wq<cr>
 nnoremap <silent> <leader>wC :only<cr>
+nnoremap <silent> <leader>we <c-w>=
+nnoremap <silent> <leader>ws :sp<cr>
+nnoremap <silent> <leader>wv :vsp<cr>
+nnoremap <silent> <leader>ww <c-w>w
 
 "}}}
 " Keybindings (other) ---------------------------------------------------------------{{{
