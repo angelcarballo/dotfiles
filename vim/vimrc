@@ -219,6 +219,7 @@ function! StatuslineTrailingSpaceWarning()
 endfunction
 
 set statusline=
+set statusline+=\[%n]                             " buffer number
 set statusline+=\ %<%f%m\                           " file path, modified flag
 set statusline+=\ %=\%l/%L\                         " current row/total rows
 set statusline+=%#error#                            " error color
@@ -344,8 +345,9 @@ nnoremap <silent> <leader>es :Sex<cr>
 nnoremap <silent> <leader>ev :Vex<cr>
 
 " f - File
-nnoremap <leader>fs :w<cr>
 nnoremap <leader>fc :wq<cr>
+nnoremap <leader>fs :w<cr>
+nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
 nnoremap <silent> <leader>ff :CtrlP<cr>
 nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
 nnoremap <silent> <leader>ft :CtrlP spec<cr>
