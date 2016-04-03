@@ -351,11 +351,12 @@ nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
 nnoremap <silent> <leader>ff :CtrlP<cr>
 nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
 nnoremap <silent> <leader>ft :CtrlP spec<cr>
+nnoremap <leader>fx :Dispatch<cr>
 
 " g - Git
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gp :Gpush
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
