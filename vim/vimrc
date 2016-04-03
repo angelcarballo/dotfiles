@@ -422,6 +422,7 @@ nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ws :sp<cr>
 nnoremap <silent> <leader>ww <c-w>w
 nnoremap <silent> <leader>wc :wq<cr>
+nnoremap <silent> <leader>wC :only<cr>
 
 "}}}
 " Keybindings (other) ---------------------------------------------------------------{{{
