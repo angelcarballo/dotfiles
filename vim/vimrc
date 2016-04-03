@@ -347,6 +347,8 @@ nnoremap <silent> <leader>ev :Vex<cr>
 nnoremap <leader>fs :w<cr>
 nnoremap <leader>fc :wq<cr>
 nnoremap <silent> <leader>ff :CtrlP<cr>
+nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
+nnoremap <silent> <leader>ft :CtrlP spec<cr>
 
 " g - Git
 nnoremap <leader>gs :Gstatus<cr>
