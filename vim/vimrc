@@ -53,20 +53,20 @@ Plugin 'qpkorr/vim-bufkill'                " better buffer closing/killing/unloa
 " Colorschemes
 Plugin 'w0ng/vim-hybrid'                  " hybrid colorscheme
 
-" Autocompletion
+" Auto completion
 Plugin 'SirVer/ultisnips'                 " snippets support
-Plugin 'ervandew/supertab'                " magic code autocomplete!
-Plugin 'tpope/vim-endwise'                " autoclose for vim blocks
-Plugin 'jiangmiao/auto-pairs'             " autoclose for (, [, {
-Plugin 'docunext/closetag.vim'            " autoclose for html tags
-Plugin 'mattn/webapi-vim'                 " call external api's
-Plugin 'christoomey/vim-quicklink'        " quick get links via google [C-k]
+Plugin 'ervandew/supertab'                " magic code auto complete!
+Plugin 'tpope/vim-endwise'                " auto close for vim blocks
+Plugin 'jiangmiao/auto-pairs'             " auto close for (, [, {
+Plugin 'docunext/closetag.vim'            " auto close for html tags
+Plugin 'mattn/webapi-vim'                 " call external API's
+Plugin 'christoomey/vim-quicklink'        " quick get links via Google [C-k]
 
 " Third party integration
 Plugin 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from vim
 Plugin 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
-Plugin 'gabesoft/vim-ags'                   " ag searcher integration
-Plugin 'benmills/vimux'                     " tmux intergation
+Plugin 'gabesoft/vim-ags'                   " The Silver Searcher integration
+Plugin 'benmills/vimux'                     " tmux integration
 Plugin 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plugin 'tpope/gem-ctags'                    " include tags from installed gems
 Plugin 'rizzatti/dash.vim'                  " dash integration (documentation helper)
@@ -76,7 +76,7 @@ Plugin 'godlygeek/tabular'                " code align (like on this comment)
 Plugin 'tpope/vim-commentary'             " comment/uncomment code
 Plugin 'skalnik/vim-vroom'                " ruby test runner
 Plugin 'tpope/vim-dispatch'               " run processes on the background
-Plugin 'airblade/vim-gitgutter'           " realtime git-diff
+Plugin 'airblade/vim-gitgutter'           " mealtime git-diff
 Plugin 'tpope/vim-repeat'                 " extend repeat support
 Plugin 'AndrewRadev/switch.vim'           " easy switches
 Plugin 'christoomey/vim-system-copy'      " send commands to tmux
@@ -84,7 +84,7 @@ Plugin 'xolox/vim-notes'                  " easy note taking
 Plugin 'xolox/vim-misc'                   " required by vim-notes
 Plugin 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 Plugin 'suan/vim-instant-markdown'        " markdown preview
-Plugin 'AndrewRadev/splitjoin.vim'        " splip/join statements
+Plugin 'AndrewRadev/splitjoin.vim'        " split/join statements
 
 
 " All of your Plugins must be added before the following line

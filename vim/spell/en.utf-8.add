@@ -39,3 +39,7 @@ capistrano
 backoffice
 identify
 Earnix
+Vundle
+plugins
+Colorschemes
+colorscheme
