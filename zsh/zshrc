@@ -32,8 +32,11 @@ export KEYTIMEOUT=1  # reduce delay when changing modes
 # Custom functions
 source ~/.zsh/custom-functions.zsh
 
+# Restore emacs bindings (useful on insert mode)
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
+bindkey '^w' backward-kill-word
+
 
 # Altern between foreground/background with Ctrl-z (see custom-functions.zsh)
 bindkey '^z' fancy-ctrl-z
@@ -41,9 +44,6 @@ bindkey '^z' fancy-ctrl-z
 # Complete words from tmux pane(s)
 bindkey '^xt' tmux-pane-words-prefix
 bindkey '^x^x' tmux-pane-words-anywhere
-
-# ctrl-w removed word backwards
-bindkey '^w' backward-kill-word
 
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward
@@ -60,6 +60,11 @@ export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$HOME/.rbenv/bin:$PATH"
 
 # Fix bug when passing arguments to rake
 alias rake='noglob rake'
+
+if [[ ! -d "$TMPDIR"  ]]; then
+  export TMPDIR="/tmp/`whoami`"
+  mkdir -p -m 700 "$TMPDIR"
+fi
 
 # Enable rbenv
 eval "$(rbenv init -)"
