@@ -32,6 +32,9 @@ export KEYTIMEOUT=1  # reduce delay when changing modes
 # Custom functions
 source ~/.zsh/custom-functions.zsh
 
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+
 # Altern between foreground/background with Ctrl-z (see custom-functions.zsh)
 bindkey '^z' fancy-ctrl-z
 
