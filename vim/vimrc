@@ -53,20 +53,20 @@ Plugin 'qpkorr/vim-bufkill'                " better buffer closing/killing/unloa
 " Colorschemes
 Plugin 'w0ng/vim-hybrid'                  " hybrid colorscheme
 
-" Autocompletion
+" Auto completion
 Plugin 'SirVer/ultisnips'                 " snippets support
-Plugin 'ervandew/supertab'                " magic code autocomplete!
-Plugin 'tpope/vim-endwise'                " autoclose for vim blocks
-Plugin 'jiangmiao/auto-pairs'             " autoclose for (, [, {
-Plugin 'docunext/closetag.vim'            " autoclose for html tags
-Plugin 'mattn/webapi-vim'                 " call external api's
-Plugin 'christoomey/vim-quicklink'        " quick get links via google [C-k]
+Plugin 'ervandew/supertab'                " magic code auto complete!
+Plugin 'tpope/vim-endwise'                " auto close for vim blocks
+Plugin 'jiangmiao/auto-pairs'             " auto close for (, [, {
+Plugin 'docunext/closetag.vim'            " auto close for html tags
+Plugin 'mattn/webapi-vim'                 " call external API's
+Plugin 'christoomey/vim-quicklink'        " quick get links via Google [C-k]
 
 " Third party integration
 Plugin 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from vim
 Plugin 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
-Plugin 'gabesoft/vim-ags'                   " ag searcher integration
-Plugin 'benmills/vimux'                     " tmux intergation
+Plugin 'gabesoft/vim-ags'                   " The Silver Searcher integration
+Plugin 'benmills/vimux'                     " tmux integration
 Plugin 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plugin 'tpope/gem-ctags'                    " include tags from installed gems
 Plugin 'rizzatti/dash.vim'                  " dash integration (documentation helper)
@@ -76,7 +76,7 @@ Plugin 'godlygeek/tabular'                " code align (like on this comment)
 Plugin 'tpope/vim-commentary'             " comment/uncomment code
 Plugin 'skalnik/vim-vroom'                " ruby test runner
 Plugin 'tpope/vim-dispatch'               " run processes on the background
-Plugin 'airblade/vim-gitgutter'           " realtime git-diff
+Plugin 'airblade/vim-gitgutter'           " mealtime git-diff
 Plugin 'tpope/vim-repeat'                 " extend repeat support
 Plugin 'AndrewRadev/switch.vim'           " easy switches
 Plugin 'christoomey/vim-system-copy'      " send commands to tmux
@@ -84,7 +84,7 @@ Plugin 'xolox/vim-notes'                  " easy note taking
 Plugin 'xolox/vim-misc'                   " required by vim-notes
 Plugin 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 Plugin 'suan/vim-instant-markdown'        " markdown preview
-Plugin 'AndrewRadev/splitjoin.vim'        " splip/join statements
+Plugin 'AndrewRadev/splitjoin.vim'        " split/join statements
 
 
 " All of your Plugins must be added before the following line
@@ -142,7 +142,6 @@ endif
 "" Vim-Notes options
 let g:notes_directories = ['~/Dropbox/notes']
 let g:notes_tab_indents = 0
-let g:notes_smart_quotes = 0
 
 "}}}
 " General settings ------------------------------------------------------------{{{
@@ -219,6 +218,7 @@ function! StatuslineTrailingSpaceWarning()
 endfunction
 
 set statusline=
+set statusline+=\[%n]                             " buffer number
 set statusline+=\ %<%f%m\                           " file path, modified flag
 set statusline+=\ %=\%l/%L\                         " current row/total rows
 set statusline+=%#error#                            " error color
@@ -344,20 +344,24 @@ nnoremap <silent> <leader>es :Sex<cr>
 nnoremap <silent> <leader>ev :Vex<cr>
 
 " f - File
-nnoremap <leader>fs :w<cr>
 nnoremap <leader>fc :wq<cr>
+nnoremap <leader>fs :w<cr>
+nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
 nnoremap <silent> <leader>ff :CtrlP<cr>
+nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
+nnoremap <silent> <leader>ft :CtrlP spec<cr>
+nnoremap <leader>fx :Dispatch<cr>
 
 " g - Git
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gp :Gpush
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
-nnoremap <leader>gl :Glog<cr>
-nnoremap <leader>gb :Gbrowse<cr>
-vnoremap <leader>gb :Gbrowse<cr>
+nnoremap <leader>gb :Gblame HEAD<cr>
+nnoremap <leader>gh :Gbrowse<cr>
+vnoremap <leader>gh :Gbrowse<cr>
 
 " i - Indent
 nnoremap <leader>ij :%!python -m json.tool<cr>
@@ -369,6 +373,7 @@ nnoremap <silent> <leader>lc `[
 nnoremap <leader>nr :RecentNotes<cr>
 nnoremap <leader>ns :SearchNotes<space>
 nnoremap <leader>nn :Note<space>
+vnoremap <leader>nc :NoteFromSelectedText<space>
 
 " q - Quit
 nnoremap <leader>q :q<cr>
@@ -401,21 +406,24 @@ nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
 nnoremap <silent> <leader>tz :VimuxZoomRunner<cr>
 
 " T - Toggle
-nnoremap <leader>ts :setlocal spell! spelllang=en_us<cr>
-nnoremap <leader>tl :set wrap! wrap?<cr>
-nnoremap <leader>tr :set relativenumber! relativenumber?<cr>
-nnoremap <leader>trs :call ToggleSpring()<cr>
-nnoremap <leader>trf :call ToggleFailFast()<cr>
+nnoremap <leader>Tl :set wrap! wrap?<cr>
+nnoremap <leader>Tf :set foldenable! foldenable?<cr>
+nnoremap <leader>Tr :set relativenumber! relativenumber?<cr>
+nnoremap <leader>Trf :call ToggleFailFast()<cr>
+nnoremap <leader>Trs :call ToggleSpring()<cr>
+nnoremap <leader>Ts :setlocal spell! spelllang=en_us<cr>
 
 " V - Vimrc
 nnoremap <leader>Ve :e $MYVIMRC<cr>
 nnoremap <leader>Vs :so $MYVIMRC<cr>
 
 " w - Windows
-nnoremap <silent> <leader>wv :vsp<cr>
-nnoremap <silent> <leader>ws :sp<cr>
-nnoremap <silent> <leader>ww <c-w>w
 nnoremap <silent> <leader>wc :wq<cr>
+nnoremap <silent> <leader>wC :only<cr>
+nnoremap <silent> <leader>we <c-w>=
+nnoremap <silent> <leader>ws :sp<cr>
+nnoremap <silent> <leader>wv :vsp<cr>
+nnoremap <silent> <leader>ww <c-w>w
 
 "}}}
 " Keybindings (other) ---------------------------------------------------------------{{{
