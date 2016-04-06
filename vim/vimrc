@@ -146,8 +146,11 @@ let g:notes_tab_indents = 0
 "}}}
 " General settings ------------------------------------------------------------{{{
 
+" map <leader> to both <comma> and <space>
+let mapleader = "\<Space>"
+nmap , <leader>
+
 syntax enable
-let mapleader = ","             " map <leader> to comma
 let g:netrw_liststyle=0         " thin (change to 3 for tree)
 let g:netrw_banner=0            " no banner
 let g:netrw_altv=1              " open files on right
@@ -427,6 +430,8 @@ nnoremap <silent> <leader>ww <c-w>w
 
 "}}}
 " Keybindings (other) ---------------------------------------------------------------{{{
+
+nnoremap <c-p> :CtrlP<cr>
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
