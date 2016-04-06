@@ -32,8 +32,8 @@ export KEYTIMEOUT=1  # reduce delay when changing modes
 # Custom functions
 source ~/.zsh/custom-functions.zsh
 
-# Restore emacs bindings (useful on insert mode)
-bindkey '^a' beginning-of-line
+# Custom emacs-like bindings (useful on insert mode)
+bindkey '^b' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^w' backward-kill-word
 
