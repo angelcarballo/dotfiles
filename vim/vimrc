@@ -143,6 +143,12 @@ endif
 let g:notes_directories = ['~/Dropbox/notes']
 let g:notes_tab_indents = 0
 
+"" Vim-Switch options
+let g:switch_custom_definitions =
+      \ [
+      \   ['TODO', 'DONE']
+      \ ]
+
 "}}}
 " General settings ------------------------------------------------------------{{{
 
