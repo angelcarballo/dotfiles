@@ -39,7 +39,10 @@ capistrano
 backoffice
 identify
 Earnix
-Vundle
-plugins
-Colorschemes
 colorscheme
+Colorschemes
+Autocompletion
+autoclose
+Plugins
+plugins
+Vundle

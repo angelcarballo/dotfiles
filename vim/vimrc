@@ -146,8 +146,11 @@ let g:notes_tab_indents = 0
 "}}}
 " General settings ------------------------------------------------------------{{{
 
+" map <leader> to both <comma> and <space>
+let mapleader = "\<Space>"
+nmap , <leader>
+
 syntax enable
-let mapleader = "\<Space>"      " map <leader> to SPACE
 let g:netrw_liststyle=0         " thin (change to 3 for tree)
 let g:netrw_banner=0            " no banner
 let g:netrw_altv=1              " open files on right
@@ -199,7 +202,7 @@ match ErrorMsg '\s\+$'
 
 " current git branch function for statusline
 function! CurrentBranch()
-  return exists('*fugitive#head') ? '  ' . fugitive#head() . ' ' : ''
+  return exists('*fugitive#head') ? '(git:' . fugitive#head() . ')' : ''
 endfunction
 
 "recalculate the trailing whitespace warning when idle, and after saving
@@ -220,12 +223,12 @@ endfunction
 set statusline=
 set statusline+=\[%n]                             " buffer number
 set statusline+=\ %<%f%m\                           " file path, modified flag
+set statusline+=%{CurrentBranch()}                " git branch
 set statusline+=\ %=\%l/%L\                         " current row/total rows
 set statusline+=%#error#                            " error color
 set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing space warning
 set statusline+=%*                                  " reset default color
 set statusline+=\ %r                                " read-only flag
-set statusline+=\ %{CurrentBranch()}                " git branch
 hi StatusLine ctermfg=15 ctermbg=8 cterm=bold
 hi StatusLineNC ctermfg=15 ctermbg=8 cterm=none
 
@@ -359,7 +362,7 @@ nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gp :Gpush
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
-nnoremap <leader>gb :Gblame HEAD<cr>
+nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gh :Gbrowse<cr>
 vnoremap <leader>gh :Gbrowse<cr>
 
@@ -428,6 +431,8 @@ nnoremap <leader>wq :wq<cr>
 
 "}}}
 " Keybindings (other) ---------------------------------------------------------------{{{
+
+nnoremap <c-p> :CtrlP<cr>
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
