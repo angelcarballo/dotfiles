@@ -416,7 +416,7 @@ nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
 nnoremap <silent> <leader>tz :VimuxZoomRunner<cr>
 
 " T - Toggle
-nnoremap <leader>Tl :set wrap! wrap?<cr>
+nnoremap <leader>Tw :set wrap! wrap?<cr>
 nnoremap <leader>Tf :set foldenable! foldenable?<cr>
 nnoremap <leader>Tr :set relativenumber! relativenumber?<cr>
 nnoremap <leader>Trf :call ToggleFailFast()<cr>
