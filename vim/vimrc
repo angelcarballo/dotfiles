@@ -228,9 +228,10 @@ function! StatuslineTrailingSpaceWarning()
 endfunction
 
 set statusline=
-set statusline+=\[%n]                             " buffer number
-set statusline+=\ %<%f%m\                           " file path, modified flag
-set statusline+=%{CurrentBranch()}                " git branch
+set statusline+=\[%n]                               " buffer number
+set statusline+=\ %<%f                              " file path, modified flag
+set statusline+=\ %{CurrentBranch()}                  " git branch
+set statusline+=\ %m\                               " file path, modified flag
 set statusline+=\ %=\%l/%L\                         " current row/total rows
 set statusline+=%#error#                            " error color
 set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing space warning
