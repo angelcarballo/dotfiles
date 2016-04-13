@@ -39,6 +39,7 @@ Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
 Plugin 'whatyouhide/vim-textobj-erb'      " erb block text object
 Plugin 'kana/vim-textobj-entire'          " entire buffer text object
 Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
+Plugin 'b4winckler/vim-angry'             " function argument text object
 
 " Look & Feel, Navigation
 Plugin 'tpope/vim-vinegar'                 " file explorer improvements
@@ -147,6 +148,12 @@ endif
 let g:notes_directories = ['~/Dropbox/notes']
 let g:notes_tab_indents = 0
 
+"" Vim-Switch options
+let g:switch_custom_definitions =
+      \ [
+      \   ['TODO', 'DONE']
+      \ ]
+
 "}}}
 " General settings ------------------------------------------------------------{{{
 
@@ -222,8 +229,9 @@ endfunction
 
 set statusline=
 set statusline+=\[%n]                               " buffer number
-set statusline+=\ %<%f%m\                           " file path, modified flag
-set statusline+=%{CurrentBranch()}                  " git branch
+set statusline+=\ %<%f                              " file path
+set statusline+=\ %{CurrentBranch()}                " git branch
+set statusline+=\ %m\                               " modified flag
 set statusline+=\ %=\%l/%L\                         " current row/total rows
 set statusline+=%#error#                            " error color
 set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing space warning
@@ -352,7 +360,7 @@ nnoremap <leader>fs :w<cr>
 nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
 nnoremap <silent> <leader>ff :CtrlP<cr>
 nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
-nnoremap <silent> <leader>ft :CtrlP spec<cr>
+nnoremap <silent> <leader>ft :CtrlP<cr>spec/
 nnoremap <leader>fx :Dispatch<cr>
 
 " g - Git
@@ -409,7 +417,7 @@ nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
 nnoremap <silent> <leader>tz :VimuxZoomRunner<cr>
 
 " T - Toggle
-nnoremap <leader>Tl :set wrap! wrap?<cr>
+nnoremap <leader>Tw :set wrap! wrap?<cr>
 nnoremap <leader>Tf :set foldenable! foldenable?<cr>
 nnoremap <leader>Tr :set relativenumber! relativenumber?<cr>
 nnoremap <leader>Trf :call ToggleFailFast()<cr>
