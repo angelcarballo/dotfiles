@@ -59,8 +59,6 @@ Plugin 'ervandew/supertab'                " magic code auto complete!
 Plugin 'tpope/vim-endwise'                " auto close for vim blocks
 Plugin 'jiangmiao/auto-pairs'             " auto close for (, [, {
 Plugin 'docunext/closetag.vim'            " auto close for html tags
-Plugin 'mattn/webapi-vim'                 " call external API's
-Plugin 'christoomey/vim-quicklink'        " quick get links via Google [C-k]
 
 " Third party integration
 Plugin 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from vim
@@ -87,12 +85,18 @@ Plugin 'suan/vim-instant-markdown'        " markdown preview
 Plugin 'AndrewRadev/splitjoin.vim'        " split/join statements
 
 
-" All of your Plugins must be added before the following line
+" Plugins must be added before the following line
 call vundle#end()                         " required
 filetype plugin indent on                 " required
 
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
+
+"" Netrw options
+let g:netrw_liststyle=0         " thin (change to 3 for tree)
+let g:netrw_banner=0            " no banner
+let g:netrw_altv=1              " open files on right
+let g:netrw_preview=1           " open previews vertically
 
 "" Vim-ruby options
 let ruby_spellcheck_strings = 1   " enable spellcheck inside ruby strings
@@ -151,10 +155,6 @@ let mapleader = "\<Space>"
 nmap , <leader>
 
 syntax enable
-let g:netrw_liststyle=0         " thin (change to 3 for tree)
-let g:netrw_banner=0            " no banner
-let g:netrw_altv=1              " open files on right
-let g:netrw_preview=1           " open previews vertically
 filetype plugin indent on       " autoindent by file type
 set encoding=utf-8              " use UTF8 by default
 set nu                          " show line numbers
@@ -176,7 +176,7 @@ set nowrap                      " dont wrap lines
 set backspace=indent,eol,start  " backspace through everything
 set wildmenu                    " visual autocomplete for command menu
 set lazyredraw                  " redraw only when needed
-set formatoptions+=j            " delete comment character when joining commented lines"
+set formatoptions+=j            " delete comment character when joining commented lines
 
 runtime macros/matchit.vim      " allow % to match more than just single characters
 
