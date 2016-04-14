@@ -40,6 +40,7 @@ Plugin 'whatyouhide/vim-textobj-erb'      " erb block text object
 Plugin 'kana/vim-textobj-entire'          " entire buffer text object
 Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
 Plugin 'b4winckler/vim-angry'             " function argument text object
+Plugin 'glts/vim-textobj-comment'         " comment text object
 
 " Look & Feel, Navigation
 Plugin 'tpope/vim-vinegar'                 " file explorer improvements
@@ -371,8 +372,8 @@ nnoremap <leader>gp :Gpush
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gh :Gbrowse<cr>
-vnoremap <leader>gh :Gbrowse<cr>
+nnoremap <leader>go :Gbrowse<cr>
+vnoremap <leader>go :Gbrowse<cr>
 
 " i - Indent
 nnoremap <leader>ij :%!python -m json.tool<cr>
