@@ -337,8 +337,8 @@ nnoremap <silent> <leader>a :OpenAlternate<cr>
 nnoremap <silent> <leader>bp :bprevious<cr>
 nnoremap <silent> <leader>bn :bnext<cr>
 nnoremap <silent> <leader>bd :BD<cr>
+nnoremap <silent> <leader>bD :Bonly<cr>
 nnoremap <silent> <leader>bk :BW<cr>
-nnoremap <silent> <leader>bK :Bonly<cr>
 nnoremap <silent> <leader>bl :buffers<cr>
 nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
 
