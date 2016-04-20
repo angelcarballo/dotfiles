@@ -216,17 +216,6 @@ endfunction
 "recalculate the trailing whitespace warning when idle, and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
-" trailing space detection for statusline
-function! StatuslineTrailingSpaceWarning()
-  if !exists("b:statusline_trailing_space_warning")
-    if search('\s\+$', 'nw') != 0
-      let b:statusline_trailing_space_warning = ' Trailing space '
-    else
-      let b:statusline_trailing_space_warning = ''
-    endif
-  endif
-  return b:statusline_trailing_space_warning
-endfunction
 
 set statusline=
 set statusline+=\[%n]                               " buffer number
@@ -234,6 +223,7 @@ set statusline+=\ %<%f                              " file path
 set statusline+=\ %{CurrentBranch()}                " git branch
 set statusline+=\ %m\                               " modified flag
 set statusline+=\ %=\%l/%L\                         " current row/total rows
+set statusline+=\ %y                                " filetype
 set statusline+=%#error#                            " error color
 set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing space warning
 set statusline+=%*                                  " reset default color
@@ -254,69 +244,6 @@ set wildignore+=*/tmp/*,*.so,*.zip                     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.zip,*.exe                  " Windows
 set wildignore+=*/temp/*,*/backup/*                    " Vim
 set wildignore+=*/_site/*                              " Jekyll
-
-"}}}
-" Custom functions ---------------------------------------------------------------{{{
-
-"""""""" Zoom panes """"""""""
-function! s:ZoomToggle() abort
-  if exists('t:zoomed') && t:zoomed
-    execute t:zoom_winrestcmd
-    let t:zoomed = 0
-  else
-    let t:zoom_winrestcmd = winrestcmd()
-    resize
-    vertical resize
-    let t:zoomed = 1
-  endif
-endfunction
-command! ZoomToggle call s:ZoomToggle()
-nnoremap <silent> <leader>f :ZoomToggle<cr>
-
-"""""""" Copy current file path """"""""""
-if has("mac") || has("gui_macvim") || has("gui_mac")
-  " relative path  (src/foo.txt)
-  nnoremap <leader>cf :let @*=expand("%")<cr>
-
-  " absolute path  (/something/src/foo.txt)
-  nnoremap <leader>cF :let @*=expand("%:p")<cr>
-
-  " relative path with line number
-  nnoremap <leader>cl :let @+=join([expand('%'),  line(".")], ':')<cr>
-endif
-
-"""""""" Send text to tmux """"""""""
-function! VimuxSlime() range
-  let cmds = join(getline("'<","'>"), '')
-  call VimuxRunCommand(cmds)
-endfunction
-
-
-"""""""" Elable/Disable spring for rspec tests """"""""""
-function! ToggleSpring()
-    if g:vroom_use_spring
-      let g:vroom_use_spring=0
-      echo 'Spring OFF'
-    else
-      let g:vroom_use_spring=1
-      echo 'Spring ON'
-    endif
-endfunction
-let g:vroom_use_spring=0
-
-"""""""" Elable/Disable fail-fast option for rspec tests """"""""""
-function! ToggleFailFast()
-  if g:vroom_use_fail_fast
-    let g:vroom_use_fail_fast=0
-    let g:vroom_options={'options':'--fail-fast'}
-    echo '--fail_fast OFF'
-  else
-    let g:vroom_use_fail_fast=1
-    let g:vroom_options={'options':'--fail-fast'}
-    echo '--fail_fast ON'
-  endif
-endfunction
-let g:vroom_use_fail_fast=1
 
 "}}}
 "Keybindings (leader) ---------------------------------------------------------------{{{
@@ -345,7 +272,17 @@ nnoremap <silent> <leader>bk :BW<cr>
 nnoremap <silent> <leader>bl :buffers<cr>
 nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
 
-" c - Clear
+" c - Copy/Clear
+if has("mac") || has("gui_macvim") || has("gui_mac")
+  " relative path  (src/foo.txt)
+  nnoremap <leader>cf :let @*=expand("%")<cr>
+
+  " absolute path  (/something/src/foo.txt)
+  nnoremap <leader>cF :let @*=expand("%:p")<cr>
+
+  " relative path with line number
+  nnoremap <leader>cl :let @+=join([expand('%'),  line(".")], ':')<cr>
+endif
 nnoremap <silent> <leader>cs :nohl<cr>
 
 " d - Diff/Dash
@@ -437,6 +374,7 @@ nnoremap <leader>Vs :so $MYVIMRC<cr>
 nnoremap <silent> <leader>wc :wq<cr>
 nnoremap <silent> <leader>wC :only<cr>
 nnoremap <silent> <leader>we <c-w>=
+nnoremap <silent> <leader>wf :ZoomToggle<cr>
 nnoremap <silent> <leader>ws :sp<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
@@ -495,6 +433,14 @@ onoremap in} :<c-u>normal! f{vi{<cr>
 onoremap in' :<c-u>normal! f'vi'<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
 
+
+"}}}
+" Filetype: Vim -----------------------------------------------------------------{{{
+
+augroup rubygroup
+  autocmd!
+  autocmd FileType vim :set tabstop=3
+augroup END
 
 "}}}
 " Filetype: Ruby -----------------------------------------------------------------{{{
