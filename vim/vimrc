@@ -330,8 +330,11 @@ nnoremap <leader>/ :Ags ""<left>
 " * - Search in project for word under cursor
 nnoremap <leader>* :Ags ""<left><c-r><c-w><cr>
 
-" a - Alternate file
-nnoremap <silent> <leader>a :OpenAlternate<cr>
+" a - Align
+vnoremap <leader>aa :Tabularize /
+vnoremap <leader>a= :Tabularize /=<cr>
+vnoremap <leader>a> :Tabularize /=><cr>
+vnoremap <leader>a<bar> :Tabularize /<bar><cr>
 
 " b - Buffers
 nnoremap <silent> <leader>bp :bprevious<cr>
@@ -356,6 +359,7 @@ nnoremap <silent> <leader>es :Sex<cr>
 nnoremap <silent> <leader>ev :Vex<cr>
 
 " f - File
+nnoremap <leader>fa :OpenAlternate<cr>
 nnoremap <leader>fc :wq<cr>
 nnoremap <leader>fs :w<cr>
 nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
