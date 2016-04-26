@@ -242,7 +242,7 @@ hi TabLineSel ctermfg=193 ctermbg=65
 " Files to ignore -------------------------------------------------------------{{{
 
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*.lock       " Common
-set wildignore+=*/tmp/*,*.so,*.zip                     " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.zip,.DS_Store           " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.zip,*.exe                  " Windows
 set wildignore+=*/temp/*,*/backup/*                    " Vim
 set wildignore+=*/_site/*                              " Jekyll
