@@ -63,7 +63,8 @@ task :link do
   # git
   update_link 'git/gitignore_global', '.gitignore_global'
 
-  # spacemacs
+  # emacs
+  update_link 'emacs/emacs', '.emacs'
   update_link 'emacs/spacemacs', '.spacemacs'
 
   puts 'Done!'
