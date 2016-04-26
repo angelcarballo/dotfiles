@@ -82,7 +82,7 @@ scroll-conservatively 9999
 scroll-step 1)
 
 ;; Load theme
-(load-theme 'solarized-light t)
+(load-theme 'solarized-dark t)
 
 ;; Cleanup UI
 (setq inhibit-splash-screen t
@@ -100,13 +100,13 @@ scroll-step 1)
 ;; Show line numbers
 (global-linum-mode t)
 
-
 ;; Leader mappings
-
 (evil-leader/set-key
   "bb" 'helm-projectile-switch-to-buffer
   "bn" 'next-buffer
   "bp" 'previous-buffer
+  "cy" 'clipboard-kill-region
+  "cp" 'clipboard-yank
   "pp" 'helm-projectile-switch-project
   "fd" 'helm-projectile-find-dir
   "ff" 'helm-projectile-find-file
