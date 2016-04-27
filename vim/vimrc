@@ -16,6 +16,7 @@ Plugin 'tommcdo/vim-exchange'             " text exchange operator (cx..)
 Plugin 'kana/vim-textobj-user'            " custom text object support
 Plugin 'ConradIrwin/vim-bracketed-paste'  " toggle paste mode automatically
 Plugin 'tpope/vim-sleuth'                 " autoset indent options based on file type
+Plugin 'eiginn/netrw'                     " file manager
 
 " Languages and frameworks
 Plugin 'vim-ruby/vim-ruby'                " ruby integration
