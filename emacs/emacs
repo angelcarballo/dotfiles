@@ -3,6 +3,7 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 (setq package-enable-at-startup nil)
 
@@ -33,9 +34,14 @@
 			  'evil-surround
 			  'evil-visualstar
 			  'evil-magit
+			  'evil-indent-textobject
 			  'helm
 			  'helm-projectile
 			  'solarized-theme
+			  'monokai-theme
+			  'company
+			  'inf-ruby
+			  'robe
 			  'magit)
 
 ;; Indent new lines
@@ -75,14 +81,13 @@
 ;; Enable evil-magit
 (require 'evil-magit)
 
-
 ;; Sane scrolling
 (setq scroll-margin 5
 scroll-conservatively 9999
 scroll-step 1)
 
 ;; Load theme
-(load-theme 'solarized-dark t)
+(load-theme 'monokai t)
 
 ;; Cleanup UI
 (setq inhibit-splash-screen t
@@ -100,9 +105,21 @@ scroll-step 1)
 ;; Show line numbers
 (global-linum-mode t)
 
+;; Enable company globally
+(add-hook 'after-init-hook 'global-company-mode t)
+
+;; Enable robe
+(require 'robe)
+(add-hook 'ruby-mode-hook 'robe-mode)
+(eval-after-load 'company
+  '(push 'company-robe company-backends))
+
 ;; Leader mappings
 (evil-leader/set-key
+  "at" 'ansi-term
+  "arc" 'inf-ruby
   "bb" 'helm-projectile-switch-to-buffer
+  "bd" 'kill-buffer
   "bn" 'next-buffer
   "bp" 'previous-buffer
   "cy" 'clipboard-kill-region
@@ -119,6 +136,7 @@ scroll-step 1)
   "wo"  'delete-other-windows
   "wv"  'split-window-right
   "ws"  'split-window-down
+  "ww"  'other-window
   )
 
 ;; Non-leader mappings
@@ -128,6 +146,10 @@ scroll-step 1)
 (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
 (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
 (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+
+;; Copy/paste osx style
+(define-key evil-insert-state-map (kbd "M-c") 'clipboard-kill-region)
+(define-key evil-insert-state-map (kbd "M-v") 'clipboard-yank)
 
 
 ;; ESC quits everything
