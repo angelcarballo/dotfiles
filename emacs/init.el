@@ -163,6 +163,9 @@ scroll-step 1)
 ;; Hide toolbar
 (tool-bar-mode -1)
 
+;; Hide scrollbars
+(scroll-bar-mode -1)
+
 ;; Remember cursor position
 (setq save-place-file "~/.emacs.d/saveplace")
 (setq-default save-place t)
