@@ -4,3 +4,6 @@ vim/temp/*
 vim/bundle/*
 !vim/bundle/Vundle.vim
 tmux/plugins/*
+emacs/elpa
+emacs/auto-save-list
+emacs/saveplace

@@ -28,7 +28,6 @@
 
 ;; Assuming you wish to install "iedit" and "magit"
 (ensure-package-installed 'projectile
-			  'autopair
 			  'evil
 			  'evil-leader
 			  'evil-surround
@@ -39,9 +38,9 @@
 			  'helm-projectile
 			  'solarized-theme
 			  'monokai-theme
-			  'company
 			  'inf-ruby
-			  'robe
+        'yasnippet
+        'rinari
 			  'magit)
 
 ;; Indent new lines
@@ -51,8 +50,66 @@
 (setq make-backup-files nil)
 
 ;; Show matching parens
-(require 'autopair)
-(autopair-global-mode)
+(show-paren-mode t)
+
+;; Remove trailing whitespace on save
+(add-hook 'before-save-hook
+	  (lambda () (delete-trailing-whitespace)))
+
+;; Spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
+;; If there is a tab, make it the size of 2 spaces
+(setq-default tab-width 2)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Hippie expand.  Groovy vans with tie-dyes.
+
+(setq hippie-expand-try-functions-list
+      '(try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill
+        try-complete-file-name
+        try-complete-lisp-symbol))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Smart Tab
+;; Borrowed from snippets at
+;; http://www.emacswiki.org/emacs/TabCompletion
+;; TODO: Take a look at https://github.com/genehack/smart-tab
+
+(defvar smart-tab-using-hippie-expand t
+  "turn this on if you want to use hippie-expand completion.")
+
+(defun smart-tab (prefix)
+  "Needs `transient-mark-mode' to be on. This smart tab is
+  minibuffer compliant: it acts as usual in the minibuffer.
+  In all other buffers: if PREFIX is \\[universal-argument], calls
+  `smart-indent'. Else if point is at the end of a symbol,
+  expands it. Else calls `smart-indent'."
+  (interactive "P")
+  (labels ((smart-tab-must-expand (&optional prefix)
+                                  (unless (or (consp prefix)
+                                              mark-active)
+                                    (looking-at "\\_>"))))
+    (cond ((minibufferp)
+           (minibuffer-complete))
+          ((smart-tab-must-expand prefix)
+           (if smart-tab-using-hippie-expand
+               (hippie-expand prefix)
+             (dabbrev-expand prefix)))
+          ((smart-indent)))))
+
+(defun smart-indent ()
+  "Indents region if mark is active, or current line otherwise."
+  (interactive)
+  (if mark-active
+    (indent-region (region-beginning)
+                   (region-end))
+    (indent-for-tab-command)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-set-key (kbd "TAB") 'smart-tab)
 
 ;; Enable evil-surround
 (require 'evil-surround)
@@ -81,6 +138,9 @@
 ;; Enable evil-magit
 (require 'evil-magit)
 
+;; Enable ruby/rails rinari plugin
+(require 'rinari)
+
 ;; Sane scrolling
 (setq scroll-margin 5
 scroll-conservatively 9999
@@ -88,6 +148,12 @@ scroll-step 1)
 
 ;; Load theme
 (load-theme 'monokai t)
+
+;; Short yes or no
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Use visualbell
+(setq visible-bell t)
 
 ;; Cleanup UI
 (setq inhibit-splash-screen t
@@ -105,25 +171,24 @@ scroll-step 1)
 ;; Show line numbers
 (global-linum-mode t)
 
-;; Enable company globally
-(add-hook 'after-init-hook 'global-company-mode t)
-
-;; Enable robe
-(require 'robe)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(eval-after-load 'company
-  '(push 'company-robe company-backends))
+(defun kill-other-buffers ()
+  "Kill all buffers but the current one. Don't mess with special buffers."
+  (interactive)
+  (dolist (buffer (buffer-list))
+    (unless (or (eql buffer (current-buffer)) (not (buffer-file-name buffer)))
+      (kill-buffer buffer))))
 
 ;; Leader mappings
 (evil-leader/set-key
   "at" 'ansi-term
-  "arc" 'inf-ruby
   "bb" 'helm-projectile-switch-to-buffer
   "bd" 'kill-buffer
+  "bD" 'kill-other-buffers
   "bn" 'next-buffer
   "bp" 'previous-buffer
   "cy" 'clipboard-kill-region
   "cp" 'clipboard-yank
+  "df" 'describe-function
   "pp" 'helm-projectile-switch-project
   "fd" 'helm-projectile-find-dir
   "ff" 'helm-projectile-find-file
@@ -135,7 +200,7 @@ scroll-step 1)
   "wc"  'delete-window
   "wo"  'delete-other-windows
   "wv"  'split-window-right
-  "ws"  'split-window-down
+  "ws"  'split-window-below
   "ww"  'other-window
   )
 
