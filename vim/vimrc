@@ -34,6 +34,7 @@ Plugin 'rodjek/vim-puppet'                " puppet support
 Plugin 'tmux-plugins/vim-tmux'            " tmux syntax support
 Plugin 'derekwyatt/vim-scala'             " Scala syntax support
 Plugin 'plasticboy/vim-markdown'          " markdown support
+Plugin 'kchmck/vim-coffee-script'         " coffeescript support
 
 " Text objects
 Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
