@@ -377,12 +377,16 @@ nnoremap <leader>Ts :setlocal spell! spelllang=en_us<cr>
 nnoremap <leader>Ve :e $MYVIMRC<cr>
 nnoremap <leader>Vs :so $MYVIMRC<cr>
 
-" w - Windows
+" w - Windows/Tabs
 nnoremap <silent> <leader>wc :wq<cr>
 nnoremap <silent> <leader>wC :only<cr>
 nnoremap <silent> <leader>we <c-w>=
 nnoremap <silent> <leader>wf :ZoomToggle<cr>
 nnoremap <silent> <leader>ws :sp<cr>
+nnoremap <silent> <leader>wtc :tabnew<cr>
+nnoremap <silent> <leader>wtj :tnext<cr>
+nnoremap <silent> <leader>wtk :tprevious<cr>
+nnoremap <silent> <leader>wtt :tabNext<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
 nnoremap <leader>wq :wq<cr>
