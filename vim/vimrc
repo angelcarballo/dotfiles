@@ -348,8 +348,10 @@ nnoremap <silent> <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
 nnoremap <silent> <leader>sc :call vroom#RunNearestTest(g:vroom_options)<cr>
 nnoremap <silent> <leader>sl :call vroom#RunLastTest()<cr>
 
-" S - Snippets
-nnoremap <silent> <leader>se :UltiSnipsEdit<cr>
+" S - Snippets/Show
+nnoremap <silent> <leader>Se :UltiSnipsEdit<cr>
+nnoremap <silent> <leader>Sf :echo @%<cr>
+nnoremap <silent> <leader>SF :echo expand('%:p')<cr>
 
 " t - Tmux
 
