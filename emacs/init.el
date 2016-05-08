@@ -26,7 +26,6 @@
 ;; Activate installed packages
 (package-initialize)
 
-;; Assuming you wish to install "iedit" and "magit"
 (ensure-package-installed 'projectile
 			  'evil
 			  'evil-leader
@@ -39,6 +38,7 @@
 			  'solarized-theme
 			  'monokai-theme
 			  'inf-ruby
+			  'rspec-mode
         'yasnippet
         'rinari
 			  'magit)
@@ -160,6 +160,9 @@ scroll-step 1)
       inhibit-startup-echo-area-message t
       inhibit-startup-message t)
 
+;; Maximize frame
+(set-frame-parameter nil 'fullscreen 'fullboth)
+
 ;; Hide toolbar
 (tool-bar-mode -1)
 
@@ -202,6 +205,7 @@ scroll-step 1)
   "wv"  'split-window-right
   "ws"  'split-window-below
   "ww"  'other-window
+  "x"  'helm-M-x
   )
 
 ;; Non-leader mappings
