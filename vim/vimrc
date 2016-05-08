@@ -34,6 +34,7 @@ Plugin 'rodjek/vim-puppet'                " puppet support
 Plugin 'tmux-plugins/vim-tmux'            " tmux syntax support
 Plugin 'derekwyatt/vim-scala'             " Scala syntax support
 Plugin 'plasticboy/vim-markdown'          " markdown support
+Plugin 'kchmck/vim-coffee-script'         " coffeescript support
 
 " Text objects
 Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
@@ -347,8 +348,10 @@ nnoremap <silent> <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
 nnoremap <silent> <leader>sc :call vroom#RunNearestTest(g:vroom_options)<cr>
 nnoremap <silent> <leader>sl :call vroom#RunLastTest()<cr>
 
-" S - Snippets
-nnoremap <silent> <leader>se :UltiSnipsEdit<cr>
+" S - Snippets/Show
+nnoremap <silent> <leader>Se :UltiSnipsEdit<cr>
+nnoremap <silent> <leader>Sf :echo @%<cr>
+nnoremap <silent> <leader>SF :echo expand('%:p')<cr>
 
 " t - Tmux
 
@@ -376,12 +379,16 @@ nnoremap <leader>Ts :setlocal spell! spelllang=en_us<cr>
 nnoremap <leader>Ve :e $MYVIMRC<cr>
 nnoremap <leader>Vs :so $MYVIMRC<cr>
 
-" w - Windows
+" w - Windows/Tabs
 nnoremap <silent> <leader>wc :wq<cr>
 nnoremap <silent> <leader>wC :only<cr>
 nnoremap <silent> <leader>we <c-w>=
 nnoremap <silent> <leader>wf :ZoomToggle<cr>
 nnoremap <silent> <leader>ws :sp<cr>
+nnoremap <silent> <leader>wtc :tabnew<cr>
+nnoremap <silent> <leader>wtj :tnext<cr>
+nnoremap <silent> <leader>wtk :tprevious<cr>
+nnoremap <silent> <leader>wtt :tabNext<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
 nnoremap <leader>wq :wq<cr>

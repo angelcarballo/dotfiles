@@ -39,8 +39,8 @@
 			  'monokai-theme
 			  'inf-ruby
 			  'rspec-mode
-        'yasnippet
-        'rinari
+			  'yasnippet
+			  'rinari
 			  'magit)
 
 ;; Indent new lines
@@ -97,7 +97,7 @@
           ((smart-tab-must-expand prefix)
            (if smart-tab-using-hippie-expand
                (hippie-expand prefix)
-             (dabbrev-expand prefix)))
+               (dabbrev-expand prefix)))
           ((smart-indent)))))
 
 (defun smart-indent ()
@@ -166,6 +166,9 @@ scroll-step 1)
 ;; Hide toolbar
 (tool-bar-mode -1)
 
+;; Hide scrollbars
+(scroll-bar-mode -1)
+
 ;; Remember cursor position
 (setq save-place-file "~/.emacs.d/saveplace")
 (setq-default save-place t)
@@ -231,6 +234,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
       (setq deactivate-mark  t)
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
+
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
 (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
@@ -239,9 +243,3 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 (global-set-key [escape] 'evil-exit-emacs-state)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
