@@ -72,6 +72,7 @@ Plugin 'benmills/vimux'                     " tmux integration
 Plugin 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plugin 'tpope/gem-ctags'                    " include tags from installed gems
 Plugin 'rizzatti/dash.vim'                  " dash integration (documentation helper)
+Plugin 'szw/vim-g'                          " google search
 
 " Extras
 Plugin 'godlygeek/tabular'                " code align (like on this comment)
@@ -312,7 +313,7 @@ nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
 nnoremap <silent> <leader>ft :CtrlP<cr>spec/
 nnoremap <leader>fx :Dispatch<cr>
 
-" g - Git
+" g - Git/Google
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gd :Gdiff HEAD<cr>
@@ -322,6 +323,8 @@ nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>go :Gbrowse<cr>
 vnoremap <leader>go :Gbrowse<cr>
+nnoremap <leader>gg :Googlef<cr>
+vnoremap <leader>gg :Googlef<cr>
 
 " i - Indent
 nnoremap <leader>ij :%!python -m json.tool<cr>
