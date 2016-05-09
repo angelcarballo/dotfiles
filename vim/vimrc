@@ -188,7 +188,9 @@ set lazyredraw                       " redraw only when needed
 set formatoptions+=j                 " delete comment character when joining commented lines
 set omnifunc=syntaxcomplete#Complete " enable omni completion
 
-runtime macros/matchit.vim      " allow % to match more than just single characters
+au BufLeave,FocusLost * silent! wa   " autosave files
+
+runtime macros/matchit.vim           " allow % to match more than just single characters
 
 "}}}
 " Look & Feel ------------------------------------------------------------------{{{
