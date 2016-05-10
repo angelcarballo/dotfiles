@@ -47,8 +47,6 @@ Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
 Plug 'terryma/vim-expand-region'         " visual expandable regions
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
-Plug 'vim-scripts/BufOnly.vim'           " kill all buffers but current
-Plug 'qpkorr/vim-bufkill'                " better buffer closing/killing/unloading
 
 
 " Colorschemes
@@ -62,6 +60,8 @@ Plug 'jiangmiao/auto-pairs'             " auto close for (, [, {
 Plug 'docunext/closetag.vim'            " auto close for Html tags
 
 " Third party integration
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+Plug 'junegunn/fzf.vim'                   " fuzzy finder (files, buffers, commits, etc.)
 Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
 Plug 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
 Plug 'gabesoft/vim-ags'                   " The Silver Searcher integration
@@ -69,8 +69,6 @@ Plug 'benmills/vimux'                     " tmux integration
 Plug 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
 Plug 'rizzatti/dash.vim'                  " dash integration (documentation helper)
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-Plug 'junegunn/fzf.vim'
 
 " Extras
 Plug 'godlygeek/tabular'                " code align (like on this comment)
@@ -258,11 +256,9 @@ vnoremap <leader>a<bar> :Tabularize /<bar><cr>
 " b - Buffers
 nnoremap <silent> <leader>bp :bprevious<cr>
 nnoremap <silent> <leader>bn :bnext<cr>
-nnoremap <silent> <leader>bd :BD<cr>
-nnoremap <silent> <leader>bD :Bonly<cr>
-nnoremap <silent> <leader>bk :BW<cr>
-nnoremap <silent> <leader>bl :buffers<cr>
+nnoremap <silent> <leader>bd :bdelete<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
+nnoremap <silent> <leader>bD :w <bar> %bd <bar> e#<cr>
 
 " c - Copy/Clear
 if has("mac") || has("gui_macvim") || has("gui_mac")
@@ -299,6 +295,8 @@ nnoremap <silent> <leader>fr :History<cr>
 nnoremap <silent> <leader>ft :Files spec/<cr>
 nnoremap <silent> <leader>fl :BLines<cr>
 nnoremap <silent> <leader>fL :Lines<cr>
+nnoremap <silent> <leader>fg :BCommits<cr>
+nnoremap <silent> <leader>fG :Commits<cr>
 nnoremap <leader>fx :Dispatch<cr>
 
 " g - Git
@@ -478,6 +476,14 @@ augroup markdowngroup
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd FileType markdown set wrap
   autocmd FileType markdown setlocal spell
+augroup END
+
+"}}}
+" File type: Coffeescript --------------------------------------------------------------{{{
+
+augroup coffeescriptgroup
+  autocmd!
+  autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 augroup END
 
 "}}}
