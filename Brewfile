@@ -12,8 +12,11 @@ brew "libyaml"
 brew "zsh"
 brew "zsh-completions"
 
-# remove ANSI codes, usefull for tmux-logging
+# remove ANSI codes, useful for tmux-logging
 brew "ansifilter"
 
 # better diff formatting
 brew "diff-so-fancy"
+
+# general purpose fuzzy finder
+brew "fzf"
