@@ -395,6 +395,10 @@ nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
 nnoremap <leader>wq :wq<cr>
 
+" TAB - Navigate tabs
+nnoremap <silent> <leader><tab> :tabNext<cr>
+
+
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
 
