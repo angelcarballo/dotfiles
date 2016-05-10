@@ -47,7 +47,7 @@ Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
 Plug 'terryma/vim-expand-region'         " visual expandable regions
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
-
+Plug 'szw/vim-maximizer'                 " maximize/restore windows
 
 " Colorschemes
 Plug 'w0ng/vim-hybrid'                  " hybrid colorscheme
@@ -141,6 +141,9 @@ let g:switch_custom_definitions =
       \ [
       \   ['TODO', 'DONE']
       \ ]
+
+"" Vim-maximizer options
+let g:maximizer_set_default_mapping = 1
 
 "}}}
 " General settings ------------------------------------------------------------{{{
@@ -378,7 +381,7 @@ nnoremap <leader>Vs :so $MYVIMRC<cr>
 nnoremap <silent> <leader>wc :wq<cr>
 nnoremap <silent> <leader>wC :only<cr>
 nnoremap <silent> <leader>we <c-w>=
-nnoremap <silent> <leader>wf :ZoomToggle<cr>
+nnoremap <silent> <leader>wf :MaximizerToggle<cr>
 nnoremap <silent> <leader>ws :sp<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
