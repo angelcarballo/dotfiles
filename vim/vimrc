@@ -355,7 +355,7 @@ nnoremap <silent> <leader>Se :UltiSnipsEdit<cr>
 nnoremap <silent> <leader>Sf :echo @%<cr>
 nnoremap <silent> <leader>SF :echo expand('%:p')<cr>
 
-" t - Tmux
+" t - Tmux/Tabs
 
 " Send visual selection to tmux
 vnoremap <silent> <leader>tt :call VimuxSlime()<cr>
@@ -368,6 +368,11 @@ nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
 nnoremap <silent> <leader>ti :VimuxInspectRunner<cr>
 nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
 nnoremap <silent> <leader>tz :VimuxZoomRunner<cr>
+" Tab management
+nnoremap <silent> <leader>td :tabclose<cr>
+nnoremap <silent> <leader>tn :tabnew<cr>
+nnoremap <silent> <leader>tj :tabnext<cr>
+nnoremap <silent> <leader>tk :tabprevious<cr>
 
 " T - Toggle
 nnoremap <leader>Tw :set wrap! wrap?<cr>
@@ -387,16 +392,9 @@ nnoremap <silent> <leader>wC :only<cr>
 nnoremap <silent> <leader>we <c-w>=
 nnoremap <silent> <leader>wf :ZoomToggle<cr>
 nnoremap <silent> <leader>ws :sp<cr>
-nnoremap <silent> <leader>wtc :tabnew<cr>
-nnoremap <silent> <leader>wtj :tnext<cr>
-nnoremap <silent> <leader>wtk :tprevious<cr>
-nnoremap <silent> <leader>wtt :tabNext<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
-nnoremap <leader>wq :wq<cr>
 
-" TAB - Navigate tabs
-nnoremap <silent> <leader><tab> :tabNext<cr>
 
 
 "}}}
