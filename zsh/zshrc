@@ -73,3 +73,8 @@ eval "$(rbenv init -)"
 # Source local config if present
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
+# Source fzf fuzzy finder configuration is present
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Try to use Ag as default fzf command
+ export FZF_DEFAULT_COMMAND='ag -g ""'

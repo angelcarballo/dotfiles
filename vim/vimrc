@@ -1,97 +1,95 @@
 " Plugins  ------------------------------------------------------------{{{
 
-set nocompatible                          " be iMproved, required
-filetype off                              " required by Vundle
+set nocompatible                          " be iMproved
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" initialize vim-plug
+call plug#begin('~/.vim/plugged')
 
 " Basic plugins
-Plugin 'VundleVim/Vundle.vim'             " let Vundle manage Vundle, required
-Plugin 'tpope/vim-fugitive'               " git integration
-Plugin 'kien/ctrlp.vim'                   " fuzzy finder
-Plugin 'tpope/vim-surround'               " alter surroundings (), [], '', {}
-Plugin 'tommcdo/vim-exchange'             " text exchange operator (cx..)
-Plugin 'kana/vim-textobj-user'            " custom text object support
-Plugin 'ConradIrwin/vim-bracketed-paste'  " toggle paste mode automatically
-Plugin 'tpope/vim-sleuth'                 " autoset indent options based on file type
-Plugin 'eiginn/netrw'                     " file manager
+Plug 'tpope/vim-fugitive'               " git integration
+Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
+Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
+Plug 'kana/vim-textobj-user'            " custom text object support
+Plug 'ConradIrwin/vim-bracketed-paste'  " toggle paste mode automatically
+Plug 'tpope/vim-sleuth'                 " autoset indent options based on file type
+Plug 'eiginn/netrw'                     " file manager
 
 " Languages and frameworks
-Plugin 'vim-ruby/vim-ruby'                " ruby integration
-Plugin 'tpope/vim-rake'                   " rake integration
-Plugin 'tpope/vim-rbenv'                  " rbenv integration
-Plugin 'tpope/vim-rails'                  " rails integration
-Plugin 'tpope/vim-bundler'                " bundler integration
-Plugin 'cakebaker/scss-syntax.vim'        " SCSS syntax
-Plugin 'pangloss/vim-javascript'          " improved Javascript support
-Plugin 'othree/html5.vim'                 " HTML5 support
-Plugin 'mustache/vim-mustache-handlebars' " mustache support
-Plugin 'pprovost/vim-markdown-jekyll'     " Jekyll style markdown support
-Plugin 'elzr/vim-json'                    " Json support
-Plugin 'rodjek/vim-puppet'                " puppet support
-Plugin 'tmux-plugins/vim-tmux'            " tmux syntax support
-Plugin 'derekwyatt/vim-scala'             " Scala syntax support
-Plugin 'plasticboy/vim-markdown'          " markdown support
-Plugin 'kchmck/vim-coffee-script'         " coffeescript support
+Plug 'vim-ruby/vim-ruby'                " ruby integration
+Plug 'tpope/vim-rake'                   " rake integration
+Plug 'tpope/vim-rbenv'                  " rbenv integration
+Plug 'tpope/vim-rails'                  " rails integration
+Plug 'tpope/vim-bundler'                " bundler integration
+Plug 'cakebaker/scss-syntax.vim'        " SCSS syntax
+Plug 'pangloss/vim-javascript'          " improved Javascript support
+Plug 'othree/html5.vim'                 " HTML5 support
+Plug 'mustache/vim-mustache-handlebars' " mustache support
+Plug 'pprovost/vim-markdown-jekyll'     " Jekyll style markdown support
+Plug 'elzr/vim-json'                    " Json support
+Plug 'rodjek/vim-puppet'                " puppet support
+Plug 'tmux-plugins/vim-tmux'            " tmux syntax support
+Plug 'derekwyatt/vim-scala'             " Scala syntax support
+Plug 'plasticboy/vim-markdown'          " markdown support
+Plug 'kchmck/vim-coffee-script'         " coffeescript support
 
 " Text objects
-Plugin 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
-Plugin 'whatyouhide/vim-textobj-erb'      " ERB block text object
-Plugin 'kana/vim-textobj-entire'          " entire buffer text object
-Plugin 'michaeljsmith/vim-indent-object'  " indentation based text object
-Plugin 'b4winckler/vim-angry'             " function argument text object
-Plugin 'glts/vim-textobj-comment'         " comment text object
+Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
+Plug 'whatyouhide/vim-textobj-erb'      " ERB block text object
+Plug 'kana/vim-textobj-entire'          " entire buffer text object
+Plug 'michaeljsmith/vim-indent-object'  " indentation based text object
+Plug 'b4winckler/vim-angry'             " function argument text object
+Plug 'glts/vim-textobj-comment'         " comment text object
 
 " Look & Feel, Navigation
-Plugin 'tpope/vim-vinegar'                 " file explorer improvements
-Plugin 'yggdroot/indentLine'               " show indentation lines
-Plugin 'bronson/vim-visual-star-search'    " search visual selected text with '*'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
-Plugin 'terryma/vim-expand-region'         " visual expandable regions
-Plugin 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
-Plugin 'vim-scripts/BufOnly.vim'           " kill all buffers but current
-Plugin 'qpkorr/vim-bufkill'                " better buffer closing/killing/unloading
+Plug 'tpope/vim-vinegar'                 " file explorer improvements
+Plug 'yggdroot/indentLine'               " show indentation lines
+Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
+Plug 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
+Plug 'terryma/vim-expand-region'         " visual expandable regions
+Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
+
 
 " Colorschemes
-Plugin 'w0ng/vim-hybrid'                  " hybrid colorscheme
+Plug 'w0ng/vim-hybrid'                  " hybrid colorscheme
 
 " Auto completion
-Plugin 'SirVer/ultisnips'                 " snippets support
-Plugin 'ervandew/supertab'                " magic code auto complete!
-Plugin 'tpope/vim-endwise'                " auto close for Vim blocks
-Plugin 'jiangmiao/auto-pairs'             " auto close for (, [, {
-Plugin 'docunext/closetag.vim'            " auto close for Html tags
+Plug 'SirVer/ultisnips'                 " snippets support
+Plug 'ervandew/supertab'                " magic code auto complete!
+Plug 'tpope/vim-endwise'                " auto close for Vim blocks
+Plug 'jiangmiao/auto-pairs'             " auto close for (, [, {
+Plug 'docunext/closetag.vim'            " auto close for Html tags
 
 " Third party integration
-Plugin 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
-Plugin 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
-Plugin 'gabesoft/vim-ags'                   " The Silver Searcher integration
-Plugin 'benmills/vimux'                     " tmux integration
-Plugin 'ludovicchabant/vim-gutentags'       " automatic tag updater
-Plugin 'tpope/gem-ctags'                    " include tags from installed gems
-Plugin 'rizzatti/dash.vim'                  " dash integration (documentation helper)
-Plugin 'szw/vim-g'                          " google search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+Plug 'junegunn/fzf.vim'                   " fuzzy finder (files, buffers, commits, etc.)
+Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
+Plug 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
+Plug 'gabesoft/vim-ags'                   " The Silver Searcher integration
+Plug 'benmills/vimux'                     " tmux integration
+Plug 'ludovicchabant/vim-gutentags'       " automatic tag updater
+Plug 'tpope/gem-ctags'                    " include tags from installed gems
+Plug 'rizzatti/dash.vim'                  " dash integration (documentation helper)
+Plug 'szw/vim-g'                          " google search
 
 " Extras
-Plugin 'godlygeek/tabular'                " code align (like on this comment)
-Plugin 'tpope/vim-commentary'             " comment/uncomment code
-Plugin 'skalnik/vim-vroom'                " ruby test runner
-Plugin 'tpope/vim-dispatch'               " run processes on the background
-Plugin 'airblade/vim-gitgutter'           " mealtime git-diff
-Plugin 'tpope/vim-repeat'                 " extend repeat support
-Plugin 'AndrewRadev/switch.vim'           " easy switches
-Plugin 'christoomey/vim-system-copy'      " send commands to tmux
-Plugin 'xolox/vim-notes'                  " easy note taking
-Plugin 'xolox/vim-misc'                   " required by vim-notes
-Plugin 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
-Plugin 'suan/vim-instant-markdown'        " markdown preview
-Plugin 'AndrewRadev/splitjoin.vim'        " split/join statements
+Plug 'godlygeek/tabular'                " code align (like on this comment)
+Plug 'tpope/vim-commentary'             " comment/uncomment code
+Plug 'skalnik/vim-vroom'                " ruby test runner
+Plug 'tpope/vim-dispatch'               " run processes on the background
+Plug 'airblade/vim-gitgutter'           " mealtime git-diff
+Plug 'tpope/vim-repeat'                 " extend repeat support
+Plug 'AndrewRadev/switch.vim'           " easy switches
+Plug 'christoomey/vim-system-copy'      " send commands to tmux
+Plug 'xolox/vim-notes'                  " easy note taking
+Plug 'xolox/vim-misc'                   " required by vim-notes
+Plug 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
+Plug 'suan/vim-instant-markdown'        " markdown preview
+Plug 'AndrewRadev/splitjoin.vim'        " split/join statements
 
 
 " Plugins must be added before the following line
-call vundle#end()                         " required
+call plug#end()
+
 filetype plugin indent on                 " auto indent by file type
 
 "}}}
@@ -132,20 +130,6 @@ let g:vim_markdown_folding_disabled=1
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden
-        \ --ignore .git
-        \ --ignore .svn
-        \ --ignore .hg
-        \ --ignore .DS_Store
-        \ --ignore bundle
-        \ --ignore doc
-        \ --ignore tmp
-        \ --ignore public
-        \ --ignore log
-        \ -g ""'
-  let g:ctrlp_use_caching = 0
 endif
 
 "" Vim-Notes options
@@ -189,7 +173,9 @@ set lazyredraw                       " redraw only when needed
 set formatoptions+=j                 " delete comment character when joining commented lines
 set omnifunc=syntaxcomplete#Complete " enable omni completion
 
-runtime macros/matchit.vim      " allow % to match more than just single characters
+au BufLeave,FocusLost * silent! wa   " autosave files
+
+runtime macros/matchit.vim           " allow % to match more than just single characters
 
 "}}}
 " Look & Feel ------------------------------------------------------------------{{{
@@ -271,11 +257,9 @@ vnoremap <leader>a<bar> :Tabularize /<bar><cr>
 " b - Buffers
 nnoremap <silent> <leader>bp :bprevious<cr>
 nnoremap <silent> <leader>bn :bnext<cr>
-nnoremap <silent> <leader>bd :BD<cr>
-nnoremap <silent> <leader>bD :Bonly<cr>
-nnoremap <silent> <leader>bk :BW<cr>
-nnoremap <silent> <leader>bl :buffers<cr>
-nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
+nnoremap <silent> <leader>bd :bdelete<cr>
+nnoremap <silent> <leader>bb :Buffers<cr>
+nnoremap <silent> <leader>bD :w <bar> %bd <bar> e#<cr>
 
 " c - Copy/Clear
 if has("mac") || has("gui_macvim") || has("gui_mac")
@@ -303,14 +287,17 @@ nnoremap <silent> <leader>ei :Explore<cr>
 nnoremap <silent> <leader>es :Sex<cr>
 nnoremap <silent> <leader>ev :Vex<cr>
 
-" f - File
+" f - File/Find
 nnoremap <leader>fa :OpenAlternate<cr>
 nnoremap <leader>fc :wq<cr>
 nnoremap <leader>fs :w<cr>
-nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
-nnoremap <silent> <leader>ff :CtrlP<cr>
-nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
-nnoremap <silent> <leader>ft :CtrlP<cr>spec/
+nnoremap <silent> <leader>ff :Files<cr>
+nnoremap <silent> <leader>fr :History<cr>
+nnoremap <silent> <leader>ft :Files spec/<cr>
+nnoremap <silent> <leader>fl :BLines<cr>
+nnoremap <silent> <leader>fL :Lines<cr>
+nnoremap <silent> <leader>fg :BCommits<cr>
+nnoremap <silent> <leader>fG :Commits<cr>
 nnoremap <leader>fx :Dispatch<cr>
 
 " g - Git/Google
@@ -356,7 +343,7 @@ nnoremap <silent> <leader>Se :UltiSnipsEdit<cr>
 nnoremap <silent> <leader>Sf :echo @%<cr>
 nnoremap <silent> <leader>SF :echo expand('%:p')<cr>
 
-" t - Tmux
+" t - Tmux/Tabs
 
 " Send visual selection to tmux
 vnoremap <silent> <leader>tt :call VimuxSlime()<cr>
@@ -369,6 +356,11 @@ nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
 nnoremap <silent> <leader>ti :VimuxInspectRunner<cr>
 nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
 nnoremap <silent> <leader>tz :VimuxZoomRunner<cr>
+" Tab management
+nnoremap <silent> <leader>td :tabclose<cr>
+nnoremap <silent> <leader>tn :tabnew<cr>
+nnoremap <silent> <leader>tj :tabnext<cr>
+nnoremap <silent> <leader>tk :tabprevious<cr>
 
 " T - Toggle
 nnoremap <leader>Tw :set wrap! wrap?<cr>
@@ -388,13 +380,10 @@ nnoremap <silent> <leader>wC :only<cr>
 nnoremap <silent> <leader>we <c-w>=
 nnoremap <silent> <leader>wf :ZoomToggle<cr>
 nnoremap <silent> <leader>ws :sp<cr>
-nnoremap <silent> <leader>wtc :tabnew<cr>
-nnoremap <silent> <leader>wtj :tnext<cr>
-nnoremap <silent> <leader>wtk :tprevious<cr>
-nnoremap <silent> <leader>wtt :tabNext<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
-nnoremap <leader>wq :wq<cr>
+
+
 
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
@@ -490,6 +479,14 @@ augroup markdowngroup
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd FileType markdown set wrap
   autocmd FileType markdown setlocal spell
+augroup END
+
+"}}}
+" File type: Coffeescript --------------------------------------------------------------{{{
+
+augroup coffeescriptgroup
+  autocmd!
+  autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 augroup END
 
 "}}}
