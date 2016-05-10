@@ -1,8 +1,7 @@
 vim/.netrwhist
 vim/backup/*
 vim/temp/*
-vim/bundle/*
-!vim/bundle/Vundle.vim
+vim/plugged/*
 tmux/plugins/*
 emacs/elpa
 emacs/auto-save-list
