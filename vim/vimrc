@@ -32,6 +32,7 @@ Plug 'tmux-plugins/vim-tmux'            " tmux syntax support
 Plug 'derekwyatt/vim-scala'             " Scala syntax support
 Plug 'plasticboy/vim-markdown'          " markdown support
 Plug 'kchmck/vim-coffee-script'         " coffeescript support
+Plug 'jelera/vim-javascript-syntax'     " better javascript syntax
 
 " Text objects
 Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
@@ -438,6 +439,9 @@ nnoremap <Right> :vertical resize +2<CR>
 nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
 
+" increment/decrement number at cursor
+nnoremap <c-i> <c-a>
+
 "}}}
 " Motions ---------------------------------------------------------------{{{
 
@@ -500,6 +504,14 @@ augroup END
 augroup coffeescriptgroup
   autocmd!
   autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+augroup END
+
+"}}}
+" File type: Javascript --------------------------------------------------------------{{{
+
+augroup javascriptgroup
+  autocmd!
+  autocmd BufNewFile,BufReadPost *.js setl shiftwidth=4 expandtab
 augroup END
 
 "}}}
