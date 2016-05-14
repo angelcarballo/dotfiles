@@ -218,9 +218,7 @@ endfunction
 "recalculate the trailing whitespace warning when idle, and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
-
 set statusline=
-set statusline+=\[%n]                               " buffer number
 set statusline+=\ %<%f                              " file path
 set statusline+=\ %{CurrentBranch()}                " git branch
 set statusline+=\ %m\                               " modified flag
