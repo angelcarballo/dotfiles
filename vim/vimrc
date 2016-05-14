@@ -209,7 +209,7 @@ match ErrorMsg '\s\+$'
 
 " current git branch function for status line
 function! CurrentBranch()
-  return exists('*fugitive#head') ? '(git:' . fugitive#head() . ')' : ''
+  return exists('*fugitive#head') ? '@' . fugitive#head() : ''
 endfunction
 
 "recalculate the trailing whitespace warning when idle, and after saving
