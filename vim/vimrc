@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 
 " Basic plugins
 Plug 'tpope/vim-fugitive'               " git integration
+Plug 'junegunn/gv.vim'                  " git commit navigation
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
 Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
 Plug 'kana/vim-textobj-user'            " custom text object support
@@ -326,6 +327,9 @@ nnoremap <leader>go :Gbrowse<cr>
 vnoremap <leader>go :Gbrowse<cr>
 nnoremap <leader>gg :Googlef<cr>
 vnoremap <leader>gg :Googlef<cr>
+nnoremap <leader>gl :GV!<cr>
+nnoremap <leader>gL :GV<cr>
+vnoremap <leader>gl :GV<cr>
 
 " i - Indent
 nnoremap <leader>ij :%!python -m json.tool<cr>
