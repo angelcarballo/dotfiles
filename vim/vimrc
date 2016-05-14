@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 
 " Basic plugins
 Plug 'tpope/vim-fugitive'               " git integration
+Plug 'tpope/vim-rhubarb'                " github integration
 Plug 'junegunn/gv.vim'                  " git commit navigation
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
 Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
