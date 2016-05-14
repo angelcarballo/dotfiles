@@ -245,6 +245,12 @@ set wildignore+=*/temp/*,*/backup/*                    " Vim
 set wildignore+=*/_site/*                              " Jekyll
 
 "}}}
+" Skeletons -------------------------------------------------------------{{{
+
+autocmd BufNewFile *_spec.rb 0read ~/.vim/skeleton/rspec.rb
+autocmd BufNewFile *.sh 0read ~/.vim/skeleton/bash.sh
+
+"}}}
 " Key bindings (leader) ---------------------------------------------------------------{{{
 
 " <leader> - Switch between the last two files
