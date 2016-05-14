@@ -345,6 +345,12 @@ nnoremap <leader>ns :SearchNotes<space>
 nnoremap <leader>nn :Note<space>
 vnoremap <leader>nc :NoteFromSelectedText<space>
 
+" P - Plugins
+nnoremap <leader>Pi :PlugInstall<cr>
+nnoremap <leader>Pc :PlugClean<cr>
+nnoremap <leader>Pu :PlugUpdate<cr>
+nnoremap <leader>Pg :PlugUpgrade<cr>
+
 " q - Quit
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :qall!<cr>
