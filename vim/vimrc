@@ -452,6 +452,9 @@ nnoremap <Down> :resize +2<CR>
 " increment/decrement number at cursor
 nnoremap <c-i> <c-a>
 
+" easyly run macros on selected lines
+vnoremap @ :norm@<cr>
+
 "}}}
 " Motions ---------------------------------------------------------------{{{
 
