@@ -56,6 +56,7 @@ Plug 'pgdouyon/vim-evanesco'             " remove search highlight on cursor mov
 
 " Colorschemes
 Plug 'w0ng/vim-hybrid'                  " hybrid colorscheme
+Plug 'morhetz/gruvbox'                  " gruvbox colorscheme
 
 " Auto completion
 Plug 'SirVer/ultisnips'                 " snippets support
@@ -399,6 +400,7 @@ nnoremap <leader>Tr :set relativenumber! relativenumber?<cr>
 nnoremap <leader>Trf :call ToggleFailFast()<cr>
 nnoremap <leader>Trs :call ToggleSpring()<cr>
 nnoremap <leader>Ts :setlocal spell! spelllang=en_us<cr>
+nnoremap <leader>Tp :set paste! paste?<cr>
 
 " V - Vimrc
 nnoremap <leader>Ve :e $MYVIMRC<cr>
@@ -454,6 +456,10 @@ nnoremap <c-i> <c-a>
 
 " easyly run macros on selected lines
 vnoremap @ :norm@<cr>
+
+" move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 "}}}
 " Motions ---------------------------------------------------------------{{{
