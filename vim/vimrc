@@ -53,6 +53,7 @@ Plug 'terryma/vim-expand-region'         " visual expandable regions
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
 Plug 'szw/vim-maximizer'                 " maximize/restore windows
 Plug 'pgdouyon/vim-evanesco'             " remove search highlight on cursor move
+Plug 'easymotion/vim-easymotion'         " easier motions (doh!)
 
 " Colorschemes
 Plug 'w0ng/vim-hybrid'                  " hybrid colorscheme
@@ -463,6 +464,9 @@ vnoremap K :m '<-2<CR>gv=gv
 
 " make Y behave like other capitals (yank from cursor to end of line)
 nnoremap Y y$
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
 
 "}}}
 " Motions ---------------------------------------------------------------{{{
