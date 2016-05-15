@@ -461,6 +461,9 @@ vnoremap @ :norm@<cr>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+" make Y behave like other capitals (yank from cursor to end of line)
+nnoremap Y y$
+
 "}}}
 " Motions ---------------------------------------------------------------{{{
 
@@ -541,4 +544,4 @@ augroup javascriptgroup
   autocmd BufNewFile,BufReadPost *.js setl shiftwidth=4 expandtab
 augroup END
 
-"}}}
+"Y behave like other capitals (yank from cursor to end of line)}}}
