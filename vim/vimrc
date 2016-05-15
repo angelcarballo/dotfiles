@@ -490,6 +490,14 @@ augroup rubygroup
 augroup END
 
 "}}}
+" File type: Python -----------------------------------------------------------------{{{
+
+augroup rubygroup
+  autocmd!
+  autocmd FileType ruby :set tabstop=8 expandtab shiftwidth=4 softtabstop=4
+augroup END
+
+"}}}
 " File type: Scala -----------------------------------------------------------------{{{
 
 augroup scalagroup
