@@ -109,8 +109,8 @@ end
 namespace :setup do
   desc 'Vim related configuration (plugin installation and cleanup)'
   task :vim do
-    verbose(false) { sh "vim +PluginInstall! +qall" }  # install and/or update vundle plugins
-    verbose(false) { sh "vim +PluginClean! +qall" }  # clean unused vundle plugins
+    verbose(false) { sh "vim +PlugInstall! +qall" }  # install and/or update vundle plugins
+    verbose(false) { sh "vim +PlugClean! +qall" }  # clean unused vundle plugins
   end
 
   desc 'Git related configuration'
