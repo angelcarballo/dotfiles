@@ -68,7 +68,7 @@ Plug 'docunext/closetag.vim'            " auto close for Html tags
 
 " Third party integration
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-Plug 'junegunn/fzf.vim'                   " fuzzy finder (files, buffers, commits, etc.)
+Plug 'ctrlpvim/ctrlp.vim'                 " fuzzy finder (files, buffers, etc.)
 Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
 Plug 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
 Plug 'gabesoft/vim-ags'                   " The Silver Searcher integration
@@ -140,6 +140,20 @@ let g:vim_markdown_folding_disabled=1
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden
+        \ --ignore .git
+        \ --ignore .svn
+        \ --ignore .hg
+        \ --ignore .DS_Store
+        \ --ignore bundle
+        \ --ignore doc
+        \ --ignore tmp
+        \ --ignore public
+        \ --ignore log
+        \ -g ""'
+  let g:ctrlp_use_caching = 0
 endif
 
 "" Vim-Notes options
@@ -275,7 +289,7 @@ vnoremap <leader>a<bar> :Tabularize /<bar><cr>
 nnoremap <silent> <leader>bp :bprevious<cr>
 nnoremap <silent> <leader>bn :bnext<cr>
 nnoremap <silent> <leader>bd :bdelete<cr>
-nnoremap <silent> <leader>bb :Buffers<cr>
+nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
 nnoremap <silent> <leader>bD :w <bar> %bd <bar> e#<cr>
 
 " c - Copy/Clear
@@ -308,13 +322,10 @@ nnoremap <silent> <leader>ev :Vex<cr>
 nnoremap <leader>fa :OpenAlternate<cr>
 nnoremap <leader>fc :wq<cr>
 nnoremap <leader>fs :w<cr>
-nnoremap <silent> <leader>ff :Files<cr>
-nnoremap <silent> <leader>fr :History<cr>
-nnoremap <silent> <leader>ft :Files spec/<cr>
-nnoremap <silent> <leader>fl :BLines<cr>
-nnoremap <silent> <leader>fL :Lines<cr>
-nnoremap <silent> <leader>fg :BCommits<cr>
-nnoremap <silent> <leader>fG :Commits<cr>
+nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
+nnoremap <silent> <leader>ff :CtrlP<cr>
+nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
+nnoremap <silent> <leader>ft :CtrlP<cr>spec/
 nnoremap <leader>fx :Dispatch<cr>
 
 " g - Git/Google
