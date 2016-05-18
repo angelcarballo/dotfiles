@@ -15,6 +15,7 @@ Plug 'kana/vim-textobj-user'            " custom text object support
 Plug 'ConradIrwin/vim-bracketed-paste'  " toggle paste mode automatically
 Plug 'tpope/vim-sleuth'                 " autoset indent options based on file type
 Plug 'eiginn/netrw'                     " file manager
+Plug 'vim-scripts/ReplaceWithRegister'  " replace command
 
 " Languages and frameworks
 Plug 'vim-ruby/vim-ruby'                " ruby integration
@@ -457,14 +458,17 @@ nnoremap <silent> j gj
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" resize panes with cursor keys
-nnoremap <Left> :vertical resize -2<CR>
-nnoremap <Right> :vertical resize +2<CR>
-nnoremap <Up> :resize -2<CR>
-nnoremap <Down> :resize +2<CR>
+" Use left/right to indent
+nnoremap <left> <<
+nnoremap <right> >>
+vnoremap <left> <gv
+vnoremap <right> >gv
 
-" increment/decrement number at cursor
-nnoremap <c-i> <c-a>
+" Use up/down to move lines/blocks
+nnoremap <up> :m -2<cr>
+nnoremap <down> :m +1<cr>
+vnoremap <up> :m -2<cr>gv
+vnoremap <down> :m '>+1<cr>gv
 
 " easyly run macros on selected lines
 vnoremap @ :norm@<cr>
