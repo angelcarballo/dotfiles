@@ -470,6 +470,13 @@ nnoremap <down> :m +1<cr>
 vnoremap <up> :m -2<cr>gv
 vnoremap <down> :m '>+1<cr>gv
 
+" Use shift+arrow keys to resize splits
+" note: inside iterm2 this requires xterm key presets
+nnoremap <s-up> :resize -2<cr>
+nnoremap <s-down> :resize +2<cr>
+nnoremap <s-left> :vertical resize -1<cr>
+nnoremap <s-right> :vertical resize +2<cr>
+
 " easyly run macros on selected lines
 vnoremap @ :norm@<cr>
 
