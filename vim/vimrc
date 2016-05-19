@@ -436,14 +436,14 @@ nnoremap <silent> <leader>ww <c-w>w
 " Key bindings (other) ---------------------------------------------------------------{{{
 
 " Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
+nnoremap p p=`]<c-o>
+nnoremap P P=`]<c-o>
 
 " Search and replace current selection
-vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
+vnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
 
 " Search visual selected text with The Silver Searcher
-vnoremap <C-f> "hy:Ags "<C-r>h"<cr>
+vnoremap <c-f> "hy:Ags "<c-r>h"<cr>
 
 " delete lines and word from insert mode
 inoremap <c-d> <esc>ddi
@@ -458,7 +458,7 @@ nnoremap <silent> j gj
 
 " quick region expand in visual mode
 vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
+vmap <c-v> <Plug>(expand_region_shrink)
 
 " Use left/right to indent
 nnoremap <left> <<
@@ -487,6 +487,10 @@ nnoremap Y y$
 
 " s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f2)
+
+" easy beginning/end of line
+nnoremap H ^
+nnoremap L $
 
 "}}}
 " Motions ---------------------------------------------------------------{{{
