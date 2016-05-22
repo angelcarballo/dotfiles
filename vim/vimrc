@@ -263,10 +263,19 @@ set wildignore+=*/temp/*,*/backup/*                    " Vim
 set wildignore+=*/_site/*                              " Jekyll
 
 "}}}
+" Abbreviations -------------------------------------------------------------{{{
+
+ab bpry require 'pry'; binding.pry
+ab classdescription #== Description
+      \<cr>#
+      \<cr>#
+
+"}}}
 " Skeletons -------------------------------------------------------------{{{
 
 autocmd BufNewFile *_spec.rb 0read ~/.vim/skeleton/rspec.rb
 autocmd BufNewFile *.sh 0read ~/.vim/skeleton/bash.sh
+autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 
 "}}}
 " Key bindings (leader) ---------------------------------------------------------------{{{
@@ -373,16 +382,9 @@ nnoremap <leader>Q :qall!<cr>
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>
 
 " s - Specs
-nnoremap <leader>sa :Copen!<cr>:MaximizerToggle<cr>
-nnoremap <leader>ss :Copen<cr>:MaximizerToggle<cr>
-nnoremap <leader>sf :call RunCurrentSpecFile()<cr>
-nnoremap <leader>sc :call RunNearestSpec()<cr>
-nnoremap <leader>sl :call RunLastSpec()<cr>
-nnoremap <leader>sa :call RunAllSpecs()<cr>
-nnoremap <leader>sta :call vroom#RunTestFile(g:vroom_options)<cr>
-nnoremap <leader>stf :call vroom#RunTestFile(g:vroom_options)<cr>
-nnoremap <leader>stc :call vroom#RunNearestTest(g:vroom_options)<cr>
-nnoremap <leader>stl :call vroom#RunLastTest()<cr>
+nnoremap <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
+nnoremap <leader>sc :call vroom#RunNearestTest(g:vroom_options)<cr>
+nnoremap <leader>sl :call vroom#RunLastTest()<cr>
 
 " S - Snippets/Show
 nnoremap <silent> <leader>Se :UltiSnipsEdit<cr>
@@ -519,14 +521,8 @@ augroup END
 
 augroup rubygroup
   autocmd!
+  autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType ruby let b:dispatch = 'ruby %'
-  autocmd FileType ruby :iabbrev <buffer> bpry require 'pry'; binding.pry
-  autocmd FileType ruby :iabbrev <buffer> classdescription #== Description
-        \<cr>
-        \<cr>== Responsibilities
-        \<cr>
-        \<cr>== Rationale
-        \<cr>
 augroup END
 
 "}}}
