@@ -80,7 +80,6 @@ Plug 'gabesoft/vim-ags'                   " The Silver Searcher integration
 Plug 'benmills/vimux'                     " tmux integration
 Plug 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
-Plug 'rizzatti/dash.vim'                  " dash integration (documentation helper)
 Plug 'szw/vim-g'                          " google search
 
 " Extras
@@ -304,8 +303,7 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
 endif
 nnoremap <silent> <leader>cs :nohl<cr>
 
-" d - Diff/Dash
-nnoremap <leader>dd :Dash<cr>
+" d - Diff
 xnoremap <leader>dp :diffput<cr>
 xnoremap <leader>dg :diffget<cr>
 
