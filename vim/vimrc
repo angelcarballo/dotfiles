@@ -509,6 +509,11 @@ onoremap in" :<c-u>normal! f"vi"<cr>
 
 
 "}}}
+" Force file types -----------------------------------------------------------------{{{
+
+au BufRead,BufNewFile *.jbuilder setfiletype ruby
+
+"}}}
 " File type: Vim -----------------------------------------------------------------{{{
 
 augroup rubygroup

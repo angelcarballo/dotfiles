@@ -7,6 +7,36 @@ snippet #!
 # encoding: utf-8
 endsnippet
 
+snippet let "let(:obj) { ... }"
+let(:${1:obj}) { ${0} }
+endsnippet
+
+snippet letdo "let(:obj) do ... end"
+let(:${1:obj}) do
+  ${0}
+end
+endsnippet
+
+snippet subject "subject { ... }"
+subject { ${0} }
+endsnippet
+
+snippet subjectdo "subject do ... end"
+subject do
+  ${0}
+end
+endsnippet
+
+snippet before "before { ... }"
+before { ${0} }
+endsnippet
+
+snippet beforedo "before do ... end"
+before do
+  ${0}
+end
+endsnippet
+
 snippet block "{|obj| .. }"
 {|${1:obj}| ${0} }
 endsnippet
