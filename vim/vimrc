@@ -16,6 +16,7 @@ Plug 'ConradIrwin/vim-bracketed-paste'  " toggle paste mode automatically
 Plug 'tpope/vim-sleuth'                 " autoset indent options based on file type
 Plug 'eiginn/netrw'                     " file manager
 Plug 'vim-scripts/ReplaceWithRegister'  " replace command
+Plug 'tpope/vim-vinegar'                 " file explorer improvements
 
 " Languages and frameworks
 Plug 'vim-ruby/vim-ruby'                " ruby integration
@@ -45,15 +46,18 @@ Plug 'michaeljsmith/vim-indent-object'  " indentation based text object
 Plug 'b4winckler/vim-angry'             " function argument text object
 Plug 'glts/vim-textobj-comment'         " comment text object
 
-" Look & Feel, Navigation
-Plug 'tpope/vim-vinegar'                 " file explorer improvements
+" Look & Feel
 Plug 'yggdroot/indentLine'               " show indentation lines
+Plug 'pgdouyon/vim-evanesco'             " remove search highlight on cursor move
+Plug 'vim-airline/vim-airline'           " better statusline
+Plug 'vim-airline/vim-airline-themes'    " themes for airline
+
+" Navigation
 Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
 Plug 'terryma/vim-expand-region'         " visual expandable regions
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
 Plug 'szw/vim-maximizer'                 " maximize/restore windows
-Plug 'pgdouyon/vim-evanesco'             " remove search highlight on cursor move
 Plug 'prendradjaja/vim-vertigo'          " jump to close lines using home row
 Plug 'easymotion/vim-easymotion'         " easier motions (doh!)
 
@@ -218,9 +222,17 @@ set laststatus=2               " always show status bar
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
 
+" Hybrid theme configuration
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 colorscheme hybrid
+
+" Airline configuration
+let g:airline_powerline_fonts=1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline#extensions#hunks#enabled = 0
+let g:airline_theme='hybrid'
 
 " automatically re balance windows on Vim resize
 autocmd VimResized * :wincmd =
