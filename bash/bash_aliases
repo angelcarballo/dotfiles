@@ -3,7 +3,7 @@
 # Comunes
 alias c='clear'
 alias celar='clear'
-alias ll='ls -lh'
+alias ll='ls -GFlah'
 
 # Atajos Mac
 alias flushdns='dscacheutil -flushcache'
