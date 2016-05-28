@@ -573,3 +573,11 @@ augroup javascriptgroup
 augroup END
 
 "}}}
+" Type: Git commit (Fugitive) --------------------------------------------------------------{{{
+
+augroup gitcommit
+  autocmd!
+  autocmd Filetype gitcommit set spell
+augroup END
+
+"}}}
