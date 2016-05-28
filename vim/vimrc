@@ -513,7 +513,7 @@ onoremap in" :<c-u>normal! f"vi"<cr>
 au BufRead,BufNewFile *.jbuilder setfiletype ruby
 
 "}}}
-" File type: Vim -----------------------------------------------------------------{{{
+" Type: Vim -----------------------------------------------------------------{{{
 
 augroup rubygroup
   autocmd!
@@ -521,7 +521,7 @@ augroup rubygroup
 augroup END
 
 "}}}
-" File type: Ruby -----------------------------------------------------------------{{{
+" Type: Ruby -----------------------------------------------------------------{{{
 
 augroup rubygroup
   autocmd!
@@ -530,7 +530,7 @@ augroup rubygroup
 augroup END
 
 "}}}
-" File type: Python -----------------------------------------------------------------{{{
+" Type: Python -----------------------------------------------------------------{{{
 
 augroup rubygroup
   autocmd!
@@ -538,7 +538,7 @@ augroup rubygroup
 augroup END
 
 "}}}
-" File type: Scala -----------------------------------------------------------------{{{
+" Type: Scala -----------------------------------------------------------------{{{
 
 augroup scalagroup
   autocmd!
@@ -547,7 +547,7 @@ augroup scalagroup
 augroup END
 
 "}}}
-" File type: Markdown --------------------------------------------------------------{{{
+" Type: Markdown --------------------------------------------------------------{{{
 
 augroup markdowngroup
   autocmd!
@@ -557,19 +557,19 @@ augroup markdowngroup
 augroup END
 
 "}}}
-" File type: Coffeescript --------------------------------------------------------------{{{
+" Type: Coffeescript --------------------------------------------------------------{{{
 
 augroup coffeescriptgroup
   autocmd!
-  autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+  autocmd Filetype coffee setl shiftwidth=2 expandtab
 augroup END
 
 "}}}
-" File type: Javascript --------------------------------------------------------------{{{
+" Type: Javascript --------------------------------------------------------------{{{
 
 augroup javascriptgroup
   autocmd!
-  autocmd BufNewFile,BufReadPost *.js setl shiftwidth=4 expandtab
+  autocmd Filetype javascript setl shiftwidth=4 expandtab
 augroup END
 
 "}}}
