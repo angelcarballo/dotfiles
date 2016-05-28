@@ -287,11 +287,12 @@ nnoremap <leader>/ :Ags ""<left>
 " * - Search in project for word under cursor
 nnoremap <leader>* :Ags ""<left><c-r><c-w><cr>
 
-" a - Align
+" a - Align/Auto
 vnoremap <leader>aa :Tabularize /
 vnoremap <leader>a= :Tabularize /=<cr>
 vnoremap <leader>a> :Tabularize /=><cr>
 vnoremap <leader>a<bar> :Tabularize /<bar><cr>
+nnoremap <leader>ac 1z=
 
 " b - Buffers
 nnoremap <silent> <leader>bp :bprevious<cr>
@@ -428,8 +429,6 @@ nnoremap <silent> <leader>wf :MaximizerToggle<cr>
 nnoremap <silent> <leader>ws :sp<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
-
-
 
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
