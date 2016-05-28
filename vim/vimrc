@@ -6,19 +6,20 @@ set nocompatible                          " be iMproved
 call plug#begin('~/.vim/plugged')
 
 " Basic plugins
-Plug 'tpope/vim-fugitive'               " git integration
-Plug 'tpope/vim-rhubarb'                " github integration
-Plug 'junegunn/gv.vim'                  " git commit navigation
-Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
-Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
 Plug 'kana/vim-textobj-user'            " custom text object support
 Plug 'ConradIrwin/vim-bracketed-paste'  " toggle paste mode automatically
 Plug 'tpope/vim-sleuth'                 " autoset indent options based on file type
 Plug 'eiginn/netrw'                     " file manager
-Plug 'vim-scripts/ReplaceWithRegister'  " replace command
-Plug 'tpope/vim-vinegar'                 " file explorer improvements
+Plug 'tpope/vim-vinegar'                " file manager improvements
+Plug 'tpope/vim-repeat'                 " extend repeat support
 
-" Languages and frameworks
+" Git
+Plug 'tpope/vim-fugitive'               " git integration
+Plug 'tpope/vim-rhubarb'                " github integration
+Plug 'junegunn/gv.vim'                  " git commit navigation
+Plug 'airblade/vim-gitgutter'           " mealtime git-diff
+
+" Languages & frameworks
 Plug 'vim-ruby/vim-ruby'                " ruby integration
 Plug 'tpope/vim-rake'                   " rake integration
 Plug 'tpope/vim-rbenv'                  " rbenv integration
@@ -38,6 +39,11 @@ Plug 'plasticboy/vim-markdown'          " markdown support
 Plug 'kchmck/vim-coffee-script'         " coffeescript support
 Plug 'jelera/vim-javascript-syntax'     " better javascript syntax
 
+" Motions & Operators
+Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
+Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
+Plug 'vim-scripts/ReplaceWithRegister'  " replace command
+
 " Text objects
 Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
 Plug 'whatyouhide/vim-textobj-erb'      " ERB block text object
@@ -51,14 +57,14 @@ Plug 'yggdroot/indentLine'               " show indentation lines
 Plug 'pgdouyon/vim-evanesco'             " remove search highlight on cursor move
 Plug 'vim-airline/vim-airline'           " better statusline
 Plug 'vim-airline/vim-airline-themes'    " themes for airline
+Plug 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
 
 " Navigation
+Plug 'ctrlpvim/ctrlp.vim'                " fuzzy finder (files, buffers, etc.)
 Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
-Plug 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
 Plug 'terryma/vim-expand-region'         " visual expandable regions
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
 Plug 'szw/vim-maximizer'                 " maximize/restore windows
-Plug 'prendradjaja/vim-vertigo'          " jump to close lines using home row
 Plug 'easymotion/vim-easymotion'         " easier motions (doh!)
 
 " Colorschemes
@@ -73,7 +79,6 @@ Plug 'docunext/closetag.vim'            " auto close for Html tags
 
 " Third party integration
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-Plug 'ctrlpvim/ctrlp.vim'                 " fuzzy finder (files, buffers, etc.)
 Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
 Plug 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
 Plug 'gabesoft/vim-ags'                   " The Silver Searcher integration
@@ -87,8 +92,6 @@ Plug 'godlygeek/tabular'                " code align (like on this comment)
 Plug 'tpope/vim-commentary'             " comment/uncomment code
 Plug 'skalnik/vim-vroom'                " ruby test runner
 Plug 'tpope/vim-dispatch'               " run processes on the background
-Plug 'airblade/vim-gitgutter'           " mealtime git-diff
-Plug 'tpope/vim-repeat'                 " extend repeat support
 Plug 'AndrewRadev/switch.vim'           " easy switches
 Plug 'christoomey/vim-system-copy'      " send commands to tmux
 Plug 'xolox/vim-notes'                  " easy note taking
