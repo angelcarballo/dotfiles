@@ -78,7 +78,6 @@ Plug 'jiangmiao/auto-pairs'             " auto close for (, [, {
 Plug 'docunext/closetag.vim'            " auto close for Html tags
 
 " Third party integration
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
 Plug 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
 Plug 'gabesoft/vim-ags'                   " The Silver Searcher integration
@@ -86,6 +85,7 @@ Plug 'benmills/vimux'                     " tmux integration
 Plug 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
 Plug 'szw/vim-g'                          " google search
+Plug 'sunaku/vim-dasht'                   " dasht integration (API docs search)
 
 " Extras
 Plug 'godlygeek/tabular'                " code align (like on this comment)
@@ -175,6 +175,11 @@ let g:switch_custom_definitions =
 
 "" Vim-maximizer options
 let g:maximizer_set_default_mapping = 1
+
+"" Dasht options
+let g:dasht_filetype_docsets = {
+      \ 'ruby': ['Ruby_2', 'Ruby_On_Rails_4'],
+      \ }
 
 "}}}
 " General settings ------------------------------------------------------------{{{
@@ -330,9 +335,13 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
 endif
 nnoremap <silent> <leader>cs :nohl<cr>
 
-" d - Diff
+" d - Diff/Dash
 xnoremap <leader>dp :diffput<cr>
 xnoremap <leader>dg :diffget<cr>
+
+" Open documentation using <dasht>
+nnoremap <silent> <Leader>dd :call Dasht([expand('<cWORD>'), expand('<cword>')])<Return>
+vnoremap <silent> <Leader>dd y:<C-U>call Dasht(getreg(0))<Return>
 
 " e - Explore
 nnoremap <silent> <leader>ei :Explore<cr>

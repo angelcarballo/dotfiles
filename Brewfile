@@ -20,3 +20,7 @@ brew "diff-so-fancy"
 
 # general purpose fuzzy finder
 brew "fzf"
+
+# required by dasht
+brew "socat"
+brew "dasht"
