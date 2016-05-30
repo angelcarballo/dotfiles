@@ -12,6 +12,7 @@ Plug 'tpope/vim-sleuth'                 " autoset indent options based on file t
 Plug 'eiginn/netrw'                     " file manager
 Plug 'tpope/vim-vinegar'                " file manager improvements
 Plug 'tpope/vim-repeat'                 " extend repeat support
+Plug 'tpope/vim-unimpaired'             " multiple mappings using [ & ]
 
 " Git
 Plug 'tpope/vim-fugitive'               " git integration
