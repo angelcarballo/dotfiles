@@ -215,6 +215,7 @@ set wildmenu                         " visual auto complete for command menu
 set lazyredraw                       " redraw only when needed
 set formatoptions+=j                 " delete comment character when joining commented lines
 set omnifunc=syntaxcomplete#Complete " enable omni completion
+set timeoutlen=500                   " don't wait so long for the next keypress
 
 au BufLeave,FocusLost * silent! wa   " autosave files
 autocmd InsertLeave * set nopaste    " disable paste mode on leaving insert mode.
@@ -394,6 +395,13 @@ nnoremap <leader>nr :RecentNotes<cr>
 nnoremap <leader>ns :SearchNotes<space>
 nnoremap <leader>nn :Note<space>
 vnoremap <leader>nc :NoteFromSelectedText<space>
+
+" o - Open
+nnoremap <silent> <leader>om :Emodel<space>
+nnoremap <silent> <leader>oc :Econtroller<space>
+nnoremap <silent> <leader>os :Espec<space>
+nnoremap <silent> <leader>oi :Einitializer<space>
+nnoremap <silent> <leader>ov :Eview<space>
 
 " P - Plugins
 nnoremap <leader>Pi :PlugInstall<cr>
