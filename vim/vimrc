@@ -22,6 +22,7 @@ Plug 'airblade/vim-gitgutter'           " mealtime git-diff
 
 " Languages & frameworks
 Plug 'vim-ruby/vim-ruby'                " ruby integration
+Plug 'ecomba/vim-ruby-refactoring'      " rails refactoring helpers
 Plug 'tpope/vim-rake'                   " rake integration
 Plug 'tpope/vim-rbenv'                  " rbenv integration
 Plug 'tpope/vim-rails'                  " rails integration
@@ -184,6 +185,9 @@ let g:maximizer_set_default_mapping = 1
 let g:dasht_filetype_docsets = {
       \ 'ruby': ['Ruby_2', 'Ruby_On_Rails_4'],
       \ }
+
+"" Ruby refactoring settings
+let g:ruby_refactoring_map_keys=0
 
 "}}}
 " General settings ------------------------------------------------------------{{{
@@ -413,8 +417,13 @@ nnoremap <leader>Pg :PlugUpgrade<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :qall!<cr>
 
-" r - Remove
+" r - Remove/Refactor
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>
+vnoremap <leader>rem :RExtractMethod<cr>
+vnoremap <leader>rlv :RRenameLocalVariable<cr>
+vnoremap <leader>riv :RRenameInstanceVariable<cr>
+vnoremap <leader>rec :RExtractConstant<cr>
+nnoremap <leader>rel :RExtractLet<cr>
 
 " s - Specs
 nnoremap <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
