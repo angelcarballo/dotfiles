@@ -6,19 +6,23 @@ set nocompatible                          " be iMproved
 call plug#begin('~/.vim/plugged')
 
 " Basic plugins
-Plug 'tpope/vim-fugitive'               " git integration
-Plug 'tpope/vim-rhubarb'                " github integration
-Plug 'junegunn/gv.vim'                  " git commit navigation
-Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
-Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
 Plug 'kana/vim-textobj-user'            " custom text object support
 Plug 'ConradIrwin/vim-bracketed-paste'  " toggle paste mode automatically
 Plug 'tpope/vim-sleuth'                 " autoset indent options based on file type
 Plug 'eiginn/netrw'                     " file manager
-Plug 'vim-scripts/ReplaceWithRegister'  " replace command
+Plug 'tpope/vim-vinegar'                " file manager improvements
+Plug 'tpope/vim-repeat'                 " extend repeat support
+Plug 'tpope/vim-unimpaired'             " multiple mappings using [ & ]
 
-" Languages and frameworks
+" Git
+Plug 'tpope/vim-fugitive'               " git integration
+Plug 'tpope/vim-rhubarb'                " github integration
+Plug 'junegunn/gv.vim'                  " git commit navigation
+Plug 'airblade/vim-gitgutter'           " mealtime git-diff
+
+" Languages & frameworks
 Plug 'vim-ruby/vim-ruby'                " ruby integration
+Plug 'ecomba/vim-ruby-refactoring'      " rails refactoring helpers
 Plug 'tpope/vim-rake'                   " rake integration
 Plug 'tpope/vim-rbenv'                  " rbenv integration
 Plug 'tpope/vim-rails'                  " rails integration
@@ -37,6 +41,11 @@ Plug 'plasticboy/vim-markdown'          " markdown support
 Plug 'kchmck/vim-coffee-script'         " coffeescript support
 Plug 'jelera/vim-javascript-syntax'     " better javascript syntax
 
+" Motions & Operators
+Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
+Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
+Plug 'vim-scripts/ReplaceWithRegister'  " replace command
+
 " Text objects
 Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
 Plug 'whatyouhide/vim-textobj-erb'      " ERB block text object
@@ -45,16 +54,19 @@ Plug 'michaeljsmith/vim-indent-object'  " indentation based text object
 Plug 'b4winckler/vim-angry'             " function argument text object
 Plug 'glts/vim-textobj-comment'         " comment text object
 
-" Look & Feel, Navigation
-Plug 'tpope/vim-vinegar'                 " file explorer improvements
+" Look & Feel
 Plug 'yggdroot/indentLine'               " show indentation lines
-Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
+Plug 'pgdouyon/vim-evanesco'             " remove search highlight on cursor move
+Plug 'vim-airline/vim-airline'           " better statusline
+Plug 'vim-airline/vim-airline-themes'    " themes for airline
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
+
+" Navigation
+Plug 'ctrlpvim/ctrlp.vim'                " fuzzy finder (files, buffers, etc.)
+Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
 Plug 'terryma/vim-expand-region'         " visual expandable regions
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
 Plug 'szw/vim-maximizer'                 " maximize/restore windows
-Plug 'pgdouyon/vim-evanesco'             " remove search highlight on cursor move
-Plug 'prendradjaja/vim-vertigo'          " jump to close lines using home row
 Plug 'easymotion/vim-easymotion'         " easier motions (doh!)
 
 " Colorschemes
@@ -68,24 +80,20 @@ Plug 'jiangmiao/auto-pairs'             " auto close for (, [, {
 Plug 'docunext/closetag.vim'            " auto close for Html tags
 
 " Third party integration
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-Plug 'ctrlpvim/ctrlp.vim'                 " fuzzy finder (files, buffers, etc.)
 Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
 Plug 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
 Plug 'gabesoft/vim-ags'                   " The Silver Searcher integration
 Plug 'benmills/vimux'                     " tmux integration
 Plug 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
-Plug 'rizzatti/dash.vim'                  " dash integration (documentation helper)
 Plug 'szw/vim-g'                          " google search
+Plug 'sunaku/vim-dasht'                   " dasht integration (API docs search)
 
 " Extras
 Plug 'godlygeek/tabular'                " code align (like on this comment)
 Plug 'tpope/vim-commentary'             " comment/uncomment code
 Plug 'skalnik/vim-vroom'                " ruby test runner
 Plug 'tpope/vim-dispatch'               " run processes on the background
-Plug 'airblade/vim-gitgutter'           " mealtime git-diff
-Plug 'tpope/vim-repeat'                 " extend repeat support
 Plug 'AndrewRadev/switch.vim'           " easy switches
 Plug 'christoomey/vim-system-copy'      " send commands to tmux
 Plug 'xolox/vim-notes'                  " easy note taking
@@ -173,6 +181,14 @@ let g:switch_custom_definitions =
 "" Vim-maximizer options
 let g:maximizer_set_default_mapping = 1
 
+"" Dasht options
+let g:dasht_filetype_docsets = {
+      \ 'ruby': ['Ruby_2', 'Ruby_On_Rails_4'],
+      \ }
+
+"" Ruby refactoring settings
+let g:ruby_refactoring_map_keys=0
+
 "}}}
 " General settings ------------------------------------------------------------{{{
 
@@ -203,8 +219,10 @@ set wildmenu                         " visual auto complete for command menu
 set lazyredraw                       " redraw only when needed
 set formatoptions+=j                 " delete comment character when joining commented lines
 set omnifunc=syntaxcomplete#Complete " enable omni completion
+set timeoutlen=500                   " don't wait so long for the next keypress
 
 au BufLeave,FocusLost * silent! wa   " autosave files
+autocmd InsertLeave * set nopaste    " disable paste mode on leaving insert mode.
 
 runtime macros/matchit.vim           " allow % to match more than just single characters
 
@@ -220,9 +238,34 @@ set laststatus=2               " always show status bar
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
 
+" Hybrid theme configuration
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 colorscheme hybrid
+
+" Airline configuration
+let g:airline_powerline_fonts=1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#branch#displayed_head_limit = 8
+let g:airline_theme='hybrid'
+let g:airline#extensions#ctrlp#color_template = 'normal'
+let g:airline_mode_map = {
+      \ '__' : '',
+      \ 'n'  : '',
+      \ 'i'  : '',
+      \ 'R'  : '',
+      \ 'c'  : '',
+      \ 'v'  : '',
+      \ 'V'  : '',
+      \ '' : '',
+      \ 's'  : '',
+      \ 'S'  : '',
+      \ '' : '',
+      \ }
+" hide file encoding
+let g:airline_section_y = airline#section#create('')
 
 " automatically re balance windows on Vim resize
 autocmd VimResized * :wincmd =
@@ -230,31 +273,14 @@ autocmd VimResized * :wincmd =
 " highlight trailing spaces
 match ErrorMsg '\s\+$'
 
-" current git branch function for status line
-function! CurrentBranch()
-  return exists('*fugitive#head') ? '@' . fugitive#head() : ''
-endfunction
-
-"recalculate the trailing whitespace warning when idle, and after saving
-autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
-
-set statusline=
-set statusline+=\ %<%f                              " file path
-set statusline+=\ %{CurrentBranch()}                " git branch
-set statusline+=\ %m\                               " modified flag
-set statusline+=\ %=\%l/%L\                         " current row/total rows
-set statusline+=\ %y                                " file type
-set statusline+=%#error#                            " error color
-set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing space warning
-set statusline+=%*                                  " reset default color
-set statusline+=\ %r                                " read-only flag
-hi StatusLine ctermfg=15 ctermbg=8 cterm=bold
-hi StatusLineNC ctermfg=15 ctermbg=8 cterm=none
-
-" Tabs bar colors
-hi TabLineFill ctermfg=8
-hi TabLine ctermfg=8 ctermbg=15
-hi TabLineSel ctermfg=193 ctermbg=65
+" Change cursor to vertical bar (|) on insert mode
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
 
 "}}}
 " Files to ignore -------------------------------------------------------------{{{
@@ -270,9 +296,8 @@ set wildignore+=*/_site/*                              " Jekyll
 
 ab bpry require 'pry'; binding.pry
 ab classdescription #== Description
-      \<cr>#
-      \<cr>#
-
+      \<cr>
+      \<cr>
 "}}}
 " Skeletons -------------------------------------------------------------{{{
 
@@ -292,11 +317,12 @@ nnoremap <leader>/ :Ags ""<left>
 " * - Search in project for word under cursor
 nnoremap <leader>* :Ags ""<left><c-r><c-w><cr>
 
-" a - Align
+" a - Align/Auto
 vnoremap <leader>aa :Tabularize /
 vnoremap <leader>a= :Tabularize /=<cr>
 vnoremap <leader>a> :Tabularize /=><cr>
 vnoremap <leader>a<bar> :Tabularize /<bar><cr>
+nnoremap <leader>ac 1z=
 
 " b - Buffers
 nnoremap <silent> <leader>bp :bprevious<cr>
@@ -308,23 +334,26 @@ nnoremap <silent> <leader>bD :w <bar> %bd <bar> e#<cr>
 " c - Copy/Clear
 if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy git branch
-  nnoremap <leader>cb :let @*=fugitive#head()<cr>
+  nnoremap <leader>cb :let @*=fugitive#head()<cr>:echo "Git branch copied"<cr>
 
   " copy relative path  (src/foo.txt)
-  nnoremap <leader>cf :let @*=expand("%")<cr>
+  nnoremap <leader>cf :let @*=expand("%")<cr>:echo "File path copied"<cr>
 
   " copy absolute path  (/something/src/foo.txt)
-  nnoremap <leader>cF :let @*=expand("%:p")<cr>
+  nnoremap <leader>cF :let @*=expand("%:p")<cr>:echo "Full file path copied"<cr>
 
   " relative path with line number
-  nnoremap <leader>cl :let @+=join([expand('%'),  line(".")], ':')<cr>
+  nnoremap <leader>cl :let @+=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
 endif
 nnoremap <silent> <leader>cs :nohl<cr>
 
 " d - Diff/Dash
-nnoremap <leader>dd :Dash<cr>
 xnoremap <leader>dp :diffput<cr>
 xnoremap <leader>dg :diffget<cr>
+
+" Open documentation using <dasht>
+nnoremap <silent> <Leader>dd :call Dasht([expand('<cWORD>'), expand('<cword>')])<Return>
+vnoremap <silent> <Leader>dd y:<C-U>call Dasht(getreg(0))<Return>
 
 " e - Explore
 nnoremap <silent> <leader>ei :Explore<cr>
@@ -371,6 +400,13 @@ nnoremap <leader>ns :SearchNotes<space>
 nnoremap <leader>nn :Note<space>
 vnoremap <leader>nc :NoteFromSelectedText<space>
 
+" o - Open
+nnoremap <silent> <leader>om :Emodel<space>
+nnoremap <silent> <leader>oc :Econtroller<space>
+nnoremap <silent> <leader>os :Espec<space>
+nnoremap <silent> <leader>oi :Einitializer<space>
+nnoremap <silent> <leader>ov :Eview<space>
+
 " P - Plugins
 nnoremap <leader>Pi :PlugInstall<cr>
 nnoremap <leader>Pc :PlugClean<cr>
@@ -381,8 +417,13 @@ nnoremap <leader>Pg :PlugUpgrade<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :qall!<cr>
 
-" r - Remove
+" r - Remove/Refactor
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>
+vnoremap <leader>rem :RExtractMethod<cr>
+vnoremap <leader>rlv :RRenameLocalVariable<cr>
+vnoremap <leader>riv :RRenameInstanceVariable<cr>
+vnoremap <leader>rec :RExtractConstant<cr>
+nnoremap <leader>rel :RExtractLet<cr>
 
 " s - Specs
 nnoremap <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
@@ -434,8 +475,6 @@ nnoremap <silent> <leader>wf :MaximizerToggle<cr>
 nnoremap <silent> <leader>ws :sp<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
-
-
 
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
@@ -501,8 +540,10 @@ nnoremap L $
 " Motions ---------------------------------------------------------------{{{
 
 " motions for in next ..
+onoremap inb :<c-u>normal! f(vi(<cr>
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap in) :<c-u>normal! f(vi(<cr>
+onoremap inB :<c-u>normal! f(vi(<cr>
 onoremap in[ :<c-u>normal! f[vi[<cr>
 onoremap in] :<c-u>normal! f[vi[<cr>
 onoremap in{ :<c-u>normal! f{vi{<cr>
@@ -512,7 +553,12 @@ onoremap in" :<c-u>normal! f"vi"<cr>
 
 
 "}}}
-" File type: Vim -----------------------------------------------------------------{{{
+" Force file types -----------------------------------------------------------------{{{
+
+au BufRead,BufNewFile *.jbuilder setfiletype ruby
+
+"}}}
+" Type: Vim -----------------------------------------------------------------{{{
 
 augroup rubygroup
   autocmd!
@@ -520,7 +566,7 @@ augroup rubygroup
 augroup END
 
 "}}}
-" File type: Ruby -----------------------------------------------------------------{{{
+" Type: Ruby -----------------------------------------------------------------{{{
 
 augroup rubygroup
   autocmd!
@@ -529,7 +575,7 @@ augroup rubygroup
 augroup END
 
 "}}}
-" File type: Python -----------------------------------------------------------------{{{
+" Type: Python -----------------------------------------------------------------{{{
 
 augroup rubygroup
   autocmd!
@@ -537,7 +583,7 @@ augroup rubygroup
 augroup END
 
 "}}}
-" File type: Scala -----------------------------------------------------------------{{{
+" Type: Scala -----------------------------------------------------------------{{{
 
 augroup scalagroup
   autocmd!
@@ -546,7 +592,7 @@ augroup scalagroup
 augroup END
 
 "}}}
-" File type: Markdown --------------------------------------------------------------{{{
+" Type: Markdown --------------------------------------------------------------{{{
 
 augroup markdowngroup
   autocmd!
@@ -556,19 +602,27 @@ augroup markdowngroup
 augroup END
 
 "}}}
-" File type: Coffeescript --------------------------------------------------------------{{{
+" Type: Coffeescript --------------------------------------------------------------{{{
 
 augroup coffeescriptgroup
   autocmd!
-  autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+  autocmd Filetype coffee setl shiftwidth=2 expandtab
 augroup END
 
 "}}}
-" File type: Javascript --------------------------------------------------------------{{{
+" Type: Javascript --------------------------------------------------------------{{{
 
 augroup javascriptgroup
   autocmd!
-  autocmd BufNewFile,BufReadPost *.js setl shiftwidth=4 expandtab
+  autocmd Filetype javascript setl shiftwidth=4 expandtab
+augroup END
+
+"}}}
+" Type: Git commit (Fugitive) --------------------------------------------------------------{{{
+
+augroup gitcommit
+  autocmd!
+  autocmd Filetype gitcommit set spell
 augroup END
 
 "}}}

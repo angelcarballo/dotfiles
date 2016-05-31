@@ -3,7 +3,7 @@
 # Comunes
 alias c='clear'
 alias celar='clear'
-alias ll='ls -lh'
+alias ll='ls -GFlah'
 
 # Atajos Mac
 alias flushdns='dscacheutil -flushcache'
@@ -15,8 +15,7 @@ alias be='bundle exec'
 alias ber='bundle exec rspec --color'
 alias bers='bundle exec spring rspec --color'
 alias berf='bundle exec rspec --color --fail-fast'
-alias rs='bundle exec rails server'
-alias rsd='bundle exec rails server --debugger'
+alias rs='bundle exec rails server -b 0.0.0.0'
 alias rc='bundle exec rails console'
 alias rg='bundle exec rails generate '
 alias migrate='bundle exec rake db:migrate && bundle exec rake db:test:prepare'
