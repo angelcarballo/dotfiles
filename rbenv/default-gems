@@ -1,8 +1,9 @@
-gem-ctags
+awesome_print
 bundler
+gem-browse
+gem-ctags
+gem-release
+overcommit
+pre-commit
 pry
 pry-byebug
-awesome_print
-pre-commit
-overcommit
-gem-browse
