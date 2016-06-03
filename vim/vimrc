@@ -63,6 +63,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while
 
 " Navigation
 Plug 'ctrlpvim/ctrlp.vim'                " fuzzy finder (files, buffers, etc.)
+Plug 'tacahiroy/ctrlp-funky'             " ctrlp extension to search function definitions
 Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
 Plug 'terryma/vim-expand-region'         " visual expandable regions
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
@@ -363,7 +364,7 @@ nnoremap <silent> <leader>ev :Vex<cr>
 " f - File/Find
 nnoremap <leader>fa :OpenAlternate<cr>
 nnoremap <leader>fA :vsplit<cr>:OpenAlternate<cr>
-nnoremap <leader>fc :wq<cr>
+nnoremap <leader>fc :execute 'CtrlPFunky ' . expand('<cword>')<cr>
 nnoremap <leader>fs :w<cr>
 nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
 nnoremap <silent> <leader>ff :CtrlP<cr>
