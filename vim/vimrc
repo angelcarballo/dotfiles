@@ -53,6 +53,7 @@ Plug 'kana/vim-textobj-entire'          " entire buffer text object
 Plug 'michaeljsmith/vim-indent-object'  " indentation based text object
 Plug 'b4winckler/vim-angry'             " function argument text object
 Plug 'glts/vim-textobj-comment'         " comment text object
+Plug 'kana/vim-textobj-line'            " line text object
 
 " Look & Feel
 Plug 'yggdroot/indentLine'               " show indentation lines
@@ -190,6 +191,9 @@ let g:dasht_filetype_docsets = {
 "" Ruby refactoring settings
 let g:ruby_refactoring_map_keys=0
 
+"" Disable easymotion default mappings
+let g:EasyMotion_do_mapping = 0
+
 "}}}
 " General settings ------------------------------------------------------------{{{
 
@@ -309,8 +313,10 @@ autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 "}}}
 " Key bindings (leader) ---------------------------------------------------------------{{{
 
+nmap <leader><space> :CtrlPBuffer<cr>
+
 " <leader> - Switch between the last two files
-nnoremap <leader><leader> <c-^>
+nnoremap <leader><tab> <c-^>
 
 " / - Search in project
 nnoremap <leader>/ :Ags ""<left>
@@ -369,8 +375,6 @@ nnoremap <leader>fs :w<cr>
 nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
 nnoremap <silent> <leader>ff :CtrlP<cr>
 nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
-nnoremap <silent> <leader>ft :CtrlP<cr>spec/
-nnoremap <leader>fx :Dispatch<cr>
 
 " g - Git/Google
 nnoremap <leader>gs :Gstatus<cr>
