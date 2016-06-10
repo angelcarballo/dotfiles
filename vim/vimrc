@@ -253,7 +253,7 @@ let g:airline_powerline_fonts=1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#branch#displayed_head_limit = 8
+let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline_theme='hybrid'
 let g:airline#extensions#ctrlp#color_template = 'normal'
 let g:airline_mode_map = {
@@ -313,7 +313,7 @@ autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 "}}}
 " Key bindings (leader) ---------------------------------------------------------------{{{
 
-nmap <leader><space> :CtrlPBuffer<cr>
+nmap <leader><space> :CtrlP<cr>
 
 " <leader> - Switch between the last two files
 nnoremap <leader><tab> <c-^>
@@ -371,6 +371,7 @@ nnoremap <silent> <leader>ev :Vex<cr>
 nnoremap <leader>fa :OpenAlternate<cr>
 nnoremap <leader>fA :vsplit<cr>:OpenAlternate<cr>
 nnoremap <leader>fc :execute 'CtrlPFunky ' . expand('<cword>')<cr>
+nnoremap <leader>fl <c-^>
 nnoremap <leader>fs :w<cr>
 nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
 nnoremap <silent> <leader>ff :CtrlP<cr>
