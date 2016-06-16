@@ -11,7 +11,7 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 # }}}
 
-# complete words from tmux pane(s) {{{
+# Complete words from tmux pane(s) {{{
 # Source: http://blog.plenz.com/2012-01/zsh-complete-words-from-tmux-pane.html
 _tmux_pane_words() {
     local expl
@@ -39,10 +39,19 @@ zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' menu yes select interac
 zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=* m:{A-Za-z}={a-zA-Z}'
 # }}}
 
-# checkout branch using fzf
+# Checkout branch using fzf {{{
 co() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" | fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
+# }}}
+
+# Open project tmux session {{{
+ss() {
+  local project
+  project=$(cd $HOME/src && ls -d */ | cut -f1 -d'/' | fzf-tmux) &&
+    ts $(echo "$project")
+}
+# }}}
