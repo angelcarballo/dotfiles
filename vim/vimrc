@@ -424,7 +424,7 @@ nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :qall!<cr>
 
 " r - Remove/Refactor
-nnoremap <silent> <leader>rw :%s/\s\+$//<cr>
+nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
 vnoremap <leader>rem :RExtractMethod<cr>
 vnoremap <leader>rlv :RRenameLocalVariable<cr>
 vnoremap <leader>riv :RRenameInstanceVariable<cr>
