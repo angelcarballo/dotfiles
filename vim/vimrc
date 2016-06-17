@@ -559,6 +559,14 @@ onoremap in" :<c-u>normal! f"vi"<cr>
 
 
 "}}}
+
+" Avoid extra lines at eof ---------------------------------------------------------------{{{
+
+autocmd BufWritePre *.rb call TrimEndLines()
+autocmd BufWritePre *.feature call TrimEndLines()
+
+"}}}
+
 " Force file types -----------------------------------------------------------------{{{
 
 au BufRead,BufNewFile *.jbuilder setfiletype ruby
@@ -577,6 +585,7 @@ augroup END
 augroup rubygroup
   autocmd!
   autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd FileType ruby let b:dispatch = 'ruby %'
   autocmd FileType ruby let b:dispatch = 'ruby %'
 augroup END
 
