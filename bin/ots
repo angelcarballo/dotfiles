@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Tmux Session (ts)
+# Open Tmux Session (ots)
 # source: https://github.com/thoughtbot/dotfiles/blob/master/bin/tat
 
 current_folder="$(basename "$PWD" | tr . -)"
