@@ -559,14 +559,12 @@ onoremap in" :<c-u>normal! f"vi"<cr>
 
 
 "}}}
-
 " Avoid extra lines at eof ---------------------------------------------------------------{{{
 
 autocmd BufWritePre *.rb call TrimEndLines()
 autocmd BufWritePre *.feature call TrimEndLines()
 
 "}}}
-
 " Force file types -----------------------------------------------------------------{{{
 
 au BufRead,BufNewFile *.jbuilder setfiletype ruby
