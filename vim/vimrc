@@ -40,6 +40,7 @@ Plug 'derekwyatt/vim-scala'             " Scala syntax support
 Plug 'plasticboy/vim-markdown'          " markdown support
 Plug 'kchmck/vim-coffee-script'         " coffeescript support
 Plug 'jelera/vim-javascript-syntax'     " better javascript syntax
+Plug 'leafgarland/typescript-vim'       " typescript support
 
 " Motions & Operators
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
