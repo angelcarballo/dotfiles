@@ -635,7 +635,7 @@ augroup END
 
 augroup javascriptgroup
   autocmd!
-  autocmd Filetype javascript setl shiftwidth=4 expandtab
+  autocmd Filetype javascript setl shiftwidth=2 expandtab
 augroup END
 
 "}}}
