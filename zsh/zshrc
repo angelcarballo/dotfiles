@@ -37,12 +37,15 @@ bindkey '^b' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^w' backward-kill-word
 
+# Edit current command with VIM (or whatever $EDITOR is set to)
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^x^e" edit-command-line
 
 # Altern between foreground/background with Ctrl-z (see custom-functions.zsh)
 bindkey '^z' fancy-ctrl-z
 
 # Complete words from tmux pane(s)
-bindkey '^xt' tmux-pane-words-prefix
 bindkey '^x^x' tmux-pane-words-anywhere
 
 # ctrl-r starts searching history backward
