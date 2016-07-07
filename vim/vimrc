@@ -166,6 +166,7 @@ if executable('ag')
         \ --ignore tmp
         \ --ignore public
         \ --ignore log
+        \ --ignore spec/fixtures
         \ -g ""'
   let g:ctrlp_use_caching = 0
 endif
