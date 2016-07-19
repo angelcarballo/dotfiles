@@ -3,12 +3,14 @@
 # Comunes
 alias c='clear'
 alias celar='clear'
+alias lcear='clear'
 alias ll='ls -GFlah'
 
 # Atajos Mac
 alias flushdns='dscacheutil -flushcache'
 
-# Rails
+# Ruby/Rails
+alias bus='bundle update --source'
 alias brake='bundle exec rake'
 alias bi='bundle install'
 alias be='bundle exec'
