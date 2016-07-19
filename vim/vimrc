@@ -103,6 +103,7 @@ Plug 'xolox/vim-misc'                   " required by vim-notes
 Plug 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 Plug 'suan/vim-instant-markdown'        " markdown preview
 Plug 'AndrewRadev/splitjoin.vim'        " split/join statements
+Plug 'tpope/vim-capslock'               " software caps lock
 
 
 " Plugins must be added before the following line
