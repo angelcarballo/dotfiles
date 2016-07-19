@@ -24,3 +24,6 @@ brew "fzf"
 # required by dasht
 brew "socat"
 brew "dasht"
+
+# nice cheats for unix commands (like man but witout the noise)
+brew "cheat"

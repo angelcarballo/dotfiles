@@ -81,3 +81,6 @@ eval "$(rbenv init -)"
 
 # Try to use Ag as default fzf command
  export FZF_DEFAULT_COMMAND='ag -g ""'
+
+ # enable syntax for cheat (see: https://github.com/chrisallenlane/cheat)
+ export CHEATCOLORS=true

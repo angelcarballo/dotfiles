@@ -67,6 +67,9 @@ task :link do
   update_link 'emacs', '.emacs.d'
   update_link 'emacs/spacemacs', '.spacemacs'
 
+  # cheats
+  update_link 'cheats', '.cheats'
+
   puts 'Done!'
 end
 
