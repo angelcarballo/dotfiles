@@ -25,5 +25,5 @@ brew "fzf"
 brew "socat"
 brew "dasht"
 
-# nice cheats for unix commands (like man but witout the noise)
+# nice cheats for unix commands (like man but without the noise)
 brew "cheat"
