@@ -145,8 +145,12 @@ def update_link(origin, dest)
   origin = "#{Dir.pwd}/#{origin}"
   dest = "#{home_dir}/#{dest}"
 
-  verbose false do
-    rm dest if File.exists? dest
-    ln_s origin, dest
+  begin
+    verbose false do
+      rm dest if File.exists? dest
+      ln_s origin, dest
+    end
+  rescue Errno::EPERM => error
+    puts error
   end
 end

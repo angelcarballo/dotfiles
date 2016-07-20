@@ -12,12 +12,13 @@ Plug 'eiginn/netrw'                     " file manager
 Plug 'tpope/vim-vinegar'                " file manager improvements
 Plug 'tpope/vim-repeat'                 " extend repeat support
 Plug 'tpope/vim-unimpaired'             " multiple mappings using [ & ]
+Plug 'tpope/vim-sleuth'                 " auto set indent settings based on filetype
 
 " Git
 Plug 'tpope/vim-fugitive'               " git integration
 Plug 'tpope/vim-rhubarb'                " github integration
 Plug 'junegunn/gv.vim'                  " git commit navigation
-Plug 'airblade/vim-gitgutter'           " mealtime git-diff
+Plug 'airblade/vim-gitgutter'           " realtime git-diff
 
 " Languages & frameworks
 Plug 'vim-ruby/vim-ruby'                " ruby integration
@@ -103,6 +104,7 @@ Plug 'xolox/vim-misc'                   " required by vim-notes
 Plug 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 Plug 'suan/vim-instant-markdown'        " markdown preview
 Plug 'AndrewRadev/splitjoin.vim'        " split/join statements
+Plug 'tpope/vim-capslock'               " software caps lock
 
 
 " Plugins must be added before the following line
