@@ -423,8 +423,8 @@ nnoremap <leader>Pu :PlugUpdate<cr>
 nnoremap <leader>Pg :PlugUpgrade<cr>
 
 " q - Quit
-nnoremap <leader>q :q<cr>
-nnoremap <leader>Q :qall!<cr>
+nnoremap <leader>q :wq<cr>
+nnoremap <leader>Q :q!<cr>
 
 " r - Remove/Refactor
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
