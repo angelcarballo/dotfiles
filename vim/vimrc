@@ -228,6 +228,7 @@ set lazyredraw                       " redraw only when needed
 set formatoptions+=j                 " delete comment character when joining commented lines
 set omnifunc=syntaxcomplete#Complete " enable omni completion
 set timeoutlen=500                   " don't wait so long for the next keypress
+set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
 
 au BufLeave,FocusLost * silent! wa   " autosave files
 autocmd InsertLeave * set nopaste    " disable paste mode on leaving insert mode.
