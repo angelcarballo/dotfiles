@@ -1,13 +1,10 @@
 # # Load Antigen
 source ~/.zsh/antigen.zsh
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
-
 # Antigen Bundles
 antigen bundle git-extras                          # extra git commands
 antigen bundle ssh-agent                           # For SSH, starting ssh-agent is annoying
-# antigen bundle zsh-users/zsh-syntax-highlighting   # Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting   # Syntax highlighting bundle.
 
 # OS specific bundles
 if [[ $CURRENT_OS == 'OS X' ]]; then
@@ -45,9 +42,6 @@ bindkey "^x^e" edit-command-line
 # Altern between foreground/background with Ctrl-z (see custom-functions.zsh)
 bindkey '^z' fancy-ctrl-z
 
-# Complete words from tmux pane(s)
-bindkey '^x^x' tmux-pane-words-anywhere
-
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward
 
@@ -55,7 +49,7 @@ bindkey '^r' history-incremental-search-backward
 setopt auto_cd
 cdpath=($HOME/src)
 
-# dont share history
+# dont share history between different shells
 setopt no_share_history
 
 # Paths common to all platforms
