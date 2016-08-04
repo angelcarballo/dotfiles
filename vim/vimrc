@@ -413,6 +413,7 @@ nnoremap <silent> <leader>oc :Econtroller<space>
 nnoremap <silent> <leader>os :Espec<space>
 nnoremap <silent> <leader>oi :Einitializer<space>
 nnoremap <silent> <leader>ov :Eview<space>
+nnoremap <silent> <leader>oq :cw<cr>
 
 " P - Plugins
 nnoremap <leader>Pi :PlugInstall<cr>
