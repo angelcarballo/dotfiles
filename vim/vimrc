@@ -65,7 +65,6 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while
 
 " Navigation
 Plug 'ctrlpvim/ctrlp.vim'                " fuzzy finder (files, buffers, etc.)
-Plug 'tacahiroy/ctrlp-funky'             " ctrlp extension to search function definitions
 Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
 Plug 'terryma/vim-expand-region'         " visual expandable regions
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
@@ -90,7 +89,6 @@ Plug 'benmills/vimux'                     " tmux integration
 Plug 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
 Plug 'szw/vim-g'                          " google search
-Plug 'sunaku/vim-dasht'                   " dasht integration (API docs search)
 
 " Extras
 Plug 'godlygeek/tabular'                " code align (like on this comment)
@@ -170,6 +168,7 @@ if executable('ag')
         \ --ignore log
         \ --ignore spec/fixtures
         \ -g ""'
+  " ag is falst enough, don't use caching
   let g:ctrlp_use_caching = 0
 endif
 
@@ -230,8 +229,9 @@ set omnifunc=syntaxcomplete#Complete " enable omni completion
 set timeoutlen=500                   " don't wait so long for the next keypress
 set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
 
-au BufLeave,FocusLost * silent! wa   " autosave files
-autocmd InsertLeave * set nopaste    " disable paste mode on leaving insert mode.
+au BufLeave,FocusLost * silent! wa     " autosave files
+autocmd InsertLeave * set nopaste      " disable paste mode on leaving insert mode.
+autocmd QuickFixCmdPost *grep* cwindow " open quickfix window after using grep
 
 runtime macros/matchit.vim           " allow % to match more than just single characters
 
@@ -374,7 +374,6 @@ nnoremap <silent> <leader>ev :Vex<cr>
 " f - File/Find
 nnoremap <leader>fa :OpenAlternate<cr>
 nnoremap <leader>fA :vsplit<cr>:OpenAlternate<cr>
-nnoremap <leader>fc :execute 'CtrlPFunky ' . expand('<cword>')<cr>
 nnoremap <leader>fl <c-^>
 nnoremap <leader>fs :w<cr>
 nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
@@ -416,6 +415,7 @@ nnoremap <silent> <leader>oc :Econtroller<space>
 nnoremap <silent> <leader>os :Espec<space>
 nnoremap <silent> <leader>oi :Einitializer<space>
 nnoremap <silent> <leader>ov :Eview<space>
+nnoremap <silent> <leader>oq :cw<cr>
 
 " P - Plugins
 nnoremap <leader>Pi :PlugInstall<cr>
@@ -649,6 +649,15 @@ augroup END
 augroup gitcommit
   autocmd!
   autocmd Filetype gitcommit set spell
+augroup END
+
+"}}}
+" Type: AGS search results --------------------------------------------------------------{{{
+
+augroup agsresults
+  autocmd!
+  autocmd Filetype agsv set nonu
+  autocmd Filetype agsv set norelativenumber
 augroup END
 
 "}}}
