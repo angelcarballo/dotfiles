@@ -228,8 +228,9 @@ set formatoptions+=j                 " delete comment character when joining com
 set omnifunc=syntaxcomplete#Complete " enable omni completion
 set timeoutlen=500                   " don't wait so long for the next keypress
 
-au BufLeave,FocusLost * silent! wa   " autosave files
-autocmd InsertLeave * set nopaste    " disable paste mode on leaving insert mode.
+au BufLeave,FocusLost * silent! wa     " autosave files
+autocmd InsertLeave * set nopaste      " disable paste mode on leaving insert mode.
+autocmd QuickFixCmdPost *grep* cwindow " open quickfix window after using grep
 
 runtime macros/matchit.vim           " allow % to match more than just single characters
 
