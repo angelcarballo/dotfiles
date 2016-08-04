@@ -650,3 +650,12 @@ augroup gitcommit
 augroup END
 
 "}}}
+" Type: AGS search results --------------------------------------------------------------{{{
+
+augroup agsresults
+  autocmd!
+  autocmd Filetype agsv set nonu
+  autocmd Filetype agsv set norelativenumber
+augroup END
+
+"}}}
