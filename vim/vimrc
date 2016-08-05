@@ -323,10 +323,11 @@ nmap <leader><space> :CtrlP<cr>
 nnoremap <leader><tab> <c-^>
 
 " / - Search in project
-nnoremap <leader>/ :Ags ""<left>
+nnoremap <leader>/ :silent grep! ""<left>
 
 " * - Search in project for word under cursor
-nnoremap <leader>* :Ags ""<left><c-r><c-w><cr>
+nnoremap <leader>* :silent grep! "<c-r><c-w>"<cr>
+vnoremap <leader>* "hy:silent grep! "<c-r>h"<cr>
 
 " a - Align/Auto
 vnoremap <leader>aa :Tabularize /
@@ -496,9 +497,6 @@ nnoremap P P=`]<c-o>
 
 " Search and replace current selection
 vnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
-
-" Search visual selected text with The Silver Searcher
-vnoremap <c-f> "hy:Ags "<c-r>h"<cr>
 
 " delete lines and word from insert mode
 inoremap <c-d> <esc>ddi
