@@ -323,10 +323,11 @@ nmap <leader><space> :CtrlP<cr>
 nnoremap <leader><tab> <c-^>
 
 " / - Search in project
-nnoremap <leader>/ :Ags ""<left>
+nnoremap <leader>/ :silent grep! ""<left>
 
 " * - Search in project for word under cursor
-nnoremap <leader>* :Ags ""<left><c-r><c-w><cr>
+nnoremap <leader>* :silent grep! "<c-r><c-w>"<cr>
+vnoremap <leader>* "hy:silent grep! "<c-r>h"<cr>
 
 " a - Align/Auto
 vnoremap <leader>aa :Tabularize /
@@ -336,13 +337,11 @@ vnoremap <leader>a<bar> :Tabularize /<bar><cr>
 nnoremap <leader>ac 1z=
 
 " b - Buffers
-nnoremap <silent> <leader>bp :bprevious<cr>
-nnoremap <silent> <leader>bn :bnext<cr>
 nnoremap <silent> <leader>bd :bdelete<cr>
 nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
 nnoremap <silent> <leader>bD :w <bar> %bd <bar> e#<cr>
 
-" c - Copy/Clear
+" c - Copy/Clear/Close
 if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy git branch
   nnoremap <leader>cb :let @*=fugitive#head()<cr>:echo "Git branch copied"<cr>
@@ -356,7 +355,8 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " relative path with line number
   nnoremap <leader>cl :let @+=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
 endif
-nnoremap <silent> <leader>cs :nohl<cr>
+" clear search results (both highlight and quickfix window)
+nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 
 " d - Diff/Dash
 xnoremap <leader>dp :diffput<cr>
@@ -396,6 +396,10 @@ vnoremap <leader>gg :Googlef<cr>
 nnoremap <leader>gl :GV!<cr>
 nnoremap <leader>gL :GV<cr>
 vnoremap <leader>gl :GV<cr>
+
+" h - Git Hunks (added by vim-gitgutter)
+" <leader>hs -> stage hunk
+" <leader>hs -> unstage hunk
 
 " i - Indent
 nnoremap <leader>ij :%!python -m json.tool<cr>
@@ -459,10 +463,7 @@ nnoremap <silent> <leader>ti :VimuxInspectRunner<cr>
 nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
 nnoremap <silent> <leader>tz :VimuxZoomRunner<cr>
 " Tab management
-nnoremap <silent> <leader>td :tabclose<cr>
 nnoremap <silent> <leader>tn :tabnew<cr>
-nnoremap <silent> <leader>tj :tabnext<cr>
-nnoremap <silent> <leader>tk :tabprevious<cr>
 
 " T - Toggle
 nnoremap <leader>Tw :set wrap! wrap?<cr>
@@ -496,9 +497,6 @@ nnoremap P P=`]<c-o>
 
 " Search and replace current selection
 vnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
-
-" Search visual selected text with The Silver Searcher
-vnoremap <c-f> "hy:Ags "<c-r>h"<cr>
 
 " delete lines and word from insert mode
 inoremap <c-d> <esc>ddi
