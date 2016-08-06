@@ -85,6 +85,7 @@ Plug 'docunext/closetag.vim'            " auto close for Html tags
 Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
 Plug 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
 Plug 'gabesoft/vim-ags'                   " The Silver Searcher integration
+Plug 'mileszs/ack.vim'                    " Ack and friends integration
 Plug 'benmills/vimux'                     " tmux integration
 Plug 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
@@ -154,6 +155,9 @@ let g:vim_markdown_folding_disabled=1
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
+
+  " And over Ack
+  let g:ackprg = 'ag --vimgrep'
 
   " Use ag in CtrlP for listing files
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden
@@ -232,6 +236,7 @@ set magic                            " eval special character as 'special' by de
 au BufLeave,FocusLost * silent! wa     " autosave files
 autocmd InsertLeave * set nopaste      " disable paste mode on leaving insert mode.
 autocmd QuickFixCmdPost *grep* cwindow " open quickfix window after using grep
+autocmd FileType qf wincmd J           " quickfix window should always be full width
 
 runtime macros/matchit.vim           " allow % to match more than just single characters
 
@@ -323,11 +328,11 @@ nmap <leader><space> :CtrlP<cr>
 nnoremap <leader><tab> <c-^>
 
 " / - Search in project
-nnoremap <leader>/ :silent grep! ""<left>
+nnoremap <leader>/ :Ack! ""<left>
 
 " * - Search in project for word under cursor
-nnoremap <leader>* :silent grep! "<c-r><c-w>"<cr>
-vnoremap <leader>* "hy:silent grep! "<c-r>h"<cr>
+nnoremap <leader>* :Ack "<c-r><c-w>"<cr>
+vnoremap <leader>* "hy:Ack "<c-r>h"<cr>
 
 " a - Align/Auto
 vnoremap <leader>aa :Tabularize /
