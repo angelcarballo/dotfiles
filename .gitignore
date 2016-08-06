@@ -1,8 +1,8 @@
 vim/.netrwhist
 vim/backup/*
 vim/temp/*
-vim/plugged/*
-tmux/plugins/*
+vim/plugged
+tmux/plugins
 emacs/elpa
 emacs/auto-save-list
 emacs/saveplace
