@@ -50,5 +50,5 @@ homebrew:
 tmux_plugin_manager:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-all: update link vim git rbenv homebrew tmux_plugin_manager
+all: update homebrew link vim git rbenv tmux_plugin_manager
 
