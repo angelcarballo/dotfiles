@@ -45,7 +45,7 @@ Plug 'leafgarland/typescript-vim'       " typescript support
 " Motions & Operators
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
 Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
-Plug 'vim-scripts/ReplaceWithRegister'  " replace command
+Plug 'vim-scripts/ReplaceWithRegister'  " replace without yanking operator (gr..)
 
 " Text objects
 Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
@@ -363,7 +363,8 @@ endif
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 
-" d - Diff/Dash
+" d - Diff/Decrease
+nnoremap <leader>dn <c-x>
 xnoremap <leader>dp :diffput<cr>
 xnoremap <leader>dg :diffget<cr>
 
@@ -406,13 +407,14 @@ vnoremap <leader>gl :GV<cr>
 " <leader>hs -> stage hunk
 " <leader>hs -> unstage hunk
 
-" i - Indent
+" i - Indent/Increase
+nnoremap <leader>in <c-a>
 nnoremap <leader>ij :%!python -m json.tool<cr>
 
 " l - Last change (jump)
 nnoremap <silent> <leader>lc `[
 
-" n - Notes
+" n - Notes/Numbers
 nnoremap <leader>nr :RecentNotes<cr>
 nnoremap <leader>ns :SearchNotes<space>
 nnoremap <leader>nn :Note<space>
@@ -486,6 +488,7 @@ nnoremap <leader>Vs :so $MYVIMRC<cr>
 " w - Windows/Tabs
 nnoremap <silent> <leader>wc :wq<cr>
 nnoremap <silent> <leader>wq :wq<cr>
+nnoremap <silent> <leader>wo :only<cr>
 nnoremap <silent> <leader>wC :only<cr>
 nnoremap <silent> <leader>we <c-w>=
 nnoremap <silent> <leader>wf :MaximizerToggle<cr>
