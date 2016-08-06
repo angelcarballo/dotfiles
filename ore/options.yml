@@ -1,9 +1,0 @@
-gemspec: true
-bundler: true
-rspec: true
-git: true
-rubygems_tasks: false
-rdoc: false
-authors:
-    - Angel Carballo
-email: contact@angelcarballo.com

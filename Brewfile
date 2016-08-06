@@ -1,3 +1,6 @@
+# manage symlinks for dotfiles
+brew "stow"
+
 # super fast replacement form ack
 brew "the_silver_searcher"
 
