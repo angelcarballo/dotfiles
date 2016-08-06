@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Print shell colors: foreground, background with text, only background
+for i in {0..255} ; do
+    printf  "\e[40;38;5;${i}mcolour${i} \e[30;48;5;${i}m colour${i} \e[0m \e[30;48;5;${i}m            \e[0m\n"
+done
