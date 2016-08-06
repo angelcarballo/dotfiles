@@ -68,3 +68,8 @@ SagePay
 namespace
 RBOL
 namespaced
+env
+dotfiles
+Powerline
+Zsh
+iTerm2
