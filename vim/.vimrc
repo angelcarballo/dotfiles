@@ -85,7 +85,6 @@ Plug 'docunext/closetag.vim'            " auto close for Html tags
 " Third party integration
 Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
 Plug 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
-Plug 'gabesoft/vim-ags'                   " The Silver Searcher integration
 Plug 'mileszs/ack.vim'                    " Ack and friends integration
 Plug 'benmills/vimux'                     " tmux integration
 Plug 'ludovicchabant/vim-gutentags'       " automatic tag updater
