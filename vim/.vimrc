@@ -13,6 +13,7 @@ Plug 'tpope/vim-vinegar'                " file manager improvements
 Plug 'tpope/vim-repeat'                 " extend repeat support
 Plug 'tpope/vim-unimpaired'             " multiple mappings using [ & ]
 Plug 'tpope/vim-sleuth'                 " auto set indent settings based on filetype
+Plug 'stefandtw/quickfix-reflector.vim' " allow changes from quickfix window
 
 " Git
 Plug 'tpope/vim-fugitive'               " git integration
