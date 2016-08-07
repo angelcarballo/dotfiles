@@ -579,6 +579,7 @@ autocmd BufWritePre *.feature call TrimEndLines()
 " Force file types -----------------------------------------------------------------{{{
 
 au BufRead,BufNewFile *.jbuilder setfiletype ruby
+au BufRead,BufNewFile *.tmux setfiletype tmux
 
 "}}}
 " Type: Vim -----------------------------------------------------------------{{{
