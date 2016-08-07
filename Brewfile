@@ -30,3 +30,6 @@ brew "dasht"
 
 # nice cheats for unix commands (like man but without the noise)
 brew "cheat"
+
+# use our own python
+brew "python"
