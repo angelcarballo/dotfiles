@@ -155,10 +155,20 @@ let g:vim_markdown_folding_disabled=1
 "" Ags (The Silver Searcher)
 if executable('ag')
   " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --nogroup\ --nocolor\ --hidden\ --ignore\ .git
 
   " And over Ack
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --vimgrep --hidden
+        \ --ignore .git
+        \ --ignore .svn
+        \ --ignore .hg
+        \ --ignore .DS_Store
+        \ --ignore bundle
+        \ --ignore doc
+        \ --ignore tmp
+        \ --ignore public
+        \ --ignore log
+        \ --ignore spec/fixtures'
 
   " Use ag in CtrlP for listing files
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden
