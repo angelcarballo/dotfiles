@@ -242,6 +242,7 @@ set formatoptions+=j                 " delete comment character when joining com
 set omnifunc=syntaxcomplete#Complete " enable omni completion
 set timeoutlen=500                   " don't wait so long for the next keypress
 set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
+set autoread                         " if a file changes outside vim, reload its contents automatically
 
 au BufLeave,FocusLost * silent! wa     " autosave files
 autocmd InsertLeave * set nopaste      " disable paste mode on leaving insert mode.
