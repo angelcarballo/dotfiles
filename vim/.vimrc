@@ -416,7 +416,7 @@ vnoremap <leader>gl :GV<cr>
 
 " h - Git Hunks (added by vim-gitgutter)
 " <leader>hs -> stage hunk
-" <leader>hs -> unstage hunk
+" <leader>hu -> unstage hunk
 
 " i - Indent/Increase
 nnoremap <leader>in <c-a>
