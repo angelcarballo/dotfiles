@@ -3,7 +3,7 @@ EVENT=`gcalcli --locale en_US --nostarted --calendar "" agenda --nocolor | cut -
 
 if [ -z "$EVENT" ]
 then
-  echo "Free"
+  echo "No events today"
 else
   echo $EVENT
 fi
