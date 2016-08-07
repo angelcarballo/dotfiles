@@ -563,6 +563,12 @@ nmap s <Plug>(easymotion-overwin-f2)
 nnoremap H ^
 nnoremap L $
 
+" easy next/previews tab
+nnoremap [T :tabp<cr>
+nnoremap ]T :tabn<cr>
+nnoremap <tab> :tabn<cr>
+nnoremap <s-tab> :tabp<cr>
+
 "}}}
 " Motions ---------------------------------------------------------------{{{
 
