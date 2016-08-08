@@ -28,7 +28,6 @@ Plug 'tpope/vim-rake'                   " rake integration
 Plug 'tpope/vim-rbenv'                  " rbenv integration
 Plug 'tpope/vim-rails'                  " rails integration
 Plug 'tpope/vim-bundler'                " bundler integration
-Plug 'thoughtbot/vim-rspec'             " rspec integration
 Plug 'cakebaker/scss-syntax.vim'        " SCSS syntax
 Plug 'pangloss/vim-javascript'          " improved Javascript support
 Plug 'othree/html5.vim'                 " HTML5 support
@@ -147,9 +146,6 @@ let g:vroom_options={'options':'--fail-fast'}
 
 "" Vimux configuration
 let g:VimuxRunnerType = "window"
-
-"" Rspec configuration
-let g:rspec_command = "Dispatch bundle exec rspec --fail-fast {spec}"
 
 "" Markdown options
 let g:vim_markdown_folding_disabled=1
