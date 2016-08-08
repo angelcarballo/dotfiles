@@ -1,3 +1,6 @@
+# manage symlinks for dotfiles
+brew "stow"
+
 # super fast replacement form ack
 brew "the_silver_searcher"
 
@@ -21,9 +24,8 @@ brew "diff-so-fancy"
 # general purpose fuzzy finder
 brew "fzf"
 
-# required by dasht
-brew "socat"
-brew "dasht"
-
 # nice cheats for unix commands (like man but without the noise)
 brew "cheat"
+
+# use our own python
+brew "python"

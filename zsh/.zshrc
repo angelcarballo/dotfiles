@@ -14,10 +14,10 @@ fi
 antigen apply
 
 # Theme
-source ~/.zsh/angelcarballo.zsh-theme
+source ~/.zsh/theme.zsh
 
 # Aliases
-source ~/.bash_aliases
+source ~/.zsh/aliases.zsh
 
 # Vim everywhere
 bindkey -v

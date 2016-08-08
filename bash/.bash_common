@@ -26,15 +26,6 @@ function parse_git_branch {
 # Prompt
 PS1="$COLOR_RESET\u:\w $YELLOW\$(parse_git_branch)$COLOR_RESET $ "
 
-# # Enable dircolors and related aliases
-# test -e ~/.dircolors && eval `dircolors -b ~/.dircolors`
-alias ls='ls -G'
-alias dir='dir -G'
-alias vdir='vdir -G'
-alias grep='grep -G'
-alias fgrep='fgrep -G'
-alias egrep='egrep -G'
-
 # Load git autocompletion
 if [ -f ~/.git-completion.bash  ]; then
   . ~/.git-completion.bash

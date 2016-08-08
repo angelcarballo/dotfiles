@@ -8,47 +8,39 @@ My collection of dotfiles. If you want to reuse any of this, clone the repositor
 Key Features
 ------------
 
-* [Vim] - Vim is awesome, and I use it for almost everything. My vimrc is heavy on ruby and tmux related plugins, and I try to keep as readable as possible. Installation and maintenance is done using [vim-plug].
+* [Stow] - Used to manage dotfiles using symbolic links.
+* [Vim] - Vim is awesome, and I use it for almost everything. Installation and maintenance done via [vim-plug].
 
 * [Tmux] - I use Tmux next to Vim to achieve a single terminal workflow. These two are made for each other.
 
-* [Zsh] - A few plugins managed using [Antigen], and my own minimal theme based on [pure].
+* [Zsh] - A few plugins managed using [Antigen], and a light theme based on [pure].
 
 [Tmux]: https://tmux.github.io/
+[Stow]: https://www.gnu.org/software/stow/
 [Zsh]: http://www.zsh.org/
 [Vim]: http://www.vim.org/
 [Antigen]: https://github.com/zsh-users/antigen
 [pure]: https://github.com/sindresorhus/pure
 [vim-plug]: https://github.com/junegunn/vim-plug
 
-Setup
+Usage
 -----
 
-Rake is required for setting up the repo. If you don't have it, a simple `gem install rake` will do.
-
 ```shell
-git clone https://github.com/angelcarballo/dotfiles.git && cd dotfiles
-rake bootstrap
-```
+# Initial setup
+git clone https://github.com/angelcarballo/dotfiles.git && cd dotfiles && make all
 
-If you want to use Zsh, set it as your default shell:
-
-```shell
+# If you want to use Zsh, set it as your default shell:
 chsh -s $(which zsh)
-```
 
-Keeping multiple machines in sync, just run `rake` and it will update the repo and keep your dotfiles in good shape.
+# To update repo, links and vim plugins
+make
+``````
 
 Local changes and extra commands
 --------------------------------
 
-Zsh will try to source `~/.zshrc.local`. Put your local settings, env vars, etc. there if you need them for a particular machine but don't want them in your dotfiles. For example:
-
-```shell
-# Git
-export GIT_AUTHOR_NAME="Angel Carballo"
-export GIT_AUTHOR_EMAIL="contact@angelcarballo.com"
-```
+Zsh will try to source `~/.zshrc.local`. Put your local settings, env vars, etc. there if you need them for a particular machine but don't want them in your dotfiles.
 
 Goodies
 -------

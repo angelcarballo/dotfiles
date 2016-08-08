@@ -13,6 +13,7 @@ Plug 'tpope/vim-vinegar'                " file manager improvements
 Plug 'tpope/vim-repeat'                 " extend repeat support
 Plug 'tpope/vim-unimpaired'             " multiple mappings using [ & ]
 Plug 'tpope/vim-sleuth'                 " auto set indent settings based on filetype
+Plug 'stefandtw/quickfix-reflector.vim' " allow changes from quickfix window
 
 " Git
 Plug 'tpope/vim-fugitive'               " git integration
@@ -45,7 +46,7 @@ Plug 'leafgarland/typescript-vim'       " typescript support
 " Motions & Operators
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
 Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
-Plug 'vim-scripts/ReplaceWithRegister'  " replace command
+Plug 'vim-scripts/ReplaceWithRegister'  " replace without yanking operator (gr..)
 
 " Text objects
 Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
@@ -84,7 +85,7 @@ Plug 'docunext/closetag.vim'            " auto close for Html tags
 " Third party integration
 Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
 Plug 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
-Plug 'gabesoft/vim-ags'                   " The Silver Searcher integration
+Plug 'mileszs/ack.vim'                    " Ack and friends integration
 Plug 'benmills/vimux'                     " tmux integration
 Plug 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
@@ -153,7 +154,20 @@ let g:vim_markdown_folding_disabled=1
 "" Ags (The Silver Searcher)
 if executable('ag')
   " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --nogroup\ --nocolor\ --hidden\ --ignore\ .git
+
+  " And over Ack
+  let g:ackprg = 'ag --vimgrep --hidden
+        \ --ignore .git
+        \ --ignore .svn
+        \ --ignore .hg
+        \ --ignore .DS_Store
+        \ --ignore bundle
+        \ --ignore doc
+        \ --ignore tmp
+        \ --ignore public
+        \ --ignore log
+        \ --ignore spec/fixtures'
 
   " Use ag in CtrlP for listing files
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden
@@ -228,10 +242,12 @@ set formatoptions+=j                 " delete comment character when joining com
 set omnifunc=syntaxcomplete#Complete " enable omni completion
 set timeoutlen=500                   " don't wait so long for the next keypress
 set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
+set autoread                         " if a file changes outside vim, reload its contents automatically
 
 au BufLeave,FocusLost * silent! wa     " autosave files
 autocmd InsertLeave * set nopaste      " disable paste mode on leaving insert mode.
 autocmd QuickFixCmdPost *grep* cwindow " open quickfix window after using grep
+autocmd FileType qf wincmd J           " quickfix window should always be full width
 
 runtime macros/matchit.vim           " allow % to match more than just single characters
 
@@ -258,7 +274,7 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#branch#displayed_head_limit = 10
-let g:airline_theme='hybrid'
+let g:airline_theme='hybridline'
 let g:airline#extensions#ctrlp#color_template = 'normal'
 let g:airline_mode_map = {
       \ '__' : '',
@@ -323,11 +339,11 @@ nmap <leader><space> :CtrlP<cr>
 nnoremap <leader><tab> <c-^>
 
 " / - Search in project
-nnoremap <leader>/ :silent grep! ""<left>
+nnoremap <leader>/ :Ack! ""<left>
 
 " * - Search in project for word under cursor
-nnoremap <leader>* :silent grep! "<c-r><c-w>"<cr>
-vnoremap <leader>* "hy:silent grep! "<c-r>h"<cr>
+nnoremap <leader>* :Ack "<c-r><c-w>"<cr>
+vnoremap <leader>* "hy:Ack "<c-r>h"<cr>
 
 " a - Align/Auto
 vnoremap <leader>aa :Tabularize /
@@ -358,7 +374,8 @@ endif
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 
-" d - Diff/Dash
+" d - Diff/Decrease
+nnoremap <leader>dn <c-x>
 xnoremap <leader>dp :diffput<cr>
 xnoremap <leader>dg :diffget<cr>
 
@@ -399,15 +416,16 @@ vnoremap <leader>gl :GV<cr>
 
 " h - Git Hunks (added by vim-gitgutter)
 " <leader>hs -> stage hunk
-" <leader>hs -> unstage hunk
+" <leader>hu -> unstage hunk
 
-" i - Indent
+" i - Indent/Increase
+nnoremap <leader>in <c-a>
 nnoremap <leader>ij :%!python -m json.tool<cr>
 
 " l - Last change (jump)
 nnoremap <silent> <leader>lc `[
 
-" n - Notes
+" n - Notes/Numbers
 nnoremap <leader>nr :RecentNotes<cr>
 nnoremap <leader>ns :SearchNotes<space>
 nnoremap <leader>nn :Note<space>
@@ -481,6 +499,7 @@ nnoremap <leader>Vs :so $MYVIMRC<cr>
 " w - Windows/Tabs
 nnoremap <silent> <leader>wc :wq<cr>
 nnoremap <silent> <leader>wq :wq<cr>
+nnoremap <silent> <leader>wo :only<cr>
 nnoremap <silent> <leader>wC :only<cr>
 nnoremap <silent> <leader>we <c-w>=
 nnoremap <silent> <leader>wf :MaximizerToggle<cr>
@@ -545,6 +564,12 @@ nmap s <Plug>(easymotion-overwin-f2)
 nnoremap H ^
 nnoremap L $
 
+" easy next/previews tab
+nnoremap [T :tabp<cr>
+nnoremap ]T :tabn<cr>
+nnoremap <tab> :tabn<cr>
+nnoremap <s-tab> :tabp<cr>
+
 "}}}
 " Motions ---------------------------------------------------------------{{{
 
@@ -571,6 +596,7 @@ autocmd BufWritePre *.feature call TrimEndLines()
 " Force file types -----------------------------------------------------------------{{{
 
 au BufRead,BufNewFile *.jbuilder setfiletype ruby
+au BufRead,BufNewFile *.tmux setfiletype tmux
 
 "}}}
 " Type: Vim -----------------------------------------------------------------{{{
