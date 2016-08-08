@@ -97,7 +97,7 @@ Plug 'tpope/vim-commentary'             " comment/uncomment code
 Plug 'skalnik/vim-vroom'                " ruby test runner
 Plug 'tpope/vim-dispatch'               " run processes on the background
 Plug 'AndrewRadev/switch.vim'           " easy switches
-Plug 'christoomey/vim-system-copy'      " send commands to tmux
+Plug 'christoomey/vim-system-copy'      " copy command (cp), copy current line (cP) and paste in next line (cv)
 Plug 'xolox/vim-notes'                  " easy note taking
 Plug 'xolox/vim-misc'                   " required by vim-notes
 Plug 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
