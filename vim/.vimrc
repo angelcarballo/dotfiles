@@ -145,6 +145,9 @@ let g:vroom_spec_command  = 'rspec'
 let g:vroom_use_vimux = 1
 let g:vroom_options={'options':'--fail-fast'}
 
+"" Vimux configuration
+let g:VimuxRunnerType = "window"
+
 "" Rspec configuration
 let g:rspec_command = "Dispatch bundle exec rspec --fail-fast {spec}"
 
