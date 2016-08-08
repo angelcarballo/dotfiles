@@ -397,7 +397,7 @@ nnoremap <silent> <leader>ff :CtrlP<cr>
 nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
 
 " g - Git/Google
-nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gs :Gstatus<cr>:call QuickFixGitStatus()<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gD :Gdiff master<cr>

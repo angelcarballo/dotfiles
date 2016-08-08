@@ -1,0 +1,2 @@
+#!/bin/bash
+git diff --name-only | xargs -L 1 echo `pwd` | sed 's/ /\//'
