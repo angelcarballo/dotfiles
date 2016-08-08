@@ -29,3 +29,9 @@ brew "cheat"
 
 # use our own python
 brew "python"
+
+# use our own git
+brew "git"
+
+# ...to rule them all
+brew "macvim"
