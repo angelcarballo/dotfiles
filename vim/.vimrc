@@ -150,6 +150,10 @@ let g:VimuxRunnerType = "window"
 "" Markdown options
 let g:vim_markdown_folding_disabled=1
 
+"" CtrlP options
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+
 "" Ags (The Silver Searcher)
 if executable('ag')
   " Use Ag over Grep
@@ -332,7 +336,7 @@ autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 "}}}
 " Key bindings (leader) ---------------------------------------------------------------{{{
 
-nmap <leader><space> :CtrlP<cr>
+nmap <leader><space> :CtrlPBuffer<cr>
 
 " <leader> - Switch between the last two files
 nnoremap <leader><tab> <c-^>
