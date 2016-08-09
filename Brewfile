@@ -34,4 +34,4 @@ brew "python"
 brew "git"
 
 # ...to rule them all
-brew "macvim"
+brew "vim"
