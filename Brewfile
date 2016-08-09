@@ -33,5 +33,11 @@ brew "python"
 # use our own git
 brew "git"
 
+# use our own ctags
+brew "ctags"
+
+# terminal multiplexer
+brew "tmux"
+
 # ...to rule them all
 brew "vim"
