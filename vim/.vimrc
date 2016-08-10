@@ -144,9 +144,6 @@ let g:vroom_spec_command  = 'rspec'
 let g:vroom_use_vimux = 1
 let g:vroom_options={'options':'--fail-fast'}
 
-"" Vimux configuration
-let g:VimuxRunnerType = "window"
-
 "" Markdown options
 let g:vim_markdown_folding_disabled=1
 
@@ -509,6 +506,9 @@ nnoremap <silent> <leader>ww <c-w>w
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
 
+" Quick save and close
+nnoremap <c-q> :wq!<cr>
+
 " Auto indent pasted text
 nnoremap p p=`]<c-o>
 nnoremap P P=`]<c-o>
@@ -564,8 +564,8 @@ nnoremap H ^
 nnoremap L $
 
 " easy next/previews tab
-nnoremap [T :tabp<cr>
-nnoremap ]T :tabn<cr>
+nnoremap [w :tabp<cr>
+nnoremap ]w :tabn<cr>
 nnoremap <tab> :tabn<cr>
 nnoremap <s-tab> :tabp<cr>
 
