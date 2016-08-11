@@ -33,15 +33,15 @@ function color {
   local base16_dir="$HOME/.config/base16-shell/scripts"
 
   if [[ $# -eq 1 ]]; then
-    COLOR_PATH="$base16_dir/base16-$1.sh"
-    set-colorscheme $COLOR_PATH
+    color_path="$base16_dir/base16-$1.sh"
+    set-colorscheme $color_path
   elif [[ $# -eq 2 ]]; then
-    COLORSCHEME="$base16_dir/base16-$1-$2.sh"
-    set-colorscheme $COLOR_PATH
+    colorscheme="$base16_dir/base16-$1-$2.sh"
+    set-colorscheme $color_path
   else
-    COLORSCHEME=$(find $base16_dir -type f -name "base16-*.sh" -exec basename {} \; | cut -f1 -d "."  | fzf-tmux)
-    COLOR_PATH="$base16_dir/$COLORSCHEME.sh"
-    set-colorscheme $COLOR_PATH
+    colorscheme=$(find $base16_dir -type f -name "base16-*.sh" -exec basename {} \; | cut -f1 -d "."  | cut -f2 -f3 -d "-" | fzf-tmux)
+    color_path="$base16_dir/base16-$colorscheme.sh"
+    set-colorscheme $color_path
   fi
 }
 
