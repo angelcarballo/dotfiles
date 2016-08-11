@@ -60,3 +60,8 @@ alias dockerenv='eval `boot2docker shellinit 2>/dev/null`'
 # Vim
 alias vim='/usr/local/bin/vim'
 alias v='vim .'
+
+# colorschemes
+alias dark='color atelier-sulphurpool'
+alias light='color solarized-light'
+
