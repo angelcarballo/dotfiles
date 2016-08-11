@@ -59,9 +59,8 @@ Plug 'kana/vim-textobj-line'            " line text object
 " Look & Feel
 Plug 'yggdroot/indentLine'               " show indentation lines
 Plug 'pgdouyon/vim-evanesco'             " remove search highlight on cursor move
-Plug 'vim-airline/vim-airline'           " better statusline
-Plug 'vim-airline/vim-airline-themes'    " themes for airline
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
+Plug 'tpope/vim-flagship'                " easily customizable status bar
 
 " Navigation
 Plug 'ctrlpvim/ctrlp.vim'                " fuzzy finder (files, buffers, etc.)
@@ -72,7 +71,7 @@ Plug 'szw/vim-maximizer'                 " maximize/restore windows
 Plug 'easymotion/vim-easymotion'         " easier motions (doh!)
 
 " Colorschemes
-Plug 'w0ng/vim-hybrid'                  " hybrid colorscheme
+Plug 'chriskempson/base16-vim'          " base16 colorschemes
 
 " Auto completion
 Plug 'SirVer/ultisnips'                 " snippets support
@@ -256,37 +255,21 @@ set background=dark
 set visualbell                 " visual flash
 set noerrorbells               " no flash on errors, only at beginning/end of file
 set laststatus=2               " always show status bar
+set showtabline=1              " only show tab bar if needed
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
 
-" Hybrid theme configuration
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1
-colorscheme hybrid
+" background config managed by base16
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
-" Airline configuration
-let g:airline_powerline_fonts=1
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#branch#displayed_head_limit = 10
-let g:airline_theme='hybridline'
-let g:airline#extensions#ctrlp#color_template = 'normal'
-let g:airline_mode_map = {
-      \ '__' : '',
-      \ 'n'  : '',
-      \ 'i'  : '',
-      \ 'R'  : '',
-      \ 'c'  : '',
-      \ 'v'  : '',
-      \ 'V'  : '',
-      \ '' : '',
-      \ 's'  : '',
-      \ 'S'  : '',
-      \ '' : '',
-      \ }
-" hide file encoding
-let g:airline_section_y = airline#section#create('')
+" statusline
+hi StatusLine cterm=NONE ctermbg=018 ctermfg=020
+
+" tabbar
+let g:tablabel = "%N%{flagship#tabmodified()} %{flagship#tabcwds('shorten',',')}" 
 
 " automatically re balance windows on Vim resize
 autocmd VimResized * :wincmd =
@@ -335,11 +318,11 @@ nmap <leader><space> :CtrlP<cr>
 nnoremap <leader><tab> <c-^>
 
 " / - Search in project
-nnoremap <leader>/ :Ack! ""<left>
+nnoremap <leader>/ :Ack! shellescape("")<left><left>
 
 " * - Search in project for word under cursor
-nnoremap <leader>* :Ack "<c-r><c-w>"<cr>
-vnoremap <leader>* "hy:Ack "<c-r>h"<cr>
+nnoremap <leader>* :Ack shellscape("<c-r><c-w>")<cr>
+vnoremap <leader>* "hy:Ack shellscape("<c-r>h")<cr>
 
 " a - Align/Auto
 vnoremap <leader>aa :Tabularize /
