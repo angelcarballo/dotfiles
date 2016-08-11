@@ -50,5 +50,8 @@ homebrew:
 tmux_plugin_manager:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+base16:
+	git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
 all: update homebrew link vim git rbenv tmux_plugin_manager
 

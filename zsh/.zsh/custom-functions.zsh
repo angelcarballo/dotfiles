@@ -27,3 +27,32 @@ ss() {
     ts $(echo "$project")
 }
 # }}}
+
+# Colorscheme functions (Base16) {{{
+function color {
+  local base16_dir="$HOME/.config/base16-shell/scripts"
+
+  if [[ $# -eq 1 ]]; then
+    COLOR_PATH="$base16_dir/base16-$1.sh"
+    set-colorscheme $COLOR_PATH
+  elif [[ $# -eq 2 ]]; then
+    COLORSCHEME="$base16_dir/base16-$1-$2.sh"
+    set-colorscheme $COLOR_PATH
+  else
+    COLORSCHEME=$(find $base16_dir -type f -name "base16-*.sh" -exec basename {} \; | cut -f1 -d "."  | fzf-tmux)
+    COLOR_PATH="$base16_dir/$COLORSCHEME.sh"
+    set-colorscheme $COLOR_PATH
+  fi
+}
+
+function set-colorscheme {
+  local current_colorscheme="$HOME/.colorscheme"
+
+  if [[ -s "$1" ]]; then
+    echo $1 > $current_colorscheme
+    source $1
+  elif [ -f $current_colorscheme ]; then
+    source $current_colorscheme
+  fi
+}
+# }}}
