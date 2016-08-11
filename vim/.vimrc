@@ -83,7 +83,6 @@ Plug 'docunext/closetag.vim'            " auto close for Html tags
 " Third party integration
 Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
 Plug 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
-Plug 'mileszs/ack.vim'                    " Ack and friends integration
 Plug 'benmills/vimux'                     " tmux integration
 Plug 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
@@ -150,19 +149,6 @@ let g:vim_markdown_folding_disabled=1
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor\ --hidden\ --ignore\ .git
-
-  " And over Ack
-  let g:ackprg = 'ag --vimgrep --hidden
-        \ --ignore .git
-        \ --ignore .svn
-        \ --ignore .hg
-        \ --ignore .DS_Store
-        \ --ignore bundle
-        \ --ignore doc
-        \ --ignore tmp
-        \ --ignore public
-        \ --ignore log
-        \ --ignore spec/fixtures'
 
   " Use ag in CtrlP for listing files
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden
@@ -318,11 +304,11 @@ nmap <leader><space> :CtrlP<cr>
 nnoremap <leader><tab> <c-^>
 
 " / - Search in project
-nnoremap <leader>/ :Ack! shellescape("")<left><left>
+nnoremap <leader>/ :silent Ggrep! ""<left>
 
 " * - Search in project for word under cursor
-nnoremap <leader>* :Ack shellscape("<c-r><c-w>")<cr>
-vnoremap <leader>* "hy:Ack shellscape("<c-r>h")<cr>
+nnoremap <leader>* :silent Ggrep! "<c-r><c-w>"<cr>
+vnoremap <leader>* "hy:silent Ggrep! "<c-r>h"<cr>
 
 " a - Align/Auto
 vnoremap <leader>aa :Tabularize /
