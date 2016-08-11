@@ -77,3 +77,6 @@ eval "$(rbenv init -)"
 
  # enable syntax for cheat (see: https://github.com/chrisallenlane/cheat)
  export CHEATCOLORS=true
+
+ # initialize base16 colorscheme
+ set-colorscheme
