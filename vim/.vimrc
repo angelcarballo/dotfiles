@@ -60,7 +60,8 @@ Plug 'kana/vim-textobj-line'            " line text object
 Plug 'yggdroot/indentLine'               " show indentation lines
 Plug 'pgdouyon/vim-evanesco'             " remove search highlight on cursor move
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
-Plug 'tpope/vim-flagship'                " easily customizable status bar
+Plug 'vim-airline/vim-airline'           " better status bar
+Plug 'vim-airline/vim-airline-themes'    " themes for airline
 
 " Navigation
 Plug 'ctrlpvim/ctrlp.vim'                " fuzzy finder (files, buffers, etc.)
@@ -245,6 +246,30 @@ set showtabline=1              " only show tab bar if needed
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
 
+" Airline configuration
+let g:airline_powerline_fonts=1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#branch#displayed_head_limit = 10
+let g:airline_theme='base16'
+let g:airline#extensions#ctrlp#color_template = 'normal'
+let g:airline_mode_map = {
+      \ '__' : '',
+      \ 'n'  : '',
+      \ 'i'  : '',
+      \ 'R'  : '',
+      \ 'c'  : '',
+      \ 'v'  : '',
+      \ 'V'  : '',
+      \ '' : '',
+      \ 's'  : '',
+      \ 'S'  : '',
+      \ '' : '',
+      \ }
+" hide file encoding
+let g:airline_section_y = airline#section#create('')
+
 " background config managed by base16
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
@@ -255,7 +280,7 @@ endif
 hi StatusLine cterm=NONE ctermbg=018 ctermfg=020
 
 " tabbar
-let g:tablabel = "%N%{flagship#tabmodified()} %{flagship#tabcwds('shorten',',')}" 
+let g:tablabel = "%N%{flagship#tabmodified()} %{flagship#tabcwds('shorten',',')}"
 
 " automatically re balance windows on Vim resize
 autocmd VimResized * :wincmd =
@@ -641,15 +666,6 @@ augroup END
 augroup gitcommit
   autocmd!
   autocmd Filetype gitcommit set spell
-augroup END
-
-"}}}
-" Type: AGS search results --------------------------------------------------------------{{{
-
-augroup agsresults
-  autocmd!
-  autocmd Filetype agsv set nonu
-  autocmd Filetype agsv set norelativenumber
 augroup END
 
 "}}}
