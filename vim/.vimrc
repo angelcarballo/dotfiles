@@ -254,21 +254,10 @@ let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline_theme='base16_shell'
 let g:airline#extensions#ctrlp#color_template = 'normal'
-let g:airline_mode_map = {
-      \ '__' : '',
-      \ 'n'  : '',
-      \ 'i'  : '',
-      \ 'R'  : '',
-      \ 'c'  : '',
-      \ 'v'  : '',
-      \ 'V'  : '',
-      \ '' : '',
-      \ 's'  : '',
-      \ 'S'  : '',
-      \ '' : '',
-      \ }
 " hide file encoding
 let g:airline_section_y = airline#section#create('')
+" hide mode indicator
+let g:airline_section_a = airline#section#create(['crypt','paste','spell','iminsert'])
 
 " background config managed by base16
 if filereadable(expand("~/.vimrc_background"))
