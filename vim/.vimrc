@@ -252,7 +252,7 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#branch#displayed_head_limit = 10
-let g:airline_theme='base16'
+let g:airline_theme='base16_shell'
 let g:airline#extensions#ctrlp#color_template = 'normal'
 let g:airline_mode_map = {
       \ '__' : '',
