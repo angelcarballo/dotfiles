@@ -4,7 +4,7 @@
 alias c='clear'
 alias celar='clear'
 alias lcear='clear'
-alias ls='ls -a'
+alias ls='ls -GFa'
 alias ll='ls -GFlah'
 
 # Atajos Mac
