@@ -250,9 +250,10 @@ set list                       " show extra whitespace
 let g:airline_powerline_fonts=1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:airline_skip_empty_sections = 1
+let g:airline_theme='base16_shell'
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#branch#displayed_head_limit = 10
-let g:airline_theme='base16_shell'
 let g:airline#extensions#ctrlp#color_template = 'normal'
 " hide file encoding
 let g:airline_section_y = airline#section#create('')
@@ -267,9 +268,6 @@ endif
 
 " statusline
 hi StatusLine cterm=NONE ctermbg=018 ctermfg=020
-
-" tabbar
-let g:tablabel = "%N%{flagship#tabmodified()} %{flagship#tabcwds('shorten',',')}"
 
 " automatically re balance windows on Vim resize
 autocmd VimResized * :wincmd =

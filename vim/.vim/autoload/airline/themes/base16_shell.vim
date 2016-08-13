@@ -6,7 +6,7 @@ function! airline#themes#base16_shell#refresh()
         \ }
 
   let s:N1 = airline#themes#get_highlight('CursorLine')
-  let s:N2 = airline#themes#get_highlight2(['Cursorline', 'bg'], ['CursorLine', 'fg'])
+  let s:N2 = airline#themes#get_highlight2(['CursorLine', 'bg'], ['Pmenu', 'fg'])
   let s:N3 = airline#themes#get_highlight('CursorLine')
   let g:airline#themes#base16_shell#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
 
