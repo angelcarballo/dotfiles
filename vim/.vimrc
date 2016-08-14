@@ -226,10 +226,10 @@ set timeoutlen=500                   " don't wait so long for the next keypress
 set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
 set autoread                         " if a file changes outside vim, reload its contents automatically
 
-au BufLeave,FocusLost * silent! wa     " autosave files
-autocmd InsertLeave * set nopaste      " disable paste mode on leaving insert mode.
-autocmd QuickFixCmdPost *grep* cwindow " open quickfix window after using grep
-autocmd FileType qf wincmd J           " quickfix window should always be full width
+au BufLeave,FocusLost * silent! wa                      " autosave files
+autocmd InsertLeave * set nopaste                       " disable paste mode on leaving insert mode.
+autocmd QuickFixCmdPost *grep* nested cwindow | redraw! " open quickfix window after using grep
+autocmd FileType qf wincmd J                            " quickfix window should always be full width
 
 runtime macros/matchit.vim           " allow % to match more than just single characters
 
