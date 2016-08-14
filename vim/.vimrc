@@ -487,6 +487,10 @@ nnoremap <silent> <leader>ww <c-w>w
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
 
+" Fix closest spelling error
+nnoremap <c-l> [s1z=``
+inoremap <c-l> <c-g>u<esc>[s1z=`]a<c-g>u
+
 " Quick save and close
 nnoremap <c-q> :wq!<cr>
 
