@@ -73,10 +73,10 @@ eval "$(rbenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Try to use Ag as default fzf command
- export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='ag -g ""'
 
- # enable syntax for cheat (see: https://github.com/chrisallenlane/cheat)
- export CHEATCOLORS=true
+# enable syntax for cheat (see: https://github.com/chrisallenlane/cheat)
+export CHEATCOLORS=true
 
- # initialize base16 colorscheme
- set-colorscheme
+# initialize base16 colorscheme
+set-colorscheme
