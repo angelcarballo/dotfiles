@@ -310,7 +310,8 @@ autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 "}}}
 " Key bindings (leader) ---------------------------------------------------------------{{{
 
-nmap <leader><space> :CtrlP<cr>
+" move to {char}{char}
+nmap <leader><space> <Plug>(easymotion-overwin-f2)
 
 " <leader> - Switch between the last two files
 nnoremap <leader><tab> <c-^>
@@ -540,9 +541,6 @@ vnoremap @ :norm@<cr>
 
 " make Y behave like other capitals (yank from cursor to end of line)
 nnoremap Y y$
-
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
 
 " easy beginning/end of line
 nnoremap H ^
