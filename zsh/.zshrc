@@ -50,6 +50,8 @@ cdpath=($HOME/src)
 
 # dont share history between different shells
 setopt no_share_history
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
 
 # Paths common to all platforms
 export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$HOME/.rbenv/bin:$PATH"
