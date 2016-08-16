@@ -1,4 +1,4 @@
-# # Load Antigen
+
 source ~/.zsh/antigen.zsh
 
 # Antigen Bundles
@@ -53,6 +53,16 @@ setopt no_share_history
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
+# vman - vim man pager, with autocompletion
+vman() {
+  vim -c "SuperMan $*"
+
+  if [ "$?" != "0"  ]; then
+    echo "No manual entry for $*"
+  fi
+}
+compdef vman="man"
+
 # Paths common to all platforms
 export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$HOME/.rbenv/bin:$PATH"
 
@@ -82,3 +92,4 @@ export CHEATCOLORS=true
 
 # initialize base16 colorscheme
 set-colorscheme
+

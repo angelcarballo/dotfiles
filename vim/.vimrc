@@ -87,6 +87,7 @@ Plug 'benmills/vimux'                     " tmux integration
 Plug 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
 Plug 'szw/vim-g'                          " google search
+Plug 'jez/vim-superman'                   " better man pager
 
 " Extras
 Plug 'godlygeek/tabular'                " code align (like on this comment)
