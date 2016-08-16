@@ -7,7 +7,6 @@ call plug#begin('~/.vim/plugged')
 
 " Basic plugins
 Plug 'kana/vim-textobj-user'            " custom text object support
-Plug 'ConradIrwin/vim-bracketed-paste'  " toggle paste mode automatically
 Plug 'eiginn/netrw'                     " file manager
 Plug 'tpope/vim-vinegar'                " file manager improvements
 Plug 'tpope/vim-repeat'                 " extend repeat support
