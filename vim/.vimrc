@@ -378,6 +378,7 @@ nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
 " g - Git/Google
 nnoremap <leader>gs :Gstatus<cr>:call QuickFixGitStatus()<cr>
 nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gf :Gfetch<cr>
 nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gD :Gdiff master<cr>
 nnoremap <leader>gp :Gpush
@@ -386,11 +387,12 @@ nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>go :Gbrowse<cr>
 vnoremap <leader>go :Gbrowse<cr>
-nnoremap <leader>gg :Googlef<cr>
-vnoremap <leader>gg :Googlef<cr>
 nnoremap <leader>gl :GV!<cr>
 nnoremap <leader>gL :GV<cr>
 vnoremap <leader>gl :GV<cr>
+
+nnoremap <leader>gg :Googlef<cr>
+vnoremap <leader>gg :Googlef<cr>
 
 " h - Git Hunks (added by vim-gitgutter)
 " <leader>hs -> stage hunk
