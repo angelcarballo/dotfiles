@@ -316,11 +316,11 @@ nmap <leader><space> <Plug>(easymotion-overwin-f2)
 nnoremap <leader><tab> <c-^>
 
 " / - Search in project
-nnoremap <leader>/ :silent Ggrep! ""<left>
+nnoremap <leader>/ :silent Ggrep ""<left>
 
 " * - Search in project for word under cursor
-nnoremap <leader>* :silent Ggrep! "<c-r><c-w>"<cr>
-vnoremap <leader>* "hy:silent Ggrep! "<c-r>h"<cr>
+nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
+vnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
 
 " a - Align/Auto
 vnoremap <leader>aa :Tabularize /
