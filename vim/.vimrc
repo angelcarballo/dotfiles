@@ -487,6 +487,10 @@ nnoremap <silent> <leader>ww <c-w>w
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
 
+" Delete using black hole register
+nnoremap <bs> "_d
+inoremap <bs> "_d
+
 " Fix closest spelling error
 nnoremap <c-l> [s1z=``
 inoremap <c-l> <c-g>u<esc>[s1z=`]a<c-g>u
