@@ -262,9 +262,9 @@ let g:airline_section_y = airline#section#create('')
 let g:airline_section_a = airline#section#create(['crypt','paste','spell','iminsert'])
 
 " background config managed by base16
-if filereadable(expand("~/.vimrc_background"))
+if filereadable(expand("~/.vim_colorscheme"))
   let base16colorspace=256
-  source ~/.vimrc_background
+  source ~/.vim_colorscheme
 endif
 
 " statusline
