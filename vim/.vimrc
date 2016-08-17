@@ -69,6 +69,7 @@ Plug 'terryma/vim-expand-region'         " visual expandable regions
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
 Plug 'szw/vim-maximizer'                 " maximize/restore windows
 Plug 'easymotion/vim-easymotion'         " easier motions (doh!)
+Plug 'dietsche/vim-lastplace'            " restore cursor position when re-opening files
 
 " Colorschemes
 Plug 'chriskempson/base16-vim'          " base16 colorschemes
