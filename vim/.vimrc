@@ -497,8 +497,8 @@ nnoremap <bs> "_d
 inoremap <bs> "_d
 
 " Fix closest spelling error
-nnoremap \ [s1z=``
-inoremap \ <c-g>u<esc>[s1z=`]a<c-g>u
+nnoremap <c-\> [s1z=``
+inoremap <c-\> <c-g>u<esc>[s1z=`]a<c-g>u
 
 " Quick save and close
 nnoremap <c-q> :wq!<cr>
