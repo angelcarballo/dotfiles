@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'interactive_editor'
 
 Pry.editor = 'vim'
 Pry.config.color = true
