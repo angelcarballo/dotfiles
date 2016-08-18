@@ -525,24 +525,11 @@ nnoremap <silent> j gj
 vmap v <Plug>(expand_region_expand)
 vmap <c-v> <Plug>(expand_region_shrink)
 
-" Use left/right to indent
-nnoremap <left> <<
-nnoremap <right> >>
-vnoremap <left> <gv
-vnoremap <right> >gv
-
-" Use up/down to move lines/blocks
-nnoremap <up> :m -2<cr>
-nnoremap <down> :m +1<cr>
-vnoremap <up> :m -2<cr>gv
-vnoremap <down> :m '>+1<cr>gv
-
-" Use shift+arrow keys to resize splits
-" note: inside iterm2 this requires xterm key presets
-nnoremap <s-up> :resize -2<cr>
-nnoremap <s-down> :resize +2<cr>
-nnoremap <s-left> :vertical resize -1<cr>
-nnoremap <s-right> :vertical resize +2<cr>
+" Use arrow keys to resize splits
+nnoremap <up> :resize -5<cr>
+nnoremap <down> :resize +5<cr>
+nnoremap <left> :vertical resize -10<cr>
+nnoremap <right> :vertical resize +10<cr>
 
 " easyly run macros on selected lines
 vnoremap @ :norm@<cr>
