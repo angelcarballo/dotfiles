@@ -12,11 +12,11 @@ zle -N fancy-ctrl-z
 # }}}
 
 # Checkout branch using fzf {{{
-co() {
+branch() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" | fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+  branchname=$(echo "$branches" | fzf -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branchname" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 # }}}
 
@@ -40,7 +40,7 @@ function color {
   elif [[ $# -eq 2 ]]; then
     colorscheme="$1-$2"
   else
-    colorscheme=$(find $base16_dir -type f -name "base16-*.sh" -exec basename {} \; | cut -f1 -d "."  | cut -f2 -f3 -d "-" | fzf-tmux)
+    colorscheme=$(find $base16_dir -type f -name "base16-*.sh" -exec basename {} \; | cut -f1 -d "."  | cut -f2 -f3 -d "-" | fzf)
   fi
 
   set-colorscheme $colorscheme
