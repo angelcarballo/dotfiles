@@ -25,8 +25,8 @@ git:
 	# tell git to use our nice repo template
 	git config --global init.templatedir '~/.git_template'
 	# use diff-so-fancy when diffing
-	git config --global pager.diff "diff-so-fancy | less --tabs=4 -RFX"
-	git config --global pager.show "diff-so-fancy | less --tabs=4 -RFX"
+	git config --global pager.diff "diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '"
+	git config --global pager.show "diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '"
 	# aliases
 	git config --global alias.ci commit
 	git config --global alias.st status
