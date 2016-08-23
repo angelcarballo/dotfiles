@@ -321,8 +321,9 @@ nmap <leader><space> <Plug>(easymotion-overwin-f2)
 " <leader> - Switch between the last two files
 nnoremap <leader><tab> <c-^>
 
-" / - Search in project
+" /,? - Search in project
 nnoremap <leader>/ :silent Ggrep ""<left>
+nnoremap <leader>? :silent Ggrep! ""<left>
 
 " * - Search in project for word under cursor
 nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
