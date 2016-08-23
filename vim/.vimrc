@@ -568,8 +568,8 @@ onoremap in" :<c-u>normal! f"vi"<cr>
 "}}}
 " Force file types -----------------------------------------------------------------{{{
 
-au BufRead,BufNewFile *.jbuilder setfiletype ruby
-au BufRead,BufNewFile *.tmux setfiletype tmux
+autocmd BufRead,BufNewFile *.jbuilder setfiletype ruby
+autocmd BufRead,BufNewFile *.tmux setfiletype tmux
 
 "}}}
 " Type: Vim -----------------------------------------------------------------{{{
