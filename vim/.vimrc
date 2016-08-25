@@ -496,12 +496,6 @@ nnoremap <silent> <leader>ww <c-w>w
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
 
-" Easier undo (this frees up c-r)
-nnoremap U <c-r>
-
-" ... now we can use c-r to open command line history
-nnoremap <c-r> q:
-
 " Delete using black hole register
 nnoremap <bs> "_d
 inoremap <bs> "_d
