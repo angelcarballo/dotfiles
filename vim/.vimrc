@@ -176,7 +176,8 @@ let g:notes_tab_indents = 0
 "" Vim-Switch options
 let g:switch_custom_definitions =
       \ [
-      \   ['TODO', 'DONE']
+      \   ['TODO', 'DONE'],
+      \   ['pick', 'reword', 'edit', 'squash', 'fixup', 'exec', 'drop']
       \ ]
 
 "" Vim-maximizer options
