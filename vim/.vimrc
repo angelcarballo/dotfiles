@@ -227,11 +227,14 @@ set omnifunc=syntaxcomplete#Complete " enable omni completion
 set timeoutlen=500                   " don't wait so long for the next keypress
 set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
 set autoread                         " if a file changes outside vim, reload its contents automatically
+set cursorline                       " hightlight current line
 
-au BufLeave,FocusLost * silent! wa                      " autosave files
+autocmd BufLeave,FocusLost * silent! wa                 " autosave files
 autocmd InsertLeave * set nopaste                       " disable paste mode on leaving insert mode.
 autocmd QuickFixCmdPost *grep* nested cwindow | redraw! " open quickfix window after using grep
 autocmd FileType qf wincmd J                            " quickfix window should always be full width
+autocmd BufWritePre *.rb call TrimEndLines()            " clean extra whitespace for ruby files
+autocmd BufWritePre *.feature call TrimEndLines()       " clean extra whitespace for cucumber/turnip files
 
 runtime macros/matchit.vim           " allow % to match more than just single characters
 
@@ -314,13 +317,14 @@ autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 " Key bindings (leader) ---------------------------------------------------------------{{{
 
 " move to {char}{char}
-nmap <leader><space> <Plug>(easymotion-overwin-f2)
+nmap <leader><space> :buffers<CR>:bu<Space>
 
 " <leader> - Switch between the last two files
 nnoremap <leader><tab> <c-^>
 
-" / - Search in project
+" /,? - Search in project
 nnoremap <leader>/ :silent Ggrep ""<left>
+nnoremap <leader>? :silent Ggrep! ""<left>
 
 " * - Search in project for word under cursor
 nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
@@ -355,8 +359,7 @@ endif
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 
-" d - Diff/Decrease
-nnoremap <leader>dn <c-x>
+" d - Diff
 xnoremap <leader>dp :diffput<cr>
 xnoremap <leader>dg :diffget<cr>
 
@@ -401,8 +404,7 @@ vnoremap <leader>gg :Googlef<cr>
 " <leader>hs -> stage hunk
 " <leader>hu -> unstage hunk
 
-" i - Indent/Increase
-nnoremap <leader>in <c-a>
+" i - Indent
 nnoremap <leader>ij :%!python -m json.tool<cr>
 
 " l - Last change (jump)
@@ -493,6 +495,9 @@ nnoremap <silent> <leader>ww <c-w>w
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
 
+" Easily move providing two consecutive characters s(xx)
+nmap s <Plug>(easymotion-overwin-f2)
+
 " Delete using black hole register
 nnoremap <bs> "_d
 inoremap <bs> "_d
@@ -563,18 +568,11 @@ onoremap in} :<c-u>normal! f{vi{<cr>
 onoremap in' :<c-u>normal! f'vi'<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
 
-
-"}}}
-" Avoid extra lines at eof ---------------------------------------------------------------{{{
-
-autocmd BufWritePre *.rb call TrimEndLines()
-autocmd BufWritePre *.feature call TrimEndLines()
-
 "}}}
 " Force file types -----------------------------------------------------------------{{{
 
-au BufRead,BufNewFile *.jbuilder setfiletype ruby
-au BufRead,BufNewFile *.tmux setfiletype tmux
+autocmd BufRead,BufNewFile *.jbuilder setfiletype ruby
+autocmd BufRead,BufNewFile *.tmux setfiletype tmux
 
 "}}}
 " Type: Vim -----------------------------------------------------------------{{{
