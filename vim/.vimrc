@@ -316,7 +316,7 @@ autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 " Key bindings (leader) ---------------------------------------------------------------{{{
 
 " move to {char}{char}
-nmap <leader><space> <Plug>(easymotion-overwin-f2)
+nmap <leader><space> :buffers<CR>:bu<Space>
 
 " <leader> - Switch between the last two files
 nnoremap <leader><tab> <c-^>
@@ -493,6 +493,9 @@ nnoremap <silent> <leader>ww <c-w>w
 
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
+
+" Easily move providing two consecutive characters s(xx)
+nmap s <Plug>(easymotion-overwin-f2)
 
 " Delete using black hole register
 nnoremap <bs> "_d
