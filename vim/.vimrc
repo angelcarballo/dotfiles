@@ -358,8 +358,7 @@ endif
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 
-" d - Diff/Decrease
-nnoremap <leader>dn <c-x>
+" d - Diff
 xnoremap <leader>dp :diffput<cr>
 xnoremap <leader>dg :diffget<cr>
 
@@ -404,8 +403,7 @@ vnoremap <leader>gg :Googlef<cr>
 " <leader>hs -> stage hunk
 " <leader>hu -> unstage hunk
 
-" i - Indent/Increase
-nnoremap <leader>in <c-a>
+" i - Indent
 nnoremap <leader>ij :%!python -m json.tool<cr>
 
 " l - Last change (jump)
