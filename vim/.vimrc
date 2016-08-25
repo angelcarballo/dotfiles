@@ -359,13 +359,10 @@ endif
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 
-" d - Diff
+" d - Diff/Dispatch
 xnoremap <leader>dp :diffput<cr>
 xnoremap <leader>dg :diffget<cr>
-
-" Open documentation using <dasht>
-nnoremap <silent> <Leader>dd :call Dasht([expand('<cWORD>'), expand('<cword>')])<Return>
-vnoremap <silent> <Leader>dd y:<C-U>call Dasht(getreg(0))<Return>
+nnoremap <Leader>dd :Dispatch<space>
 
 " e - Explore
 nnoremap <silent> <leader>ei :Explore<cr>
@@ -442,15 +439,16 @@ vnoremap <leader>riv :RRenameInstanceVariable<cr>
 vnoremap <leader>rec :RExtractConstant<cr>
 nnoremap <leader>rel :RExtractLet<cr>
 
-" s - Specs
+" s - Specs/Show
 nnoremap <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
 nnoremap <leader>sc :call vroom#RunNearestTest(g:vroom_options)<cr>
 nnoremap <leader>sl :call vroom#RunLastTest()<cr>
+nnoremap <silent> <leader>sF :echo @%<cr>
+nnoremap <silent> <leader>SP :echo expand('%:p')<cr>
+nnoremap <silent> <leader>sb :echo "Current git branch: " . fugitive#head()<cr>
 
-" S - Snippets/Show
+" S - Snippets
 nnoremap <silent> <leader>Se :UltiSnipsEdit<cr>
-nnoremap <silent> <leader>Sf :echo @%<cr>
-nnoremap <silent> <leader>SF :echo expand('%:p')<cr>
 
 " t - Tmux/Tabs
 
