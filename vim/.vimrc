@@ -21,25 +21,25 @@ Plug 'junegunn/gv.vim'                  " git commit navigation
 Plug 'airblade/vim-gitgutter'           " realtime git-diff
 
 " Languages & frameworks
-Plug 'vim-ruby/vim-ruby'                " ruby integration
-Plug 'ecomba/vim-ruby-refactoring'      " rails refactoring helpers
-Plug 'tpope/vim-rake'                   " rake integration
-Plug 'tpope/vim-rbenv'                  " rbenv integration
-Plug 'tpope/vim-rails'                  " rails integration
-Plug 'tpope/vim-bundler'                " bundler integration
-Plug 'cakebaker/scss-syntax.vim'        " SCSS syntax
-Plug 'pangloss/vim-javascript'          " improved Javascript support
-Plug 'othree/html5.vim'                 " HTML5 support
-Plug 'mustache/vim-mustache-handlebars' " mustache support
-Plug 'pprovost/vim-markdown-jekyll'     " Jekyll style markdown support
-Plug 'elzr/vim-json'                    " Json support
-Plug 'rodjek/vim-puppet'                " puppet support
-Plug 'tmux-plugins/vim-tmux'            " tmux syntax support
-Plug 'derekwyatt/vim-scala'             " Scala syntax support
-Plug 'plasticboy/vim-markdown'          " markdown support
-Plug 'kchmck/vim-coffee-script'         " coffeescript support
-Plug 'jelera/vim-javascript-syntax'     " better javascript syntax
-Plug 'leafgarland/typescript-vim'       " typescript support
+Plug 'vim-ruby/vim-ruby'                                     " ruby support
+Plug 'ecomba/vim-ruby-refactoring'                           " rails refactoring helpers
+Plug 'tpope/vim-rake'                                        " rake integration
+Plug 'tpope/vim-rbenv'                                       " rbenv integration
+Plug 'tpope/vim-rails'                                       " rails integration
+Plug 'tpope/vim-bundler'                                     " bundler integration
+Plug 'cakebaker/scss-syntax.vim'                             " SCSS syntax
+Plug 'othree/html5.vim'                                      " HTML5 support
+Plug 'elzr/vim-json'                                         " Json support
+Plug 'plasticboy/vim-markdown'                               " markdown support
+Plug 'pprovost/vim-markdown-jekyll'                          " Jekyll style markdown support
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}        " improved Javascript support
+Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}   " better javascript syntax
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}     " typescript support
+Plug 'mustache/vim-mustache-handlebars', {'for': 'mustache'} " mustache support
+Plug 'rodjek/vim-puppet', {'for': 'puppet'}                  " puppet support
+Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}                " tmux syntax support
+Plug 'derekwyatt/vim-scala', {'for': 'scala'}                " Scala syntax support
+Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}           " coffeescript support
 
 " Motions & Operators
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
