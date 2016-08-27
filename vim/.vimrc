@@ -270,9 +270,6 @@ if filereadable(expand("~/.vim_colorscheme"))
   source ~/.vim_colorscheme
 endif
 
-" statusline
-hi StatusLine cterm=NONE ctermbg=018 ctermfg=020
-
 " automatically re balance windows on Vim resize
 autocmd VimResized * :wincmd =
 
