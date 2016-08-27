@@ -355,10 +355,12 @@ endif
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 
-" d - Diff/Dispatch
+" d - Diff/Dispatch/Duplicate
 xnoremap <leader>dp :diffput<cr>
 xnoremap <leader>dg :diffget<cr>
 nnoremap <Leader>dd :Dispatch<space>
+nnoremap <leader>dl yy:Commentary<cr>p
+vnoremap <leader>dl ygv:Commentary<cr>']p
 
 " e - Explore
 nnoremap <silent> <leader>ei :Explore<cr>
