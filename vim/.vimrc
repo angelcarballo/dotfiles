@@ -212,7 +212,6 @@ set mouse+=a                         " enable mouse support in (a)ll modes
 set noswapfile                       " disable swap files, let git do the work
 set splitright                       " Open new vertical split panes to right
 set history=1000                     " max history
-set undolevels=1000                  " max undo levels
 set hlsearch                         " highlight search results
 set incsearch                        " incremental search
 set ignorecase                       " ignore case on search ...
@@ -227,6 +226,7 @@ set timeoutlen=500                   " don't wait so long for the next keypress
 set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
 set autoread                         " if a file changes outside vim, reload its contents automatically
 set undofile                         " persist undo history
+set undolevels=1000                  " max undo levels
 set undodir=$HOME/.vim/undo          " where to store undo files
 
 autocmd BufLeave,FocusLost * silent! wa                 " autosave files
