@@ -201,7 +201,6 @@ let g:EasyMotion_do_mapping = 0
 let mapleader = "\<Space>"
 nmap , <leader>
 
-
 set encoding=utf-8                   " use UTF8 by default
 set nu                               " show line numbers
 set showcmd                          " show complete commands
@@ -227,6 +226,8 @@ set omnifunc=syntaxcomplete#Complete " enable omni completion
 set timeoutlen=500                   " don't wait so long for the next keypress
 set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
 set autoread                         " if a file changes outside vim, reload its contents automatically
+set undofile                         " persist undo history
+set undodir=$HOME/.vim/undo          " where to store undo files
 
 autocmd BufLeave,FocusLost * silent! wa                 " autosave files
 autocmd InsertLeave * set nopaste                       " disable paste mode on leaving insert mode.
