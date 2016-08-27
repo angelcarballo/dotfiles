@@ -492,6 +492,12 @@ nnoremap <silent> <leader>ww <c-w>w
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
 
+" Easily exit insert mode
+inoremap jj <esc>
+
+" Easily enter command mode
+nnoremap ; :
+
 " Easily move providing two consecutive characters s(xx)
 nmap s <Plug>(easymotion-overwin-f2)
 
