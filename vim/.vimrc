@@ -120,11 +120,11 @@ let g:netrw_altv=1              " open files on right
 let g:netrw_preview=1           " open previews vertically
 
 "" Vim-ruby options
-let ruby_spellcheck_strings = 1   " enable spellcheck inside ruby strings
-let ruby_minlines = 100           " avoid syntax errors while scrolling on large files
+let ruby_spellcheck_strings=1   " enable spellcheck inside ruby strings
+let ruby_minlines=100           " avoid syntax errors while scrolling on large files
 
 "" IndentLine options
-let g:indentLine_char = '·'
+let g:indentLine_char='·'
 
 "" Split window on UltiSnipsEdit
 let g:UltiSnipsEditSplit="horizontal"
@@ -135,13 +135,13 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "" Vim Json options
-let g:vim_json_syntax_conceal = 0
+let g:vim_json_syntax_conceal=0
 
 "" Vromm configuration
-let g:vroom_map_keys = 0
-let g:vroom_cucumber_path = 'rspec'
-let g:vroom_spec_command  = 'rspec'
-let g:vroom_use_vimux = 1
+let g:vroom_map_keys=0
+let g:vroom_cucumber_path='rspec'
+let g:vroom_spec_command='rspec'
+let g:vroom_use_vimux=1
 let g:vroom_options={'options':'--fail-fast'}
 
 "" Markdown options
@@ -153,7 +153,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor\ --hidden\ --ignore\ .git
 
   " Use ag in CtrlP for listing files
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden
+  let g:ctrlp_user_command='ag %s -l --nocolor --hidden
         \ --ignore .git
         \ --ignore .svn
         \ --ignore .hg
@@ -166,25 +166,25 @@ if executable('ag')
         \ --ignore spec/fixtures
         \ -g ""'
   " ag is falst enough, don't use caching
-  let g:ctrlp_use_caching = 0
+  let g:ctrlp_use_caching=0
 endif
 
 "" Vim-Notes options
-let g:notes_directories = ['~/Dropbox/notes']
-let g:notes_tab_indents = 0
+let g:notes_directories=['~/Dropbox/notes']
+let g:notes_tab_indents=0
 
 "" Vim-Switch options
-let g:switch_custom_definitions =
+let g:switch_custom_definitions=
       \ [
       \   ['TODO', 'DONE'],
       \   ['pick', 'reword', 'edit', 'squash', 'fixup', 'exec', 'drop']
       \ ]
 
 "" Vim-maximizer options
-let g:maximizer_set_default_mapping = 1
+let g:maximizer_set_default_mapping=1
 
 "" Dasht options
-let g:dasht_filetype_docsets = {
+let g:dasht_filetype_docsets={
       \ 'ruby': ['Ruby_2', 'Ruby_On_Rails_4'],
       \ }
 
@@ -192,13 +192,13 @@ let g:dasht_filetype_docsets = {
 let g:ruby_refactoring_map_keys=0
 
 "" Disable easymotion default mappings
-let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_do_mapping=0
 
 "}}}
 " General settings ------------------------------------------------------------{{{
 
 " map <leader> to both <comma> and <space>
-let mapleader = "\<Space>"
+let mapleader="\<Space>"
 nmap , <leader>
 
 set encoding=utf-8                   " use UTF8 by default
@@ -255,15 +255,15 @@ set list                       " show extra whitespace
 let g:airline_powerline_fonts=1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline_skip_empty_sections = 1
+let g:airline_skip_empty_sections=1
 let g:airline_theme='base16_shell'
-let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#branch#displayed_head_limit = 10
-let g:airline#extensions#ctrlp#color_template = 'normal'
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#branch#displayed_head_limit=10
+let g:airline#extensions#ctrlp#color_template='normal'
 " hide file encoding
-let g:airline_section_y = airline#section#create('')
+let g:airline_section_y=airline#section#create('')
 " hide mode indicator
-let g:airline_section_a = airline#section#create(['crypt','paste','spell','iminsert'])
+let g:airline_section_a=airline#section#create(['crypt','paste','spell','iminsert'])
 
 " background config managed by base16
 if filereadable(expand("~/.vim_colorscheme"))
@@ -279,11 +279,11 @@ match ErrorMsg '\s\+$'
 
 " Change cursor to vertical bar (|) on insert mode
 if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_SI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  let &t_SI="\<Esc>]50;CursorShape=1\x7"
+  let &t_EI="\<Esc>]50;CursorShape=0\x7"
 endif
 
 "}}}
@@ -591,7 +591,7 @@ augroup END
 augroup rubygroup
   autocmd!
   autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
-  autocmd FileType ruby let b:dispatch = 'ruby %'
+  autocmd FileType ruby let b:dispatch='ruby %'
 augroup END
 
 "}}}
@@ -600,7 +600,7 @@ augroup END
 augroup cucumbergroup
   autocmd!
   autocmd FileType cucumber setlocal expandtab shiftwidth=2 tabstop=2
-  autocmd FileType cucumber let b:dispatch = 'ruby %'
+  autocmd FileType cucumber let b:dispatch='ruby %'
 augroup END
 
 "}}}
@@ -617,7 +617,7 @@ augroup END
 augroup scalagroup
   autocmd!
   autocmd BufRead,BufNewFile *.hocon set filetype=yaml
-  autocmd FileType scala let b:dispatch = 'scala -nc %'
+  autocmd FileType scala let b:dispatch='scala -nc %'
 augroup END
 
 "}}}
