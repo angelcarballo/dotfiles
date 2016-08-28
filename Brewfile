@@ -1,7 +1,7 @@
 # manage symlinks for dotfiles
 brew "stow"
 
-# super fast replacement form ack
+# super fast replacement for Ack
 brew "the_silver_searcher"
 
 # image manipulation tools
@@ -41,4 +41,4 @@ brew "ctags"
 brew "tmux"
 
 # ...to rule them all
-brew "vim"
+brew "macvim", args: ['override-system-vim']
