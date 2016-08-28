@@ -13,6 +13,7 @@ Plug 'tpope/vim-repeat'                 " extend repeat support
 Plug 'tpope/vim-unimpaired'             " multiple mappings using [ & ]
 Plug 'tpope/vim-sleuth'                 " auto set indent settings based on filetype
 Plug 'stefandtw/quickfix-reflector.vim' " allow changes from quickfix window
+Plug 'AndrewRadev/splitjoin.vim'        " split/join statements (gS, gJ)
 
 " Git
 Plug 'tpope/vim-fugitive'               " git integration
@@ -90,20 +91,20 @@ Plug 'tpope/gem-ctags'                    " include tags from installed gems
 Plug 'szw/vim-g'                          " google search
 Plug 'jez/vim-superman'                   " better man pager
 
+" Runners
+Plug 'skalnik/vim-vroom'                " ruby test runner
+Plug 'tpope/vim-dispatch'               " run processes on the background
+Plug 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
+
 " Extras
 Plug 'godlygeek/tabular'                " code align (like on this comment)
 Plug 'tpope/vim-commentary'             " comment/uncomment code
-Plug 'skalnik/vim-vroom'                " ruby test runner
-Plug 'tpope/vim-dispatch'               " run processes on the background
 Plug 'AndrewRadev/switch.vim'           " easy switches
 Plug 'christoomey/vim-system-copy'      " copy command (cp), copy current line (cP) and paste in next line (cv)
 Plug 'xolox/vim-notes'                  " easy note taking
 Plug 'xolox/vim-misc'                   " required by vim-notes
-Plug 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 Plug 'suan/vim-instant-markdown'        " markdown preview
-Plug 'AndrewRadev/splitjoin.vim'        " split/join statements
-Plug 'tpope/vim-capslock'               " software caps lock
-
+Plug 'tpope/vim-capslock'               " software caps lock (gC / <c-g>c)
 
 " Plugins must be added before the following line
 call plug#end()
