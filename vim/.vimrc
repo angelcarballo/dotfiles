@@ -18,28 +18,28 @@ Plug 'stefandtw/quickfix-reflector.vim' " allow changes from quickfix window
 Plug 'tpope/vim-fugitive'               " git integration
 Plug 'tpope/vim-rhubarb'                " github integration
 Plug 'junegunn/gv.vim'                  " git commit navigation
-Plug 'airblade/vim-gitgutter'           " realtime git-diff
+Plug 'airblade/vim-gitgutter'           " real time git-diff
 
 " Languages & frameworks
-Plug 'vim-ruby/vim-ruby'                                     " ruby support
-Plug 'ecomba/vim-ruby-refactoring'                           " rails refactoring helpers
-Plug 'tpope/vim-rake'                                        " rake integration
-Plug 'tpope/vim-rbenv'                                       " rbenv integration
-Plug 'tpope/vim-rails'                                       " rails integration
-Plug 'tpope/vim-bundler'                                     " bundler integration
+Plug 'vim-ruby/vim-ruby'                                     " Ruby support
+Plug 'ecomba/vim-ruby-refactoring'                           " Rails refactoring helpers
+Plug 'tpope/vim-rake'                                        " Rake integration
+Plug 'tpope/vim-rbenv'                                       " Rbenv integration
+Plug 'tpope/vim-rails'                                       " Rails integration
+Plug 'tpope/vim-bundler'                                     " Bundler integration
 Plug 'cakebaker/scss-syntax.vim'                             " SCSS syntax
 Plug 'othree/html5.vim'                                      " HTML5 support
 Plug 'elzr/vim-json'                                         " Json support
-Plug 'plasticboy/vim-markdown'                               " markdown support
+Plug 'plasticboy/vim-markdown'                               " Markdown support
 Plug 'pprovost/vim-markdown-jekyll'                          " Jekyll style markdown support
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}        " improved Javascript support
-Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}   " better javascript syntax
-Plug 'leafgarland/typescript-vim', {'for': 'typescript'}     " typescript support
-Plug 'mustache/vim-mustache-handlebars', {'for': 'mustache'} " mustache support
-Plug 'rodjek/vim-puppet', {'for': 'puppet'}                  " puppet support
-Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}                " tmux syntax support
+Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}   " better Javascript syntax
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}     " Typescript support
+Plug 'mustache/vim-mustache-handlebars', {'for': 'mustache'} " Mustache support
+Plug 'rodjek/vim-puppet', {'for': 'puppet'}                  " Puppet support
+Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}                " Tmux syntax support
 Plug 'derekwyatt/vim-scala', {'for': 'scala'}                " Scala syntax support
-Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}           " coffeescript support
+Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}           " CoffeeScript support
 
 " Motions & Operators
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
@@ -207,7 +207,7 @@ set showcmd                          " show complete commands
 set ruler                            " show cursor position
 set scrolloff=3                      " leave space after the current line
 set foldmethod=marker                " fold using {{{ .. }}} markers
-set diffopt+=vertical                " Always use vertical diffs
+set diffopt+=vertical                " always use vertical diffs
 set mouse+=a                         " enable mouse support in (a)ll modes
 set noswapfile                       " disable swap files, let git do the work
 set splitright                       " Open new vertical split panes to right
@@ -222,16 +222,16 @@ set wildmenu                         " visual auto complete for command menu
 set lazyredraw                       " redraw only when needed
 set formatoptions+=j                 " delete comment character when joining commented lines
 set omnifunc=syntaxcomplete#Complete " enable omni completion
-set timeoutlen=500                   " don't wait so long for the next keypress
+set timeoutlen=500                   " don't wait so long for the next key press
 set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
-set autoread                         " if a file changes outside vim, reload its contents automatically
+set autoread                         " if a file changes outside Vim, reload its contents automatically
 set undofile                         " persist undo history
 set undolevels=1000                  " max undo levels
 set undodir=$HOME/.vim/undo          " where to store undo files
 
-autocmd BufLeave,FocusLost * silent! wa                 " autosave files
+autocmd BufLeave,FocusLost * silent! wa                 " auto save files
 autocmd InsertLeave * set nopaste                       " disable paste mode on leaving insert mode.
-autocmd QuickFixCmdPost *grep* nested cwindow | redraw! " open quickfix window after using grep
+autocmd QuickFixCmdPost *grep* nested cwindow | redraw! " open quickfix window after using Grep
 autocmd FileType qf wincmd J                            " quickfix window should always be full width
 autocmd BufWritePre *.rb call TrimEndLines()            " clean extra whitespace for ruby files
 autocmd BufWritePre *.feature call TrimEndLines()       " clean extra whitespace for cucumber/turnip files
@@ -519,18 +519,18 @@ nnoremap P P=`]<c-o>
 " Search and replace current selection
 vnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
 
-" delete lines and word from insert mode
+" Delete lines and word from insert mode
 inoremap <c-d> <esc>ddi
 inoremap <c-w> <esc>bdiwi
 
-" uppercase current word
+" Uppercase current word
 inoremap <c-u> <esc>gUiwea
 
-" move around using visual lines, useful when wrap is enabled
+" Move around using visual lines, useful when wrap is enabled
 nnoremap <silent> k gk
 nnoremap <silent> j gj
 
-" quick region expand in visual mode
+" Quick region expand in visual mode
 vmap v <Plug>(expand_region_expand)
 vmap <c-v> <Plug>(expand_region_shrink)
 
@@ -540,17 +540,17 @@ nnoremap <down> :resize +5<cr>
 nnoremap <left> :vertical resize -10<cr>
 nnoremap <right> :vertical resize +10<cr>
 
-" easyly run macros on selected lines
+" Easily run macros on selected lines
 vnoremap @ :norm@<cr>
 
-" make Y behave like other capitals (yank from cursor to end of line)
+" Make Y behave like other capitals (yank from cursor to end of line)
 nnoremap Y y$
 
-" easy beginning/end of line
+" Easy beginning/end of line
 nnoremap H ^
 nnoremap L $
 
-" easy next/previews tab
+" Easy next/previews tab
 nnoremap [w :tabp<cr>
 nnoremap ]w :tabn<cr>
 nnoremap <tab> :tabn<cr>
@@ -559,7 +559,7 @@ nnoremap <s-tab> :tabp<cr>
 "}}}
 " Motions ---------------------------------------------------------------{{{
 
-" motions for in next ..
+" In next <surround object> motions
 onoremap inb :<c-u>normal! f(vi(<cr>
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap in) :<c-u>normal! f(vi(<cr>
