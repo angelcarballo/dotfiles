@@ -73,4 +73,5 @@ dotfiles
 Powerline
 Zsh
 iTerm2
-params
+filetype
+quickfix

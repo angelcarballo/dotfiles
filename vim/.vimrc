@@ -13,33 +13,34 @@ Plug 'tpope/vim-repeat'                 " extend repeat support
 Plug 'tpope/vim-unimpaired'             " multiple mappings using [ & ]
 Plug 'tpope/vim-sleuth'                 " auto set indent settings based on filetype
 Plug 'stefandtw/quickfix-reflector.vim' " allow changes from quickfix window
+Plug 'AndrewRadev/splitjoin.vim'        " split/join statements (gS, gJ)
 
 " Git
 Plug 'tpope/vim-fugitive'               " git integration
 Plug 'tpope/vim-rhubarb'                " github integration
 Plug 'junegunn/gv.vim'                  " git commit navigation
-Plug 'airblade/vim-gitgutter'           " realtime git-diff
+Plug 'airblade/vim-gitgutter'           " real time git-diff
 
 " Languages & frameworks
-Plug 'vim-ruby/vim-ruby'                " ruby integration
-Plug 'ecomba/vim-ruby-refactoring'      " rails refactoring helpers
-Plug 'tpope/vim-rake'                   " rake integration
-Plug 'tpope/vim-rbenv'                  " rbenv integration
-Plug 'tpope/vim-rails'                  " rails integration
-Plug 'tpope/vim-bundler'                " bundler integration
-Plug 'cakebaker/scss-syntax.vim'        " SCSS syntax
-Plug 'pangloss/vim-javascript'          " improved Javascript support
-Plug 'othree/html5.vim'                 " HTML5 support
-Plug 'mustache/vim-mustache-handlebars' " mustache support
-Plug 'pprovost/vim-markdown-jekyll'     " Jekyll style markdown support
-Plug 'elzr/vim-json'                    " Json support
-Plug 'rodjek/vim-puppet'                " puppet support
-Plug 'tmux-plugins/vim-tmux'            " tmux syntax support
-Plug 'derekwyatt/vim-scala'             " Scala syntax support
-Plug 'plasticboy/vim-markdown'          " markdown support
-Plug 'kchmck/vim-coffee-script'         " coffeescript support
-Plug 'jelera/vim-javascript-syntax'     " better javascript syntax
-Plug 'leafgarland/typescript-vim'       " typescript support
+Plug 'vim-ruby/vim-ruby'                                                        " Ruby support
+Plug 'ecomba/vim-ruby-refactoring'                                              " Rails refactoring helpers
+Plug 'tpope/vim-rake'                                                           " Rake integration
+Plug 'tpope/vim-rbenv'                                                          " Rbenv integration
+Plug 'tpope/vim-rails'                                                          " Rails integration
+Plug 'tpope/vim-bundler'                                                        " Bundler integration
+Plug 'cakebaker/scss-syntax.vim'                                                " SCSS syntax
+Plug 'othree/html5.vim'                                                         " HTML5 support
+Plug 'elzr/vim-json'                                                            " Json support
+Plug 'plasticboy/vim-markdown'                                                  " Markdown support
+Plug 'pprovost/vim-markdown-jekyll'                                             " Jekyll style markdown support
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}                           " improved Javascript support
+Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}                      " better Javascript syntax
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}                        " Typescript support
+Plug 'mustache/vim-mustache-handlebars', {'for': ['mustache', 'html.mustache']} " Mustache support
+Plug 'rodjek/vim-puppet', {'for': 'puppet'}                                     " Puppet support
+Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}                                   " Tmux syntax support
+Plug 'derekwyatt/vim-scala', {'for': 'scala'}                                   " Scala syntax support
+Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}                              " CoffeeScript support
 
 " Motions & Operators
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
@@ -90,20 +91,20 @@ Plug 'tpope/gem-ctags'                    " include tags from installed gems
 Plug 'szw/vim-g'                          " google search
 Plug 'jez/vim-superman'                   " better man pager
 
+" Runners
+Plug 'skalnik/vim-vroom'                " ruby test runner
+Plug 'tpope/vim-dispatch'               " run processes on the background
+Plug 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
+
 " Extras
 Plug 'godlygeek/tabular'                " code align (like on this comment)
 Plug 'tpope/vim-commentary'             " comment/uncomment code
-Plug 'skalnik/vim-vroom'                " ruby test runner
-Plug 'tpope/vim-dispatch'               " run processes on the background
 Plug 'AndrewRadev/switch.vim'           " easy switches
 Plug 'christoomey/vim-system-copy'      " copy command (cp), copy current line (cP) and paste in next line (cv)
 Plug 'xolox/vim-notes'                  " easy note taking
 Plug 'xolox/vim-misc'                   " required by vim-notes
-Plug 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 Plug 'suan/vim-instant-markdown'        " markdown preview
-Plug 'AndrewRadev/splitjoin.vim'        " split/join statements
-Plug 'tpope/vim-capslock'               " software caps lock
-
+Plug 'tpope/vim-capslock'               " software caps lock (gC / <c-g>c)
 
 " Plugins must be added before the following line
 call plug#end()
@@ -120,11 +121,11 @@ let g:netrw_altv=1              " open files on right
 let g:netrw_preview=1           " open previews vertically
 
 "" Vim-ruby options
-let ruby_spellcheck_strings = 1   " enable spellcheck inside ruby strings
-let ruby_minlines = 100           " avoid syntax errors while scrolling on large files
+let ruby_spellcheck_strings=1   " enable spellcheck inside ruby strings
+let ruby_minlines=100           " avoid syntax errors while scrolling on large files
 
 "" IndentLine options
-let g:indentLine_char = '·'
+let g:indentLine_char='·'
 
 "" Split window on UltiSnipsEdit
 let g:UltiSnipsEditSplit="horizontal"
@@ -135,13 +136,13 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "" Vim Json options
-let g:vim_json_syntax_conceal = 0
+let g:vim_json_syntax_conceal=0
 
 "" Vromm configuration
-let g:vroom_map_keys = 0
-let g:vroom_cucumber_path = 'rspec'
-let g:vroom_spec_command  = 'rspec'
-let g:vroom_use_vimux = 1
+let g:vroom_map_keys=0
+let g:vroom_cucumber_path='rspec'
+let g:vroom_spec_command='rspec'
+let g:vroom_use_vimux=1
 let g:vroom_options={'options':'--fail-fast'}
 
 "" Markdown options
@@ -153,7 +154,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor\ --hidden\ --ignore\ .git
 
   " Use ag in CtrlP for listing files
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden
+  let g:ctrlp_user_command='ag %s -l --nocolor --hidden
         \ --ignore .git
         \ --ignore .svn
         \ --ignore .hg
@@ -166,25 +167,25 @@ if executable('ag')
         \ --ignore spec/fixtures
         \ -g ""'
   " ag is falst enough, don't use caching
-  let g:ctrlp_use_caching = 0
+  let g:ctrlp_use_caching=0
 endif
 
 "" Vim-Notes options
-let g:notes_directories = ['~/Dropbox/notes']
-let g:notes_tab_indents = 0
+let g:notes_directories=['~/Dropbox/notes']
+let g:notes_tab_indents=0
 
 "" Vim-Switch options
-let g:switch_custom_definitions =
+let g:switch_custom_definitions=
       \ [
       \   ['TODO', 'DONE'],
       \   ['pick', 'reword', 'edit', 'squash', 'fixup', 'exec', 'drop']
       \ ]
 
 "" Vim-maximizer options
-let g:maximizer_set_default_mapping = 1
+let g:maximizer_set_default_mapping=1
 
 "" Dasht options
-let g:dasht_filetype_docsets = {
+let g:dasht_filetype_docsets={
       \ 'ruby': ['Ruby_2', 'Ruby_On_Rails_4'],
       \ }
 
@@ -192,15 +193,14 @@ let g:dasht_filetype_docsets = {
 let g:ruby_refactoring_map_keys=0
 
 "" Disable easymotion default mappings
-let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_do_mapping=0
 
 "}}}
 " General settings ------------------------------------------------------------{{{
 
 " map <leader> to both <comma> and <space>
-let mapleader = "\<Space>"
+let mapleader="\<Space>"
 nmap , <leader>
-
 
 set encoding=utf-8                   " use UTF8 by default
 set nu                               " show line numbers
@@ -208,12 +208,11 @@ set showcmd                          " show complete commands
 set ruler                            " show cursor position
 set scrolloff=3                      " leave space after the current line
 set foldmethod=marker                " fold using {{{ .. }}} markers
-set diffopt+=vertical                " Always use vertical diffs
+set diffopt+=vertical                " always use vertical diffs
 set mouse+=a                         " enable mouse support in (a)ll modes
 set noswapfile                       " disable swap files, let git do the work
 set splitright                       " Open new vertical split panes to right
 set history=1000                     " max history
-set undolevels=1000                  " max undo levels
 set hlsearch                         " highlight search results
 set incsearch                        " incremental search
 set ignorecase                       " ignore case on search ...
@@ -224,13 +223,16 @@ set wildmenu                         " visual auto complete for command menu
 set lazyredraw                       " redraw only when needed
 set formatoptions+=j                 " delete comment character when joining commented lines
 set omnifunc=syntaxcomplete#Complete " enable omni completion
-set timeoutlen=500                   " don't wait so long for the next keypress
+set timeoutlen=500                   " don't wait so long for the next key press
 set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
-set autoread                         " if a file changes outside vim, reload its contents automatically
+set autoread                         " if a file changes outside Vim, reload its contents automatically
+set undofile                         " persist undo history
+set undolevels=1000                  " max undo levels
+set undodir=$HOME/.vim/undo          " where to store undo files
 
-autocmd BufLeave,FocusLost * silent! wa                 " autosave files
+autocmd BufLeave,FocusLost * silent! wa                 " auto save files
 autocmd InsertLeave * set nopaste                       " disable paste mode on leaving insert mode.
-autocmd QuickFixCmdPost *grep* nested cwindow | redraw! " open quickfix window after using grep
+autocmd QuickFixCmdPost *grep* nested cwindow | redraw! " open quickfix window after using Grep
 autocmd FileType qf wincmd J                            " quickfix window should always be full width
 autocmd BufWritePre *.rb call TrimEndLines()            " clean extra whitespace for ruby files
 autocmd BufWritePre *.feature call TrimEndLines()       " clean extra whitespace for cucumber/turnip files
@@ -254,24 +256,21 @@ set list                       " show extra whitespace
 let g:airline_powerline_fonts=1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline_skip_empty_sections = 1
+let g:airline_skip_empty_sections=1
 let g:airline_theme='base16_shell'
-let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#branch#displayed_head_limit = 10
-let g:airline#extensions#ctrlp#color_template = 'normal'
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#branch#displayed_head_limit=10
+let g:airline#extensions#ctrlp#color_template='normal'
 " hide file encoding
-let g:airline_section_y = airline#section#create('')
+let g:airline_section_y=airline#section#create('')
 " hide mode indicator
-let g:airline_section_a = airline#section#create(['crypt','paste','spell','iminsert'])
+let g:airline_section_a=airline#section#create(['crypt','paste','spell','iminsert'])
 
 " background config managed by base16
 if filereadable(expand("~/.vim_colorscheme"))
   let base16colorspace=256
   source ~/.vim_colorscheme
 endif
-
-" statusline
-hi StatusLine cterm=NONE ctermbg=018 ctermfg=020
 
 " automatically re balance windows on Vim resize
 autocmd VimResized * :wincmd =
@@ -281,11 +280,11 @@ match ErrorMsg '\s\+$'
 
 " Change cursor to vertical bar (|) on insert mode
 if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_SI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  let &t_SI="\<Esc>]50;CursorShape=1\x7"
+  let &t_EI="\<Esc>]50;CursorShape=0\x7"
 endif
 
 "}}}
@@ -323,7 +322,7 @@ nnoremap <leader><tab> <c-^>
 
 " /,? - Search in project
 nnoremap <leader>/ :silent Ggrep ""<left>
-nnoremap <leader>? :silent Ggrep! ""<left>
+nnoremap <leader>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
 
 " * - Search in project for word under cursor
 nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
@@ -358,10 +357,12 @@ endif
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 
-" d - Diff/Dispatch
+" d - Diff/Dispatch/Duplicate
 xnoremap <leader>dp :diffput<cr>
 xnoremap <leader>dg :diffget<cr>
 nnoremap <Leader>dd :Dispatch<space>
+nnoremap <leader>dl yy:Commentary<cr>p
+vnoremap <leader>dl ygv:Commentary<cr>']p
 
 " e - Explore
 nnoremap <silent> <leader>ei :Explore<cr>
@@ -492,6 +493,12 @@ nnoremap <silent> <leader>ww <c-w>w
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
 
+" Easily exit insert mode
+inoremap jj <esc>
+
+" Easily enter command mode
+nnoremap ; :
+
 " Easily move providing two consecutive characters s(xx)
 nmap s <Plug>(easymotion-overwin-f2)
 
@@ -513,18 +520,18 @@ nnoremap P P=`]<c-o>
 " Search and replace current selection
 vnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
 
-" delete lines and word from insert mode
+" Delete lines and word from insert mode
 inoremap <c-d> <esc>ddi
 inoremap <c-w> <esc>bdiwi
 
-" uppercase current word
+" Uppercase current word
 inoremap <c-u> <esc>gUiwea
 
-" move around using visual lines, useful when wrap is enabled
+" Move around using visual lines, useful when wrap is enabled
 nnoremap <silent> k gk
 nnoremap <silent> j gj
 
-" quick region expand in visual mode
+" Quick region expand in visual mode
 vmap v <Plug>(expand_region_expand)
 vmap <c-v> <Plug>(expand_region_shrink)
 
@@ -534,17 +541,17 @@ nnoremap <down> :resize +5<cr>
 nnoremap <left> :vertical resize -10<cr>
 nnoremap <right> :vertical resize +10<cr>
 
-" easyly run macros on selected lines
+" Easily run macros on selected lines
 vnoremap @ :norm@<cr>
 
-" make Y behave like other capitals (yank from cursor to end of line)
+" Make Y behave like other capitals (yank from cursor to end of line)
 nnoremap Y y$
 
-" easy beginning/end of line
+" Easy beginning/end of line
 nnoremap H ^
 nnoremap L $
 
-" easy next/previews tab
+" Easy next/previews tab
 nnoremap [w :tabp<cr>
 nnoremap ]w :tabn<cr>
 nnoremap <tab> :tabn<cr>
@@ -553,7 +560,7 @@ nnoremap <s-tab> :tabp<cr>
 "}}}
 " Motions ---------------------------------------------------------------{{{
 
-" motions for in next ..
+" In next <surround object> motions
 onoremap inb :<c-u>normal! f(vi(<cr>
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap in) :<c-u>normal! f(vi(<cr>
@@ -585,7 +592,7 @@ augroup END
 augroup rubygroup
   autocmd!
   autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
-  autocmd FileType ruby let b:dispatch = 'ruby %'
+  autocmd FileType ruby let b:dispatch='ruby %'
 augroup END
 
 "}}}
@@ -594,7 +601,7 @@ augroup END
 augroup cucumbergroup
   autocmd!
   autocmd FileType cucumber setlocal expandtab shiftwidth=2 tabstop=2
-  autocmd FileType cucumber let b:dispatch = 'ruby %'
+  autocmd FileType cucumber let b:dispatch='ruby %'
 augroup END
 
 "}}}
@@ -611,7 +618,7 @@ augroup END
 augroup scalagroup
   autocmd!
   autocmd BufRead,BufNewFile *.hocon set filetype=yaml
-  autocmd FileType scala let b:dispatch = 'scala -nc %'
+  autocmd FileType scala let b:dispatch='scala -nc %'
 augroup END
 
 "}}}
