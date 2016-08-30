@@ -322,7 +322,7 @@ nnoremap <leader><tab> <c-^>
 
 " /,? - Search in project
 nnoremap <leader>/ :silent Ggrep ""<left>
-nnoremap <leader>? :silent Ggrep! ""<left>
+nnoremap <leader>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
 
 " * - Search in project for word under cursor
 nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
