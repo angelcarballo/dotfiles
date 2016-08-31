@@ -390,9 +390,9 @@ nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>go :Gbrowse<cr>
 vnoremap <leader>go :Gbrowse<cr>
-nnoremap <leader>gl :GV!<cr>
+nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gL :GV<cr>
-vnoremap <leader>gl :GV<cr>
+vnoremap <leader>gl :Glog<cr>
 
 nnoremap <leader>gg :Googlef<cr>
 vnoremap <leader>gg :Googlef<cr>
