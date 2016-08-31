@@ -358,8 +358,6 @@ endif
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 
 " d - Diff/Dispatch/Duplicate
-xnoremap <leader>dp :diffput<cr>
-xnoremap <leader>dg :diffget<cr>
 nnoremap <Leader>dd :Dispatch<space>
 nnoremap <leader>dl yy:Commentary<cr>p
 vnoremap <leader>dl ygv:Commentary<cr>']p
@@ -379,20 +377,21 @@ nnoremap <silent> <leader>ff :CtrlP<cr>
 nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
 
 " g - Git/Google
-nnoremap <leader>gs :Gstatus<cr>:call QuickFixGitStatus()<cr>
+nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gf :Gfetch<cr>
 nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gD :Gdiff master<cr>
-nnoremap <leader>gp :Gpush
+nnoremap <leader>gps :Gpush
+nnoremap <leader>gpl :Gpull
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>go :Gbrowse<cr>
 vnoremap <leader>go :Gbrowse<cr>
-nnoremap <leader>gl :GV!<cr>
+nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gL :GV<cr>
-vnoremap <leader>gl :GV<cr>
+vnoremap <leader>gl :Glog<cr>
 
 nnoremap <leader>gg :Googlef<cr>
 vnoremap <leader>gg :Googlef<cr>
