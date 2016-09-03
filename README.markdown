@@ -3,8 +3,6 @@ Dotfiles
 
 My collection of dotfiles. If you want to reuse any of this, clone the repository and review the code, it's probably better to pick an choose what you need.
 
-![Screenshot](https://raw.githubusercontent.com/angelcarballo/dotfiles/master/screenshot.png)
-
 Key Features
 ------------
 
