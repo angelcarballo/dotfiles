@@ -438,13 +438,15 @@ vnoremap <leader>riv :RRenameInstanceVariable<cr>
 vnoremap <leader>rec :RExtractConstant<cr>
 nnoremap <leader>rel :RExtractLet<cr>
 
-" s - Specs/Show
+" s - Specs
 nnoremap <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
 nnoremap <leader>sc :call vroom#RunNearestTest(g:vroom_options)<cr>
 nnoremap <leader>sl :call vroom#RunLastTest()<cr>
-nnoremap <silent> <leader>sF :echo @%<cr>
-nnoremap <silent> <leader>SP :echo expand('%:p')<cr>
-nnoremap <silent> <leader>sb :echo "Current git branch: " . fugitive#head()<cr>
+
+" S - Show
+nnoremap <silent> <leader>Sf :echo @%<cr>
+nnoremap <silent> <leader>Sp :echo expand('%:p')<cr>
+nnoremap <silent> <leader>Sb :echo "Current git branch: " . fugitive#head()<cr>
 
 " S - Snippets
 nnoremap <silent> <leader>Se :UltiSnipsEdit<cr>
