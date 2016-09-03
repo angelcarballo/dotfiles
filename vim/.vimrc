@@ -382,8 +382,8 @@ nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gf :Gfetch<cr>
 nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gD :Gdiff master<cr>
-nnoremap <leader>gps :Gpush
-nnoremap <leader>gpl :Gpull
+nnoremap <leader>gP :Gpush<cr>
+nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gb :Gblame<cr>
