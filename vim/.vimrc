@@ -266,6 +266,9 @@ let g:airline_section_y=airline#section#create('')
 " hide mode indicator
 let g:airline_section_a=airline#section#create(['crypt','paste','spell','iminsert'])
 
+" Font for GUI
+set guifont=Source\ Code\ Pro\ Medium:h14
+
 " background config managed by base16
 if filereadable(expand("~/.vim_colorscheme"))
   let base16colorspace=256
