@@ -81,6 +81,7 @@ Plug 'ervandew/supertab'                " magic code auto complete!
 Plug 'tpope/vim-endwise'                " auto close for Vim blocks
 Plug 'jiangmiao/auto-pairs'             " auto close for (, [, {
 Plug 'docunext/closetag.vim'            " auto close for Html tags
+Plug 'atweiden/vim-betterdigraphs'      " quickly insert diagraphs (c-k)
 
 " Third party integration
 Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
