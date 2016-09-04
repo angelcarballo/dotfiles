@@ -46,6 +46,7 @@ Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}                              
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
 Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
 Plug 'vim-scripts/ReplaceWithRegister'  " replace without yanking operator (gr..)
+Plug 'gavinbeatty/dragvisuals.vim'      " move visual blocks around
 
 " Text objects
 Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
@@ -114,6 +115,9 @@ filetype plugin indent on                 " auto indent by file type
 
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
+
+"" Dragvisuals options
+let g:DVB_TrimWS = 1            " delete whitespace after duplicating
 
 "" Netrw options
 let g:netrw_liststyle=0         " thin (change to 3 for tree)
@@ -561,6 +565,13 @@ nnoremap [w :tabp<cr>
 nnoremap ]w :tabn<cr>
 nnoremap <tab> :tabn<cr>
 nnoremap <s-tab> :tabp<cr>
+
+" Dragvisuals, move visual block around
+vmap  <expr>  <left>   DVB_Drag('left')
+vmap  <expr>  <right>  DVB_Drag('right')
+vmap  <expr>  <down>   DVB_Drag('down')
+vmap  <expr>  <up>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
 
 "}}}
 " Motions ---------------------------------------------------------------{{{
