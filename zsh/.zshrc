@@ -48,10 +48,12 @@ bindkey '^r' history-incremental-search-backward
 setopt auto_cd
 cdpath=($HOME/src)
 
-# dont share history between different shells
-setopt no_share_history
-SAVEHIST=10000
-HISTFILE=~/.zsh_history
+# history settings
+setopt hist_save_no_dups # only one entry per command on history
+setopt hist_find_no_dups # history search should never show a command twice
+setopt append_history    # remove existing entries, and append new ones
+SAVEHIST=10000           # history size
+HISTFILE=~/.zsh_history  # history localtion
 
 # vman - vim man pager, with autocompletion
 vman() {
