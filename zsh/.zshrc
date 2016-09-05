@@ -36,7 +36,7 @@ bindkey '^w' backward-kill-word
 # edit current command with VIM (or whatever $EDITOR is set to)
 autoload -z edit-command-line
 zle -N edit-command-line
-bindkey "^x^e" edit-command-line
+bindkey "^v" edit-command-line
 
 # altern between foreground/background with Ctrl-z (see custom-functions.zsh)
 bindkey '^z' fancy-ctrl-z
