@@ -379,6 +379,7 @@ nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
 
 " g - Git/Google
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>ga :Gcommit --amend<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gf :Gfetch<cr>
 nnoremap <leader>gd :Gdiff HEAD<cr>
