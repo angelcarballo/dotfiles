@@ -46,6 +46,7 @@ Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}                              
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
 Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
 Plug 'vim-scripts/ReplaceWithRegister'  " replace without yanking operator (gr..)
+Plug 'gavinbeatty/dragvisuals.vim'      " move visual blocks around
 
 " Text objects
 Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
@@ -81,6 +82,7 @@ Plug 'ervandew/supertab'                " magic code auto complete!
 Plug 'tpope/vim-endwise'                " auto close for Vim blocks
 Plug 'jiangmiao/auto-pairs'             " auto close for (, [, {
 Plug 'docunext/closetag.vim'            " auto close for Html tags
+Plug 'atweiden/vim-betterdigraphs'      " quickly insert diagraphs (c-k)
 
 " Third party integration
 Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
@@ -113,6 +115,9 @@ filetype plugin indent on                 " auto indent by file type
 
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
+
+"" Dragvisuals options
+let g:DVB_TrimWS = 1            " delete whitespace after duplicating
 
 "" Netrw options
 let g:netrw_liststyle=0         " thin (change to 3 for tree)
@@ -267,6 +272,9 @@ let g:airline_section_y=airline#section#create('')
 " hide mode indicator
 let g:airline_section_a=airline#section#create(['crypt','paste','spell','iminsert'])
 
+" Font for GUI
+set guifont=Source\ Code\ Pro\ Medium:h14
+
 " background config managed by base16
 if filereadable(expand("~/.vim_colorscheme"))
   let base16colorspace=256
@@ -384,8 +392,8 @@ nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gf :Gfetch<cr>
 nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gD :Gdiff master<cr>
-nnoremap <leader>gps :Gpush
-nnoremap <leader>gpl :Gpull
+nnoremap <leader>gP :Gpush<cr>
+nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gb :Gblame<cr>
@@ -440,13 +448,15 @@ vnoremap <leader>riv :RRenameInstanceVariable<cr>
 vnoremap <leader>rec :RExtractConstant<cr>
 nnoremap <leader>rel :RExtractLet<cr>
 
-" s - Specs/Show
+" s - Specs
 nnoremap <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
 nnoremap <leader>sc :call vroom#RunNearestTest(g:vroom_options)<cr>
 nnoremap <leader>sl :call vroom#RunLastTest()<cr>
-nnoremap <silent> <leader>sF :echo @%<cr>
-nnoremap <silent> <leader>SP :echo expand('%:p')<cr>
-nnoremap <silent> <leader>sb :echo "Current git branch: " . fugitive#head()<cr>
+
+" S - Show
+nnoremap <silent> <leader>Sf :echo @%<cr>
+nnoremap <silent> <leader>Sp :echo expand('%:p')<cr>
+nnoremap <silent> <leader>Sb :echo "Current git branch: " . fugitive#head()<cr>
 
 " S - Snippets
 nnoremap <silent> <leader>Se :UltiSnipsEdit<cr>
@@ -557,6 +567,13 @@ nnoremap [w :tabp<cr>
 nnoremap ]w :tabn<cr>
 nnoremap <tab> :tabn<cr>
 nnoremap <s-tab> :tabp<cr>
+
+" Dragvisuals, move visual block around
+vmap  <expr>  <left>   DVB_Drag('left')
+vmap  <expr>  <right>  DVB_Drag('right')
+vmap  <expr>  <down>   DVB_Drag('down')
+vmap  <expr>  <up>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
 
 "}}}
 " Motions ---------------------------------------------------------------{{{

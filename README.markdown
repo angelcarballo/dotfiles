@@ -3,17 +3,14 @@ Dotfiles
 
 My collection of dotfiles. If you want to reuse any of this, clone the repository and review the code, it's probably better to pick an choose what you need.
 
-![Screenshot](https://raw.githubusercontent.com/angelcarballo/dotfiles/master/screenshot.png)
-
 Key Features
 ------------
 
-* [Stow] - Used to manage dotfiles using symbolic links.
-* [Vim] - Vim is awesome, and I use it for almost everything. Installation and maintenance done via [vim-plug].
-
-* [Tmux] - I use Tmux next to Vim to achieve a single terminal workflow. These two are made for each other.
-
+* [Stow] - Manage dotfiles using symbolic links.
+* [Vim] - Text editing nirvana. Installation and maintenance done via [vim-plug].
+* [Tmux] - Perfect with Vim, these two are made for each other. Some [fzf] love to quickly [open and jump between sessions].
 * [Zsh] - A few plugins managed using [Antigen], and a light theme based on [pure].
+* [Base16 Shell] - Makes the whole thing look better, and allows switching between dark and light color schemes on the fly.
 
 [Tmux]: https://tmux.github.io/
 [Stow]: https://www.gnu.org/software/stow/
@@ -22,6 +19,9 @@ Key Features
 [Antigen]: https://github.com/zsh-users/antigen
 [pure]: https://github.com/sindresorhus/pure
 [vim-plug]: https://github.com/junegunn/vim-plug
+[fzf]: https://github.com/junegunn/fzf
+[open and jump between sessions]: https://github.com/angelcarballo/dotfiles/blob/master/tmux/.tmux.conf#L121-L125
+[Base16 Shell]: https://github.com/chriskempson/base16-shell
 
 Usage
 -----
@@ -41,18 +41,6 @@ Local changes and extra commands
 --------------------------------
 
 Zsh will try to source `~/.zshrc.local`. Put your local settings, env vars, etc. there if you need them for a particular machine but don't want them in your dotfiles.
-
-Goodies
--------
-
-Since both Vim and Tmux are using the [Hybrid] color scheme, you'll need to setup the right profile for your terminal. Also, use a Powerline font if you want those fancy icons on you status bar.
-
-* [Hybrid for iTerm2]
-* [Powerline Fonts]
-
-[Hybrid for iTerm2]: https://gist.github.com/luan/6362811
-[Powerline Fonts]: https://github.com/powerline/fonts
-[Hybrid]: https://github.com/w0ng/vim-hybrid
 
 References
 ----------
