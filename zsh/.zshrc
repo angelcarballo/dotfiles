@@ -1,7 +1,7 @@
-
+# load Antigen plugin manager
 source ~/.zsh/antigen.zsh
 
-# Antigen Bundles
+# antigen Bundles
 antigen bundle git-extras                          # extra git commands
 antigen bundle ssh-agent                           # For SSH, starting ssh-agent is annoying
 
@@ -10,35 +10,35 @@ if [[ $CURRENT_OS == 'OS X' ]]; then
   antigen bundle brew
 fi
 
-# Tell antigen that you're done.
+# tell antigen that you're done.
 antigen apply
 
-# Theme
+# theme
 source ~/.zsh/theme.zsh
 
-# Aliases
+# aliases
 source ~/.zsh/aliases.zsh
 
-# Vim everywhere
+# vim everywhere
 bindkey -v
 export VISUAL=vim
 export EDITOR=vim
 export KEYTIMEOUT=1  # reduce delay when changing modes
 
-# Custom functions
+# custom functions
 source ~/.zsh/custom-functions.zsh
 
-# Custom emacs-like bindings (useful on insert mode)
+# custom emacs-like bindings (useful on insert mode)
 bindkey '^b' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^w' backward-kill-word
 
-# Edit current command with VIM (or whatever $EDITOR is set to)
+# edit current command with VIM (or whatever $EDITOR is set to)
 autoload -z edit-command-line
 zle -N edit-command-line
-bindkey "^x^e" edit-command-line
+bindkey "^v" edit-command-line
 
-# Altern between foreground/background with Ctrl-z (see custom-functions.zsh)
+# altern between foreground/background with Ctrl-z (see custom-functions.zsh)
 bindkey '^z' fancy-ctrl-z
 
 # ctrl-r starts searching history backward
@@ -48,10 +48,12 @@ bindkey '^r' history-incremental-search-backward
 setopt auto_cd
 cdpath=($HOME/src)
 
-# dont share history between different shells
-setopt no_share_history
-SAVEHIST=10000
-HISTFILE=~/.zsh_history
+# history settings
+setopt hist_save_no_dups # only one entry per command on history
+setopt hist_find_no_dups # history search should never show a command twice
+setopt append_history    # remove existing entries, and append new ones
+SAVEHIST=10000           # history size
+HISTFILE=~/.zsh_history  # history localtion
 
 # vman - vim man pager, with autocompletion
 vman() {
@@ -63,28 +65,28 @@ vman() {
 }
 compdef vman="man"
 
-# Paths common to all platforms
+# paths common to all platforms
 export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$HOME/.rbenv/bin:$PATH"
 
-# Fix bug when passing arguments to rake
+# fix bug when passing arguments to rake
 unsetopt nomatch
 
-# Ensure there is a valid temp dir for vim
+# ensure there is a valid temp dir for vim
 if [[ ! -d "$TMPDIR"  ]]; then
   export TMPDIR="/tmp/`whoami`"
   mkdir -p -m 700 "$TMPDIR"
 fi
 
-# Enable rbenv
+# enable rbenv
 eval "$(rbenv init -)"
 
-# Source local config if present
+# source local config if present
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-# Source fzf fuzzy finder configuration is present
+# source fzf fuzzy finder configuration is present
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Try to use Ag as default fzf command
+# try to use Ag as default fzf command
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
 # enable syntax for cheat (see: https://github.com/chrisallenlane/cheat)
