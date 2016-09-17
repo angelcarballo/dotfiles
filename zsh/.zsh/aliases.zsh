@@ -62,6 +62,6 @@ alias vim='/usr/local/bin/vim'
 alias v='vim .'
 
 # colorschemes
-alias dark='color tomorrow-night'
+alias dark='color material-dark'
 alias light='color solarized-light'
 
