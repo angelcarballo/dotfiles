@@ -49,6 +49,7 @@ setopt auto_cd
 cdpath=($HOME/src)
 
 # history settings
+setopt share_history     # share history between sessions
 setopt hist_save_no_dups     # only one entry per command on history
 setopt hist_find_no_dups     # history search should never show a command twice
 setopt hist_ignore_all_dups  # ignore duplicates globally

@@ -8,3 +8,4 @@ pre-commit
 pry
 pry-byebug
 interactive_editor
+tmuxinator

@@ -152,6 +152,7 @@ let g:vroom_options={'options':'--fail-fast'}
 
 "" Markdown options
 let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_conceal=0
 
 "" Ags (The Silver Searcher)
 if executable('ag')
@@ -390,6 +391,7 @@ nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
 
 " g - Git/Google
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>ga :Gcommit --amend<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gf :Gfetch<cr>
 nnoremap <leader>gd :Gdiff HEAD<cr>
