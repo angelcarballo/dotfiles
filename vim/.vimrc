@@ -178,6 +178,10 @@ endif
 "" Vim-Notes options
 let g:notes_directories=['~/Dropbox/notes']
 let g:notes_tab_indents=0
+let g:notes_conceal_code=0
+let g:notes_conceal_italic=0
+let g:notes_conceal_bold=0
+let g:notes_conceal_url=0
 
 "" Vim-Switch options
 let g:switch_custom_definitions=
