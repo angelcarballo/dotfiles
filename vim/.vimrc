@@ -72,6 +72,7 @@ Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementa
 Plug 'szw/vim-maximizer'                 " maximize/restore windows
 Plug 'easymotion/vim-easymotion'         " easier motions (doh!)
 Plug 'dietsche/vim-lastplace'            " restore cursor position when re-opening files
+Plug 'gabesoft/vim-ags'                  " because sometimes grep is not enough
 
 " Colorschemes
 Plug 'chriskempson/base16-vim'          " base16 colorschemes
@@ -175,6 +176,8 @@ if executable('ag')
   " ag is falst enough, don't use caching
   let g:ctrlp_use_caching=0
 endif
+
+let g:ags_agcontext = 2
 
 "" Vim-Notes options
 let g:notes_directories=['~/Dropbox/notes']
@@ -391,7 +394,7 @@ nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
 " g - Git/Google
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
-nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gc :Gcommit<cr>i
 nnoremap <leader>gf :Gfetch<cr>
 nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gD :Gdiff master<cr>
