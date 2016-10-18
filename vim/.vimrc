@@ -210,7 +210,6 @@ let g:EasyMotion_do_mapping=0
 
 " map <leader> to both <comma> and <space>
 let mapleader="\<Space>"
-nmap , <leader>
 
 set encoding=utf-8                   " use UTF8 by default
 set nu                               " show line numbers
@@ -510,9 +509,6 @@ nnoremap <silent> <leader>ww <c-w>w
 
 " Easily exit insert mode
 inoremap jj <esc>
-
-" Easily enter command mode
-nnoremap ; :
 
 " Easily move providing two consecutive characters s(xx)
 nmap s <Plug>(easymotion-overwin-f2)
