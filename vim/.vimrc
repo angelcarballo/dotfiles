@@ -196,25 +196,17 @@ let g:switch_custom_definitions=
 "" Vim-maximizer options
 let g:maximizer_set_default_mapping=1
 
-"" Dasht options
-let g:dasht_filetype_docsets={
-      \ 'ruby': ['Ruby_2', 'Ruby_On_Rails_4'],
-      \ }
-
-"" Ruby refactoring settings
-let g:ruby_refactoring_map_keys=0
-
 "" Disable easymotion default mappings
 let g:EasyMotion_do_mapping=0
 
 "}}}
 " General settings ------------------------------------------------------------{{{
 
-" map <leader> to both <comma> and <space>
+" map leader to <space>
 let mapleader="\<Space>"
 
 set encoding=utf-8                   " use UTF8 by default
-set nu                               " show line numbers
+set number                           " show line numbers
 set showcmd                          " show complete commands
 set ruler                            " show cursor position
 set scrolloff=3                      " leave space after the current line
@@ -222,7 +214,7 @@ set foldmethod=marker                " fold using {{{ .. }}} markers
 set diffopt+=vertical                " always use vertical diffs
 set mouse+=a                         " enable mouse support in (a)ll modes
 set noswapfile                       " disable swap files, let git do the work
-set splitright                       " Open new vertical split panes to right
+set splitright                       " open new vertical split panes to right
 set history=1000                     " max history
 set hlsearch                         " highlight search results
 set incsearch                        " incremental search
