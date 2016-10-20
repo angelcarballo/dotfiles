@@ -48,13 +48,13 @@ Plug 'vim-scripts/ReplaceWithRegister'  " replace without yanking operator (gr..
 Plug 'gavinbeatty/dragvisuals.vim'      " move visual blocks around
 
 " Text objects
-Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object
-Plug 'whatyouhide/vim-textobj-erb'      " ERB block text object
-Plug 'kana/vim-textobj-entire'          " entire buffer text object
-Plug 'michaeljsmith/vim-indent-object'  " indentation based text object
-Plug 'b4winckler/vim-angry'             " function argument text object
-Plug 'glts/vim-textobj-comment'         " comment text object
-Plug 'kana/vim-textobj-line'            " line text object
+Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object <r>
+Plug 'whatyouhide/vim-textobj-erb'      " ERB block text object <E>
+Plug 'kana/vim-textobj-entire'          " entire buffer text object <e>
+Plug 'michaeljsmith/vim-indent-object'  " indentation based text object <i/I>
+Plug 'b4winckler/vim-angry'             " function argument text object <e>
+Plug 'glts/vim-textobj-comment'         " comment text object <c>
+Plug 'kana/vim-textobj-line'            " line text object <l>
 
 " Look & Feel
 Plug 'yggdroot/indentLine'               " show indentation lines
