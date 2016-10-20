@@ -27,11 +27,11 @@ Plug 'tpope/vim-rake'                                                           
 Plug 'tpope/vim-rbenv'                                                          " Rbenv integration
 Plug 'tpope/vim-rails'                                                          " Rails integration
 Plug 'tpope/vim-bundler'                                                        " Bundler integration
-Plug 'cakebaker/scss-syntax.vim'                                                " SCSS syntax
-Plug 'othree/html5.vim'                                                         " HTML5 support
-Plug 'elzr/vim-json'                                                            " Json support
-Plug 'plasticboy/vim-markdown'                                                  " Markdown support
-Plug 'pprovost/vim-markdown-jekyll'                                             " Jekyll style markdown support
+Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}                               " SCSS syntax
+Plug 'othree/html5.vim', {'for': 'html'}                                        " HTML5 support
+Plug 'elzr/vim-json', {'for': 'html'}                                           " Json support
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}                             " Markdown support
+Plug 'pprovost/vim-markdown-jekyll', {'for': 'markdown'}                        " Jekyll style markdown support
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}                           " improved Javascript support
 Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}                      " better Javascript syntax
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}                        " Typescript support
