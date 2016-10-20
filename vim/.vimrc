@@ -23,7 +23,6 @@ Plug 'airblade/vim-gitgutter'           " real time git-diff
 
 " Languages & frameworks
 Plug 'vim-ruby/vim-ruby'                                                        " Ruby support
-Plug 'ecomba/vim-ruby-refactoring'                                              " Rails refactoring helpers
 Plug 'tpope/vim-rake'                                                           " Rake integration
 Plug 'tpope/vim-rbenv'                                                          " Rbenv integration
 Plug 'tpope/vim-rails'                                                          " Rails integration
