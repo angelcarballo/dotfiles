@@ -509,7 +509,7 @@ nnoremap <silent> <leader>ww <c-w>w
 " Key bindings (other) ---------------------------------------------------------------{{{
 
 " Easily exit insert mode
-inoremap jj <esc>
+inoremap kj <esc>
 
 " Easily enter command mode
 nnoremap ; :
