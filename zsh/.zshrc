@@ -42,21 +42,24 @@ bindkey "^v" edit-command-line
 bindkey '^z' fancy-ctrl-z
 
 # ctrl-r starts searching history backward
-bindkey '^r' history-incremental-search-backward
+bindkey '^r' fzf-search-history
 
 # easier cd into frequent directories
 setopt auto_cd
 cdpath=($HOME/src)
 
 # history settings
-setopt share_history     # share history between sessions
+setopt share_history         # share history between sessions
 setopt hist_save_no_dups     # only one entry per command on history
 setopt hist_find_no_dups     # history search should never show a command twice
 setopt hist_ignore_all_dups  # ignore duplicates globally
-setopt append_history        # remove existing entries, and append new ones
+setopt inc_append_history    # remove existing entries, and append new ones
 setopt hist_ignore_space     # ignore commands that start with at least one space
-SAVEHIST=10000               # history size
-HISTFILE=~/.zsh_history      # history localtion
+setopt hist_reduce_blanks    # trim commands before saving them
+SAVEHIST=10000               # history entries to keep in history file
+HISTSIZE=10000               # history entries to keep in memory
+HISTFILE=~/.zsh_history      # history location
+HISTORY_IGNORE="(ll|clear|c|clear|ls|cd *|pwd|exit|cd ..|rm *)"
 
 # vman - vim man pager, with autocompletion
 vman() {

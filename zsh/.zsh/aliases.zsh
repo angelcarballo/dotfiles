@@ -6,7 +6,6 @@ alias celar='clear'
 alias lcear='clear'
 alias ls='ls -GFa'
 alias ll='ls -GFlah'
-alias h='cat ~/.zsh_history | fzf --tac --no-sort'
 
 # Atajos Mac
 alias flushdns='dscacheutil -flushcache'
