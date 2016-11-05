@@ -439,11 +439,6 @@ nnoremap <leader>Q :qall!<cr>
 
 " r - Remove/Refactor
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
-vnoremap <leader>rem :RExtractMethod<cr>
-vnoremap <leader>rlv :RRenameLocalVariable<cr>
-vnoremap <leader>riv :RRenameInstanceVariable<cr>
-vnoremap <leader>rec :RExtractConstant<cr>
-nnoremap <leader>rel :RExtractLet<cr>
 
 " s - Specs
 nnoremap <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
