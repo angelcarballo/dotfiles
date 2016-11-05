@@ -33,12 +33,10 @@ function color {
   local base16_dir="$HOME/.config/base16-shell/scripts"
 
   # default colorscheme
-  local colorscheme="tomorrow-night"
+  local colorscheme="material-dark"
 
   if [[ $# -eq 1 ]]; then
     colorscheme=$1
-  elif [[ $# -eq 2 ]]; then
-    colorscheme="$1-$2"
   else
     colorscheme=$(find $base16_dir -type f -name "base16-*.sh" -exec basename {} \; | cut -f1 -d "."  | cut -f2 -f3 -d "-" | fzf)
   fi
