@@ -62,6 +62,7 @@ Plug 'pgdouyon/vim-evanesco'             " remove search highlight on cursor mov
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
 Plug 'vim-airline/vim-airline'           " better status bar
 Plug 'vim-airline/vim-airline-themes'    " themes for airline
+Plug 'kshenoy/vim-signature'             " better mark management
 
 " Navigation
 Plug 'ctrlpvim/ctrlp.vim'                " fuzzy finder (files, buffers, etc.)
@@ -232,6 +233,7 @@ set autoread                         " if a file changes outside Vim, reload its
 set undofile                         " persist undo history
 set undolevels=1000                  " max undo levels
 set undodir=$HOME/.vim/undo          " where to store undo files
+set nojoinspaces                     " only insert one space when joining after an '.'
 
 autocmd BufLeave,FocusLost * silent! wa                 " auto save files
 autocmd InsertLeave * set nopaste                       " disable paste mode on leaving insert mode.
@@ -254,6 +256,7 @@ set laststatus=2               " always show status bar
 set showtabline=1              " only show tab bar if needed
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
+let &showbreak=' ↳ '           " downwards arrow with tip rightwards
 
 " Airline configuration
 let g:airline_powerline_fonts=1
