@@ -234,6 +234,7 @@ set undofile                         " persist undo history
 set undolevels=1000                  " max undo levels
 set undodir=$HOME/.vim/undo          " where to store undo files
 set nojoinspaces                     " only insert one space when joining after an '.'
+set breakindent                      " keep indentation on wrapped lines
 
 autocmd BufLeave,FocusLost * silent! wa                 " auto save files
 autocmd InsertLeave * set nopaste                       " disable paste mode on leaving insert mode.
