@@ -108,6 +108,7 @@ Plug 'xolox/vim-notes'                  " easy note taking
 Plug 'xolox/vim-misc'                   " required by vim-notes
 Plug 'suan/vim-instant-markdown'        " markdown preview
 Plug 'tpope/vim-capslock'               " software caps lock (gC / <c-g>c)
+Plug 'terryma/vim-multiple-cursors'     " sublime-like multiple cursor support
 
 " Plugins must be added before the following line
 call plug#end()
