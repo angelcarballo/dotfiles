@@ -108,6 +108,7 @@ Plug 'xolox/vim-notes'                  " easy note taking
 Plug 'xolox/vim-misc'                   " required by vim-notes
 Plug 'suan/vim-instant-markdown'        " markdown preview
 Plug 'tpope/vim-capslock'               " software caps lock (gC / <c-g>c)
+Plug 'terryma/vim-multiple-cursors'     " sublime-like multiple cursor support
 
 " Plugins must be added before the following line
 call plug#end()
@@ -234,6 +235,7 @@ set undofile                         " persist undo history
 set undolevels=1000                  " max undo levels
 set undodir=$HOME/.vim/undo          " where to store undo files
 set nojoinspaces                     " only insert one space when joining after an '.'
+set breakindent                      " keep indentation on wrapped lines
 
 autocmd BufLeave,FocusLost * silent! wa                 " auto save files
 autocmd InsertLeave * set nopaste                       " disable paste mode on leaving insert mode.
