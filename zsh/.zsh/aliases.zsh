@@ -1,5 +1,8 @@
 ### Alias
 
+# Fancy stuff
+alias morning='tmuxinator start dotfiles'
+
 # Comunes
 alias c='clear'
 alias celar='clear'
