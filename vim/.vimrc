@@ -108,7 +108,6 @@ Plug 'xolox/vim-notes'                  " easy note taking
 Plug 'xolox/vim-misc'                   " required by vim-notes
 Plug 'suan/vim-instant-markdown'        " markdown preview
 Plug 'tpope/vim-capslock'               " software caps lock (gC / <c-g>c)
-Plug 'terryma/vim-multiple-cursors'     " sublime-like multiple cursor support
 
 " Plugins must be added before the following line
 call plug#end()
@@ -117,6 +116,9 @@ filetype plugin indent on                 " auto indent by file type
 
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
+
+"" Instant markdown preview options
+let g:instant_markdown_autostart = 0
 
 "" Dragvisuals options
 let g:DVB_TrimWS = 1            " delete whitespace after duplicating
@@ -450,12 +452,12 @@ nnoremap <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
 nnoremap <leader>sc :call vroom#RunNearestTest(g:vroom_options)<cr>
 nnoremap <leader>sl :call vroom#RunLastTest()<cr>
 
-" S - Show
+" S - Show/Snippets
 nnoremap <silent> <leader>Sf :echo @%<cr>
 nnoremap <silent> <leader>Sp :echo expand('%:p')<cr>
 nnoremap <silent> <leader>Sb :echo "Current git branch: " . fugitive#head()<cr>
+nnoremap <silent> <leader>Sm :InstantMarkdownPreview
 
-" S - Snippets
 nnoremap <silent> <leader>Se :UltiSnipsEdit<cr>
 
 " t - Tmux/Tabs
