@@ -3,14 +3,14 @@
 # Fancy stuff
 alias morning='tmuxinator start dotfiles'
 
-# Comunes
+# Common
 alias c='clear'
 alias celar='clear'
 alias lcear='clear'
 alias ls='ls -GFa'
 alias ll='ls -GFlah'
 
-# Atajos Mac
+# MacOS
 alias flushdns='dscacheutil -flushcache'
 
 # Ruby/Rails
@@ -66,7 +66,7 @@ alias dockerenv='eval `boot2docker shellinit 2>/dev/null`'
 alias vim='/usr/local/bin/vim'
 alias v='vim .'
 
-# colorschemes
+# Colorschemes
 alias dark='color tomorrow-night'
 alias light='color solarized-light'
 
