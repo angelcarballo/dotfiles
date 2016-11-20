@@ -253,6 +253,11 @@ runtime macros/matchit.vim           " allow % to match more than just single ch
 
 syntax enable
 
+" enable truecolor (24 bit)
+set t_8f=[38;2;%lu;%lu;%lum
+set t_8b=[48;2;%lu;%lu;%lum
+set termguicolors
+
 set background=dark
 set visualbell                 " visual flash
 set noerrorbells               " no flash on errors, only at beginning/end of file
@@ -260,7 +265,7 @@ set laststatus=2               " always show status bar
 set showtabline=1              " only show tab bar if needed
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
-let &showbreak=' ↳ '           " downwards arrow with tip rightwards
+let &showbreak=' ↳ '           " indicator for wrapped lines
 
 " Airline configuration
 let g:airline_powerline_fonts=1
