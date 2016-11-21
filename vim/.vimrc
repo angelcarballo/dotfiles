@@ -265,7 +265,7 @@ set laststatus=2               " always show status bar
 set showtabline=1              " only show tab bar if needed
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
-let &showbreak=' ↳ '           " indicator for wrapped lines
+let &showbreak='↳ '           " indicator for wrapped lines
 
 " Airline configuration
 let g:airline_powerline_fonts=1
@@ -342,6 +342,10 @@ nnoremap <leader><tab> <c-^>
 nnoremap <leader>/ :silent Ggrep ""<left>
 nnoremap <leader>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
 
+" \,| - Align tables
+vnoremap <leader>\ :Tabularize /<bar><cr>
+vnoremap <leader><bar> :Tabularize /<bar><cr>
+
 " * - Search in project for word under cursor
 nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
 vnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
@@ -375,8 +379,7 @@ endif
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 
-" d - Diff/Dispatch/Duplicate
-nnoremap <Leader>dd :Dispatch<space>
+" d - Duplicate
 nnoremap <leader>dl yy:Commentary<cr>p
 vnoremap <leader>dl ygv:Commentary<cr>']p
 
