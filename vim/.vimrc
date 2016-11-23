@@ -76,6 +76,7 @@ Plug 'gabesoft/vim-ags'                  " because sometimes grep is not enough
 
 " Colorschemes
 Plug 'chriskempson/base16-vim'          " base16 colorschemes
+Plug 'sjl/badwolf'          " base16 colorschemes
 
 " Auto completion
 Plug 'SirVer/ultisnips'                 " snippets support
