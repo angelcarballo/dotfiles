@@ -194,6 +194,7 @@ let g:notes_conceal_url=0
 "" Vim-Switch options
 let g:switch_custom_definitions=
       \ [
+      \   ['yes', 'no'],
       \   ['TODO', 'DONE'],
       \   ['pick', 'reword', 'edit', 'squash', 'fixup', 'exec', 'drop']
       \ ]
