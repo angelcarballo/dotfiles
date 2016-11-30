@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'awesome_print'
 
 Pry.editor = 'vim'
 Pry.config.color = true
@@ -14,3 +15,6 @@ end
 Pry::Commands.command /^$/, "repeat last command" do
   _pry_.run_command Pry.history.to_a.last
 end
+
+# Use ap when inspecting stuff
+AwesomePrint.pry!
