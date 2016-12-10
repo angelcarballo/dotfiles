@@ -52,7 +52,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object <r>
 Plug 'whatyouhide/vim-textobj-erb'      " ERB block text object <E>
 Plug 'kana/vim-textobj-entire'          " entire buffer text object <e>
 Plug 'michaeljsmith/vim-indent-object'  " indentation based text object <i/I>
-Plug 'b4winckler/vim-angry'             " function argument text object <e>
+Plug 'b4winckler/vim-angry'             " function argument text object <a/A>
 Plug 'glts/vim-textobj-comment'         " comment text object <c>
 Plug 'kana/vim-textobj-line'            " line text object <l>
 
@@ -67,7 +67,6 @@ Plug 'kshenoy/vim-signature'             " better mark management
 " Navigation
 Plug 'ctrlpvim/ctrlp.vim'                " fuzzy finder (files, buffers, etc.)
 Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
-Plug 'terryma/vim-expand-region'         " visual expandable regions
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
 Plug 'szw/vim-maximizer'                 " maximize/restore windows
 Plug 'easymotion/vim-easymotion'         " easier motions (doh!)
@@ -76,7 +75,6 @@ Plug 'gabesoft/vim-ags'                  " because sometimes grep is not enough
 
 " Colorschemes
 Plug 'chriskempson/base16-vim'          " base16 colorschemes
-Plug 'sjl/badwolf'          " base16 colorschemes
 
 " Auto completion
 Plug 'SirVer/ultisnips'                 " snippets support
@@ -84,7 +82,6 @@ Plug 'ervandew/supertab'                " magic code auto complete!
 Plug 'tpope/vim-endwise'                " auto close for Vim blocks
 Plug 'jiangmiao/auto-pairs'             " auto close for (, [, {
 Plug 'docunext/closetag.vim'            " auto close for Html tags
-Plug 'atweiden/vim-betterdigraphs'      " quickly insert diagraphs (c-k)
 
 " Third party integration
 Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
