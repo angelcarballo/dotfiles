@@ -568,8 +568,6 @@ nnoremap L $
 " Easy next/previews tab
 nnoremap [w :tabp<cr>
 nnoremap ]w :tabn<cr>
-nnoremap <tab> :tabn<cr>
-nnoremap <s-tab> :tabp<cr>
 
 " Dragvisuals, move visual block around
 vmap  <expr>  <left>   DVB_Drag('left')
