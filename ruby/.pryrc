@@ -1,5 +1,5 @@
-require 'rubygems'
-require 'awesome_print'
+# common ruby repl settings
+require_relative '.ruby_repl_ext'
 
 Pry.editor = 'vim'
 Pry.config.color = true
