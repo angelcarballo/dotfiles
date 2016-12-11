@@ -17,7 +17,7 @@ class String
     IO.popen(cmd.to_s, 'r+') do |pipe|
       pipe.write(self)
       pipe.close_write
-      pipe.read
+      pipe.read.strip
     end
   end
 end
