@@ -1,6 +1,4 @@
 require 'rubygems'
-require 'interactive_editor'
-
 require 'pp'
 
 %w(rubygems awesome_print interactive_editor).each do |gem|
