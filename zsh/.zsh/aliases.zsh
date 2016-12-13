@@ -59,6 +59,7 @@ alias gsc='git log -S '
 alias gsm='git log -E -i --grep '
 alias gsp='git stash pop'
 alias br='branch'
+alias master='git checkout master'
 
 # Docker & boot2docker
 alias dockerenv='eval `boot2docker shellinit 2>/dev/null`'
