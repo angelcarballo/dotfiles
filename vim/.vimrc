@@ -391,7 +391,7 @@ nnoremap <silent> <leader>ev :Vex<cr>
 nnoremap <leader>fa :OpenAlternate<cr>
 nnoremap <leader>fA :vsplit<cr>:OpenAlternate<cr>
 nnoremap <leader>fl <c-^>
-nnoremap <leader>fs :w<cr>
+nnoremap <leader>fs :up<cr>
 nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
 nnoremap <silent> <leader>ff :CtrlP<cr>
 nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
