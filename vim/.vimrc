@@ -337,6 +337,10 @@ nmap <leader><space> :buffers<CR>:bu<Space>
 " <leader> - Switch between the last two files
 nnoremap <leader><tab> <c-^>
 
+" [, ] - Move between tabs
+nnoremap <leader>[ :tabp<cr>
+nnoremap <leader>] :tabn<cr>
+
 " /,? - Search in project
 nnoremap <leader>/ :silent Ggrep ""<left>
 nnoremap <leader>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
