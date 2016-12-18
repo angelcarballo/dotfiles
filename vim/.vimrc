@@ -428,7 +428,8 @@ vnoremap <leader>gg :Googlef<cr>
 " i - Indent
 nnoremap <leader>ij :%!python -m json.tool<cr>
 
-" l - Last change (jump)
+" l - Load /Last
+nnoremap <leader>lg :call QuickFixGitStatus()<cr> \| :cnext<cr>
 nnoremap <silent> <leader>lc `[
 
 " n - Notes/Numbers
