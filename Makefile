@@ -13,9 +13,10 @@ update:
 link:
 	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK)
 
-# Install vim plugins and cleanup old ones
+# Install new vim plugins, update existing and cleanup old ones
 vim:
 	vim +PlugInstall! +qall
+	vim +PlugUpdate! +qall
 	vim +PlugClean! +qall
 
 # Setup git global ignore, repo template, fancy diff and aliases
