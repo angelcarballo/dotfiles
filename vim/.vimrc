@@ -40,6 +40,7 @@ Plug 'rodjek/vim-puppet', {'for': 'puppet'}                                     
 Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}                                   " Tmux syntax support
 Plug 'derekwyatt/vim-scala', {'for': 'scala'}                                   " Scala syntax support
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}                              " CoffeeScript support
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}                        " TypeScript support
 
 " Motions & Operators
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
@@ -264,7 +265,7 @@ set laststatus=2               " always show status bar
 set showtabline=1              " only show tab bar if needed
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
-let &showbreak='↳ '           " indicator for wrapped lines
+let &showbreak='↳ '            " indicator for wrapped lines
 
 " Airline configuration
 let g:airline_powerline_fonts=1
@@ -317,6 +318,7 @@ set wildignore+=*/log/*,*.log                          " log files
 "}}}
 " Abbreviations -------------------------------------------------------------{{{
 
+ab mojon () =>
 ab bpry require 'pry'; binding.pry
 ab classdescription #== Description
       \<cr>
@@ -595,6 +597,19 @@ onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap in} :<c-u>normal! f{vi{<cr>
 onoremap in' :<c-u>normal! f'vi'<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
+
+"}}}
+" Global autocommands -----------------------------------------------------------------{{{
+
+fun! <SID>AutoMakeDirectory()
+    let s:directory = expand("<afile>:p:h")
+
+    if !isdirectory(s:directory)
+        call mkdir(s:directory, "p")
+    endif
+endfun
+
+autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()
 
 "}}}
 " Force file types -----------------------------------------------------------------{{{
