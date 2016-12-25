@@ -110,8 +110,6 @@ Plug 'tpope/vim-capslock'               " software caps lock (gC / <c-g>c)
 " Plugins must be added before the following line
 call plug#end()
 
-filetype plugin indent on                 " auto indent by file type
-
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
 
@@ -249,8 +247,6 @@ runtime macros/matchit.vim           " allow % to match more than just single ch
 
 "}}}
 " Look & Feel ------------------------------------------------------------------{{{
-
-syntax enable
 
 " enable truecolor (24 bit)
 set t_8f=[38;2;%lu;%lu;%lum
