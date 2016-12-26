@@ -3,7 +3,7 @@ set -g @prefix_highlight_fg 'colour18'
 set -g @prefix_highlight_bg 'colour20'
 
 # Status bar
-set-option -g status-position bottom
+set-option -g status-position top
 set -g status-bg "colour18"
 set -g status-fg "colour21"
 set -g status-justify "left"
