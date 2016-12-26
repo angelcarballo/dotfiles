@@ -1,11 +1,16 @@
 #!/bin/bash
 
-current=$( basename `cat $SHELL_COLORSCHEME` )
+current=$( basename `cat $SHELL_COLORSCHEME` | cut -d'.' -f1 )
 colorscheme=""
 
 # Parse options (next/previous)
 for i in "$@"; do
   case $i in
+    -v|--verbose)
+      echo $current
+      exit 0
+      shift
+      ;;
     -n|--next)
       colorscheme=$( ls $COLORS | grep $current -A 1 | tail -n 1 | cut -d'.' -f1 | cut -d'-' -f2-99 )
       shift
