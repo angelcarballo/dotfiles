@@ -25,6 +25,11 @@ export VISUAL=vim
 export EDITOR=vim
 export KEYTIMEOUT=1  # reduce delay when changing modes
 
+# base16 color scripts
+export COLORS=$HOME/.config/base16-shell/scripts
+export SHELL_COLORSCHEME=$HOME/.colorscheme
+export VIM_COLORSCHEME=$HOME/.vim_colorscheme
+
 # custom functions
 source ~/.zsh/custom-functions.zsh
 
@@ -99,7 +104,7 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 export CHEATCOLORS=true
 
 # initialize base16 colorscheme
-set-colorscheme
+source $SHELL_COLORSCHEME
 
 # enable syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
