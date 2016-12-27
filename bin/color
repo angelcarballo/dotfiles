@@ -13,10 +13,16 @@ for i in "$@"; do
       ;;
     -n|--next)
       colorscheme=$( ls $COLORS | grep $current -A 1 | tail -n 1 | cut -d'.' -f1 | cut -d'-' -f2-99 )
+      if [ "base16-$colorscheme" == "$current" ]; then
+        colorscheme=$( ls $COLORS |  head -n 1 | cut -d'.' -f1 | cut -d'-' -f2-99 )
+      fi
       shift
       ;;
     -p|--previous)
       colorscheme=$( ls $COLORS | grep $current -B 1 | head -n 1 | cut -d'.' -f1 | cut -d'-' -f2-99 )
+      if [ "base16-$colorscheme" == "$current" ]; then
+        colorscheme=$( ls $COLORS |  tail -n 1 | cut -d'.' -f1 | cut -d'-' -f2-99 )
+      fi
       shift
       ;;
     *)
