@@ -49,6 +49,13 @@ bindkey '^z' fancy-ctrl-z
 # ctrl-r starts searching history backward
 bindkey '^r' fzf-search-history
 
+# repeat last command
+bindkey -s '^f' "!!\n"
+
+# cycle colors
+bindkey -s '^]' "color -n\n"
+bindkey -s '^[' "color -p\n"
+
 # easier cd into frequent directories
 setopt auto_cd
 cdpath=($HOME/src)
