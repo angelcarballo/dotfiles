@@ -52,10 +52,6 @@ bindkey '^r' fzf-search-history
 # repeat last command
 bindkey -s '^f' "!!\n"
 
-# cycle colors
-bindkey -s '^]' "color -n\n"
-bindkey -s '^[' "color -p\n"
-
 # easier cd into frequent directories
 setopt auto_cd
 cdpath=($HOME/src)
@@ -73,15 +69,15 @@ HISTSIZE=10000               # history entries to keep in memory
 HISTFILE=~/.zsh_history      # history location
 HISTORY_IGNORE="(ll|clear|c|clear|ls|cd *|pwd|exit|cd ..|rm *)"
 
-# vman - vim man pager, with autocompletion
-vman() {
+# use vim as man pager, with autocompletion
+man() {
   vim -c "SuperMan $*"
 
   if [ "$?" != "0"  ]; then
     echo "No manual entry for $*"
   fi
 }
-compdef vman="man"
+compdef man="man"
 
 # paths common to all platforms
 export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$HOME/.rbenv/bin:$PATH"
