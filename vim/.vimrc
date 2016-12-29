@@ -40,6 +40,7 @@ Plug 'rodjek/vim-puppet', {'for': 'puppet'}                                     
 Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}                                   " Tmux syntax support
 Plug 'derekwyatt/vim-scala', {'for': 'scala'}                                   " Scala syntax support
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}                              " CoffeeScript support
+Plug 'elixir-lang/vim-elixir'                                                   " Elixir support
 
 " Motions & Operators
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
@@ -508,6 +509,9 @@ nnoremap <silent> <leader>ws :sp<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
 
+" x - eXecute
+nnoremap <leader>x :Dispatch<cr>
+
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
 
@@ -686,6 +690,14 @@ augroup END
 augroup gitcommit
   autocmd!
   autocmd Filetype gitcommit set spell
+augroup END
+
+"}}}
+" Type: Elixir -----------------------------------------------------------------{{{
+
+augroup rubygroup
+  autocmd!
+  autocmd FileType elixir let b:dispatch='elixir %'
 augroup END
 
 "}}}
