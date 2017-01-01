@@ -33,7 +33,6 @@ Plug 'elzr/vim-json', {'for': 'html'}                                           
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}                             " Markdown support
 Plug 'pprovost/vim-markdown-jekyll', {'for': 'markdown'}                        " Jekyll style markdown support
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}                           " improved Javascript support
-Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}                      " better Javascript syntax
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}                        " Typescript support
 Plug 'mustache/vim-mustache-handlebars', {'for': ['mustache', 'html.mustache']} " Mustache support
 Plug 'rodjek/vim-puppet', {'for': 'puppet'}                                     " Puppet support
