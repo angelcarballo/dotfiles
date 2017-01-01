@@ -216,6 +216,9 @@ set scrolloff=3                      " leave space after the current line
 set foldmethod=marker                " fold using {{{ .. }}} markers
 set diffopt+=vertical                " always use vertical diffs
 set mouse+=a                         " enable mouse support in (a)ll modes
+if &term =~ '^screen'
+  set ttymouse=xterm2                " enable mouse support under tmux
+endif
 set noswapfile                       " disable swap files, let git do the work
 set splitright                       " open new vertical split panes to right
 set history=1000                     " max history
