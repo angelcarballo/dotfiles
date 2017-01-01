@@ -71,7 +71,7 @@ Plug 'ctrlpvim/ctrlp.vim'                " fuzzy finder (files, buffers, etc.)
 Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
 Plug 'szw/vim-maximizer'                 " maximize/restore windows
-Plug 'easymotion/vim-easymotion'         " easier motions (doh!)
+Plug 'justinmk/vim-sneak'                " quick find using two consecutive characters
 Plug 'dietsche/vim-lastplace'            " restore cursor position when re-opening files
 Plug 'gabesoft/vim-ags'                  " because sometimes grep is not enough
 
@@ -199,8 +199,8 @@ let g:switch_custom_definitions=
 "" Vim-maximizer options
 let g:maximizer_set_default_mapping=1
 
-"" Disable easymotion default mappings
-let g:EasyMotion_do_mapping=0
+"" Prompt for target when using sneak jumps <sXX>
+let g:sneak#label = 1
 
 "}}}
 " General settings ------------------------------------------------------------{{{
@@ -520,9 +520,6 @@ nnoremap <leader>x :Dispatch<cr>
 
 " Easily exit insert mode
 inoremap kj <esc>
-
-" Easily move providing two consecutive characters s(xx)
-nmap s <Plug>(easymotion-overwin-f2)
 
 " Delete using black hole register
 nnoremap <bs> "_d
