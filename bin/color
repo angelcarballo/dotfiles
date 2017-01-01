@@ -7,7 +7,7 @@ colorscheme=""
 for i in "$@"; do
   case $i in
     -v|--verbose)
-      echo $current
+      echo "Current: $current"
       exit 0
       shift
       ;;
@@ -51,10 +51,10 @@ if [[ -s "$colorscheme_script" ]]; then
   echo $colorscheme_script > $SHELL_COLORSCHEME
   echo "colorscheme $colorscheme_fullname" > $VIM_COLORSCHEME
   source $SHELL_COLORSCHEME
-  echo $colorscheme
+  echo "Current: $current"
   exit 0
 else
   echo "Unknown colorscheme: $colorscheme_fullname" >&2
-  echo $current
+  echo "Current: $current"
   exit -1
 fi
