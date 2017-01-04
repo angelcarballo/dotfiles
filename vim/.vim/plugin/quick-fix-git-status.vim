@@ -11,3 +11,5 @@ function! QuickFixGitStatus()
   echo "Git changes loaded on quickfix list"
 endfunction
 
+" Allow calling with :QuickFixGitStatus<cr>
+command! -nargs=0 QuickFixGitStatus call QuickFixGitStatus()

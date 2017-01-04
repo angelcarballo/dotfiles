@@ -401,6 +401,7 @@ nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
 
 " g - Git/Google
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gq :call QuickFixGitStatus()<cr>:copen<cr>:cfirst<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
 nnoremap <leader>gc :Gcommit<cr>i
 nnoremap <leader>gf :Gfetch<cr>
