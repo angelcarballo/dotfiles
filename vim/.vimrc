@@ -90,7 +90,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
 Plug 'benmills/vimux'                     " tmux integration
 Plug 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
-Plug 'szw/vim-g'                          " google search
 Plug 'jez/vim-superman'                   " better man pager
 
 " Runners
@@ -399,7 +398,7 @@ nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
 nnoremap <silent> <leader>ff :CtrlP<cr>
 nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
 
-" g - Git/Google
+" g - Git
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gq :call QuickFixGitStatus()<cr>:copen<cr>:cfirst<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
@@ -417,9 +416,6 @@ vnoremap <leader>go :Gbrowse<cr>
 nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gL :GV<cr>
 vnoremap <leader>gl :Glog<cr>
-
-nnoremap <leader>gg :Googlef<cr>
-vnoremap <leader>gg :Googlef<cr>
 
 " h - Git Hunks (added by vim-gitgutter)
 " <leader>hs -> stage hunk
