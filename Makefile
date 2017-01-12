@@ -11,7 +11,7 @@ update:
 
 # Link dotfiles on HOME folder using stow
 link:
-	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK)
+	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK) --ignore='DS_Store'
 
 # Install new vim plugins, update existing and cleanup old ones
 vim:
