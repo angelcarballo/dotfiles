@@ -71,6 +71,6 @@ alias v='vim .'
 # Colorschemes
 alias dark='color tomorrow-night'
 alias light='color solarized-light'
-alias cn='color -n'
-alias cp='color -p'
+alias cnext='color -n'
+alias cprev='color -p'
 
