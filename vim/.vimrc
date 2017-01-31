@@ -171,6 +171,7 @@ if executable('ag')
         \ --ignore public
         \ --ignore log
         \ --ignore spec/fixtures
+        \ --ignore undo
         \ -g ""'
   " ag is falst enough, don't use caching
   let g:ctrlp_use_caching=0
