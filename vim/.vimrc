@@ -610,6 +610,7 @@ autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()
 
 autocmd BufRead,BufNewFile *.jbuilder setfiletype ruby
 autocmd BufRead,BufNewFile *.tmux setfiletype tmux
+autocmd BufRead,BufNewFile *.cfg setfiletype puppet
 
 "}}}
 " Type: Vim -----------------------------------------------------------------{{{
