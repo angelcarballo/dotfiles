@@ -60,7 +60,6 @@ Plug 'kana/vim-textobj-line'            " line text object <l>
 " Look & Feel
 Plug 'yggdroot/indentLine'               " show indentation lines
 Plug 'pgdouyon/vim-evanesco'             " remove search highlight on cursor move
-Plug 'jeffkreeftmeijer/vim-numbertoggle' " switch to relative numbers only while on normal mode/active pane
 Plug 'vim-airline/vim-airline'           " better status bar
 Plug 'vim-airline/vim-airline-themes'    " themes for airline
 Plug 'kshenoy/vim-signature'             " better mark management
@@ -78,7 +77,6 @@ Plug 'gabesoft/vim-ags'                  " because sometimes grep is not enough
 Plug 'chriskempson/base16-vim'          " base16 colorschemes
 
 " Auto completion
-Plug 'SirVer/ultisnips'                 " snippets support
 Plug 'ervandew/supertab'                " magic code auto complete!
 Plug 'tpope/vim-endwise'                " auto close for Vim blocks
 Plug 'jiangmiao/auto-pairs'             " auto close for (, [, {
@@ -104,7 +102,6 @@ Plug 'AndrewRadev/switch.vim'           " easy switches
 Plug 'christoomey/vim-system-copy'      " copy command (cp), copy current line (cP) and paste in next line (cv)
 Plug 'xolox/vim-notes'                  " easy note taking
 Plug 'xolox/vim-misc'                   " required by vim-notes
-Plug 'suan/vim-instant-markdown'        " markdown preview
 Plug 'tpope/vim-capslock'               " software caps lock (gC / <c-g>c)
 
 " Plugins must be added before the following line
@@ -131,14 +128,6 @@ let ruby_minlines=100           " avoid syntax errors while scrolling on large f
 
 "" IndentLine options
 let g:indentLine_char='·'
-
-"" Split window on UltiSnipsEdit
-let g:UltiSnipsEditSplit="horizontal"
-
-"" UltiSnips options
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "" Vim Json options
 let g:vim_json_syntax_conceal=0
@@ -465,9 +454,6 @@ nnoremap <leader>sl :call vroom#RunLastTest()<cr>
 nnoremap <silent> <leader>Sf :echo @%<cr>
 nnoremap <silent> <leader>Sp :echo expand('%:p')<cr>
 nnoremap <silent> <leader>Sb :echo "Current git branch: " . fugitive#head()<cr>
-nnoremap <silent> <leader>Sm :InstantMarkdownPreview
-
-nnoremap <silent> <leader>Se :UltiSnipsEdit<cr>
 
 " t - Tmux/Tabs
 
@@ -688,6 +674,7 @@ augroup END
 augroup gitcommit
   autocmd!
   autocmd Filetype gitcommit set spell
+  autocmd Filetype gitcommit set nonu
 augroup END
 
 "}}}
