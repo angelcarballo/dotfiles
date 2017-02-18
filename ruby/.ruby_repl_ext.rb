@@ -18,3 +18,7 @@ class String
     end
   end
 end
+
+def clear
+  system 'clear'
+end
