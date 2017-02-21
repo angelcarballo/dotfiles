@@ -26,22 +26,23 @@
 ;; Activate installed packages
 (package-initialize)
 
-(ensure-package-installed 'projectile
-			  'evil
-			  'evil-leader
-			  'evil-surround
-			  'evil-visualstar
-			  'evil-magit
-			  'evil-indent-textobject
-			  'helm
-			  'helm-projectile
-			  'solarized-theme
-			  'monokai-theme
-			  'inf-ruby
-			  'rspec-mode
-			  'yasnippet
-			  'rinari
-			  'magit)
+(ensure-package-installed
+  'projectile
+  'evil
+  'evil-leader
+  'evil-surround
+  'evil-visualstar
+  'evil-magit
+  'evil-indent-textobject
+  'helm
+  'helm-projectile
+  'solarized-theme
+  'monokai-theme
+  'inf-ruby
+  'rspec-mode
+  'yasnippet
+  'rinari
+  'magit)
 
 ;; Indent new lines
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -54,7 +55,8 @@
 
 ;; Remove trailing whitespace on save
 (add-hook 'before-save-hook
-	  (lambda () (delete-trailing-whitespace)))
+  (lambda () (delete-trailing-whitespace))
+  )
 
 ;; Spaces instead of tabs
 (setq-default indent-tabs-mode nil)
@@ -243,3 +245,17 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 (global-set-key [escape] 'evil-exit-emacs-state)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (rinari yasnippet rspec-mode inf-ruby monokai-theme solarized-theme helm-projectile helm evil-indent-textobject evil-magit evil-visualstar evil-surround evil-leader evil projectile))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
