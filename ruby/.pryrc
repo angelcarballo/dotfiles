@@ -12,4 +12,4 @@ if defined?(PryByebug)
 end
 
 # Use ap when inspecting stuff
-AwesomePrint.pry!
+AwesomePrint.pry! if defined?(AwesomePrint)

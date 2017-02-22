@@ -9,15 +9,16 @@
 
 (defun ensure-package-installed (&rest packages)
   "Assure every package is installed, ask for installation if it’s not.
-   Return a list of installed packages or nil for every skipped package."
+  Return a list of installed packages or nil for every skipped package."
   (mapcar
-   (lambda (package)
-     (if (package-installed-p package)
-         nil
-       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-           (package-install package)
-         package)))
-   packages))
+    (lambda (package)
+      (if (package-installed-p package)
+        nil
+        (if (y-or-n-p (format "Package %s is missing. Install it? " package))
+          (package-install package)
+          package)))
+    packages)
+  )
 
 ;; Make sure to have downloaded archive description.
 (or (file-exists-p package-user-dir)
@@ -26,22 +27,23 @@
 ;; Activate installed packages
 (package-initialize)
 
-(ensure-package-installed 'projectile
-			  'evil
-			  'evil-leader
-			  'evil-surround
-			  'evil-visualstar
-			  'evil-magit
-			  'evil-indent-textobject
-			  'helm
-			  'helm-projectile
-			  'solarized-theme
-			  'monokai-theme
-			  'inf-ruby
-			  'rspec-mode
-			  'yasnippet
-			  'rinari
-			  'magit)
+(ensure-package-installed
+  'projectile
+  'evil
+  'evil-leader
+  'evil-surround
+  'evil-visualstar
+  'evil-magit
+  'evil-indent-textobject
+  'helm
+  'helm-projectile
+  'solarized-theme
+  'monokai-theme
+  'inf-ruby
+  'rspec-mode
+  'yasnippet
+  'rinari
+  'magit)
 
 ;; Indent new lines
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -54,7 +56,8 @@
 
 ;; Remove trailing whitespace on save
 (add-hook 'before-save-hook
-	  (lambda () (delete-trailing-whitespace)))
+          (lambda () (delete-trailing-whitespace))
+          )
 
 ;; Spaces instead of tabs
 (setq-default indent-tabs-mode nil)
@@ -67,10 +70,10 @@
 
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev
-        try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill
-        try-complete-file-name
-        try-complete-lisp-symbol))
+         try-expand-dabbrev-all-buffers
+         try-expand-dabbrev-from-kill
+         try-complete-file-name
+         try-complete-lisp-symbol))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Smart Tab
@@ -96,8 +99,8 @@
            (minibuffer-complete))
           ((smart-tab-must-expand prefix)
            (if smart-tab-using-hippie-expand
-               (hippie-expand prefix)
-               (dabbrev-expand prefix)))
+             (hippie-expand prefix)
+             (dabbrev-expand prefix)))
           ((smart-indent)))))
 
 (defun smart-indent ()
@@ -143,8 +146,8 @@
 
 ;; Sane scrolling
 (setq scroll-margin 5
-scroll-conservatively 9999
-scroll-step 1)
+      scroll-conservatively 9999
+      scroll-step 1)
 
 ;; Load theme
 (load-theme 'monokai t)
@@ -227,11 +230,11 @@ scroll-step 1)
 ;; ESC quits everything
 (defun minibuffer-keyboard-quit ()
   "Abort recursive edit.
-In Delete Selection mode, if the mark is active, just deactivate it;
-then it takes a second \\[keyboard-quit] to abort the minibuffer."
+  In Delete Selection mode, if the mark is active, just deactivate it;
+  then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive)
   (if (and delete-selection-mode transient-mark-mode mark-active)
-      (setq deactivate-mark  t)
+    (setq deactivate-mark  t)
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
 
@@ -243,3 +246,17 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 (global-set-key [escape] 'evil-exit-emacs-state)
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+  '(package-selected-packages
+     (quote
+       (rinari yasnippet rspec-mode inf-ruby monokai-theme solarized-theme helm-projectile helm evil-indent-textobject evil-magit evil-visualstar evil-surround evil-leader evil projectile))))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+  )
