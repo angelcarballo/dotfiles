@@ -6,3 +6,4 @@ vim/.vim/plugged
 tmux/.tmux/plugins
 emacs/elpa
 emacs/network-security.data
+emacs/auto-save-list
