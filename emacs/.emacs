@@ -8,7 +8,7 @@
 (setq package-enable-at-startup nil)
 
 (defun ensure-package-installed (&rest packages)
-  "Assure every package is installed, ask for installation if it’s not.
+  " Ensure all packages are installed
   Return a list of installed packages or nil for every skipped package."
   (mapcar
    (lambda (package)
@@ -42,7 +42,8 @@
   'rspec-mode
   'yasnippet
   'rinari
-  'magit)
+  'magit
+  )
 
 ;; Indent new lines
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -65,8 +66,8 @@
 (setq-default tab-width 2)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Hippie expand.  Groovy vans with tie-dyes.
-
+;; Hippie expand, make it complete using funcitons, text from all buffers, kill?,
+;; file names and lisp symbols
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev
          try-expand-dabbrev-all-buffers
@@ -162,11 +163,14 @@
       inhibit-startup-echo-area-message t
       inhibit-startup-message t)
 
-;; Maximize frame
+;; Maximize frame on start (only GUI)
 (set-frame-parameter nil 'fullscreen 'fullboth)
 
 ;; Hide toolbar
 (tool-bar-mode -1)
+
+;; Hide menubar
+(menu-bar-mode -1)
 
 ;; Hide scrollbars
 ;; (scroll-bar-mode -1)
@@ -188,64 +192,43 @@
 
 ;; Leader mappings
 (evil-leader/set-key
+  "<SPC>" 'helm-projectile-switch-to-buffer
+  "R"  'eval-buffer
+
   "at" 'ansi-term
-  "bb" 'helm-projectile-switch-to-buffer
-  "bd" 'kill-buffer
+
   "bD" 'kill-other-buffers
+  "bb" 'switch-to-buffer
+  "bd" 'kill-buffer
   "bn" 'next-buffer
   "bp" 'previous-buffer
-  "cy" 'clipboard-kill-region
-  "cp" 'clipboard-yank
+
   "df" 'describe-function
-  "pp" 'helm-projectile-switch-project
+
   "fd" 'helm-projectile-find-dir
   "ff" 'helm-projectile-find-file
   "fr" 'helm-projectile-recentf
   "fs" 'save-buffer
-  "gs" 'magit-status
+
   "gd" 'magit-diff
+  "gs" 'magit-status
+
+  "pp" 'helm-projectile-switch-project
+
   "q"  'kill-buffer-and-window
-  "R"  'eval-buffer
-  "wc" 'delete-window
+
+  "wd" 'delete-window
   "wo" 'delete-other-windows
-  "wv" 'split-window-right
   "ws" 'split-window-below
+  "wv" 'split-window-right
   "ww" 'other-window
+
   "x"  'helm-M-x
   )
 
 ;; Non-leader mappings
-
-;; Easier split navigation
-(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
-
-;; Copy/paste osx style
-(define-key evil-insert-state-map (kbd "M-c") 'clipboard-kill-region)
-(define-key evil-insert-state-map (kbd "M-v") 'clipboard-yank)
-
-
-;; ESC quits everything
-(defun minibuffer-keyboard-quit ()
-  "Abort recursive edit.
-  In Delete Selection mode, if the mark is active, just deactivate it;
-  then it takes a second \\[keyboard-quit] to abort the minibuffer."
-  (interactive)
-  (if (and delete-selection-mode transient-mark-mode mark-active)
-    (setq deactivate-mark  t)
-    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
-    (abort-recursive-edit)))
-
-(define-key evil-normal-state-map [escape] 'keyboard-quit)
-(define-key evil-visual-state-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-(global-set-key [escape] 'evil-exit-emacs-state)
+(define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+(define-key evil-insert-state-map (kbd "kj") 'evil-normal-state)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -257,7 +240,7 @@
     ("16dd114a84d0aeccc5ad6fd64752a11ea2e841e3853234f19dc02a7b91f5d661" "d9dab332207600e49400d798ed05f38372ec32132b3f7d2ba697e59088021555" "3380a2766cf0590d50d6366c5a91e976bdc3c413df963a0ab9952314b4577299" "cea3ec09c821b7eaf235882e6555c3ffa2fd23de92459751e18f26ad035d2142" default)))
  '(package-selected-packages
    (quote
-    (base16-theme yasnippet rspec-mode rinari helm-projectile evil-visualstar evil-surround evil-magit evil-leader evil-indent-textobject))))
+    (evil-unimpaired base16-theme yasnippet rspec-mode rinari helm-projectile evil-visualstar evil-surround evil-magit evil-leader evil-indent-textobject))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
