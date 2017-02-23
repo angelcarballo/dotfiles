@@ -27,6 +27,7 @@
 ;; Activate installed packages
 (package-initialize)
 
+;; Actual list of packages to install
 (ensure-package-installed
   'projectile
   'evil
@@ -37,8 +38,7 @@
   'evil-indent-textobject
   'helm
   'helm-projectile
-  'solarized-theme
-  'monokai-theme
+  'base16-theme
   'rspec-mode
   'yasnippet
   'rinari
@@ -149,7 +149,7 @@
       scroll-step 1)
 
 ;; Load theme
-(load-theme 'monokai t)
+(load-theme 'base16-default-dark t)
 
 ;; Short yes or no
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -245,3 +245,21 @@
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 (global-set-key [escape] 'evil-exit-emacs-state)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("16dd114a84d0aeccc5ad6fd64752a11ea2e841e3853234f19dc02a7b91f5d661" "d9dab332207600e49400d798ed05f38372ec32132b3f7d2ba697e59088021555" "3380a2766cf0590d50d6366c5a91e976bdc3c413df963a0ab9952314b4577299" "cea3ec09c821b7eaf235882e6555c3ffa2fd23de92459751e18f26ad035d2142" default)))
+ '(package-selected-packages
+   (quote
+    (base16-theme yasnippet rspec-mode rinari helm-projectile evil-visualstar evil-surround evil-magit evil-leader evil-indent-textobject))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
