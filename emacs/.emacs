@@ -203,6 +203,7 @@
   "fr" 'helm-projectile-recentf
   "fs" 'save-buffer
   "gs" 'magit-status
+  "gd" 'magit-diff
   "q"  'kill-buffer-and-window
   "R"  'eval-buffer
   "wc" 'delete-window
