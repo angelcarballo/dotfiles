@@ -39,7 +39,6 @@
   'helm-projectile
   'solarized-theme
   'monokai-theme
-  'inf-ruby
   'rspec-mode
   'yasnippet
   'rinari
@@ -170,7 +169,7 @@
 (tool-bar-mode -1)
 
 ;; Hide scrollbars
-(scroll-bar-mode -1)
+;; (scroll-bar-mode -1)
 
 ;; Remember cursor position
 (setq save-place-file "~/.emacs.d/saveplace")
@@ -206,11 +205,11 @@
   "gs" 'magit-status
   "q"  'kill-buffer-and-window
   "R"  'eval-buffer
-  "wc"  'delete-window
-  "wo"  'delete-other-windows
-  "wv"  'split-window-right
-  "ws"  'split-window-below
-  "ww"  'other-window
+  "wc" 'delete-window
+  "wo" 'delete-other-windows
+  "wv" 'split-window-right
+  "ws" 'split-window-below
+  "ww" 'other-window
   "x"  'helm-M-x
   )
 
@@ -246,17 +245,3 @@
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 (global-set-key [escape] 'evil-exit-emacs-state)
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  '(package-selected-packages
-     (quote
-       (rinari yasnippet rspec-mode inf-ruby monokai-theme solarized-theme helm-projectile helm evil-indent-textobject evil-magit evil-visualstar evil-surround evil-leader evil projectile))))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  )
