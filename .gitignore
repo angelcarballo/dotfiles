@@ -4,6 +4,6 @@ vim/.vim/temp/*
 vim/.vim/undo/*
 vim/.vim/plugged
 tmux/.tmux/plugins
-emacs/elpa
-emacs/network-security.data
-emacs/auto-save-list
+emacs/.emacs.d/*
+!emacs/.emacs.d/init.el
+!emacs/.emacs.d/.gitignore
