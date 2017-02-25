@@ -45,6 +45,7 @@
                           'evil-leader
                           'evil-magit
                           'evil-numbers
+                          'evil-replace-with-register
                           'evil-surround
                           'evil-visualstar
                           'google-this
@@ -63,6 +64,7 @@
 (require 'evil-exchange)
 (require 'evil-magit)
 (require 'evil-numbers)
+(require 'evil-replace-with-register)
 (require 'evil-surround)
 (require 'evil-textobj-entire)
 (require 'helm-projectile)
@@ -81,6 +83,10 @@
 (setq evil-leader/in-all-states 1)
 (global-evil-leader-mode)
 (evil-leader/set-leader "<SPC>")
+
+;; Enalbe replace-with-register
+(setq evil-replace-with-register-key (kbd "gr"))
+(evil-replace-with-register-install)
 
 ;; Enable evil mode
 (evil-mode t)
