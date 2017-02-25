@@ -97,6 +97,10 @@
 ;; Setup the silver searcher
 (setq ag-executable "/usr/local/bin/ag")
 
+;; Setup projectile
+(projectile-mode)
+(projectile-discover-projects-in-directory (expand-file-name "~/src" ))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
