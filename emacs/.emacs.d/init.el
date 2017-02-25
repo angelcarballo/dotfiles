@@ -53,6 +53,7 @@
                           'helm-ag
                           'helm-projectile
                           'magit
+                          'markdown-mode
                           'projectile
                           'solarized-theme
                           )
