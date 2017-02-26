@@ -56,6 +56,8 @@
                           'magit
                           'markdown-mode
                           'projectile
+                          'rbenv
+                          'rspec-mode
                           'solarized-theme
                           )
 
@@ -68,6 +70,8 @@
 (require 'evil-surround)
 (require 'evil-textobj-entire)
 (require 'helm-projectile)
+(require 'rbenv)
+(require 'rspec-mode)
 (require 'smart-tab)
 
 ;; Enable evil-surround
@@ -107,6 +111,9 @@
 (projectile-mode)
 (projectile-discover-projects-in-directory (expand-file-name "~/src" ))
 
+;; Setup rbenv
+(global-rbenv-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -137,9 +144,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI and GUI settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Show line numbers
-(linum-mode)
 
 ;; Show matching parens
 (show-paren-mode t)
@@ -177,6 +181,14 @@
 (setq save-place-file "~/.emacs.d/saveplace")
 (setq-default save-place t)
 (require 'saveplace)
+
+;; Start the commit window in insert mode
+(add-hook 'with-editor-mode-hook 'evil-insert-state)
+
+;; Add Evil bindings to accept/cancel commit
+(evil-define-key 'normal with-editor-mode-map
+  (kbd "RET") 'with-editor-finish
+  [escape] 'with-editor-cancel)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -260,6 +272,11 @@
   "pp" 'helm-projectile-switch-project
 
   "q"  'delete-window
+
+  "se" 'rspec-run-last-failed
+  "sf" 'rspec-verify-matching
+  "sc" 'rspec-verify-method
+  "sl" 'rspec-rerun
 
   "tg" 'git-gutter-mode
 
