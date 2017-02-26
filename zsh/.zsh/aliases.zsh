@@ -70,11 +70,11 @@ alias v='vim .'
 
 # Emacs
 alias emacs='/usr/local/Cellar/emacs/25.1/bin/emacs'
-alias e='emacs .'
+alias emacsclient='/usr/local/Cellar/emacs/25.1/bin/emacsclient'
+alias e='emacsclient -nw'
 
 # Colorschemes
 alias dark='color tomorrow-night'
 alias light='color solarized-light'
 alias cnext='color -n'
 alias cprev='color -p'
-
