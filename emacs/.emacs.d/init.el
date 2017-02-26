@@ -34,7 +34,8 @@
 (package-initialize)
 
 ;; Actual list of packages to install
-(ensure-package-installed 'ag
+(ensure-package-installed 'ace-jump-mode
+                          'ag
                           'base16-theme
                           'sublime-themes
                           'evil
@@ -201,6 +202,12 @@
 (define-key evil-normal-state-map (kbd "[c") 'git-gutter:previous-hunk)
 (define-key evil-normal-state-map (kbd "]c") 'git-gutter:next-hunk)
 
+;; Ace jump
+(define-key evil-normal-state-map (kbd "s") 'ace-jump-mode)
+
+;; Zoom
+(define-key evil-normal-state-map (kbd "s--") 'text-scale-decrease)
+(define-key evil-normal-state-map (kbd "s-=") 'text-scale-increase)
 
 ;; Autocompletion/Indenting
 (global-set-key (kbd "TAB") 'smart-tab)
