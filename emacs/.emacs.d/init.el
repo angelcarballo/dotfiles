@@ -37,7 +37,7 @@
 (ensure-package-installed 'ace-jump-mode
                           'ag
                           'base16-theme
-                          'sublime-themes
+                          'diminish
                           'evil
                           'evil-args
                           'evil-commentary
@@ -61,8 +61,10 @@
                           'rbenv
                           'rspec-mode
                           'solarized-theme
+                          'sublime-themes
                           )
 
+(require 'diminish)
 (require 'evil)
 (require 'evil-args)
 (require 'evil-exchange)
@@ -117,10 +119,13 @@
 ;; Setup multi-term
 (setq multi-term-program "/bin/zsh")
 (setq multi-term-buffer-name "terminal")
-(add-to-list 'term-bind-key-alist '("C-r"))
+(setq term-suppress-hard-newline nil)
 
 ;; Setup rbenv
 (global-rbenv-mode)
+
+;; Hide common minor modes
+(eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General settings
