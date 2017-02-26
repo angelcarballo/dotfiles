@@ -63,6 +63,7 @@
                           'rspec-mode
                           'solarized-theme
                           'sublime-themes
+                          'yaml-mode
                           )
 
 (require 'diminish)
