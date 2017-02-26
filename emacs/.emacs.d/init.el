@@ -48,6 +48,7 @@
                           'evil-numbers
                           'evil-replace-with-register
                           'evil-surround
+                          'evil-terminal-cursor-changer
                           'evil-visualstar
                           'feature-mode
                           'git-gutter
@@ -86,6 +87,11 @@
 (require 'rbenv)
 (require 'rspec-mode)
 (require 'smart-tab)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Package initialization & settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 ;; Enable key-chord for piano style bindings
 (require 'key-chord)
@@ -136,9 +142,18 @@
 ;; Hide common minor modes
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 
+;; Enable cursor changer on terminal emacs
+(unless (display-graphic-p)
+  (require 'evil-terminal-cursor-changer)
+  (evil-terminal-cursor-changer-activate)
+  )
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Enable server to allow emacsclient
+(server-start)
 
 ;; Don't litter my init file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
