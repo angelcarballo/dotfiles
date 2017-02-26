@@ -49,8 +49,9 @@
                           'evil-replace-with-register
                           'evil-surround
                           'evil-visualstar
-                          'google-this
+                          'feature-mode
                           'git-gutter
+                          'google-this
                           'helm
                           'helm-ag
                           'helm-projectile
@@ -171,7 +172,7 @@
 
 ;; Load theme
 ;; (load-theme 'spolsky t)
-(load-theme 'solarized-light t)
+(load-theme 'solarized-dark t)
 
 ;; Default font size
 (set-face-attribute 'default nil :height 160)
@@ -243,7 +244,7 @@
 (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
 ;; Use H/L to move to the start/end of line
-(define-key evil-normal-state-map (kbd "H") 'evil-beginning-of-visual-line)
+(define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
 (define-key evil-normal-state-map (kbd "L") 'evil-end-of-visual-line)
 
 ;; Vim motions on helm buffers
@@ -281,7 +282,8 @@
 
   "df" 'describe-function
 
-  "e" 'dired
+  "ei" 'dired
+  "ep" 'projectile-dired
 
   "fd" 'helm-projectile-find-dir
   "ff" 'helm-projectile-find-file
@@ -289,12 +291,13 @@
   "fs" 'save-buffer
 
   "gd" 'magit-diff
+  "gr" 'magit-checkout-file
   "gs" 'magit-status
   "gg" 'google-this
 
   "pp" 'helm-projectile-switch-project
 
-  "q"  'delete-window
+  "q"  'evil-window-delete
 
   "se" 'rspec-run-last-failed
   "sf" 'rspec-verify-matching
