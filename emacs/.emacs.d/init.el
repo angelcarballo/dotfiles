@@ -131,6 +131,10 @@
 (projectile-mode)
 (projectile-discover-projects-in-directory (expand-file-name "~/src" ))
 
+;; Setup perspective
+(persp-mode)
+(require 'persp-projectile)
+
 ;; Setup multi-term
 (setq multi-term-program "/bin/zsh")
 (setq multi-term-buffer-name "terminal")
@@ -324,7 +328,11 @@
   "gs" 'magit-status
   "gg" 'google-this
 
-  "pp" 'helm-projectile-switch-project
+  "pj" 'persp-next
+  "pk" 'persp-prev
+  "pn" 'persp-switch
+  "pp" 'projectile-persp-switch-project
+  "pq" 'persp-kill
 
   "q"  'evil-window-delete
 
