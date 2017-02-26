@@ -236,6 +236,9 @@
   (kbd "RET") 'with-editor-finish
   [escape] 'with-editor-cancel)
 
+;; Show line numbers
+(global-linum-mode)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Non-leader mappings
