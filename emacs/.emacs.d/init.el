@@ -55,6 +55,7 @@
                           'helm
                           'helm-ag
                           'helm-projectile
+                          'key-chord
                           'magit
                           'markdown-mode
                           'multi-term
@@ -66,6 +67,9 @@
                           'yaml-mode
                           )
 
+;; Disable C-i mapping since is identical to TAB on terminal
+(setq evil-want-C-i-jump nil)
+
 (require 'diminish)
 (require 'evil)
 (require 'evil-args)
@@ -76,13 +80,16 @@
 (require 'evil-surround)
 (require 'evil-textobj-entire)
 (require 'helm-projectile)
+(require 'key-chord)
 (require 'multi-term)
+(require 'navigate)
 (require 'rbenv)
 (require 'rspec-mode)
 (require 'smart-tab)
 
-;; Enable evil-surround
-(global-evil-surround-mode 1)
+;; Enable key-chord for piano style bindings
+(require 'key-chord)
+(key-chord-mode 1)
 
 ;; Enable evil-visualstar
 (global-evil-visualstar-mode)
@@ -173,7 +180,8 @@
 
 ;; Load theme
 ;; (load-theme 'spolsky t)
-(load-theme 'solarized-dark t)
+;; (load-theme 'solarized-dark t)
+(load-theme 'base16-tomorrow-night t)
 
 ;; Default font size
 (set-face-attribute 'default nil :height 160)
@@ -213,6 +221,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Non-leader mappings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(key-chord-define evil-insert-state-map "fj" 'evil-normal-state)
+(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 
 ;; Unimpaired style mappings
 (define-key evil-normal-state-map (kbd "[b") 'previous-buffer)
@@ -302,6 +313,7 @@
 
   "q"  'evil-window-delete
 
+  "sa" 'rspec-verify-all
   "se" 'rspec-run-last-failed
   "sf" 'rspec-verify-matching
   "sc" 'rspec-verify-method
