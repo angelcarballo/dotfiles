@@ -56,6 +56,7 @@
                           'helm-projectile
                           'magit
                           'markdown-mode
+                          'multi-term
                           'projectile
                           'rbenv
                           'rspec-mode
@@ -71,6 +72,7 @@
 (require 'evil-surround)
 (require 'evil-textobj-entire)
 (require 'helm-projectile)
+(require 'multi-term)
 (require 'rbenv)
 (require 'rspec-mode)
 (require 'smart-tab)
@@ -111,6 +113,11 @@
 ;; Setup projectile
 (projectile-mode)
 (projectile-discover-projects-in-directory (expand-file-name "~/src" ))
+
+;; Setup multi-term
+(setq multi-term-program "/bin/zsh")
+(setq multi-term-buffer-name "terminal")
+(add-to-list 'term-bind-key-alist '("C-r"))
 
 ;; Setup rbenv
 (global-rbenv-mode)
@@ -155,7 +162,8 @@
       scroll-step 1)
 
 ;; Load theme
-(load-theme 'spolsky t)
+;; (load-theme 'spolsky t)
+(load-theme 'solarized-light t)
 
 ;; Default font size
 (set-face-attribute 'default nil :height 160)
@@ -255,7 +263,7 @@
   "-" 'evil-numbers/dec-at-pt
   "=" 'evil-numbers/inc-at-pt
 
-  "at" 'ansi-term
+  "at" 'multi-term
 
   "bb" 'helm-buffers-list
   "bd" 'kill-buffer
