@@ -292,6 +292,8 @@
   "fs" 'save-buffer
 
   "gd" 'magit-diff
+  "gl" 'magit-log-buffer-file
+  "gL" 'magit-log-all
   "gr" 'magit-checkout-file
   "gs" 'magit-status
   "gg" 'google-this
