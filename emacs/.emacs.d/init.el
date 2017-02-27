@@ -50,6 +50,7 @@
                           'evil-surround
                           'evil-terminal-cursor-changer
                           'evil-visualstar
+                          'exec-path-from-shell
                           'feature-mode
                           'git-gutter
                           'google-this
@@ -68,6 +69,10 @@
                           'sublime-themes
                           'yaml-mode
                           )
+
+;; Load env vars from shell (usefull for getting right PATH on Mac)
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
 
 ;; Disable C-i mapping since is identical to TAB on terminal
 (setq evil-want-C-i-jump nil)
