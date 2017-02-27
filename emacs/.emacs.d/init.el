@@ -61,6 +61,7 @@
                           'markdown-mode
                           'multi-term
                           'projectile
+                          'perspective
                           'rbenv
                           'rspec-mode
                           'solarized-theme
@@ -83,7 +84,6 @@
 (require 'helm-projectile)
 (require 'key-chord)
 (require 'multi-term)
-(require 'navigate)
 (require 'rbenv)
 (require 'rspec-mode)
 (require 'smart-tab)
@@ -203,7 +203,7 @@
 (load-theme 'base16-tomorrow-night t)
 
 ;; Default font size
-(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :height 130)
 
 ;; Short yes or no
 (fset 'yes-or-no-p 'y-or-n-p)
