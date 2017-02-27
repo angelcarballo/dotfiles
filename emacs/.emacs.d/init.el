@@ -50,6 +50,8 @@
                           'evil-surround
                           'evil-terminal-cursor-changer
                           'evil-visualstar
+                          'exec-path-from-shell
+                          'flyspell
                           'feature-mode
                           'git-gutter
                           'google-this
@@ -68,10 +70,15 @@
                           'yaml-mode
                           )
 
+;; Load env vars from shell (usefull for getting right PATH on Mac)
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
 ;; Disable C-i mapping since is identical to TAB on terminal
 (setq evil-want-C-i-jump nil)
 
 (require 'diminish)
+(require 'dired-x)
 (require 'evil)
 (require 'evil-args)
 (require 'evil-exchange)
@@ -83,7 +90,6 @@
 (require 'helm-projectile)
 (require 'key-chord)
 (require 'multi-term)
-(require 'navigate)
 (require 'rbenv)
 (require 'rspec-mode)
 (require 'smart-tab)
@@ -99,6 +105,9 @@
 
 ;; Enable evil-visualstar
 (global-evil-visualstar-mode)
+
+;; Projectile settings
+(setq projectile-use-git-grep 1)
 
 ;; Enable helm-projectile
 (helm-projectile-on)
@@ -131,12 +140,8 @@
 (projectile-mode)
 (projectile-discover-projects-in-directory (expand-file-name "~/src" ))
 
-;; Setup perspective
-(persp-mode)
-(require 'persp-projectile)
-
 ;; Setup multi-term
-(setq multi-term-program "/bin/zsh")
+(setq multi-term-program "/bin/local/bin/zsh")
 (setq multi-term-buffer-name "terminal")
 (setq term-suppress-hard-newline nil)
 
@@ -151,6 +156,13 @@
   (require 'evil-terminal-cursor-changer)
   (evil-terminal-cursor-changer-activate)
   )
+
+;; Setup rspec-mode
+(setq rspec-use-spring-when-possible nil)
+(setq rspec-command-options "--fail-fast")
+
+;; Enable git-gutter
+(global-git-gutter-mode +1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General settings
@@ -203,7 +215,7 @@
 (load-theme 'base16-tomorrow-night t)
 
 ;; Default font size
-(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :height 130)
 
 ;; Short yes or no
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -295,6 +307,11 @@
 (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
 (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
 
+;; flyspell
+(define-key evil-normal-state-map (kbd "zf") 'flyspell-auto-correct-word)
+(define-key evil-normal-state-map (kbd "]s") 'flyspell-goto-next-error)
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Leader mappings
@@ -302,21 +319,22 @@
 
 (evil-leader/set-key
   "<SPC>" 'helm-projectile-switch-to-buffer
-  "/" 'projectile-ag
+  "/" 'helm-projectile-grep
+  "?" 'projectile-grep
   "-" 'evil-numbers/dec-at-pt
   "=" 'evil-numbers/inc-at-pt
 
   "at" 'multi-term
 
   "bb" 'helm-buffers-list
-  "bd" 'kill-buffer
+  "bd" 'kill-this-buffer
   "be" 'eval-buffer
   "bn" 'next-buffer
   "bp" 'previous-buffer
 
   "df" 'describe-function
 
-  "ei" 'dired
+  "ei" 'dired-jump
   "ep" 'projectile-dired
 
   "fd" 'helm-projectile-find-dir
@@ -331,11 +349,7 @@
   "gs" 'magit-status
   "gg" 'google-this
 
-  "pj" 'persp-next
-  "pk" 'persp-prev
-  "pn" 'persp-switch
-  "pp" 'projectile-persp-switch-project
-  "pq" 'persp-kill
+  "pp" 'projectile-switch-project
 
   "q"  'evil-window-delete
 
@@ -346,6 +360,7 @@
   "sl" 'rspec-rerun
 
   "tg" 'git-gutter-mode
+  "ts" 'flyspell-mode
 
   "wd" 'delete-window
   "wo" 'delete-other-windows
