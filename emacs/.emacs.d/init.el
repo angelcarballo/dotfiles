@@ -78,6 +78,7 @@
 (setq evil-want-C-i-jump nil)
 
 (require 'diminish)
+(require 'dired-x)
 (require 'evil)
 (require 'evil-args)
 (require 'evil-exchange)
@@ -323,14 +324,14 @@
   "at" 'multi-term
 
   "bb" 'helm-buffers-list
-  "bd" 'kill-buffer
+  "bd" 'kill-this-buffer
   "be" 'eval-buffer
   "bn" 'next-buffer
   "bp" 'previous-buffer
 
   "df" 'describe-function
 
-  "ei" 'dired
+  "ei" 'dired-jump
   "ep" 'projectile-dired
 
   "fd" 'helm-projectile-find-dir
