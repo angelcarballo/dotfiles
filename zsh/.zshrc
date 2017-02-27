@@ -10,6 +10,11 @@ if [[ $CURRENT_OS == 'OS X' ]]; then
   antigen bundle brew
 fi
 
+# dont use zle on emacs to aviod duplicated input
+if [[ -n ${INSIDE_EMACS} ]]; then
+    unsetopt zle
+fi
+
 # tell antigen that you're done.
 antigen apply
 
@@ -80,7 +85,7 @@ man() {
 compdef man="man"
 
 # paths common to all platforms
-export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$PATH"
 
 # fix bug when passing arguments to rake
 unsetopt nomatch
