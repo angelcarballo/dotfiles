@@ -256,7 +256,6 @@
 ;; Non-leader mappings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(key-chord-define evil-insert-state-map "fj" 'evil-normal-state)
 (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 
 ;; Unimpaired style mappings
@@ -349,7 +348,7 @@
   "gs" 'magit-status
   "gg" 'google-this
 
-  "pp" 'projectile-switch-project
+  "pp" 'helm-projectile-switch-project
 
   "q"  'evil-window-delete
 
