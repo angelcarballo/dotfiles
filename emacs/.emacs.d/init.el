@@ -155,6 +155,10 @@
   (evil-terminal-cursor-changer-activate)
   )
 
+;; Setup rspec-mode
+(setq rspec-use-spring-when-possible nil)
+(setq rspec-command-options "--fail-fast")
+
 ;; Enable git-gutter
 (global-git-gutter-mode +1)
 
