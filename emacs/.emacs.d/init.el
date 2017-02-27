@@ -62,7 +62,6 @@
                           'markdown-mode
                           'multi-term
                           'projectile
-                          'perspective
                           'rbenv
                           'rspec-mode
                           'solarized-theme
@@ -135,10 +134,6 @@
 ;; Setup projectile
 (projectile-mode)
 (projectile-discover-projects-in-directory (expand-file-name "~/src" ))
-
-;; Setup perspective
-(persp-mode)
-(require 'persp-projectile)
 
 ;; Setup multi-term
 (setq multi-term-program "/bin/zsh")
@@ -333,11 +328,7 @@
   "gs" 'magit-status
   "gg" 'google-this
 
-  "pj" 'persp-next
-  "pk" 'persp-prev
-  "pn" 'persp-switch
-  "pp" 'projectile-persp-switch-project
-  "pq" 'persp-kill
+  "pp" 'projectile-switch-project
 
   "q"  'evil-window-delete
 
