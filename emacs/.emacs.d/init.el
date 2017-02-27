@@ -51,6 +51,7 @@
                           'evil-terminal-cursor-changer
                           'evil-visualstar
                           'exec-path-from-shell
+                          'flyspell
                           'feature-mode
                           'git-gutter
                           'google-this
@@ -302,6 +303,11 @@
 (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
 (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
 
+;; flyspell
+(define-key evil-normal-state-map (kbd "zf") 'flyspell-auto-correct-word)
+(define-key evil-normal-state-map (kbd "]s") 'flyspell-goto-next-error)
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Leader mappings
@@ -350,6 +356,7 @@
   "sl" 'rspec-rerun
 
   "tg" 'git-gutter-mode
+  "ts" 'flyspell-mode
 
   "wd" 'delete-window
   "wo" 'delete-other-windows
