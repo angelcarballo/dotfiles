@@ -104,6 +104,9 @@
 ;; Enable evil-visualstar
 (global-evil-visualstar-mode)
 
+;; Projectile settings
+(setq projectile-use-git-grep 1)
+
 ;; Enable helm-projectile
 (helm-projectile-on)
 
@@ -151,6 +154,9 @@
   (require 'evil-terminal-cursor-changer)
   (evil-terminal-cursor-changer-activate)
   )
+
+;; Enable git-gutter
+(global-git-gutter-mode +1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General settings
@@ -299,7 +305,8 @@
 
 (evil-leader/set-key
   "<SPC>" 'helm-projectile-switch-to-buffer
-  "/" 'projectile-ag
+  "/" 'helm-projectile-grep
+  "?" 'projectile-grep
   "-" 'evil-numbers/dec-at-pt
   "=" 'evil-numbers/inc-at-pt
 
