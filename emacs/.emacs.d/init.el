@@ -94,10 +94,12 @@
 (require 'rspec-mode)
 (require 'smart-tab)
 
+;; Load custom functions
+(load "evil-split.el")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package initialization & settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 ;; Enable key-chord for piano style bindings
 (require 'key-chord)
@@ -363,8 +365,8 @@
 
   "wd" 'delete-window
   "wo" 'delete-other-windows
-  "ws" 'split-window-below
-  "wv" 'split-window-right
+  "ws" 'split-window-below-and-switch
+  "wv" 'split-window-right-and-switch
   "ww" 'other-window
 
   "x"  'helm-M-x
