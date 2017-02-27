@@ -595,6 +595,7 @@ autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()
 " Force file types -----------------------------------------------------------------{{{
 
 autocmd BufRead,BufNewFile *.jbuilder setfiletype ruby
+autocmd BufRead,BufNewFile *.prawn setfiletype ruby
 autocmd BufRead,BufNewFile *.tmux setfiletype tmux
 autocmd BufRead,BufNewFile *.cfg setfiletype puppet
 
