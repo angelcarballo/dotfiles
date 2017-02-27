@@ -141,7 +141,7 @@
 (projectile-discover-projects-in-directory (expand-file-name "~/src" ))
 
 ;; Setup multi-term
-(setq multi-term-program "/bin/zsh")
+(setq multi-term-program "/bin/local/bin/zsh")
 (setq multi-term-buffer-name "terminal")
 (setq term-suppress-hard-newline nil)
 
