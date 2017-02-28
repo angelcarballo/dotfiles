@@ -96,6 +96,7 @@
 
 ;; Load custom functions
 (load "evil-split.el")
+(load "copy-path.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package initialization & settings
@@ -324,6 +325,11 @@
   "?" 'projectile-grep
   "-" 'evil-numbers/dec-at-pt
   "=" 'evil-numbers/inc-at-pt
+
+  "h" 'evil-window-left
+  "j" 'evil-window-down
+  "k" 'evil-window-up
+  "l" 'evil-window-right
 
   "at" 'multi-term
 
