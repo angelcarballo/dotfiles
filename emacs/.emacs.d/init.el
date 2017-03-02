@@ -61,7 +61,6 @@
                           'key-chord
                           'magit
                           'markdown-mode
-                          'multi-term
                           'projectile
                           'rbenv
                           'rspec-mode
@@ -89,7 +88,6 @@
 (require 'evil-textobj-entire)
 (require 'helm-projectile)
 (require 'key-chord)
-(require 'multi-term)
 (require 'rbenv)
 (require 'rspec-mode)
 (require 'smart-tab)
@@ -142,11 +140,6 @@
 ;; Setup projectile
 (projectile-mode)
 (projectile-discover-projects-in-directory (expand-file-name "~/src" ))
-
-;; Setup multi-term
-(setq multi-term-program "/bin/local/bin/zsh")
-(setq multi-term-buffer-name "terminal")
-(setq term-suppress-hard-newline nil)
 
 ;; Setup rbenv
 (global-rbenv-mode)
@@ -335,7 +328,7 @@
   "k" 'evil-window-up
   "l" 'evil-window-right
 
-  "at" 'multi-term
+  "at" 'eshell
 
   "bb" 'helm-buffers-list
   "bd" 'kill-this-buffer
