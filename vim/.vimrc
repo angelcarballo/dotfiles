@@ -85,7 +85,6 @@ Plug 'docunext/closetag.vim'            " auto close for Html tags
 Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
 Plug 'tmux-plugins/vim-tmux-focus-events' " detect focus when in tmux
 Plug 'benmills/vimux'                     " tmux integration
-Plug 'ludovicchabant/vim-gutentags'       " automatic tag updater
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
 Plug 'jez/vim-superman'                   " better man pager
 
