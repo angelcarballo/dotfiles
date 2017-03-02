@@ -10,21 +10,14 @@
 
 (setq package-enable-at-startup nil)
 
+;; Load custom functions
+(load "evil-split.el")
+(load "copy-path.el")
+(load "ensure-package-installed.el")
+
+
 ;; Add .emacs/lib folder to the load path
 (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory))
-
-(defun ensure-package-installed (&rest packages)
-  " Ensure all packages are installed
-  Return a list of installed packages or nil for every skipped package."
-  (mapcar
-   (lambda (package)
-     (if (package-installed-p package)
-         nil
-       (package-install package)
-       )
-     )
-   packages)
-  )
 
 ;; Make sure to have downloaded archive description.
 (or (file-exists-p package-user-dir)
@@ -74,7 +67,7 @@
   (exec-path-from-shell-initialize))
 
 ;; Disable C-i mapping since is identical to TAB on terminal
-(setq evil-want-C-i-jump nil)
+;; (setq evil-want-C-i-jump nil)
 
 (require 'diminish)
 (require 'dired-x)
@@ -91,10 +84,6 @@
 (require 'rbenv)
 (require 'rspec-mode)
 (require 'smart-tab)
-
-;; Load custom functions
-(load "evil-split.el")
-(load "copy-path.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package initialization & settings
@@ -215,7 +204,7 @@
 (load-theme 'base16-tomorrow-night t)
 
 ;; Default font size
-(set-face-attribute 'default nil :height 130)
+(set-face-attribute 'default nil :height 150)
 
 ;; Short yes or no
 (fset 'yes-or-no-p 'y-or-n-p)
