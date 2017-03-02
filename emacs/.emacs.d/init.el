@@ -200,6 +200,10 @@
       helm-M-x-fuzzy-match t
       helm-recentf-fuzzy-match t)
 
+;; Consider _ part of words
+(with-eval-after-load 'evil
+    (defalias #'forward-evil-word #'forward-evil-symbol))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI and GUI settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
