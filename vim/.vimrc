@@ -39,7 +39,7 @@ Plug 'rodjek/vim-puppet', {'for': 'puppet'}                                     
 Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}                                   " Tmux syntax support
 Plug 'derekwyatt/vim-scala', {'for': 'scala'}                                   " Scala syntax support
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}                              " CoffeeScript support
-Plug 'elixir-lang/vim-elixir'                                                   " Elixir support
+Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}                                " Elixir support
 
 " Motions & Operators
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
