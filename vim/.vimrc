@@ -71,6 +71,7 @@ Plug 'szw/vim-maximizer'                 " maximize/restore windows
 Plug 'justinmk/vim-sneak'                " quick find using two consecutive characters
 Plug 'dietsche/vim-lastplace'            " restore cursor position when re-opening files
 Plug 'gabesoft/vim-ags'                  " because sometimes grep is not enough
+Plug 'majutsushi/tagbar'                 " navigate current file tags
 
 " Colorschemes
 Plug 'chriskempson/base16-vim'          " base16 colorschemes
@@ -388,6 +389,7 @@ nnoremap <leader>fs :up<cr>
 nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
 nnoremap <silent> <leader>ff :CtrlP<cr>
 nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
+nnoremap <silent> <leader>ft :TagbarToggle<cr>
 
 " g - Git
 nnoremap <leader>gs :Gstatus<cr>
