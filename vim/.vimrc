@@ -469,15 +469,6 @@ nnoremap <silent> <leader>tz :VimuxZoomRunner<cr>
 " Tab management
 nnoremap <silent> <leader>tn :tabnew<cr>
 
-" T - Toggle
-nnoremap <leader>Tw :set wrap! wrap?<cr>
-nnoremap <leader>Tf :set foldenable! foldenable?<cr>
-nnoremap <leader>Tr :set relativenumber! relativenumber?<cr>
-nnoremap <leader>Trf :call ToggleFailFast()<cr>
-nnoremap <leader>Trs :call ToggleSpring()<cr>
-nnoremap <leader>Ts :setlocal spell! spelllang=en_us<cr>
-nnoremap <leader>Tp :set paste! paste?<cr>
-
 " V - Vimrc
 nnoremap <leader>Ve :e $MYVIMRC<cr>
 nnoremap <leader>Vs :so $MYVIMRC<cr>
@@ -554,6 +545,12 @@ nnoremap L $
 " Easy next/previews tab
 nnoremap [w :tabp<cr>
 nnoremap ]w :tabn<cr>
+
+" Additions to unimpaired option toggles
+nnoremap cof :set foldenable! foldenable?<cr>
+nnoremap cop :set paste! paste?<cr>
+nnoremap cotf :call ToggleFailFast()<cr>
+nnoremap cots :call ToggleSpring()<cr>
 
 " Dragvisuals, move visual block around
 vmap  <expr>  <left>   DVB_Drag('left')
