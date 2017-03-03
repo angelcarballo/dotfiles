@@ -101,6 +101,7 @@ Plug 'christoomey/vim-system-copy'      " copy command (cp), copy current line (
 Plug 'xolox/vim-notes'                  " easy note taking
 Plug 'xolox/vim-misc'                   " required by vim-notes
 Plug 'tpope/vim-capslock'               " software caps lock (gC / <c-g>c)
+Plug 'papanikge/vim-voogle'             " perform google searches
 
 " Plugins must be added before the following line
 call plug#end()
