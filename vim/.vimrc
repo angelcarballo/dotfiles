@@ -264,7 +264,9 @@ let g:airline_theme='base16_shell'
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#displayed_head_limit=15
 let g:airline#extensions#ctrlp#color_template='normal'
-" hide file encoding
+" hide section x (tagbar, filetype, virtualenv)
+let g:airline_section_x=airline#section#create('')
+" hide section y (fileencoding, fileformat)
 let g:airline_section_y=airline#section#create('')
 " hide mode indicator
 let g:airline_section_a=airline#section#create(['crypt','paste','spell','iminsert'])
