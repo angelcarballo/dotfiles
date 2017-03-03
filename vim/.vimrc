@@ -262,7 +262,7 @@ let g:airline_right_sep=''
 let g:airline_skip_empty_sections=1
 let g:airline_theme='base16_shell'
 let g:airline#extensions#hunks#enabled=0
-let g:airline#extensions#branch#displayed_head_limit=10
+let g:airline#extensions#branch#displayed_head_limit=15
 let g:airline#extensions#ctrlp#color_template='normal'
 " hide file encoding
 let g:airline_section_y=airline#section#create('')
