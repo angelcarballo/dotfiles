@@ -39,7 +39,7 @@ Plug 'rodjek/vim-puppet', {'for': 'puppet'}                                     
 Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}                                   " Tmux syntax support
 Plug 'derekwyatt/vim-scala', {'for': 'scala'}                                   " Scala syntax support
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}                              " CoffeeScript support
-Plug 'elixir-lang/vim-elixir'                                                   " Elixir support
+Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}                                " Elixir support
 
 " Motions & Operators
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
@@ -54,7 +54,6 @@ Plug 'whatyouhide/vim-textobj-erb'      " ERB block text object <E>
 Plug 'kana/vim-textobj-entire'          " entire buffer text object <e>
 Plug 'michaeljsmith/vim-indent-object'  " indentation based text object <i/I>
 Plug 'b4winckler/vim-angry'             " function argument text object <a/A>
-Plug 'kana/vim-textobj-line'            " line text object <l>
 
 " Look & Feel
 Plug 'yggdroot/indentLine'               " show indentation lines
@@ -71,6 +70,7 @@ Plug 'szw/vim-maximizer'                 " maximize/restore windows
 Plug 'dietsche/vim-lastplace'            " restore cursor position when re-opening files
 Plug 'gabesoft/vim-ags'                  " because sometimes grep is not enough
 Plug 'easymotion/vim-easymotion'         " quick jumps across lines/files/characters
+Plug 'majutsushi/tagbar'                 " navigate current file tags
 
 " Colorschemes
 Plug 'chriskempson/base16-vim'          " base16 colorschemes
@@ -265,9 +265,11 @@ let g:airline_right_sep=''
 let g:airline_skip_empty_sections=1
 let g:airline_theme='base16_shell'
 let g:airline#extensions#hunks#enabled=0
-let g:airline#extensions#branch#displayed_head_limit=10
+let g:airline#extensions#branch#displayed_head_limit=15
 let g:airline#extensions#ctrlp#color_template='normal'
-" hide file encoding
+" hide section x (tagbar, filetype, virtualenv)
+let g:airline_section_x=airline#section#create('')
+" hide section y (fileencoding, fileformat)
 let g:airline_section_y=airline#section#create('')
 " hide mode indicator
 let g:airline_section_a=airline#section#create(['crypt','paste','spell','iminsert'])
@@ -389,6 +391,7 @@ nnoremap <leader>fs :up<cr>
 nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
 nnoremap <silent> <leader>ff :CtrlP<cr>
 nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
+nnoremap <silent> <leader>ft :TagbarToggle<cr>
 
 " g - Git
 nnoremap <leader>gs :Gstatus<cr>

@@ -2,13 +2,7 @@
 source ~/.zsh/antigen.zsh
 
 # antigen Bundles
-antigen bundle git-extras                          # extra git commands
 antigen bundle ssh-agent                           # For SSH, starting ssh-agent is annoying
-
-# OS specific bundles
-if [[ $CURRENT_OS == 'OS X' ]]; then
-  antigen bundle brew
-fi
 
 # dont use zle on emacs to aviod duplicated input
 if [[ -n ${INSIDE_EMACS} ]]; then
