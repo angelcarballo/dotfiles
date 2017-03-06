@@ -10,14 +10,15 @@
 
 (setq package-enable-at-startup nil)
 
+;; Add .emacs/lib folder to the load path
+(add-to-list 'load-path (expand-file-name "lib" user-emacs-directory))
+
 ;; Load custom functions
 (load "evil-split.el")
 (load "copy-path.el")
 (load "ensure-package-installed.el")
 
 
-;; Add .emacs/lib folder to the load path
-(add-to-list 'load-path (expand-file-name "lib" user-emacs-directory))
 
 ;; Make sure to have downloaded archive description.
 (or (file-exists-p package-user-dir)
@@ -54,6 +55,7 @@
                           'key-chord
                           'magit
                           'markdown-mode
+                          'navigate
                           'projectile
                           'rbenv
                           'rspec-mode
@@ -81,6 +83,7 @@
 (require 'evil-textobj-entire)
 (require 'helm-projectile)
 (require 'key-chord)
+(require 'navigate)
 (require 'rbenv)
 (require 'rspec-mode)
 (require 'smart-tab)
@@ -201,7 +204,8 @@
 ;; Load theme
 ;; (load-theme 'spolsky t)
 ;; (load-theme 'solarized-dark t)
-(load-theme 'base16-tomorrow-night t)
+;; (load-theme 'base16-tomorrow-night t)
+(load-theme 'base16-gruvbox-light-medium t)
 
 ;; Default font size
 (set-face-attribute 'default nil :height 150)
