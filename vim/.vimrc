@@ -373,6 +373,7 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
 endif
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
+nnoremap <silent> <leader>cg <c-w>k<c-w>c
 
 " d - Duplicate
 nnoremap <leader>dl yy:Commentary<cr>p
