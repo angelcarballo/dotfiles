@@ -179,7 +179,7 @@ let g:notes_conceal_bold=0
 let g:notes_conceal_url=0
 
 "" Change vim-voogle mapping
-let g:voogle_map = "gS"
+let g:voogle_map = "gO"
 
 "" Vim-Switch options
 let g:switch_custom_definitions=
