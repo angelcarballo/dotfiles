@@ -111,6 +111,7 @@ call plug#end()
 
 "" Easymotion options
 let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
 
 "" Instant markdown preview options
 let g:instant_markdown_autostart = 0
