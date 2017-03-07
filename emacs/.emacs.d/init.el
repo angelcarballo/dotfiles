@@ -174,6 +174,8 @@
           (lambda () (delete-trailing-whitespace))
           )
 
+(add-hook 'evil-insert-state-exit-hook 'evil-autosave)
+
 ;; Spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 
