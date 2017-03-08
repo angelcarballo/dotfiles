@@ -563,6 +563,7 @@ nnoremap cof :set foldenable! foldenable?<cr>
 nnoremap cop :set paste! paste?<cr>
 nnoremap cotf :call ToggleFailFast()<cr>
 nnoremap cots :call ToggleSpring()<cr>
+nnoremap cotm :call ToggleVimuxTarget()<cr>
 
 " Dragvisuals, move visual block around
 vmap  <expr>  <left>   DVB_Drag('left')
