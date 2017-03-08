@@ -181,7 +181,7 @@ let g:notes_conceal_bold=0
 let g:notes_conceal_url=0
 
 "" Change vim-voogle mapping
-let g:voogle_map = "gS"
+let g:voogle_map = "gO"
 
 "" Vim-Switch options
 let g:switch_custom_definitions=
@@ -564,6 +564,7 @@ nnoremap cof :set foldenable! foldenable?<cr>
 nnoremap cop :set paste! paste?<cr>
 nnoremap cotf :call ToggleFailFast()<cr>
 nnoremap cots :call ToggleSpring()<cr>
+nnoremap cotm :call ToggleVimuxTarget()<cr>
 
 " Dragvisuals, move visual block around
 vmap  <expr>  <left>   DVB_Drag('left')
