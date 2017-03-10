@@ -153,6 +153,10 @@ if executable('ag')
 
   " Use ag in CtrlP for listing files
   let g:ctrlp_user_command='ag %s -l --nocolor --hidden
+        \ --ignore .woff
+        \ --ignore .eot
+        \ --ignore .ttf
+        \ --ignore .svg
         \ --ignore .git
         \ --ignore .svn
         \ --ignore .hg
@@ -305,6 +309,7 @@ set wildignore+=*\\tmp\\*,*.zip,*.exe                  " Windows
 set wildignore+=*/temp/*,*/backup/*                    " Vim
 set wildignore+=*/_site/*                              " Jekyll
 set wildignore+=*/log/*,*.log                          " log files
+set wildignore+=*.eof,*.ttf,*.woff                     " font files
 
 "}}}
 " Abbreviations -------------------------------------------------------------{{{
