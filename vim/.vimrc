@@ -86,6 +86,7 @@ Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
 Plug 'benmills/vimux'                     " tmux integration
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
 Plug 'jez/vim-superman'                   " better man pager
+Plug 'wincent/terminus'                   " enhancements for terminal vim (focus events, cursor, etc.)
 
 " Runners
 Plug 'skalnik/vim-vroom'                " ruby test runner
