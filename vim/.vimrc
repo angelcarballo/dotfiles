@@ -239,11 +239,8 @@ set breakindent                      " keep indentation on wrapped lines
 
 autocmd BufLeave,FocusLost * silent! wa                 " auto save files
 autocmd FocusGained * source ~/.vim_colorscheme         " reload colorscheme
-autocmd InsertLeave * set nopaste                       " disable paste mode on leaving insert mode.
 autocmd QuickFixCmdPost *grep* nested cwindow | redraw! " open quickfix window after using Grep
 autocmd FileType qf wincmd J                            " quickfix window should always be full width
-autocmd BufWritePre *.rb call TrimEndLines()            " clean extra whitespace for ruby files
-autocmd BufWritePre *.feature call TrimEndLines()       " clean extra whitespace for cucumber/turnip files
 
 runtime macros/matchit.vim           " allow % to match more than just single characters
 
