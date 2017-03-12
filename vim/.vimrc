@@ -350,6 +350,9 @@ vnoremap <leader><bar> :Tabularize /<bar><cr>
 " * - Search in project for word under cursor
 nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
 vnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
+" 8 - Same search but search for class definitions
+nnoremap <leader>8 :silent Ggrep "class <c-r><c-w>"<cr>
+vnoremap <leader>8 "hy:silent Ggrep "class <c-r>h"<cr>
 
 " a - Align/Auto
 vnoremap <leader>aa :Tabularize /
