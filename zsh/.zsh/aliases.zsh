@@ -60,6 +60,7 @@ alias gsm='git log -E -i --grep '
 alias gsp='git stash pop'
 alias br='branch'
 alias master='git checkout master'
+alias cb='git rev-parse --abbrev-ref HEAD | pbcopy'
 
 # Docker & boot2docker
 alias dockerenv='eval `boot2docker shellinit 2>/dev/null`'
