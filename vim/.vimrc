@@ -318,6 +318,7 @@ vnoremap <leader><bar> :Tabularize /<bar><cr>
 
 " * - Search in project for word under cursor
 nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
+nnoremap <leader>8 :silent Ggrep "<c-r><c-w>"<cr>
 vnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
 
 " a - Align/Auto
@@ -371,7 +372,9 @@ nnoremap <silent> <leader>fr :History<cr>
 nnoremap <silent> <leader>ft :TagbarToggle<cr>
 
 nnoremap <leader>fm :silent Ggrep "def <c-r><c-w>"<cr>
+nnoremap <leader>fM :silent Ggrep "def self.<c-r><c-w>"<cr>
 nnoremap <leader>fc :silent Ggrep "class <c-r><c-w>"<cr>
+nnoremap <leader>fC :silent Ggrep "module <c-r><c-w>"<cr>
 
 " g - Git
 nnoremap <leader>gs :Gstatus<cr>
