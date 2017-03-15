@@ -63,9 +63,8 @@ Plug 'vim-airline/vim-airline-themes'    " themes for airline
 Plug 'kshenoy/vim-signature'             " better mark management
 
 " Navigation
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'ctrlpvim/ctrlp.vim'                " fuzzy finder (files, buffers, etc.)
+Plug '/usr/local/opt/fzf'                " homebrew version of fzf
+Plug 'junegunn/fzf.vim'                  " fzf-vim for fzf helpers
 Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
 Plug 'szw/vim-maximizer'                 " maximize/restore windows
@@ -153,27 +152,6 @@ let g:vim_markdown_conceal=0
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor\ --hidden\ --ignore\ .git
-
-  " Use ag in CtrlP for listing files
-  let g:ctrlp_user_command='ag %s -l --nocolor --hidden
-        \ --ignore .woff
-        \ --ignore .eot
-        \ --ignore .ttf
-        \ --ignore .svg
-        \ --ignore .git
-        \ --ignore .svn
-        \ --ignore .hg
-        \ --ignore .DS_Store
-        \ --ignore bundle
-        \ --ignore doc
-        \ --ignore tmp
-        \ --ignore public
-        \ --ignore log
-        \ --ignore spec/fixtures
-        \ --ignore undo
-        \ -g ""'
-  " ag is falst enough, don't use caching
-  let g:ctrlp_use_caching=0
 endif
 
 let g:ags_agcontext = 2
@@ -351,7 +329,7 @@ nnoremap <leader>ac 1z=
 
 " b - Buffers
 nnoremap <silent> <leader>bd :bdelete<cr>
-nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
+nnoremap <silent> <leader>bb :Buffers<cr>
 nnoremap <silent> <leader>bD :w <bar> %bd <bar> e#<cr>
 
 " c - Copy/Clear/Close
@@ -386,10 +364,10 @@ nnoremap <leader>fa :OpenAlternate<cr>
 nnoremap <leader>fA :vsplit<cr>:OpenAlternate<cr>
 nnoremap <leader>fl <c-^>
 nnoremap <leader>fs :up<cr>
-nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
+nnoremap <silent> <leader>fd :Files %:p:h<cr>
 nnoremap <silent> <leader>ff :GFiles<cr>
 nnoremap <silent> <leader>fg :GFiles?<cr>
-nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
+nnoremap <silent> <leader>fr :History<cr>
 nnoremap <silent> <leader>ft :TagbarToggle<cr>
 
 nnoremap <leader>fm :silent Ggrep "def <c-r><c-w>"<cr>
