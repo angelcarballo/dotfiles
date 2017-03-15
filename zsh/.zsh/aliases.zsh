@@ -76,7 +76,7 @@ alias ec='emacsclient -nw'
 alias e='emacsclient -nw .'
 
 # Colorschemes
-alias dark='color tomorrow-night'
-alias light='color solarized-light'
+alias dark='color gruvbox-dark-hard'
+alias light='color gruvbox-light-hard'
 alias cnext='color -n'
 alias cprev='color -p'
