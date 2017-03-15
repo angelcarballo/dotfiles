@@ -63,6 +63,8 @@ Plug 'vim-airline/vim-airline-themes'    " themes for airline
 Plug 'kshenoy/vim-signature'             " better mark management
 
 " Navigation
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'                " fuzzy finder (files, buffers, etc.)
 Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
@@ -385,7 +387,8 @@ nnoremap <leader>fA :vsplit<cr>:OpenAlternate<cr>
 nnoremap <leader>fl <c-^>
 nnoremap <leader>fs :up<cr>
 nnoremap <silent> <leader>fd :CtrlPCurFile<cr>
-nnoremap <silent> <leader>ff :CtrlP<cr>
+nnoremap <silent> <leader>ff :GFiles<cr>
+nnoremap <silent> <leader>fg :GFiles?<cr>
 nnoremap <silent> <leader>fr :CtrlPMRUFiles<cr>
 nnoremap <silent> <leader>ft :TagbarToggle<cr>
 
