@@ -299,7 +299,10 @@ autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 " Key bindings (leader) ---------------------------------------------------------------{{{
 
 " move to {char}{char}
-nmap <leader><space> :buffers<CR>:bu<Space>
+nmap <leader><space> :buffers<cr>:bu<Space>
+
+" , - Search lines on opened buffers
+nnoremap <leader>, :Lines<cr>
 
 " <leader> - Switch between the last two files
 nnoremap <leader><tab> <c-^>
@@ -326,6 +329,7 @@ vnoremap <leader>aa :Tabularize /
 vnoremap <leader>a= :Tabularize /=<cr>
 vnoremap <leader>a> :Tabularize /=><cr>
 vnoremap <leader>a<bar> :Tabularize /<bar><cr>
+" auto correct spelling mistake
 nnoremap <leader>ac 1z=
 
 " b - Buffers
