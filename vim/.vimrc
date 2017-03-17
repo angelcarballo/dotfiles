@@ -88,6 +88,7 @@ Plug 'benmills/vimux'                     " tmux integration
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
 Plug 'jez/vim-superman'                   " better man pager
 Plug 'wincent/terminus'                   " enhancements for terminal vim (focus events, cursor, etc.)
+Plug 'Townk/dash.vim'                     " Dash integration for documentation lookups
 
 " Runners
 Plug 'skalnik/vim-vroom'                " ruby test runner
@@ -486,6 +487,9 @@ nnoremap <leader>x :Dispatch<cr>
 
 " Easily exit insert mode
 inoremap kj <esc>
+
+" Easily exit insert mode
+nmap <silent> K <Plug>DashSearch
 
 " Move by two consecutive characters (any direction or window)
 nmap s <Plug>(easymotion-overwin-f2)
