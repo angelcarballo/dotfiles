@@ -4,6 +4,10 @@ require_relative '.ruby_repl_ext'
 Pry.editor = 'vim'
 Pry.config.color = true
 
+if defined?(PryRails::RAILS_PROMPT)
+  Pry.config.prompt = PryRails::RAILS_PROMPT
+end
+
 if defined?(PryByebug)
   Pry.commands.alias_command 'c', 'continue'
   Pry.commands.alias_command 's', 'step'
