@@ -270,6 +270,10 @@ autocmd VimResized * :wincmd =
 " highlight trailing spaces
 match ErrorMsg '\s\+$'
 
+" highlight character 121 to avoid long lines
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
 "}}}
 " Files to ignore -------------------------------------------------------------{{{
 
