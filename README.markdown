@@ -20,7 +20,7 @@ Key Features
 [pure]: https://github.com/sindresorhus/pure
 [vim-plug]: https://github.com/junegunn/vim-plug
 [fzf]: https://github.com/junegunn/fzf
-[open and jump between sessions]: https://github.com/angelcarballo/dotfiles/blob/master/tmux/.tmux.conf#L121-L125
+[open and jump between sessions]: https://github.com/angelcarballo/dotfiles/blob/master/tmux/.tmux.conf#L75-L79
 [Base16 Shell]: https://github.com/chriskempson/base16-shell
 
 Usage
