@@ -331,7 +331,7 @@ vnoremap <leader>a= :Tabularize /=<cr>
 vnoremap <leader>a> :Tabularize /=><cr>
 vnoremap <leader>a<bar> :Tabularize /<bar><cr>
 " auto correct spelling mistake
-nnoremap <leader>ac 1z=
+nnoremap <leader>ac [s1z=
 
 " b - Buffers
 nnoremap <silent> <leader>bd :bdelete<cr>
