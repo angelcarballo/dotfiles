@@ -272,7 +272,7 @@ match ErrorMsg '\s\+$'
 
 " highlight character 121 to avoid long lines
 highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
+call matchadd('ColorColumn', '\%121v', 100)
 
 "}}}
 " Files to ignore -------------------------------------------------------------{{{
