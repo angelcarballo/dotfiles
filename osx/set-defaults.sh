@@ -83,8 +83,8 @@ defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock expose-animation-duration -float 0
 
 # Skip verification of disk images (dmg, iso, ...)
-defaults write com.apple.frameworks.diskimages skip-verify -bool true 
-defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true 
+defaults write com.apple.frameworks.diskimages skip-verify -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 ###############################################################################
