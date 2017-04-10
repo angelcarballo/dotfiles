@@ -69,7 +69,6 @@ Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
 Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
 Plug 'szw/vim-maximizer'                 " maximize/restore windows
 Plug 'dietsche/vim-lastplace'            " restore cursor position when re-opening files
-Plug 'gabesoft/vim-ags'                  " because sometimes grep is not enough
 Plug 'easymotion/vim-easymotion'         " quick jumps across lines/files/characters
 Plug 'majutsushi/tagbar'                 " navigate current file tags
 
@@ -130,7 +129,7 @@ let g:netrw_preview=1           " open previews vertically
 
 "" Vim-ruby options
 let ruby_spellcheck_strings=1   " enable spellcheck inside ruby strings
-let ruby_minlines=100           " avoid syntax errors while scrolling on large files
+let ruby_minlines=200           " avoid syntax errors while scrolling on large files
 
 "" IndentLine options
 let g:indentLine_char='·'
@@ -218,10 +217,10 @@ set undodir=$HOME/.vim/undo          " where to store undo files
 set nojoinspaces                     " only insert one space when joining after an '.'
 set breakindent                      " keep indentation on wrapped lines
 
-autocmd BufLeave,FocusLost * silent! wa                 " auto save files
-autocmd FocusGained * source ~/.vim_colorscheme         " reload colorscheme
-autocmd QuickFixCmdPost *grep* nested cwindow | redraw! " open quickfix window after using Grep
-autocmd FileType qf wincmd J                            " quickfix window should always be full width
+autocmd BufLeave,FocusLost * silent! wa                          " auto save files
+autocmd FocusGained * source ~/.vim_colorscheme | AirlineRefresh " reload colorscheme
+autocmd QuickFixCmdPost *grep* nested cwindow | redraw!          " open quickfix window after using Grep
+autocmd FileType qf wincmd J                                     " quickfix window should always be full width
 
 runtime macros/matchit.vim           " allow % to match more than just single characters
 
