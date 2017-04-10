@@ -102,7 +102,7 @@ Plug 'christoomey/vim-system-copy'      " copy command (cp), copy current line (
 Plug 'xolox/vim-notes'                  " easy note taking
 Plug 'xolox/vim-misc'                   " required by vim-notes
 Plug 'tpope/vim-capslock'               " software caps lock (gC / <c-g>c)
-Plug 'papanikge/vim-voogle'             " perform google searches
+Plug 'szw/vim-g'                        " perform google searches
 
 " Plugins must be added before the following line
 call plug#end()
@@ -386,7 +386,7 @@ nnoremap <leader>fM :silent Ggrep "def self.<c-r><c-w>"<cr>
 nnoremap <leader>fc :silent Ggrep "class <c-r><c-w>"<cr>
 nnoremap <leader>fC :silent Ggrep "module <c-r><c-w>"<cr>
 
-" g - Git
+" g - Git/Google
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gq :call QuickFixGitStatus()<cr>:copen<cr>:cfirst<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
@@ -404,6 +404,9 @@ vnoremap <leader>go :Gbrowse<cr>
 nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gL :GV<cr>
 vnoremap <leader>gl :Glog<cr>
+
+nnoremap <leader>gg :Google<cr>
+vnoremap <leader>gg :Google<cr>
 
 " h - Git Hunks (added by vim-gitgutter)
 " <leader>hs -> stage hunk

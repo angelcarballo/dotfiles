@@ -18,8 +18,6 @@
 (load "copy-path.el")
 (load "ensure-package-installed.el")
 
-
-
 ;; Make sure to have downloaded archive description.
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
@@ -163,7 +161,7 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror)
 
-;; store all backup and autosave files in the tmp dir
+;; Store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
@@ -174,6 +172,7 @@
           (lambda () (delete-trailing-whitespace))
           )
 
+;; Autosave files
 (add-hook 'evil-insert-state-exit-hook 'evil-autosave)
 
 ;; Spaces instead of tabs
@@ -220,10 +219,8 @@
       inhibit-startup-echo-area-message t
       inhibit-startup-message t)
 
-;; Hide toolbar
+;; Hide toolbarand menubar
 (tool-bar-mode -1)
-
-;; Hide menubar
 (menu-bar-mode -1)
 
 ;; Hide scrollbars
@@ -304,7 +301,6 @@
 ;; flyspell
 (define-key evil-normal-state-map (kbd "zf") 'flyspell-auto-correct-word)
 (define-key evil-normal-state-map (kbd "]s") 'flyspell-goto-next-error)
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
