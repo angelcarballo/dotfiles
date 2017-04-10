@@ -433,6 +433,9 @@ nnoremap <silent> <leader>oi :Einitializer<space>
 nnoremap <silent> <leader>ov :Eview<space>
 nnoremap <silent> <leader>oq :cw<cr>
 
+" p - Paste (usefull to avoid auto indenting of pasted text)
+nnoremap <leader>p p
+
 " P - Plugins
 nnoremap <leader>Pi :PlugInstall<cr>
 nnoremap <leader>Pc :PlugClean<cr>
