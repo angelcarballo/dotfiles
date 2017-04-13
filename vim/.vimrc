@@ -299,11 +299,11 @@ autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 "}}}
 " Key bindings (leader) ---------------------------------------------------------------{{{
 
-" move to {char}{char}
+" Show and switch to buffers
 nmap <leader><space> :buffers<cr>:bu<Space>
 
-" , - Search lines on opened buffers
-nnoremap <leader>, :Lines<cr>
+" , - Show and paste from registers
+nnoremap <leader>, :Reg<cr>
 
 " <leader> - Switch between the last two files
 nnoremap <leader><tab> <c-^>
