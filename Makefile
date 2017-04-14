@@ -34,6 +34,9 @@ git:
 	git config --global alias.co checkout
 	git config --global alias.b branch
 	git config --global alias.ctags '!~/.git_template/hooks/ctags'
+	git config --global alias.prune "fetch --prune"
+	git config --global alias.undo "reset --soft HEAD^"
+	git config --global alias.stashall "stash save --include-untracked"
 
 # Install rbenv with ruby-build, rbenv-default-gems and rbenv-ctags plugins
 rbenv:
