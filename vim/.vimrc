@@ -46,7 +46,6 @@ Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
 Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
 Plug 'vim-scripts/ReplaceWithRegister'  " replace without yanking operator (gr..)
 Plug 'gavinbeatty/dragvisuals.vim'      " move visual blocks around
-Plug 'rstacruz/vim-xtract'              " extract blocks into new files
 
 " Text objects
 Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object <r>
@@ -102,7 +101,7 @@ Plug 'christoomey/vim-system-copy'      " copy command (cp), copy current line (
 Plug 'xolox/vim-notes'                  " easy note taking
 Plug 'xolox/vim-misc'                   " required by vim-notes
 Plug 'tpope/vim-capslock'               " software caps lock (gC / <c-g>c)
-Plug 'szw/vim-g'                        " perform google searches
+Plug 'papanikge/vim-voogle'             " perform google searches (gs)
 
 " Plugins must be added before the following line
 call plug#end()
@@ -164,9 +163,6 @@ let g:notes_conceal_code=0
 let g:notes_conceal_italic=0
 let g:notes_conceal_bold=0
 let g:notes_conceal_url=0
-
-"" Change vim-voogle mapping
-let g:voogle_map = "gO"
 
 "" Vim-Switch options
 let g:switch_custom_definitions=
@@ -303,11 +299,11 @@ autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 "}}}
 " Key bindings (leader) ---------------------------------------------------------------{{{
 
-" move to {char}{char}
+" Show and switch to buffers
 nmap <leader><space> :buffers<cr>:bu<Space>
 
-" , - Search lines on opened buffers
-nnoremap <leader>, :Lines<cr>
+" , - Show and paste from registers
+nnoremap <leader>, :Reg<cr>
 
 " <leader> - Switch between the last two files
 nnoremap <leader><tab> <c-^>
@@ -387,7 +383,7 @@ nnoremap <leader>fM :silent Ggrep "def self.<c-r><c-w>"<cr>
 nnoremap <leader>fc :silent Ggrep "class <c-r><c-w>"<cr>
 nnoremap <leader>fC :silent Ggrep "module <c-r><c-w>"<cr>
 
-" g - Git/Google
+" g - Git
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gq :call QuickFixGitStatus()<cr>:copen<cr>:cfirst<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
@@ -405,9 +401,6 @@ vnoremap <leader>go :Gbrowse<cr>
 nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gL :GV<cr>
 vnoremap <leader>gl :Glog<cr>
-
-nnoremap <leader>gg :Google<cr>
-vnoremap <leader>gg :Google<cr>
 
 " h - Git Hunks (added by vim-gitgutter)
 " <leader>hs -> stage hunk
