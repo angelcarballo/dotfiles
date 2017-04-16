@@ -465,7 +465,7 @@ noremap <silent> <leader>tf ggVG:call VimuxSlime()<cr>
 nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
 nnoremap <silent> <leader>ti :VimuxInspectRunner<cr>
 nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
-nnoremap <silent> <leader>tz :VimuxZoomRunner<cr>
+nnoremap <silent> <leader>t<space> :VimuxZoomRunner<cr>
 " Tab management
 nnoremap <silent> <leader>tn :tabnew<cr>
 
