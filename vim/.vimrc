@@ -499,16 +499,9 @@ nmap <silent> K <Plug>DashSearch
 " Move by two consecutive characters (any direction or window)
 nmap s <Plug>(easymotion-overwin-f2)
 
-" Delete using black hole register
-nnoremap <bs> "_d
-inoremap <bs> "_d
-
 " Fix closest spelling error
 nnoremap <c-\> [s1z=``
 inoremap <c-\> <c-g>u<esc>[s1z=`]a<c-g>u
-
-" Quick save and close
-nnoremap <c-q> :wq!<cr>
 
 " Auto indent pasted text
 nnoremap p p=`]<c-o>
@@ -634,6 +627,7 @@ augroup END
 augroup pythongroup
   autocmd!
   autocmd FileType python :set tabstop=8 expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType python let b:dispatch='python %'
 augroup END
 
 "}}}
@@ -683,7 +677,7 @@ augroup END
 "}}}
 " Type: Elixir -----------------------------------------------------------------{{{
 
-augroup rubygroup
+augroup elixirgroup
   autocmd!
   autocmd FileType elixir let b:dispatch='elixir %'
 augroup END
