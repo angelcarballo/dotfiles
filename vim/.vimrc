@@ -398,9 +398,9 @@ nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>go :Gbrowse<cr>
 vnoremap <leader>go :Gbrowse<cr>
-nnoremap <leader>gl :Glog<cr>
+nnoremap <leader>gl :GV!<cr>
 nnoremap <leader>gL :GV<cr>
-vnoremap <leader>gl :Glog<cr>
+vnoremap <leader>gl :GV<cr>
 
 " h - Git Hunks (added by vim-gitgutter)
 " <leader>hs -> stage hunk
