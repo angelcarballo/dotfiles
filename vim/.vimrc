@@ -291,6 +291,7 @@ ab bpry require 'pry'; binding.pry
 ab classdescription #== Description
       \<cr>
       \<cr>
+
 "}}}
 " Skeletons -------------------------------------------------------------{{{
 
@@ -309,10 +310,6 @@ nnoremap <leader>, :Reg<cr>
 
 " <leader> - Switch between the last two files
 nnoremap <leader><tab> <c-^>
-
-" [, ] - Move between tabs
-nnoremap <leader>[ :tabp<cr>
-nnoremap <leader>] :tabn<cr>
 
 " /,? - Search in project
 nnoremap <leader>/ :silent Ggrep ""<left>
@@ -415,18 +412,7 @@ nnoremap <leader>ij :%!python -m json.tool<cr>
 nnoremap <leader>lg :call QuickFixGitStatus()<cr> \| :cnext<cr>
 nnoremap <silent> <leader>lc `[
 
-" n - Notes/Numbers
-nnoremap <leader>nr :RecentNotes<cr>
-nnoremap <leader>ns :SearchNotes<space>
-nnoremap <leader>nn :Note<space>
-vnoremap <leader>nc :NoteFromSelectedText<space>
-
 " o - Open
-nnoremap <silent> <leader>om :Emodel<space>
-nnoremap <silent> <leader>oc :Econtroller<space>
-nnoremap <silent> <leader>os :Espec<space>
-nnoremap <silent> <leader>oi :Einitializer<space>
-nnoremap <silent> <leader>ov :Eview<space>
 nnoremap <silent> <leader>oq :cw<cr>
 
 " p - Paste (usefull to avoid auto indenting of pasted text)
@@ -441,9 +427,6 @@ nnoremap <leader>Pg :PlugUpgrade<cr>
 " q - Quit
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :qall!<cr>
-
-" r - Remove/Refactor
-nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
 
 " s - Specs
 nnoremap <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
@@ -479,7 +462,6 @@ nnoremap <leader>Vs :so $MYVIMRC<cr>
 nnoremap <silent> <leader>wc :wq<cr>
 nnoremap <silent> <leader>wq :wq<cr>
 nnoremap <silent> <leader>wo :only<cr>
-nnoremap <silent> <leader>wC :only<cr>
 nnoremap <silent> <leader>we <c-w>=
 nnoremap <silent> <leader>wf :MaximizerToggle<cr>
 nnoremap <silent> <leader>ws :sp<cr>
@@ -502,7 +484,6 @@ nmap <silent> K <Plug>DashSearch
 nmap s <Plug>(easymotion-overwin-f2)
 
 " Fix closest spelling error
-nnoremap <c-\> [s1z=``
 inoremap <c-\> <c-g>u<esc>[s1z=`]a<c-g>u
 
 " Auto indent pasted text
@@ -523,10 +504,6 @@ inoremap <c-u> <esc>gUiwea
 nnoremap <silent> k gk
 nnoremap <silent> j gj
 
-" Quick region expand in visual mode
-vmap v <Plug>(expand_region_expand)
-vmap <c-v> <Plug>(expand_region_shrink)
-
 " Use arrow keys to resize splits
 nnoremap <up> :resize -5<cr>
 nnoremap <down> :resize +5<cr>
@@ -543,7 +520,7 @@ nnoremap Y y$
 nnoremap H ^
 nnoremap L $
 
-" Easy next/previews tab
+" Unimpaired style next/previews tab
 nnoremap [w :tabp<cr>
 nnoremap ]w :tabn<cr>
 
