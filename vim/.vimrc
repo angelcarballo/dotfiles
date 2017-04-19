@@ -53,6 +53,7 @@ Plug 'whatyouhide/vim-textobj-erb'      " ERB block text object <E>
 Plug 'kana/vim-textobj-entire'          " entire buffer text object <e>
 Plug 'michaeljsmith/vim-indent-object'  " indentation based text object <i/I>
 Plug 'b4winckler/vim-angry'             " function argument text object <a/A>
+Plug 'vim-scripts/camelcasemotion'      " camel and snake case text objects
 
 " Look & Feel
 Plug 'yggdroot/indentLine'               " show indentation lines
