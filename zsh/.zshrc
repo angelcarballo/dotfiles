@@ -37,6 +37,10 @@ bindkey '^b' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^w' backward-kill-word
 
+# vim-style history navigation
+bindkey '^p' up-history
+bindkey '^n' down-history
+
 # edit current command with VIM (or whatever $EDITOR is set to)
 autoload -z edit-command-line
 zle -N edit-command-line
