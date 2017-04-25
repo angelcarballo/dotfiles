@@ -1,6 +1,7 @@
 " Plugins  ------------------------------------------------------------{{{
 
-set nocompatible                          " be iMproved
+" be iMproved
+set nocompatible
 
 " initialize vim-plug
 call plug#begin('~/.vim/plugged')
@@ -102,7 +103,6 @@ Plug 'christoomey/vim-system-copy'      " copy command (cp), copy current line (
 Plug 'xolox/vim-notes'                  " easy note taking
 Plug 'xolox/vim-misc'                   " required by vim-notes
 Plug 'tpope/vim-capslock'               " software caps lock (gC / <c-g>c)
-Plug 'papanikge/vim-voogle'             " perform google searches (gs)
 
 " Plugins must be added before the following line
 call plug#end()
@@ -430,6 +430,9 @@ nnoremap <leader>Pg :PlugUpgrade<cr>
 " q - Quit
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :qall!<cr>
+
+" r - Remove
+nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
 
 " s - Specs
 nnoremap <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
