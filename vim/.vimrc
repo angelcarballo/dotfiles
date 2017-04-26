@@ -8,7 +8,6 @@ call plug#begin('~/.vim/plugged')
 
 " Basic plugins
 Plug 'kana/vim-textobj-user'            " custom text object support
-Plug 'eiginn/netrw'                     " file manager
 Plug 'tpope/vim-vinegar'                " file manager improvements
 Plug 'tpope/vim-repeat'                 " extend repeat support
 Plug 'tpope/vim-unimpaired'             " multiple mappings using [ & ]
@@ -67,7 +66,6 @@ Plug 'kshenoy/vim-signature'             " better mark management
 Plug '/usr/local/opt/fzf'                " homebrew version of fzf
 Plug 'junegunn/fzf.vim'                  " fzf-vim for fzf helpers
 Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
-Plug 'cyphactor/vim-open-alternate'      " open alternate files (i.e. implementation/spec)
 Plug 'szw/vim-maximizer'                 " maximize/restore windows
 Plug 'dietsche/vim-lastplace'            " restore cursor position when re-opening files
 Plug 'easymotion/vim-easymotion'         " quick jumps across lines/files/characters
@@ -371,8 +369,6 @@ nnoremap <silent> <leader>es :Sex<cr>
 nnoremap <silent> <leader>ev :Vex<cr>
 
 " f - File/Find
-nnoremap <leader>fa :OpenAlternate<cr>
-nnoremap <leader>fA :vsplit<cr>:OpenAlternate<cr>
 nnoremap <leader>fl <c-^>
 nnoremap <leader>fs :up<cr>
 nnoremap <silent> <leader>fd :Files %:p:h<cr>
