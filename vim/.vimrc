@@ -108,6 +108,9 @@ call plug#end()
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
 
+" gitgutter options
+let g:gitgutter_max_signs = 50  " default: 500
+
 " Autopairs options
 let g:AutoPairsFlyMode = 1
 
