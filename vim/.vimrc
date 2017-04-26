@@ -185,6 +185,8 @@ let g:maximizer_set_default_mapping=1
 " map leader to <space>
 let mapleader="\<Space>"
 
+set autowrite                        " autowrite after make, ! and friends
+set complete-=i                      " searching includes can be slow
 set encoding=utf-8                   " use UTF8 by default
 set number                           " show line numbers
 set showcmd                          " show complete commands
@@ -198,7 +200,7 @@ if &term =~ '^screen'
 endif
 set noswapfile                       " disable swap files, let git do the work
 set splitright                       " open new vertical split panes to right
-set history=1000                     " max history
+set history=200                      " increase history (default: 50)
 set hlsearch                         " highlight search results
 set incsearch                        " incremental search
 set ignorecase                       " ignore case on search ...
@@ -209,16 +211,15 @@ set wildmenu                         " visual auto complete for command menu
 set lazyredraw                       " redraw only when needed
 set formatoptions+=j                 " delete comment character when joining commented lines
 set omnifunc=syntaxcomplete#Complete " enable omni completion
-set timeoutlen=500                   " don't wait so long for the next key press
+set timeoutlen=1200                  " a little bit more time for macros
+set ttimeoutlen=50                   " make Esc work faster
 set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
 set autoread                         " if a file changes outside Vim, reload its contents automatically
 set undofile                         " persist undo history
-set undolevels=1000                  " max undo levels
 set undodir=$HOME/.vim/undo          " where to store undo files
 set nojoinspaces                     " only insert one space when joining after an '.'
 set breakindent                      " keep indentation on wrapped lines
 
-autocmd BufLeave,FocusLost * silent! wa                          " auto save files
 autocmd FocusGained * source ~/.vim_colorscheme | AirlineRefresh " reload colorscheme
 autocmd QuickFixCmdPost *grep* nested cwindow | redraw!          " open quickfix window after using Grep
 autocmd FileType qf wincmd J                                     " quickfix window should always be full width
