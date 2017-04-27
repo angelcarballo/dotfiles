@@ -41,5 +41,8 @@ brew "ctags"
 # terminal multiplexer
 brew "tmux"
 
+# better tmux on mac
+brew "reattach-to-user-namespace"
+
 # ...to rule them all
 brew "macvim", args: ['override-system-vim']
