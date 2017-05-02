@@ -98,9 +98,6 @@ if [[ ! -d "$TMPDIR"  ]]; then
   mkdir -p -m 700 "$TMPDIR"
 fi
 
-# enable rbenv
-eval "$(rbenv init -)"
-
 # source local config if present
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
@@ -116,5 +113,6 @@ export CHEATCOLORS=true
 # initialize base16 colorscheme
 source $SHELL_COLORSCHEME
 
-# enable syntax highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# enable rbenv
+eval "$(rbenv init -)"
+
