@@ -2,7 +2,8 @@
 source ~/.zsh/antigen.zsh
 
 # antigen Bundles
-antigen bundle ssh-agent                           # For SSH, starting ssh-agent is annoying
+# antigen bundle ssh-agent                           # For SSH, starting ssh-agent is annoying
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 # dont use zle on emacs to aviod duplicated input
 if [[ -n ${INSIDE_EMACS} ]]; then
