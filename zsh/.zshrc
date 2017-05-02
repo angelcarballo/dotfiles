@@ -86,6 +86,9 @@ compdef man="man"
 # paths common to all platforms
 export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$PATH"
 
+# Homebrew
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
 # fix bug when passing arguments to rake
 unsetopt nomatch
 
