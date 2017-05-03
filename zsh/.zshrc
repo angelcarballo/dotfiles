@@ -1,17 +1,26 @@
-# load Antigen plugin manager
-source ~/.zsh/antigen.zsh
+# load zplug plugin manager
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
-# antigen Bundles
-# antigen bundle ssh-agent                           # For SSH, starting ssh-agent is annoying
-antigen bundle zsh-users/zsh-syntax-highlighting
+# plugins
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "paulirish/git-open"
+
+# install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+# then, source plugins and add commands to $PATH
+zplug load
 
 # dont use zle on emacs to aviod duplicated input
 if [[ -n ${INSIDE_EMACS} ]]; then
     unsetopt zle
 fi
-
-# tell antigen that you're done.
-antigen apply
 
 # theme
 source ~/.zsh/theme.zsh

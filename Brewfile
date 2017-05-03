@@ -14,8 +14,7 @@ brew "libyaml"
 # just a better shell
 brew "zsh"
 brew "zsh-completions"
-brew "zsh-syntax-highlighting"
-brew "antigen"
+brew "zplug"
 
 # remove ANSI codes, useful for tmux-logging
 brew "ansifilter"
