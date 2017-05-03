@@ -48,8 +48,8 @@ bindkey '^e' end-of-line
 bindkey '^w' backward-kill-word
 
 # vim-style history navigation
-bindkey '^p' up-history
-bindkey '^n' down-history
+bindkey '^n' up-history
+bindkey '^p' down-history
 
 # edit current command with VIM (or whatever $EDITOR is set to)
 autoload -z edit-command-line
