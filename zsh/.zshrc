@@ -63,7 +63,7 @@ bindkey '^z' fancy-ctrl-z
 bindkey '^r' fzf-search-history
 
 # repeat last command
-bindkey -s '^f' "!!\n"
+bindkey -s '^g' "!!\n"
 
 # easier cd into frequent directories
 setopt auto_cd
