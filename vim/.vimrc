@@ -208,8 +208,6 @@ set wildmenu                         " visual auto complete for command menu
 set lazyredraw                       " redraw only when needed
 set formatoptions+=j                 " delete comment character when joining commented lines
 set omnifunc=syntaxcomplete#Complete " enable omni completion
-set ttimeout                         " timeout when waiting for key sequences ...
-set ttimeoutlen=50                   " ... after this number of miliseconds
 set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
 set autoread                         " if a file changes outside Vim, reload its contents automatically
 set undofile                         " persist undo history
@@ -248,7 +246,7 @@ set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
 let &showbreak='↳ '            " indicator for wrapped lines
 
-" statusbar
+" statusline
 set statusline=                                     " custom status line
 set statusline+=%#PmenuSel#                         " color...
 set statusline+=\ %{StatuslineGit()}                " git branch
