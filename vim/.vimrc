@@ -210,8 +210,8 @@ set wildmenu                         " visual auto complete for command menu
 set lazyredraw                       " redraw only when needed
 set formatoptions+=j                 " delete comment character when joining commented lines
 set omnifunc=syntaxcomplete#Complete " enable omni completion
-set timeoutlen=1200                  " a little bit more time for macros
-set ttimeoutlen=50                   " make Esc work faster
+set ttimeout                         " timeout when waiting for key sequences ...
+set ttimeoutlen=50                   " ... after this number of miliseconds
 set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
 set autoread                         " if a file changes outside Vim, reload its contents automatically
 set undofile                         " persist undo history
