@@ -258,8 +258,8 @@ set statusline+=%=                                  " right align the following 
 set statusline+=\ %p%%                              " percentage through file
 set statusline+=\ ☰\ %l/%L\                         " line number/total lines
 set statusline+=%#error#                            " color ...
-set statusline+=%{StatuslineTrailingSpaceWarning()}
-set statusline+=%{StatuslineTabWarning()}
+set statusline+=%{StatuslineTrailingSpaceWarning()} " railing whitespacee indicator
+set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
 set statusline+=%*
 
 " background config managed by base16
@@ -489,6 +489,9 @@ nnoremap <leader>x :Dispatch<cr>
 " Easily exit insert mode
 inoremap kj <esc>
 vnoremap kj <esc>
+
+" open help vertically
+cnoremap h vert help
 
 " Easily exit insert mode
 nmap <silent> K <Plug>DashSearch
