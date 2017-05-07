@@ -14,7 +14,6 @@ Plug 'tpope/vim-unimpaired'             " multiple mappings using [ & ]
 Plug 'tpope/vim-sleuth'                 " auto set indent settings based on filetype
 Plug 'stefandtw/quickfix-reflector.vim' " allow changes from quickfix window
 Plug 'AndrewRadev/splitjoin.vim'        " split/join statements (gS, gJ)
-Plug 'kana/vim-arpeggio'                " piano style mappings
 
 " Git
 Plug 'tpope/vim-fugitive'               " git integration
@@ -307,9 +306,6 @@ autocmd BufNewFile *_spec.rb 0read ~/.vim/skeleton/rspec.rb
 autocmd BufNewFile *.sh 0read ~/.vim/skeleton/bash.sh
 autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 
-"}}}
-" Key bindings (piano-style) ---------------------------------------------------------------{{{
-call arpeggio#map('n', '', 0, 'fj', ':VimuxZoomRunner<CR>')
 "}}}
 " Key bindings (leader) ---------------------------------------------------------------{{{
 
