@@ -250,7 +250,8 @@ set statusline=                                     " custom status line
 set statusline+=%#PmenuSel#                         " color...
 set statusline+=\ %{StatuslineGit()}                " git branch
 set statusline+=%#Pmenu#                            " color...
-set statusline+=\ %f                                " relative path
+set statusline+=\ %n:                               " buffer number
+set statusline+=%f                                  " relative path
 set statusline+=%m                                  " modified flag
 set statusline+=%r                                  " read only flag
 set statusline+=%=                                  " right align the following ...
