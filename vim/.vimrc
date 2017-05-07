@@ -222,7 +222,7 @@ else
   set ttymouse=xterm2
 end
 
-autocmd FocusGained * source ~/.vim_colorscheme " reload colorscheme
+autocmd FocusGained * source ~/.vim_colorscheme                  " reload colorscheme
 autocmd QuickFixCmdPost *grep* nested cwindow | redraw!          " open quickfix window after using Grep
 autocmd FileType qf wincmd J                                     " quickfix window should always be full width
 
@@ -257,7 +257,7 @@ set statusline+=%=                                  " right align the following 
 set statusline+=\ %p%%                              " percentage through file
 set statusline+=\ ☰\ %l/%L\                         " line number/total lines
 set statusline+=%#error#                            " color ...
-set statusline+=%{StatuslineTrailingSpaceWarning()} " railing whitespacee indicator
+set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing whitespacee indicator
 set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
 set statusline+=%*
 
@@ -291,11 +291,11 @@ set wildignore+=*.eof,*.ttf,*.woff                     " font files
 "}}}
 " Abbreviations -------------------------------------------------------------{{{
 
-ab rk =>
-ab lorem Lorem ipsum dolor sit amet
-ab plorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-ab bpry require 'pry'; binding.pry
-ab classdescription #== Description
+iabbr rk =>
+iabbr lorem Lorem ipsum dolor sit amet
+iabbr plorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+iabbr bpry require 'pry'; binding.pry
+iabbr classdescription #== Description
       \<cr>
       \<cr>
 
