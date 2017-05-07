@@ -349,14 +349,17 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy git branch
   nnoremap <leader>cb :let @*=fugitive#head()<cr>:echo "Git branch copied"<cr>
 
+  " copy file name  (foo.txt)
+  nnoremap <leader>cfn :let @*=expand("%:t")<cr>:echo "Full name copied"<cr>
+
   " copy relative path  (src/foo.txt)
-  nnoremap <leader>cf :let @*=expand("%")<cr>:echo "File path copied"<cr>
+  nnoremap <leader>cfp :let @*=expand("%")<cr>:echo "File path copied"<cr>
 
   " copy absolute path  (/something/src/foo.txt)
-  nnoremap <leader>cF :let @*=expand("%:p")<cr>:echo "Full file path copied"<cr>
+  nnoremap <leader>cff :let @*=expand("%:p")<cr>:echo "Full file path copied"<cr>
 
   " relative path with line number
-  nnoremap <leader>cl :let @+=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
+  nnoremap <leader>cfl :let @+=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
 endif
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
@@ -364,7 +367,7 @@ nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 nnoremap <silent> <leader>cg <c-w>k<c-w>c
 
 " d - Duplicate
-nnoremap <leader>dp yap}p
+nnoremap <leader>dp yap:Commentary<cr>}p
 nnoremap <leader>dl yy:Commentary<cr>p
 vnoremap <leader>dl ygv:Commentary<cr>']p
 
