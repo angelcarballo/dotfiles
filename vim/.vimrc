@@ -14,7 +14,6 @@ Plug 'tpope/vim-unimpaired'             " multiple mappings using [ & ]
 Plug 'tpope/vim-sleuth'                 " auto set indent settings based on filetype
 Plug 'stefandtw/quickfix-reflector.vim' " allow changes from quickfix window
 Plug 'AndrewRadev/splitjoin.vim'        " split/join statements (gS, gJ)
-Plug 'kana/vim-arpeggio'                " piano style mappings
 
 " Git
 Plug 'tpope/vim-fugitive'               " git integration
@@ -59,8 +58,6 @@ Plug 'vim-scripts/camelcasemotion'      " camel and snake case text objects
 " Look & Feel
 Plug 'yggdroot/indentLine'               " show indentation lines
 Plug 'pgdouyon/vim-evanesco'             " remove search highlight on cursor move
-Plug 'vim-airline/vim-airline'           " better status bar
-Plug 'vim-airline/vim-airline-themes'    " themes for airline
 Plug 'kshenoy/vim-signature'             " better mark management
 
 " Navigation
@@ -88,6 +85,7 @@ Plug 'tpope/gem-ctags'                    " include tags from installed gems
 Plug 'jez/vim-superman'                   " better man pager
 Plug 'wincent/terminus'                   " enhancements for terminal vim (focus events, cursor, etc.)
 Plug 'Townk/dash.vim'                     " Dash integration for documentation lookups
+Plug 'papanikge/vim-voogle'               " google search command
 
 " Runners
 Plug 'skalnik/vim-vroom'                " ruby test runner
@@ -111,9 +109,6 @@ call plug#end()
 
 " gitgutter options
 let g:gitgutter_max_signs = 50  " default: 500
-
-" Autopairs options
-let g:AutoPairsFlyMode = 1
 
 "" Easymotion options
 let g:EasyMotion_do_mapping = 0
@@ -210,8 +205,6 @@ set wildmenu                         " visual auto complete for command menu
 set lazyredraw                       " redraw only when needed
 set formatoptions+=j                 " delete comment character when joining commented lines
 set omnifunc=syntaxcomplete#Complete " enable omni completion
-set timeoutlen=1200                  " a little bit more time for macros
-set ttimeoutlen=50                   " make Esc work faster
 set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
 set autoread                         " if a file changes outside Vim, reload its contents automatically
 set undofile                         " persist undo history
@@ -227,7 +220,7 @@ else
   set ttymouse=xterm2
 end
 
-autocmd FocusGained * source ~/.vim_colorscheme | AirlineRefresh " reload colorscheme
+autocmd FocusGained * source ~/.vim_colorscheme                  " reload colorscheme
 autocmd QuickFixCmdPost *grep* nested cwindow | redraw!          " open quickfix window after using Grep
 autocmd FileType qf wincmd J                                     " quickfix window should always be full width
 
@@ -250,20 +243,22 @@ set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
 let &showbreak='↳ '            " indicator for wrapped lines
 
-" Airline configuration
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_skip_empty_sections=1
-let g:airline_theme='base16_shell'
-let g:airline#extensions#hunks#enabled=0
-let g:airline#extensions#branch#displayed_head_limit=15
-let g:airline#extensions#ctrlp#color_template='normal'
-" hide section x (tagbar, filetype, virtualenv)
-let g:airline_section_x=airline#section#create('')
-" hide section y (fileencoding, fileformat)
-let g:airline_section_y=airline#section#create('')
-" hide mode indicator
-let g:airline_section_a=airline#section#create(['crypt','paste','spell','iminsert'])
+" statusline
+set statusline=                                     " custom status line
+set statusline+=%#PmenuSel#                         " color...
+set statusline+=\ %{StatuslineGit()}                " git branch
+set statusline+=%#Pmenu#                            " color...
+set statusline+=\ %n:                               " buffer number
+set statusline+=%f                                  " relative path
+set statusline+=%m                                  " modified flag
+set statusline+=%r                                  " read only flag
+set statusline+=%=                                  " right align the following ...
+set statusline+=\ %p%%                              " percentage through file
+set statusline+=\ ☰\ %l/%L\                         " line number/total lines
+set statusline+=%#error#                            " color ...
+set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing whitespacee indicator
+set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
+set statusline+=%*
 
 " background config managed by base16
 if filereadable(expand("~/.vim_colorscheme"))
@@ -295,11 +290,11 @@ set wildignore+=*.eof,*.ttf,*.woff                     " font files
 "}}}
 " Abbreviations -------------------------------------------------------------{{{
 
-ab hh =>
-ab lorem Lorem ipsum dolor sit amet
-ab plorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-ab bpry require 'pry'; binding.pry
-ab classdescription #== Description
+iabbr rk =>
+iabbr lorem Lorem ipsum dolor sit amet
+iabbr plorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+iabbr bpry require 'pry'; binding.pry
+iabbr classdescription #== Description
       \<cr>
       \<cr>
 
@@ -310,9 +305,6 @@ autocmd BufNewFile *_spec.rb 0read ~/.vim/skeleton/rspec.rb
 autocmd BufNewFile *.sh 0read ~/.vim/skeleton/bash.sh
 autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 
-"}}}
-" Key bindings (piano-style) ---------------------------------------------------------------{{{
-call arpeggio#map('n', '', 0, 'fj', ':VimuxZoomRunner<CR>')
 "}}}
 " Key bindings (leader) ---------------------------------------------------------------{{{
 
@@ -356,14 +348,17 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy git branch
   nnoremap <leader>cb :let @*=fugitive#head()<cr>:echo "Git branch copied"<cr>
 
+  " copy file name  (foo.txt)
+  nnoremap <leader>cfn :let @*=expand("%:t")<cr>:echo "Full name copied"<cr>
+
   " copy relative path  (src/foo.txt)
-  nnoremap <leader>cf :let @*=expand("%")<cr>:echo "File path copied"<cr>
+  nnoremap <leader>cfp :let @*=expand("%")<cr>:echo "File path copied"<cr>
 
   " copy absolute path  (/something/src/foo.txt)
-  nnoremap <leader>cF :let @*=expand("%:p")<cr>:echo "Full file path copied"<cr>
+  nnoremap <leader>cff :let @*=expand("%:p")<cr>:echo "Full file path copied"<cr>
 
   " relative path with line number
-  nnoremap <leader>cl :let @+=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
+  nnoremap <leader>cfl :let @+=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
 endif
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
@@ -371,7 +366,7 @@ nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 nnoremap <silent> <leader>cg <c-w>k<c-w>c
 
 " d - Duplicate
-nnoremap <leader>dp yap}p
+nnoremap <leader>dp yap:Commentary<cr>}p
 nnoremap <leader>dl yy:Commentary<cr>p
 vnoremap <leader>dl ygv:Commentary<cr>']p
 
@@ -491,7 +486,6 @@ nnoremap <leader>x :Dispatch<cr>
 
 " Easily exit insert mode
 inoremap kj <esc>
-vnoremap kj <esc>
 
 " Easily exit insert mode
 nmap <silent> K <Plug>DashSearch
