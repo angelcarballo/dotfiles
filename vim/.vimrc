@@ -488,7 +488,6 @@ nnoremap <leader>x :Dispatch<cr>
 
 " Easily exit insert mode
 inoremap kj <esc>
-vnoremap kj <esc>
 
 " Easily exit insert mode
 nmap <silent> K <Plug>DashSearch
