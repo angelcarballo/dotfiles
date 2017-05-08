@@ -56,8 +56,6 @@ tmux_plugin_manager:
 
 base16:
 	git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-	curl https://raw.githubusercontent.com/kristijanhusak/vim-hybrid-material/master/base16-material/base16-material.dark.sh -o ~/.config/base16-shell/scripts/base16-material-dark.sh
-	curl https://raw.githubusercontent.com/kristijanhusak/vim-hybrid-material/master/base16-material/base16-material.light.sh -o ~/.config/base16-shell/scripts/base16-material-light.sh
 	chmod +x ~/.config/base16-shell/scripts/*.sh
 
 
