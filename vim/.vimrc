@@ -109,9 +109,6 @@ call plug#end()
 " gitgutter options
 let g:gitgutter_max_signs = 50  " default: 500
 
-" Autopairs options
-let g:AutoPairsFlyMode = 1
-
 "" Easymotion options
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
