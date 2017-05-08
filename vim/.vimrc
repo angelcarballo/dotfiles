@@ -85,6 +85,7 @@ Plug 'tpope/gem-ctags'                    " include tags from installed gems
 Plug 'jez/vim-superman'                   " better man pager
 Plug 'wincent/terminus'                   " enhancements for terminal vim (focus events, cursor, etc.)
 Plug 'Townk/dash.vim'                     " Dash integration for documentation lookups
+Plug 'papanikge/vim-voogle'               " google search command
 
 " Runners
 Plug 'skalnik/vim-vroom'                " ruby test runner
