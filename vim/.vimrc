@@ -88,7 +88,7 @@ Plug 'Townk/dash.vim'                     " Dash integration for documentation l
 
 " Runners
 Plug 'skalnik/vim-vroom'                " ruby test runner
-Plug 'skywind3000/asyncrun.vim'         " run processes on the background
+Plug 'tpope/vim-dispatch'               " run processes on the background
 Plug 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 
 " Extras
@@ -105,9 +105,6 @@ call plug#end()
 
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
-
-" provide Make command (makes fugitive use AsyncRun)
-command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
 " gitgutter options
 let g:gitgutter_max_signs = 50  " default: 500
@@ -483,6 +480,9 @@ nnoremap <silent> <leader>ws :sp<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
 
+" x - eXecute
+nnoremap <leader>x :Dispatch<cr>
+
 "}}}
 " Key bindings (other) ---------------------------------------------------------------{{{
 
@@ -603,6 +603,7 @@ augroup END
 augroup rubygroup
   autocmd!
   autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd FileType ruby let b:dispatch='ruby %'
 augroup END
 
 "}}}
@@ -611,6 +612,7 @@ augroup END
 augroup cucumbergroup
   autocmd!
   autocmd FileType cucumber setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd FileType cucumber let b:dispatch='ruby %'
 augroup END
 
 "}}}
@@ -619,6 +621,7 @@ augroup END
 augroup pythongroup
   autocmd!
   autocmd FileType python :set tabstop=8 expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType python let b:dispatch='python %'
 augroup END
 
 "}}}
@@ -627,6 +630,7 @@ augroup END
 augroup scalagroup
   autocmd!
   autocmd BufRead,BufNewFile *.hocon set filetype=yaml
+  autocmd FileType scala let b:dispatch='scala -nc %'
 augroup END
 
 "}}}
@@ -662,6 +666,14 @@ augroup gitcommit
   autocmd!
   autocmd Filetype gitcommit set spell
   autocmd Filetype gitcommit set nonu
+augroup END
+
+"}}}
+" Type: Elixir -----------------------------------------------------------------{{{
+
+augroup elixirgroup
+  autocmd!
+  autocmd FileType elixir let b:dispatch='elixir %'
 augroup END
 
 "}}}
