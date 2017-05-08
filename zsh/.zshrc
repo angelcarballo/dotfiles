@@ -32,7 +32,7 @@ source ~/.zsh/aliases.zsh
 bindkey -v
 export VISUAL=vim
 export EDITOR=vim
-export KEYTIMEOUT=1  # reduce delay when changing modes
+export KEYTIMEOUT=15  # reduce delay when changing modes
 
 # base16 color scripts
 export COLORS=$HOME/.config/base16-shell/scripts
@@ -64,6 +64,9 @@ bindkey '^r' fzf-search-history
 
 # repeat last command
 bindkey -s '^g' "!!\n"
+
+# exit insert mode with kj, like in real vim
+bindkey -M viins 'kj' vi-cmd-mode
 
 # easier cd into frequent directories
 setopt auto_cd
