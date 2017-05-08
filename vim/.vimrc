@@ -490,9 +490,6 @@ nnoremap <silent> <leader>ww <c-w>w
 inoremap kj <esc>
 vnoremap kj <esc>
 
-" open help vertically
-cnoremap h vert help
-
 " Easily exit insert mode
 nmap <silent> K <Plug>DashSearch
 
