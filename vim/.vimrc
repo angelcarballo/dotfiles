@@ -14,6 +14,7 @@ Plug 'tpope/vim-unimpaired'             " multiple mappings using [ & ]
 Plug 'tpope/vim-sleuth'                 " auto set indent settings based on filetype
 Plug 'stefandtw/quickfix-reflector.vim' " allow changes from quickfix window
 Plug 'AndrewRadev/splitjoin.vim'        " split/join statements (gS, gJ)
+Plug 'tpope/vim-abolish'                " ffancy substitutions and coercion
 
 " Git
 Plug 'tpope/vim-fugitive'               " git integration
