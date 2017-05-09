@@ -65,7 +65,7 @@ bindkey '^r' fzf-search-history
 # repeat last command
 bindkey -s '^g' "!!\n"
 
-# exit insert mode with kj, like in real vim
+# exit insert mode with kj, like in vim
 bindkey -M viins 'kj' vi-cmd-mode
 
 # easier cd into frequent directories
@@ -83,7 +83,7 @@ setopt hist_reduce_blanks    # trim commands before saving them
 SAVEHIST=10000               # history entries to keep in history file
 HISTSIZE=10000               # history entries to keep in memory
 HISTFILE=~/.zsh_history      # history location
-HISTORY_IGNORE="(ll|clear|c|clear|ls|cd *|pwd|exit|cd ..|rm *)"
+HISTORY_IGNORE="(ll|clear|c|clear|ls|cd *|pwd|exit|cd ..|rm *|rc|bi|fs|gd|gs|gp|git push|git pull|git fetch|v|cd|pry|dark|light)"
 
 # use vim as man pager, with autocompletion
 man() {
