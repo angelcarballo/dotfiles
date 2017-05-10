@@ -529,6 +529,8 @@ nnoremap Y y$
 " Easy beginning/end of line
 nnoremap H ^
 nnoremap L $
+vnoremap H ^
+vnoremap L $
 
 " Unimpaired style next/previews tab
 nnoremap [w :tabp<cr>
