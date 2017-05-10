@@ -569,11 +569,11 @@ onoremap in" :<c-u>normal! f"vi"<cr>
 " Global autocommands -----------------------------------------------------------------{{{
 
 fun! <SID>AutoMakeDirectory()
-    let s:directory = expand("<afile>:p:h")
+  let s:directory = expand("<afile>:p:h")
 
-    if !isdirectory(s:directory)
-        call mkdir(s:directory, "p")
-    endif
+  if !isdirectory(s:directory)
+    call mkdir(s:directory, "p")
+  endif
 endfun
 
 autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()
