@@ -70,8 +70,6 @@ alias vim='/usr/local/bin/vim'
 alias v='vim .'
 
 # Emacs
-alias emacs='/usr/local/Cellar/emacs/25.1/bin/emacs'
-alias emacsclient='/usr/local/Cellar/emacs/25.1/bin/emacsclient'
 alias ec='emacsclient -nw'
 alias e='emacsclient -nw .'
 
