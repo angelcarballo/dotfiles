@@ -248,8 +248,7 @@ set statusline=                                     " custom status line
 set statusline+=%#PmenuSel#                         " color...
 set statusline+=\ %{StatuslineGit()}                " git branch
 set statusline+=%#Pmenu#                            " color...
-set statusline+=\ %n:                               " buffer number
-set statusline+=%f                                  " relative path
+set statusline+=\ %f                                " relative path
 set statusline+=%m                                  " modified flag
 set statusline+=%r                                  " read only flag
 set statusline+=%=                                  " right align the following ...
@@ -437,6 +436,7 @@ nnoremap <leader>Q :qall!<cr>
 
 " r - Remove
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
+nnoremap <leader>rd :redraw!<cr>
 
 " s - Specs
 nnoremap <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
