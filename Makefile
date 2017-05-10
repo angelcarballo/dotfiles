@@ -28,6 +28,8 @@ git:
 	# use diff-so-fancy when diffing
 	git config --global pager.diff "diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '"
 	git config --global pager.show "diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '"
+	# don't require confirmation or force for git clean
+	git config --global clean.requireForce false
 	# aliases
 	git config --global alias.ci commit
 	git config --global alias.st status
