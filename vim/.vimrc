@@ -212,7 +212,6 @@ set undofile                         " persist undo history
 set undodir=$HOME/.vim/undo          " where to store undo files
 set nojoinspaces                     " only insert one space when joining after an '.'
 set breakindent                      " keep indentation on wrapped lines
-set relativenumber                   " display line numbers relative to the current one
 
 " Make the mouse (*gasp*) usable on large screens
 if has("mouse_sgr")
