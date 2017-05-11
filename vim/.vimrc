@@ -342,7 +342,7 @@ nnoremap <silent> <leader>bd :bdelete<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
 nnoremap <silent> <leader>bD :w <bar> %bd <bar> e#<cr>
 
-" c - Copy/Clear/Close
+" c - Copy/Clear/Close/Quickfix
 if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy git branch
   nnoremap <leader>cb :let @*=fugitive#head()<cr>:echo "Git branch copied"<cr>
@@ -363,6 +363,8 @@ endif
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 " clear git status window
 nnoremap <silent> <leader>cg <c-w>k<c-w>c
+" open quickfix window
+nnoremap <silent> <leader>co :Copen<cr>
 
 " d - Duplicate
 nnoremap <leader>dp yap:Commentary<cr>}p
@@ -417,9 +419,6 @@ nnoremap <leader>ij :%!python -m json.tool<cr>
 " l - Load /Last
 nnoremap <leader>lg :call QuickFixGitStatus()<cr> \| :cnext<cr>
 nnoremap <silent> <leader>lc `[
-
-" o - Open
-nnoremap <silent> <leader>oq :cw<cr>
 
 " p - Paste (usefull to avoid auto indenting of pasted text)
 nnoremap <leader>p p
