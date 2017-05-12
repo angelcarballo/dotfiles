@@ -377,7 +377,7 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   nnoremap <leader>cfp :let @*=expand("%")<cr>:echo "File path copied"<cr>
 
   " copy absolute path  (/something/src/foo.txt)
-  nnoremap <leader>cff :let @*=expand("%:p")<cr>:echo "Full file path copied"<cr>
+  nnoremap <leader>cfP :let @*=expand("%:p")<cr>:echo "Full file path copied"<cr>
 
   " relative path with line number
   nnoremap <leader>cfl :let @+=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
