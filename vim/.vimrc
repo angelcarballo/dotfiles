@@ -14,7 +14,7 @@ Plug 'tpope/vim-unimpaired'             " multiple mappings using [ & ]
 Plug 'tpope/vim-sleuth'                 " auto set indent settings based on filetype
 Plug 'stefandtw/quickfix-reflector.vim' " allow changes from quickfix window
 Plug 'AndrewRadev/splitjoin.vim'        " split/join statements (gS, gJ)
-Plug 'tpope/vim-abolish'                " ffancy substitutions and coercion
+Plug 'tpope/vim-abolish'                " fancy substitutions and coercion
 
 " Git
 Plug 'tpope/vim-fugitive'               " git integration
@@ -32,15 +32,12 @@ Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}                               
 Plug 'othree/html5.vim', {'for': 'html'}                                        " HTML5 support
 Plug 'elzr/vim-json', {'for': 'html'}                                           " Json support
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}                             " Markdown support
-Plug 'pprovost/vim-markdown-jekyll', {'for': 'markdown'}                        " Jekyll style markdown support
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}                           " improved Javascript support
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}                        " Typescript support
 Plug 'mustache/vim-mustache-handlebars', {'for': ['mustache', 'html.mustache']} " Mustache support
 Plug 'rodjek/vim-puppet', {'for': 'puppet'}                                     " Puppet support
 Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}                                   " Tmux syntax support
-Plug 'derekwyatt/vim-scala', {'for': 'scala'}                                   " Scala syntax support
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}                              " CoffeeScript support
-Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}                                " Elixir support
 
 " Motions & Operators
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
