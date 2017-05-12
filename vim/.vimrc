@@ -105,6 +105,31 @@ call plug#end()
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
 
+" vim-signature options
+let g:SignatureMap = {
+      \ 'Leader'             :  "m",
+      \ 'PlaceNextMark'      :  "",
+      \ 'ToggleMarkAtLine'   :  "",
+      \ 'PurgeMarksAtLine'   :  "",
+      \ 'DeleteMark'         :  "dm",
+      \ 'PurgeMarks'         :  "m<BS>",
+      \ 'PurgeMarkers'       :  "",
+      \ 'GotoNextLineAlpha'  :  "m]",
+      \ 'GotoPrevLineAlpha'  :  "m[",
+      \ 'GotoNextSpotAlpha'  :  "",
+      \ 'GotoPrevSpotAlpha'  :  "",
+      \ 'GotoNextLineByPos'  :  "",
+      \ 'GotoPrevLineByPos'  :  "",
+      \ 'GotoNextSpotByPos'  :  "",
+      \ 'GotoPrevSpotByPos'  :  "",
+      \ 'GotoNextMarker'     :  "",
+      \ 'GotoPrevMarker'     :  "",
+      \ 'GotoNextMarkerAny'  :  "",
+      \ 'GotoPrevMarkerAny'  :  "",
+      \ 'ListBufferMarks'    :  "",
+      \ 'ListBufferMarkers'  :  ""
+      \ }
+
 " gitgutter options
 let g:gitgutter_max_signs = 50  " default: 500
 
