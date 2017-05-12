@@ -64,7 +64,7 @@ Plug 'junegunn/fzf.vim'                  " fzf-vim for fzf helpers
 Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
 Plug 'szw/vim-maximizer'                 " maximize/restore windows
 Plug 'dietsche/vim-lastplace'            " restore cursor position when re-opening files
-Plug 'easymotion/vim-easymotion'         " quick jumps across lines/files/characters
+Plug 'justinmk/vim-sneak'                " quick jumps using two chars
 Plug 'majutsushi/tagbar'                 " navigate current file tags
 
 " Colorschemes
@@ -133,10 +133,8 @@ let g:SignatureMap = {
 " gitgutter options
 let g:gitgutter_max_signs = 50  " default: 500
 
-"" Easymotion options
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_smartcase = 1
-let g:EasyMotion_use_smartsign_us = 1
+" vim-sneak options
+let g:sneak#label = 1
 
 "" Instant markdown preview options
 let g:instant_markdown_autostart = 0
@@ -296,6 +294,9 @@ match ErrorMsg '\s\+$'
 " highlight character 121 to avoid long lines
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%121v', 100)
+
+" disable vim-sneak hightlighting
+autocmd ColorScheme * hi! link Sneak Normal
 
 "}}}
 " Files to ignore -------------------------------------------------------------{{{
@@ -515,9 +516,6 @@ cnoremap &d <CR>:d<CR>``
 
 " Easily exit insert mode
 nmap <silent> K <Plug>DashSearch
-
-" Move by two consecutive characters (any direction or window)
-nmap s <Plug>(easymotion-overwin-f2)
 
 " Fix closest spelling error
 inoremap <c-\> <c-g>u<esc>[s1z=`]a<c-g>u
