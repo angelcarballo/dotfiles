@@ -508,6 +508,11 @@ nnoremap <leader>x :Dispatch<cr>
 " Easily exit insert mode
 inoremap kj <esc>
 
+" allows incsearch highlighting for range commands
+cnoremap &t <CR>:t''<CR>
+cnoremap &m <CR>:m''<CR>
+cnoremap &d <CR>:d<CR>``
+
 " Easily exit insert mode
 nmap <silent> K <Plug>DashSearch
 
