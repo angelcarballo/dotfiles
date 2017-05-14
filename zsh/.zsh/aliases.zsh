@@ -59,6 +59,9 @@ alias br='branch'
 alias master='git checkout master'
 alias cb='git rev-parse --abbrev-ref HEAD | pbcopy'
 
+# Jekyll
+alias js='bundle exec jekyll serve --watch'
+
 # Docker & boot2docker
 alias dockerenv='eval `boot2docker shellinit 2>/dev/null`'
 
