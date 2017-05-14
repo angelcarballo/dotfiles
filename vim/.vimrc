@@ -15,6 +15,7 @@ Plug 'tpope/vim-sleuth'                 " auto set indent settings based on file
 Plug 'stefandtw/quickfix-reflector.vim' " allow changes from quickfix window
 Plug 'AndrewRadev/splitjoin.vim'        " split/join statements (gS, gJ)
 Plug 'tpope/vim-abolish'                " fancy substitutions and coercion
+Plug 'wincent/terminus'                 " enhancements for terminal vim (focus events, cursor, etc.)
 
 " Git
 Plug 'tpope/vim-fugitive'               " git integration
@@ -81,9 +82,8 @@ Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
 Plug 'benmills/vimux'                     " tmux integration
 Plug 'tpope/gem-ctags'                    " include tags from installed gems
 Plug 'jez/vim-superman'                   " better man pager
-Plug 'wincent/terminus'                   " enhancements for terminal vim (focus events, cursor, etc.)
 Plug 'Townk/dash.vim'                     " Dash integration for documentation lookups
-Plug 'papanikge/vim-voogle'               " google search command
+Plug 'papanikge/vim-voogle'               " google search command (gs : only from visual mode)
 
 " Runners
 Plug 'skalnik/vim-vroom'                " ruby test runner
@@ -232,6 +232,7 @@ set undofile                         " persist undo history
 set undodir=$HOME/.vim/undo          " where to store undo files
 set nojoinspaces                     " only insert one space when joining after an '.'
 set breakindent                      " keep indentation on wrapped lines
+set tabstop=4                        " tabs use 4 spaces by default (filetypes override this)
 
 " Make the mouse (*gasp*) usable on large screens
 if has("mouse_sgr")
@@ -294,9 +295,6 @@ match ErrorMsg '\s\+$'
 " highlight character 121 to avoid long lines
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%121v', 100)
-
-" disable vim-sneak hightlighting
-autocmd ColorScheme * hi! link Sneak Normal
 
 "}}}
 " Files to ignore -------------------------------------------------------------{{{
@@ -697,6 +695,14 @@ augroup END
 augroup elixirgroup
   autocmd!
   autocmd FileType elixir let b:dispatch='elixir %'
+augroup END
+
+"}}}
+" Type: Golang -----------------------------------------------------------------{{{
+
+augroup golanggroup
+  autocmd!
+  autocmd FileType go let b:dispatch='go run %'
 augroup END
 
 "}}}
