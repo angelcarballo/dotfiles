@@ -594,7 +594,11 @@ fun! <SID>AutoMakeDirectory()
   endif
 endfun
 
+" automatically generate new directories
 autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()
+
+" redraw when idle to avoid artifacts on terminal
+autocmd CursorHold * :redraw
 
 "}}}
 " Force file types -----------------------------------------------------------------{{{
