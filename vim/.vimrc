@@ -65,7 +65,6 @@ Plug 'junegunn/fzf.vim'                  " fzf-vim for fzf helpers
 Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
 Plug 'szw/vim-maximizer'                 " maximize/restore windows
 Plug 'dietsche/vim-lastplace'            " restore cursor position when re-opening files
-Plug 'justinmk/vim-sneak'                " quick jumps using two chars
 Plug 'majutsushi/tagbar'                 " navigate current file tags
 
 " Colorschemes
@@ -132,9 +131,6 @@ let g:SignatureMap = {
 
 " gitgutter options
 let g:gitgutter_max_signs = 50  " default: 500
-
-" vim-sneak options
-let g:sneak#label = 1
 
 "" Instant markdown preview options
 let g:instant_markdown_autostart = 0
