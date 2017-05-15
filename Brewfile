@@ -11,9 +11,8 @@ brew "imagemagick"
 brew "openssl"
 brew "libyaml"
 
-# just a better shell
+# zsh and plugin manager
 brew "zsh"
-brew "zsh-completions"
 brew "zplug"
 
 # remove ANSI codes, useful for tmux-logging
