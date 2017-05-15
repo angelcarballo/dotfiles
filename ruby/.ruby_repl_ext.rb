@@ -17,6 +17,10 @@ class String
       pipe.read.strip
     end
   end
+
+  def copy
+    self.public_send('|', 'pbcopy')
+  end
 end
 
 def clear
