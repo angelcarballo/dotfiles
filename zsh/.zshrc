@@ -72,17 +72,37 @@ bindkey -M viins 'kj' vi-cmd-mode
 setopt auto_cd
 cdpath=($HOME/src)
 
-# history settings
-setopt share_history         # share history between sessions
-setopt hist_save_no_dups     # only one entry per command on history
-setopt hist_find_no_dups     # history search should never show a command twice
-setopt hist_ignore_all_dups  # ignore duplicates globally
-setopt inc_append_history    # remove existing entries, and append new ones
-setopt hist_ignore_space     # ignore commands that start with at least one space
-setopt hist_reduce_blanks    # trim commands before saving them
-SAVEHIST=10000               # history entries to keep in history file
-HISTSIZE=10000               # history entries to keep in memory
-HISTFILE=~/.zsh_history      # history location
+# share history between sessions
+setopt share_history
+
+# only one entry per command on history
+setopt hist_save_no_dups
+
+# history search should never show a command twice
+setopt hist_find_no_dups
+
+# ignore duplicates globally
+setopt hist_ignore_all_dups
+
+# remove existing entries, and append new ones
+setopt inc_append_history
+
+# ignore commands that start with at least one space
+setopt hist_ignore_space
+
+# trim commands before saving them
+setopt hist_reduce_blanks
+
+# history entries to keep in history file
+SAVEHIST=10000
+
+# history entries to keep in memory
+HISTSIZE=10000
+
+# history location
+HISTFILE=~/.zsh_history
+
+# commands not added to history
 HISTORY_IGNORE="(ll|clear|c|clear|ls|cd *|pwd|exit|cd ..|rm *|rc|bi|fs|gd|gs|gp|git push|git pull|git fetch|v|cd|pry|dark|light)"
 
 # use vim as man pager, with autocompletion
