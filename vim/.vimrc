@@ -52,23 +52,16 @@ Plug 'whatyouhide/vim-textobj-erb'      " ERB block text object <E>
 Plug 'kana/vim-textobj-entire'          " entire buffer text object <e>
 Plug 'michaeljsmith/vim-indent-object'  " indentation based text object <i/I>
 Plug 'b4winckler/vim-angry'             " function argument text object <a/A>
-Plug 'vim-scripts/camelcasemotion'      " camel and snake case text objects
 
 " Look & Feel
-Plug 'yggdroot/indentLine'               " show indentation lines
-Plug 'pgdouyon/vim-evanesco'             " remove search highlight on cursor move
-Plug 'kshenoy/vim-signature'             " better mark management
+Plug 'pgdouyon/vim-evanesco'            " remove search highlight on cursor move
+Plug 'chriskempson/base16-vim'          " base16 colorschemes
 
 " Navigation
 Plug '/usr/local/opt/fzf'                " homebrew version of fzf
 Plug 'junegunn/fzf.vim'                  " fzf-vim for fzf helpers
 Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
-Plug 'szw/vim-maximizer'                 " maximize/restore windows
 Plug 'dietsche/vim-lastplace'            " restore cursor position when re-opening files
-Plug 'majutsushi/tagbar'                 " navigate current file tags
-
-" Colorschemes
-Plug 'chriskempson/base16-vim'          " base16 colorschemes
 
 " Auto completion
 Plug 'ervandew/supertab'                " magic code auto complete!
@@ -104,36 +97,11 @@ call plug#end()
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
 
-" vim-signature options
-let g:SignatureMap = {
-      \ 'Leader'             :  "m",
-      \ 'PlaceNextMark'      :  "",
-      \ 'ToggleMarkAtLine'   :  "",
-      \ 'PurgeMarksAtLine'   :  "",
-      \ 'DeleteMark'         :  "dm",
-      \ 'PurgeMarks'         :  "m<BS>",
-      \ 'PurgeMarkers'       :  "",
-      \ 'GotoNextLineAlpha'  :  "m]",
-      \ 'GotoPrevLineAlpha'  :  "m[",
-      \ 'GotoNextSpotAlpha'  :  "",
-      \ 'GotoPrevSpotAlpha'  :  "",
-      \ 'GotoNextLineByPos'  :  "",
-      \ 'GotoPrevLineByPos'  :  "",
-      \ 'GotoNextSpotByPos'  :  "",
-      \ 'GotoPrevSpotByPos'  :  "",
-      \ 'GotoNextMarker'     :  "",
-      \ 'GotoPrevMarker'     :  "",
-      \ 'GotoNextMarkerAny'  :  "",
-      \ 'GotoPrevMarkerAny'  :  "",
-      \ 'ListBufferMarks'    :  "",
-      \ 'ListBufferMarkers'  :  ""
-      \ }
+" gitgutter options
+let g:gitgutter_enabled = 0
 
 " gitgutter options
 let g:gitgutter_max_signs = 50  " default: 500
-
-"" Instant markdown preview options
-let g:instant_markdown_autostart = 0
 
 "" Dragvisuals options
 let g:DVB_TrimWS = 1            " delete whitespace after duplicating
@@ -148,9 +116,6 @@ let g:netrw_preview=1           " open previews vertically
 let ruby_spellcheck_strings=1      " enable spellcheck inside ruby strings
 let ruby_minlines=200              " avoid syntax errors while scrolling on large files
 let g:ruby_indent_block_style='do' " better syntax for nested blocks
-
-"" IndentLine options
-let g:indentLine_char='·'
 
 "" Vim Json options
 let g:vim_json_syntax_conceal=0
@@ -190,9 +155,6 @@ let g:switch_custom_definitions=
       \   ['pick', 'reword', 'edit', 'squash', 'fixup', 'exec', 'drop']
       \ ]
 
-"" Vim-maximizer options
-let g:maximizer_set_default_mapping=1
-
 "}}}
 " General settings ------------------------------------------------------------{{{
 
@@ -229,6 +191,7 @@ set undodir=$HOME/.vim/undo          " where to store undo files
 set nojoinspaces                     " only insert one space when joining after an '.'
 set breakindent                      " keep indentation on wrapped lines
 set tabstop=4                        " tabs use 4 spaces by default (filetypes override this)
+set expandtab                        " indent with spaces by default (overriden by filetype)
 
 " Make the mouse (*gasp*) usable on large screens
 if has("mouse_sgr")
@@ -261,19 +224,19 @@ set list                       " show extra whitespace
 let &showbreak='↳ '            " indicator for wrapped lines
 
 " statusline
-set statusline=                                     " custom status line
-set statusline+=%#PmenuSel#                         " color...
-set statusline+=\ %{StatuslineGit()}                " git branch
-set statusline+=%#Pmenu#                            " color...
-set statusline+=\ %f                                " relative path
-set statusline+=%m                                  " modified flag
-set statusline+=%r                                  " read only flag
-set statusline+=%=                                  " right align the following ...
-set statusline+=\ %p%%                              " percentage through file
-set statusline+=\ ☰\ %l/%L\                         " line number/total lines
-set statusline+=%#error#                            " color ...
-set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing whitespacee indicator
-set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
+set statusline=                                                   " custom status line
+set statusline+=%#PmenuSel#                                       " color...
+set statusline+=\ %{StatuslineGit()}                              " git branch
+set statusline+=%#Pmenu#                                          " color...
+set statusline+=\ %f                                              " relative path
+set statusline+=%m                                                " modified flag
+set statusline+=%r                                                " read only flag
+set statusline+=%=                                                " right align the following ...
+set statusline+=\ %p%%                                            " percentage through file
+set statusline+=\ ☰\ %l/%L\                                       " line number/total lines
+set statusline+=%#error#                                        " color ...
+set statusline+=%{StatuslineTrailingSpaceWarning()}             " trailing whitespacee indicator
+set statusline+=%{StatuslineTabWarning()}                       " mixed indentation indicator
 set statusline+=%*
 
 " background config managed by base16
@@ -400,7 +363,6 @@ nnoremap <silent> <leader>fd :Files %:p:h<cr>
 nnoremap <silent> <leader>ff :GFiles<cr>
 nnoremap <silent> <leader>fg :GFiles?<cr>
 nnoremap <silent> <leader>fr :History<cr>
-nnoremap <silent> <leader>ft :TagbarToggle<cr>
 
 nnoremap <leader>fm :silent Ggrep "def <c-r><c-w>"<cr>
 nnoremap <leader>fM :silent Ggrep "def self.<c-r><c-w>"<cr>
@@ -489,7 +451,6 @@ nnoremap <silent> <leader>wc :wq<cr>
 nnoremap <silent> <leader>wq :wq<cr>
 nnoremap <silent> <leader>wo :only<cr>
 nnoremap <silent> <leader>we <c-w>=
-nnoremap <silent> <leader>wf :MaximizerToggle<cr>
 nnoremap <silent> <leader>ws :sp<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
@@ -560,6 +521,7 @@ nnoremap cop :set paste! paste?<cr>
 nnoremap cotf :call ToggleFailFast()<cr>
 nnoremap cots :call ToggleSpring()<cr>
 nnoremap cotm :call ToggleVimuxTarget()<cr>
+nnoremap cog :GitGutterToggle<cr>
 
 " Dragvisuals, move visual block around
 vmap  <expr>  <left>   DVB_Drag('left')
@@ -596,9 +558,6 @@ endfun
 
 " automatically generate new directories
 autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()
-
-" redraw when idle to avoid artifacts on terminal
-autocmd CursorHold * :redraw
 
 "}}}
 " Force file types -----------------------------------------------------------------{{{

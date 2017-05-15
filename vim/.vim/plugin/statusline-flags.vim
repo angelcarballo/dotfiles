@@ -1,9 +1,7 @@
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
 
+" Show current git branch if present (via fugitive)
 function! StatuslineGit()
-  let l:branchname = GitBranch()
+  let l:branchname = exists("*fugitive#head") ? fugitive#head() : ""
   return strlen(l:branchname) > 0?'ᚠ '.l:branchname.' ':''
 endfunction
 
@@ -16,8 +14,9 @@ function! StatuslineTabWarning()
     let tabs = search('^\t', 'nw') != 0
     let spaces = search('^ ', 'nw') != 0
     let help = &buftype == 'help'
+    let git = &buftype == 'git'
 
-    if tabs && spaces && !help
+    if tabs && spaces && !help && !git
       let b:statusline_tab_warning =  '[mixed-indenting]'
     else
       let b:statusline_tab_warning = ''
