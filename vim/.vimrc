@@ -100,9 +100,6 @@ call plug#end()
 " gitgutter options
 let g:gitgutter_enabled = 0
 
-" gitgutter options
-let g:gitgutter_max_signs = 50  " default: 500
-
 "" Dragvisuals options
 let g:DVB_TrimWS = 1            " delete whitespace after duplicating
 
