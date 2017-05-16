@@ -5,7 +5,7 @@ set -g @prefix_highlight_bg 'colour20'
 # Status bar
 set-option -g status-position bottom
 set -g status-bg "colour18"
-set -g status-fg "colour21"
+set -g status-fg "colour20"
 set -g status-justify "left"
 set -g status-left-length "100"
 set -g status "on"
