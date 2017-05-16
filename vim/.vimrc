@@ -399,8 +399,8 @@ nnoremap <leader>ij :%!python -m json.tool<cr>
 nnoremap <leader>lg :call QuickFixGitStatus()<cr> \| :cnext<cr>
 nnoremap <silent> <leader>lc `[
 
-" p - Paste (usefull to avoid auto indenting of pasted text)
-nnoremap <leader>p p
+" pry
+nnoremap <leader>pry orequire 'pry'; binding.pry
 
 " P - Plugins
 nnoremap <leader>Pi :PlugInstall<cr>
