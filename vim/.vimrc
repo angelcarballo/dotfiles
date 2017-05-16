@@ -469,7 +469,10 @@ cnoremap &t <CR>:t''<CR>
 cnoremap &m <CR>:m''<CR>
 cnoremap &d <CR>:d<CR>``
 
-" Easily exit insert mode
+" type triple ':::' to open the command line window
+cnoremap :: <c-f>
+
+" open Dash for documentation lookups
 nmap <silent> K <Plug>DashSearch
 
 " Fix closest spelling error
