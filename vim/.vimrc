@@ -98,7 +98,7 @@ call plug#end()
 " Plugin options ---------------------------------------------------------------{{{
 
 " gitgutter options
-let g:gitgutter_enabled = 0
+let g:gitgutter_signs = 0
 
 "" Dragvisuals options
 let g:DVB_TrimWS = 1            " delete whitespace after duplicating
@@ -521,7 +521,7 @@ nnoremap cop :set paste! paste?<cr>
 nnoremap cotf :call ToggleFailFast()<cr>
 nnoremap cots :call ToggleSpring()<cr>
 nnoremap cotm :call ToggleVimuxTarget()<cr>
-nnoremap cog :GitGutterToggle<cr>
+nnoremap cog :GitGutterSignsToggle<cr>
 
 " Dragvisuals, move visual block around
 vmap  <expr>  <left>   DVB_Drag('left')
