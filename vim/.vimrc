@@ -44,7 +44,6 @@ Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}                              
 Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
 Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
 Plug 'vim-scripts/ReplaceWithRegister'  " replace without yanking operator (gr..)
-Plug 'gavinbeatty/dragvisuals.vim'      " move visual blocks around
 
 " Text objects
 Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object <r>
@@ -99,9 +98,6 @@ call plug#end()
 
 " gitgutter options
 let g:gitgutter_signs = 0
-
-"" Dragvisuals options
-let g:DVB_TrimWS = 1            " delete whitespace after duplicating
 
 "" Netrw options
 let g:netrw_liststyle=0         " thin (change to 3 for tree)
@@ -526,13 +522,6 @@ nnoremap cotf :call ToggleFailFast()<cr>
 nnoremap cots :call ToggleSpring()<cr>
 nnoremap cotm :call ToggleVimuxTarget()<cr>
 nnoremap cog :GitGutterSignsToggle<cr>
-
-" Dragvisuals, move visual block around
-vmap  <expr>  <left>   DVB_Drag('left')
-vmap  <expr>  <right>  DVB_Drag('right')
-vmap  <expr>  <down>   DVB_Drag('down')
-vmap  <expr>  <up>     DVB_Drag('up')
-vmap  <expr>  D        DVB_Duplicate()
 
 "}}}
 " Motions ---------------------------------------------------------------{{{
