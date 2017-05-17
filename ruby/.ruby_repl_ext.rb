@@ -20,6 +20,7 @@ class String
 
   def copy
     self.public_send('|', 'pbcopy')
+    self
   end
 end
 
