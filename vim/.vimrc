@@ -461,6 +461,9 @@ vnoremap K :m '<-2<CR>gv=gv
 " Easily exit insert mode
 inoremap kj <esc>
 
+" select last inserted text
+nnoremap gV `[v`]
+
 " allows incsearch highlighting for range commands
 cnoremap &t <CR>:t''<CR>
 cnoremap &m <CR>:m''<CR>
