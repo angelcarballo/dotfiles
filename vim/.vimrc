@@ -224,6 +224,8 @@ set statusline+=%#Pmenu#                                          " color...
 set statusline+=\ %f                                              " relative path
 set statusline+=%m                                                " modified flag
 set statusline+=%r                                                " read only flag
+set statusline+=%h                                                " help flag
+set statusline+=%w                                                " preview flag
 set statusline+=%=                                                " right align the following ...
 set statusline+=\ %p%%                                            " percentage through file
 set statusline+=\ ☰\ %l/%L\                                       " line number/total lines
