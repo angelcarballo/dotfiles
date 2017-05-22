@@ -43,7 +43,7 @@ alias gdh='git diff HEAD'
 alias gf='git fetch'
 alias gl='git log --oneline --decorate --graph --all'
 alias gll="git log --pretty=format:'%h - %an [%ar] %s'"
-# alias go='git open'
+alias gh='git open'
 alias gom='git open origin master'
 alias gp='git pull'
 alias gmm='git pull && git merge origin/master'
