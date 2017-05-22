@@ -1,16 +1,20 @@
 Dotfiles
 ========
 
-My collection of dotfiles. If you want to reuse any of this, clone the repository and review the code, it's probably better to pick an choose what you need.
+My collection of dotfiles. If you want to reuse any of this, clone the
+repository and review the code, it's probably better to pick an choose what you
+need.
 
 Key Features
 ------------
 
 * [Stow] - Manage dotfiles using symbolic links.
 * [Vim] - Text editing nirvana. Installation and maintenance done via [vim-plug].
-* [Tmux] - Perfect with Vim, these two are made for each other. Some [fzf] love to quickly [open and jump between sessions].
+* [Tmux] - Perfect with Vim, these two are made for each other. Some [fzf] love
+ to quickly [open and jump between sessions].
 * [Zsh] - A few plugins managed using [Antigen], and a light theme based on [pure].
-* [Base16 Shell] - Makes the whole thing look better, and allows switching between dark and light color schemes on the fly.
+* [Base16 Shell] - Makes the whole thing look better, and allows switching
+ between dark and light color schemes on the fly.
 
 [Tmux]: https://tmux.github.io/
 [Stow]: https://www.gnu.org/software/stow/
@@ -40,7 +44,9 @@ make
 Local changes and extra commands
 --------------------------------
 
-Zsh will try to source `~/.zshrc.local`. Put your local settings, env vars, etc. there if you need them for a particular machine but don't want them in your dotfiles.
+Zsh will try to source `~/.zshrc.local`. Put your local settings, env vars,
+etc. there if you need them for a particular machine but don't want them in
+your dotfiles.
 
 References
 ----------
