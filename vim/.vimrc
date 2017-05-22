@@ -472,9 +472,6 @@ cnoremap &d <CR>:d<CR>``
 " type triple ':::' to open the command line window
 cnoremap :: <c-f>
 
-" open Dash for documentation lookups
-nmap <silent> K <Plug>DashSearch
-
 " Fix closest spelling error
 inoremap <c-\> <c-g>u<esc>[s1z=`]a<c-g>u
 
