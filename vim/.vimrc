@@ -613,7 +613,7 @@ augroup markdowngroup
   autocmd!
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd FileType markdown set wrap
-  autocmd FileType markdown setlocal spell
+  autocmd FileType markdown setlocal spell textwidth=80
 augroup END
 
 "}}}
