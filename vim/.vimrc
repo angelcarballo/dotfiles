@@ -217,22 +217,22 @@ set list                       " show extra whitespace
 let &showbreak='↳ '            " indicator for wrapped lines
 
 " statusline
-set statusline=                                                   " custom status line
-set statusline+=%#PmenuSel#                                       " color...
-set statusline+=\ %{StatuslineGit()}                              " git branch
-set statusline+=%#Pmenu#                                          " color...
-set statusline+=\ %f                                              " relative path
-set statusline+=%m                                                " modified flag
-set statusline+=%r                                                " read only flag
-set statusline+=%h                                                " help flag
-set statusline+=%w                                                " preview flag
-set statusline+=%=                                                " right align the following ...
-set statusline+=\ %p%%                                            " percentage through file
-set statusline+=\ ☰\ %l/%L\                                       " line number/total lines
-set statusline+=%#error#                                        " color ...
-set statusline+=%{StatuslineTrailingSpaceWarning()}             " trailing whitespacee indicator
-set statusline+=%{StatuslineTabWarning()}                       " mixed indentation indicator
-set statusline+=%*
+set statusline=                                     " custom status line
+set statusline+=%#PmenuSel#                         " color...
+set statusline+=\ %{StatuslineGit()}                " git branch
+set statusline+=%#Pmenu#                            " color...
+set statusline+=\ %f                                " relative path
+set statusline+=%m                                  " modified flag
+set statusline+=%r                                  " read only flag
+set statusline+=%h                                  " help flag
+set statusline+=%w                                  " preview flag
+set statusline+=%=                                  " right align the following ...
+set statusline+=\ %p%%                              " percentage through file
+set statusline+=\ ☰\ %l/%L\                         " line number/total lines
+set statusline+=%#error#                            " color ...
+set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing whitespacee indicator
+set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
+set statusline+=%*                                  " reset color
 
 " background config managed by base16
 if filereadable(expand("~/.vim_colorscheme"))
