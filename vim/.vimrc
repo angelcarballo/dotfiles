@@ -424,16 +424,16 @@ nnoremap <silent> <leader>Sb :echo "Current git branch: " . fugitive#head()<cr>
 " t - Tmux/Tabs
 
 " Send visual selection to tmux
-vnoremap <silent> <leader>tt :call VimuxSlime()<cr>
+vnoremap <silent> <leader>tl :call VimuxSlime()<cr>
 " Send current line to tmux
-noremap <silent> <leader>tt V:call VimuxSlime()<cr>
+noremap <silent> <leader>tl V:call VimuxSlime()<cr>
 " Send whole file to tmux
 noremap <silent> <leader>tf ggVG:call VimuxSlime()<cr>
 " Other tmux interactions
 nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
 nnoremap <silent> <leader>ti :VimuxInspectRunner<cr>
 nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
-nnoremap <silent> <leader>t<space> :VimuxZoomRunner<cr>
+nnoremap <silent> <leader>tt :VimuxZoomRunner<cr>
 " Tab management
 nnoremap <silent> <leader>tn :tabnew<cr>
 
