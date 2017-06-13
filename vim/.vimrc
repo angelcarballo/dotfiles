@@ -229,7 +229,7 @@ set statusline+=%h                                  " help flag
 set statusline+=%w                                  " preview flag
 set statusline+=%=                                  " right align the following ...
 set statusline+=\ %p%%                              " percentage through file
-set statusline+=\ ☰\ %c:%l/%L\                         " line number/total lines
+set statusline+=\ ☰\ %c:%l\                         " line number/total lines
 set statusline+=%#error#                            " color ...
 set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing whitespacee indicator
 set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
