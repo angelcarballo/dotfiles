@@ -171,6 +171,7 @@ set hlsearch                         " highlight search results
 set incsearch                        " incremental search
 set ignorecase                       " ignore case on search ...
 set smartcase                        " ... except if query contains uppercase characters
+set infercase                        " ... same thing for keyword completion
 set nowrap                           " don't wrap lines
 set backspace=indent,eol,start       " backspace through everything
 set wildmenu                         " visual auto complete for command menu
@@ -229,7 +230,7 @@ set statusline+=%h                                  " help flag
 set statusline+=%w                                  " preview flag
 set statusline+=%=                                  " right align the following ...
 set statusline+=\ %p%%                              " percentage through file
-set statusline+=\ ☰\ %c:%l\                         " line number/total lines
+set statusline+=\ ☰\ %c:%l/%L\                         " line number/total lines
 set statusline+=%#error#                            " color ...
 set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing whitespacee indicator
 set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
@@ -281,7 +282,7 @@ autocmd BufNewFile *.sh 0read ~/.vim/skeleton/bash.sh
 autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 
 "}}}
-" Key bindings (leader) ---------------------------------------------------------------{{{
+" Mappings (leader) ---------------------------------------------------------------{{{
 
 " Show and switch to buffers
 nmap <leader><space> :buffers<cr>:bu<Space>
@@ -455,7 +456,7 @@ nnoremap <silent> <leader>ww <c-w>w
 nnoremap <leader>x :Dispatch<cr>
 
 "}}}
-" Key bindings (other) ---------------------------------------------------------------{{{
+" Mappings (other) ---------------------------------------------------------------{{{
 
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
@@ -489,12 +490,11 @@ vnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
 inoremap <c-d> <esc>ddi
 inoremap <c-w> <esc>bdiwi
 
-" Uppercase current word
-inoremap <c-u> <esc>gUiwea
-
 " Move around using visual lines, useful when wrap is enabled
-nnoremap <silent> k gk
-nnoremap <silent> j gj
+" if a count is provided, default j/k behaviour is used
+" and jumps bigger thank 5 lines are added to the jumplist
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " Use arrow keys to resize splits
 nnoremap <up> :resize -5<cr>
@@ -504,6 +504,9 @@ nnoremap <right> :vertical resize +10<cr>
 
 " Easily run macros on selected lines
 vnoremap @ :norm@<cr>
+
+" Easily run the last command on selected lines
+xnoremap . :norm.<cr>
 
 " Make Y behave like other capitals (yank from cursor to end of line)
 nnoremap Y y$
