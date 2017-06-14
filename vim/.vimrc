@@ -125,11 +125,6 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_conceal=0
 
 "" Ags (The Silver Searcher)
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor\ --hidden\ --ignore\ .git
-endif
-
 let g:ags_agcontext = 2
 
 "" Vim-Notes options
@@ -187,6 +182,12 @@ set breakindent                      " keep indentation on wrapped lines
 set tabstop=4                        " tabs use 4 spaces by default (filetypes override this)
 set expandtab                        " indent with spaces by default (overriden by filetype)
 set gdefault                         " make substitution global by default
+
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor\ --hidden\ --ignore\ .git
+endif
+
 
 " Make the mouse (*gasp*) usable on large screens
 if has("mouse_sgr")
