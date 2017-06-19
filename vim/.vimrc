@@ -82,7 +82,7 @@ Plug 'tpope/vim-dispatch'               " run processes on the background
 Plug 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 
 " Extras
-Plug 'godlygeek/tabular'                " code align (like on this comment)
+Plug 'tommcdo/vim-lion'                 " code align (like on this comment)
 Plug 'tpope/vim-commentary'             " comment/uncomment code
 Plug 'AndrewRadev/switch.vim'           " easy switches
 Plug 'christoomey/vim-system-copy'      " copy command (cp), copy current line (cP) and paste in next line (cv)
@@ -298,20 +298,12 @@ nnoremap <leader><tab> <c-^>
 nnoremap <leader>/ :silent Ggrep ""<left>
 nnoremap <leader>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
 
-" \,| - Align tables
-vnoremap <leader>\ :Tabularize /<bar><cr>
-vnoremap <leader><bar> :Tabularize /<bar><cr>
-
 " * - Search in project for word under cursor
 nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
 nnoremap <leader>8 :silent Ggrep "<c-r><c-w>"<cr>
 vnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
 
-" a - Align/Auto
-vnoremap <leader>aa :Tabularize /
-vnoremap <leader>a= :Tabularize /=<cr>
-vnoremap <leader>a> :Tabularize /=><cr>
-vnoremap <leader>a<bar> :Tabularize /<bar><cr>
+" a - Auto
 " auto correct spelling mistake
 nnoremap <leader>ac [s1z=
 
