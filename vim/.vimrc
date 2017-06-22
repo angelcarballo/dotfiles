@@ -639,6 +639,7 @@ augroup gitcommit
   autocmd!
   autocmd Filetype gitcommit set spell
   autocmd Filetype gitcommit set nonu
+  autocmd BufEnter .git/index call JumpToFirstGitFile()
 augroup END
 
 "}}}
