@@ -353,6 +353,7 @@ nnoremap <silent> <leader>fd :Files %:p:h<cr>
 nnoremap <silent> <leader>ff :GFiles<cr>
 nnoremap <silent> <leader>fg :GFiles?<cr>
 nnoremap <silent> <leader>fr :History<cr>
+nnoremap <silent> <leader>ft :FZF spec/<cr>
 
 nnoremap <leader>fm :silent Ggrep "def <c-r><c-w>"<cr>
 nnoremap <leader>fM :silent Ggrep "def self.<c-r><c-w>"<cr>
@@ -390,7 +391,7 @@ nnoremap <leader>lg :call QuickFixGitStatus()<cr> \| :cnext<cr>
 nnoremap <silent> <leader>lc `[
 
 " pry
-nnoremap <leader>pry orequire 'pry'; binding.pry
+nnoremap <leader>pry Orequire 'pry'; binding.pry
 
 " P - Plugins
 nnoremap <leader>Pi :PlugInstall<cr>
