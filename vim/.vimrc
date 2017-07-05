@@ -456,6 +456,9 @@ nnoremap <leader>x :Dispatch<cr>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+" Search documentation for word under cursor
+nmap <silent> K <Plug>DashSearch
+
 " Easily exit insert mode
 inoremap kj <esc>
 
