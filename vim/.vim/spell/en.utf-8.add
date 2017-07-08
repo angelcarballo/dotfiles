@@ -80,4 +80,8 @@ vim
 bordereaux
 readme
 jekyll
+<<<<<<< HEAD
 statusbar
+=======
+statusline
+>>>>>>> c54e8abde6eb2d1d4031432a26181a36426d4ff0

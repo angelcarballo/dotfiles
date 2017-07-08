@@ -82,7 +82,7 @@ Plug 'tpope/vim-dispatch'               " run processes on the background
 Plug 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
 
 " Extras
-Plug 'godlygeek/tabular'                " code align (like on this comment)
+Plug 'tommcdo/vim-lion'                 " code align (like on this comment)
 Plug 'tpope/vim-commentary'             " comment/uncomment code
 Plug 'AndrewRadev/switch.vim'           " easy switches
 Plug 'christoomey/vim-system-copy'      " copy command (cp), copy current line (cP) and paste in next line (cv)
@@ -125,11 +125,6 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_conceal=0
 
 "" Ags (The Silver Searcher)
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor\ --hidden\ --ignore\ .git
-endif
-
 let g:ags_agcontext = 2
 
 "" Vim-Notes options
@@ -171,6 +166,7 @@ set hlsearch                         " highlight search results
 set incsearch                        " incremental search
 set ignorecase                       " ignore case on search ...
 set smartcase                        " ... except if query contains uppercase characters
+set infercase                        " ... same thing for keyword completion
 set nowrap                           " don't wrap lines
 set backspace=indent,eol,start       " backspace through everything
 set wildmenu                         " visual auto complete for command menu
@@ -185,6 +181,13 @@ set nojoinspaces                     " only insert one space when joining after 
 set breakindent                      " keep indentation on wrapped lines
 set tabstop=4                        " tabs use 4 spaces by default (filetypes override this)
 set expandtab                        " indent with spaces by default (overriden by filetype)
+set gdefault                         " make substitution global by default
+
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor\ --hidden\ --ignore\ .git
+endif
+
 
 " Make the mouse (*gasp*) usable on large screens
 if has("mouse_sgr")
@@ -228,7 +231,7 @@ set statusline+=%h                                  " help flag
 set statusline+=%w                                  " preview flag
 set statusline+=%=                                  " right align the following ...
 set statusline+=\ %p%%                              " percentage through file
-set statusline+=\ ☰\ %c:%l\                         " line number/total lines
+set statusline+=\ ☰\ %c:%l/%L\                         " line number/total lines
 set statusline+=%#error#                            " color ...
 set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing whitespacee indicator
 set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
@@ -280,7 +283,7 @@ autocmd BufNewFile *.sh 0read ~/.vim/skeleton/bash.sh
 autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 
 "}}}
-" Key bindings (leader) ---------------------------------------------------------------{{{
+" Mappings (leader) ---------------------------------------------------------------{{{
 
 " Show and switch to buffers
 nmap <leader><space> :buffers<cr>:bu<Space>
@@ -295,20 +298,12 @@ nnoremap <leader><tab> <c-^>
 nnoremap <leader>/ :silent Ggrep ""<left>
 nnoremap <leader>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
 
-" \,| - Align tables
-vnoremap <leader>\ :Tabularize /<bar><cr>
-vnoremap <leader><bar> :Tabularize /<bar><cr>
-
 " * - Search in project for word under cursor
 nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
 nnoremap <leader>8 :silent Ggrep "<c-r><c-w>"<cr>
 vnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
 
-" a - Align/Auto
-vnoremap <leader>aa :Tabularize /
-vnoremap <leader>a= :Tabularize /=<cr>
-vnoremap <leader>a> :Tabularize /=><cr>
-vnoremap <leader>a<bar> :Tabularize /<bar><cr>
+" a - Auto
 " auto correct spelling mistake
 nnoremap <leader>ac [s1z=
 
@@ -358,6 +353,7 @@ nnoremap <silent> <leader>fd :Files %:p:h<cr>
 nnoremap <silent> <leader>ff :GFiles<cr>
 nnoremap <silent> <leader>fg :GFiles?<cr>
 nnoremap <silent> <leader>fr :History<cr>
+nnoremap <silent> <leader>ft :FZF spec/<cr>
 
 nnoremap <leader>fm :silent Ggrep "def <c-r><c-w>"<cr>
 nnoremap <leader>fM :silent Ggrep "def self.<c-r><c-w>"<cr>
@@ -395,7 +391,7 @@ nnoremap <leader>lg :call QuickFixGitStatus()<cr> \| :cnext<cr>
 nnoremap <silent> <leader>lc `[
 
 " pry
-nnoremap <leader>pry orequire 'pry'; binding.pry
+nnoremap <leader>pry Orequire 'pry'; binding.pry
 
 " P - Plugins
 nnoremap <leader>Pi :PlugInstall<cr>
@@ -454,7 +450,7 @@ nnoremap <silent> <leader>ww <c-w>w
 nnoremap <leader>x :Dispatch<cr>
 
 "}}}
-" Key bindings (other) ---------------------------------------------------------------{{{
+" Mappings (other) ---------------------------------------------------------------{{{
 
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
@@ -488,12 +484,11 @@ vnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
 inoremap <c-d> <esc>ddi
 inoremap <c-w> <esc>bdiwi
 
-" Uppercase current word
-inoremap <c-u> <esc>gUiwea
-
 " Move around using visual lines, useful when wrap is enabled
-nnoremap <silent> k gk
-nnoremap <silent> j gj
+" if a count is provided, default j/k behaviour is used
+" and jumps bigger thank 5 lines are added to the jumplist
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " Use arrow keys to resize splits
 nnoremap <up> :resize -5<cr>
@@ -503,6 +498,9 @@ nnoremap <right> :vertical resize +10<cr>
 
 " Easily run macros on selected lines
 vnoremap @ :norm@<cr>
+
+" Easily run the last command on selected lines
+xnoremap . :norm.<cr>
 
 " Make Y behave like other capitals (yank from cursor to end of line)
 nnoremap Y y$
@@ -641,6 +639,7 @@ augroup gitcommit
   autocmd!
   autocmd Filetype gitcommit set spell
   autocmd Filetype gitcommit set nonu
+  autocmd BufEnter .git/index call JumpToFirstGitFile()
 augroup END
 
 "}}}
