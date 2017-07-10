@@ -80,5 +80,6 @@ vim
 bordereaux
 readme
 jekyll
+statusbar
 statusline
 TestObjectBuilder
