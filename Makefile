@@ -15,9 +15,8 @@ link:
 
 # Install new vim plugins, update existing and cleanup old ones
 vim:
-	vim +PlugInstall! +qall
-	vim +PlugUpdate! +qall
-	vim +PlugClean! +qall
+	vim +PackUpdate +qall
+	vim +PackClean +qall
 
 # Setup git global ignore, repo template, fancy diff and aliases
 git:

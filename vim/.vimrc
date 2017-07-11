@@ -3,95 +3,87 @@
 " be iMproved
 set nocompatible
 
-" initialize vim-plug
-call plug#begin('~/.vim/plugged')
+" initialize minpac
+packadd minpac
+call minpac#init()
 
 " Basic plugins
-Plug 'kana/vim-textobj-user'            " custom text object support
-Plug 'tpope/vim-vinegar'                " file manager improvements
-Plug 'tpope/vim-repeat'                 " extend repeat support
-Plug 'tpope/vim-unimpaired'             " multiple mappings using [ & ]
-Plug 'tpope/vim-sleuth'                 " auto set indent settings based on filetype
-Plug 'stefandtw/quickfix-reflector.vim' " allow changes from quickfix window
-Plug 'AndrewRadev/splitjoin.vim'        " split/join statements (gS, gJ)
-Plug 'tpope/vim-abolish'                " fancy substitutions and coercion
-Plug 'wincent/terminus'                 " enhancements for terminal vim (focus events, cursor, etc.)
+call minpac#add('kana/vim-textobj-user')            " custom text object support
+call minpac#add('tpope/vim-vinegar')                " file manager improvements
+call minpac#add('tpope/vim-repeat')                 " extend repeat support
+call minpac#add('tpope/vim-unimpaired')             " multiple mappings using [ & ]
+call minpac#add('tpope/vim-sleuth')                 " auto set indent settings based on filetype
+call minpac#add('stefandtw/quickfix-reflector.vim') " allow changes from quickfix window
+call minpac#add('AndrewRadev/splitjoin.vim')        " split/join statements (gS, gJ)
+call minpac#add('tpope/vim-abolish')                " fancy substitutions and coercion
+call minpac#add('wincent/terminus')                 " enhancements for terminal vim (focus events, cursor, etc.)
 
 " Git
-Plug 'tpope/vim-fugitive'               " git integration
-Plug 'tpope/vim-rhubarb'                " github integration
-Plug 'junegunn/gv.vim'                  " git commit navigation
-Plug 'airblade/vim-gitgutter'           " real time git-diff
+call minpac#add('tpope/vim-fugitive')               " git integration
+call minpac#add('tpope/vim-rhubarb')                " github integration
+call minpac#add('junegunn/gv.vim')                  " git commit navigation
+call minpac#add('airblade/vim-gitgutter')           " real time git-diff
 
 " Languages & frameworks
-Plug 'vim-ruby/vim-ruby'                                                        " Ruby support
-Plug 'tpope/vim-rake'                                                           " Rake integration
-Plug 'tpope/vim-rbenv'                                                          " Rbenv integration
-Plug 'tpope/vim-rails'                                                          " Rails integration
-Plug 'tpope/vim-bundler'                                                        " Bundler integration
-Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}                               " SCSS syntax
-Plug 'othree/html5.vim', {'for': 'html'}                                        " HTML5 support
-Plug 'elzr/vim-json', {'for': 'html'}                                           " Json support
-Plug 'plasticboy/vim-markdown', {'for': 'markdown'}                             " Markdown support
-Plug 'pangloss/vim-javascript', {'for': 'javascript'}                           " improved Javascript support
-Plug 'leafgarland/typescript-vim', {'for': 'typescript'}                        " Typescript support
-Plug 'mustache/vim-mustache-handlebars', {'for': ['mustache', 'html.mustache']} " Mustache support
-Plug 'rodjek/vim-puppet', {'for': 'puppet'}                                     " Puppet support
-Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}                                   " Tmux syntax support
-Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}                              " CoffeeScript support
+call minpac#add('vim-ruby/vim-ruby')                " Ruby support
+call minpac#add('tpope/vim-rake')                   " Rake integration
+call minpac#add('tpope/vim-rbenv')                  " Rbenv integration
+call minpac#add('tpope/vim-rails')                  " Rails integration
+call minpac#add('tpope/vim-bundler')                " Bundler integration
+call minpac#add('cakebaker/scss-syntax.vim')        " SCSS syntax
+call minpac#add('kchmck/vim-coffee-script')         " CoffeeScript support
 
 " Motions & Operators
-Plug 'tpope/vim-surround'               " alter surroundings (), [], '', {}
-Plug 'tommcdo/vim-exchange'             " text exchange operator (cx..)
-Plug 'vim-scripts/ReplaceWithRegister'  " replace without yanking operator (gr..)
+call minpac#add('tpope/vim-surround')               " alter surroundings (), [], '', {}
+call minpac#add('tommcdo/vim-exchange')             " text exchange operator (cx..)
+call minpac#add('vim-scripts/ReplaceWithRegister')  " replace without yanking operator (gr..)
 
 " Text objects
-Plug 'nelstrom/vim-textobj-rubyblock'   " ruby block text object <r>
-Plug 'whatyouhide/vim-textobj-erb'      " ERB block text object <E>
-Plug 'kana/vim-textobj-entire'          " entire buffer text object <e>
-Plug 'michaeljsmith/vim-indent-object'  " indentation based text object <i/I>
-Plug 'b4winckler/vim-angry'             " function argument text object <a/A>
+call minpac#add('nelstrom/vim-textobj-rubyblock')   " ruby block text object <r>
+call minpac#add('whatyouhide/vim-textobj-erb')      " ERB block text object <E>
+call minpac#add('kana/vim-textobj-entire')          " entire buffer text object <e>
+call minpac#add('michaeljsmith/vim-indent-object')  " indentation based text object <i/I>
+call minpac#add('b4winckler/vim-angry')             " function argument text object <a/A>
 
 " Look & Feel
-Plug 'pgdouyon/vim-evanesco'            " remove search highlight on cursor move
-Plug 'chriskempson/base16-vim'          " base16 colorschemes
+call minpac#add('pgdouyon/vim-evanesco')            " remove search highlight on cursor move
+call minpac#add('chriskempson/base16-vim')          " base16 colorschemes
 
 " Navigation
-Plug '/usr/local/opt/fzf'                " homebrew version of fzf
-Plug 'junegunn/fzf.vim'                  " fzf-vim for fzf helpers
-Plug 'bronson/vim-visual-star-search'    " search visual selected text with '*'
-Plug 'dietsche/vim-lastplace'            " restore cursor position when re-opening files
+call minpac#add('junegunn/fzf')                      " basic fzf support
+call minpac#add('junegunn/fzf.vim')                  " fzf helpers
+call minpac#add('bronson/vim-visual-star-search')    " search visual selected text with '*'
+call minpac#add('dietsche/vim-lastplace')            " restore cursor position when re-opening files
 
 " Auto completion
-Plug 'ervandew/supertab'                " magic code auto complete!
-Plug 'tpope/vim-endwise'                " auto close for Vim blocks
-Plug 'jiangmiao/auto-pairs'             " auto close for (, [, {
-Plug 'docunext/closetag.vim'            " auto close for Html tags
+call minpac#add('ervandew/supertab')                " magic code auto complete!
+call minpac#add('tpope/vim-endwise')                " auto close for Vim blocks
+call minpac#add('jiangmiao/auto-pairs')             " auto close for (, [, {
+call minpac#add('docunext/closetag.vim')            " auto close for Html tags
 
 " Third party integration
-Plug 'christoomey/vim-tmux-navigator'     " navigate to tmux panes from Vim
-Plug 'benmills/vimux'                     " tmux integration
-Plug 'tpope/gem-ctags'                    " include tags from installed gems
-Plug 'jez/vim-superman'                   " better man pager
-Plug 'Townk/dash.vim'                     " Dash integration for documentation lookups
-Plug 'papanikge/vim-voogle'               " google search command (gs : only from visual mode)
+call minpac#add('christoomey/vim-tmux-navigator')   " navigate to tmux panes from Vim
+call minpac#add('benmills/vimux')                   " tmux integration
+call minpac#add('tpope/gem-ctags')                  " include tags from installed gems
+call minpac#add('jez/vim-superman')                 " better man pager
+call minpac#add('Townk/dash.vim')                   " Dash integration for documentation lookups
+call minpac#add('papanikge/vim-voogle')             " google search command (gs : only from visual mode)
 
 " Runners
-Plug 'skalnik/vim-vroom'                " ruby test runner
-Plug 'tpope/vim-dispatch'               " run processes on the background
-Plug 'tpope/vim-eunuch'                 " run common UNIX commands for the current file
+call minpac#add('skalnik/vim-vroom')                " ruby test runner
+call minpac#add('tpope/vim-eunuch')                 " run common UNIX commands for the current file
 
 " Extras
-Plug 'tommcdo/vim-lion'                 " code align (like on this comment)
-Plug 'tpope/vim-commentary'             " comment/uncomment code
-Plug 'AndrewRadev/switch.vim'           " easy switches
-Plug 'christoomey/vim-system-copy'      " copy command (cp), copy current line (cP) and paste in next line (cv)
-Plug 'xolox/vim-notes'                  " easy note taking
-Plug 'xolox/vim-misc'                   " required by vim-notes
-Plug 'tpope/vim-capslock'               " software caps lock (gC / <c-g>c)
+call minpac#add('tommcdo/vim-lion')                 " code align (like on this comment)
+call minpac#add('tpope/vim-commentary')             " comment/uncomment code
+call minpac#add('AndrewRadev/switch.vim')           " easy switches
+call minpac#add('christoomey/vim-system-copy')      " copy command (cp), copy current line (cP) and paste in next line (cv)
+call minpac#add('xolox/vim-notes')                  " easy note taking
+call minpac#add('xolox/vim-misc')                   " required by vim-notes
+call minpac#add('tpope/vim-capslock')               " software caps lock (gC / <c-g>c)
 
-" Plugins must be added before the following line
-call plug#end()
+" Add minpac (package manager) so that it can update itself
+call minpac#add('k-takata/minpac', {'type':'opt'})
 
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
@@ -110,22 +102,12 @@ let ruby_spellcheck_strings=1      " enable spellcheck inside ruby strings
 let ruby_minlines=200              " avoid syntax errors while scrolling on large files
 let g:ruby_indent_block_style='do' " better syntax for nested blocks
 
-"" Vim Json options
-let g:vim_json_syntax_conceal=0
-
 "" Vromm configuration
 let g:vroom_map_keys=0
 let g:vroom_cucumber_path='rspec'
 let g:vroom_spec_command='rspec'
 let g:vroom_use_vimux=1
 let g:vroom_options={'options':'--fail-fast'}
-
-"" Markdown options
-let g:vim_markdown_folding_disabled=1
-let g:vim_markdown_conceal=0
-
-"" Ags (The Silver Searcher)
-let g:ags_agcontext = 2
 
 "" Vim-Notes options
 let g:notes_directories=['~/Dropbox/notes']
@@ -210,7 +192,9 @@ set t_8f=[38;2;%lu;%lu;%lum
 set t_8b=[48;2;%lu;%lu;%lum
 set termguicolors
 
+syntax on
 set background=dark
+
 set visualbell                 " visual flash
 set noerrorbells               " no flash on errors, only at beginning/end of file
 set laststatus=2               " always show status bar
@@ -540,6 +524,12 @@ onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap in} :<c-u>normal! f{vi{<cr>
 onoremap in' :<c-u>normal! f'vi'<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
+
+"}}}
+" Commands -----------------------------------------------------------------{{{
+
+command! PackUpdate call minpac#update()
+command! PackClean call minpac#clean()
 
 "}}}
 " Global autocommands -----------------------------------------------------------------{{{
