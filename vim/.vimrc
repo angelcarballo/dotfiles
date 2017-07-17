@@ -270,7 +270,8 @@ autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 " Mappings (leader) ---------------------------------------------------------------{{{
 
 " Show and switch to buffers
-nmap <leader><space> :buffers<cr>:bu<Space>
+nmap <leader><space> :Buffers<cr>
+nmap <tab> <c-^>
 
 " , - Show and paste from registers
 nnoremap <leader>, :Reg<cr>
@@ -286,6 +287,7 @@ nnoremap <leader>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
 nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
 nnoremap <leader>8 :silent Ggrep "<c-r><c-w>"<cr>
 vnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
+vnoremap <leader>8 "hy:silent Ggrep "<c-r>h"<cr>
 
 " a - Auto
 " auto correct spelling mistake
@@ -346,7 +348,6 @@ nnoremap <leader>fC :silent Ggrep "module <c-r><c-w>"<cr>
 
 " g - Git
 nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gq :call QuickFixGitStatus()<cr>:copen<cr>:cfirst<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
 nnoremap <leader>gc :Gcommit<cr>i
 nnoremap <leader>gf :Gfetch<cr>
@@ -378,10 +379,9 @@ nnoremap <silent> <leader>lc `[
 nnoremap <leader>pry Orequire 'pry'; binding.pry
 
 " P - Plugins
-nnoremap <leader>Pi :PlugInstall<cr>
-nnoremap <leader>Pc :PlugClean<cr>
-nnoremap <leader>Pu :PlugUpdate<cr>
-nnoremap <leader>Pg :PlugUpgrade<cr>
+nnoremap <leader>Pi :PackUpdate<cr>
+nnoremap <leader>Pu :PackUpdate<cr>
+nnoremap <leader>Pc :PackClean<cr>
 
 " q - Quit
 nnoremap <leader>q :q<cr>
@@ -439,6 +439,9 @@ nnoremap <leader>x :Dispatch<cr>
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+" Better paste from register
+inoremap <c-r> :Reg<cr>
 
 " Search documentation for word under cursor
 nmap <silent> K <Plug>DashSearch
