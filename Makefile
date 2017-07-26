@@ -1,5 +1,5 @@
 DOTFILES := $(shell pwd)
-FOLDERS_TO_LINK := cheats common emacs git git_template ruby spacemacs tmux vim zsh
+FOLDERS_TO_LINK := cheats common emacs git git_template ruby spacemacs tmux vim zsh tig
 
 # Run always
 .PHONY: git rbenv vim
