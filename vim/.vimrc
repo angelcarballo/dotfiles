@@ -427,6 +427,7 @@ nnoremap <silent> <leader>wq :wq<cr>
 nnoremap <silent> <leader>wo :only<cr>
 nnoremap <silent> <leader>we <c-w>=
 nnoremap <silent> <leader>ws :sp<cr>
+nnoremap <silent> <leader>wt :tabedit %<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
 
