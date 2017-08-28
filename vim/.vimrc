@@ -67,7 +67,7 @@ call minpac#add('benmills/vimux')                   " tmux integration
 call minpac#add('tpope/gem-ctags')                  " include tags from installed gems
 call minpac#add('jez/vim-superman')                 " better man pager
 call minpac#add('Townk/dash.vim')                   " Dash integration for documentation lookups
-call minpac#add('papanikge/vim-voogle')             " google search command (gs : only from visual mode)
+call minpac#add('linluk/vim-websearch')             " web searches from vim buffers
 
 " Runners
 call minpac#add('skalnik/vim-vroom')                " ruby test runner
@@ -93,6 +93,7 @@ let g:netrw_liststyle=0         " thin (change to 3 for tree)
 let g:netrw_banner=0            " no banner
 let g:netrw_altv=1              " open files on right
 let g:netrw_preview=1           " open previews vertically
+let g:netrw_sizestyle='H'       " show human style file sizes
 
 "" Vim-ruby options
 let ruby_spellcheck_strings=1      " enable spellcheck inside ruby strings
@@ -113,6 +114,10 @@ let g:notes_conceal_code=0
 let g:notes_conceal_italic=0
 let g:notes_conceal_bold=0
 let g:notes_conceal_url=0
+
+"" vim-websearch options
+let g:web_search_command = "open"
+let g:web_search_query = "https://www.google.co.uk/search?q="
 
 "" Vim-Switch options
 let g:switch_custom_definitions=
@@ -424,6 +429,7 @@ nnoremap <silent> <leader>wq :wq<cr>
 nnoremap <silent> <leader>wo :only<cr>
 nnoremap <silent> <leader>we <c-w>=
 nnoremap <silent> <leader>ws :sp<cr>
+nnoremap <silent> <leader>wt :tabedit %<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
 
@@ -448,6 +454,12 @@ inoremap kj <esc>
 
 " select last inserted text
 nnoremap gV `[v`]
+
+
+" search for word under cursor in normal mode
+nnoremap gw :WebSearchCursor<cr>
+" search for selection in visual mode
+vnoremap gw :WebSearchVisual<cr>
 
 " allows incsearch highlighting for range commands
 cnoremap &t <CR>:t''<CR>

@@ -45,5 +45,5 @@ brew "reattach-to-user-namespace"
 # ...to rule them all
 brew "macvim", args: ['override-system-vim']
 
-# text based journal
-brew "jrnl"
+# gnu tree to display directory structures
+brew "tree"

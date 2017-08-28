@@ -1,5 +1,5 @@
 DOTFILES := $(shell pwd)
-FOLDERS_TO_LINK := cheats common emacs git git_template ruby spacemacs tmux vim zsh
+FOLDERS_TO_LINK := cheats common emacs git git_template ruby spacemacs tmux vim zsh tig
 
 # Run always
 .PHONY: git rbenv vim
@@ -29,7 +29,7 @@ git:
 	git config --global pager.show "diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '"
 	# don't require confirmation or force for git clean
 	git config --global clean.requireForce false
-	# show diff on commit window
+	# show full diff on commit window
 	git config --global commit.verbose true
 	# aliases
 	git config --global alias.ci commit
