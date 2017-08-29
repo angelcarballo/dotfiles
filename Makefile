@@ -29,7 +29,7 @@ git:
 	git config --global pager.show "diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '"
 	# don't require confirmation or force for git clean
 	git config --global clean.requireForce false
-	# Show full diff on commit window
+	# show full diff on commit window
 	git config --global commit.verbose true
 	# aliases
 	git config --global alias.ci commit

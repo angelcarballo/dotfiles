@@ -82,9 +82,6 @@ call minpac#add('xolox/vim-notes')                  " easy note taking
 call minpac#add('xolox/vim-misc')                   " required by vim-notes
 call minpac#add('tpope/vim-capslock')               " software caps lock (gC / <c-g>c)
 
-" Add minpac (package manager) so that it can update itself
-call minpac#add('k-takata/minpac', {'type':'opt'})
-
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
 
