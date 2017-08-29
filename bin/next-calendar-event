@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EVENT=`gcalcli --locale en_US --nostarted --calendar "" agenda "0:00" "23:59" --nocolor | cut -d " " -f 4- | head -2 | tail -1 | sed "s/^ *//g" | sed "s/    / /g" | cut -c1-60`
+EVENT=`gcalcli --locale en_US --military --nostarted --calendar "" agenda "0:00" "23:59" --nocolor | cut -d " " -f 4- | head -2 | tail -1 | sed "s/^ *//g" | sed "s/    / /g" | cut -c1-60`
 if [ -z "$EVENT" ]
 then
   echo "No events today"
