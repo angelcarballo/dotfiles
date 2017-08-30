@@ -45,8 +45,10 @@ git:
 rbenv:
 	git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 	git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+	mkdir -p ~/.rbenv/plugins
 	git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems
 	git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags
+	git clone https://github.com/rbenv/rbenv-each.git ~/.rbenv/plugins/rbenv-each
 
 # Install homebrew and install dependencies with homebrew/bundle
 homebrew:
