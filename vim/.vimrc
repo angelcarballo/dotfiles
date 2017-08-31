@@ -272,7 +272,7 @@ autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 " Mappings (leader) ---------------------------------------------------------------{{{
 
 " Show and switch to buffers
-nmap <leader><space> :Buffers<cr>
+nmap <leader><space> :buffers<cr>:bu<Space>
 nmap <tab> <c-^>
 
 " , - Show and paste from registers
