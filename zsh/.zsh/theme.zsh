@@ -19,7 +19,7 @@ current_path() {
 }
 
 prompt_symbol_with_last_command_status() {
-  echo "%(?.%{$reset_color%}.%{$fg[red]%})❯%{$reset_color%}"
+  echo "%(?.%{$reset_color%}.%{$fg[red]%})>%{$reset_color%}"
 }
 
 setopt prompt_subst
