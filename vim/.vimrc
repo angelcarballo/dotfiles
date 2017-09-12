@@ -32,6 +32,7 @@ call minpac#add('tpope/vim-rails')                  " Rails integration
 call minpac#add('tpope/vim-bundler')                " Bundler integration
 call minpac#add('cakebaker/scss-syntax.vim')        " SCSS syntax
 call minpac#add('kchmck/vim-coffee-script')         " CoffeeScript support
+call minpac#add('vim-scripts/nagios-syntax')        " Nagios support
 
 " Motions & Operators
 call minpac#add('tpope/vim-surround')               " alter surroundings (), [], '', {}
@@ -521,6 +522,7 @@ nnoremap cotf :call ToggleFailFast()<cr>
 nnoremap cots :call ToggleSpring()<cr>
 nnoremap cotm :call ToggleVimuxTarget()<cr>
 nnoremap cog :GitGutterSignsToggle<cr>
+nnoremap cos :set scrollbind! scrollbind?<cr>
 
 "}}}
 " Motions ---------------------------------------------------------------{{{
