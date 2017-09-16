@@ -10,6 +10,9 @@ alias lcear='clear'
 alias ls='ls -GFa'
 alias ll='ls -GFlah'
 
+# Extension based aliases
+alias -s log='tail -f'
+
 # MacOS
 alias flushdns='dscacheutil -flushcache'
 
@@ -23,6 +26,7 @@ alias berf='bundle exec rspec --color --fail-fast'
 alias fs='foreman start'
 alias rs='bundle exec rails server -b 0.0.0.0'
 alias rc='bundle exec rails console'
+alias rk='bundle exec rackup'
 alias migrate='bundle exec rake db:migrate && bundle exec rake db:test:prepare'
 alias deploy='bundle exec cap deploy'
 alias deploym='bundle exec cap deploy:migrate'
