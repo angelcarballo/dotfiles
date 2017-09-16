@@ -8,7 +8,7 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
-(setq package-enable-at-startup nil)
+; (setq package-enable-at-startup nil)
 
 ;; Add .emacs/lib folder to the load path
 (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory))
@@ -18,56 +18,61 @@
 (load "copy-path.el")
 (load "ensure-package-installed.el")
 
-;; Make sure to have downloaded archive description.
-(or (file-exists-p package-user-dir)
-    (package-refresh-contents))
-
 ;; Activate installed packages
 (package-initialize)
 
+;; Fetch the list of packages available
+(unless package-archive-contents
+  (package-refresh-contents))
+
 ;; Actual list of packages to install
-(ensure-package-installed 'ace-jump-mode
-                          'ag
-                          'base16-theme
-                          'diminish
-                          'evil
-                          'evil-args
-                          'evil-commentary
-                          'evil-exchange
-                          'evil-indent-textobject
-                          'evil-leader
-                          'evil-magit
-                          'evil-numbers
-                          'evil-replace-with-register
-                          'evil-surround
-                          'evil-terminal-cursor-changer
-                          'evil-visualstar
-                          'exec-path-from-shell
-                          'flyspell
-                          'feature-mode
-                          'git-gutter
-                          'google-this
-                          'helm
-                          'helm-ag
-                          'helm-projectile
-                          'key-chord
-                          'magit
-                          'markdown-mode
-                          'navigate
-                          'projectile
-                          'rbenv
-                          'rspec-mode
-                          'solarized-theme
-                          'sublime-themes
-                          'yaml-mode
-                          )
+(setq package-list '(
+                     better-defaults
+                     ace-jump-mode
+                     ag
+                     base16-theme
+                     diminish
+                     evil
+                     evil-args
+                     evil-commentary
+                     evil-exchange
+                     evil-indent-textobject
+                     evil-leader
+                     evil-magit
+                     evil-numbers
+                     evil-replace-with-register
+                     evil-surround
+                     evil-terminal-cursor-changer
+                     evil-visualstar
+                     exec-path-from-shell
+                     flyspell
+                     feature-mode
+                     git-gutter
+                     google-this
+                     helm
+                     helm-ag
+                     helm-projectile
+                     key-chord
+                     magit
+                     markdown-mode
+                     navigate
+                     projectile
+                     rbenv
+                     rspec-mode
+                     solarized-theme
+                     sublime-themes
+                     yaml-mode
+                     ))
+
+; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 ;; Load env vars from shell (usefull for getting right PATH on Mac)
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-;; Disable C-i mapping since is identical to TAB on terminal
-;; (setq evil-want-C-i-jump nil)
 
 (require 'diminish)
 (require 'dired-x)
@@ -146,9 +151,6 @@
 ;; Setup rspec-mode
 (setq rspec-use-spring-when-possible nil)
 (setq rspec-command-options "--fail-fast")
-
-;; Enable git-gutter
-(global-git-gutter-mode +1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General settings
