@@ -25,13 +25,10 @@ call minpac#add('junegunn/gv.vim')                  " git commit navigation
 call minpac#add('airblade/vim-gitgutter')           " real time git-diff
 
 " Languages & frameworks
-call minpac#add('vim-ruby/vim-ruby')                " Ruby support
-call minpac#add('tpope/vim-rake')                   " Rake integration
+call minpac#add('sheerun/vim-polyglot')             " syntax support for comon filetypes
 call minpac#add('tpope/vim-rbenv')                  " Rbenv integration
 call minpac#add('tpope/vim-rails')                  " Rails integration
 call minpac#add('tpope/vim-bundler')                " Bundler integration
-call minpac#add('cakebaker/scss-syntax.vim')        " SCSS syntax
-call minpac#add('kchmck/vim-coffee-script')         " CoffeeScript support
 call minpac#add('vim-scripts/nagios-syntax')        " Nagios support
 
 " Motions & Operators
@@ -155,6 +152,7 @@ set infercase                        " ... same thing for keyword completion
 set nowrap                           " don't wrap lines
 set backspace=indent,eol,start       " backspace through everything
 set wildmenu                         " visual auto complete for command menu
+set ttyfast                          " send extra characters to terminal (improves smoothness)
 set lazyredraw                       " redraw only when needed
 set formatoptions+=j                 " delete comment character when joining commented lines
 set omnifunc=syntaxcomplete#Complete " enable omni completion
