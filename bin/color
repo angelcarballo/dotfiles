@@ -2,6 +2,7 @@
 
 current=$( basename `cat $SHELL_COLORSCHEME` | cut -d'.' -f1 )
 colorscheme=""
+showall=false
 
 # Parse options (next/previous)
 for i in "$@"; do
@@ -25,6 +26,10 @@ for i in "$@"; do
       fi
       shift
       ;;
+    -a|--all)
+      showall=true
+      shift
+      ;;
     *)
       # unknown option
       ;;
@@ -38,7 +43,11 @@ fi
 
 # if no option is provided, use fzf to select a color
 if [ "$colorscheme" == "" ]; then
-  colorscheme=$(find $COLORS -type f -name "base16-*.sh" -exec basename {} \; | cut -f1 -d "."  | cut -f2 -f3 -f4 -d "-" | fzf)
+  if [ "$showall" = true ] ; then
+    colorscheme=$(find $COLORS -type f -name "base16-*.sh" -exec basename {} \; | cut -f1 -d "."  | cut -f2 -f3 -f4 -d "-" | fzf)
+  else
+    colorscheme=$(cat ~/src/dotfiles/favourite_colors | fzf)
+  fi
 fi
 
 # full colorscheme name, as required by vim
