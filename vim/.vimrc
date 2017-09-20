@@ -72,7 +72,7 @@ call minpac#add('skalnik/vim-vroom')                " ruby test runner
 call minpac#add('tpope/vim-eunuch')                 " run common UNIX commands for the current file
 
 " Extras
-call minpac#add('tommcdo/vim-lion')                 " code align (like on this comment)
+call minpac#add('junegunn/vim-easy-align')          " code align (like on this comment)
 call minpac#add('tpope/vim-commentary')             " comment/uncomment code
 call minpac#add('AndrewRadev/switch.vim')           " easy switches
 call minpac#add('christoomey/vim-system-copy')      " copy command (cp), copy current line (cP) and paste in next line (cv)
@@ -437,6 +437,12 @@ nnoremap <leader>x :Dispatch<cr>
 
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
