@@ -66,6 +66,7 @@ call minpac#add('tpope/gem-ctags')                  " include tags from installe
 call minpac#add('jez/vim-superman')                 " better man pager
 call minpac#add('Townk/dash.vim')                   " Dash integration for documentation lookups
 call minpac#add('linluk/vim-websearch')             " web searches from vim buffers
+call minpac#add('kannokanno/previm')                " live preview markdown files
 
 " Runners
 call minpac#add('skalnik/vim-vroom')                " ruby test runner
@@ -82,6 +83,9 @@ call minpac#add('tpope/vim-capslock')               " software caps lock (gC / <
 
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
+
+"" previm options
+let g:previm_open_cmd = 'open'
 
 " gitgutter options
 let g:gitgutter_signs = 0
