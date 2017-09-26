@@ -73,9 +73,8 @@ call minpac#add('skalnik/vim-vroom')                " ruby test runner
 call minpac#add('tpope/vim-eunuch')                 " run common UNIX commands for the current file
 
 " Extras
-call minpac#add('junegunn/vim-easy-align')          " code align (like on this comment)
+call minpac#add('godlygeek/tabular')                " code align (like on this comment)
 call minpac#add('tpope/vim-commentary')             " comment/uncomment code
-call minpac#add('AndrewRadev/switch.vim')           " easy switches
 call minpac#add('christoomey/vim-system-copy')      " copy command (cp), copy current line (cP) and paste in next line (cv)
 call minpac#add('xolox/vim-notes')                  " easy note taking
 call minpac#add('xolox/vim-misc')                   " required by vim-notes
@@ -120,14 +119,6 @@ let g:notes_conceal_url=0
 "" vim-websearch options
 let g:web_search_command = "open"
 let g:web_search_query = "https://www.google.co.uk/search?q="
-
-"" Vim-Switch options
-let g:switch_custom_definitions=
-      \ [
-      \   ['yes', 'no'],
-      \   ['TODO', 'DONE'],
-      \   ['pick', 'reword', 'edit', 'squash', 'fixup', 'exec', 'drop']
-      \ ]
 
 "}}}
 " General settings ------------------------------------------------------------{{{
@@ -294,9 +285,12 @@ nnoremap <leader>8 :silent Ggrep "<c-r><c-w>"<cr>
 vnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
 vnoremap <leader>8 "hy:silent Ggrep "<c-r>h"<cr>
 
-" a - Auto
+" a - Auto/Align
 " auto correct spelling mistake
 nnoremap <leader>ac [s1z=
+" align
+nnoremap <leader>aa :Tabularize /
+inoremap <leader>aa :Tabularize /
 
 " b - Buffers
 nnoremap <silent> <leader>bd :bdelete<cr>
@@ -442,18 +436,12 @@ nnoremap <leader>x :Dispatch<cr>
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " Better paste from register
-inoremap <c-r> :Reg<cr>
+inoremap <c-r> :Reg<cr>
 
 " Search documentation for word under cursor
 nmap <silent> K <Plug>DashSearch
@@ -466,9 +454,9 @@ nnoremap gV `[v`]
 
 
 " search for word under cursor in normal mode
-nnoremap gw :WebSearchCursor<cr>
+nnoremap gs :WebSearchCursor<cr>
 " search for selection in visual mode
-vnoremap gw :WebSearchVisual<cr>
+vnoremap gs :WebSearchVisual<cr>
 
 " allows incsearch highlighting for range commands
 cnoremap &t <CR>:t''<CR>
