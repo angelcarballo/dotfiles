@@ -1,3 +1,6 @@
+# vim-style keybindings
+source ~/.tigrc.vim
+
 # color overrides
 color cursor black green normal
 color title-blur white black normal
