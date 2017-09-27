@@ -21,7 +21,6 @@ call minpac#add('wincent/terminus')                 " enhancements for terminal 
 " Git
 call minpac#add('tpope/vim-fugitive')               " git integration
 call minpac#add('tpope/vim-rhubarb')                " github integration
-call minpac#add('junegunn/gv.vim')                  " git commit navigation
 call minpac#add('airblade/vim-gitgutter')           " real time git-diff
 
 " Languages & frameworks
@@ -359,9 +358,8 @@ nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>go :Gbrowse<cr>
 vnoremap <leader>go :Gbrowse<cr>
-nnoremap <leader>gl :GV!<cr>
-nnoremap <leader>gL :GV<cr>
-vnoremap <leader>gl :GV<cr>
+nnoremap <leader>gl :Glog<cr>
+vnoremap <leader>gl :Glog<cr>
 
 " h - Git Hunks (added by vim-gitgutter)
 " <leader>hs -> stage hunk
