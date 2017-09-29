@@ -42,3 +42,4 @@ tags
 .tags
 tags.lock
 tags.temp
+package-lock.json
