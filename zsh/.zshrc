@@ -128,12 +128,6 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # fix bug when passing arguments to rake
 unsetopt nomatch
 
-# ensure there is a valid temp dir for vim
-if [[ ! -d "$TMPDIR"  ]]; then
-  export TMPDIR="/tmp/`whoami`"
-  mkdir -p -m 700 "$TMPDIR"
-fi
-
 # source local config if present
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
