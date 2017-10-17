@@ -371,6 +371,7 @@ nnoremap <leader>ij :%!python -m json.tool<cr>
 " l - Load /Last
 nnoremap <leader>lg :call QuickFixGitStatus()<cr> \| :cnext<cr>
 nnoremap <silent> <leader>lc `[
+nnoremap <silent> <leader>ll :<up><cr>
 
 " pry
 nnoremap <leader>pry Orequire 'pry'; binding.pry
