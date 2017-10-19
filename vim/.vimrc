@@ -294,7 +294,7 @@ inoremap <leader>aa :Tabularize /
 " b - Buffers
 nnoremap <silent> <leader>bd :bdelete<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
-nnoremap <silent> <leader>bD :w <bar> %bd <bar> e#<cr>
+nnoremap <silent> <leader>bo :w <bar> %bd <bar> e#<cr>
 
 " c - Copy/Clear/Close/Quickfix
 if has("mac") || has("gui_macvim") || has("gui_mac")
