@@ -1,3 +1,5 @@
+(echo "Debug: loading init.el")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -16,7 +18,7 @@
 ;; Load custom functions
 (load "evil-split.el")
 (load "copy-path.el")
-(load "ensure-package-installed.el")
+(load "evil-autosave.el")
 
 ;; Activate installed packages
 (package-initialize)
@@ -27,7 +29,6 @@
 
 ;; Actual list of packages to install
 (setq package-list '(
-                     better-defaults
                      ace-jump-mode
                      ag
                      base16-theme
