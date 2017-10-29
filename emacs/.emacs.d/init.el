@@ -10,7 +10,6 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
-; (setq package-enable-at-startup nil)
 
 ;; Add .emacs/lib folder to the load path
 (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory))
@@ -55,7 +54,7 @@
                      helm-projectile
                      key-chord
                      magit
-                     markdown-mode
+                    markdown-mode
                      navigate
                      projectile
                      rbenv
