@@ -28,6 +28,11 @@ source ~/.zsh/theme.zsh
 # aliases
 source ~/.zsh/aliases.zsh
 
+# locales
+export LANG=en_US.UTF-8
+export LC_ALL=$LANG
+export LC_CTYPE=$LANG
+
 # vim everywhere
 bindkey -v
 export VISUAL=vim
