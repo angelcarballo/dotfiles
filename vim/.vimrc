@@ -51,6 +51,7 @@ call minpac#add('junegunn/fzf')                      " basic fzf support
 call minpac#add('junegunn/fzf.vim')                  " fzf helpers
 call minpac#add('bronson/vim-visual-star-search')    " search visual selected text with '*'
 call minpac#add('dietsche/vim-lastplace')            " restore cursor position when re-opening files
+call minpac#add('justinmk/vim-sneak')            " restore cursor position when re-opening files
 
 " Auto completion
 call minpac#add('ervandew/supertab')                " magic code auto complete!
