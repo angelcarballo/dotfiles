@@ -160,20 +160,17 @@ set breakindent                      " keep indentation on wrapped lines
 set tabstop=4                        " tabs use 4 spaces by default (filetypes override this)
 set expandtab                        " indent with spaces by default (overriden by filetype)
 set gdefault                         " make substitution global by default
-set regexpengine=1                   " new NFA engine makes vim slow with ruby files (https://github.com/vim-ruby/vim-ruby/issues/243)
+set regexpengine=1                   " use old regexp engine, as new one has low performance with big ruby files
+" Extended mouse support
+if !has('nvim')
+  set ttymouse=xterm2
+endif
 
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor\ --hidden\ --ignore\ .git
 endif
 
-
-" Make the mouse (*gasp*) usable on large screens
-if has("mouse_sgr")
-  set ttymouse=sgr
-else
-  set ttymouse=xterm2
-end
 
 autocmd FocusGained * source ~/.vim_colorscheme                  " reload colorscheme
 autocmd QuickFixCmdPost *grep* nested cwindow | redraw!          " open quickfix window after using Grep
@@ -520,6 +517,12 @@ nnoremap cots :call ToggleSpring()<cr>
 nnoremap cotm :call ToggleVimuxTarget()<cr>
 nnoremap cog :GitGutterSignsToggle<cr>
 nnoremap cos :set scrollbind! scrollbind?<cr>
+
+" Exit neovim terminal mode like insert mode
+if exists(':tnoremap')
+  tnoremap <Esc> <C-\><C-n>
+endif
+
 
 "}}}
 " Motions ---------------------------------------------------------------{{{
