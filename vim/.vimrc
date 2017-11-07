@@ -208,8 +208,8 @@ set statusline+=%r                                  " read only flag
 set statusline+=%h                                  " help flag
 set statusline+=%w                                  " preview flag
 set statusline+=%=                                  " right align the following ...
-set statusline+=\ %p%%                              " percentage through file
-set statusline+=\ ☰\ %c:%l/%L\                         " line number/total lines
+set statusline+=\ %c:%l/%L                          " line number/total lines
+set statusline+=\ %p%%\                             " percentage through file
 set statusline+=%#error#                            " color ...
 set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing whitespacee indicator
 set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
@@ -229,7 +229,7 @@ match ErrorMsg '\s\+$'
 
 " highlight character 121 to avoid long lines
 highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%121v', 100)
+call matchadd('ColorColumn', '\%111v', 100)
 
 "}}}
 " Files to ignore -------------------------------------------------------------{{{
