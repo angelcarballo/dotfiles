@@ -71,7 +71,7 @@ alias dockerenv='eval `boot2docker shellinit 2>/dev/null`'
 
 # Vim
 alias vim='/usr/local/bin/vim'
-alias v='vim .'
+alias v='nvim .'
 
 # Emacs
 alias ec='emacsclient -nw'
