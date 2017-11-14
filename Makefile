@@ -4,7 +4,7 @@ FOLDERS_TO_LINK := cheats common emacs git git_template ruby spacemacs tmux vim 
 # Run always
 .PHONY: git rbenv vim
 
-default: update link vim
+default: update link vim zsh
 
 update:
 	git pull
@@ -17,6 +17,9 @@ link:
 vim:
 	vim +PackUpdate +qall
 	vim +PackClean +qall
+
+zsh:
+	zplug install
 
 # Setup git global ignore, repo template, fancy diff and aliases
 git:
@@ -64,5 +67,5 @@ base16:
 	chmod +x ~/.config/base16-shell/scripts/*.sh
 
 
-all: update homebrew link vim git rbenv tmux_plugin_manager base16
+all: update homebrew link vim git rbenv tmux_plugin_manager base16 zsh
 
