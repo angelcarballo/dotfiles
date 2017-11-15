@@ -51,7 +51,6 @@ call minpac#add('junegunn/fzf')                      " basic fzf support
 call minpac#add('junegunn/fzf.vim')                  " fzf helpers
 call minpac#add('bronson/vim-visual-star-search')    " search visual selected text with '*'
 call minpac#add('dietsche/vim-lastplace')            " restore cursor position when re-opening files
-call minpac#add('justinmk/vim-sneak')            " restore cursor position when re-opening files
 
 " Auto completion
 call minpac#add('ervandew/supertab')                " magic code auto complete!
@@ -440,7 +439,6 @@ inoremap kj <esc>
 " select last inserted text
 nnoremap gV `[v`]
 
-
 " search for word under cursor in normal mode
 nnoremap gs :WebSearchCursor<cr>
 " search for selection in visual mode
@@ -450,9 +448,6 @@ vnoremap gs :WebSearchVisual<cr>
 cnoremap &t <CR>:t''<CR>
 cnoremap &m <CR>:m''<CR>
 cnoremap &d <CR>:d<CR>``
-
-" type triple ':::' to open the command line window
-cnoremap :: <c-f>
 
 " Fix closest spelling error
 inoremap <c-\> <c-g>u<esc>[s1z=`]a<c-g>u
