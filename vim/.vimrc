@@ -326,6 +326,7 @@ nnoremap <silent> <leader>ff :GFiles<cr>
 nnoremap <silent> <leader>fg :GFiles?<cr>
 nnoremap <silent> <leader>fr :History<cr>
 nnoremap <silent> <leader>ft :FZF spec/<cr>
+nnoremap <silent> <leader>fh :Helptags<cr>
 
 nnoremap <leader>fm :silent Ggrep "def <c-r><c-w>"<cr>
 nnoremap <leader>fM :silent Ggrep "def self.<c-r><c-w>"<cr>
