@@ -76,8 +76,6 @@ call minpac#add('tpope/vim-eunuch')                 " run common UNIX commands f
 call minpac#add('godlygeek/tabular')                " code align (like on this comment)
 call minpac#add('tpope/vim-commentary')             " comment/uncomment code
 call minpac#add('christoomey/vim-system-copy')      " copy command (cp), copy current line (cP) and paste in next line (cv)
-call minpac#add('xolox/vim-notes')                  " easy note taking
-call minpac#add('xolox/vim-misc')                   " required by vim-notes
 call minpac#add('tpope/vim-capslock')               " software caps lock (gC / <c-g>c)
 
 "}}}
@@ -107,14 +105,6 @@ let g:vroom_cucumber_path='rspec'
 let g:vroom_spec_command='rspec'
 let g:vroom_use_vimux=1
 let g:vroom_options={'options':'--fail-fast'}
-
-"" Vim-Notes options
-let g:notes_directories=['~/Dropbox/notes']
-let g:notes_tab_indents=0
-let g:notes_conceal_code=0
-let g:notes_conceal_italic=0
-let g:notes_conceal_bold=0
-let g:notes_conceal_url=0
 
 "" vim-websearch options
 let g:web_search_command = "open"

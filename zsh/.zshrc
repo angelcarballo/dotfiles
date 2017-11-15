@@ -121,6 +121,8 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # Python (homebrew version)
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
+# Notes
+export NOTES="$HOME/Dropbox/notes"
 
 # fix bug when passing arguments to rake
 unsetopt nomatch
