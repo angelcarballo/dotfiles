@@ -4,6 +4,7 @@ vim/.vim/temp/*
 vim/.vim/undo/*
 vim/.vim/plugged
 vim/.vim/pack/minpac/start/*
+nvim/.config/nvim/pack/minpac/start/*
 tmux/.tmux/plugins
 emacs/.emacs.d/*
 !emacs/.emacs.d/init.el
