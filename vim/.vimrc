@@ -390,17 +390,20 @@ nnoremap <silent> <leader>Sb :echo "Current git branch: " . fugitive#head()<cr>
 
 " t - Tmux/Tabs
 
+" Run current file dispatch-like
+nnoremap <silent> <leader>tt :VimuxRunCommand("ruby " . bufname("%"))<cr>
 " Send visual selection to tmux
-vnoremap <silent> <leader>tl :call VimuxSlime()<cr>
+vnoremap <silent> <leader>tt :call VimuxSlime()<cr>
 " Send current line to tmux
 noremap <silent> <leader>tl V:call VimuxSlime()<cr>
 " Send whole file to tmux
-noremap <silent> <leader>tf ggVG:call VimuxSlime()<cr>
+noremap <silent> <leader>te ggVG:call VimuxSlime()<cr>
 " Other tmux interactions
 nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
 nnoremap <silent> <leader>ti :VimuxInspectRunner<cr>
 nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
-nnoremap <silent> <leader>tt :VimuxZoomRunner<cr>
+nnoremap <silent> <leader>tf :VimuxZoomRunner<cr>
+
 " Tab management
 nnoremap <silent> <leader>tn :tabnew<cr>
 
@@ -530,20 +533,6 @@ onoremap in" :<c-u>normal! f"vi"<cr>
 
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
-
-"}}}
-" Global autocommands -----------------------------------------------------------------{{{
-
-fun! <SID>AutoMakeDirectory()
-  let s:directory = expand("<afile>:p:h")
-
-  if !isdirectory(s:directory)
-    call mkdir(s:directory, "p")
-  endif
-endfun
-
-" automatically generate new directories
-autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()
 
 "}}}
 " Force file types -----------------------------------------------------------------{{{
