@@ -422,7 +422,8 @@ nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
 
 " x - eXecute
-nnoremap <leader>x :Dispatch<cr>
+nnoremap <leader>xf :Dispatch<cr>
+nnoremap <leader>xx !!bash<cr>
 
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
