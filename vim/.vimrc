@@ -175,9 +175,7 @@ set t_8f=[38;2;%lu;%lu;%lum
 set t_8b=[48;2;%lu;%lu;%lum
 set termguicolors
 
-syntax on
 set background=dark
-
 set visualbell                 " visual flash
 set noerrorbells               " no flash on errors, only at beginning/end of file
 set laststatus=2               " always show status bar
