@@ -27,32 +27,32 @@ padding:
   y: 2
 
 # Display tabs using this many cells (changes require restart)
-tabspaces: 4
+tabspaces: 2
 
 # When true, bold text is drawn using the bright variant of colors.
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 
 # Font configuration (changes require restart)
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Menlo
+    family: Source Code Pro
     # Style can be specified to pick a specific face.
     # style: Regular
 
-  # The bold font face
+  # The bold Source Code Pro
   bold:
     family: Menlo
     # Style can be specified to pick a specific face.
     # style: Bold
 
-  # The italic font face
+  # The italic Source Code Pro
   italic:
     family: Menlo
     # Style can be specified to pick a specific face.
     # style: Italic
 
-  # Point size of the font
+  # Point size of the Source Code Pro
   size: 13.0
 
   # Offset is the extra space around each character. offset.y can be thought of
