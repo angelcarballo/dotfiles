@@ -1,1 +1,7 @@
 set editing-mode vi
+
+set keymap vi-insert
+$if mode=vi
+        "kj": vi-movement-mode
+        "\C-b": beginning-of-line
+$endif
