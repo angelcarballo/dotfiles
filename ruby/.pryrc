@@ -4,13 +4,12 @@ require_relative '.ruby_repl_ext'
 Pry.editor = 'vim'
 Pry.config.color = true
 
-if defined?(PryRails::RAILS_PROMPT)
-  Pry.config.prompt = PryRails::RAILS_PROMPT
-end
+# Show rails environment and project name
+Pry.config.prompt = PryRails::RAILS_PROMPT if defined?(PryRails::RAILS_PROMPT)
 
 Pry.commands.alias_command 'c', 'continue'
 Pry.commands.alias_command 's', 'step'
 Pry.commands.alias_command 'n', 'next'
 
-# Use ap when inspecting stuff
+# Use awesome print automatically when inspecting stuff
 AwesomePrint.pry! if defined?(AwesomePrint)
