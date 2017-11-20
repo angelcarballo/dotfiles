@@ -208,9 +208,6 @@ if filereadable(expand("~/.vim_colorscheme"))
   source ~/.vim_colorscheme
 endif
 
-" automatically re balance windows on Vim resize
-autocmd VimResized * :wincmd =
-
 " highlight trailing spaces
 match ErrorMsg '\s\+$'
 
