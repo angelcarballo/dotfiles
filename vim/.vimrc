@@ -450,6 +450,7 @@ nnoremap gs :WebSearchCursor<cr>
 vnoremap gs :WebSearchVisual<cr>
 
 " allows incsearch highlighting for range commands
+" i.e. search with /,? and then copy with &t
 cnoremap &t <CR>:t''<CR>
 cnoremap &m <CR>:m''<CR>
 cnoremap &d <CR>:d<CR>``
