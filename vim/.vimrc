@@ -260,7 +260,7 @@ nmap <tab> <c-^>
 nnoremap <leader>, :Reg<cr>
 
 " <leader> - Switch between the last two files
-nnoremap <leader><tab> <c-^>
+nnoremap <leader><tab> :tabn<cr>
 
 " /,? - Search in project
 nnoremap <leader>/ :silent Ggrep ""<left>
