@@ -36,11 +36,12 @@ call minpac#add('tommcdo/vim-exchange')             " text exchange operator (cx
 call minpac#add('vim-scripts/ReplaceWithRegister')  " replace without yanking operator (gr..)
 
 " Text objects
-call minpac#add('nelstrom/vim-textobj-rubyblock')   " ruby block text object <r>
-call minpac#add('whatyouhide/vim-textobj-erb')      " ERB block text object <E>
-call minpac#add('kana/vim-textobj-entire')          " entire buffer text object <e>
-call minpac#add('michaeljsmith/vim-indent-object')  " indentation based text object <i/I>
-call minpac#add('b4winckler/vim-angry')             " function argument text object <a/A>
+call minpac#add('nelstrom/vim-textobj-rubyblock')     " ruby block text object <r>
+call minpac#add('whatyouhide/vim-textobj-erb')        " ERB block text object <E>
+call minpac#add('kana/vim-textobj-entire')            " entire buffer text object <e>
+call minpac#add('michaeljsmith/vim-indent-object')    " indentation based text object <i/I>
+call minpac#add('b4winckler/vim-angry')               " function argument text object <a/A>
+call minpac#add('coderifous/textobj-word-column.vim') " current column of text <c/C>
 
 " Look & Feel
 call minpac#add('pgdouyon/vim-evanesco')            " remove search highlight on cursor move
