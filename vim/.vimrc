@@ -176,6 +176,7 @@ set t_8f=[38;2;%lu;%lu;%lum
 set t_8b=[48;2;%lu;%lu;%lum
 set termguicolors
 
+syntax on
 set background=dark
 set visualbell                 " visual flash
 set noerrorbells               " no flash on errors, only at beginning/end of file
@@ -207,6 +208,8 @@ set statusline+=%*                                  " reset color
 if filereadable(expand("~/.vim_colorscheme"))
   let base16colorspace=256
   source ~/.vim_colorscheme
+  " hide split borders
+  hi VertSplit guibg=bg guifg=bg
 endif
 
 " highlight trailing spaces
@@ -459,7 +462,7 @@ nnoremap p p=`]<c-o>
 nnoremap P P=`]<c-o>
 
 " Search and replace current selection
-vnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
+vnoremap <c-r> "hy:%s/<c-r>h//<left>
 
 " Delete lines and word from insert mode
 inoremap <c-d> <esc>ddi
