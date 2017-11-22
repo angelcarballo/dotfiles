@@ -52,6 +52,7 @@ call minpac#add('junegunn/fzf')                      " basic fzf support
 call minpac#add('junegunn/fzf.vim')                  " fzf helpers
 call minpac#add('bronson/vim-visual-star-search')    " search visual selected text with '*'
 call minpac#add('dietsche/vim-lastplace')            " restore cursor position when re-opening files
+call minpac#add('artnez/vim-wipeout')                " restore cursor position when re-opening files
 
 " Auto completion
 call minpac#add('ervandew/supertab')                " magic code auto complete!
@@ -112,9 +113,6 @@ let g:web_search_query = "https://www.google.co.uk/search?q="
 
 "}}}
 " General settings ------------------------------------------------------------{{{
-
-" map leader to <space>
-let mapleader="\<Space>"
 
 set autowrite                        " autowrite after make, ! and friends
 set complete-=i                      " searching includes can be slow
@@ -249,180 +247,180 @@ autocmd BufNewFile *.sh 0read ~/.vim/skeleton/bash.sh
 autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 
 "}}}
-" Mappings (leader) ---------------------------------------------------------------{{{
+" Mappings (pseudo-leader) ---------------------------------------------------------------{{{
 
 " Show and switch to buffers
-nmap <leader><space> :buffers<cr>:bu<Space>
+nmap <space><space> :buffers<cr>:bu<Space>
 nmap <tab> <c-^>
 
 " , - Show and paste from registers
-nnoremap <leader>, :Reg<cr>
+nnoremap <space>, :Reg<cr>
 
-" <leader> - Switch between the last two files
-nnoremap <leader><tab> :tabn<cr>
+" <space> - Switch between the last two files
+nnoremap <space><tab> :tabn<cr>
 
 " /,? - Search in project
-nnoremap <leader>/ :silent Ggrep ""<left>
-nnoremap <leader>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
+nnoremap <space>/ :silent Ggrep ""<left>
+nnoremap <space>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
 
 " * - Search in project for word under cursor
-nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
-nnoremap <leader>8 :silent Ggrep "<c-r><c-w>"<cr>
-vnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
-vnoremap <leader>8 "hy:silent Ggrep "<c-r>h"<cr>
+nnoremap <space>* :silent Ggrep "<c-r><c-w>"<cr>
+nnoremap <space>8 :silent Ggrep "<c-r><c-w>"<cr>
+vnoremap <space>* "hy:silent Ggrep "<c-r>h"<cr>
+vnoremap <space>8 "hy:silent Ggrep "<c-r>h"<cr>
 
 " a - Auto/Align
 " auto correct spelling mistake
-nnoremap <leader>ac [s1z=
+nnoremap <space>ac [s1z=
 " align
-nnoremap <leader>aa :Tabularize /
-inoremap <leader>aa :Tabularize /
+nnoremap <space>aa :Tabularize /
+inoremap <space>aa :Tabularize /
 
 " b - Buffers
-nnoremap <silent> <leader>bd :bdelete<cr>
-nnoremap <silent> <leader>bb :Buffers<cr>
-nnoremap <silent> <leader>bo :w <bar> %bd <bar> e#<cr>
+nnoremap <silent> <space>bd :bdelete<cr>
+nnoremap <silent> <space>bb :Buffers<cr>
+nnoremap <silent> <space>bo :w <bar> %bd <bar> e#<cr>
 
 " c - Copy/Clear/Close/Quickfix
 if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy git branch
-  nnoremap <leader>cb :let @*=fugitive#head()<cr>:echo "Git branch copied"<cr>
+  nnoremap <space>cb :let @*=fugitive#head()<cr>:echo "Git branch copied"<cr>
 
   " copy file name  (foo.txt)
-  nnoremap <leader>cfn :let @*=expand("%:t")<cr>:echo "Full name copied"<cr>
+  nnoremap <space>cfn :let @*=expand("%:t")<cr>:echo "Full name copied"<cr>
 
   " copy relative path  (src/foo.txt)
-  nnoremap <leader>cfp :let @*=expand("%")<cr>:echo "File path copied"<cr>
+  nnoremap <space>cfp :let @*=expand("%")<cr>:echo "File path copied"<cr>
 
   " copy absolute path  (/something/src/foo.txt)
-  nnoremap <leader>cfP :let @*=expand("%:p")<cr>:echo "Full file path copied"<cr>
+  nnoremap <space>cfP :let @*=expand("%:p")<cr>:echo "Full file path copied"<cr>
 
   " relative path with line number
-  nnoremap <leader>cfl :let @+=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
+  nnoremap <space>cfl :let @+=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
 endif
 " clear search results (both highlight and quickfix window)
-nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
+nnoremap <silent> <space>cs :nohl<cr>:cclose<cr>
 " clear git status window
-nnoremap <silent> <leader>cg <c-w>k<c-w>c
+nnoremap <silent> <space>cg <c-w>k<c-w>c
 " open quickfix window
-nnoremap <silent> <leader>co :Copen<cr>
+nnoremap <silent> <space>co :Copen<cr>
 
 " d - Duplicate
-nnoremap <leader>dp yap:Commentary<cr>}p
-nnoremap <leader>dl yy:Commentary<cr>p
-vnoremap <leader>dl ygv:Commentary<cr>']p
+nnoremap <space>dp yap:Commentary<cr>}p
+nnoremap <space>dl yy:Commentary<cr>p
+vnoremap <space>dl ygv:Commentary<cr>']p
 
 " e - Explore
-nnoremap <silent> <leader>ei :Explore<cr>
-nnoremap <silent> <leader>es :Sex<cr>
-nnoremap <silent> <leader>ev :Vex<cr>
+nnoremap <silent> <space>ei :Explore<cr>
+nnoremap <silent> <space>es :Sex<cr>
+nnoremap <silent> <space>ev :Vex<cr>
 
 " f - File/Find
-nnoremap <leader>fl <c-^>
-nnoremap <leader>fs :up<cr>
-nnoremap <silent> <leader>fd :Files %:p:h<cr>
-nnoremap <silent> <leader>ff :GFiles<cr>
-nnoremap <silent> <leader>fg :GFiles?<cr>
-nnoremap <silent> <leader>fr :History<cr>
-nnoremap <silent> <leader>ft :FZF spec/<cr>
-nnoremap <silent> <leader>fh :Helptags<cr>
+nnoremap <space>fl <c-^>
+nnoremap <space>fs :up<cr>
+nnoremap <silent> <space>fd :Files %:p:h<cr>
+nnoremap <silent> <space>ff :GFiles<cr>
+nnoremap <silent> <space>fg :GFiles?<cr>
+nnoremap <silent> <space>fr :History<cr>
+nnoremap <silent> <space>ft :FZF spec/<cr>
+nnoremap <silent> <space>fh :Helptags<cr>
 
-nnoremap <leader>fm :silent Ggrep "def <c-r><c-w>"<cr>
-nnoremap <leader>fM :silent Ggrep "def self.<c-r><c-w>"<cr>
-nnoremap <leader>fc :silent Ggrep "class <c-r><c-w>"<cr>
-nnoremap <leader>fC :silent Ggrep "module <c-r><c-w>"<cr>
+nnoremap <space>fm :silent Ggrep "def <c-r><c-w>"<cr>
+nnoremap <space>fM :silent Ggrep "def self.<c-r><c-w>"<cr>
+nnoremap <space>fc :silent Ggrep "class <c-r><c-w>"<cr>
+nnoremap <space>fC :silent Ggrep "module <c-r><c-w>"<cr>
 
 " g - Git
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>ga :Gcommit --amend<cr>
-nnoremap <leader>gc :Gcommit<cr>i
-nnoremap <leader>gf :Gfetch<cr>
-nnoremap <leader>gd :Gdiff HEAD<cr>
-nnoremap <leader>gD :Gdiff master<cr>
-nnoremap <leader>gP :Gpush<cr>
-nnoremap <leader>gp :Gpull<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gr :Gread<cr>
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>go :Gbrowse<cr>
-vnoremap <leader>go :Gbrowse<cr>
-nnoremap <leader>gl :Glog<cr>
-vnoremap <leader>gl :Glog<cr>
+nnoremap <space>gs :Gstatus<cr>
+nnoremap <space>ga :Gcommit --amend<cr>
+nnoremap <space>gc :Gcommit<cr>i
+nnoremap <space>gf :Gfetch<cr>
+nnoremap <space>gd :Gdiff HEAD<cr>
+nnoremap <space>gD :Gdiff master<cr>
+nnoremap <space>gP :Gpush<cr>
+nnoremap <space>gp :Gpull<cr>
+nnoremap <space>gw :Gwrite<cr>
+nnoremap <space>gr :Gread<cr>
+nnoremap <space>gb :Gblame<cr>
+nnoremap <space>go :Gbrowse<cr>
+vnoremap <space>go :Gbrowse<cr>
+nnoremap <space>gl :Glog<cr>
+vnoremap <space>gl :Glog<cr>
 
 " h - Git Hunks (added by vim-gitgutter)
-" <leader>hs -> stage hunk
-" <leader>hu -> unstage hunk
+" <space>hs -> stage hunk
+" <space>hu -> unstage hunk
 
 " i - Indent
-nnoremap <leader>ij :%!python -m json.tool<cr>
+nnoremap <space>ij :%!python -m json.tool<cr>
 
 " l - Load /Last
-nnoremap <leader>lg :call QuickFixGitStatus()<cr> \| :cnext<cr>
-nnoremap <silent> <leader>lc `[
-nnoremap <silent> <leader>ll :<up><cr>
+nnoremap <space>lg :call QuickFixGitStatus()<cr> \| :cnext<cr>
+nnoremap <silent> <space>lc `[
+nnoremap <silent> <space>ll :<up><cr>
 
 " pry
-nnoremap <leader>pry Orequire 'pry'; binding.pry
+nnoremap <space>pry Orequire 'pry'; binding.pry
 
 " P - Plugins
-nnoremap <leader>Pi :PackUpdate<cr>
-nnoremap <leader>Pu :PackUpdate<cr>
-nnoremap <leader>Pc :PackClean<cr>
+nnoremap <space>Pi :PackUpdate<cr>
+nnoremap <space>Pu :PackUpdate<cr>
+nnoremap <space>Pc :PackClean<cr>
 
 " q - Quit
-nnoremap <leader>q :q<cr>
-nnoremap <leader>Q :qall!<cr>
+nnoremap <space>q :q<cr>
+nnoremap <space>Q :qall!<cr>
 
 " r - Remove
-nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
-nnoremap <leader>rd :redraw!<cr>
+nnoremap <silent> <space>rw :%s/\s\+$//<cr>:w<cr>
+nnoremap <space>rd :redraw!<cr>
 
 " s - Specs
-nnoremap <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
-nnoremap <leader>sc :call vroom#RunNearestTest(g:vroom_options)<cr>
-nnoremap <leader>sl :call vroom#RunLastTest()<cr>
+nnoremap <space>sf :call vroom#RunTestFile(g:vroom_options)<cr>
+nnoremap <space>sc :call vroom#RunNearestTest(g:vroom_options)<cr>
+nnoremap <space>sl :call vroom#RunLastTest()<cr>
 
 " S - Show/Snippets
-nnoremap <silent> <leader>Sf :echo @%<cr>
-nnoremap <silent> <leader>Sp :echo expand('%:p')<cr>
-nnoremap <silent> <leader>Sb :echo "Current git branch: " . fugitive#head()<cr>
+nnoremap <silent> <space>Sf :echo @%<cr>
+nnoremap <silent> <space>Sp :echo expand('%:p')<cr>
+nnoremap <silent> <space>Sb :echo "Current git branch: " . fugitive#head()<cr>
 
 " t - Tmux/Tabs
 
 " Run current file dispatch-like
-nnoremap <silent> <leader>tt :VimuxRunCommand("ruby " . bufname("%"))<cr>
+nnoremap <silent> <space>tt :VimuxRunCommand("ruby " . bufname("%"))<cr>
 " Send visual selection to tmux
-vnoremap <silent> <leader>tt :call VimuxSlime()<cr>
+vnoremap <silent> <space>tt :call VimuxSlime()<cr>
 " Send current line to tmux
-noremap <silent> <leader>tl V:call VimuxSlime()<cr>
+noremap <silent> <space>tl V:call VimuxSlime()<cr>
 " Send whole file to tmux
-noremap <silent> <leader>te ggVG:call VimuxSlime()<cr>
+noremap <silent> <space>te ggVG:call VimuxSlime()<cr>
 " Other tmux interactions
-nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
-nnoremap <silent> <leader>ti :VimuxInspectRunner<cr>
-nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
-nnoremap <silent> <leader>tf :VimuxZoomRunner<cr>
+nnoremap <silent> <space>to :VimuxRunCommand("")<cr>
+nnoremap <silent> <space>ti :VimuxInspectRunner<cr>
+nnoremap <silent> <space>tc :VimuxCloseRunner<cr>
+nnoremap <silent> <space>tf :VimuxZoomRunner<cr>
 
 " Tab management
-nnoremap <silent> <leader>tn :tabnew<cr>
+nnoremap <silent> <space>tn :tabnew<cr>
 
 " V - Vimrc
-nnoremap <leader>Ve :e $MYVIMRC<cr>
-nnoremap <leader>Vs :so $MYVIMRC<cr>
+nnoremap <space>Ve :e $MYVIMRC<cr>
+nnoremap <space>Vs :so $MYVIMRC<cr>
 
 " w - Windows/Tabs
-nnoremap <silent> <leader>wc :wq<cr>
-nnoremap <silent> <leader>wq :wq<cr>
-nnoremap <silent> <leader>wo :only<cr>
-nnoremap <silent> <leader>we <c-w>=
-nnoremap <silent> <leader>ws :sp<cr>
-nnoremap <silent> <leader>wt :tabedit %<cr>
-nnoremap <silent> <leader>wv :vsp<cr>
-nnoremap <silent> <leader>ww <c-w>w
+nnoremap <silent> <space>wc :wq<cr>
+nnoremap <silent> <space>wq :wq<cr>
+nnoremap <silent> <space>wo :only<cr>
+nnoremap <silent> <space>we <c-w>=
+nnoremap <silent> <space>ws :sp<cr>
+nnoremap <silent> <space>wt :tabedit %<cr>
+nnoremap <silent> <space>wv :vsp<cr>
+nnoremap <silent> <space>ww <c-w>w
 
 " x - eXecute
-nnoremap <leader>xf :Dispatch<cr>
-nnoremap <leader>xx !!bash<cr>
+nnoremap <space>xf :Dispatch<cr>
+nnoremap <space>xx !!bash<cr>
 
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
