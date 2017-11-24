@@ -62,6 +62,7 @@ alias gsp='git stash pop'
 alias br='branch'
 alias master='git checkout master'
 alias cb='git rev-parse --abbrev-ref HEAD | pbcopy'
+alias gitsecrets='git secrets --install && git secrets --register-aws'
 
 # Jekyll
 alias js='bundle exec jekyll serve --watch'
@@ -71,7 +72,7 @@ alias dockerenv='eval `boot2docker shellinit 2>/dev/null`'
 
 # Vim
 alias vim='/usr/local/bin/vim'
-alias v='nvim .'
+alias v='vim .'
 
 # Emacs
 alias ec='emacsclient -nw'
