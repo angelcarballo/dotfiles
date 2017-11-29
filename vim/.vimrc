@@ -1,8 +1,5 @@
 " Plugins  ------------------------------------------------------------{{{
 
-" be iMproved
-set nocompatible
-
 " initialize minpac
 packadd minpac
 call minpac#init()
@@ -36,12 +33,13 @@ call minpac#add('tommcdo/vim-exchange')             " text exchange operator (cx
 call minpac#add('vim-scripts/ReplaceWithRegister')  " replace without yanking operator (gr..)
 
 " Text objects
-call minpac#add('nelstrom/vim-textobj-rubyblock')     " ruby block text object <r>
-call minpac#add('whatyouhide/vim-textobj-erb')        " ERB block text object <E>
-call minpac#add('kana/vim-textobj-entire')            " entire buffer text object <e>
-call minpac#add('michaeljsmith/vim-indent-object')    " indentation based text object <i/I>
-call minpac#add('b4winckler/vim-angry')               " function argument text object <a/A>
-call minpac#add('coderifous/textobj-word-column.vim') " current column of text <c/C>
+call minpac#add('nelstrom/vim-textobj-rubyblock')      " ruby block text object <r>
+call minpac#add('whatyouhide/vim-textobj-erb')         " ERB block text object <E>
+call minpac#add('kana/vim-textobj-entire')             " entire buffer text object <e>
+call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text object <i/I>
+call minpac#add('b4winckler/vim-angry')                " function argument text object <a/A>
+call minpac#add('coderifous/textobj-word-column.vim')  " current column of text <c/C>
+call minpac#add('Julian/vim-textobj-variable-segment') " current column of text <v>
 
 " Look & Feel
 call minpac#add('pgdouyon/vim-evanesco')            " remove search highlight on cursor move
@@ -167,6 +165,7 @@ autocmd QuickFixCmdPost *grep* nested cwindow | redraw!          " open quickfix
 autocmd FileType qf wincmd J                                     " quickfix window should always be full width
 
 runtime macros/matchit.vim           " allow % to match more than just single characters
+filetype plugin indent on            " enable indentation by filetype
 
 "}}}
 " Look & Feel ------------------------------------------------------------------{{{
@@ -318,7 +317,6 @@ nnoremap <silent> <leader>es :Sex<cr>
 nnoremap <silent> <leader>ev :Vex<cr>
 
 " f - File/Find
-nnoremap <leader>fl <c-^>
 nnoremap <leader>fs :up<cr>
 nnoremap <silent> <leader>fd :Files %:p:h<cr>
 nnoremap <silent> <leader>ff :GFiles<cr>
@@ -344,8 +342,8 @@ nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>go :Gbrowse<cr>
-vnoremap <leader>go :Gbrowse<cr>
+nnoremap <leader>gh :Gbrowse<cr>
+vnoremap <leader>gh :Gbrowse<cr>
 nnoremap <leader>gl :Glog<cr>
 vnoremap <leader>gl :Glog<cr>
 

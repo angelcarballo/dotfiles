@@ -112,7 +112,7 @@ man() {
 }
 compdef man="man"
 
-# paths common to all platforms
+# binary folders
 export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$PATH"
 
 # Homebrew
