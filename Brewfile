@@ -39,11 +39,11 @@ brew "ctags"
 # terminal multiplexer
 brew "tmux"
 
-# better tmux on mac
-brew "reattach-to-user-namespace"
-
 # ...to rule them all
 brew "macvim", args: ['override-system-vim']
 
 # gnu tree to display directory structures
 brew "tree"
+
+# move files to trash instead of deleting them
+brew "trash"
