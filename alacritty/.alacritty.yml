@@ -35,15 +35,15 @@ draw_bold_text_with_bright_colors: false
 # Font configuration (changes require restart)
 font:
   normal:
-    family: Input Mono
+    family: Roboto Mono # Input Mono
     # style: Regular
 
   bold:
-    family: Input Mono
+    family: Roboto Mono # Input Mono
     # style: Bold
 
   italic:
-    family: Input Mono
+    family: Roboto Mono # Input Mono
     # style: Italic
   size: 14.0
 
