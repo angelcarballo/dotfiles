@@ -574,7 +574,7 @@ augroup END
 
 augroup pythongroup
   autocmd!
-  autocmd FileType python :set tabstop=8 expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType python :set tabstop=8 expandtab shiftwidth=4 softtabstop=4 textwidth=79
   autocmd FileType python let b:dispatch='python %'
 augroup END
 
