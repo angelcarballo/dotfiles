@@ -307,7 +307,7 @@ nnoremap <silent> <leader>cg <c-w>k<c-w>c
 nnoremap <silent> <leader>co :Copen<cr>
 
 " d - Duplicate
-nnoremap <leader>dp yap:Commentary<cr>}p
+nnoremap <leader>dp yap}p
 nnoremap <leader>dl yy:Commentary<cr>p
 vnoremap <leader>dl ygv:Commentary<cr>']p
 
