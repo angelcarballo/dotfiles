@@ -118,9 +118,6 @@ export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$PATH"
 # Homebrew
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
-# Python (homebrew version)
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-
 # Notes
 export NOTES="$HOME/Dropbox/notes"
 
