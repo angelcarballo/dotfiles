@@ -26,6 +26,7 @@ call minpac#add('tpope/vim-rbenv')                  " Rbenv integration
 call minpac#add('tpope/vim-rails')                  " Rails integration
 call minpac#add('tpope/vim-bundler')                " Bundler integration
 call minpac#add('vim-scripts/nagios-syntax')        " Nagios support
+call minpac#add('hdima/python-syntax')              " Python support
 
 " Motions & Operators
 call minpac#add('tpope/vim-surround')               " alter surroundings (), [], '', {}
@@ -239,6 +240,7 @@ iabbr bpry require 'pry'; binding.pry
 iabbr classdescription #== Description
       \<cr>
       \<cr>
+iabbr pdb import pdb; pdb.set_trace()
 
 "}}}
 " Skeletons -------------------------------------------------------------{{{
@@ -574,7 +576,7 @@ augroup END
 
 augroup pythongroup
   autocmd!
-  autocmd FileType python :set tabstop=8 expandtab shiftwidth=4 softtabstop=4 textwidth=79
+  autocmd FileType python :set tabstop=8 expandtab shiftwidth=4 softtabstop=4 textwidth=79 shiftround
   autocmd FileType python let b:dispatch='python %'
 augroup END
 
