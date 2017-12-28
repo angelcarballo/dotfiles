@@ -83,3 +83,8 @@ alias dark='color gruvbox-dark-hard'
 alias light='color gruvbox-light-hard'
 alias cnext='color -n'
 alias cprev='color -p'
+
+# Python
+alias python='python3'
+alias pip='pip3'
+
