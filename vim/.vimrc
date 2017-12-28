@@ -18,7 +18,6 @@ call minpac#add('wincent/terminus')                 " enhancements for terminal 
 " Git
 call minpac#add('tpope/vim-fugitive')               " git integration
 call minpac#add('tpope/vim-rhubarb')                " github integration
-call minpac#add('airblade/vim-gitgutter')           " real time git-diff
 
 " Languages & frameworks
 call minpac#add('sheerun/vim-polyglot')             " syntax support for comon filetypes
@@ -82,9 +81,6 @@ call minpac#add('tpope/vim-capslock')               " software caps lock (gC / <
 
 "" previm options
 let g:previm_open_cmd = 'open'
-
-" gitgutter options
-let g:gitgutter_signs = 0
 
 "" Netrw options
 let g:netrw_liststyle=0         " thin (change to 3 for tree)
@@ -349,10 +345,6 @@ vnoremap <leader>gh :Gbrowse<cr>
 nnoremap <leader>gl :Glog<cr>
 vnoremap <leader>gl :Glog<cr>
 
-" h - Git Hunks (added by vim-gitgutter)
-" <leader>hs -> stage hunk
-" <leader>hu -> unstage hunk
-
 " i - Indent
 nnoremap <leader>ij :%!python -m json.tool<cr>
 
@@ -505,7 +497,6 @@ nnoremap cop :set paste! paste?<cr>
 nnoremap cotf :call ToggleFailFast()<cr>
 nnoremap cots :call ToggleSpring()<cr>
 nnoremap cotm :call ToggleVimuxTarget()<cr>
-nnoremap cog :GitGutterSignsToggle<cr>
 nnoremap cos :set scrollbind! scrollbind?<cr>
 
 " Exit neovim terminal mode like insert mode
