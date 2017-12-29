@@ -34,7 +34,6 @@ call minpac#add('tpope/vim-rbenv')                  " Rbenv integration
 call minpac#add('tpope/vim-rails')                  " Rails integration
 call minpac#add('tpope/vim-bundler')                " Bundler integration
 call minpac#add('vim-scripts/nagios-syntax')        " Nagios support
-call minpac#add('hdima/python-syntax')              " Python support
 
 " Motions & Operators
 call minpac#add('tpope/vim-surround')               " alter surroundings (), [], '', {}
@@ -167,7 +166,7 @@ if executable('ag')
 endif
 
 
-autocmd FocusGained * source ~/.vim_colorscheme                  " reload colorscheme
+" autocmd FocusGained * source ~/.vim_colorscheme                  " reload colorscheme
 autocmd QuickFixCmdPost *grep* nested cwindow | redraw!          " open quickfix window after using Grep
 autocmd FileType qf wincmd J                                     " quickfix window should always be full width
 
@@ -478,14 +477,24 @@ inoremap <c-w> <esc>bdiwi
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
-" Use arrow keys to resize splits
-nnoremap <up> :resize -5<cr>
-nnoremap <down> :resize +5<cr>
-nnoremap <left> :vertical resize -10<cr>
-nnoremap <right> :vertical resize +10<cr>
+" Use C-<arrow> to resize splits
+nnoremap <c-up> :resize -5<cr>
+nnoremap <c-down> :resize +5<cr>
+nnoremap <c-left> :vertical resize -10<cr>
+nnoremap <c-right> :vertical resize +10<cr>
+
+" Use <arrow> to move lines/blocks
+nnoremap <up> :m .-2<CR>==
+nnoremap <down> :m .+1<CR>==
+nnoremap <right> >>
+nnoremap <left> <<
+xnoremap <up> :m '<-2<CR>gv=gv
+xnoremap <down> :m '>+1<CR>gv=gv
+xnoremap <left> <<<cr>gv
+xnoremap <right> >><cr>gv
 
 " Easily run macros on selected lines
-vnoremap @ :norm@<cr>
+xnoremap @ :norm@
 
 " Easily run the last command on selected lines
 xnoremap . :norm.<cr>
