@@ -12,8 +12,17 @@ call minpac#add('tpope/vim-unimpaired')             " multiple mappings using [ 
 call minpac#add('tpope/vim-sleuth')                 " auto set indent settings based on filetype
 call minpac#add('stefandtw/quickfix-reflector.vim') " allow changes from quickfix window
 call minpac#add('AndrewRadev/splitjoin.vim')        " split/join statements (gS, gJ)
-call minpac#add('tpope/vim-abolish')                " fancy substitutions and coercion
 call minpac#add('wincent/terminus')                 " enhancements for terminal vim (focus events, cursor, etc.)
+call minpac#add('tpope/vim-abolish')                " fancy substitutions and coercion
+" Abolish normal mode commands
+" crs        -  snake_case
+" crm        -  MixedCase
+" crc        -  camelCase
+" cru        -  UPPER_CASE
+" cr-        -  dash-case
+" cr.        -  dot.case
+" cr<space>  -  space case
+" crt        -  Title case
 
 " Git
 call minpac#add('tpope/vim-fugitive')               " git integration
@@ -39,7 +48,7 @@ call minpac#add('kana/vim-textobj-entire')             " entire buffer text obje
 call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text object <i/I>
 call minpac#add('b4winckler/vim-angry')                " function argument text object <a/A>
 call minpac#add('coderifous/textobj-word-column.vim')  " current column of text <c/C>
-call minpac#add('Julian/vim-textobj-variable-segment') " current column of text <v>
+call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelcase, snakecase and similar <v>
 
 " Look & Feel
 call minpac#add('pgdouyon/vim-evanesco')            " remove search highlight on cursor move
@@ -69,6 +78,7 @@ call minpac#add('kannokanno/previm')                " live preview markdown file
 " Runners
 call minpac#add('skalnik/vim-vroom')                " ruby test runner
 call minpac#add('tpope/vim-eunuch')                 " run common UNIX commands for the current file
+call minpac#add('tpope/vim-dispatch')               " run commands asynchronously
 
 " Extras
 call minpac#add('godlygeek/tabular')                " code align (like on this comment)
@@ -316,6 +326,7 @@ nnoremap <silent> <leader>ev :Vex<cr>
 
 " f - File/Find
 nnoremap <leader>fs :up<cr>
+nnoremap <silent> <leader>fa :Files<cr>
 nnoremap <silent> <leader>fd :Files %:p:h<cr>
 nnoremap <silent> <leader>ff :GFiles<cr>
 nnoremap <silent> <leader>fg :GFiles?<cr>
@@ -413,8 +424,9 @@ nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
 
 " x - eXecute
-nnoremap <leader>xf :Dispatch<cr>
-nnoremap <leader>xx !!bash<cr>
+nnoremap <leader>xd :Dispatch<cr>
+nnoremap <leader>xm :Make<cr>
+nnoremap <leader>xb !!bash<cr>
 
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
@@ -568,7 +580,7 @@ augroup END
 augroup pythongroup
   autocmd!
   autocmd FileType python :set tabstop=8 expandtab shiftwidth=4 softtabstop=4 textwidth=79 shiftround
-  autocmd FileType python let b:dispatch='python %'
+  autocmd FileType python let b:dispatch = 'pipenv run py.test'
 augroup END
 
 "}}}
