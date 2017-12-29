@@ -274,8 +274,8 @@ nnoremap <leader>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
 " * - Search in project for word under cursor
 nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
 nnoremap <leader>8 :silent Ggrep "<c-r><c-w>"<cr>
-vnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
-vnoremap <leader>8 "hy:silent Ggrep "<c-r>h"<cr>
+xnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
+xnoremap <leader>8 "hy:silent Ggrep "<c-r>h"<cr>
 
 " a - Auto/Align
 " auto correct spelling mistake
@@ -316,7 +316,7 @@ nnoremap <silent> <leader>co :Copen<cr>
 " d - Duplicate
 nnoremap <leader>dp yap}p
 nnoremap <leader>dl yy:Commentary<cr>p
-vnoremap <leader>dl ygv:Commentary<cr>']p
+xnoremap <leader>dl ygv:Commentary<cr>']p
 
 " e - Explore
 nnoremap <silent> <leader>ei :Explore<cr>
@@ -351,9 +351,9 @@ nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gh :Gbrowse<cr>
-vnoremap <leader>gh :Gbrowse<cr>
+xnoremap <leader>gh :Gbrowse<cr>
 nnoremap <leader>gl :Glog<cr>
-vnoremap <leader>gl :Glog<cr>
+xnoremap <leader>gl :Glog<cr>
 
 " i - Indent
 nnoremap <leader>ij :%!python -m json.tool<cr>
@@ -394,7 +394,7 @@ nnoremap <silent> <leader>Sb :echo "Current git branch: " . fugitive#head()<cr>
 " Run current file dispatch-like
 nnoremap <silent> <leader>tt :VimuxRunCommand("ruby " . bufname("%"))<cr>
 " Send visual selection to tmux
-vnoremap <silent> <leader>tt :call VimuxSlime()<cr>
+xnoremap <silent> <leader>tt :call VimuxSlime()<cr>
 " Send current line to tmux
 noremap <silent> <leader>tl V:call VimuxSlime()<cr>
 " Send whole file to tmux
@@ -431,8 +431,8 @@ nnoremap <leader>xb !!bash<cr>
 " Mappings (other) ---------------------------------------------------------------{{{
 
 " Move visual block
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+xnoremap J :m '>+1<CR>gv=gv
+xnoremap K :m '<-2<CR>gv=gv
 
 " Better paste from register
 inoremap <c-r> :Reg<cr>
@@ -449,7 +449,7 @@ nnoremap gV `[v`]
 " search for word under cursor in normal mode
 nnoremap gs :WebSearchCursor<cr>
 " search for selection in visual mode
-vnoremap gs :WebSearchVisual<cr>
+xnoremap gs :WebSearchVisual<cr>
 
 " allows incsearch highlighting for range commands
 " i.e. search with /,? and then copy with &t
@@ -465,7 +465,7 @@ nnoremap p p=`]<c-o>
 nnoremap P P=`]<c-o>
 
 " Search and replace current selection
-vnoremap <c-r> "hy:%s/<c-r>h//<left>
+xnoremap <c-r> "hy:%s/<c-r>h//<left>
 
 " Delete lines and word from insert mode
 inoremap <c-d> <esc>ddi
@@ -505,8 +505,8 @@ nnoremap Y y$
 " Easy beginning/end of line
 nnoremap H ^
 nnoremap L $
-vnoremap H ^
-vnoremap L $
+xnoremap H ^
+xnoremap L $
 
 " Unimpaired style next/previews tab
 nnoremap [w :tabp<cr>
