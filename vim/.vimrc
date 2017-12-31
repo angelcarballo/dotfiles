@@ -75,7 +75,7 @@ call minpac#add('linluk/vim-websearch')             " web searches from vim buff
 call minpac#add('kannokanno/previm')                " live preview markdown files
 
 " Runners
-call minpac#add('skalnik/vim-vroom')                " ruby test runner
+call minpac#add('janko-m/vim-test')                 " generic test runner
 call minpac#add('tpope/vim-eunuch')                 " run common UNIX commands for the current file
 call minpac#add('tpope/vim-dispatch')               " run commands asynchronously
 
@@ -87,6 +87,12 @@ call minpac#add('tpope/vim-capslock')               " software caps lock (gC / <
 
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
+
+" vim-test options
+let test#strategy = 'vimux'
+let test#python#runner = 'pytest'
+let test#python#pytest#executable = 'pipenv run pytest'
+let test#ruby#rspec#options = '--fail-fast'
 
 "" previm options
 let g:previm_open_cmd = 'open'
@@ -102,13 +108,6 @@ let g:netrw_sizestyle='H'       " show human style file sizes
 let ruby_spellcheck_strings=1      " enable spellcheck inside ruby strings
 let ruby_minlines=200              " avoid syntax errors while scrolling on large files
 let g:ruby_indent_block_style='do' " better syntax for nested blocks
-
-"" Vromm configuration
-let g:vroom_map_keys=0
-let g:vroom_cucumber_path='rspec'
-let g:vroom_spec_command='rspec'
-let g:vroom_use_vimux=1
-let g:vroom_options={'options':'--fail-fast'}
 
 "" vim-websearch options
 let g:web_search_command = "open"
@@ -380,9 +379,11 @@ nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
 nnoremap <leader>rd :redraw!<cr>
 
 " s - Specs
-nnoremap <leader>sf :call vroom#RunTestFile(g:vroom_options)<cr>
-nnoremap <leader>sc :call vroom#RunNearestTest(g:vroom_options)<cr>
-nnoremap <leader>sl :call vroom#RunLastTest()<cr>
+nnoremap <leader>sa :TestSuite<cr>
+nnoremap <leader>sf :TestFile<cr>
+nnoremap <leader>sc :TestNearest<cr>
+nnoremap <leader>sl :TestLast<cr>
+nnoremap <leader>sg :TestVisit<cr>
 
 " S - Show/Snippets
 nnoremap <silent> <leader>Sf :echo @%<cr>
@@ -589,7 +590,7 @@ augroup END
 augroup pythongroup
   autocmd!
   autocmd FileType python :set tabstop=8 expandtab shiftwidth=4 softtabstop=4 textwidth=79 shiftround
-  autocmd FileType python let b:dispatch = 'pipenv run py.test'
+  autocmd FileType python let b:dispatch = 'pytest pipenv run py.test'
 augroup END
 
 "}}}
