@@ -323,6 +323,7 @@ nnoremap <leader>fs :up<cr>
 nnoremap <silent> <leader>fa :Files<cr>
 nnoremap <silent> <leader>fd :Files %:p:h<cr>
 nnoremap <silent> <leader>ff :GFiles<cr>
+nnoremap <silent> <leader>fF :Ag<cr>
 nnoremap <silent> <leader>fg :GFiles?<cr>
 nnoremap <silent> <leader>fr :History<cr>
 nnoremap <silent> <leader>ft :FZF spec/<cr>
@@ -426,10 +427,6 @@ nnoremap <leader>xb !!bash<cr>
 
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
-
-" Move visual block
-xnoremap J :m '>+1<CR>gv=gv
-xnoremap K :m '<-2<CR>gv=gv
 
 " Better paste from register
 inoremap <c-r> :Reg<cr>
