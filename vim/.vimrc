@@ -10,7 +10,6 @@ call minpac#add('tpope/vim-vinegar')                " file manager improvements
 call minpac#add('tpope/vim-repeat')                 " extend repeat support
 call minpac#add('tpope/vim-unimpaired')             " multiple mappings using [ & ]
 call minpac#add('tpope/vim-sleuth')                 " auto set indent settings based on filetype
-call minpac#add('stefandtw/quickfix-reflector.vim') " allow changes from quickfix window
 call minpac#add('AndrewRadev/splitjoin.vim')        " split/join statements (gS, gJ)
 call minpac#add('wincent/terminus')                 " enhancements for terminal vim (focus events, cursor, etc.)
 call minpac#add('tpope/vim-abolish')                " fancy substitutions and coercion
@@ -466,7 +465,7 @@ nnoremap p p=`]<c-o>
 nnoremap P P=`]<c-o>
 
 " Search and replace current selection
-xnoremap <c-r> "hy:%s/<c-r>h//<left>
+xnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
 
 " Delete lines and word from insert mode
 inoremap <c-d> <esc>ddi
@@ -557,6 +556,14 @@ autocmd BufRead,BufNewFile *.tmux setfiletype tmux
 autocmd BufRead,BufNewFile *.cfg setfiletype puppet
 autocmd BufRead,BufNewFile init.el setfiletype lisp
 autocmd BufRead,BufNewFile .spacemacs setfiletype lisp
+
+"}}}
+" Type: QuickFix -----------------------------------------------------------------{{{
+
+augroup quickfixgroup
+  autocmd!
+  autocmd FileType qf xnoremap <c-r> "hy:cdo %s/<c-r>h//g<left><left>
+augroup END
 
 "}}}
 " Type: Vim -----------------------------------------------------------------{{{
