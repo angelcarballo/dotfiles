@@ -45,11 +45,9 @@ call minpac#add('whatyouhide/vim-textobj-erb')         " ERB block text object <
 call minpac#add('kana/vim-textobj-entire')             " entire buffer text object <e>
 call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text object <i/I>
 call minpac#add('b4winckler/vim-angry')                " function argument text object <a/A>
-call minpac#add('coderifous/textobj-word-column.vim')  " current column of text <c/C>
 call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelcase, snakecase and similar <v>
 
 " Look & Feel
-call minpac#add('pgdouyon/vim-evanesco')            " remove search highlight on cursor move
 call minpac#add('chriskempson/base16-vim')          " base16 colorschemes
 
 " Navigation
@@ -66,7 +64,6 @@ call minpac#add('docunext/closetag.vim')            " auto close for Html tags
 
 " Third party integration
 call minpac#add('christoomey/vim-tmux-navigator')   " navigate to tmux panes from Vim
-call minpac#add('benmills/vimux')                   " tmux integration
 call minpac#add('tpope/gem-ctags')                  " include tags from installed gems
 call minpac#add('jez/vim-superman')                 " better man pager
 call minpac#add('Townk/dash.vim')                   " Dash integration for documentation lookups
@@ -74,6 +71,7 @@ call minpac#add('linluk/vim-websearch')             " web searches from vim buff
 call minpac#add('kannokanno/previm')                " live preview markdown files
 
 " Runners
+call minpac#add('benmills/vimux')                   " tmux integration
 call minpac#add('janko-m/vim-test')                 " generic test runner
 call minpac#add('tpope/vim-eunuch')                 " run common UNIX commands for the current file
 call minpac#add('tpope/vim-dispatch')               " run commands asynchronously
