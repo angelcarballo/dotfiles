@@ -127,7 +127,6 @@ set ruler                            " show cursor position
 set scrolloff=3                      " leave space after the current line
 set foldmethod=marker                " fold using {{{ .. }}} markers
 set diffopt+=vertical                " always use vertical diffs
-set mouse+=a                         " enable mouse support in (a)ll modes
 set noswapfile                       " disable swap files, let git do the work
 set splitright                       " open new vertical split panes to right
 set history=200                      " increase history (default: 50)
