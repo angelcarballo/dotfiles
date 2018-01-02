@@ -50,7 +50,7 @@ alias gll="git log --pretty=format:'%h - %an [%ar] %s'"
 alias gh='git open'
 alias gom='git open origin master'
 alias gp='git pull'
-alias gmm='git pull && git merge origin/master'
+alias gmm='git fetch && git merge origin/master'
 alias gr='git reset HEAD '
 alias grh='git reset --hard HEAD'
 alias grl='git reflog'
