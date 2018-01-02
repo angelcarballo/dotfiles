@@ -357,6 +357,9 @@ nnoremap <leader>lg :call QuickFixGitStatus()<cr> \| :cnext<cr>
 nnoremap <silent> <leader>lc `[
 nnoremap <silent> <leader>ll :<up><cr>
 
+" o - open
+nnoremap <leader>of :! open '%'<cr>
+
 " pry
 nnoremap <leader>pry Orequire 'pry'; binding.pry
 
