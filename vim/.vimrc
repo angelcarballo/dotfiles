@@ -68,7 +68,6 @@ call minpac#add('tpope/gem-ctags')                  " include tags from installe
 call minpac#add('jez/vim-superman')                 " better man pager
 call minpac#add('Townk/dash.vim')                   " Dash integration for documentation lookups
 call minpac#add('linluk/vim-websearch')             " web searches from vim buffers
-call minpac#add('kannokanno/previm')                " live preview markdown files
 
 " Runners
 call minpac#add('benmills/vimux')                   " tmux integration
@@ -148,7 +147,6 @@ set nojoinspaces                     " only insert one space when joining after 
 set breakindent                      " keep indentation on wrapped lines
 set tabstop=4                        " tabs use 4 spaces by default (filetypes override this)
 set expandtab                        " indent with spaces by default (overriden by filetype)
-set gdefault                         " make substitution global by default
 set regexpengine=1                   " use old regexp engine, as new one has low performance with big ruby files
 " Extended mouse support
 if !has('nvim')
