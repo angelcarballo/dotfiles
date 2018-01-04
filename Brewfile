@@ -50,3 +50,7 @@ brew "trash"
 
 # nice formatter for text (markdown, readmes, etc.)
 brew "par"
+
+# github tooling
+brew "hub"
+
