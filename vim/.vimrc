@@ -153,9 +153,9 @@ if !has('nvim')
   set ttymouse=xterm2
 endif
 
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor\ --hidden\ --ignore\ .git
+if executable('rg')
+  " Use ripgrep over Grep
+  set grepprg=rg\ --vimgrep
 endif
 
 

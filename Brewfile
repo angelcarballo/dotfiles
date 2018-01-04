@@ -2,7 +2,7 @@
 brew "stow"
 
 # super fast replacement for Ack
-brew "the_silver_searcher"
+brew "ripgrep"
 
 # image manipulation tools
 brew "imagemagick"

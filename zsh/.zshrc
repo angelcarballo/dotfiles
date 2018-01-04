@@ -130,8 +130,8 @@ unsetopt nomatch
 # source fzf fuzzy finder configuration is present
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# try to use Ag as default fzf command
-export FZF_DEFAULT_COMMAND='ag -g ""'
+# try to use ripgrep as default fzf command
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 
 # enable syntax for cheat (see: https://github.com/chrisallenlane/cheat)
 export CHEATCOLORS=true
