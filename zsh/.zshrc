@@ -91,10 +91,10 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 
 # history entries to keep in history file
-SAVEHIST=10000
+SAVEHIST=1000
 
 # history entries to keep in memory
-HISTSIZE=10000
+HISTSIZE=1000
 
 # history location
 HISTFILE=~/.zsh_history
