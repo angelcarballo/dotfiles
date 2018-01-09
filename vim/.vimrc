@@ -442,7 +442,7 @@ nnoremap <leader>xb !!bash<cr>
 inoremap <c-r> :Reg<cr>
 
 " Search documentation for word under cursor
-nmap <silent> K <Plug>DashSearch
+nnoremap <silent> K <Plug>DashSearch
 
 " Easily exit insert mode
 inoremap kj <esc>
@@ -487,15 +487,11 @@ nnoremap <c-down> :resize +5<cr>
 nnoremap <c-left> :vertical resize -10<cr>
 nnoremap <c-right> :vertical resize +10<cr>
 
-" Use <arrow> to move lines/blocks
-nnoremap <up> :m .-2<cr>==
-nnoremap <down> :m .+1<cr>==
-nnoremap <right> >>
-nnoremap <left> <<
-xnoremap <up> :m '<-2<cr>gv=gv
-xnoremap <down> :m '>+1<cr>gv=gv
-xnoremap <left> <<<cr>gv
-xnoremap <right> >><cr>gv
+" Move lines/blocks
+xnoremap K :m '<-2<cr>gv=gv
+xnoremap J :m '>+1<cr>gv=gv
+xnoremap < <<<cr>gv
+xnoremap > >><cr>gv
 
 " Easily run macros on selected lines
 xnoremap @ :norm@
