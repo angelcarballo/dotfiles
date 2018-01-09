@@ -457,9 +457,9 @@ xnoremap gs :WebSearchVisual<cr>
 
 " allows incsearch highlighting for range commands
 " i.e. search with /,? and then copy with &t
-cnoremap &t <CR>:t''<CR>
-cnoremap &m <CR>:m''<CR>
-cnoremap &d <CR>:d<CR>``
+cnoremap &c <cr>:copy''<cr>
+cnoremap &m <cr>:move''<cr>
+cnoremap &d <cr>:delete<cr>``
 
 " Fix closest spelling error
 inoremap <c-\> <c-g>u<esc>[s1z=`]a<c-g>u
@@ -488,12 +488,12 @@ nnoremap <c-left> :vertical resize -10<cr>
 nnoremap <c-right> :vertical resize +10<cr>
 
 " Use <arrow> to move lines/blocks
-nnoremap <up> :m .-2<CR>==
-nnoremap <down> :m .+1<CR>==
+nnoremap <up> :m .-2<cr>==
+nnoremap <down> :m .+1<cr>==
 nnoremap <right> >>
 nnoremap <left> <<
-xnoremap <up> :m '<-2<CR>gv=gv
-xnoremap <down> :m '>+1<CR>gv=gv
+xnoremap <up> :m '<-2<cr>gv=gv
+xnoremap <down> :m '>+1<cr>gv=gv
 xnoremap <left> <<<cr>gv
 xnoremap <right> >><cr>gv
 
