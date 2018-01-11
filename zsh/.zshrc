@@ -4,7 +4,6 @@ source $ZPLUG_HOME/init.zsh
 
 # plugins
 zplug "zsh-users/zsh-syntax-highlighting"
-zplug "paulirish/git-open"
 
 # then, source plugins and add commands to $PATH
 zplug load
@@ -142,3 +141,5 @@ source $SHELL_COLORSCHEME
 # enable rbenv
 eval "$(rbenv init -)"
 
+# alias git with GitHub's hub
+eval "$(hub alias -s)"
