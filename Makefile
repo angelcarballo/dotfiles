@@ -2,7 +2,7 @@ DOTFILES := $(shell pwd)
 FOLDERS_TO_LINK := cheats common emacs git git_template ruby spacemacs tmux vim nvim zsh tig alacritty
 
 # Run always
-.PHONY: git rbenv vim
+.PHONY: git rbenv vim clean
 
 default: update link vim zsh
 
@@ -68,6 +68,8 @@ base16:
 	git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 	chmod +x ~/.config/base16-shell/scripts/*.sh
 
+clean:
+	brew cleanup
 
 all: update homebrew link vim git rbenv tmux_plugin_manager base16 zsh
 
