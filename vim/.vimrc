@@ -85,9 +85,11 @@ call minpac#add('tpope/vim-capslock')               " software caps lock (gC / <
 " Plugin options ---------------------------------------------------------------{{{
 
 " vim-test options
+let g:test#preserve_screen = 1
 let test#strategy = 'vimux'
 let test#python#runner = 'pytest'
 let test#python#pytest#executable = 'pipenv run pytest'
+let test#ruby#rspec#executable = 'bundle exec rspec'
 let test#ruby#rspec#options = '--fail-fast'
 
 "" previm options
