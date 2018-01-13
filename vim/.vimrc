@@ -26,7 +26,6 @@ call minpac#add('tpope/vim-abolish')                " fancy substitutions and co
 " Git
 call minpac#add('tpope/vim-fugitive')               " git integration
 call minpac#add('tpope/vim-rhubarb')                " github integration
-call minpac#add('mhinz/vim-signify')                " vcs diff on buffer
 
 " Languages & frameworks
 call minpac#add('sheerun/vim-polyglot')             " syntax support for comon filetypes
@@ -84,9 +83,6 @@ call minpac#add('tpope/vim-capslock')               " software caps lock (gC / <
 
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
-
-" vim-signify options
-let g:signify_vcs_list = [ 'git' ]
 
 " vim-test options
 let g:test#preserve_screen = 1
