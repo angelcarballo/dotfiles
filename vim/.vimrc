@@ -483,12 +483,6 @@ inoremap <c-w> <esc>bdiwi
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
-" Use C-<arrow> to resize splits
-nnoremap <c-up> :resize -5<cr>
-nnoremap <c-down> :resize +5<cr>
-nnoremap <c-left> :vertical resize -10<cr>
-nnoremap <c-right> :vertical resize +10<cr>
-
 " Move lines/blocks
 xnoremap K :m '<-2<cr>gv=gv
 xnoremap J :m '>+1<cr>gv=gv
