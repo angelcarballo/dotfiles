@@ -40,8 +40,6 @@ call minpac#add('tommcdo/vim-exchange')             " text exchange operator (cx
 call minpac#add('vim-scripts/ReplaceWithRegister')  " replace without yanking operator (gr..)
 
 " Text objects
-call minpac#add('nelstrom/vim-textobj-rubyblock')      " ruby block text object <r>
-call minpac#add('whatyouhide/vim-textobj-erb')         " ERB block text object <E>
 call minpac#add('kana/vim-textobj-entire')             " entire buffer text object <e>
 call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text object <i/I>
 call minpac#add('b4winckler/vim-angry')                " function argument text object <a/A>
@@ -171,10 +169,10 @@ filetype plugin indent on            " enable indentation by filetype
 
 " handel ctrl-arrow escape sequences when inside tmux
 if &term =~ '^screen'
-    execute "set <xUp>=\e[1;*A"
-    execute "set <xDown>=\e[1;*B"
-    execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
+  execute "set <xUp>=\e[1;*A"
+  execute "set <xDown>=\e[1;*B"
+  execute "set <xRight>=\e[1;*C"
+  execute "set <xLeft>=\e[1;*D"
 endif
 
 "}}}
@@ -464,13 +462,13 @@ cnoremap &m <cr>:move''<cr>
 cnoremap &d <cr>:delete<cr>``
 
 " Fix closest spelling error
-inoremap <c-\> <c-g>u<esc>[s1z=`]a<c-g>u
+inoremap <c-f> <c-g>u<esc>[s1z=`]a<c-g>u
 
 " Auto indent pasted text
 nnoremap p p=`]<c-o>
 nnoremap P P=`]<c-o>
 
-" Search and replace current selection
+" Search and replace current visual selection
 xnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
 
 " Delete lines and word from insert mode
