@@ -107,7 +107,7 @@ let g:ruby_indent_block_style='do' " better syntax for nested blocks
 
 "" vim-websearch options
 let g:web_search_command = "open"
-let g:web_search_query = "https://www.google.co.uk/search?q="
+let g:web_search_query = "https://www.google.com/search?q="
 
 "}}}
 " General settings ------------------------------------------------------------{{{
@@ -117,7 +117,7 @@ let mapleader="\<Space>"
 
 set autowrite                        " autowrite after make, ! and friends
 set complete-=i                      " searching includes can be slow
-set encoding=utf-8                   " use UTF8 by default
+set encoding=utf-8                   " use UTF8 by default (in case $LANG has a different value)
 set number                           " show line numbers
 set showcmd                          " show complete commands
 set ruler                            " show cursor position
@@ -345,7 +345,7 @@ nnoremap <leader>fC :silent Ggrep "module <c-r><c-w>"<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
 nnoremap <leader>gc :Gcommit<cr>i
-nnoremap <leader>gf :Gfetch<cr>
+nnoremap <leader>gf :GitStatusFiles<cr>
 nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gD :Gdiff master<cr>
 nnoremap <leader>gP :Gpush<cr>
