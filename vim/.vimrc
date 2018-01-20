@@ -158,8 +158,6 @@ if executable('rg')
   set grepprg=rg\ --vimgrep
 endif
 
-
-" autocmd FocusGained * source ~/.vim_colorscheme                  " reload colorscheme
 autocmd QuickFixCmdPost *grep* nested cwindow | redraw!          " open quickfix window after using Grep
 autocmd FileType qf wincmd J                                     " quickfix window should always be full width
 
