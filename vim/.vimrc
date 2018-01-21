@@ -437,7 +437,7 @@ nnoremap <leader>xb !!bash<cr>
 " Mappings (other) ---------------------------------------------------------------{{{
 
 " Better paste from register
-inoremap <c-r> :Reg<cr>
+inoremap <c-v> :Reg<cr>
 
 " Search documentation for word under cursor
 nnoremap <silent> K <Plug>DashSearch
