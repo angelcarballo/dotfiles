@@ -1,18 +1,3 @@
-# load zplug plugin manager
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
-
-# plugins
-zplug "zsh-users/zsh-syntax-highlighting"
-
-# then, source plugins and add commands to $PATH
-zplug load
-
-# dont use zle on emacs to aviod duplicated input
-if [[ -n ${INSIDE_EMACS} ]]; then
-    unsetopt zle
-fi
-
 # theme
 source ~/.zsh/theme.zsh
 
@@ -101,15 +86,10 @@ HISTFILE=~/.zsh_history
 # commands not added to history
 HISTORY_IGNORE="(ll|clear|c|clear|ls|cd *|pwd|exit|cd ..|rm *|rc|bi|fs|gd|gs|gp|git push|git pull|git fetch|v|cd|pry|dark|light)"
 
-# use vim as man pager, with autocompletion
-man() {
-  vim -c "SuperMan $*"
-
-  if [ "$?" != "0"  ]; then
-    echo "No manual entry for $*"
-  fi
-}
-compdef man="man"
+# dont use zle on emacs to aviod duplicated input
+if [[ -n ${INSIDE_EMACS} ]]; then
+        unsetopt zle
+fi
 
 # binary folders
 export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$PATH"
@@ -123,12 +103,6 @@ export NOTES="$HOME/Dropbox/notes"
 # fix bug when passing arguments to rake
 unsetopt nomatch
 
-# source local config if present
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
-# source fzf fuzzy finder configuration is present
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # try to use ripgrep as default fzf command
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 
@@ -138,8 +112,15 @@ export CHEATCOLORS=true
 # initialize base16 colorscheme
 source $SHELL_COLORSCHEME
 
+# source fzf fuzzy finder configuration is present
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # enable rbenv
 eval "$(rbenv init -)"
 
 # alias git with GitHub's hub
 eval "$(hub alias -s)"
+
+# source local config if present
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
