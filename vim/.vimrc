@@ -164,15 +164,6 @@ autocmd FileType qf wincmd J                                     " quickfix wind
 runtime macros/matchit.vim           " allow % to match more than just single characters
 filetype plugin indent on            " enable indentation by filetype
 
-
-" handel ctrl-arrow escape sequences when inside tmux
-if &term =~ '^screen'
-  execute "set <xUp>=\e[1;*A"
-  execute "set <xDown>=\e[1;*B"
-  execute "set <xRight>=\e[1;*C"
-  execute "set <xLeft>=\e[1;*D"
-endif
-
 "}}}
 " Look & Feel ------------------------------------------------------------------{{{
 
@@ -342,7 +333,7 @@ nnoremap <leader>fC :silent Ggrep "module <c-r><c-w>"<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
 nnoremap <leader>gc :Gcommit<cr>i
-nnoremap <leader>gf :GitStatusFiles<cr>
+nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
 nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gD :Gdiff master<cr>
 nnoremap <leader>gP :Gpush<cr>
@@ -504,12 +495,12 @@ nnoremap [w :tabp<cr>
 nnoremap ]w :tabn<cr>
 
 " Additions to unimpaired option toggles
-nnoremap cof :set foldenable! foldenable?<cr>
-nnoremap cop :set paste! paste?<cr>
+nnoremap cof :setlocal foldenable! foldenable?<cr>
+nnoremap cop :setlocal paste! paste?<cr>
 nnoremap cotf :call ToggleFailFast()<cr>
 nnoremap cots :call ToggleSpring()<cr>
 nnoremap cotm :call ToggleVimuxTarget()<cr>
-nnoremap cos :set scrollbind! scrollbind?<cr>
+nnoremap cos :setlocal scrollbind! scrollbind?<cr>
 
 " Exit neovim terminal mode like insert mode
 if exists(':tnoremap')
@@ -551,4 +542,3 @@ autocmd BufRead,BufNewFile *.hocon setfiletype yaml
 autocmd BufRead,BufNewFile *.md setfiletype markdown
 
 "}}}
-
