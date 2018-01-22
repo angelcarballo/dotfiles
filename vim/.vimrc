@@ -183,10 +183,9 @@ set termguicolors
 
 syntax on
 set background=dark
-set visualbell                 " visual flash
+set visualbell                 " visual flash instead of beeping
 set noerrorbells               " no flash on errors, only at beginning/end of file
 set laststatus=2               " always show status bar
-set showtabline=1              " only show tab bar if needed
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
 let &showbreak='↳ '            " indicator for wrapped lines
@@ -209,18 +208,18 @@ set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing whitespacee indic
 set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
 set statusline+=%*                                  " reset color
 
-" background config managed by base16
+" colorscheme config managed by base16
 if filereadable(expand("~/.vim_colorscheme"))
   let base16colorspace=256
   source ~/.vim_colorscheme
   " hide split borders
-  hi VertSplit guibg=bg guifg=bg
+  highlight VertSplit guibg=bg guifg=bg
 endif
 
 " highlight trailing spaces
 match ErrorMsg '\s\+$'
 
-" highlight character 121 to avoid long lines
+" highlight character 111 to avoid long lines
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%111v', 100)
 
@@ -552,3 +551,4 @@ autocmd BufRead,BufNewFile *.hocon setfiletype yaml
 autocmd BufRead,BufNewFile *.md setfiletype markdown
 
 "}}}
+
