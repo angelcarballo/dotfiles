@@ -53,6 +53,10 @@ bindkey -M viins 'kj' vi-cmd-mode
 setopt auto_cd
 cdpath=($HOME/src)
 
+# enable autocompletion (tab-triggered)
+zmodload zsh/complist
+autoload -U compinit && compinit
+
 # share history between sessions
 setopt share_history
 
@@ -123,4 +127,3 @@ eval "$(hub alias -s)"
 
 # source local config if present
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
