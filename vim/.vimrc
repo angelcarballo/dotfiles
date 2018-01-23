@@ -53,6 +53,7 @@ call minpac#add('junegunn/fzf')                      " basic fzf support
 call minpac#add('junegunn/fzf.vim')                  " fzf helpers
 call minpac#add('bronson/vim-visual-star-search')    " search visual selected text with '*'
 call minpac#add('dietsche/vim-lastplace')            " restore cursor position when re-opening files
+call minpac#add('pgdouyon/vim-evanesco')             " improved (*) search
 
 " Auto completion
 call minpac#add('ervandew/supertab')                " magic code auto complete!
@@ -83,7 +84,6 @@ call minpac#add('tpope/vim-capslock')               " software caps lock (gC / <
 " Plugin options ---------------------------------------------------------------{{{
 
 " vim-test options
-let g:test#preserve_screen = 1
 let test#strategy = 'vimux'
 let test#python#runner = 'pytest'
 let test#python#pytest#executable = 'pipenv run pytest'
@@ -217,7 +217,7 @@ call matchadd('ColorColumn', '\%111v', 100)
 "}}}
 " Files to ignore -------------------------------------------------------------{{{
 
-set wildignore+=*.swp,*.bak,*.pyc,*.class,*.lock       " Common
+set wildignore+=*.swp,*.bak,*.pyc,*.class              " Common
 set wildignore+=*/tmp/*,*.so,*.zip,.DS_Store           " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.zip,*.exe                  " Windows
 set wildignore+=*/temp/*,*/backup/*                    " Vim
@@ -446,6 +446,7 @@ xnoremap gs :WebSearchVisual<cr>
 " allows incsearch highlighting for range commands
 " i.e. search with /,? and then copy with &t
 cnoremap &c <cr>:copy''<cr>
+cnoremap &t <cr>:copy''<cr>
 cnoremap &m <cr>:move''<cr>
 cnoremap &d <cr>:delete<cr>``
 
