@@ -186,13 +186,13 @@ set statusline=                                     " custom status line
 set statusline+=%#Menu#                             " color...
 set statusline+=\ %{strpart(StatuslineGit(),0,14)}\ " git branch
 set statusline+=%#Pmenu#                            " color...
-set statusline+=\ %f                                " relative path
+set statusline+=\ %f\                               " relative path
 set statusline+=%m                                  " modified flag
 set statusline+=%r                                  " read only flag
 set statusline+=%h                                  " help flag
 set statusline+=%w                                  " preview flag
 set statusline+=%=                                  " right align the following ...
-set statusline+=\ %c:%l/%L                          " line number/total lines
+set statusline+=\ %c:%l/%L                          " column:row/total lines
 set statusline+=\ %p%%\                             " percentage through file
 set statusline+=%#error#                            " color ...
 set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing whitespacee indicator
