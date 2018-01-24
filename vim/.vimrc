@@ -184,7 +184,7 @@ let &showbreak='↳ '            " indicator for wrapped lines
 " statusline
 set statusline=                                     " custom status line
 set statusline+=%#Menu#                             " color...
-set statusline+=\ %{StatuslineGit()}                " git branch
+set statusline+=\ %{strpart(StatuslineGit(),0,14)}\ " git branch
 set statusline+=%#Pmenu#                            " color...
 set statusline+=\ %f                                " relative path
 set statusline+=%m                                  " modified flag
