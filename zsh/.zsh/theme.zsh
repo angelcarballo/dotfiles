@@ -22,7 +22,7 @@ current_branch() {
 }
 
 prompt_symbol_with_last_command_status() {
-  echo "%(?.%F{white}.%F{red})>%F{reset_color}"
+  echo "%(?.%F{white}.%F{red})❯%F{reset_color}"
 }
 
 setopt prompt_subst
