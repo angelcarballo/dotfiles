@@ -41,6 +41,7 @@ git:
 	git config --global alias.b branch
 	git config --global alias.m merge
 	git config --global alias.f fetch
+	git config --global alias.p pull
 	git config --global alias.ctags '!~/.git_template/hooks/ctags'
 	git config --global alias.prune "fetch --prune"
 	git config --global alias.undo "reset --soft HEAD^"
