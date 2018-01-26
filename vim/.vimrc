@@ -294,7 +294,7 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   nnoremap <leader>cfP :let @*=expand("%:p")<cr>:echo "Full file path copied"<cr>
 
   " relative path with line number
-  nnoremap <leader>cfl :let @+=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
+  nnoremap <leader>cfl :let @*=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
 endif
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
