@@ -23,6 +23,7 @@
 # Backup files
 *.bak
 *.swp
+*.orig
 
 # Logs and databases
 *.log
