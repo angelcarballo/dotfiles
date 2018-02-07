@@ -1,6 +1,9 @@
 # Tmux session files
 .tmux-session
 
+# Test output
+capybara-*.html
+
 # Compiled source
 *.class
 *.dll
