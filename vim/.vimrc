@@ -84,11 +84,17 @@ call minpac#add('tpope/vim-capslock')               " software caps lock (gC / <
 " Plugin options ---------------------------------------------------------------{{{
 
 " vim-test options
-let test#strategy = 'vimux'
 let test#python#runner = 'pytest'
 let test#python#pytest#executable = 'pipenv run pytest'
 let test#ruby#use_binstubs = 0
 let test#ruby#rspec#options = '--fail-fast'
+
+" Custom strategy to avoid echoing command
+function! CustomVimuxStrategy(cmd)
+  call VimuxRunCommand(a:cmd)
+endfunction
+let g:test#custom_strategies = {'customvimux': function('CustomVimuxStrategy')}
+let g:test#strategy = 'customvimux'
 
 "" previm options
 let g:previm_open_cmd = 'open'
