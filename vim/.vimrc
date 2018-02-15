@@ -96,9 +96,6 @@ endfunction
 let g:test#custom_strategies = {'customvimux': function('CustomVimuxStrategy')}
 let g:test#strategy = 'customvimux'
 
-"" previm options
-let g:previm_open_cmd = 'open'
-
 "" Netrw options
 let g:netrw_liststyle=0         " thin (change to 3 for tree)
 let g:netrw_banner=0            " no banner
@@ -219,6 +216,9 @@ match ErrorMsg '\s\+$'
 " highlight character 111 to avoid long lines
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%111v', 100)
+
+highlight clear SpellBad
+highlight SpellBad cterm=underline
 
 "}}}
 " Files to ignore -------------------------------------------------------------{{{
@@ -500,6 +500,10 @@ xnoremap L $
 " Unimpaired style next/previews tab
 nnoremap [w :tabp<cr>
 nnoremap ]w :tabn<cr>
+
+" Navigate between buffers with C-n/C-p
+nnoremap <c-n> :bnext<cr>
+nnoremap <c-p> :bprevious<cr>
 
 " Additions to unimpaired option toggles
 nnoremap cof :setlocal foldenable! foldenable?<cr>
