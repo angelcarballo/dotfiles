@@ -12,16 +12,6 @@ call minpac#add('tpope/vim-unimpaired')             " multiple mappings using [ 
 call minpac#add('tpope/vim-sleuth')                 " auto set indent settings based on filetype
 call minpac#add('AndrewRadev/splitjoin.vim')        " split/join statements (gS, gJ)
 call minpac#add('wincent/terminus')                 " enhancements for terminal vim (focus events, cursor, etc.)
-call minpac#add('tpope/vim-abolish')                " fancy substitutions and coercion
-" Abolish normal mode commands
-" crs        -  snake_case
-" crm        -  MixedCase
-" crc        -  camelCase
-" cru        -  UPPER_CASE
-" cr-        -  dash-case
-" cr.        -  dot.case
-" cr<space>  -  space case
-" crt        -  Title case
 
 " Git
 call minpac#add('tpope/vim-fugitive')               " git integration
@@ -59,12 +49,10 @@ call minpac#add('pgdouyon/vim-evanesco')             " improved (*) search
 call minpac#add('ervandew/supertab')                " magic code auto complete!
 call minpac#add('tpope/vim-endwise')                " auto close for Vim blocks
 call minpac#add('jiangmiao/auto-pairs')             " auto close for (, [, {
-call minpac#add('docunext/closetag.vim')            " auto close for Html tags
 
 " Third party integration
 call minpac#add('christoomey/vim-tmux-navigator')   " navigate to tmux panes from Vim
 call minpac#add('tpope/gem-ctags')                  " include tags from installed gems
-call minpac#add('jez/vim-superman')                 " better man pager
 call minpac#add('Townk/dash.vim')                   " Dash integration for documentation lookups
 call minpac#add('linluk/vim-websearch')             " web searches from vim buffers
 
@@ -164,7 +152,7 @@ if executable('rg')
   set grepprg=rg\ --vimgrep
 endif
 
-autocmd QuickFixCmdPost *grep* nested cwindow | redraw!          " open quickfix window after using Grep
+autocmd QuickFixCmdPost *grep* nested cwindow | redraw!          " open quickfix window after using Grep, grep, vimgrep
 autocmd FileType qf wincmd J                                     " quickfix window should always be full width
 
 runtime macros/matchit.vim           " allow % to match more than just single characters
