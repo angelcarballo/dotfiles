@@ -423,6 +423,14 @@ nnoremap <leader>xb !!bash<cr>
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
 
+" Increment/decrement numbers using +/-
+noremap + <C-a>
+noremap - <C-x>
+
+" Increment/decrement visually selected numbers using +/-
+xnoremap + g<C-a>
+xnoremap - g<C-x>
+
 " Better paste from register
 inoremap <c-v> :Reg<cr>
 
