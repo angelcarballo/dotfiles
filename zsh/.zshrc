@@ -15,6 +15,9 @@ export VISUAL=vim
 export EDITOR=vim
 export KEYTIMEOUT=15  # reduce delay when changing modes
 
+# even when using man
+export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -"
+
 # base16 color scripts
 export COLORS=$HOME/.config/base16-shell/scripts
 export SHELL_COLORSCHEME=$HOME/.colorscheme
