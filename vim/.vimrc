@@ -366,9 +366,10 @@ nnoremap <leader>Pc :PackClean<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :qall!<cr>
 
-" r - Remove
+" r - Remove/Run
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
 nnoremap <leader>rd :redraw!<cr>
+nnoremap <silent> <leader>rr :VimuxPromptCommand<cr>
 
 " s - Specs
 nnoremap <leader>sa :TestSuite<cr>
