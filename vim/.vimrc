@@ -425,8 +425,8 @@ nnoremap <leader>xb !!bash<cr>
 " Mappings (other) ---------------------------------------------------------------{{{
 
 " Increment/decrement numbers using +/-
-noremap + <C-a>
-noremap - <C-x>
+nnoremap + <C-a>
+nnoremap - <C-x>
 
 " Increment/decrement visually selected numbers using +/-
 xnoremap + g<C-a>
