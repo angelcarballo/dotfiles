@@ -53,8 +53,8 @@ call minpac#add('jiangmiao/auto-pairs')             " auto close for (, [, {
 " Third party integration
 call minpac#add('christoomey/vim-tmux-navigator')   " navigate to tmux panes from Vim
 call minpac#add('tpope/gem-ctags')                  " include tags from installed gems
-call minpac#add('Townk/dash.vim')                   " Dash integration for documentation lookups
 call minpac#add('linluk/vim-websearch')             " web searches from vim buffers
+call minpac#add('rizzatti/dash.vim')                " integration with Doc viewer Dash (only MacOS)
 
 " Runners
 call minpac#add('benmills/vimux')                   " tmux integration
@@ -436,7 +436,7 @@ xnoremap - g<C-x>
 inoremap <c-v> :Reg<cr>
 
 " Search documentation for word under cursor
-nnoremap <silent> K <Plug>DashSearch
+nnoremap <silent> K :Dash<cr>
 
 " Easily exit insert mode
 inoremap kj <esc>
