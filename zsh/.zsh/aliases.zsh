@@ -62,6 +62,7 @@ alias master='git checkout master'
 alias cb='git rev-parse --abbrev-ref HEAD | pbcopy'
 alias gitsecrets='git secrets --install && git secrets --register-aws'
 alias fetchall='ls -d ~/src/*/ | xargs -I{} git -C {} fetch'
+alias ghd='open `hub browse -u | sed s/\tree.*//g`/compare/`git rev-parse --abbrev-ref HEAD`'
 
 # Jekyll
 alias js='bundle exec jekyll serve --watch'
