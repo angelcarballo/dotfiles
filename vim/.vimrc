@@ -189,7 +189,7 @@ set statusline+=%=                                  " right align the following 
 set statusline+=\ %c:%l/%L                          " column:row/total lines
 set statusline+=\ %p%%\                             " percentage through file
 set statusline+=%#error#                            " color ...
-set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing whitespacee indicator
+set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing white space indicator
 set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
 set statusline+=%*                                  " reset color
 
@@ -347,7 +347,6 @@ xnoremap <leader>gl :Glog<cr>
 nnoremap <leader>ij :%!python -m json.tool<cr>
 
 " l - Load /Last
-nnoremap <leader>lg :call QuickFixGitStatus()<cr> \| :cnext<cr>
 nnoremap <silent> <leader>lc `[
 nnoremap <silent> <leader>ll :<up><cr>
 
