@@ -1,8 +1,10 @@
+####################################################
+# This file is only loaded for interactive shells. #
+# Check .zshenv for settings used in all shells    #
+####################################################
+
 # theme
 source ~/.zsh/theme.zsh
-
-# aliases
-source ~/.zsh/aliases.zsh
 
 # locales
 export LANG=en_US.UTF-8
@@ -97,15 +99,6 @@ HISTORY_IGNORE="(ll|clear|c|clear|ls|cd *|pwd|exit|cd ..|rm *|rc|bi|fs|gd|gs|gp|
 if [[ -n ${INSIDE_EMACS} ]]; then
         unsetopt zle
 fi
-
-# binary folders
-export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$PATH"
-
-# Homebrew
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
-# Notes
-export NOTES="$HOME/Dropbox/notes"
 
 # fix bug when passing arguments to rake
 unsetopt nomatch
