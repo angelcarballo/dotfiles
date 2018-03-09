@@ -37,6 +37,7 @@ call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelcase, 
 
 " Look & Feel
 call minpac#add('chriskempson/base16-vim')          " base16 colorschemes
+call minpac#add('junegunn/vim-emoji')               " emoji support
 
 " Navigation
 call minpac#add('junegunn/fzf')                      " basic fzf support
@@ -63,13 +64,16 @@ call minpac#add('tpope/vim-eunuch')                 " run common UNIX commands f
 call minpac#add('tpope/vim-dispatch')               " run commands asynchronously
 
 " Extras
-call minpac#add('godlygeek/tabular')                " code align (like on this comment)
+call minpac#add('tommcdo/vim-lion')                 " code align operator
 call minpac#add('tpope/vim-commentary')             " comment/uncomment code
 call minpac#add('christoomey/vim-system-copy')      " copy command (cp), copy current line (cP) and paste in next line (cv)
 call minpac#add('tpope/vim-capslock')               " software caps lock (gC / <c-g>c)
 
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
+
+" vim-lion options
+let g:lion_squeeze_spaces = 1
 
 " vim-test options
 let test#python#runner = 'pytest'
@@ -263,12 +267,9 @@ nnoremap <leader>8 :silent Ggrep "<c-r><c-w>"<cr>
 xnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
 xnoremap <leader>8 "hy:silent Ggrep "<c-r>h"<cr>
 
-" a - Auto/Align
+" a - Auto..
 " auto correct spelling mistake
 nnoremap <leader>ac [s1z=
-" align
-nnoremap <leader>aa :Tabularize /
-inoremap <leader>aa :Tabularize /
 
 " b - Buffers
 nnoremap <silent> <leader>bd :bdelete<cr>
