@@ -9,7 +9,6 @@ call minpac#add('kana/vim-textobj-user')            " custom text object support
 call minpac#add('tpope/vim-vinegar')                " file manager improvements
 call minpac#add('tpope/vim-repeat')                 " extend repeat support
 call minpac#add('tpope/vim-unimpaired')             " multiple mappings using [ & ]
-call minpac#add('tpope/vim-sleuth')                 " auto set indent settings based on filetype
 call minpac#add('AndrewRadev/splitjoin.vim')        " split/join statements (gS, gJ)
 call minpac#add('wincent/terminus')                 " enhancements for terminal vim (focus events, cursor, etc.)
 
@@ -18,7 +17,8 @@ call minpac#add('tpope/vim-fugitive')               " git integration
 call minpac#add('tpope/vim-rhubarb')                " github integration
 
 " Languages & frameworks
-call minpac#add('sheerun/vim-polyglot')             " syntax support for comon filetypes
+call minpac#add('sheerun/vim-polyglot')             " syntax support for common file types
+call minpac#add('tpope/vim-sleuth')                 " auto set indent settings based on file type
 call minpac#add('tpope/vim-rbenv')                  " Rbenv integration
 call minpac#add('tpope/vim-rails')                  " Rails integration
 call minpac#add('tpope/vim-bundler')                " Bundler integration
@@ -33,11 +33,10 @@ call minpac#add('vim-scripts/ReplaceWithRegister')  " replace without yanking op
 call minpac#add('kana/vim-textobj-entire')             " entire buffer text object <e>
 call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text object <i/I>
 call minpac#add('b4winckler/vim-angry')                " function argument text object <a/A>
-call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelcase, snakecase and similar <v>
+call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelCase, snake_case and similar <v>
 
 " Look & Feel
-call minpac#add('chriskempson/base16-vim')          " base16 colorschemes
-call minpac#add('junegunn/vim-emoji')               " emoji support
+call minpac#add('chriskempson/base16-vim')          " base16 color schemes
 
 " Navigation
 call minpac#add('junegunn/fzf')                      " basic fzf support
@@ -65,9 +64,8 @@ call minpac#add('tpope/vim-dispatch')               " run commands asynchronousl
 
 " Extras
 call minpac#add('tommcdo/vim-lion')                 " code align operator
-call minpac#add('tpope/vim-commentary')             " comment/uncomment code
+call minpac#add('tpope/vim-commentary')             " (un)comment code
 call minpac#add('christoomey/vim-system-copy')      " copy command (cp), copy current line (cP) and paste in next line (cv)
-call minpac#add('tpope/vim-capslock')               " software caps lock (gC / <c-g>c)
 
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
