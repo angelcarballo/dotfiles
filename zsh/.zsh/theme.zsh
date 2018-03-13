@@ -14,11 +14,11 @@ theme_precmd() {
 }
 
 current_path() {
-  echo '%F{blue}%~%F{reset_color}'
+  echo '%F{12}%~%F{reset_color}'
 }
 
 current_branch() {
-  echo "%F{yellow}${vcs_info_msg_0_}%F{reset_color}"
+  echo "%F{10}${vcs_info_msg_0_}%F{reset_color}"
 }
 
 prompt_symbol_with_last_command_status() {
