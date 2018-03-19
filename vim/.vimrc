@@ -77,7 +77,7 @@ let g:lion_squeeze_spaces = 1
 let test#python#runner = 'pytest'
 let test#python#pytest#executable = 'pipenv run pytest'
 let test#ruby#use_binstubs = 0
-let test#ruby#rspec#options = '--fail-fast'
+let test#ruby#rspec#options = '--fail-fast --format progress --require ~/src/dotfiles/rspec/formatters/quickfix_formatter.rb --format QuickfixFormatter --out quickfix.out'
 
 " Custom strategy to avoid echoing command
 function! CustomVimuxStrategy(cmd)
@@ -297,6 +297,7 @@ nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 nnoremap <silent> <leader>cg <c-w>k<c-w>c
 " open quickfix window
 nnoremap <silent> <leader>co :Copen<cr>
+nnoremap <silent> <leader>co :Copen<cr>
 
 " d - Duplicate
 nnoremap <leader>dp yap}p
@@ -348,6 +349,9 @@ nnoremap <leader>ij :%!python -m json.tool<cr>
 nnoremap <silent> <leader>lc `[
 nnoremap <silent> <leader>ll :<up><cr>
 
+" normal
+xnoremap <silent> <leader>n :normal<space>
+
 " o - open
 nnoremap <leader>of :! open '%'<cr>
 
@@ -356,7 +360,6 @@ nnoremap <leader>pry Orequire 'pry'; binding.pry
 
 " P - Plugins
 nnoremap <leader>Pi :PackUpdate<cr>
-nnoremap <leader>Pu :PackUpdate<cr>
 nnoremap <leader>Pc :PackClean<cr>
 
 " q - Quit
@@ -374,6 +377,7 @@ nnoremap <leader>sf :TestFile<cr>
 nnoremap <leader>sc :TestNearest<cr>
 nnoremap <leader>sl :TestLast<cr>
 nnoremap <leader>sg :TestVisit<cr>
+nnoremap <leader>so :cg quickfix.out \| cwindow<cr>
 
 " S - Show/Snippets
 nnoremap <silent> <leader>Sf :echo @%<cr>

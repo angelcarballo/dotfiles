@@ -47,3 +47,4 @@ tags
 tags.lock
 tags.temp
 package-lock.json
+quickfix.out
