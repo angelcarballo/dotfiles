@@ -31,6 +31,7 @@ alias migrate='bundle exec rake db:migrate && bundle exec rake db:test:prepare'
 alias deploy='bundle exec cap deploy'
 alias deploym='bundle exec cap deploy:migrate'
 alias expected='grep -A1 -B1 expected'
+alias bpry='bundle exec pry'
 
 # Git
 alias ga='git add -A .'
