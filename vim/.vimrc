@@ -28,6 +28,7 @@ call minpac#add('vim-scripts/nagios-syntax')        " Nagios support
 call minpac#add('tpope/vim-surround')               " alter surroundings (), [], '', {}
 call minpac#add('tommcdo/vim-exchange')             " text exchange operator (cx..)
 call minpac#add('vim-scripts/ReplaceWithRegister')  " replace without yanking operator (gr..)
+call minpac#add('AndrewRadev/switch.vim')           " switch formats/patterns/booleans etc.
 
 " Text objects
 call minpac#add('kana/vim-textobj-entire')             " entire buffer text object <e>
@@ -69,6 +70,9 @@ call minpac#add('christoomey/vim-system-copy')      " copy command (cp), copy cu
 
 "}}}
 " Plugin options ---------------------------------------------------------------{{{
+
+" vim-switch options
+let g:switch_mapping = "s"
 
 " vim-lion options
 let g:lion_squeeze_spaces = 1
@@ -234,6 +238,7 @@ iabbr classdescription #== Description
       \<cr>
       \<cr>
 iabbr pdb import pdb; pdb.set_trace()
+iabbr shebang #!/bin/sh
 
 "}}}
 " Skeletons -------------------------------------------------------------{{{
@@ -341,6 +346,7 @@ nnoremap <leader>gh :Gbrowse<cr>
 xnoremap <leader>gh :Gbrowse<cr>
 nnoremap <leader>gl :Glog<cr>
 xnoremap <leader>gl :Glog<cr>
+xnoremap <leader>gt :VimuxZoomRunner<cr>
 
 " i - Indent
 nnoremap <leader>ij :%!python -m json.tool<cr>
@@ -378,6 +384,7 @@ nnoremap <leader>sc :TestNearest<cr>
 nnoremap <leader>sl :TestLast<cr>
 nnoremap <leader>sg :TestVisit<cr>
 nnoremap <leader>so :cg quickfix.out \| cwindow<cr>
+nnoremap <leader>sq :cg quickfix.out \| cwindow<cr>
 
 " S - Show/Snippets
 nnoremap <silent> <leader>Sf :echo @%<cr>
@@ -478,10 +485,10 @@ nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " Move lines/blocks
-xnoremap K :m '<-2<cr>gv=gv
-xnoremap J :m '>+1<cr>gv=gv
-xnoremap < <<<cr>gv
-xnoremap > >><cr>gv
+xnoremap <up> :m '<-2<cr>gv=gv
+xnoremap <down>:m '>+1<cr>gv=gv
+xnoremap <left> <<<cr>gv
+xnoremap <right> >><cr>gv
 
 " Easily run macros on selected lines
 xnoremap @ :norm@
