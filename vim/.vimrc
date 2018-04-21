@@ -40,8 +40,8 @@ call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelCase, 
 call minpac#add('chriskempson/base16-vim')          " base16 color schemes
 
 " Navigation
-call minpac#add('junegunn/fzf')                      " basic fzf support
-call minpac#add('junegunn/fzf.vim')                  " fzf helpers
+call minpac#add('junegunn/fzf')                      " basic FZF support
+call minpac#add('junegunn/fzf.vim')                  " FZF helpers
 call minpac#add('bronson/vim-visual-star-search')    " search visual selected text with '*'
 call minpac#add('dietsche/vim-lastplace')            " restore cursor position when re-opening files
 call minpac#add('pgdouyon/vim-evanesco')             " improved (*) search
@@ -459,8 +459,7 @@ xnoremap gs :WebSearchVisual<cr>
 
 " allows incsearch highlighting for range commands
 " i.e. search with /,? and then copy with &t
-cnoremap &c <cr>:copy''<cr>
-cnoremap &t <cr>:copy''<cr>
+cnoremap &y <cr>:copy''<cr>
 cnoremap &m <cr>:move''<cr>
 cnoremap &d <cr>:delete<cr>``
 
@@ -479,8 +478,8 @@ inoremap <c-d> <esc>ddi
 inoremap <c-w> <esc>bdiwi
 
 " Move around using visual lines, useful when wrap is enabled
-" if a count is provided, default j/k behaviour is used
-" and jumps bigger thank 5 lines are added to the jumplist
+" if a count is provided, default j/k behavior is used
+" and jumps bigger thank 5 lines are added to the jump list
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
