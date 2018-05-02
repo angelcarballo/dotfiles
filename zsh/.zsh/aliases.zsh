@@ -9,6 +9,7 @@ alias celar='clear'
 alias lcear='clear'
 alias ls='ls -GFa'
 alias ll='ls -GFlah'
+alias catcsv='column -s, -t '
 
 # Extension based aliases
 alias -s log='tail -f'
