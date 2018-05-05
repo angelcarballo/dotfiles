@@ -459,6 +459,7 @@ xnoremap gs :WebSearchVisual<cr>
 " allows incsearch highlighting for range commands
 " i.e. search with /,? and then copy with &t
 cnoremap &y <cr>:copy''<cr>
+cnoremap &c <cr>:copy''<cr>
 cnoremap &m <cr>:move''<cr>
 cnoremap &d <cr>:delete<cr>``
 
@@ -475,6 +476,7 @@ xnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
 " Delete lines and word from insert mode
 inoremap <c-d> <esc>ddi
 inoremap <c-w> <esc>bdiwi
+cnoremap &d <cr>:delete<cr>``
 
 " Move around using visual lines, useful when wrap is enabled
 " if a count is provided, default j/k behavior is used
@@ -514,8 +516,6 @@ nnoremap <c-p> :bprevious<cr>
 " Additions to unimpaired option toggles
 nnoremap cof :setlocal foldenable! foldenable?<cr>
 nnoremap cop :setlocal paste! paste?<cr>
-nnoremap cotf :call ToggleFailFast()<cr>
-nnoremap cots :call ToggleSpring()<cr>
 nnoremap cotm :call ToggleVimuxTarget()<cr>
 nnoremap cos :setlocal scrollbind! scrollbind?<cr>
 
