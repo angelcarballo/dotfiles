@@ -1,5 +1,6 @@
 DOTFILES := $(shell pwd)
-FOLDERS_TO_LINK := cheats common emacs git git_template ruby spacemacs tmux vim nvim zsh tig alacritty
+FOLDERS_TO_LINK := cheats common emacs git git_template ruby spacemacs tmux vim zsh tig alacritty
+FOLDERS_TO_LINK_ON_CONFIG := nvim
 
 # Run always
 .PHONY: git rbenv vim clean
@@ -12,6 +13,7 @@ update:
 # Link dotfiles on HOME folder using stow
 link:
 	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK) --ignore='DS_Store'
+	stow -v -t $(HOME)/.config -d $(DOTFILES) $(FOLDERS_TO_LINK_ON_CONFIG) --ignore='DS_Store'
 
 # Install new vim plugins, update existing and cleanup old ones
 vim:
