@@ -20,7 +20,6 @@ call minpac#add('tpope/vim-rhubarb')                " github integration
 call minpac#add('sheerun/vim-polyglot')             " syntax support for common file types
 call minpac#add('tpope/vim-sleuth')                 " auto set indent settings based on file type
 call minpac#add('tpope/vim-rbenv')                  " Rbenv integration
-call minpac#add('tpope/vim-rails')                  " Rails integration
 call minpac#add('tpope/vim-bundler')                " Bundler integration
 call minpac#add('vim-scripts/nagios-syntax')        " Nagios support
 
@@ -392,8 +391,10 @@ nnoremap <silent> <leader>Sb :echo "Current git branch: " . fugitive#head()<cr>
 
 " t - Tmux/Tabs
 
-" Run current file dispatch-like
-nnoremap <silent> <leader>tt :VimuxRunCommand("ruby " . bufname("%"))<cr>
+" Prompt for a command to run
+nnoremap <silent> <leader>tr :VimuxRunCommand("")<left><left>
+" Repeat last run command
+nnoremap <silent> <leader>tt :VimuxRunLastCommand<cr>
 " Send visual selection to tmux
 xnoremap <silent> <leader>tt :call VimuxSlime()<cr>
 " Send current line to tmux
