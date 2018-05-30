@@ -37,6 +37,7 @@ call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelCase, 
 
 " Look & Feel
 call minpac#add('chriskempson/base16-vim')          " base16 color schemes
+call minpac#add('markonm/traces.vim')               " show live results while searching
 
 " Navigation
 call minpac#add('junegunn/fzf')                      " basic FZF support
@@ -437,6 +438,9 @@ nnoremap <leader>xb !!bash<cr>
 
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
+
+" Search only in visible text
+nnoremap <expr> z/ '/\%(\%>'.(line('w0')-1).'l\%<'.(line('w$')+1).'l\)\&'
 
 " Increment/decrement numbers using +/-
 nnoremap + <C-a>
