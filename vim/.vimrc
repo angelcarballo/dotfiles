@@ -47,7 +47,6 @@ call minpac#add('dietsche/vim-lastplace')            " restore cursor position w
 call minpac#add('pgdouyon/vim-evanesco')             " improved (*) search
 
 " Auto completion
-call minpac#add('ervandew/supertab')                " magic code auto complete!
 call minpac#add('tpope/vim-endwise')                " auto close for Vim blocks
 call minpac#add('jiangmiao/auto-pairs')             " auto close for (, [, {
 
@@ -330,6 +329,7 @@ nnoremap <silent> <leader>fg :GFiles?<cr>
 nnoremap <silent> <leader>fr :History<cr>
 nnoremap <silent> <leader>ft :FZF spec/<cr>
 nnoremap <silent> <leader>fh :Helptags<cr>
+nnoremap <silent> <leader>fn :enew<cr>
 
 nnoremap <leader>fm :silent Ggrep "def <c-r><c-w>"<cr>
 nnoremap <leader>fM :silent Ggrep "def self.<c-r><c-w>"<cr>
@@ -438,6 +438,15 @@ nnoremap <leader>xb !!bash<cr>
 
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
+
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-N>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+inoremap <tab> <c-r>=Tab_Or_Complete()<cr>
 
 " Search only in visible text
 nnoremap <expr> z/ '/\%(\%>'.(line('w0')-1).'l\%<'.(line('w$')+1).'l\)\&'
