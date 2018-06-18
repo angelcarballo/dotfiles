@@ -37,7 +37,6 @@ call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelCase, 
 
 " Look & Feel
 call minpac#add('chriskempson/base16-vim')          " base16 color schemes
-call minpac#add('markonm/traces.vim')               " show live results while searching
 
 " Navigation
 call minpac#add('junegunn/fzf')                      " basic FZF support
