@@ -9,6 +9,7 @@ default: update link vim zsh
 
 update:
 	git pull
+	brew update && brew upgrade && brew cleanup
 
 # Link dotfiles on HOME folder using stow
 link:
