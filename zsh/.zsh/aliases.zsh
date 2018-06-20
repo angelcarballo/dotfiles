@@ -90,3 +90,6 @@ alias cprev='color -p'
 alias python='python3'
 alias pip='pip3'
 
+# Elixir
+alias iex='rlwrap -a foo iex'
+

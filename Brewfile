@@ -60,3 +60,6 @@ brew "awscli"
 # You want to edit those docx files with Vim right?
 # it may require BasicTeX (https://www.tug.org/mactex/morepackages.html)
 brew "pandoc"
+
+# Wrapper to allow supporting .inputrc settings on bad repls like <iex>
+brew "rlwrap"
