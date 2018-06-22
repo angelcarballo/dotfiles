@@ -35,16 +35,16 @@ draw_bold_text_with_bright_colors: false
 # Font configuration (changes require restart)
 font:
   normal:
-    family: Roboto Mono # Input Mono
-    # style: Regular
+    family: Fira Code # Input Mono
+    style: Regular
 
   bold:
-    family: Roboto Mono # Input Mono
-    # style: Bold
+    family: Fira Code # Input Mono
+    style: Bold
 
   italic:
-    family: Roboto Mono # Input Mono
-    # style: Italic
+    family: Fira Code # Input Mono
+    style: Italic
   size: 14.0
 
   # Offset is the extra space around each character. offset.y can be thought of
@@ -223,7 +223,7 @@ key_bindings:
   - { key: V,        mods: Command, action: Paste                        }
   - { key: C,        mods: Command, action: Copy                         }
   - { key: Q,        mods: Command, action: Quit                         }
-  - { key: W,        mods: Command, action: Quit                         }
+  # - { key: W,        mods: Command, action: Quit                         }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
   - { key: Home,                    chars: "\x1b[H",   mode: ~AppCursor  }
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }
