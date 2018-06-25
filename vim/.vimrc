@@ -22,6 +22,7 @@ call minpac#add('tpope/vim-sleuth')                 " auto set indent settings b
 call minpac#add('tpope/vim-rbenv')                  " Rbenv integration
 call minpac#add('tpope/vim-bundler')                " Bundler integration
 call minpac#add('vim-scripts/nagios-syntax')        " Nagios support
+call minpac#add('slashmili/alchemist.vim')          " elixir support
 
 " Motions & Operators
 call minpac#add('tpope/vim-surround')               " alter surroundings (), [], '', {}
