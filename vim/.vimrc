@@ -144,7 +144,7 @@ set breakindent                      " keep indentation on wrapped lines
 set tabstop=4                        " tabs use 4 spaces by default (filetypes override this)
 set expandtab                        " indent with spaces by default (overriden by filetype)
 set regexpengine=1                   " use old regexp engine, as new one has low performance with big ruby files
-set spell spelllang=en_us            " enable english spell check
+set spelllang=en_us                  " enable english spell check
 set spellsuggest=fast,20             " don't show too much suggestion for spell check.
 set spellfile=~/Dropbox/vim/spell/en.utf-8.add
 " Extended mouse support
