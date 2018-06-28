@@ -35,3 +35,15 @@ add-zsh-hook precmd  theme_precmd
 zmodload -a colors
 zmodload -a autocomplete
 zmodload -a complist
+
+
+# Enable vim mode indicator on prompt
+function zle-line-init zle-keymap-select {
+    RPS1="%B${${KEYMAP/vicmd/n}/(main|viins)/}%b"
+    RPS2=$RPS1
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+setopt transient_rprompt
