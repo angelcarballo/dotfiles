@@ -92,4 +92,5 @@ alias pip='pip3'
 
 # Elixir
 alias iex='rlwrap -a foo iex'
+alias miex='rlwrap -a foo iex -S mix'
 
