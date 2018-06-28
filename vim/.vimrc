@@ -471,9 +471,8 @@ inoremap kj <esc>
 " select last inserted text
 nnoremap gV `[v`]
 
-" search for word under cursor in normal mode
+" search for word under cursor in normal and visual mode
 nnoremap gs :WebSearchCursor<cr>
-" search for selection in visual mode
 xnoremap gs :WebSearchVisual<cr>
 
 " allows incsearch highlighting for range commands
