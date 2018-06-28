@@ -144,7 +144,7 @@ set breakindent                      " keep indentation on wrapped lines
 set tabstop=4                        " tabs use 4 spaces by default (filetypes override this)
 set expandtab                        " indent with spaces by default (overriden by filetype)
 set regexpengine=1                   " use old regexp engine, as new one has low performance with big ruby files
-set spelllang=en_us            " enable english spell check
+set spelllang=en_us                  " enable english spell check
 set spellsuggest=fast,20             " don't show too much suggestion for spell check.
 set spellfile=~/Dropbox/vim/spell/en.utf-8.add
 " Extended mouse support
@@ -301,12 +301,14 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " relative path with line number
   nnoremap <leader>cfl :let @*=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
 endif
+
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
+
 " clear git status window
 nnoremap <silent> <leader>cg <c-w>k<c-w>c
+
 " open quickfix window
-nnoremap <silent> <leader>co :Copen<cr>
 nnoremap <silent> <leader>co :Copen<cr>
 
 " d - Duplicate
@@ -439,9 +441,6 @@ nnoremap <leader>xb !!bash<cr>
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
 
-" Better indent paragraph than line
-nnoremap == =ap``
-
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
     return "\<C-N>"
@@ -474,9 +473,8 @@ inoremap kj <esc>
 " select last inserted text
 nnoremap gV `[v`]
 
-" search for word under cursor in normal mode
+" search for word under cursor in normal and visual mode
 nnoremap gs :WebSearchCursor<cr>
-" search for selection in visual mode
 xnoremap gs :WebSearchVisual<cr>
 
 " allows incsearch highlighting for range commands
@@ -509,9 +507,15 @@ nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " Move lines/blocks
 xnoremap <up> :m '<-2<cr>gv=gv
-xnoremap <down>:m '>+1<cr>gv=gv
+xnoremap <down> :m '>+1<cr>gv=gv
 xnoremap <left> <<<cr>gv
 xnoremap <right> >><cr>gv
+
+" Use cursors to resize windows
+noremap <silent> <left> :vertical resize -3<CR>
+noremap <silent> <right> :vertical resize +3<CR>
+noremap <silent> <down> :resize +3<CR>
+noremap <silent> <up> :resize -3<CR>
 
 " Easily run macros on selected lines
 xnoremap @ :norm@
