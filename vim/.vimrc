@@ -505,9 +505,15 @@ nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " Move lines/blocks
 xnoremap <up> :m '<-2<cr>gv=gv
-xnoremap <down>:m '>+1<cr>gv=gv
+xnoremap <down> :m '>+1<cr>gv=gv
 xnoremap <left> <<<cr>gv
 xnoremap <right> >><cr>gv
+
+" Use cursors to resize windows
+noremap <silent> <left> :vertical resize -3<CR>
+noremap <silent> <right> :vertical resize +3<CR>
+noremap <silent> <down> :resize +3<CR>
+noremap <silent> <up> :resize -3<CR>
 
 " Easily run macros on selected lines
 xnoremap @ :norm@
