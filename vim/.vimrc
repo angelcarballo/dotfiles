@@ -301,12 +301,14 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " relative path with line number
   nnoremap <leader>cfl :let @*=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
 endif
+
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
+
 " clear git status window
 nnoremap <silent> <leader>cg <c-w>k<c-w>c
+
 " open quickfix window
-nnoremap <silent> <leader>co :Copen<cr>
 nnoremap <silent> <leader>co :Copen<cr>
 
 " d - Duplicate
