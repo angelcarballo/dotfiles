@@ -424,7 +424,6 @@ nnoremap <leader>Ve :e $MYVIMRC<cr>
 nnoremap <leader>Vs :so $MYVIMRC<cr>
 
 " w - Windows/Tabs
-nnoremap <silent> <leader>wc :wq<cr>
 nnoremap <silent> <leader>wq :wq<cr>
 nnoremap <silent> <leader>wo :only<cr>
 nnoremap <silent> <leader>we <c-w>=
@@ -440,6 +439,10 @@ nnoremap <leader>xb !!bash<cr>
 
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
+
+" Easy history traversal on command line
+cmap <c-n> <up>
+cmap <c-p> <down>
 
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
