@@ -440,6 +440,10 @@ nnoremap <leader>xb !!bash<cr>
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
 
+" Enter command line mode with Enter
+" (but not in non modifiable buffers like quickfix)
+nnoremap <expr> <Enter> &ma?":":"\<cr>"
+
 " Easy history traversal on command line
 cmap <c-n> <up>
 cmap <c-p> <down>
