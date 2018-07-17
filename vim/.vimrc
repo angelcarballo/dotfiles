@@ -338,6 +338,9 @@ nnoremap <leader>fM :silent Ggrep "def self.<c-r><c-w>"<cr>
 nnoremap <leader>fc :silent Ggrep "class <c-r><c-w>"<cr>
 nnoremap <leader>fC :silent Ggrep "module <c-r><c-w>"<cr>
 
+" F - Fold
+nnoremap <leader>Ff :setlocal foldmethod=indent foldlevelstart=999 foldminlines=0<cr>
+
 " g - Git
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
@@ -440,10 +443,6 @@ nnoremap <leader>xb !!bash<cr>
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
 
-" Enter command line mode with Enter
-" (but not in non modifiable buffers like quickfix)
-nnoremap <expr> <Enter> &ma?":":"\<cr>"
-
 " Easy history traversal on command line
 cmap <c-n> <up>
 cmap <c-p> <down>
@@ -485,7 +484,7 @@ nnoremap gs :WebSearchCursor<cr>
 xnoremap gs :WebSearchVisual<cr>
 
 " allows incsearch highlighting for range commands
-" i.e. search with /,? and then copy with &t
+" i.e. search with /,? and then copy/move/delete
 cnoremap &y <cr>:copy''<cr>
 cnoremap &c <cr>:copy''<cr>
 cnoremap &m <cr>:move''<cr>
