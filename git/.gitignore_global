@@ -48,3 +48,6 @@ tags.lock
 tags.temp
 package-lock.json
 quickfix.out
+
+# NPM stuff
+model_modules/*
