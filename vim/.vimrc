@@ -515,6 +515,8 @@ nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 " Move lines/blocks
 xnoremap <up> :m '<-2<cr>gv=gv
 xnoremap <down> :m '>+1<cr>gv=gv
+xnoremap << <<<cr>gv
+xnoremap >> >><cr>gv
 xnoremap <left> <<<cr>gv
 xnoremap <right> >><cr>gv
 
