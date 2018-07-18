@@ -35,6 +35,7 @@ call minpac#add('kana/vim-textobj-entire')             " entire buffer text obje
 call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text object <i/I>
 call minpac#add('b4winckler/vim-angry')                " function argument text object <a/A>
 call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelCase, snake_case and similar <v>
+call minpac#add('vim-utils/vim-space')                 " whitespace, empty line text objects <space>
 
 " Look & Feel
 call minpac#add('chriskempson/base16-vim')          " base16 color schemes
