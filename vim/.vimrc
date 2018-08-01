@@ -183,15 +183,14 @@ let &showbreak='↳ '            " indicator for wrapped lines
 " statusline
 set statusline=                                     " custom status line
 set statusline+=%#Pmenu#                            " color...
-set statusline+=\ %f\                                 " relative path
+set statusline+=\ %f\                               " relative path
 set statusline+=%m                                  " modified flag
 set statusline+=%r                                  " read only flag
 set statusline+=%h                                  " help flag
 set statusline+=%w                                  " preview flag
 set statusline+=%=                                  " right align the following ...
-set statusline+=%{strpart(StatuslineGit(),0,14)} " git branch
-set statusline+=\ %c:%l/%L                          " column:row/total lines
-set statusline+=\ %p%%\                             " percentage through file
+set statusline+=\ %c\/%l\ [%p%%\ %L]\               " column, row, total lines, percentage through file
+set statusline+=%{strpart(StatuslineGit(),0,14)}    " git branch
 set statusline+=%#error#                            " color ...
 set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing white space indicator
 set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
