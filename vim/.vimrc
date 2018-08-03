@@ -190,8 +190,8 @@ set statusline+=%h                                  " help flag
 set statusline+=%w                                  " preview flag
 set statusline+=%=                                  " right align the following ...
 set statusline+=\ %c\/%l\ [%p%%\ %L]\               " column, row, total lines, percentage through file
-set statusline+=%{strpart(StatuslineGit(),0,14)}    " git branch
-set statusline+=%#error#                            " color ...
+set statusline+=[%{strpart(StatuslineGit(),0,14)}]    " git branch
+set statusline+=\ %#error#                            " color ...
 set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing white space indicator
 set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
 set statusline+=%*                                  " reset color
