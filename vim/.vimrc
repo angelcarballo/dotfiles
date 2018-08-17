@@ -582,6 +582,13 @@ command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
 
 "}}}
+" AutoCommands -----------------------------------------------------------------{{{
+augroup AUTOMARKS
+    autocmd!
+    autocmd BufLeave *_spec.rb normal! mS
+    autocmd BufLeave *.feature normal! mF
+augroup END
+"}}}
 " Force file types -----------------------------------------------------------------{{{
 
 autocmd BufRead,BufNewFile *.jbuilder setfiletype ruby
