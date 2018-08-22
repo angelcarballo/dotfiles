@@ -9,6 +9,7 @@ default: update link vim zsh
 
 update:
 	git pull
+	cd ~/.config/base16-shell && git pull
 	brew update && brew upgrade
 	brew cleanup
 
