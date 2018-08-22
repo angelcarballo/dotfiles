@@ -57,7 +57,7 @@ colorscheme_fullname="base16-$colorscheme"
 colorscheme_script="$COLORS/$colorscheme_fullname.sh"
 
 if [[ -s "$colorscheme_script" ]]; then
-  echo $colorscheme_script > $SHELL_COLORSCHEME
+  echo "sh $colorscheme_script" > $SHELL_COLORSCHEME
   echo "colorscheme $colorscheme_fullname" > $VIM_COLORSCHEME
   source $SHELL_COLORSCHEME
   echo "Current: $colorscheme"
