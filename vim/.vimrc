@@ -231,6 +231,8 @@ set wildignore+=*.eof,*.ttf,*.woff                     " font files
 iabbr lorem Lorem ipsum dolor sit amet
 iabbr plorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 iabbr shebang #!/bin/sh
+iab <expr> cdate strftime('%d/%m/%Y')
+iab <expr> fdate strftime('%a %d %b %Y')
 
 function! RubyAbbr()
   inoreab <buffer> firend friend
@@ -356,12 +358,12 @@ nnoremap <leader>gh :Gbrowse<cr>
 xnoremap <leader>gh :Gbrowse<cr>
 nnoremap <leader>gl :Glog<cr>
 xnoremap <leader>gl :Glog<cr>
-xnoremap <leader>gt :VimuxZoomRunner<cr>
 
-" i - Indent
+" i - Indent / Insert
 nnoremap <leader>ij :%!python -m json.tool<cr>
 
-" l - Load /Last
+
+" l - Load / Last
 nnoremap <silent> <leader>lc `[
 nnoremap <silent> <leader>ll :<up><cr>
 
