@@ -442,6 +442,9 @@ nnoremap <leader>xd :Dispatch<cr>
 nnoremap <leader>xm :Make<cr>
 nnoremap <leader>xb !!bash<cr>
 
+" z - Zoom
+nnoremap <leader>z :VimuxZoomRunner<cr>
+
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
 
@@ -449,6 +452,7 @@ nnoremap <leader>xb !!bash<cr>
 cmap <c-n> <up>
 cmap <c-p> <down>
 
+" Use tab for both indentation and autocomplete
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
     return "\<C-N>"
