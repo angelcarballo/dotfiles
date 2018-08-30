@@ -189,7 +189,7 @@ set statusline+=%r                                  " read only flag
 set statusline+=%h                                  " help flag
 set statusline+=%w                                  " preview flag
 set statusline+=%=                                  " right align the following ...
-set statusline+=\ %l\/%L\ (%p%%)\                   " column, row, total lines, percentage through file
+set statusline+=\ %l\/%L\                           " column, row, total lines, percentage through file
 set statusline+=[%{strpart(StatuslineGit(),0,14)}]  " git branch
 set statusline+=\ %#error#                          " color ...
 set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing white space indicator
