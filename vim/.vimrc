@@ -201,6 +201,7 @@ if filereadable(expand("~/.vim_colorscheme"))
   source ~/.vim_colorscheme
   " hide split borders
   highlight VertSplit guibg=bg guifg=bg
+  highlight EndOfBuffer ctermfg=bg ctermbg=bg
 endif
 
 " highlight trailing spaces
