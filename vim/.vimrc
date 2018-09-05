@@ -372,7 +372,7 @@ xnoremap <silent> <leader>n :normal<space>
 
 " o - open
 nnoremap <leader>of :! open '%'<cr>
-nnoremap <leader>on :vsplit ~/Dropbox/notes/
+nnoremap <leader>on :vsplit $NOTES/
 
 " pry
 nnoremap <leader>pry Orequire 'pry'; binding.pry
