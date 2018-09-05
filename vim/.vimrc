@@ -115,7 +115,6 @@ let mapleader="\<Space>"
 set autowrite                        " autowrite after make, ! and friends
 set complete-=i                      " searching includes can be slow
 set encoding=utf-8                   " use UTF8 by default (in case $LANG has a different value)
-set number                           " show line numbers
 set showcmd                          " show complete commands
 set ruler                            " show cursor position
 set scrolloff=3                      " leave space after the current line
