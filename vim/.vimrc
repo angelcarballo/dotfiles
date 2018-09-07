@@ -234,17 +234,15 @@ set wildignore+=*.eof,*.ttf,*.woff                     " font files
 iabbr lorem Lorem ipsum dolor sit amet
 iabbr plorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 iabbr shebang #!/bin/sh
-iab <expr> cdate strftime('%d/%m/%Y')
-iab <expr> fdate strftime('%a %d %b %Y')
+iabbr <expr> cdate strftime('%d/%m/%Y')
+iabbr <expr> fdate strftime('%a %d %b %Y')
 
 function! RubyAbbr()
-  inoreab <buffer> firend friend
   inoreab <buffer> rk =>
   inoreab <buffer> bpry require 'pry'; binding.pry
   inoreab <buffer> classdescription #== Description
         \<cr>
         \<cr>
-  inoreab <buffer> pdb import pdb; pdb.set_trace()
 endfunction
 
 autocmd FileType ruby call RubyAbbr()
