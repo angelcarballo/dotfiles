@@ -106,6 +106,7 @@ let g:ruby_indent_block_style='do' " better syntax for nested blocks
 "" vim-websearch options
 let g:web_search_command = "open"
 let g:web_search_query = "https://www.google.com/search?q="
+let g:web_search_use_default_mapping = "no"
 
 "}}}
 " General settings ------------------------------------------------------------{{{
