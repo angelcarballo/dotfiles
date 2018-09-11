@@ -237,16 +237,6 @@ iabbr shebang #!/bin/sh
 iabbr <expr> cdate strftime('%d/%m/%Y')
 iabbr <expr> fdate strftime('%a %d %b %Y')
 
-function! RubyAbbr()
-  inoreab <buffer> rk =>
-  inoreab <buffer> bpry require 'pry'; binding.pry
-  inoreab <buffer> classdescription #== Description
-        \<cr>
-        \<cr>
-endfunction
-
-autocmd FileType ruby call RubyAbbr()
-
 "}}}
 " Skeletons -------------------------------------------------------------{{{
 
