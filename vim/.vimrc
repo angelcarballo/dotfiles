@@ -48,6 +48,7 @@ call minpac#add('junegunn/fzf.vim')                  " FZF helpers
 call minpac#add('bronson/vim-visual-star-search')    " search visual selected text with '*'
 call minpac#add('dietsche/vim-lastplace')            " restore cursor position when re-opening files
 call minpac#add('pgdouyon/vim-evanesco')             " improved (*) search
+call minpac#add('misterbuckley/vim-definitive')      " grep for variable/function definitions
 
 " Auto completion
 call minpac#add('tpope/vim-endwise')                " auto close for Vim blocks
@@ -204,7 +205,7 @@ if filereadable(expand("~/.vim_colorscheme"))
   let base16colorspace=256
   source ~/.vim_colorscheme
   " hide split borders
-  highlight VertSplit guibg=bg guifg=bg
+  " highlight VertSplit guibg=bg guifg=bg
   highlight EndOfBuffer ctermfg=bg ctermbg=bg
 endif
 
@@ -320,7 +321,7 @@ nnoremap <silent> <leader>ev :Vex<cr>
 " f - File/Find
 nnoremap <leader>fs :up<cr>
 nnoremap <silent> <leader>fa :Files<cr>
-nnoremap <silent> <leader>fd :Files %:p:h<cr>
+nnoremap <silent> <leader>fD :Files %:p:h<cr>
 nnoremap <silent> <leader>ff :GFiles<cr>
 nnoremap <silent> <leader>fF :Ag<cr>
 nnoremap <silent> <leader>fg :GFiles?<cr>
@@ -329,10 +330,7 @@ nnoremap <silent> <leader>ft :FZF spec/<cr>
 nnoremap <silent> <leader>fh :Helptags<cr>
 nnoremap <silent> <leader>fn :enew<cr>
 
-nnoremap <leader>fm :silent Ggrep "def <c-r><c-w>"<cr>
-nnoremap <leader>fM :silent Ggrep "def self.<c-r><c-w>"<cr>
-nnoremap <leader>fc :silent Ggrep "class <c-r><c-w>"<cr>
-nnoremap <leader>fC :silent Ggrep "module <c-r><c-w>"<cr>
+nnoremap <silent> <leader>fd :FindDefinition<cr>
 
 " F - Fold
 nnoremap <leader>Ff :setlocal foldmethod=indent foldlevelstart=999 foldminlines=0<cr>
