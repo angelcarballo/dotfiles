@@ -1,5 +1,6 @@
 " Plugins  ------------------------------------------------------------{{{
 
+
 " initialize minpac
 packadd minpac
 call minpac#init()
@@ -290,8 +291,11 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy absolute path  (/something/src/foo.txt)
   nnoremap <leader>cfP :let @*=expand("%:p")<cr>:echo "Full file path copied"<cr>
 
-  " relative path with line number
+  " copy relative path with line number
   nnoremap <leader>cfl :let @*=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
+
+  " copy file folder path (src/)
+  nnoremap <leader>cff :let @*=expand("%:p:h")<cr>:echo "File folder path copied"<cr>
 endif
 
 " clear search results (both highlight and quickfix window)
