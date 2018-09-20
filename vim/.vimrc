@@ -56,7 +56,6 @@ call minpac#add('jiangmiao/auto-pairs')             " auto close for (, [, {
 
 " Third party integration
 call minpac#add('christoomey/vim-tmux-navigator')   " navigate to tmux panes from Vim
-call minpac#add('tpope/gem-ctags')                  " include tags from installed gems
 call minpac#add('linluk/vim-websearch')             " web searches from vim buffers
 call minpac#add('rizzatti/dash.vim')                " integration with Doc viewer Dash (only MacOS)
 
