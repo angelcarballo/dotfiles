@@ -84,16 +84,16 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 
 # history entries to keep in history file
-SAVEHIST=1000
+export SAVEHIST=10000
 
 # history entries to keep in memory
-HISTSIZE=1000
+export HISTSIZE=10000
 
 # history location
-HISTFILE=~/.zsh_history
+export HISTFILE=~/.zsh_history
 
 # commands not added to history
-HISTORY_IGNORE="(ll|clear|c|clear|ls|cd *|pwd|exit|cd ..|rm *|rc|bi|fs|gd|gs|gp|git push|git pull|git fetch|v|cd|pry|dark|light)"
+export HISTORY_IGNORE="(ll|clear|c|clear|ls|cd *|pwd|exit|cd ..|rm *|rc|bi|fs|gd|gs|gp|git push|git pull|git fetch|v|cd|pry|dark|light)"
 
 # dont use zle on emacs to aviod duplicated input
 if [[ -n ${INSIDE_EMACS} ]]; then
