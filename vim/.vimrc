@@ -192,8 +192,7 @@ set statusline+=%r                                  " read only flag
 set statusline+=%h                                  " help flag
 set statusline+=%w                                  " preview flag
 set statusline+=%=                                  " right align the following ...
-" set statusline+=%{strpart(StatuslineGit(),0,14)}\   " git branch
-set statusline+=%l\/%L\/%c\                         " column, row, total lines, percentage through file
+set statusline+=%l\/%L\                             " current line/total lines
 set statusline+=%#error#                            " color ...
 set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing white space indicator
 set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
