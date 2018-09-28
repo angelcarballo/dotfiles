@@ -10,7 +10,8 @@ default: update link vim zsh
 update:
 	git pull
 	cd ~/.config/base16-shell && git pull
-	brew update && brew upgrade
+	brew update
+	brew upgrade
 	brew cleanup
 
 # Link dotfiles on HOME folder using stow
@@ -22,9 +23,6 @@ link:
 vim:
 	vim +PackUpdate +qall
 	vim +PackClean +qall
-
-zsh:
-	zplug install
 
 # Setup git global ignore, repo template, fancy diff and aliases
 git:
@@ -77,5 +75,5 @@ base16:
 clean:
 	brew cleanup
 
-all: update homebrew link vim git rbenv tmux_plugin_manager base16 zsh
+all: update homebrew link vim git rbenv tmux_plugin_manager base16
 
