@@ -95,3 +95,5 @@ alias pip='pip3'
 alias iex='rlwrap -a foo iex'
 alias miex='rlwrap -a foo iex -S mix'
 
+# Notes
+alias n='vim $NOTES'
