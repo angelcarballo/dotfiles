@@ -30,6 +30,7 @@ call minpac#add('tpope/vim-surround')               " alter surroundings (), [],
 call minpac#add('tommcdo/vim-exchange')             " text exchange operator (cx..)
 call minpac#add('vim-scripts/ReplaceWithRegister')  " replace without yanking operator (gr..)
 call minpac#add('AndrewRadev/switch.vim')           " switch formats/patterns/booleans etc.
+call minpac#add('tpope/vim-abolish')                " coercion related commands and operators (crs: snake_case, crm:MixedCase, crc: camelCase, cru: UPPER_CASE, cr-: dash-case, cr.: dot.case, cr<space>: space case)
 
 " Text objects
 call minpac#add('kana/vim-textobj-entire')             " entire buffer text object <e>
