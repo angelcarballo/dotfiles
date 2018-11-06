@@ -549,7 +549,7 @@ nnoremap <c-p> :bprevious<cr>
 " Additions to unimpaired option toggles
 nnoremap cof :setlocal foldenable! foldenable?<cr>
 nnoremap cop :setlocal paste! paste?<cr>
-nnoremap cotm :call ToggleVimuxTarget()<cr>
+nnoremap cot :call ToggleVimuxTarget()<cr>
 nnoremap cos :setlocal scrollbind! scrollbind?<cr>
 
 " Exit neovim terminal mode like insert mode
