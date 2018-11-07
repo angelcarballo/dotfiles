@@ -359,12 +359,9 @@ nnoremap <leader>ij :%!python -m json.tool<cr>
 nnoremap <silent> <leader>lc `[
 nnoremap <silent> <leader>ll :<up><cr>
 
-" normal
-xnoremap <silent> <leader>n :normal<space>
-
 " o - open
 nnoremap <leader>of :! open '%'<cr>
-nnoremap <leader>on :vsplit $NOTES/
+nnoremap <leader>on :FZF $NOTES/<cr>
 
 " pry
 nnoremap <leader>pry Orequire 'pry'; binding.pry
