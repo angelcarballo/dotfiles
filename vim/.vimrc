@@ -437,6 +437,9 @@ nnoremap <leader>z :VimuxZoomRunner<cr>
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
 
+" Quick paragraph align
+nnoremap ga =ap
+
 " Easy history traversal on command line
 cmap <c-n> <up>
 cmap <c-p> <down>
