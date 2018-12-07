@@ -33,6 +33,7 @@ alias deploy='bundle exec cap deploy'
 alias deploym='bundle exec cap deploy:migrate'
 alias expected='grep -A1 -B1 expected'
 alias bpry='bundle exec pry'
+alias up='git pull && bundle'
 
 # Git
 alias ga='git add -A .'
