@@ -13,4 +13,5 @@ setw -g window-status-current-format "[#I.#W#{?window_zoomed_flag,^,}]"
 
 # Pane borders
 set -g pane-border-fg "colour18"
-set -g pane-active-border-fg "colour18"
+set -g pane-active-border-fg "colour20"
+
