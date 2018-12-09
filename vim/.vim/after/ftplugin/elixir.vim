@@ -1,5 +1,5 @@
 let b:dispatch='elixir %'
 
 inoreabbrev <buffer> pipe \|>
-inoreabbrev pry require IEx; IEx.pry
-inoreabbrev inline &(&1)<left>
+inoreabbrev <buffer> pry require IEx; IEx.pry
+inoreabbrev <buffer> inline &(&1)<left>

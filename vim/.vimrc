@@ -30,6 +30,7 @@ call minpac#add('tpope/vim-surround')               " alter surroundings (), [],
 call minpac#add('tommcdo/vim-exchange')             " text exchange operator (cx..)
 call minpac#add('vim-scripts/ReplaceWithRegister')  " replace without yanking operator (gr..)
 call minpac#add('AndrewRadev/switch.vim')           " switch formats/patterns/booleans etc.
+call minpac#add('tpope/vim-abolish')                " coercion related commands and operators (crs: snake_case, crm:MixedCase, crc: camelCase, cru: UPPER_CASE, cr-: dash-case, cr.: dot.case, cr<space>: space case)
 
 " Text objects
 call minpac#add('kana/vim-textobj-entire')             " entire buffer text object <e>
@@ -358,12 +359,9 @@ nnoremap <leader>ij :%!python -m json.tool<cr>
 nnoremap <silent> <leader>lc `[
 nnoremap <silent> <leader>ll :<up><cr>
 
-" normal
-xnoremap <silent> <leader>n :normal<space>
-
 " o - open
 nnoremap <leader>of :! open '%'<cr>
-nnoremap <leader>on :vsplit $NOTES/
+nnoremap <leader>on :FZF $NOTES/<cr>
 
 " pry
 nnoremap <leader>pry Orequire 'pry'; binding.pry
@@ -438,6 +436,9 @@ nnoremap <leader>z :VimuxZoomRunner<cr>
 
 "}}}
 " Mappings (other) ---------------------------------------------------------------{{{
+
+" Quick paragraph align
+nnoremap ga =ap
 
 " Easy history traversal on command line
 cmap <c-n> <up>
@@ -523,7 +524,7 @@ noremap <silent> <down> :resize +3<CR>
 noremap <silent> <up> :resize -3<CR>
 
 " Easily run macros on selected lines
-xnoremap @ :norm@
+xnoremap @ :norm@@<cr>
 
 " Easily run the last command on selected lines
 xnoremap . :norm.<cr>
@@ -548,7 +549,7 @@ nnoremap <c-p> :bprevious<cr>
 " Additions to unimpaired option toggles
 nnoremap cof :setlocal foldenable! foldenable?<cr>
 nnoremap cop :setlocal paste! paste?<cr>
-nnoremap cotm :call ToggleVimuxTarget()<cr>
+nnoremap cot :call ToggleVimuxTarget()<cr>
 nnoremap cos :setlocal scrollbind! scrollbind?<cr>
 
 " Exit neovim terminal mode like insert mode

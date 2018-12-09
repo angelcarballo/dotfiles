@@ -15,3 +15,5 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # Notes
 export NOTES="$HOME/Dropbox/notes"
 
+# FZF defaults
+export FZF_DEFAULT_OPTS=' --layout=reverse'

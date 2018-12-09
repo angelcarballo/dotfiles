@@ -63,3 +63,6 @@ brew "pandoc"
 
 # Wrapper to allow supporting .inputrc settings on bad repls like <iex>
 brew "rlwrap"
+
+# cute http command line client
+brew "httpie"
