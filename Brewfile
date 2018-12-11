@@ -66,3 +66,6 @@ brew "rlwrap"
 
 # cute http command line client
 brew "httpie"
+
+# grep-like json processor
+brew "jq"
