@@ -3,10 +3,10 @@
 # Check .zshrc for settings used on interactive shells #
 ########################################################
 
-# aliases
+# Aliases
 source ~/.zsh/aliases.zsh
 
-# binary folders
+# Personal binary folders
 export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$PATH"
 
 # Homebrew
@@ -17,3 +17,6 @@ export NOTES="$HOME/Dropbox/notes"
 
 # FZF defaults
 export FZF_DEFAULT_OPTS=' --layout=reverse'
+
+# GNU Coreutils
+export PATH="/usr/local/opt/coreutils/libexec/gnubin/:$PATH"

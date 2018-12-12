@@ -69,3 +69,6 @@ brew "httpie"
 
 # grep-like json processor
 brew "jq"
+
+# GNU core utilities
+brew "coreutils"
