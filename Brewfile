@@ -4,9 +4,6 @@ brew "stow"
 # super fast replacement for Ack
 brew "ripgrep"
 
-# image manipulation tools
-brew "imagemagick"
-
 # ruby build dependencies
 brew "openssl"
 brew "libyaml"
