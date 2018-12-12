@@ -7,8 +7,8 @@ alias morning='tmuxinator start dotfiles'
 alias c='clear'
 alias celar='clear'
 alias lcear='clear'
-alias ls='ls -GFa'
-alias ll='ls -GFlah'
+alias ls='ls -GFa --color=auto'
+alias ll='ls -GFlah --color=auto'
 alias catcsv='column -s, -t '
 
 # Extension based aliases
