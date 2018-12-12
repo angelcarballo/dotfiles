@@ -72,3 +72,6 @@ brew "jq"
 
 # GNU core utilities
 brew "coreutils"
+
+# Cat for Markdown (syntax highlighting, links and other goodies)
+brew "mdcat"
