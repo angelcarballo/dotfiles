@@ -1,5 +1,5 @@
 """""""" Send text to tmux """"""""""
-function! VimuxSlime() range
+function! SendTextToTmux() range
 	let cmds = join(getline("'<","'>"), '')
 	call VimuxRunCommand(cmds)
 endfunction

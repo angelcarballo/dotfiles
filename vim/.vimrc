@@ -195,7 +195,7 @@ set statusline+=%w                                  " preview flag
 set statusline+=%=                                  " right align the following ...
 set statusline+=%l\/%L\                             " current line/total lines
 set statusline+=%#error#                            " color ...
-set statusline+=%{StatuslineTrailingSpaceWarning()} " trailing white space indicator
+set statusline+=%{StatuslineTrailingSpace()}        " trailing white space indicator
 set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
 set statusline+=%*                                  " reset color
 
@@ -586,6 +586,18 @@ augroup AUTOMARKS
     autocmd BufLeave *_spec.rb normal! mS
     autocmd BufLeave *.feature normal! mF
 augroup END
+
+" Statusline Support -----------------------------------------------------------------{{{
+augroup STATUSLINE
+  " Recalculate the trailing whitespace warning when idle, and after saving
+  " http://got-ravings.blogspot.com/2008/10/vim-pr0n-statusline-whitespace-flags.html
+  autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+
+  " Recalculate the tab warning flag when idle and after writing
+  " http://got-ravings.blogspot.com/2008/10/vim-pr0n-statusline-whitespace-flags.html
+  autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
+augroup END
+
 "}}}
 " Force file types -----------------------------------------------------------------{{{
 

@@ -1,5 +1,5 @@
 " Display numbered registers, and paste contents
-function! Reg()
+function! PasteFromRegister()
 	reg
 	echo "Register: "
 	let char = nr2char(getchar())
