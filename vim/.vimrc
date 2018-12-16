@@ -1,5 +1,4 @@
-" Plugins  ------------------------------------------------------------{{{
-
+" Plugins  ------------------------------------------------------------------{{{
 
 " initialize minpac
 packadd minpac
@@ -71,8 +70,8 @@ call minpac#add('tommcdo/vim-lion')                 " code align operator
 call minpac#add('tpope/vim-commentary')             " (un)comment code
 call minpac#add('christoomey/vim-system-copy')      " copy command (cp), copy current line (cP) and paste in next line (cv)
 
-"}}}
-" Plugin options ---------------------------------------------------------------{{{
+" ---------------------------------------------------------------------------}}}
+" Plugin options ------------------------------------------------------------{{{
 
 " vim-switch options
 let g:switch_mapping = "s"
@@ -110,8 +109,8 @@ let g:web_search_command = "open"
 let g:web_search_query = "https://www.google.com/search?q="
 let g:web_search_use_default_mapping = "no"
 
-"}}}
-" General settings ------------------------------------------------------------{{{
+" ---------------------------------------------------------------------------}}}
+" General settings ----------------------------------------------------------{{{
 
 " map leader to <space>
 let mapleader="\<Space>"
@@ -168,8 +167,8 @@ autocmd FileType qf wincmd J                                     " quickfix wind
 runtime macros/matchit.vim           " allow % to match more than just single characters
 filetype plugin indent on            " enable indentation by filetype
 
-"}}}
-" Look & Feel ------------------------------------------------------------------{{{
+" ---------------------------------------------------------------------------}}}
+" Look & Feel ---------------------------------------------------------------{{{
 
 " enable truecolor (24 bit)
 set t_8f=[38;2;%lu;%lu;%lum
@@ -193,7 +192,7 @@ set statusline+=%r                                  " read only flag
 set statusline+=%h                                  " help flag
 set statusline+=%w                                  " preview flag
 set statusline+=%=                                  " right align the following ...
-set statusline+=%l\/%L\                             " current line/total lines
+set statusline+=%c\ %l\/%L\                         " current column, line and total lines
 set statusline+=%#error#                            " color ...
 set statusline+=%{StatuslineTrailingSpace()}        " trailing white space indicator
 set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
@@ -218,8 +217,8 @@ call matchadd('ColorColumn', '\%111v', 100)
 highlight clear SpellBad
 highlight SpellBad cterm=underline
 
-"}}}
-" Files to ignore -------------------------------------------------------------{{{
+" ---------------------------------------------------------------------------}}}
+" Files to ignore -----------------------------------------------------------{{{
 
 set wildignore+=*.swp,*.bak,*.pyc,*.class              " Common
 set wildignore+=*/tmp/*,*.so,*.zip,.DS_Store           " MacOSX/Linux
@@ -229,7 +228,7 @@ set wildignore+=*/_site/*                              " Jekyll
 set wildignore+=*/log/*,*.log                          " log files
 set wildignore+=*.eof,*.ttf,*.woff                     " font files
 
-"}}}
+" ---------------------------------------------------------------------------}}}
 " Abbreviations -------------------------------------------------------------{{{
 
 iabbr lorem Lorem ipsum dolor sit amet
@@ -238,15 +237,15 @@ iabbr shebang #!/bin/sh
 iabbr <expr> cdate strftime('%d/%m/%Y')
 iabbr <expr> fdate strftime('%a %d %b %Y')
 
-"}}}
-" Skeletons -------------------------------------------------------------{{{
+" ---------------------------------------------------------------------------}}}
+" Skeletons -----------------------------------------------------------------{{{
 
 autocmd BufNewFile *_spec.rb 0read ~/.vim/skeleton/rspec.rb
 autocmd BufNewFile *.sh 0read ~/.vim/skeleton/bash.sh
 autocmd BufNewFile *factories/*.rb 0read ~/.vim/skeleton/factory_girl.rb
 
-"}}}
-" Mappings (leader) ---------------------------------------------------------------{{{
+" ---------------------------------------------------------------------------}}}
+" Mappings (leader) ---------------------------------------------------------{{{
 
 " Show and switch to buffers
 nmap <leader><space> :buffers<cr>:bu<Space>
@@ -434,8 +433,8 @@ nnoremap <leader>xb !!bash<cr>
 " z - Zoom
 nnoremap <leader>z :VimuxZoomRunner<cr>
 
-"}}}
-" Mappings (other) ---------------------------------------------------------------{{{
+" ---------------------------------------------------------------------------}}}
+" Mappings (other) ----------------------------------------------------------{{{
 
 " Quick paragraph align
 nnoremap ga =ap
@@ -558,8 +557,8 @@ if exists(':tnoremap')
 endif
 
 
-"}}}
-" Motions ---------------------------------------------------------------{{{
+" ---------------------------------------------------------------------------}}}
+" Motions -------------------------------------------------------------------{{{
 
 " In next <surround object> motions
 onoremap inb :<c-u>normal! f(vi(<cr>
@@ -573,21 +572,24 @@ onoremap in} :<c-u>normal! f{vi{<cr>
 onoremap in' :<c-u>normal! f'vi'<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
 
-"}}}
-" Commands -----------------------------------------------------------------{{{
+" ---------------------------------------------------------------------------}}}
+" Commands ------------------------------------------------------------------{{{
 
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
 
-"}}}
-" AutoCommands -----------------------------------------------------------------{{{
+" ---------------------------------------------------------------------------}}}
+" AutoCommands --------------------------------------------------------------{{{
+
 augroup AUTOMARKS
     autocmd!
     autocmd BufLeave *_spec.rb normal! mS
     autocmd BufLeave *.feature normal! mF
 augroup END
 
-" Statusline Support -----------------------------------------------------------------{{{
+" ---------------------------------------------------------------------------}}}
+" Support for statusline indicators -----------------------------------------{{{
+
 augroup STATUSLINE
   " Recalculate the trailing whitespace warning when idle, and after saving
   " http://got-ravings.blogspot.com/2008/10/vim-pr0n-statusline-whitespace-flags.html
@@ -598,8 +600,8 @@ augroup STATUSLINE
   autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
 augroup END
 
-"}}}
-" Force file types -----------------------------------------------------------------{{{
+" ---------------------------------------------------------------------------}}}
+" Force file types ----------------------------------------------------------{{{
 
 autocmd BufRead,BufNewFile *.jbuilder setfiletype ruby
 autocmd BufRead,BufNewFile *.prawn setfiletype ruby
@@ -610,4 +612,4 @@ autocmd BufRead,BufNewFile .spacemacs setfiletype lisp
 autocmd BufRead,BufNewFile *.hocon setfiletype yaml
 autocmd BufRead,BufNewFile *.md setfiletype markdown
 
-"}}}
+" ---------------------------------------------------------------------------}}}
