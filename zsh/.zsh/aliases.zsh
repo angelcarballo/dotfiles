@@ -100,6 +100,6 @@ alias iex='rlwrap -a foo iex'
 alias miex='rlwrap -a foo iex -S mix'
 
 # Notes
-alias nn='vim $NOTES'
-alias n='vim $NOTES/00-sandbox.md'
+alias n='vim $NOTES/`ls $NOTES | fzf --preview "cat $NOTES/{}"`'
+alias nn='vim $NOTES/00-sandbox.md'
 alias j='vim $NOTES/01-journal.md'
