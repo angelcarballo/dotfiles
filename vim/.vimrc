@@ -36,7 +36,7 @@ call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text 
 call minpac#add('b4winckler/vim-angry')                " function argument text object <a/A>
 call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelCase, snake_case and similar <v>
 call minpac#add('vim-utils/vim-space')                 " whitespace, empty line text objects <space>
-call minpac#add('glts/vim-textobj-comment')            " comments ac,iC (with,without delimiters like /* */)
+call minpac#add('glts/vim-textobj-comment')            " comments ac,ic (with,without delimiters like /* */)
 
 " Look & Feel
 call minpac#add('chriskempson/base16-vim')          " base16 color schemes
