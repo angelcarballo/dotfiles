@@ -72,3 +72,6 @@ brew "coreutils"
 
 # Cat for Markdown (syntax highlighting, links and other goodies)
 brew "mdcat"
+
+# Text to UML (flow, class and other diagrams)
+brew "plantuml"
