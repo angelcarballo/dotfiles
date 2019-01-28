@@ -45,9 +45,6 @@ brew "tree"
 # move files to trash instead of deleting them
 brew "trash"
 
-# nice formatter for text (markdown, readmes, etc.)
-brew "par"
-
 # github tooling
 brew "hub"
 
