@@ -1,3 +1,3 @@
 setlocal wrap
-setlocal textwidth=80
+setlocal textwidth=120
 setlocal tabstop=2
