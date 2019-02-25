@@ -126,8 +126,8 @@ nnoremap <leader>on :FZF $NOTES/<cr>
 nnoremap <leader>pry Orequire 'pry'; binding.pry
 
 " P - Plugins
-nnoremap <leader>Pi :PackUpdate<cr>
-nnoremap <leader>Pc :PackClean<cr>
+nnoremap <leader>Pi :call minpac#update()<cr>
+nnoremap <leader>Pc :call minpac#clean()<cr>
 
 " q - Quit
 nnoremap <leader>q :q<cr>

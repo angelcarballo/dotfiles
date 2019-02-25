@@ -92,7 +92,6 @@ runtime macros/matchit.vim
 
 source ~/.vim/startup/abbreviations.vim
 source ~/.vim/startup/auto_commands.vim
-source ~/.vim/startup/commands.vim
 source ~/.vim/startup/forced_file_types.vim
 source ~/.vim/startup/ignored_patterns.vim
 source ~/.vim/startup/look_and_feel.vim
