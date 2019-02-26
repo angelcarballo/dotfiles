@@ -2,6 +2,7 @@
 set autowrite                        " autowrite after make, ! and friends
 set complete-=i                      " searching includes can be slow
 set showcmd                          " show complete commands
+set number                           " show line numbers
 set ruler                            " show cursor position
 set scrolloff=3                      " leave space after the current line
 set foldmethod=marker                " fold using {{{ .. }}} markers
@@ -32,7 +33,7 @@ set expandtab                        " indent with spaces by default (overriden 
 set regexpengine=1                   " use old regexp engine, as new one has low performance with big ruby files
 set spelllang=en_us                  " enable english spell check
 set spellsuggest=fast,20             " don't show too many suggestions for spell check.
-set cm=blowfish2                     " use blowfish 2 crypto method by default (zip is too weak)
+set cryptmethod=blowfish2                     " use blowfish 2 crypto method by default (zip is too weak)
 set spellfile=~/Dropbox/vim/spell/en.utf-8.add
 
 " Extended mouse support
