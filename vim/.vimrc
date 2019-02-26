@@ -18,8 +18,6 @@ call minpac#add('tpope/vim-rhubarb')                " github integration
 
 " Languages & frameworks
 call minpac#add('tpope/vim-sleuth')                 " auto set indent settings based on file type
-call minpac#add('tpope/vim-rbenv')                  " Rbenv integration
-call minpac#add('tpope/vim-bundler')                " Bundler integration
 call minpac#add('vim-scripts/nagios-syntax')        " Nagios support
 call minpac#add('slashmili/alchemist.vim')          " Elixir support
 call minpac#add('aklt/plantuml-syntax')             " PlantUML support
