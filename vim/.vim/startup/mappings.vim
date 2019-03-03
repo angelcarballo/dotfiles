@@ -80,7 +80,7 @@ nnoremap <silent> <leader>ff :GFiles<cr>
 nnoremap <silent> <leader>fF :Ag<cr>
 nnoremap <silent> <leader>fg :GFiles?<cr>
 nnoremap <silent> <leader>fr :History<cr>
-nnoremap <silent> <leader>fs :FZF spec/<cr>
+nnoremap <silent> <leader>ft :FZF spec/<cr>
 nnoremap <silent> <leader>fh :Helptags<cr>
 nnoremap <silent> <leader>fn :enew<cr>
 
