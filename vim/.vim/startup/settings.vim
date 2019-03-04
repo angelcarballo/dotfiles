@@ -1,4 +1,3 @@
-"" General settings ----------------------------------------------------------{{{
 set autowrite                        " autowrite after make, ! and friends
 set complete-=i                      " searching includes can be slow
 set showcmd                          " show complete commands
@@ -17,7 +16,7 @@ set incsearch                        " incremental search
 set ignorecase                       " ignore case on search ...
 set smartcase                        " ... except if query contains uppercase characters
 set infercase                        " ... same thing for keyword completion
-set nowrap                           " don't wrap lines
+set nowrap                           " don't wrap lines when they're too long for current screen size
 set backspace=indent,eol,start       " backspace through everything
 set wildmenu                         " visual auto complete for command menu
 set ttyfast                          " send extra characters to terminal (improves smoothness)
@@ -35,7 +34,7 @@ set expandtab                        " indent with spaces by default (overriden 
 set regexpengine=1                   " use old regexp engine, as new one has low performance with big ruby files
 set spelllang=en_us                  " enable english spell check
 set spellsuggest=fast,20             " don't show too many suggestions for spell check.
-set cryptmethod=blowfish2                     " use blowfish 2 crypto method by default (zip is too weak)
+set cryptmethod=blowfish2            " use blowfish 2 crypto method by default (zip is too weak)
 set spellfile=~/Dropbox/vim/spell/en.utf-8.add
 
 " Extended mouse support
@@ -47,4 +46,3 @@ if executable('rg')
   " Use ripgrep over Grep
   set grepprg=rg\ --vimgrep
 endif
-" ---------------------------------------------------------------------------}}}
