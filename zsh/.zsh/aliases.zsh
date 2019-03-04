@@ -10,6 +10,7 @@ alias lcear='clear'
 alias ls='ls -GFa --color=auto'
 alias ll='ls -GFlah --color=auto'
 alias catcsv='column -s, -t '
+alias cat='bat'
 
 # Extension based aliases
 alias -s log='tail -f'

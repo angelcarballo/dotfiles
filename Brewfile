@@ -72,3 +72,6 @@ brew "mdcat"
 
 # Text to UML (flow, class and other diagrams)
 brew "plantuml"
+
+# Cat like viewer with syntax highlighting, git support and other goodies
+brew "bat"
