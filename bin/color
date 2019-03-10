@@ -1,6 +1,7 @@
 #!/bin/bash
 
-current=$( basename `cat $SHELL_COLORSCHEME` | cut -d'.' -f1 )
+# current=$( basename `cat $SHELL_COLORSCHEME` | cut -d'.' -f1 )
+current=$(cat $SHELL_COLORSCHEME | cut -d'/' -f7 | cut -d'-' -f2 | cut -d'.' -f1)
 colorscheme=""
 showall=false
 
@@ -40,6 +41,8 @@ done
 if [[ -n $1  ]]; then
   colorscheme=$1
 fi
+
+echo "New colorscheme: $colorscheme"
 
 # if no option is provided, use fzf to select a color
 if [ "$colorscheme" == "" ]; then
