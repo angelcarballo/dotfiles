@@ -1,5 +1,4 @@
 # vim-style keybindings
-source ~/.tigrc.vim
 
 # color overrides
 color cursor black green normal
