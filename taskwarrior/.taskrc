@@ -1,0 +1,6 @@
+# Location of tasks and config files
+data.location=~/Dropbox/taskwarrior
+dateformat=d\/m\/Y
+context.work=+sb
+context.personal=-sb
+context=personal

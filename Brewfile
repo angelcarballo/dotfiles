@@ -75,3 +75,6 @@ brew "plantuml"
 
 # Cat like viewer with syntax highlighting, git support and other goodies
 brew "bat"
+
+# Taskwarrior - task manager
+brew "task"

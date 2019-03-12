@@ -100,7 +100,8 @@ alias pip='pip3'
 alias iex='rlwrap -a foo iex'
 alias miex='rlwrap -a foo iex -S mix'
 
-# Notes
+# Notes/tasks
 alias n='vim $NOTES/`ls $NOTES | fzf --preview "cat $NOTES/{}"`'
 alias nn='vim $NOTES/00-sandbox.md'
 alias j='vim $NOTES/01-journal.md'
+alias t='task'
