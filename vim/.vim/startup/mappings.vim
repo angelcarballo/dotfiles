@@ -31,7 +31,7 @@ xnoremap <leader>8 "hy:silent Ggrep "<c-r>h"<cr>
 nnoremap <leader>ac [s1z=
 
 " b - Buffers
-nnoremap <silent> <leader>bd :bdelete<cr>
+nnoremap <silent> <leader>b :bprevious <bar> bdelete #<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
 nnoremap <silent> <leader>bo :w <bar> %bd <bar> e#<cr>
 
