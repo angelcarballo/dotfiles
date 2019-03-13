@@ -7,6 +7,9 @@ let mapleader="\<Space>"
 nmap <leader><space> :buffers<cr>:bu<Space>
 nmap <tab> <c-^>
 
+" Split line with proper indentation
+nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
+
 " , - Show and paste from registers
 nnoremap <leader>, :Reg<cr>
 
