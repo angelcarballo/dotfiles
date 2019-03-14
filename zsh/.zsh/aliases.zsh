@@ -79,7 +79,6 @@ alias js='bundle exec jekyll serve --watch'
 alias dockerenv='eval `boot2docker shellinit 2>/dev/null`'
 
 # Vim
-alias vim='/usr/local/bin/vim'
 alias v='vim .'
 
 # Emacs
