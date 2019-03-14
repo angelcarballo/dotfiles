@@ -25,8 +25,26 @@ prompt_symbol_with_last_command_status() {
   echo "%(?.%F{white}.%F{red})$%F{reset_color}"
 }
 
+username() {
+  echo "%l"
+}
+
+hostname() {
+  echo "%M"
+}
+
+username_and_host_if_server() {
+  case `uname` in
+    Darwin)
+      ;;
+    Linux)
+      echo "%F{12}%n%F{10}@%F{12}%M%F{reset_color} "
+      ;;
+  esac
+}
+
 setopt prompt_subst
-PROMPT='$(current_path)$(current_branch) $(prompt_symbol_with_last_command_status) '
+PROMPT='$(username_and_host_if_server)$(current_path)$(current_branch) $(prompt_symbol_with_last_command_status) '
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd  theme_precmd
