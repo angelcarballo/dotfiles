@@ -1,34 +1,40 @@
 DOTFILES := $(shell pwd)
-FOLDERS_TO_LINK := git ruby tmux vim zsh cheats common git_template
-FOLDERS_TO_LINK_ON_SERVERS := git ruby tmux vim zsh
+FOLDERS_TO_LINK := git ruby tmux vim cheats common git_template
+FOLDERS_TO_LINK_ON_SERVERS := git ruby tmux vim
 
 # Run always
-.PHONY: git rbenv vim clean
+.PHONY: update_dotfiles update_base16 update_homebrew link_dotfiles_mac link_dotfiles_server update_vim_plugins git_config install_rbenv install_homebrew install_base16
 
-default: update link vim zsh
+default: default_mac
 
-update:
+default_mac: update_dotfiles update_homebrew link_dotfiles_mac update_vim_plugins update_base16
+default_server: update_dotfiles link_dotfiles_server update_vim_plugins
+
+update_dotfiles:
 	git pull
+
+update_base16:
 	cd ~/.config/base16-shell && git pull
+
+update_homebrew:
 	brew update
 	brew upgrade
 	brew cleanup
 
-# Link dotfiles on HOME folder using stow
-link:
+link_dotfiles_mac:
 	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK) --ignore='DS_Store'
 	stow -v -t $(HOME)/.config -d $(DOTFILES) $(FOLDERS_TO_LINK_ON_CONFIG) --ignore='DS_Store'
 
-link_server:
+link_dotfiles_server:
 	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK_ON_SERVERS)
 
 # Install new vim plugins, update existing and cleanup old ones
-vim:
+update_vim_plugins:
 	vim +PackUpdate +qall
 	vim +PackClean +qall
 
 # Setup git global ignore, repo template, fancy diff and aliases
-git:
+git_config:
 	# global ignore list
 	git config --global core.excludesfile ~/.gitignore_global
 	# tell git to use our nice repo template
@@ -66,7 +72,7 @@ git:
 	git config --global color.diff.whitespace             "red reverse"
 
 # Install rbenv with ruby-build, rbenv-default-gems and rbenv-ctags plugins
-rbenv:
+install_rbenv:
 	git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 	git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 	mkdir -p ~/.rbenv/plugins
@@ -75,20 +81,11 @@ rbenv:
 	git clone https://github.com/rbenv/rbenv-each.git ~/.rbenv/plugins/rbenv-each
 
 # Install homebrew and install dependencies with homebrew/bundle
-homebrew:
+install_homebrew:
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	brew tap Homebrew/bundle
 	brew bundle
 
-tmux_plugin_manager:
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-base16:
+install_base16:
 	git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 	chmod +x ~/.config/base16-shell/scripts/*.sh
-
-clean:
-	brew cleanup
-
-all: update homebrew link vim git rbenv tmux_plugin_manager base16
-
