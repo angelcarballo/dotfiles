@@ -1,5 +1,6 @@
 DOTFILES := $(shell pwd)
 FOLDERS_TO_LINK := cheats common emacs git git_template ruby spacemacs tmux vim zsh tig alacritty
+FOLDERS_TO_LINK_ON_SERVERS := git ruby tmux vim zsh
 FOLDERS_TO_LINK_ON_CONFIG := nvim
 
 # Run always
@@ -18,6 +19,9 @@ update:
 link:
 	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK) --ignore='DS_Store'
 	stow -v -t $(HOME)/.config -d $(DOTFILES) $(FOLDERS_TO_LINK_ON_CONFIG) --ignore='DS_Store'
+
+link_server:
+	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK_ON_SERVERS)
 
 # Install new vim plugins, update existing and cleanup old ones
 vim:
