@@ -105,3 +105,6 @@ alias n='vim $NOTES/`ls $NOTES | fzf --preview "cat $NOTES/{}"`'
 alias nn='vim $NOTES/00-sandbox.md'
 alias j='vim $NOTES/01-journal.md'
 alias t='task'
+
+# Call Markoff (markdown mac preview) from the shell
+alias markoff="open -a Markoff"
