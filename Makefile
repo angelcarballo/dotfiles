@@ -2,39 +2,59 @@ DOTFILES := $(shell pwd)
 FOLDERS_TO_LINK := git ruby tmux vim cheats common git_template
 FOLDERS_TO_LINK_ON_SERVERS := git ruby tmux vim
 
-# Run always
+# Set default task based on OS
+UNAME := $(shell uname)
+ifeq ($(UNAME),Linux)
+	DEFAULT_TASK := default_server
+endif
+ifeq ($(UNAME),Darwin)
+	DEFAULT_TASK := default_mac
+endif
+
+GREEN=\033[1;32m
+NC=\033[0m # No Color
+
+# Tasks that do not generate a file (and are always executed)
 .PHONY: update_dotfiles update_base16 update_homebrew link_dotfiles_mac link_dotfiles_server update_vim_plugins git_config install_rbenv install_homebrew install_base16
 
-default: default_mac
+default:
+	$(MAKE) $(DEFAULT_TASK)
 
 default_mac: update_dotfiles update_homebrew link_dotfiles_mac update_vim_plugins update_base16
+
 default_server: update_dotfiles link_dotfiles_server update_vim_plugins
 
 update_dotfiles:
+	@echo "\n${GREEN}Updating dotfiles${NC}"
 	git pull
 
 update_base16:
+	@echo "\n${GREEN}Updating Base16 colorschemes${NC}"
 	cd ~/.config/base16-shell && git pull
 
 update_homebrew:
+	@echo "\n${GREEN}Updating Homebrew packages${NC}"
 	brew update
 	brew upgrade
 	brew cleanup
 
 link_dotfiles_mac:
+	@echo "\n${GREEN}Linking dotfiles for (MacOS)${NC}"
 	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK) --ignore='DS_Store'
-	stow -v -t $(HOME)/.config -d $(DOTFILES) $(FOLDERS_TO_LINK_ON_CONFIG) --ignore='DS_Store'
 
 link_dotfiles_server:
+	@echo "\n${GREEN}Linking dotfiles for (Server)${NC}"
 	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK_ON_SERVERS)
 
 # Install new vim plugins, update existing and cleanup old ones
 update_vim_plugins:
+	@echo "\n${GREEN}Updating Vim plugins${NC}"
 	vim +PackUpdate +qall
 	vim +PackClean +qall
 
 # Setup git global ignore, repo template, fancy diff and aliases
 git_config:
+	@echo "\n${GREEN}Setting git configuration${NC}"
 	# global ignore list
 	git config --global core.excludesfile ~/.gitignore_global
 	# tell git to use our nice repo template
@@ -73,6 +93,7 @@ git_config:
 
 # Install rbenv with ruby-build, rbenv-default-gems and rbenv-ctags plugins
 install_rbenv:
+	@echo "\n${GREEN}Installing rbenv${NC}"
 	git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 	git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 	mkdir -p ~/.rbenv/plugins
@@ -82,10 +103,12 @@ install_rbenv:
 
 # Install homebrew and install dependencies with homebrew/bundle
 install_homebrew:
+	@echo "\n${GREEN}Installing Homebrew${NC}"
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	brew tap Homebrew/bundle
 	brew bundle
 
 install_base16:
+	@echo "\n${GREEN}Installing Base16 colorschemes${NC}"
 	git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 	chmod +x ~/.config/base16-shell/scripts/*.sh
