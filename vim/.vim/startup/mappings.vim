@@ -263,9 +263,6 @@ noremap <silent> <right> :vertical resize +3<CR>
 noremap <silent> <down> :resize +3<CR>
 noremap <silent> <up> :resize -3<CR>
 
-" Easily run macros on selected lines
-xnoremap @ :norm@@<cr>
-
 " Easily run the last command on selected lines
 xnoremap . :norm.<cr>
 
