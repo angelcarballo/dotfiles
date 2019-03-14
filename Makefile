@@ -15,7 +15,7 @@ GREEN=\033[1;32m
 NC=\033[0m # No Color
 
 # Tasks that do not generate a file (and are always executed)
-.PHONY: update_dotfiles update_base16 update_homebrew link_dotfiles_mac link_dotfiles_server update_vim_plugins git_config install_rbenv install_homebrew install_base16
+.PHONY: update_dotfiles update_base16 update_homebrew link_dotfiles_mac link_dotfiles_server update_vim_plugins git_config vim_minpac install_rbenv install_homebrew install_base16
 
 default:
 	$(MAKE) $(DEFAULT_TASK)
@@ -90,6 +90,11 @@ git_config:
 	git config --global color.diff.old                    "red bold"
 	git config --global color.diff.new                    "green bold"
 	git config --global color.diff.whitespace             "red reverse"
+
+# Install minpac vim plugin manager
+vim_minpac:
+	@echo "\n${GREEN}Installing minpac${NC}"
+	git clone https://github.com/k-takata/minpac.git $(DOTFILES)/vim/.vim/pack/minpac/opt/minpac
 
 # Install rbenv with ruby-build, rbenv-default-gems and rbenv-ctags plugins
 install_rbenv:
