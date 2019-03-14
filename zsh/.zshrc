@@ -110,16 +110,23 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 export CHEATCOLORS=true
 
 # initialize base16 colorscheme
-source $SHELL_COLORSCHEME
+[ -f $SHELL_COLORSCHEME ] && source $SHELL_COLORSCHEME
 
 # source fzf fuzzy finder configuration is present
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# enable rbenv
-eval "$(rbenv init -)"
-
-# alias git with GitHub's hub
-eval "$(hub alias -s)"
-
 # source local config if present
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+case `uname` in
+  Darwin)
+    # enable rbenv
+    eval "$(rbenv init -)"
+
+    # alias git with GitHub's hub
+    eval "$(hub alias -s)"
+  ;;
+  Linux)
+    # commands for Linux go here
+  ;;
+esac
