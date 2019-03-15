@@ -38,7 +38,7 @@ username_and_host_if_server() {
     Darwin)
       ;;
     Linux)
-      echo "%F{12}%n%F{10}@%F{12}%M%F{reset_color} "
+      echo "%F{3}%n@%M%F{reset_color} "
       ;;
   esac
 }

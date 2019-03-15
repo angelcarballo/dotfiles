@@ -1,7 +1,7 @@
 # Status bar
 set-option -g status-position bottom
-set -g status-bg "colour07"
-set -g status-fg "colour00"
+set -g status-bg "colour08"
+set -g status-fg "colour07"
 set -g status-justify "left"
 set -g status-left-length "100"
 set -g status "on"
