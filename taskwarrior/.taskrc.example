@@ -1,0 +1,9 @@
+data.location=~/.task
+
+dateformat=d\/m\/Y
+
+taskd.certificate=~\/.task\/foobar.cert.pem
+taskd.key=~\/.task\/foobar.key.pem
+taskd.ca=~\/.task\/ca.cert.pem
+taskd.server=task.server.com:53689
+taskd.credentials=myorg\/myuser\/my-very-long-user-uuid
