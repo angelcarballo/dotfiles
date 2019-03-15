@@ -97,3 +97,7 @@ source ~/.vim/startup/mappings.vim
 source ~/.vim/startup/motions.vim
 source ~/.vim/startup/settings.vim
 source ~/.vim/startup/skeletons.vim
+
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
+endif
