@@ -12,9 +12,6 @@ brew "libyaml"
 brew "zsh"
 brew "zplug"
 
-# remove ANSI codes, useful for tmux-logging
-brew "ansifilter"
-
 # better diff formatting
 brew "diff-so-fancy"
 
@@ -66,9 +63,6 @@ brew "jq"
 
 # GNU core utilities
 brew "coreutils"
-
-# Cat for Markdown (syntax highlighting, links and other goodies)
-brew "mdcat"
 
 # Text to UML (flow, class and other diagrams)
 brew "plantuml"
