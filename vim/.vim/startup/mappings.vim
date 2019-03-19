@@ -243,6 +243,9 @@ inoremap <c-f> <c-g>u<esc>[s1z=`]a<c-g>u
 " Auto indent pasted text
 nnoremap p p=`]<c-o>
 nnoremap P P=`]<c-o>
+" keep originals too
+nnoremap gp p
+nnoremap gP P
 
 " Search and replace current visual selection
 xnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
