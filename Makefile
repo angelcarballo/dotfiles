@@ -15,7 +15,7 @@ GREEN=\033[1;32m
 NC=\033[0m # No Color
 
 # Tasks that do not generate a file (and are always executed)
-.PHONY: update_dotfiles update_base16 update_homebrew link_dotfiles_mac link_dotfiles_server update_vim_plugins git_config vim_minpac install_rbenv install_homebrew install_base16 sync_tasks
+.PHONY: update_dotfiles update_base16 update_homebrew link_dotfiles_mac link_dotfiles_server update_vim_plugins git_config vim_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac
 
 default:
 	$(MAKE) $(DEFAULT_TASK)
@@ -23,6 +23,8 @@ default:
 default_mac: update_dotfiles update_homebrew link_dotfiles_mac update_vim_plugins update_base16 sync_tasks
 
 default_server: update_dotfiles link_dotfiles_server update_vim_plugins
+
+setup_mac: install_rbenv install_homebrew install_base16 default_mac
 
 update_dotfiles:
 	@echo "\n${GREEN}Updating dotfiles${NC}"
