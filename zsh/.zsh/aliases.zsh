@@ -71,6 +71,7 @@ alias fetchall='ls -d ~/src/*/ | xargs -I{} git -C {} fetch'
 alias ghd='open `hub browse -u | sed s/\tree.*//g`/compare/`git rev-parse --abbrev-ref HEAD`'
 alias amend='git commit --amend'
 alias prfiles='git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master)'
+alias changed='git status --porcelain | cut -d" " -f 3'
 
 # Jekyll
 alias js='bundle exec jekyll serve --watch'
