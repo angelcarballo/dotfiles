@@ -18,7 +18,6 @@ call minpac#add('tpope/vim-rhubarb')                " github integration
 
 " Languages & frameworks
 call minpac#add('tpope/vim-sleuth')                 " auto set indent settings based on file type
-call minpac#add('vim-scripts/nagios-syntax')        " Nagios support
 call minpac#add('slashmili/alchemist.vim')          " Elixir support
 call minpac#add('aklt/plantuml-syntax')             " PlantUML support
 call minpac#add('sheerun/vim-polyglot')             " syntax support for common file types
@@ -29,6 +28,10 @@ call minpac#add('tpope/vim-surround')               " alter surroundings (), [],
 call minpac#add('tommcdo/vim-exchange')             " text exchange operator (cx..)
 call minpac#add('vim-scripts/ReplaceWithRegister')  " replace without yanking operator (gr..)
 call minpac#add('tpope/vim-abolish')                " coercion related commands and operators (crs: snake_case, crm:MixedCase, crc: camelCase, cru: UPPER_CASE, cr-: dash-case, cr.: dot.case, cr<space>: space case)
+call minpac#add('tpope/vim-commentary')             " un/comment code (gc)
+call minpac#add('christoomey/vim-system-copy')      " copy command (cp), copy current line (cP) and paste in next line (cv)
+call minpac#add('tommcdo/vim-lion')                 " code align operator (gl)
+source ~/.vim/startup/plugin/vim-lion.vim
 
 " Text objects
 call minpac#add('kana/vim-textobj-entire')             " entire buffer text object <e>
@@ -68,10 +71,6 @@ call minpac#add('janko-m/vim-test')                 " generic test runner
 source ~/.vim/startup/plugin/vim-test.vim
 
 " Extras
-call minpac#add('tpope/vim-commentary')             " un/comment code (gc)
-call minpac#add('christoomey/vim-system-copy')      " copy command (cp), copy current line (cP) and paste in next line (cv)
-call minpac#add('tommcdo/vim-lion')                 " code align operator (gl)
-source ~/.vim/startup/plugin/vim-lion.vim
 source ~/.vim/startup/plugin/netrw.vim              " configuration for netrw
 
 "}}}

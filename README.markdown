@@ -1,28 +1,25 @@
-Dotfiles
-========
+# Dotfiles
 
 My collection of dotfiles. If you want to reuse any of this, clone the
 repository and review the code, it's probably better to pick an choose what you
 need.
 
 
-Usage
------
+## Usage
 
 ```shell
-# Initial setup
-git clone https://github.com/angelcarballo/dotfiles.git && cd dotfiles && make all
+# initial setup
+make setup_mac
 
-# If you want to use Zsh, set it as your default shell:
+# set zsh as default shell
 chsh -s $(which zsh)
 
-# To update repo, links and vim plugins
+# update repo, links and vim plugins
 make
 ``````
 
 Local changes and extra commands
 --------------------------------
 
-Zsh will try to source `~/.zshrc.local`. Put your local settings, env vars,
-etc. there if you need them for a particular machine but don't want them in
-your dotfiles.
+Zsh will try to source `~/.zshrc.local`. Put local settings, env vars,
+etc. there.
