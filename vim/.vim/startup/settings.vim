@@ -4,9 +4,6 @@ set showcmd                          " show complete commands
 set number                           " show line numbers
 set ruler                            " show cursor position
 set scrolloff=3                      " leave space after the current line
-set foldmethod=marker                " fold using markers by defautl groups
-set foldlevel=1                      " 1 level folding by default
-set nofoldenable                     " don't fold by default
 set diffopt+=vertical                " always use vertical diffs
 set noswapfile                       " disable swap files, let git do the work
 set splitright                       " open new vertical split panes to right
