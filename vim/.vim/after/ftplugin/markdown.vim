@@ -1,3 +1,6 @@
-setlocal wrap
-setlocal textwidth=120
-setlocal tabstop=2
+let b:sleuth_automatic = 0
+
+set wrap
+set textwidth=120
+set tabstop=2
+set shiftwidth=2
