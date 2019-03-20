@@ -7,19 +7,18 @@ need.
 
 ## Usage
 
-```shell
-# initial setup
-make setup_mac
+  ```sh
+  # initial setup
+  make setup_mac
 
-# set zsh as default shell
-chsh -s $(which zsh)
+  # set zsh as default shell
+  chsh -s $(which zsh)
 
-# update repo, links and vim plugins
-make
-``````
+  # update repo, links and vim plugins
+  make
+  ```
 
-Local changes and extra commands
---------------------------------
+## Local changes and extra commands
 
 Zsh will try to source `~/.zshrc.local`. Put local settings, env vars,
 etc. there.
