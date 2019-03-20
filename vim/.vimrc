@@ -93,7 +93,7 @@ source ~/.vim/startup/forced_file_types.vim
 source ~/.vim/startup/ignored_patterns.vim
 source ~/.vim/startup/look_and_feel.vim
 source ~/.vim/startup/mappings.vim
-source ~/.vim/startup/motions.vim
+source ~/.vim/startup/text_objects.vim
 source ~/.vim/startup/settings.vim
 source ~/.vim/startup/skeletons.vim
 
