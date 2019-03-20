@@ -1,4 +1,4 @@
-let b:sleuth_automatic = 0
+let g:markdown_fenced_languages = ['ruby', 'bash=sh']
 
 set wrap
 set textwidth=120

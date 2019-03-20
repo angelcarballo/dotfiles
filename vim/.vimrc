@@ -17,7 +17,6 @@ call minpac#add('tpope/vim-fugitive')               " git integration
 call minpac#add('tpope/vim-rhubarb')                " github integration
 
 " Languages & frameworks
-call minpac#add('tpope/vim-sleuth')                 " auto set indent settings based on file type
 call minpac#add('slashmili/alchemist.vim')          " Elixir support
 call minpac#add('aklt/plantuml-syntax')             " PlantUML support
 call minpac#add('sheerun/vim-polyglot')             " syntax support for common file types
