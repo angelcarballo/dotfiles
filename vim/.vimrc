@@ -33,7 +33,6 @@ call minpac#add('tommcdo/vim-lion')                 " code align operator (gl)
 source ~/.vim/startup/plugin/vim-lion.vim
 
 " Text objects
-call minpac#add('kana/vim-textobj-entire')             " entire buffer text object <e>
 call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text object <i/I>
 call minpac#add('b4winckler/vim-angry')                " function argument text object <a/A>
 call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelCase, snake_case and similar <v>

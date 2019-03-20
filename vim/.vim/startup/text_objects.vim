@@ -1,4 +1,4 @@
-" In next <surround object> motions
+"  next <surround object>
 onoremap inb :<c-u>normal! f(vi(<cr>
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap in) :<c-u>normal! f(vi(<cr>
@@ -9,3 +9,6 @@ onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap in} :<c-u>normal! f{vi{<cr>
 onoremap in' :<c-u>normal! f'vi'<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
+
+" whole file (entire)
+onoremap ae :<c-u>normal! ggVG<cr>
