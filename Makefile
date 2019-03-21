@@ -99,6 +99,7 @@ vim_minpac:
 	git clone https://github.com/k-takata/minpac.git $(DOTFILES)/vim/.vim/pack/minpac/opt/minpac
 
 sync_tasks:
+	@echo "\n${GREEN}Syncing tasks${NC}"
 	task sync
 
 # Install rbenv with ruby-build, rbenv-default-gems and rbenv-ctags plugins
