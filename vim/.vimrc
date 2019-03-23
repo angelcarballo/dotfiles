@@ -55,7 +55,6 @@ call minpac#add('tpope/vim-endwise')                " auto close for Vim blocks
 call minpac#add('jiangmiao/auto-pairs')             " auto close for (, [, {
 
 " Third party integration
-call minpac#add('christoomey/vim-tmux-navigator')   " navigate to tmux panes from Vim
 call minpac#add('rizzatti/dash.vim')                " integration with Doc viewer Dash (only MacOS)
 call minpac#add('linluk/vim-websearch')             " web searches from vim buffers
 source ~/.vim/startup/plugin/vim-websearch.vim
