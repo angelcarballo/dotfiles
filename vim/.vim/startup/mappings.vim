@@ -113,11 +113,6 @@ xnoremap <leader>gl :Glog<cr>
 " i - Indent / Insert
 nnoremap <leader>ij :%!python -m json.tool<cr>
 
-
-" l - Load / Last
-nnoremap <silent> <leader>lc `[
-nnoremap <silent> <leader>ll :<up><cr>
-
 " m - Make
 nnoremap <silent> <leader>m :Make!<cr>
 nnoremap <silent> <leader>M :Make<cr>
