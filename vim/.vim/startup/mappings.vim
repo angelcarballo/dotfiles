@@ -63,7 +63,7 @@ nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
 nnoremap <silent> <leader>cg <c-w>k<c-w>c
 
 " open quickfix window
-nnoremap <silent> <leader>co :Copen<cr>
+nnoremap <silent> <leader>co :copen<cr>
 
 " d - Duplicate
 nnoremap <leader>dp yap}p
