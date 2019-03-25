@@ -50,4 +50,4 @@ package-lock.json
 quickfix.out
 
 # NPM stuff
-model_modules/*
+node_modules/*
