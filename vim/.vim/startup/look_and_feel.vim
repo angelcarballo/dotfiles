@@ -20,7 +20,8 @@ set statusline+=%r                                  " read only flag
 set statusline+=%h                                  " help flag
 set statusline+=%w                                  " preview flag
 set statusline+=%=                                  " right align the following ...
-set statusline+=%c\ %l\/%L\                         " current column, line and total lines
+" set statusline+=%c\ %l\/%L\                       " current column, line and total lines
+set statusline+=%l\/%L\                             " current line and total lines
 set statusline+=%#error#                            " color ...
 set statusline+=%{StatuslineTrailingSpace()}        " trailing white space indicator
 set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
