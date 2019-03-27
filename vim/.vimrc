@@ -19,6 +19,7 @@ call minpac#add('tpope/vim-rhubarb')                " github integration
 " Languages & frameworks
 call minpac#add('slashmili/alchemist.vim')          " Elixir support
 call minpac#add('aklt/plantuml-syntax')             " PlantUML support
+call minpac#add('masukomi/vim-markdown-folding')    " folding support for makrdown files
 call minpac#add('sheerun/vim-polyglot')             " syntax support for common file types
 source ~/.vim/startup/plugin/vim-ruby.vim
 
