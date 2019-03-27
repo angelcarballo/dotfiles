@@ -41,11 +41,11 @@ update_homebrew:
 	brew cleanup
 
 link_dotfiles_mac:
-	@echo "\n${GREEN}Linking dotfiles for (MacOS)${NC}"
+	@echo "\n${GREEN}Linking dotfiles (MacOS)${NC}"
 	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK) --ignore='DS_Store'
 
 link_dotfiles_server:
-	@echo "\n${GREEN}Linking dotfiles for (Server)${NC}"
+	@echo "\n${GREEN}Linking dotfiles (Server)${NC}"
 	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK_ON_SERVERS)
 
 # Install new vim plugins, update existing and cleanup old ones
