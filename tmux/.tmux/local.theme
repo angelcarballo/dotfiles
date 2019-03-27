@@ -7,7 +7,7 @@ set -g status-left-length "100"
 set -g status "on"
 set -g status-right-length "100"
 set -g status-left " #S"
-set -g status-right "%d %b - #(TZ='America/New_york' date +%%H:%%M) - #(TZ='Europe/London' date +%%H:%%M) "
+set -g status-right "%a %d %b - #(TZ='America/New_york' date +%%H:%%M) - #(TZ='Europe/London' date +%%H:%%M) "
 setw -g window-status-format " #I.#W#{?window_zoomed_flag,^,} "
 setw -g window-status-current-format "[#I.#W#{?window_zoomed_flag,^,}]"
 
