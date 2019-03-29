@@ -4,4 +4,4 @@ iabbr shebang #!/bin/sh
 iabbr <expr> cdate strftime('%d/%m/%Y')
 iabbr <expr> fdate strftime('%a %d %b %Y')
 iabbr <expr> jdate '# '.strftime('%a %d %b %Y').'<cr>-'
-iabbr <expr> cbranch fugitive#head()
+iabbr <expr> cb fugitive#head()
