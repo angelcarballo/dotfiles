@@ -85,6 +85,7 @@ filetype indent on
 " load matchit plugin (shipped with vim)
 runtime macros/matchit.vim
 
+" add OS global var
 if !exists('g:os')
   if has('win32') || has('win16')
     let g:os = 'Windows'
@@ -104,6 +105,7 @@ source ~/.vim/startup/text_objects.vim
 source ~/.vim/startup/settings.vim
 source ~/.vim/startup/skeletons.vim
 
+" load local configuration if present
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
