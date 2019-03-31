@@ -43,9 +43,9 @@ endif
 " highlight trailing spaces
 match ErrorMsg '\s\+$'
 
-" highlight character 111 to avoid long lines
+" highlight character 121 to avoid long lines
 highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%111v', 100)
+call matchadd('ColorColumn', '\%111v', 120)
 
 highlight clear SpellBad
 highlight SpellBad cterm=underline
