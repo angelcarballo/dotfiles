@@ -85,6 +85,14 @@ filetype indent on
 " load matchit plugin (shipped with vim)
 runtime macros/matchit.vim
 
+if !exists('g:os')
+  if has('win32') || has('win16')
+    let g:os = 'Windows'
+  else
+    let g:os = substitute(system('uname'), '\n', '', '')
+  endif
+endif
+
 source ~/.vim/startup/abbreviations.vim
 source ~/.vim/startup/auto_commands.vim
 source ~/.vim/startup/commands.vim
