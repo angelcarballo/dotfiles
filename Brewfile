@@ -72,3 +72,6 @@ brew "bat"
 
 # Taskwarrior - task manager
 brew "task"
+
+# Hugo - static site generator
+brew "hugo"
