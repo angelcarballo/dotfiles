@@ -8,7 +8,7 @@ nmap <leader><space> :buffers<cr>:bu<Space>
 nmap <tab> <c-^>
 
 " Split line with proper indentation
-nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
+nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<cr>
 
 " , - Show and paste from registers
 nnoremap <leader>, :Reg<cr>
@@ -21,8 +21,8 @@ nnoremap <leader>/ :silent Ggrep ""<left>
 nnoremap <leader>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
 
 " * - Search visual selection
-xnoremap * :<C-u>call SetVisualSearch('/')<CR>/<C-R>=@/<CR><CR>
-xnoremap # :<C-u>call SetVisualSearch('?')<CR>?<C-R>=@/<CR><CR>
+xnoremap * :<C-u>call SetVisualSearch('/')<cr>/<C-R>=@/<cr><cr>
+xnoremap # :<C-u>call SetVisualSearch('?')<cr>?<C-R>=@/<cr><cr>
 
 " * - Search in project for word under cursor
 nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
@@ -264,10 +264,10 @@ nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " Use cursors to resize windows
-noremap <silent> <left> :vertical resize -3<CR>
-noremap <silent> <right> :vertical resize +3<CR>
-noremap <silent> <down> :resize +3<CR>
-noremap <silent> <up> :resize -3<CR>
+noremap <silent> <left> :vertical resize -3<cr>
+noremap <silent> <right> :vertical resize +3<cr>
+noremap <silent> <down> :resize +3<cr>
+noremap <silent> <up> :resize -3<cr>
 
 " Easily run the last command on selected lines
 xnoremap . :norm.<cr>
