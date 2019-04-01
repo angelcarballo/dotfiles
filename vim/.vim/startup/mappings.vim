@@ -99,7 +99,7 @@ nnoremap <silent> <leader>fd :FindDefinition<cr>
 nnoremap <leader>Ff :setlocal foldmethod=indent foldlevelstart=999 foldminlines=0<cr>
 
 " g - Git
-nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gs :vert Gstatus<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
 nnoremap <leader>gc :Gcommit<cr>i
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
