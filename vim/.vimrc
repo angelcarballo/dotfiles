@@ -59,7 +59,6 @@ source ~/.vim/startup/plugin/vim-websearch.vim
 
 " Runners
 call minpac#add('tpope/vim-eunuch')                 " run common UNIX commands for the current file
-call minpac#add('tpope/vim-dispatch')               " run commands asynchronously
 call minpac#add('benmills/vimux')                   " tmux integration
 source ~/.vim/startup/plugin/vimux.vim
 call minpac#add('janko-m/vim-test')                 " generic test runner

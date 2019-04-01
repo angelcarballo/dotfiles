@@ -1,6 +1,6 @@
 setlocal shiftwidth=2
 setlocal tabstop=2
-let b:dispatch='ruby %'
+let b:execute_with='ruby'
 
 " uncomment to enable folding, without closing folds by default
 " this will affect performance on big ruby files, so use with care

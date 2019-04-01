@@ -1,1 +1,1 @@
-let b:dispatch='scala -nc %'
+let b:execute_with='scala -nc %'

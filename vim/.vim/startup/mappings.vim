@@ -184,9 +184,7 @@ nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
 
 " x - eXecute
-nnoremap <leader>xd :Dispatch<cr>
-nnoremap <leader>xm :Make<cr>
-nnoremap <leader>xb !!bash<cr>
+nnoremap <leader>x :call VimuxRunCommand(b:execute_with." ".bufname("%"))<cr>
 
 " z - Zoom
 nnoremap <leader>z :VimuxZoomRunner<cr>

@@ -1,1 +1,1 @@
-let b:dispatch='go run %'
+let b:execute_with='go run'
