@@ -35,10 +35,10 @@ call minpac#add('tommcdo/vim-lion')                 " code align operator (gl)
 source ~/.vim/startup/plugin/vim-lion.vim
 
 " Text objects
-call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text object <i/I>
-call minpac#add('b4winckler/vim-angry')                " function argument text object <a/A>
-call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelCase, snake_case and similar <v>
-call minpac#add('glts/vim-textobj-comment')            " comments ac,ic (with,without delimiters like /* */)
+call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text object <ai>, <ii>
+call minpac#add('b4winckler/vim-angry')                " function argument text object <aa>, <ia>
+call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelCase, snake_case and similar <av>, <iv>
+call minpac#add('glts/vim-textobj-comment')            " comments <ac>, <ic>
 
 " Look & Feel
 call minpac#add('danielwe/base16-vim')          " base16 color schemes
