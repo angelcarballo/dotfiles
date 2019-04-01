@@ -1,20 +1,14 @@
 " Mappings (leader) ---------------------------------------------------------{{{
 
 " map leader to <space>
-let mapleader="\<Space>"
+let mapleader="\<space>"
 
 " Show and switch to buffers
-nmap <leader><space> :buffers<cr>:bu<Space>
+nmap <leader><space> :buffers<cr>:bu<space>
 nmap <tab> <c-^>
 
 " Split line with proper indentation
 nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<cr>
-
-" , - Show and paste from registers
-nnoremap <leader>, :Reg<cr>
-
-" <leader> - Switch between the last two files
-nnoremap <leader><tab> :tabn<cr>
 
 " /,? - Search in project
 nnoremap <leader>/ :silent Ggrep ""<left>
@@ -29,10 +23,6 @@ nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
 nnoremap <leader>8 :silent Ggrep "<c-r><c-w>"<cr>
 xnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
 xnoremap <leader>8 "hy:silent Ggrep "<c-r>h"<cr>
-
-" a - Auto..
-" auto correct spelling mistake
-nnoremap <leader>ac [s1z=
 
 " b - Buffers
 nnoremap <silent> <leader>b :bprevious <bar> bdelete #<cr>
@@ -117,9 +107,6 @@ nnoremap <leader>ij :%!python -m json.tool<cr>
 " m - Make
 nnoremap <silent> <leader>m :Make!<cr>
 nnoremap <silent> <leader>M :Make<cr>
-
-" l - last
-nnoremap <silent> <leader>lc :@:<cr>
 
 " o - open
 nnoremap <leader>of :! open '%'<cr>
