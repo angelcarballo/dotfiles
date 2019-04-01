@@ -20,6 +20,10 @@ nnoremap <leader><tab> :tabn<cr>
 nnoremap <leader>/ :silent Ggrep ""<left>
 nnoremap <leader>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
 
+" * - Search visual selection
+xnoremap * :<C-u>call SetVisualSearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call SetVisualSearch('?')<CR>?<C-R>=@/<CR><CR>
+
 " * - Search in project for word under cursor
 nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
 nnoremap <leader>8 :silent Ggrep "<c-r><c-w>"<cr>

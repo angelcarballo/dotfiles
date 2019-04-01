@@ -46,8 +46,6 @@ call minpac#add('danielwe/base16-vim')          " base16 color schemes
 " Navigation
 call minpac#add('junegunn/fzf')                      " basic FZF support
 call minpac#add('junegunn/fzf.vim')                  " FZF helpers
-call minpac#add('bronson/vim-visual-star-search')    " search visual selected text with '*'
-call minpac#add('pgdouyon/vim-evanesco')             " improved (*) search
 call minpac#add('misterbuckley/vim-definitive')      " grep for variable/function definitions
 
 " Auto completion
