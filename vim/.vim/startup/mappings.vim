@@ -66,10 +66,6 @@ nnoremap <silent> <leader>cs :nohl<cr>
 " clear git status window
 nnoremap <silent> <leader>cg <c-w>k<c-w>c
 
-" open quickfix window
-nnoremap <silent> <leader>co :copen<cr>
-nnoremap <silent> <leader>cc :cclose<cr>
-
 " d - Duplicate
 nnoremap <leader>dp yap}p
 nnoremap <leader>dl yy:Commentary<cr>p
@@ -295,6 +291,7 @@ nnoremap cof :setlocal foldenable! foldenable?<cr>
 nnoremap cop :setlocal paste! paste?<cr>
 nnoremap cot :call ToggleVimuxTarget()<cr>
 nnoremap cos :setlocal scrollbind! scrollbind?<cr>
+nnoremap coq :call ToggleQuickFix()<cr>
 
 " Exit neovim terminal mode like insert mode
 if exists(':tnoremap')
