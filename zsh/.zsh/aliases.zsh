@@ -51,6 +51,7 @@ alias ghd='open `hub browse -u | sed s/\tree.*//g`/compare/`git rev-parse --abbr
 alias prfiles='git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master)'
 alias changed='git status --porcelain | cut -d" " -f 3'
 alias gj='git jump diff'
+alias grh='git reset HEAD '
 
 # Vim
 alias v='vim .'
