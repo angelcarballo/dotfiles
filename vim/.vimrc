@@ -70,17 +70,10 @@ source ~/.vim/startup/plugin/netrw.vim              " configuration for netrw
 
 "}}}
 
-" enable filetype detection
-filetype on
-
-" enable filetype plugins
-filetype plugin on
-
-" enable filetype indentation settings
-filetype indent on
-
-" load matchit plugin (shipped with vim)
-runtime macros/matchit.vim
+filetype on                " enable filetype detection
+filetype plugin on         " enable filetype plugins
+filetype indent on         " enable filetype indentation settings
+runtime macros/matchit.vim " load matchit plugin (shipped with vim)
 
 " add OS global var
 if !exists('g:os')
@@ -102,7 +95,6 @@ source ~/.vim/startup/text_objects.vim
 source ~/.vim/startup/settings.vim
 source ~/.vim/startup/skeletons.vim
 
-" load local configuration if present
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
