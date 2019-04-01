@@ -118,6 +118,9 @@ nnoremap <leader>ij :%!python -m json.tool<cr>
 nnoremap <silent> <leader>m :Make!<cr>
 nnoremap <silent> <leader>M :Make<cr>
 
+" l - last
+nnoremap <silent> <leader>lc :@:<cr>
+
 " o - open
 nnoremap <leader>of :! open '%'<cr>
 nnoremap <leader>on :FZF $NOTES/<cr>
