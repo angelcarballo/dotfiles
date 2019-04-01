@@ -61,13 +61,14 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
 endif
 
 " clear search results (both highlight and quickfix window)
-nnoremap <silent> <leader>cs :nohl<cr>:cclose<cr>
+nnoremap <silent> <leader>cs :nohl<cr>
 
 " clear git status window
 nnoremap <silent> <leader>cg <c-w>k<c-w>c
 
 " open quickfix window
 nnoremap <silent> <leader>co :copen<cr>
+nnoremap <silent> <leader>cc :cclose<cr>
 
 " d - Duplicate
 nnoremap <leader>dp yap}p
