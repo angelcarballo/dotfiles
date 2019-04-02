@@ -4,7 +4,6 @@ call minpac#init()
 
 "{{{ Plugins
 
-
 " Basic plugins
 call minpac#add('kana/vim-textobj-user')            " custom text object support
 call minpac#add('tpope/vim-vinegar')                " file manager improvements

@@ -4,3 +4,4 @@ set wrap
 set textwidth=120
 set tabstop=2
 set shiftwidth=2
+set foldlevel=99
