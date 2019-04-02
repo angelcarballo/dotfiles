@@ -54,8 +54,6 @@ call minpac#add('jiangmiao/auto-pairs')             " auto close for (, [, {
 
 " Third party integration
 call minpac#add('rizzatti/dash.vim')                " integration with Doc viewer Dash (only MacOS)
-call minpac#add('linluk/vim-websearch')             " web searches from vim buffers
-source ~/.vim/startup/plugin/vim-websearch.vim
 
 " Runners
 call minpac#add('tpope/vim-eunuch')                 " run common UNIX commands for the current file

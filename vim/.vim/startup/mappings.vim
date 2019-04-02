@@ -214,9 +214,9 @@ inoremap kj <esc>
 " select last inserted text
 nnoremap gV `[v`]
 
-" search for word under cursor in normal and visual mode
-nnoremap gs :WebSearchCursor<cr>
-xnoremap gs :WebSearchVisual<cr>
+" web search operator
+nnoremap <silent> gs :set opfunc=WebSearch<cr>g@
+xnoremap <silent> gs :<c-u>call WebSearch(visualmode(), 1)<cr>
 
 " allows incsearch highlighting for range commands
 " i.e. search with /,? and then copy/move/delete
