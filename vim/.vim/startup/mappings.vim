@@ -78,6 +78,7 @@ nnoremap <silent> <leader>fR :e %<cr>
 nnoremap <silent> <leader>ft :FZF spec/<cr>
 nnoremap <silent> <leader>fh :Helptags<cr>
 nnoremap <silent> <leader>fn :enew<cr>
+nnoremap <silent> <leader>fm :Marks<cr>
 
 nnoremap <silent> <leader>fd :FindDefinition<cr>
 
