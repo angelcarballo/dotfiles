@@ -105,10 +105,6 @@ xnoremap <leader>gl :Glog<cr>
 " i - Indent / Insert
 nnoremap <leader>ij :%!python -m json.tool<cr>
 
-" m - Make
-nnoremap <silent> <leader>m :Make!<cr>
-nnoremap <silent> <leader>M :Make<cr>
-
 " o - open
 nnoremap <leader>of :! open '%'<cr>
 nnoremap <leader>on :FZF $NOTES/<cr>

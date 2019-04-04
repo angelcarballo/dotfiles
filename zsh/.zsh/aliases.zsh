@@ -52,6 +52,7 @@ alias prfiles='git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH
 alias changed='git status --porcelain | cut -d" " -f 3'
 alias gj='git jump diff'
 alias grh='git reset HEAD '
+alias gap='git add --patch '
 
 # Vim
 alias v='vim .'
