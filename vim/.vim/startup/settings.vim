@@ -1,5 +1,4 @@
 set autowrite                        " autowrite after make, ! and friends
-set complete-=i                      " searching includes can be slow
 set showcmd                          " show complete commands
 set number                           " show line numbers
 set ruler                            " show cursor position
@@ -34,6 +33,14 @@ set spellsuggest=fast,20             " don't show too many suggestions for spell
 set cryptmethod=blowfish2            " use blowfish 2 crypto method by default (zip is too weak)
 set dictionary+=/usr/share/dict/words " autocomplete words from system dictionary
 set spellfile=~/Dropbox/vim/spell/en.utf-8.add
+
+" setup completion (affects c-n, c-p, c-x c-n, c-x c-p)
+set complete=
+set complete+=.  " complete with words from current buffer
+set complete+=w  " complete with words from other windows
+set complete+=b  " complete with words from other loaded buffers
+set complete+=u  " complete with words from other unloaded buffers
+set complete+=t  " complete with tags
 
 " Extended mouse support
 if !has('nvim')
