@@ -250,6 +250,10 @@ noremap <silent> <right> :vertical resize +3<cr>
 noremap <silent> <down> :resize +3<cr>
 noremap <silent> <up> :resize -3<cr>
 
+" Use cursors to move lines in visual mode
+xnoremap <up> :move '<-2<cr>gv=gv
+xnoremap <down> :move '>+<cr>gv=gv
+
 " Easily run the last command on selected lines
 xnoremap . :norm.<cr>
 
