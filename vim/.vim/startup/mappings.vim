@@ -49,6 +49,8 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy file folder path (src/)
   nnoremap <leader>cff :let @*=expand("%:p:h")<cr>:echo "File folder path copied"<cr>
 endif
+nnoremap <leader>co :copen<cr>
+nnoremap <leader>cc :cclose<cr>
 
 " clear search results (both highlight and quickfix window)
 nnoremap <silent> <leader>cs :nohl<cr>
