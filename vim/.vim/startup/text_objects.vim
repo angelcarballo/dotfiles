@@ -12,3 +12,6 @@ onoremap in" :<c-u>normal! f"vi"<cr>
 
 " whole file (entire)
 onoremap ae :<c-u>normal! ggVG<cr>
+
+" current line
+onoremap al :<c-u>normal! V<cr>
