@@ -186,17 +186,11 @@ inoremap <tab> <c-r>=Tab_Or_Complete()<cr>
 nnoremap + <C-a>
 nnoremap - <C-x>
 
-" Better paste from register
-inoremap <c-v> :Reg<cr>
-
 " Search documentation for word under cursor
 nnoremap <silent> K :Dash<cr>
 
 " Easily exit insert mode
 inoremap kj <esc>
-
-" select last inserted text
-nnoremap gV `[v`]
 
 " web search operator
 nnoremap <silent> gs :set opfunc=WebSearch<cr>g@
