@@ -138,23 +138,11 @@ nnoremap <silent> <leader>Sp :echo expand('%:p')<cr>
 nnoremap <silent> <leader>Sb :echo "Current git branch: " . fugitive#head()<cr>
 
 " t - Tmux/Tabs
-
-" Prompt for a command to run
-nnoremap <silent> <leader>tr :VimuxRunCommand("")<left><left>
-" Send visual selection to tmux
-xnoremap <silent> <leader>tt :call VimuxSlime()<cr>
-" Send current line to tmux
-noremap <silent> <leader>tl V:call VimuxSlime()<cr>
-" Send whole file to tmux
-noremap <silent> <leader>te ggVG:call VimuxSlime()<cr>
-" Other tmux interactions
-nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
-nnoremap <silent> <leader>ti :VimuxInspectRunner<cr>
+nnoremap <silent> <leader>tn :tabnew<cr>
 nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
 nnoremap <silent> <leader>tf :VimuxZoomRunner<cr>
-
-" Tab management
-nnoremap <silent> <leader>tn :tabnew<cr>
+nnoremap <silent> <leader>ti :VimuxInspectRunner<cr>
+nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
 
 " V - Vimrc
 nnoremap <leader>Ve :e $MYVIMRC<cr>
@@ -213,6 +201,10 @@ nnoremap gV `[v`]
 " web search operator
 nnoremap <silent> gs :set opfunc=WebSearch<cr>g@
 xnoremap <silent> gs :<c-u>call WebSearch(visualmode(), 1)<cr>
+
+" send text to tmux operator
+nnoremap <silent> gx :set opfunc=SendTextToTmux<cr>g@
+xnoremap <silent> gx :<c-u>call SendTextToTmux(visualmode(), 1)<cr>
 
 " allows incsearch highlighting for range commands
 " i.e. search with /,? and then copy/move/delete
