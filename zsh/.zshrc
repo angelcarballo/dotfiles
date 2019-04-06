@@ -103,9 +103,6 @@ fi
 # fix bug when passing arguments to rake
 unsetopt nomatch
 
-# try to use ripgrep as default fzf command
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
-
 # enable syntax for cheat (see: https://github.com/chrisallenlane/cheat)
 export CHEATCOLORS=true
 

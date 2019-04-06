@@ -15,8 +15,10 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # Notes
 export NOTES="$HOME/Dropbox/notes"
 
-# FZF defaults
+# FZF settings
 export FZF_DEFAULT_OPTS=' --layout=reverse'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
+
 
 # GNU Coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin/:$PATH"
