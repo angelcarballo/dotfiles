@@ -25,7 +25,7 @@ xnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
 xnoremap <leader>8 "hy:silent Ggrep "<c-r>h"<cr>
 
 " b - Buffers
-nnoremap <silent> <leader>b :bprevious <bar> bdelete #<cr>
+nnoremap <silent> <leader>bd :bprevious <bar> bdelete #<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
 nnoremap <silent> <leader>bo :w <bar> %bd <bar> e#<cr>
 
@@ -172,9 +172,6 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
-" Quick align
-nnoremap ga =
-
 " Easy history traversal on command line
 cmap <c-n> <up>
 cmap <c-p> <down>
@@ -191,14 +188,6 @@ nnoremap <silent> K :Dash<cr>
 
 " Easily exit insert mode
 inoremap kj <esc>
-
-" web search operator
-nnoremap <silent> gs :set opfunc=WebSearch<cr>g@
-xnoremap <silent> gs :<c-u>call WebSearch(visualmode(), 1)<cr>
-
-" send text to tmux operator
-nnoremap <silent> gx :set opfunc=SendTextToTmux<cr>g@
-xnoremap <silent> gx :<c-u>call SendTextToTmux(visualmode(), 1)<cr>
 
 " allows incsearch highlighting for range commands
 " i.e. search with /,? and then copy/move/delete
@@ -272,5 +261,18 @@ if exists(':tnoremap')
   tnoremap <Esc> <C-\><C-n>
 endif
 
+" ---------------------------------------------------------------------------}}}
+" Operators -----------------------------------------------------------------{{{
+
+" Align
+nnoremap ga =
+
+" web search operator
+nnoremap <silent> gs :set opfunc=WebSearch<cr>g@
+xnoremap <silent> gs :<c-u>call WebSearch(visualmode(), 1)<cr>
+
+" send text to tmux operator
+nnoremap <silent> gx :set opfunc=SendTextToTmux<cr>g@
+xnoremap <silent> gx :<c-u>call SendTextToTmux(visualmode(), 1)<cr>
 
 " ---------------------------------------------------------------------------}}}
