@@ -84,9 +84,6 @@ nnoremap <silent> <leader>fm :Marks<cr>
 
 nnoremap <silent> <leader>fd :FindDefinition<cr>
 
-" F - Fold
-nnoremap <leader>Ff :setlocal foldmethod=indent foldlevelstart=999 foldminlines=0<cr>
-
 " g - Git
 nnoremap <leader>gs :vert Gstatus<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
