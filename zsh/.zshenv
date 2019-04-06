@@ -18,7 +18,6 @@ export NOTES="$HOME/Dropbox/notes"
 # FZF settings
 export FZF_DEFAULT_OPTS=' --layout=reverse'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
-export FZF_COMPLETION_TRIGGER='ff'
 
 
 # GNU Coreutils
