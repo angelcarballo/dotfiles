@@ -49,7 +49,7 @@ call minpac#add('misterbuckley/vim-definitive')      " grep for variable/functio
 
 " Auto completion
 call minpac#add('tpope/vim-endwise')                " auto close for Vim blocks
-call minpac#add('jiangmiao/auto-pairs')             " auto close for (, [, {
+call minpac#add('Raimondi/delimitMate')             " auto close parenthesis/brackets/quotes
 
 " Third party integration
 call minpac#add('rizzatti/dash.vim')                " integration with Doc viewer Dash (only MacOS)
