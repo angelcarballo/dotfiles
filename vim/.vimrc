@@ -29,7 +29,6 @@ call minpac#add('tommcdo/vim-exchange')             " text exchange operator (cx
 call minpac#add('vim-scripts/ReplaceWithRegister')  " replace without yanking operator (gr..)
 call minpac#add('tpope/vim-abolish')                " coercion related commands and operators (crs: snake_case, crm:MixedCase, crc: camelCase, cru: UPPER_CASE, cr-: dash-case, cr.: dot.case, cr<space>: space case)
 call minpac#add('tpope/vim-commentary')             " un/comment code (gc)
-call minpac#add('christoomey/vim-system-copy')      " copy command (cp), copy current line (cP) and paste in next line (cv)
 call minpac#add('tommcdo/vim-lion')                 " code align operator (gl)
 source ~/.vim/startup/plugin/vim-lion.vim
 

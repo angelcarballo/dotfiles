@@ -271,6 +271,11 @@ nnoremap ga =
 nnoremap <silent> gs :set opfunc=WebSearch<cr>g@
 xnoremap <silent> gs :<c-u>call WebSearch(visualmode(), 1)<cr>
 
+" copy to system clipboard
+nnoremap <silent> cP V"*y
+nnoremap <silent> cp "*y
+xnoremap <silent> cp "*y
+
 " send text to tmux operator
 nnoremap <silent> gx :set opfunc=SendTextToTmux<cr>g@
 xnoremap <silent> gx :<c-u>call SendTextToTmux(visualmode(), 1)<cr>
