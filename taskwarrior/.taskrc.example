@@ -7,3 +7,10 @@ taskd.key=~\/.task\/foobar.key.pem
 taskd.ca=~\/.task\/ca.cert.pem
 taskd.server=task.server.com:53689
 taskd.credentials=myorg\/myuser\/my-very-long-user-uuid
+
+context.work=+sb
+context.home=-sb
+
+uda.priority.values=H,M,,L
+urgency.uda.priority.L.coefficient=0
+urgency.uda.priority..coefficient=1.8
