@@ -1,5 +1,5 @@
 DOTFILES := $(shell pwd)
-FOLDERS_TO_LINK := git ruby tmux vim cheats common git_template
+FOLDERS_TO_LINK := git ruby tmux vim cheats common git_template taskwarrior
 FOLDERS_TO_LINK_ON_SERVERS := git ruby tmux vim
 
 # Set default task based on OS
