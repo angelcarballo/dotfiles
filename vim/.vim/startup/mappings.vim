@@ -255,6 +255,7 @@ nnoremap cop :setlocal paste! paste?<cr>
 nnoremap cot :call ToggleVimuxTarget()<cr>
 nnoremap cos :setlocal scrollbind! scrollbind?<cr>
 nnoremap coq :call ToggleQuickFix()<cr>
+nnoremap cob :let &background = (&background == "dark"? "light" : "dark")<cr>
 
 " Exit neovim terminal mode like insert mode
 if exists(':tnoremap')
