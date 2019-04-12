@@ -6,3 +6,4 @@ autocmd BufRead,BufNewFile init.el setfiletype lisp
 autocmd BufRead,BufNewFile .spacemacs setfiletype lisp
 autocmd BufRead,BufNewFile *.hocon setfiletype yaml
 autocmd BufRead,BufNewFile *.md setfiletype markdown
+autocmd BufRead,BufNewFile *.trello setfiletype markdown
