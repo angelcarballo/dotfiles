@@ -19,7 +19,8 @@ function! WebSearch(type, ...)
   let l:search_param = substitute(join(split(@@), "+"), '"', "", "g")
   let l:url = l:search_engine_url . l:search_param
 
-  execute "!" l:browser_cmd . " \"" . l:url . "\" "
+  execute "silent !" l:browser_cmd . " \"" . l:url . "\" "
+  execute "redraw!"
 
   let &selection = sel_save
   let @@ = reg_save
