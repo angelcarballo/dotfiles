@@ -44,7 +44,7 @@ match ErrorMsg '\s\+$'
 
 " highlight character 121 to avoid long lines
 highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%111v', 120)
+call matchadd('ColorColumn', '\%121v', 121)
 
 highlight clear SpellBad
 highlight SpellBad cterm=underline
