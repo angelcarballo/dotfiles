@@ -29,6 +29,7 @@ alias bpry='bundle exec pry'
 alias up='git pull && bundle'
 
 # Git
+alias br='branch' # custom zsh function
 alias gb='git branch'
 alias gc='git commit'
 alias gcb='git checkout -b'
