@@ -4,5 +4,5 @@ command Dark !dark
 
 " preview markdown files using markoff (only mac)
 if g:os == 'Darwin'
-  command MarkdownPreview silent! execute "!markoff %" | redraw!
+  command! MarkdownPreview silent! execute "!markoff %" | redraw!
 endif

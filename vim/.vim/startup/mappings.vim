@@ -183,9 +183,6 @@ inoremap <tab> <c-r>=Tab_Or_Complete()<cr>
 nnoremap + <C-a>
 nnoremap - <C-x>
 
-" Search documentation for word under cursor
-nnoremap <silent> K :Dash<cr>
-
 " Easily exit insert mode
 inoremap kj <esc>
 

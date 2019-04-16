@@ -45,13 +45,11 @@ call minpac#add('danielwe/base16-vim')          " base16 color schemes
 call minpac#add('junegunn/fzf')                      " basic FZF support
 call minpac#add('junegunn/fzf.vim')                  " FZF helpers
 call minpac#add('misterbuckley/vim-definitive')      " grep for variable/function definitions
+call minpac#add('romainl/vim-devdocs')               " search documentation via devdocs.io
 
 " Auto completion
 call minpac#add('tpope/vim-endwise')                " auto close for Vim blocks
 call minpac#add('Raimondi/delimitMate')             " auto close parenthesis/brackets/quotes
-
-" Third party integration
-call minpac#add('rizzatti/dash.vim')                " integration with Doc viewer Dash (only MacOS)
 
 " Runners
 call minpac#add('tpope/vim-eunuch')                 " run common UNIX commands for the current file
