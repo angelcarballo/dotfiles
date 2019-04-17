@@ -33,18 +33,20 @@ set statusline+=%*                                  " reset color
 if filereadable(expand("~/.vim_colorscheme"))
   let base16colorspace=256
   source ~/.vim_colorscheme
-  " hide split borders
-  " highlight VertSplit guibg=bg guifg=bg
+
   " hide end of buffer indicators
   highlight EndOfBuffer ctermfg=bg ctermbg=bg
+
+  " highlight spelling mistakes with an underline
+  highlight clear SpellBad
+  highlight SpellBad cterm=underline
+  highlight SpellBad gui=undercurl
+
+  " highlight character 121 to avoid long lines
+  highlight ColorColumn ctermbg=magenta
+  call matchadd('ColorColumn', '\%121v', 121)
 endif
 
 " highlight trailing spaces
 match ErrorMsg '\s\+$'
 
-" highlight character 121 to avoid long lines
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%121v', 121)
-
-highlight clear SpellBad
-highlight SpellBad cterm=underline
