@@ -8,6 +8,7 @@ alias ls='ls -GFa --color=auto'
 alias ll='ls -GFlah --color=auto'
 alias catcsv='column -s, -t '
 alias cat='bat'
+alias update='git pull && bundle install'
 
 # Extension based aliases
 alias -s log='tail -f'
