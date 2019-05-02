@@ -173,8 +173,8 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
 " Easy history traversal on command line
-cmap <c-n> <up>
-cmap <c-p> <down>
+cnoremap <c-n> <up>
+cnoremap <c-p> <down>
 
 " Use tab for both indentation and autocomplete
 inoremap <tab> <c-r>=Tab_Or_Complete()<cr>
