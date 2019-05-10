@@ -31,11 +31,12 @@ alias up='git pull && bundle'
 
 # Git
 alias br='branch' # custom zsh function
+alias co='git checkout '
+alias gco='git checkout '
 alias gb='git branch'
 alias gc='git commit'
 alias gcb='git checkout -b'
 alias gcm='git commit -m '
-alias gco='git checkout '
 alias gd='git diff'
 alias gdh='git diff HEAD'
 alias gdm='git diff origin/master'
