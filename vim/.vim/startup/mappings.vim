@@ -275,7 +275,7 @@ nnoremap <silent> cp "*y
 xnoremap <silent> cp "*y
 
 " send text to tmux operator
-nnoremap <silent> gx :set opfunc=SendTextToTmux<cr>g@
-xnoremap <silent> gx :<c-u>call SendTextToTmux(visualmode(), 1)<cr>
+nnoremap <silent> gt :set opfunc=SendTextToTmux<cr>g@
+xnoremap <silent> gt :<c-u>call SendTextToTmux(visualmode(), 1)<cr>
 
 " ---------------------------------------------------------------------------}}}
