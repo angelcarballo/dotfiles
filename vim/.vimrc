@@ -39,6 +39,7 @@ call minpac#add('glts/vim-textobj-comment')            " comments <ac>, <ic>
 
 " Look & Feel
 call minpac#add('danielwe/base16-vim')          " base16 color schemes
+call minpac#add('pgdouyon/vim-evanesco')        " clear search highlight on move, use different color for current result
 
 " Navigation
 call minpac#add('junegunn/fzf')                      " basic FZF support
