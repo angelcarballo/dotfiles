@@ -26,7 +26,7 @@ nnoremap <silent> <leader>bd :bprevious <bar> bdelete #<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
 nnoremap <silent> <leader>bo :w <bar> %bd <bar> e#<cr>
 
-" c - Copy
+" c - Copy/clear
 if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy git branch
   nnoremap <leader>cb :let @*=fugitive#head()<cr>:echo "Git branch copied"<cr>
@@ -46,6 +46,7 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy file folder path (src/)
   nnoremap <leader>cff :let @*=expand("%:p:h")<cr>:echo "File folder path copied"<cr>
 endif
+nnoremap <leader>cs :nohl<cr>
 
 " d - Duplicate
 nnoremap <leader>dp yap}p
@@ -73,7 +74,7 @@ nnoremap <silent> <leader>fm :Marks<cr>
 
 nnoremap <silent> <leader>fd :FindDefinition<cr>
 
-" g - Git
+" g - Git/Generate
 nnoremap <leader>gs :vert Gstatus<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
 nnoremap <leader>gc :Gcommit<cr>i
@@ -89,6 +90,8 @@ nnoremap <leader>gh :Gbrowse<cr>
 xnoremap <leader>gh :Gbrowse<cr>
 nnoremap <leader>gl :Glog<cr>
 xnoremap <leader>gl :Glog<cr>
+
+nnoremap <leader>gt :VimuxRunCommand("ctags -R")<cr>
 
 " i - Indent / Insert
 nnoremap <leader>ij :%!python -m json.tool<cr>
