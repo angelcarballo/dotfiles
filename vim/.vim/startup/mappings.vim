@@ -7,9 +7,6 @@ let mapleader="\<space>"
 nmap <leader><space> :buffers<cr>:bu<space>
 nmap <tab> <c-^>
 
-" Split line with proper indentation
-nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<cr>
-
 " /,? - Search in project
 nnoremap <leader>/ :silent Ggrep ""<left>
 nnoremap <leader>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
@@ -29,7 +26,7 @@ nnoremap <silent> <leader>bd :bprevious <bar> bdelete #<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
 nnoremap <silent> <leader>bo :w <bar> %bd <bar> e#<cr>
 
-" c - Copy/Clear/Close/Quickfix
+" c - Copy
 if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy git branch
   nnoremap <leader>cb :let @*=fugitive#head()<cr>:echo "Git branch copied"<cr>
@@ -49,14 +46,6 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy file folder path (src/)
   nnoremap <leader>cff :let @*=expand("%:p:h")<cr>:echo "File folder path copied"<cr>
 endif
-nnoremap <leader>co :copen<cr>
-nnoremap <leader>cc :cclose<cr>
-
-" clear search results (both highlight and quickfix window)
-nnoremap <silent> <leader>cs :nohl<cr>
-
-" clear git status window
-nnoremap <silent> <leader>cg <c-w>k<c-w>c
 
 " d - Duplicate
 nnoremap <leader>dp yap}p
@@ -119,9 +108,8 @@ nnoremap <leader>Pc :call minpac#clean()<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :qall!<cr>
 
-" r - Remove/Run
+" r - Remove
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
-nnoremap <silent> <leader>rr :VimuxPromptCommand<cr>
 
 " s - Specs
 nnoremap <leader>sa :TestSuite<cr>
@@ -130,9 +118,8 @@ nnoremap <leader>sc :TestNearest<cr>
 nnoremap <leader>sl :TestLast<cr>
 nnoremap <leader>sg :TestVisit<cr>
 nnoremap <leader>so :cgetfile quickfix.out \| cwindow<cr>
-nnoremap <leader>sq :cgetfile quickfix.out \| cwindow<cr>
 
-" S - Show/Snippets
+" S - Show
 nnoremap <silent> <leader>Sf :echo @%<cr>
 nnoremap <silent> <leader>Sp :echo expand('%:p')<cr>
 nnoremap <silent> <leader>Sb :echo "Current git branch: " . fugitive#head()<cr>
@@ -158,10 +145,7 @@ nnoremap <silent> <leader>wv :vsp<cr>
 nnoremap <silent> <leader>ww <c-w>w
 
 " x - eXecute
-nnoremap <leader>x :call VimuxRunCommand(b:execute_with." ".bufname("%"))<cr>
-
-" z - Zoom
-nnoremap <leader>z :VimuxZoomRunner<cr>
+nnoremap <leader>x :call VimuxRunCommand(bufname("%"))<left>
 
 " ---------------------------------------------------------------------------}}}
 " Mappings (other) ----------------------------------------------------------{{{
@@ -178,10 +162,6 @@ cnoremap <c-p> <down>
 
 " Use tab for both indentation and autocomplete
 inoremap <tab> <c-r>=Tab_Or_Complete()<cr>
-
-" Increment/decrement numbers using +/-
-nnoremap + <C-a>
-nnoremap - <C-x>
 
 " Easily exit insert mode
 inoremap kj <esc>
@@ -252,7 +232,6 @@ nnoremap cop :setlocal paste! paste?<cr>
 nnoremap cot :call ToggleVimuxTarget()<cr>
 nnoremap cos :setlocal scrollbind! scrollbind?<cr>
 nnoremap coq :call ToggleQuickFix()<cr>
-nnoremap cob :let &background = (&background == "dark"? "light" : "dark")<cr>
 
 " Exit neovim terminal mode like insert mode
 if exists(':tnoremap')
