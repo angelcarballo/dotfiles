@@ -18,6 +18,8 @@ call minpac#add('tpope/vim-rhubarb')                " github integration
 
 " Languages & frameworks
 source ~/.vim/startup/plugin/vim-ruby.vim
+call minpac#add('tpope/vim-rbenv')                  " Rbenv support, used to get the current ruby version on `path`
+call minpac#add('tpope/vim-bundler')                " Bundler support, used to get the current bundled gems on `path`
 call minpac#add('slashmili/alchemist.vim')          " Elixir support
 call minpac#add('aklt/plantuml-syntax')             " PlantUML support
 call minpac#add('masukomi/vim-markdown-folding')    " folding support for makrdown files
@@ -44,7 +46,6 @@ call minpac#add('pgdouyon/vim-evanesco')        " clear search highlight on move
 " Navigation
 call minpac#add('junegunn/fzf')                      " basic FZF support
 call minpac#add('junegunn/fzf.vim')                  " FZF helpers
-call minpac#add('misterbuckley/vim-definitive')      " grep for variable/function definitions
 call minpac#add('romainl/vim-devdocs')               " search documentation via devdocs.io
 
 " Auto completion

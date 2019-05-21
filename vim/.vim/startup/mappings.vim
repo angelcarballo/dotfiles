@@ -72,8 +72,6 @@ nnoremap <silent> <leader>fh :Helptags<cr>
 nnoremap <silent> <leader>fn :enew<cr>
 nnoremap <silent> <leader>fm :Marks<cr>
 
-nnoremap <silent> <leader>fd :FindDefinition<cr>
-
 " g - Git/Generate
 nnoremap <leader>gs :vert Gstatus<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
