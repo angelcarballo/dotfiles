@@ -17,7 +17,6 @@ call minpac#add('tpope/vim-fugitive')               " git integration
 call minpac#add('tpope/vim-rhubarb')                " github integration
 
 " Languages & frameworks
-source ~/.vim/startup/plugin/vim-ruby.vim
 call minpac#add('tpope/vim-rbenv')                  " Rbenv support, used to get the current ruby version on `path`
 call minpac#add('tpope/vim-bundler')                " Bundler support, used to get the current bundled gems on `path`
 call minpac#add('slashmili/alchemist.vim')          " Elixir support
@@ -49,7 +48,7 @@ call minpac#add('junegunn/fzf.vim')                  " FZF helpers
 call minpac#add('romainl/vim-devdocs')               " search documentation via devdocs.io
 
 " Auto completion
-call minpac#add('tpope/vim-endwise')                " auto close for Vim blocks
+call minpac#add('tpope/vim-endwise')           " auto close for Ruby,Vim blocks (end, endfuction, etc.)
 call minpac#add('tmsvg/pear-tree')             " auto close parenthesis/brackets/quotes
 source ~/.vim/startup/plugin/pear-tree.vim
 
@@ -62,6 +61,7 @@ source ~/.vim/startup/plugin/vim-test.vim
 
 " Extras
 source ~/.vim/startup/plugin/netrw.vim              " configuration for netrw
+source ~/.vim/startup/plugin/vim-ruby.vim           " configuration for default vim-ruby
 
 "}}}
 
