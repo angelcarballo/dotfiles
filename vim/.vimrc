@@ -50,7 +50,8 @@ call minpac#add('romainl/vim-devdocs')               " search documentation via 
 
 " Auto completion
 call minpac#add('tpope/vim-endwise')                " auto close for Vim blocks
-call minpac#add('Raimondi/delimitMate')             " auto close parenthesis/brackets/quotes
+call minpac#add('tmsvg/pear-tree')             " auto close parenthesis/brackets/quotes
+source ~/.vim/startup/plugin/pear-tree.vim
 
 " Runners
 call minpac#add('tpope/vim-eunuch')                 " run common UNIX commands for the current file
