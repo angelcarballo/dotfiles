@@ -219,25 +219,40 @@ nnoremap L $
 xnoremap H ^
 xnoremap L $
 
-" Unimpaired style next/previews tab
-nnoremap [w :tabp<cr>
-nnoremap ]w :tabn<cr>
-
-" Navigate between buffers with C-n/C-p
-nnoremap <c-n> :bnext<cr>
-nnoremap <c-p> :bprevious<cr>
-
-" Additions to unimpaired option toggles
-nnoremap cof :setlocal foldenable! foldenable?<cr>
-nnoremap cop :setlocal paste! paste?<cr>
-nnoremap cot :call ToggleVimuxTarget()<cr>
-nnoremap cos :setlocal scrollbind! scrollbind?<cr>
-nnoremap coq :call ToggleQuickFix()<cr>
-
 " Exit neovim terminal mode like insert mode
 if exists(':tnoremap')
   tnoremap <Esc> <C-\><C-n>
 endif
+
+" ---------------------------------------------------------------------------}}}
+" Unimpaired style ----------------------------------------------------------{{{
+
+" previous/next file in current folder
+nnoremap ]f :<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(v:count1), ':.'))<cr><cr>
+nnoremap [f :<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(-v:count1), ':.'))<cr><cr>
+
+nnoremap [b :bprevious<cr>
+nnoremap ]b :bnext<cr>
+
+nnoremap [q :cprevious<cr>
+nnoremap ]q :cnext<cr>
+
+nnoremap [w :tabprevious<cr>
+nnoremap ]w :tabnext<cr>
+
+" Add new line above/bellow current one
+nnoremap [<space> :call append(line(".") -1, "")<cr>
+nnoremap ]<space> :call append(line("."), "")<cr>
+
+nnoremap cob :setlocal scrollbind! scrollbind?<cr>
+nnoremap coc :setlocal cursorline! cursorline?<cr>
+nnoremap cof :setlocal foldenable! foldenable?<cr>
+nnoremap cop :setlocal paste! paste?<cr>
+nnoremap cos :setlocal spell! spell?<cr>
+
+nnoremap cot :call ToggleVimuxTarget()<cr>
+nnoremap coq :call ToggleQuickFix()<cr>
+
 
 " ---------------------------------------------------------------------------}}}
 " Operators -----------------------------------------------------------------{{{
@@ -247,6 +262,7 @@ nnoremap ga =
 
 " web search operator
 nnoremap <silent> gs :set opfunc=WebSearch<cr>g@
+
 xnoremap <silent> gs :<c-u>call WebSearch(visualmode(), 1)<cr>
 
 " copy to system clipboard

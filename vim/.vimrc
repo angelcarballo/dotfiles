@@ -8,7 +8,6 @@ call minpac#init()
 call minpac#add('kana/vim-textobj-user')            " custom text object support
 call minpac#add('tpope/vim-vinegar')                " file manager improvements
 call minpac#add('tpope/vim-repeat')                 " extend repeat support
-call minpac#add('tpope/vim-unimpaired')             " multiple mappings using [ & ]
 call minpac#add('AndrewRadev/splitjoin.vim')        " split/join statements (gS, gJ)
 call minpac#add('wincent/terminus')                 " enhancements for terminal vim (focus events, cursor, etc.)
 
