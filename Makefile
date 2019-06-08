@@ -20,7 +20,7 @@ NC=\033[0m # No Color
 default:
 	$(MAKE) $(DEFAULT_TASK)
 
-default_mac: update_dotfiles update_homebrew link_dotfiles_mac update_vim_plugins update_base16 sync_tasks
+default_mac: update_dotfiles link_dotfiles_mac update_vim_plugins update_base16 sync_tasks update_homebrew
 
 default_server: update_dotfiles link_dotfiles_server update_vim_plugins
 
