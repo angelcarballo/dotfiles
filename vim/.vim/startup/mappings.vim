@@ -54,6 +54,7 @@ nnoremap <leader>dl yy:Commentary<cr>p
 xnoremap <leader>dl ygv:Commentary<cr>']p
 
 " e - Explore
+nnoremap <silent> <leader>er :edit .<cr>
 nnoremap <silent> <leader>ei :Explore<cr>
 nnoremap <silent> <leader>es :Sex<cr>
 nnoremap <silent> <leader>ev :Vex<cr>
