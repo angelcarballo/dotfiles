@@ -4,7 +4,12 @@
 let mapleader="\<space>"
 
 " Show and switch to buffers
-nmap <leader><space> :buffers<cr>:bu<space>
+nmap <leader>, :buffers<cr>:bu<space>
+
+" Search files with FZF
+nmap <leader><space> :GFiles<cr>
+
+" Quick toggle between last two buffers
 nmap <tab> <c-^>
 
 " /,? - Search in project
