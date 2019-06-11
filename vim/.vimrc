@@ -18,7 +18,7 @@ call minpac#add('tpope/vim-rhubarb')                " github integration
 " Languages & frameworks
 call minpac#add('tpope/vim-rbenv')                  " Rbenv support, used to get the current ruby version on `path`
 call minpac#add('tpope/vim-bundler')                " Bundler support, used to get the current bundled gems on `path`
-call minpac#add('slashmili/alchemist.vim')          " Elixir support
+call minpac#add('elixir-editors/vim-elixir')        " Elixir support
 call minpac#add('aklt/plantuml-syntax')             " PlantUML support
 call minpac#add('masukomi/vim-markdown-folding')    " folding support for makrdown files
 
