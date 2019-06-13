@@ -75,3 +75,6 @@ brew "task"
 
 # Hugo - static site generator
 brew "hugo"
+
+# Add write support for NTFS drives
+brew cask install mounty
