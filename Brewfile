@@ -78,3 +78,6 @@ brew "hugo"
 
 # Add write support for NTFS drives
 brew cask install mounty
+
+# Path picker
+brew "fpp"
