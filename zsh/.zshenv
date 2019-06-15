@@ -22,3 +22,5 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 
 # GNU Coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin/:$PATH"
+
+export REVIEW_BASE="origin/master"

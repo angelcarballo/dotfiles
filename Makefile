@@ -15,18 +15,18 @@ GREEN=\033[1;32m
 NC=\033[0m # No Color
 
 # Tasks that do not generate a file (and are always executed)
-.PHONY: update_dotfiles update_base16 update_homebrew link_dotfiles_mac link_dotfiles_server update_vim_plugins git_config vim_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac
+.PHONY: update_dotfiles update_base16 update_homebrew link_mac link_server update_vim_plugins git_config vim_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac
 
 default:
 	$(MAKE) $(DEFAULT_TASK)
 
-default_mac: update_dotfiles link_dotfiles_mac update_vim_plugins update_base16 sync_tasks update_homebrew
+default_mac: update link_mac update_vim_plugins update_base16 sync_tasks update_homebrew
 
-default_server: update_dotfiles link_dotfiles_server update_vim_plugins
+default_server: update link_server update_vim_plugins
 
 setup_mac: install_rbenv install_homebrew install_base16 default_mac
 
-update_dotfiles:
+update:
 	@echo "\n${GREEN}Updating dotfiles${NC}"
 	git pull
 
@@ -40,11 +40,11 @@ update_homebrew:
 	brew upgrade
 	brew cleanup
 
-link_dotfiles_mac:
+link_mac:
 	@echo "\n${GREEN}Linking dotfiles (MacOS)${NC}"
 	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK) --ignore='DS_Store'
 
-link_dotfiles_server:
+link_server:
 	@echo "\n${GREEN}Linking dotfiles (Server)${NC}"
 	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK_ON_SERVERS)
 

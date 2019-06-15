@@ -1,0 +1,45 @@
+[core]
+  excludesfile = /Users/angel/.gitignore_global
+  pager = diff-so-fancy | less --tabs=4 -RFX
+[init]
+  templatedir = ~/.git_template
+[clean]
+  requireForce = false
+[commit]
+  verbose = true
+[alias]
+  ci = commit
+  st = status
+  co = checkout
+  b = branch
+  m = merge
+  f = fetch
+  p = pull
+  ctags = !~/.git_template/hooks/ctags
+  prune = fetch --prune
+  undo = reset --soft HEAD^
+  stashall = stash save --include-untracked
+    # list files which have changed since REVIEW_BASE
+    # (REVIEW_BASE defaults to 'master' in my zshrc)
+  files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
+    # Same as above, but with a diff stat instead of just names
+    # (better for interactive use)
+  stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
+  review = !vim $(git files)
+[user]
+  name = Angel Carballo
+  email = contact@angelcarballo.com
+[color]
+  ui = true
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  meta = yellow
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
