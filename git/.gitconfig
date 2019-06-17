@@ -26,9 +26,6 @@
     # (better for interactive use)
   stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
   review = !vim $(git files)
-[user]
-  name = Angel Carballo
-  email = contact@angelcarballo.com
 [color]
   ui = true
 [color "diff-highlight"]
@@ -43,3 +40,5 @@
   old = red bold
   new = green bold
   whitespace = red reverse
+[include]
+  path = .gitconfig.local
