@@ -4,10 +4,10 @@
 let mapleader="\<space>"
 
 " Show and switch to buffers
-nmap <leader>, :buffers<cr>:bu<space>
+nmap <leader><space> :buffers<cr>:bu<space>
 
 " Search files with FZF
-nmap <leader><space> :GFiles<cr>
+nmap <leader>, :GFiles<cr>
 
 " Quick toggle between last two buffers
 nmap <tab> <c-^>
@@ -84,7 +84,7 @@ nnoremap <leader>ga :Gcommit --amend<cr>
 nnoremap <leader>gc :Gcommit<cr>i
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
 nnoremap <leader>gd :Gdiff HEAD<cr>
-nnoremap <leader>gD :Gdiff master<cr>
+nnoremap <leader>gD :Gdiff origin/master<cr>
 nnoremap <leader>gP :Gpush<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gw :Gwrite<cr>
