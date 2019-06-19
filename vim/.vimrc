@@ -21,6 +21,7 @@ call minpac#add('tpope/vim-bundler')                " Bundler support, used to g
 call minpac#add('elixir-editors/vim-elixir')        " Elixir support
 call minpac#add('aklt/plantuml-syntax')             " PlantUML support
 call minpac#add('masukomi/vim-markdown-folding')    " folding support for makrdown files
+call minpac#add('kchmck/vim-coffee-script')         " Coffeescript support
 
 " Motions & Operators
 call minpac#add('tpope/vim-surround')               " alter surroundings (), [], '', {}
