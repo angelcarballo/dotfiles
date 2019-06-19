@@ -45,6 +45,7 @@ alias gl='git log --oneline --decorate --graph --all'
 alias gll="git log --pretty=format:'%h - %an [%ar] %s'"
 alias gh='git browse'
 alias gp='git pull'
+alias gr='git review'
 alias gs='git status -uall'
 alias gsp='git stash pop'
 alias master='git checkout master'
