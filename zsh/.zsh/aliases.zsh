@@ -58,6 +58,7 @@ alias gitfiles='git ls-files --modified --others --exclude-standard'
 alias gj='git jump diff'
 alias grh='git reset HEAD '
 alias gap='git add --patch '
+alias pr='git pr checkout '
 
 # Vim
 alias v='vim .'
