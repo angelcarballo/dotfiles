@@ -65,9 +65,7 @@ source ~/.vim/startup/plugin/vim-ruby.vim           " configuration for default 
 
 "}}}
 
-filetype on                " enable filetype detection
-filetype plugin on         " enable filetype plugins
-filetype indent on         " enable filetype indentation settings
+filetype plugin indent on  " enable filetype and indentation plugins
 runtime macros/matchit.vim " load matchit plugin (shipped with vim)
 
 " add OS global var
