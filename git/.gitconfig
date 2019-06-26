@@ -26,6 +26,7 @@
     # (better for interactive use)
   stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
   review = !vim $(git files)
+  reviewdiff = !vim -p $(git files) +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
 [color]
   ui = true
 [color "diff-highlight"]
