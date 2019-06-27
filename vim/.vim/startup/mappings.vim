@@ -251,6 +251,7 @@ nnoremap coc :setlocal cursorline! cursorline?<cr>
 nnoremap cof :setlocal foldenable! foldenable?<cr>
 nnoremap cop :setlocal paste! paste?<cr>
 nnoremap cos :setlocal spell! spell?<cr>
+nnoremap cow :setlocal wrap! wrap?<cr>
 
 nnoremap cot :call ToggleVimuxTarget()<cr>
 nnoremap coq :call ToggleQuickFix()<cr>
