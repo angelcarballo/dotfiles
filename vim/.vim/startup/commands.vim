@@ -1,6 +1,6 @@
 " change colorscheme
-command Light !light
-command Dark !dark
+command! Light :call Light()<cr>
+command! Dark :call Dark()<cr>
 
 " preview markdown files using markoff (only mac)
 if g:os == 'Darwin'
