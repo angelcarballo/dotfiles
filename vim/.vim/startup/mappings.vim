@@ -75,7 +75,7 @@ nnoremap <silent> <leader>fn :enew<cr>
 nnoremap <silent> <leader>fm :Marks<cr>
 
 " g - Git/Generate
-nnoremap <leader>gs :vert Gstatus<cr>
+nnoremap <leader>gs :Gstatus \| wincmd T<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
 nnoremap <leader>gc :Gcommit<cr>i
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
