@@ -15,7 +15,7 @@ GREEN=\033[1;32m
 NC=\033[0m # No Color
 
 # Tasks that do not generate a file (and are always executed)
-.PHONY: update_dotfiles update_base16 update_homebrew link_mac link_server update_vim_plugins git_config vim_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac
+.PHONY: update_dotfiles update_base16 update_homebrew link_mac link_server update_vim_plugins git_config vim_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac install_gitstatus
 
 default:
 	$(MAKE) $(DEFAULT_TASK)
@@ -24,7 +24,7 @@ default_mac: update link_mac update_vim_plugins update_base16 sync_tasks update_
 
 default_server: update link_server update_vim_plugins
 
-setup_mac: install_rbenv install_homebrew install_base16 default_mac
+setup_mac: install_rbenv install_homebrew install_base16 default_mac install_gitstatus
 
 update:
 	@echo "\n${GREEN}Updating dotfiles${NC}"
@@ -123,3 +123,8 @@ install_base16:
 	@echo "\n${GREEN}Installing Base16 colorschemes${NC}"
 	git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 	chmod +x ~/.config/base16-shell/scripts/*.sh
+
+install_gitstatus:
+	@echo "\n${GREEN}Installing Gitstatus plugin${NC}"
+	git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+	git clone https://github.com/romkatv/gitstatus.git ~/src/gitstatus
