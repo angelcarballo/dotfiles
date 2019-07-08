@@ -13,14 +13,14 @@ nmap <leader>, :GFiles<cr>
 nmap <tab> <c-^>
 
 " /,? - Search in project
-nnoremap <leader>/ :silent Ggrep ""<left>
-nnoremap <leader>? :silent Ggrep "" "**" ":!spec/"<c-left><c-left><left><left>
+nnoremap <leader>/ :silent grep ""<left>
+nnoremap <leader>? :silent grep "" "**" ":!spec/"<c-left><c-left><left><left>
 
 " * - Search in project for word under cursor
-nnoremap <leader>* :silent Ggrep "<c-r><c-w>"<cr>
-nnoremap <leader>8 :silent Ggrep "<c-r><c-w>"<cr>
-xnoremap <leader>* "hy:silent Ggrep "<c-r>h"<cr>
-xnoremap <leader>8 "hy:silent Ggrep "<c-r>h"<cr>
+nnoremap <leader>* :silent grep "<c-r><c-w>"<cr>
+nnoremap <leader>8 :silent grep "<c-r><c-w>"<cr>
+xnoremap <leader>* "hy:silent grep "<c-r>h"<cr>
+xnoremap <leader>8 "hy:silent grep "<c-r>h"<cr>
 
 " b - Buffers
 nnoremap <silent> <leader>bd :bprevious <bar> bdelete #<cr>

@@ -49,5 +49,6 @@ endif
 
 if executable('rg')
   " Use ripgrep over Grep
-  set grepprg=rg\ --vimgrep
+  set grepprg=rg\ --vimgrep\ --no-heading\ --hidden
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
