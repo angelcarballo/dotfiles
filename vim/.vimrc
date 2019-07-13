@@ -6,7 +6,6 @@ call minpac#init()
 
 " Basic plugins
 call minpac#add('kana/vim-textobj-user')            " custom text object support
-call minpac#add('tpope/vim-vinegar')                " file manager improvements
 call minpac#add('tpope/vim-repeat')                 " extend repeat support
 call minpac#add('AndrewRadev/splitjoin.vim')        " split/join statements (gS, gJ)
 call minpac#add('wincent/terminus')                 " enhancements for terminal vim (focus events, cursor, etc.)
@@ -19,6 +18,7 @@ call minpac#add('tpope/vim-rhubarb')                " github integration
 call minpac#add('tpope/vim-rbenv')                  " Rbenv support, used to get the current ruby version on `path`
 call minpac#add('tpope/vim-bundler')                " Bundler support, used to get the current bundled gems on `path`
 call minpac#add('elixir-editors/vim-elixir')        " Elixir support
+call minpac#add('slashmili/alchemist.vim')          " Elixir intellisense support
 call minpac#add('aklt/plantuml-syntax')             " PlantUML support
 call minpac#add('masukomi/vim-markdown-folding')    " folding support for makrdown files
 call minpac#add('kchmck/vim-coffee-script')         " Coffeescript support
