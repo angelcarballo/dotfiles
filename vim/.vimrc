@@ -48,7 +48,6 @@ call minpac#add('junegunn/fzf.vim')                  " FZF helpers
 call minpac#add('romainl/vim-devdocs')               " search documentation via devdocs.io
 
 " Auto completion
-call minpac#add('tpope/vim-endwise')           " auto close for Ruby,Vim blocks (end, endfuction, etc.)
 call minpac#add('tmsvg/pear-tree')             " auto close parenthesis/brackets/quotes
 source ~/.vim/startup/plugin/pear-tree.vim
 
