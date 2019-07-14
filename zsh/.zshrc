@@ -1,7 +1,13 @@
-####################################################
-# This file is only loaded for interactive shells. #
-# Check .zshenv for settings used in all shells    #
-####################################################
+# This file is only loaded for interactive shells
+# Check .zshenv for settings used in all shells
+
+# Shells on mac automatically load /etc/profile and this messes with the order
+# of PATH entries. Here we clear up the path and re-set it again.
+if [ -f /etc/profile ]; then
+    PATH=""
+    source /etc/profile
+    source $HOME/.zshenv
+fi
 
 # theme
 source ~/.zsh/theme.zsh
