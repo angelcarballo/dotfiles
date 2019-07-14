@@ -6,4 +6,5 @@ iabbr <expr> fdate strftime('%a %d %b %Y')
 iabbr <expr> jdate '# '.strftime('%a %d %b %Y').'<cr>-<esc>o<esc>kA'
 iabbr <expr> bdate strftime('%Y-%m-%dT%X%z')
 iabbr <expr> cb fugitive#head()
+iabbr doend do<cr>end<esc>O
 
