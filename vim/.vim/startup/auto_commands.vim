@@ -29,3 +29,7 @@ augroup QUICKFIX
   " quickfix window should always be full width
   autocmd FileType qf wincmd J
 augroup END
+
+augroup GITCOMMIT
+  autocmd FileType gitcommit normal oI
+augroup END
