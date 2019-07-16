@@ -8,3 +8,5 @@ iabbr <expr> bdate strftime('%Y-%m-%dT%X%z')
 iabbr <expr> cb fugitive#head()
 iabbr doend do<cr>end<esc>O
 
+cabbr cfile %:p
+cabbr cdir %:p:h
