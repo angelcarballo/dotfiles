@@ -23,7 +23,7 @@ call minpac#add('aklt/plantuml-syntax')             " PlantUML support
 call minpac#add('masukomi/vim-markdown-folding')    " folding support for makrdown files
 call minpac#add('kchmck/vim-coffee-script')         " Coffeescript support
 
-" Motions & Operators
+" Operators
 call minpac#add('tpope/vim-surround')               " alter surroundings (), [], '', {}
 call minpac#add('tommcdo/vim-exchange')             " text exchange operator (cx..)
 call minpac#add('vim-scripts/ReplaceWithRegister')  " replace without yanking operator (gr..)
