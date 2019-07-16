@@ -65,11 +65,10 @@ nnoremap <leader>fs :up<cr>
 nnoremap <silent> <leader>fa :Files<cr>
 nnoremap <silent> <leader>fD :Files %:p:h<cr>
 nnoremap <silent> <leader>ff :GFiles<cr>
-nnoremap <silent> <leader>fF :Ag<cr>
 nnoremap <silent> <leader>fg :GFiles?<cr>
 nnoremap <silent> <leader>fr :History<cr>
 nnoremap <silent> <leader>fR :e %<cr>
-nnoremap <silent> <leader>ft :FZF spec/<cr>
+nnoremap <silent> <leader>ft :Ag<cr>
 nnoremap <silent> <leader>fh :Helptags<cr>
 nnoremap <silent> <leader>fn :enew<cr>
 nnoremap <silent> <leader>fm :Marks<cr>
