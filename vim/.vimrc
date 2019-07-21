@@ -85,7 +85,3 @@ source ~/.vim/startup/mappings.vim
 source ~/.vim/startup/text_objects.vim
 source ~/.vim/startup/settings.vim
 source ~/.vim/startup/skeletons.vim
-
-if filereadable(expand('~/.vimrc.local'))
-  source ~/.vimrc.local
-endif
