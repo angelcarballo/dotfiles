@@ -126,5 +126,4 @@ install_base16:
 
 install_gitstatus:
 	@echo "\n${GREEN}Installing Gitstatus plugin${NC}"
-	git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 	git clone https://github.com/romkatv/gitstatus.git ~/src/gitstatus
