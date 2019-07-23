@@ -188,10 +188,6 @@ nnoremap gP P
 " Search and replace current visual selection
 xnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
 
-" Delete lines and word from insert mode
-inoremap <c-d> <esc>ddi
-inoremap <c-w> <esc>bdiwi
-
 " Move around using visual lines, useful when wrap is enabled
 " if a count is provided, default j/k behavior is used
 " and jumps bigger thank 5 lines are added to the jump list
