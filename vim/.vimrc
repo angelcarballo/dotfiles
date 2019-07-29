@@ -51,7 +51,6 @@ call minpac#add('tmsvg/pear-tree')             " auto close parenthesis/brackets
 source ~/.vim/startup/plugin/pear-tree.vim
 
 " Runners
-call minpac#add('tpope/vim-eunuch')                 " run common UNIX commands for the current file
 call minpac#add('benmills/vimux')                   " tmux integration
 source ~/.vim/startup/plugin/vimux.vim
 call minpac#add('janko-m/vim-test')                 " generic test runner
