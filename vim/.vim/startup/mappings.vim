@@ -6,8 +6,8 @@ let mapleader="\<space>"
 " Show and switch to buffers
 nmap <leader><space> :buffers<cr>:bu<space>
 
-" Search files with FZF
-nmap <leader>, :GFiles<cr>
+" Show and navigate to mark
+nmap <leader>, :Marks<cr>
 
 " Quick toggle between last two buffers
 nmap <tab> <c-^>
