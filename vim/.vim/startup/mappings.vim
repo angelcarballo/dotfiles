@@ -243,6 +243,7 @@ nnoremap ]<space> :call append(line("."), "")<cr>
 
 nnoremap cob :setlocal scrollbind! scrollbind?<cr>
 nnoremap coc :setlocal cursorline! cursorline?<cr>
+nnoremap coC :setlocal cursorcolumn! cursorcolumn?<cr>
 nnoremap cof :setlocal foldenable! foldenable?<cr>
 nnoremap cop :setlocal paste! paste?<cr>
 nnoremap cos :setlocal spell! spell?<cr>
