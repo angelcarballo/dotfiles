@@ -53,7 +53,6 @@ nnoremap <leader>dl yy:Commentary<cr>p
 xnoremap <leader>dl ygv:Commentary<cr>']p
 
 " e - Explore
-nnoremap <silent> <leader>er :edit .<cr>
 nnoremap <silent> <leader>ei :Explore<cr>
 nnoremap <silent> <leader>es :Sex<cr>
 nnoremap <silent> <leader>ev :Vex<cr>
@@ -61,32 +60,30 @@ nnoremap <silent> <leader>ev :Vex<cr>
 " f - File/Find
 nnoremap <leader>fs :up<cr>
 nnoremap <silent> <leader>fa :Files<cr>
-nnoremap <silent> <leader>fD :Files %:p:h<cr>
+nnoremap <silent> <leader>fd :Files %:p:h<cr>
 nnoremap <silent> <leader>ff :GFiles<cr>
 nnoremap <silent> <leader>fg :GFiles?<cr>
 nnoremap <silent> <leader>fr :History<cr>
-nnoremap <silent> <leader>fR :e %<cr>
 nnoremap <silent> <leader>ft :Ag<cr>
 nnoremap <silent> <leader>fh :Helptags<cr>
-nnoremap <silent> <leader>fn :enew<cr>
 nnoremap <silent> <leader>fm :Marks<cr>
 
 " g - Git/Generate
-nnoremap <leader>gs :Gstatus \| wincmd T<cr>
-nnoremap <leader>ga :Gcommit --amend<cr>
-nnoremap <leader>gc :Gcommit<cr>i
-nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
-nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gD :Gdiff origin/master<cr>
 nnoremap <leader>gP :Gpush<cr>
-nnoremap <leader>gp :Gpull<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gr :Gread<cr>
+nnoremap <leader>ga :Gcommit --amend<cr>
 nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gc :Gcommit<cr>i
+nnoremap <leader>gd :Gdiff HEAD<cr>
+nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
 nnoremap <leader>gh :Gbrowse<cr>
 xnoremap <leader>gh :Gbrowse<cr>
 nnoremap <leader>gl :Glog<cr>
 xnoremap <leader>gl :Glog<cr>
+nnoremap <leader>gp :Gpull<cr>
+nnoremap <leader>gr :Gread<cr>
+nnoremap <leader>gs :Gstatus \| wincmd T<cr>
+nnoremap <leader>gw :Gwrite<cr>
 
 nnoremap <leader>gt :VimuxRunCommand("ctags -R")<cr>
 
@@ -96,9 +93,6 @@ nnoremap <leader>ij :%!python -m json.tool<cr>
 " o - open
 nnoremap <leader>of :! open '%'<cr>
 nnoremap <leader>on :FZF $NOTES/<cr>
-
-" pry
-nnoremap <leader>pry Orequire 'pry'; binding.pry
 
 " P - Plugins
 nnoremap <leader>Pi :call minpac#update()<cr>
@@ -117,7 +111,6 @@ nnoremap <leader>sf :TestFile<cr>
 nnoremap <leader>sc :TestNearest<cr>
 nnoremap <leader>sl :TestLast<cr>
 nnoremap <leader>sg :TestVisit<cr>
-nnoremap <leader>so :cgetfile quickfix.out \| cwindow<cr>
 
 " S - Show
 nnoremap <silent> <leader>Sf :echo @%<cr>
@@ -142,7 +135,6 @@ nnoremap <silent> <leader>we <c-w>=
 nnoremap <silent> <leader>ws :sp<cr>
 nnoremap <silent> <leader>wt :tabedit %<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
-nnoremap <silent> <leader>ww <c-w>w
 
 " x - eXecute
 nnoremap <leader>x :call VimuxRunCommand(bufname("%"))<left>
