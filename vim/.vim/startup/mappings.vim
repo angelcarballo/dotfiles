@@ -193,6 +193,9 @@ noremap <silent> <up> :resize -3<cr>
 " Use cursors to move lines in visual mode
 xnoremap <up> :move '<-2<cr>gv=gv
 xnoremap <down> :move '>+<cr>gv=gv
+" and to increase/decrease indentation
+xnoremap <right> >gv
+xnoremap <left> <gv
 
 " Easily run the last command on selected lines
 xnoremap . :norm.<cr>
