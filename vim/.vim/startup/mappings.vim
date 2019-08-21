@@ -82,7 +82,7 @@ nnoremap <leader>gl :Glog<cr>
 xnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gr :Gread<cr>
-nnoremap <leader>gs :Gstatus \| wincmd T<cr>
+nnoremap <leader>gs :15Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 
 nnoremap <leader>gt :VimuxRunCommand("ctags -R")<cr>
