@@ -3,7 +3,6 @@ set showcmd                          " show complete commands
 set number                           " show line numbers
 set ruler                            " show cursor position
 set scrolloff=3                      " leave space after the current line
-set diffopt+=vertical                " always use vertical diffs
 set noswapfile                       " disable swap files, let git do the work
 set splitright                       " open new vertical split panes to right
 set history=200                      " increase history (default: 50)
@@ -32,7 +31,9 @@ set spelllang=en_us                  " enable english spell check
 set spellsuggest=fast,20             " don't show too many suggestions for spell check.
 set cryptmethod=blowfish2            " use blowfish 2 crypto method by default (zip is too weak)
 set dictionary+=/usr/share/dict/words " autocomplete words from system dictionary
+
 set spellfile=~/Dropbox/vim/spell/en.utf-8.add
+set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 
 " setup completion (affects c-n, c-p, c-x c-n, c-x c-p)
 set complete=
