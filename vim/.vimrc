@@ -29,7 +29,7 @@ call minpac#add('tommcdo/vim-exchange')                " text exchange operator 
 call minpac#add('vim-scripts/ReplaceWithRegister')     " replace without yanking operator (gr..)
 call minpac#add('tpope/vim-commentary')                " un/comment code (gc)
 call minpac#add('tommcdo/vim-lion')                    " code align operator (gl)
-source ~/.vim/startup/plugin/vim-lion.vim
+runtime startup/plugin/vim-lion.vim
 
 " Text objects
 call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text object <ai>, <ii>
@@ -48,17 +48,17 @@ call minpac#add('romainl/vim-devdocs')                 " search documentation vi
 
 " Auto completion
 call minpac#add('tmsvg/pear-tree')                     " auto close parenthesis/brackets/quotes
-source ~/.vim/startup/plugin/pear-tree.vim
+runtime startup/plugin/pear-tree.vim
 
 " Runners
 call minpac#add('benmills/vimux')                      " tmux integration
-source ~/.vim/startup/plugin/vimux.vim
+runtime startup/plugin/vimux.vim
 call minpac#add('janko-m/vim-test')                    " generic test runner
-source ~/.vim/startup/plugin/vim-test.vim
+runtime startup/plugin/vim-test.vim
 
 " Extras
-source ~/.vim/startup/plugin/netrw.vim                 " configuration for netrw
-source ~/.vim/startup/plugin/vim-ruby.vim              " configuration for default vim-ruby
+runtime startup/plugin/netrw.vim                 " configuration for netrw
+runtime startup/plugin/vim-ruby.vim              " configuration for default vim-ruby
 
 "}}}
 
@@ -67,20 +67,20 @@ runtime macros/matchit.vim " load matchit plugin (shipped with vim)
 
 " add OS global var
 if !exists('g:os')
-if has('win32') || has('win16')
-let g:os = 'Windows'
-else
-let g:os = substitute(system('uname'), '\n', '', '')
-endif
+  if has('win32') || has('win16')
+    let g:os = 'Windows'
+  else
+    let g:os = substitute(system('uname'), '\n', '', '')
+  endif
 endif
 
-source ~/.vim/startup/abbreviations.vim
-source ~/.vim/startup/auto_commands.vim
-source ~/.vim/startup/commands.vim
-source ~/.vim/startup/forced_file_types.vim
-source ~/.vim/startup/ignored_patterns.vim
-source ~/.vim/startup/look_and_feel.vim
-source ~/.vim/startup/mappings.vim
-source ~/.vim/startup/text_objects.vim
-source ~/.vim/startup/settings.vim
-source ~/.vim/startup/skeletons.vim
+runtime startup/abbreviations.vim
+runtime startup/auto_commands.vim
+runtime startup/commands.vim
+runtime startup/forced_file_types.vim
+runtime startup/ignored_patterns.vim
+runtime startup/look_and_feel.vim
+runtime startup/mappings.vim
+runtime startup/text_objects.vim
+runtime startup/settings.vim
+runtime startup/skeletons.vim
