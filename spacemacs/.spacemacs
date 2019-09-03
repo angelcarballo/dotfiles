@@ -308,7 +308,7 @@ you should place you code here."
 
   ;; Org mode configuration
   (with-eval-after-load 'org (setq org-agenda-files
-                                   '("~/Dropbox/org")))
+                                   '("~/SynologyDrive/org")))
 
   ;; Don't backup files, let Git do the work
   (setq make-backup-files nil)

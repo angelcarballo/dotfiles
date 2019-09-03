@@ -32,7 +32,7 @@ set spellsuggest=fast,20             " don't show too many suggestions for spell
 set cryptmethod=blowfish2            " use blowfish 2 crypto method by default (zip is too weak)
 set dictionary+=/usr/share/dict/words " autocomplete words from system dictionary
 
-set spellfile=~/Dropbox/vim/spell/en.utf-8.add
+set spellfile=~/SynologyDrive/vim/spell/en.utf-8.add
 set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 
 " setup completion (affects c-n, c-p, c-x c-n, c-x c-p)
