@@ -46,6 +46,7 @@ alias gll="git log --pretty=format:'%h - %an [%ar] %s'"
 alias gh='git browse'
 alias gp='git pull'
 alias gr='git review'
+alias grc='git rebase --continue'
 alias gs='git status -uall'
 alias gsl='git stash list'
 alias gsp='git stash pop'
