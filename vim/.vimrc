@@ -13,6 +13,7 @@ call minpac#add('wincent/terminus')                    " enhancements for termin
 " Git
 call minpac#add('tpope/vim-fugitive')                  " git integration
 call minpac#add('tpope/vim-rhubarb')                   " github integration
+call minpac#add('junegunn/gv.vim')                     " git commit browser
 
 " Languages & frameworks
 call minpac#add('tpope/vim-rbenv')                     " Rbenv support, used to get the current ruby version on `path`
