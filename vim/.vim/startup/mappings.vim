@@ -4,13 +4,13 @@
 let mapleader="\<space>"
 
 " Show and switch to buffers
-nmap <leader><space> :buffers<cr>:bu<space>
+nnoremap <leader><space> :buffers<cr>:bu<space>
 
 " Show and navigate to mark
-nmap <leader>, :Marks<cr>
+nnoremap <leader>, :Marks<cr>
 
 " Quick toggle between last two buffers
-nmap <tab> <c-^>
+nnoremap <tab> <c-^>
 
 " /,? - Search in project
 nnoremap <leader>/ :silent grep ""<left>
