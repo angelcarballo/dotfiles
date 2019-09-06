@@ -13,12 +13,13 @@ nnoremap <leader>, :Marks<cr>
 nnoremap <tab> <c-^>
 
 " /,? - Search in project
-nnoremap <leader>/ :silent grep ""<left>
-nnoremap <leader>? :silent grep "" "**" ":!spec/"<c-left><c-left><left><left>
+nnoremap <leader>/ :silent grep<space>
+nnoremap <leader>? :silent grep "" -g !spec<c-left><c-left><left><left>
 
 " * - Search in project for word under cursor
 nnoremap <leader>8 :silent grep "<c-r><c-w>"<cr>
-xnoremap <leader>8 "hy:silent grep "<c-r>h"<cr>
+nnoremap <leader>* :silent grep "<c-r><c-w>" -g !spec<cr>
+xnoremap <leader>8 "zy:silent grep "<c-r>z" -g !spec<cr>
 
 " b - Buffers
 nnoremap <silent> <leader>bd :bprevious <bar> bdelete #<cr>
