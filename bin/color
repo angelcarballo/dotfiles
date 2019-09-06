@@ -46,9 +46,9 @@ echo "New colorscheme: $colorscheme"
 # if no option is provided, use fzf to select a color
 if [ "$colorscheme" == "" ]; then
   if [ "$showall" = true ] ; then
-    colorscheme=$(find $COLORS -type f -name "base16-*.sh" -exec basename {} \; | cut -f1 -d "." | sed "s/base16-//" | fzf)
+    colorscheme=$(find $COLORS -type f -name "base16-*.sh" -exec basename {} \; | cut -f1 -d "." | sed "s/base16-//" | sort | fzf)
   else
-    colorscheme=$(cat ~/src/dotfiles/favourite_colors | fzf)
+    colorscheme=$(cat ~/src/dotfiles/favourite_colors | sort | fzf)
   fi
 fi
 
