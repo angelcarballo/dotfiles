@@ -23,8 +23,9 @@ augroup END
 augroup QUICKFIX
   autocmd!
 
-  " open quickfix window after using Grep, grep, vimgrep
-  autocmd QuickFixCmdPost *grep* nested cwindow | redraw!
+  " open quickfix/location window after using grep
+  autocmd QuickFixCmdPost grep cwindow | redraw!
+  autocmd QuickFixCmdPost lgrep lwindow | redraw!
 
   " quickfix window should always be full width
   autocmd FileType qf wincmd J
