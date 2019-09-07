@@ -10,3 +10,8 @@ let b:execute_with='ruby'
 
 inoreabbrev <buffer> rk =>
 inoreabbrev <buffer> bpry require 'pry'; binding.pry
+
+let b:pear_tree_pairs = extend(deepcopy(g:pear_tree_pairs), {
+      \ '|': {'closer': '|'},
+      \ '`': {'closer': '`'},
+      \ }, 'keep')
