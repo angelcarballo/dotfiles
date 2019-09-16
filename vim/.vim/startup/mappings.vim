@@ -13,7 +13,7 @@ nnoremap <leader>, :Marks<cr>
 nnoremap <tab> <c-^>
 
 " /,? - Search in project
-nnoremap <leader>/ :silent grep<space>
+nnoremap <leader>/ :silent grep ""<left>
 nnoremap <leader>? :silent grep "" -g !spec<c-left><c-left><left><left>
 
 " * - Search in project for word under cursor
