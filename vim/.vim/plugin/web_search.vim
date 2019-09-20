@@ -15,7 +15,7 @@ function! WebSearch(type, ...)
   endif
 
   let l:browser_cmd = "open"
-  let l:search_engine_url = "https://www.google.com/search?q="
+  let l:search_engine_url = "https://duckduckgo.com/?q="
   let l:search_param = substitute(join(split(@@), "+"), '"', "", "g")
   let l:url = l:search_engine_url . l:search_param
 
