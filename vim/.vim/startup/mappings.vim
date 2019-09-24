@@ -55,10 +55,11 @@ nnoremap <leader>dp yap}p
 nnoremap <leader>dl yy:Commentary<cr>p
 xnoremap <leader>dl ygv:Commentary<cr>']p
 
-" e - Explore
+" e - Explore/Extract
 nnoremap <silent> <leader>ei :Explore<cr>
 nnoremap <silent> <leader>es :Sex<cr>
 nnoremap <silent> <leader>ev :Vex<cr>
+xnoremap <silent> <leader>em :call ExtractMethod()<cr>
 
 " f - File/Find
 nnoremap <leader>fs :up<cr>
@@ -258,7 +259,6 @@ nnoremap ga =
 
 " web search operator
 nnoremap <silent> gs :set opfunc=WebSearch<cr>g@
-
 xnoremap <silent> gs :<c-u>call WebSearch(visualmode(), 1)<cr>
 
 " copy to system clipboard
