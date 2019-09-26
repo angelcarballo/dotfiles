@@ -120,7 +120,7 @@ nnoremap <leader>sg :TestVisit<cr>
 " S - Show
 nnoremap <silent> <leader>Sf :echo @%<cr>
 nnoremap <silent> <leader>Sp :echo expand('%:p')<cr>
-nnoremap <silent> <leader>Sb :echo "Current git branch: " . fugitive#head()<cr>
+nnoremap <silent> <leader>Sb :echo "Git branch: " . fugitive#head()<cr>
 
 " t - Tmux/Tabs
 nnoremap <silent> <leader>tn :tabnew<cr>
