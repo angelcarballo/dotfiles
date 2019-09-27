@@ -32,7 +32,7 @@ set statusline+=%*                                  " reset color
 " colorscheme config managed by base16
 if filereadable(expand("~/.vim_colorscheme"))
   let base16colorspace=256
-  source ~/.vim_colorscheme
+  source ~/.vimrc_background
 
   " hide end of buffer indicators
   highlight EndOfBuffer ctermfg=bg ctermbg=bg

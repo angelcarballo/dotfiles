@@ -70,8 +70,8 @@ alias ec='emacsclient -nw'
 alias e='emacsclient -nw .'
 
 # Colorschemes
-alias dark='color monokai'
-alias light='color solarized-light'
+alias dark='base16_monokai'
+alias light='base16_solarized-light'
 
 # Python
 alias python='python3'

@@ -27,9 +27,8 @@ export KEYTIMEOUT=15  # reduce delay when changing modes
 export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -"
 
 # base16 color scripts
-export COLORS=$HOME/.config/base16-shell/scripts
-export SHELL_COLORSCHEME=$HOME/.colorscheme
-export VIM_COLORSCHEME=$HOME/.vim_colorscheme
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 # custom functions
 source ~/.zsh/custom-functions.zsh
@@ -111,9 +110,6 @@ unsetopt nomatch
 
 # enable syntax for cheat (see: https://github.com/chrisallenlane/cheat)
 export CHEATCOLORS=true
-
-# initialize base16 colorscheme
-[ -f $SHELL_COLORSCHEME ] && source $SHELL_COLORSCHEME
 
 # source fzf fuzzy finder configuration is present
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
