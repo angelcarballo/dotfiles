@@ -8,5 +8,3 @@ function! ToggleVimuxTarget()
 		echo "Vimux mode: WINDOW"
 	endif
 endfunction
-let g:VimuxRunnerType="pane"
-
