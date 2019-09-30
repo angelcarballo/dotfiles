@@ -72,6 +72,10 @@ nnoremap <silent> <leader>ft :Ag<cr>
 nnoremap <silent> <leader>fh :Helptags<cr>
 nnoremap <silent> <leader>fm :Marks<cr>
 
+" F - Fold
+nnoremap <leader>Fs :set foldmethod=syntax <bar> :set foldlevel=2<cr>zCzo
+nnoremap <leader>Fl :set foldlevel=
+
 " g - Git/Generate
 nnoremap <leader>gD :Gdiff origin/master<cr>
 nnoremap <leader>gP :Gpush<cr>
