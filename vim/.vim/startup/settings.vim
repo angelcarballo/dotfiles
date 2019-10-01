@@ -24,7 +24,7 @@ set undofile                         " persist undo history
 set undodir=$HOME/.vim/undo          " where to store undo files
 set nojoinspaces                     " only insert one space when joining after an '.'
 set breakindent                      " keep indentation on wrapped lines
-set tabstop=4                        " tabs use 4 spaces by default (filetypes override this)
+set tabstop=2                        " tabs use 2 spaces by default (filetypes override this)
 set expandtab                        " indent with spaces by default (overriden by filetype)
 set regexpengine=1                   " use old regexp engine, as new one has low performance with big ruby files
 set spelllang=en_us                  " enable english spell check
