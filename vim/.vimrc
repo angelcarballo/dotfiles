@@ -4,6 +4,9 @@ call minpac#init()
 
 "{{{ Plugins
 
+" Bundled with vim
+packadd cfilter                                        " filter entries from quickfix or location lists
+
 " Basic plugins
 call minpac#add('kana/vim-textobj-user')               " custom text object support
 call minpac#add('tpope/vim-repeat')                    " extend repeat support
