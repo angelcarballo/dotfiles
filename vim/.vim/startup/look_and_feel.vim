@@ -42,6 +42,9 @@ if filereadable(expand("~/.vim_colorscheme"))
   highlight SpellBad cterm=underline
   highlight SpellBad gui=undercurl
 
+  " highlight current tab
+  highlight TabLineSel guifg=bg guibg=fg
+
   " highlight character 121 to avoid long lines
   highlight ColorColumn ctermbg=magenta
   call matchadd('ColorColumn', '\%121v', 121)
