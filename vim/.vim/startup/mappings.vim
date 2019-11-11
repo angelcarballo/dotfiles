@@ -126,12 +126,8 @@ nnoremap <silent> <leader>Sf :echo @%<cr>
 nnoremap <silent> <leader>Sp :echo expand('%:p')<cr>
 nnoremap <silent> <leader>Sb :echo "Git branch: " . fugitive#head()<cr>
 
-" t - Tmux/Tabs
+" t - Tabs
 nnoremap <silent> <leader>tn :tabnew<cr>
-nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
-nnoremap <silent> <leader>tf :VimuxZoomRunner<cr>
-nnoremap <silent> <leader>ti :VimuxInspectRunner<cr>
-nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
 
 " V - Vimrc
 nnoremap <leader>Ve :e $MYVIMRC<cr>
@@ -146,7 +142,13 @@ nnoremap <silent> <leader>wt :tabedit %<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 
 " x - eXecute
-nnoremap <leader>x :call VimuxRunCommand(bufname("%"))<left>
+" nnoremap <leader>x :call VimuxRunCommand(bufname("%"))<left>
+nnoremap <silent> <leader>xc :VimuxCloseRunner<cr>
+nnoremap <silent> <leader>xf :VimuxZoomRunner<cr>
+nnoremap <silent> <leader>xi :VimuxInspectRunner<cr>
+nnoremap <silent> <leader>xo :VimuxRunCommand("")<cr>
+nnoremap <leader>xx :call VimuxRunCommand(bufname("%"))<left>
+
 
 " ---------------------------------------------------------------------------}}}
 " Mappings (other) ----------------------------------------------------------{{{
