@@ -61,6 +61,7 @@ alias gj='git jump diff'
 alias grh='git reset HEAD '
 alias gap='git add --patch '
 alias pr='git pr checkout '
+alias gsearch='git log --source --all -S'
 
 # Vim
 alias v='vim .'
