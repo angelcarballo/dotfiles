@@ -1,12 +1,12 @@
 setlocal keywordprg=:DD
 setlocal shiftwidth=2
 setlocal tabstop=2
-let b:execute_with='ruby'
+" fold by indentation levels, don't ignore lines with # and disable by default
+setlocal foldmethod=indent
+setlocal foldignore=
+setlocal nofoldenable
 
-" uncomment to enable folding, without closing folds by default
-" this will affect performance on big ruby files, so use with care
-" let ruby_fold = 1
-" set foldlevel=99
+let b:execute_with='ruby'
 
 inoreabbrev <buffer> rk =>
 inoreabbrev <buffer> bpry require 'pry'; binding.pry

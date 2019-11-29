@@ -32,7 +32,6 @@ set spellsuggest=fast,20             " don't show too many suggestions for spell
 set spellcapcheck=                   " don't check for end of sentence and capitalization, it doesn't work well with abbrv.
 set cryptmethod=blowfish2            " use blowfish 2 crypto method by default (zip is too weak)
 set dictionary+=/usr/share/dict/words " autocomplete words from system dictionary
-set nofoldenable                     " disable folding by default
 set tags^=./.git/tags;               " read tags from git directory
 set path-=/usr/include               " remove default include folder from path
 
