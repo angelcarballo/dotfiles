@@ -1,5 +1,5 @@
 DOTFILES := $(shell pwd)
-FOLDERS_TO_LINK := git ruby tmux vim cheats common git_template taskwarrior zsh alacritty kitty
+FOLDERS_TO_LINK := git ruby tmux vim cheat common git_template taskwarrior zsh alacritty kitty
 FOLDERS_TO_LINK_ON_SERVERS := git ruby tmux vim common zsh
 
 # Set default task based on OS
@@ -15,7 +15,7 @@ GREEN=\033[1;32m
 NC=\033[0m # No Color
 
 # Tasks that do not generate a file (and are always executed)
-.PHONY: update_dotfiles update_base16 update_homebrew link_mac link_server update_vim_plugins git_config vim_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac install_gitstatus
+.PHONY: update_dotfiles update_base16 update_homebrew link_mac link_server update_vim_plugins git_config vim_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac install_gitstatus update_cheats
 
 default:
 	$(MAKE) $(DEFAULT_TASK)
@@ -127,3 +127,7 @@ install_base16:
 install_gitstatus:
 	@echo "\n${GREEN}Installing Gitstatus plugin${NC}"
 	git clone https://github.com/romkatv/gitstatus.git ~/src/gitstatus
+
+update_cheats:
+	@echo "\n${GREEN}Updating community cheats${NC}"
+	if [ -d ~/src/dotfiles/cheats/community ]; then cd ~/src/dotfiles/cheats/community && git pull; else git clone https://github.com/cheat/cheatsheets.git ~/src/dotfiles/cheats/community; fi
