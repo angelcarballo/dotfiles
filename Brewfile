@@ -39,9 +39,6 @@ brew "macvim", args: ['override-system-vim']
 # gnu tree to display directory structures
 brew "tree"
 
-# move files to trash instead of deleting them
-brew "trash"
-
 # github tooling
 brew "hub"
 
@@ -78,6 +75,3 @@ brew "hugo"
 
 # Add write support for NTFS drives
 brew cask install mounty
-
-# Path picker
-brew "fpp"
