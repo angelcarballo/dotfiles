@@ -70,5 +70,8 @@ brew "bat"
 # Taskwarrior - task manager
 brew "task"
 
+# fancy ascii header generator
+brew "figlet"
+
 # Add write support for NTFS drives
 brew cask install mounty
