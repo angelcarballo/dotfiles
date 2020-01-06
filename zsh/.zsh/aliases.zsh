@@ -83,7 +83,7 @@ alias iex='rlwrap -a foo iex'
 alias miex='rlwrap -a foo iex -S mix'
 
 # Notes/tasks
-alias n='cd $NOTES && vim `find . -name "*.md" | sort | fzf --preview "cat {}"`'
+alias n='vim `find $NOTES -name "*.md" | sort | fzf --preview "cat {}"`'
 alias nn='vim $NOTES/00-sandbox.md'
 alias j='vim $NOTES/01-journal.md'
 alias t='task'
