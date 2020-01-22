@@ -251,6 +251,7 @@ nnoremap cow :setlocal wrap! wrap?<cr>
 
 nnoremap cot :call ToggleVimuxTarget()<cr>
 nnoremap coq :call ToggleQuickFix()<cr>
+nnoremap col :call ToggleLocation()<cr>
 
 
 " ---------------------------------------------------------------------------}}}
