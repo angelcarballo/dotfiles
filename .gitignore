@@ -13,3 +13,4 @@ emacs/.emacs.d/
 !emacs/.emacs.d/lib
 node_modules/
 .git/
+Brewfile.lock.json
