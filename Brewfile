@@ -34,7 +34,7 @@ brew "ctags"
 brew "tmux"
 
 # ...to rule them all
-brew "macvim", args: ['override-system-vim']
+brew "macvim"
 
 # gnu tree to display directory structures
 brew "tree"
@@ -52,9 +52,6 @@ brew "pandoc"
 # Wrapper to allow supporting .inputrc settings on bad repls like <iex>
 brew "rlwrap"
 
-# cute http command line client
-brew "httpie"
-
 # grep-like json processor
 brew "jq"
 
@@ -67,11 +64,5 @@ brew "plantuml"
 # Cat like viewer with syntax highlighting, git support and other goodies
 brew "bat"
 
-# Taskwarrior - task manager
-brew "task"
-
 # fancy ascii header generator
 brew "figlet"
-
-# Add write support for NTFS drives
-brew cask install mounty
