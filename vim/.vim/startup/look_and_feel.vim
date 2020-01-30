@@ -31,7 +31,7 @@ set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicato
 set statusline+=%*                                  " reset color
 
 " colorscheme config managed by base16
-if filereadable(expand("~/.vim_colorscheme"))
+if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 
