@@ -13,14 +13,14 @@ nnoremap <leader>, :Marks<cr>
 nnoremap <tab> <c-^>
 
 " /,? - Search in project
-nnoremap <leader>/ :silent lgrep ""<left>
-nnoremap <leader>? :silent lgrep "" -g !spec<c-left><c-left><left><left>
+nnoremap <leader>/ :silent grep ""<left>
+nnoremap <leader>? :silent grep "" -g !spec<c-left><c-left><left><left>
 
 " * - Search in file or project for word under cursor
 xnoremap * "zy/<c-r>z<cr>
-nnoremap <leader>8 :silent lgrep "<c-r><c-w>"<cr>
-nnoremap <leader>* :silent lgrep "<c-r><c-w>" -g !spec<cr>
-xnoremap <leader>8 "zy:silent lgrep "<c-r>z" -g !spec<cr>
+nnoremap <leader>8 :silent grep "<c-r><c-w>"<cr>
+nnoremap <leader>* :silent grep "<c-r><c-w>" -g !spec<cr>
+xnoremap <leader>8 "zy:silent grep "<c-r>z" -g !spec<cr>
 
 
 " b - Buffers
@@ -231,9 +231,6 @@ nnoremap [f :<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(-v:count1), ':
 
 nnoremap [b :bprevious<cr>
 nnoremap ]b :bnext<cr>
-
-nnoremap [e :lprevious<cr>
-nnoremap ]e :lnext<cr>
 
 nnoremap [q :cprevious<cr>
 nnoremap ]q :cnext<cr>
