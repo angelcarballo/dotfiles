@@ -1,6 +1,9 @@
 # manage symlinks for dotfiles
 brew "stow"
 
+# ruby version manager
+brew "rbenv"
+
 # super fast replacement for Ack
 brew "ripgrep"
 
