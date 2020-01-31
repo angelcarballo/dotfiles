@@ -20,7 +20,7 @@ NC=\033[0m # No Color
 default:
 	$(MAKE) $(DEFAULT_TASK)
 
-default_mac: update link_mac update_vim_plugins update_base16 update_homebrew
+default_mac: update link_mac update_vim_plugins update_base16 update_homebrew update_cheats
 
 default_server: update link_server update_vim_plugins
 
