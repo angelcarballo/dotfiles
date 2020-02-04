@@ -235,6 +235,9 @@ nnoremap ]b :bnext<cr>
 nnoremap [q :cprevious<cr>
 nnoremap ]q :cnext<cr>
 
+nnoremap [e :lprevious<cr>
+nnoremap ]e :lnext<cr>
+
 nnoremap [w :tabprevious<cr>
 nnoremap ]w :tabnext<cr>
 
