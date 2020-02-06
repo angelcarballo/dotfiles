@@ -42,5 +42,3 @@
 	whitespace = red reverse
 [include]
   path = .gitconfig.local
-[diff-so-fancy]
-	stripLeadingSymbols = false
