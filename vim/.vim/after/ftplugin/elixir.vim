@@ -2,7 +2,7 @@ let b:execute_with='elixir'
 
 inoreabbrev <buffer> pipe \|>
 inoreabbrev <buffer> pry require IEx; IEx.pry
-inoreabbrev <buffer> inline &(&1)<left>
-inoreabbrev <buffer> func fn x -> end
+inoreabbrev <buffer> af &(&1)<left>
+inoreabbrev <buffer> aff fn x -> end<left><left><left><left>
 
 setlocal formatprg=mix\ format\ - 
