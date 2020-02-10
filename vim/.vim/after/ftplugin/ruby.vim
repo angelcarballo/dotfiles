@@ -1,4 +1,3 @@
-setlocal keywordprg=:DD
 setlocal shiftwidth=2
 setlocal tabstop=2
 " fold by indentation levels, don't ignore lines with # and disable by default
