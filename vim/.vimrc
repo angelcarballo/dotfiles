@@ -38,7 +38,6 @@ runtime startup/plugin/vim-lion.vim
 call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text object <ai>, <ii>
 call minpac#add('b4winckler/vim-angry')                " function argument text object <aa>, <ia>
 call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelCase, snake_case and similar <av>, <iv>
-" call minpac#add('glts/vim-textobj-comment')          " comments <ac>, <ic>
 call minpac#add('coderifous/textobj-word-column.vim')  " column text objects <ic>, <ac>
 
 " Look & Feel
@@ -50,8 +49,7 @@ call minpac#add('junegunn/fzf')                        " basic FZF support
 call minpac#add('junegunn/fzf.vim')                    " FZF helpers
 
 " Auto completion
-call minpac#add('tmsvg/pear-tree')                     " auto close parenthesis/brackets/quotes
-runtime startup/plugin/pear-tree.vim
+call minpac#add('jiangmiao/auto-pairs')                " auto close parenthesis/brackets/quotes
 
 " Runners
 call minpac#add('benmills/vimux')                      " tmux integration
