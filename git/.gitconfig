@@ -1,8 +1,6 @@
 [core]
 	excludesfile = /Users/angel.carballo/.gitignore_global
-  pager = diff-so-fancy | less --tabs=4 -RFX
-[init]
-  templatedir = ~/.git_template
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [clean]
 	requireForce = false
 [commit]
@@ -18,14 +16,14 @@
 	prune = fetch --prune
 	undo = reset --soft HEAD^
 	stashall = stash save --include-untracked
-    # list files which have changed since REVIEW_BASE
-    # (REVIEW_BASE defaults to 'master' in my zshrc)
-  files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
-    # Same as above, but with a diff stat instead of just names
-    # (better for interactive use)
-  stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
-  review = !vim $(git files)
-  reviewdiff = !vim -p $(git files) +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
+	# list files which have changed since REVIEW_BASE
+	# (REVIEW_BASE defaults to 'master' in my zshrc)
+	files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
+	# Same as above, but with a diff stat instead of just names
+	# (better for interactive use)
+	stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
+	review = !vim $(git files)
+	reviewdiff = !vim -p $(git files) +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
 [color]
 	ui = true
 [color "diff-highlight"]
@@ -41,4 +39,4 @@
 	new = green bold
 	whitespace = red reverse
 [include]
-  path = .gitconfig.local
+	path = .gitconfig.local
