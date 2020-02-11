@@ -34,3 +34,7 @@ augroup END
 augroup GITCOMMIT
   autocmd FileType gitcommit normal oI
 augroup END
+
+augroup HELP
+  autocmd FileType help wincmd L
+augroup END
