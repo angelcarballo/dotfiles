@@ -87,7 +87,7 @@ nnoremap <leader>gL :GV!<cr>
 xnoremap <leader>gl :GV<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gr :Gread<cr>
-nnoremap <leader>gs :15Gstatus<cr>
+nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 
 nnoremap <leader>gt :VimuxRunCommand("ctags -R --exclude=.git --exclude=node_modules")<cr>
