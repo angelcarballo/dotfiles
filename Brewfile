@@ -29,6 +29,7 @@ brew "python"
 
 # use our own git
 brew "git"
+brew "git-gui"
 
 # use our own ctags
 brew "ctags"
