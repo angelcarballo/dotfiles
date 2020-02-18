@@ -51,8 +51,8 @@ link_server:
 # Install new vim plugins, update existing and cleanup old ones
 update_vim_plugins:
 	@echo "\n${GREEN}Updating Vim plugins${NC}"
-	vim +PackUpdate +qall
-	vim +PackClean +qall
+	vim "+call minpac#update()" "+qall"
+	vim "+call minpac#clean()" "+qall"
 
 # Install minpac vim plugin manager
 vim_minpac:
