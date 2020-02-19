@@ -70,3 +70,6 @@ brew "bat"
 
 # fancy ascii header generator
 brew "figlet"
+
+# simple interface for inotify (watch files and run commands)
+brew "entr"

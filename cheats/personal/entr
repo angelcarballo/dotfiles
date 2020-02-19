@@ -1,0 +1,3 @@
+# Simple run command on file change, _ represents the full file path (note the escaping)
+
+ls *.plantuml | entr plantuml /_
