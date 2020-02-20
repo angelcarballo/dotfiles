@@ -44,7 +44,7 @@ alias gf='git fetch'
 alias gl='git log --oneline --decorate --graph --all'
 alias gll="git log --pretty=format:'%h - %an [%ar] %s'"
 alias gma="git merge --abort"
-alias gh='git browse'
+alias gbr='git browse'
 alias gp='git pull'
 alias gr='git review'
 alias grc='git rebase --continue'
@@ -62,7 +62,7 @@ alias gitfiles='git ls-files --modified --others --exclude-standard'
 alias gj='git jump diff'
 alias grh='git reset --hard '
 alias gap='git add --patch '
-alias pr='git pr checkout '
+alias pr='gh pr view'
 alias gsearch='git log --source --all -S'
 
 # Vim
