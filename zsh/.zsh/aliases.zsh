@@ -44,7 +44,7 @@ alias gf='git fetch'
 alias gl='git log --oneline --decorate --graph --all'
 alias gll="git log --pretty=format:'%h - %an [%ar] %s'"
 alias gma="git merge --abort"
-alias gbr='git browse'
+alias ogh='git browse'
 alias gp='git pull'
 alias gr='git review'
 alias grc='git rebase --continue'
