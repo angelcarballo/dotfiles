@@ -1,4 +1,5 @@
 set jkdenotative
 set tabstop=2
 set shiftwidth=2
-inoremap kj <Esc>
+map! kj <Esc>
+map gf :set fullscreen!<cr>
