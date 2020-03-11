@@ -1,6 +1,8 @@
 # This file is only loaded for interactive shells
 # Check .zshenv for settings used in all shells
 
+# NOTE: For some reason setting CC env var makes zsh load slower
+
 # Shells on mac automatically load /etc/profile and this messes with the order
 # of PATH entries. Here we clear up the path and re-set it again.
 if [ -f /etc/profile ]; then
