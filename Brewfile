@@ -43,9 +43,6 @@ brew "macvim"
 # gnu tree to display directory structures
 brew "tree"
 
-# github tooling
-brew "hub"
-
 # AWS command line tools
 brew "awscli"
 

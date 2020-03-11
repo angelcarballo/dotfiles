@@ -121,9 +121,6 @@ case `uname` in
   Darwin)
     # enable rbenv
     eval "$(rbenv init -)"
-
-    # alias git with GitHub's hub
-    eval "$(hub alias -s)"
   ;;
   Linux)
     # commands for Linux go here
