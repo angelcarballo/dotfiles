@@ -18,8 +18,8 @@ nnoremap <leader>? :silent grep "" -g !spec<c-left><c-left><left><left>
 
 " * - Search in file or project for word under cursor
 xnoremap * "zy/<c-r>z<cr>
-nnoremap <leader>8 :silent grep "<c-r><c-w>"<cr>
-nnoremap <leader>* :silent grep "<c-r><c-w>" -g !spec<cr>
+nnoremap <leader>8 :silent grep "<cword>"<cr>
+nnoremap <leader>* :silent grep "<cword>" -g !spec<cr>
 xnoremap <leader>8 "zy:silent grep "<c-r>z" -g !spec<cr>
 
 
