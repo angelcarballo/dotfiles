@@ -13,7 +13,6 @@ brew "libyaml"
 
 # zsh and plugin manager
 brew "zsh"
-brew "zplug"
 
 # better diff formatting
 brew "diff-so-fancy"
