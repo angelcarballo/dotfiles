@@ -110,12 +110,13 @@ nnoremap <leader>Q :qall!<cr>
 " r - Remove
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
 
-" s - Specs
+" s - Specs/Split
 nnoremap <leader>sa :TestSuite<cr>
 nnoremap <leader>sf :TestFile<cr>
 nnoremap <leader>sc :TestNearest<cr>
 nnoremap <leader>sl :TestLast<cr>
 nnoremap <leader>sg :TestVisit<cr>
+xnoremap <leader>s, :s/\,\s*/,\r/g<cr>
 
 " S - Show
 nnoremap <silent> <leader>Sf :echo @%<cr>
