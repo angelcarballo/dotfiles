@@ -11,5 +11,6 @@ interactive_editor
 foreman
 lolcat
 git-secrets
+git-browse-remote
 jr-cli
 bundler-audit
