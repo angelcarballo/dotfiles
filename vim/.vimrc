@@ -38,6 +38,7 @@ runtime startup/plugin/vim-lion.vim
 call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text object <ai>, <ii>
 call minpac#add('b4winckler/vim-angry')                " function argument text object <aa>, <ia>
 call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelCase, snake_case and similar <av>, <iv>
+call minpac#add('glts/vim-textobj-comment')            " comments text object <ic>, <ac>, <aC> to include whitespace
 
 " Look & Feel
 call minpac#add('danielwe/base16-vim')                 " base16 color schemes
