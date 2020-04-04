@@ -141,10 +141,9 @@ nnoremap <silent> <leader>wv :vsp<cr>
 " x - eXecute
 " nnoremap <leader>x :call VimuxRunCommand(bufname("%"))<left>
 nnoremap <silent> <leader>xc :VimuxCloseRunner<cr>
-nnoremap <silent> <leader>xz :VimuxZoomRunner<cr>
 nnoremap <silent> <leader>xi :VimuxInspectRunner<cr>
 nnoremap <silent> <leader>xo :VimuxRunCommand("")<cr>
-nnoremap <silent> <leader>xx :VimuxRunCommand("")<left><left>
+nnoremap <silent> <leader>xx :VimuxZoomRunner<cr>
 nnoremap <leader>xf :call VimuxRunCommand(bufname("%"))<left>
 
 
