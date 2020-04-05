@@ -47,6 +47,7 @@ alias gma="git merge --abort"
 alias ogh='git browse'
 alias gp='git pull'
 alias gr='git review'
+alias gri='git rebase -i'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gs='git status -uall'
