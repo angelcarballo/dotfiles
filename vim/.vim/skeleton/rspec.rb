@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe FooBar do
+RSpec.describe FooBar do
 
 end
