@@ -74,7 +74,7 @@ nnoremap <silent> <leader>fm :Marks<cr>
 
 " g - Git/Generate
 nnoremap <leader>gD :Gdiff origin/master<cr>
-nnoremap <leader>gP :Gpush<cr>
+nnoremap <leader>gP :VimuxRunCommand("git push")<cr>
 nnoremap <leader>ga :Gcommit --amend<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gc :Gcommit<cr>i
