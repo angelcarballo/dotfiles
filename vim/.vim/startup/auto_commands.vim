@@ -38,3 +38,7 @@ augroup END
 augroup HELP
   autocmd FileType help wincmd L
 augroup END
+
+augroup GV
+  autocmd FileType GV set foldlevel=1
+augroup END
