@@ -82,8 +82,11 @@ nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
 nnoremap <leader>gh :Gbrowse<cr>
 xnoremap <leader>gh :Gbrowse<cr>
-nnoremap <leader>gl :Gclog<cr>
-xnoremap <leader>gl :Gclog<cr>
+nnoremap <leader>gl :GV<cr>
+nnoremap <leader>glc :GV!<cr>
+nnoremap <leader>glq :GV?<cr>
+xnoremap <leader>gl :GV<cr>
+xnoremap <leader>glq :GV?<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gs :Gstatus\|wincmd T<cr>
