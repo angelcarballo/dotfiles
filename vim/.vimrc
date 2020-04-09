@@ -24,7 +24,6 @@ call minpac#add('tpope/vim-bundler')                   " Bundler support, used t
 call minpac#add('elixir-editors/vim-elixir')           " Elixir support
 call minpac#add('slashmili/alchemist.vim')             " Elixir intellisense support
 call minpac#add('aklt/plantuml-syntax')                " PlantUML support
-call minpac#add('masukomi/vim-markdown-folding')       " folding support for makrdown files
 call minpac#add('kchmck/vim-coffee-script')            " Coffeescript support
 
 " Operators
