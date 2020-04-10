@@ -1,5 +1,6 @@
 let b:execute_with='elixir'
 
+inoreabbrev <buffer> rk =>
 inoreabbrev <buffer> pipe \|>
 inoreabbrev <buffer> pry require IEx; IEx.pry
 inoreabbrev <buffer> af &(&1)<left>
