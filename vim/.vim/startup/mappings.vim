@@ -92,7 +92,7 @@ nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gs :Gstatus\|wincmd T<cr>
 nnoremap <leader>gw :Gwrite<cr>
 
-nnoremap <leader>gt :VimuxRunCommand("ctags -R --exclude=.git --exclude=node_modules")<cr>
+nnoremap <leader>gt :VimuxRunCommand("ctags -R")<cr>
 
 " i - Indent / Insert
 nnoremap <leader>ij :%!python -m json.tool<cr>
