@@ -4,7 +4,7 @@
 let mapleader="\<space>"
 
 " Show and switch to buffers
-nnoremap <leader><space> :buffers<cr>:bu<space>
+nnoremap <leader><space> :Buffers<cr>
 
 " Show and navigate to mark
 nnoremap <leader>, :Marks<cr>
@@ -96,6 +96,9 @@ nnoremap <leader>gt :VimuxRunCommand("ctags -R")<cr>
 
 " i - Indent / Insert
 nnoremap <leader>ij :%!python -m json.tool<cr>
+
+" m - Marks
+nnoremap <leader>mm :Marks<cr>
 
 " o - open
 nnoremap <leader>of :! open '%'<cr>
