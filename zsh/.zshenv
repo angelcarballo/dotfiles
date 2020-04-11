@@ -17,7 +17,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 source ~/.zsh/aliases.zsh
 
 # Notes
-export NOTES="$HOME/Synology/notes"
+export NOTES="$HOME/Drive/notes"
 
 # FZF settings
 export FZF_DEFAULT_OPTS=' --layout=reverse'
