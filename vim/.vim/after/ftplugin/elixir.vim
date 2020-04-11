@@ -8,3 +8,5 @@ inoreabbrev <buffer> aff fn x -> end<left><left><left><left>
 
 setlocal formatprg=mix\ format\ - 
 setlocal makeprg=mix\ compile
+
+nnoremap <buffer> K :DD<cr>
