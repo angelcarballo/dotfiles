@@ -83,6 +83,7 @@ nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
 nnoremap <leader>gh :Gbrowse<cr>
 xnoremap <leader>gh :Gbrowse<cr>
 nnoremap <leader>gl :Flog<cr>
+nnoremap <leader>gL :Flog -path=%<cr>
 xnoremap <leader>gl :Flog<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gr :Gread<cr>
