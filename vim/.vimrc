@@ -51,6 +51,7 @@ call minpac#add('romainl/vim-devdocs')                 " search documentation on
 
 " Auto completion
 call minpac#add('jiangmiao/auto-pairs')                " auto close parenthesis/brackets/quotes
+call minpac#add('tpope/vim-endwise')                   " auto close do/end blocks and similar
 
 " Runners
 call minpac#add('benmills/vimux')                      " tmux integration
