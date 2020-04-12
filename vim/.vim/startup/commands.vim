@@ -11,4 +11,6 @@ if g:os == 'Darwin'
 endif
 
 " Delete current file
-command! Delete :call delete(expand('%')) | bdelete!
+command! Rm :call delete(expand('%')) | bdelete!
+command! Cp :!cp expand('%')<space>
+command! Mv :!Mv expand('%')<space>
