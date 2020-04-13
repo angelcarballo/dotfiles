@@ -255,6 +255,7 @@ nnoremap cob :setlocal scrollbind! scrollbind?<cr>
 nnoremap coc :setlocal cursorline! cursorline?<cr>
 nnoremap coC :setlocal cursorcolumn! cursorcolumn?<cr>
 nnoremap cof :setlocal foldenable! foldenable?<cr>
+nnoremap coh :setlocal hlsearch! hlsearch?<cr>
 nnoremap cop :setlocal paste! paste?<cr>
 nnoremap cos :setlocal spell! spell?<cr>
 nnoremap cow :setlocal wrap! wrap?<cr>

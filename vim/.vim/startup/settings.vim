@@ -6,7 +6,6 @@ set scrolloff=3                      " leave space after the current line
 set noswapfile                       " disable swap files, let git do the work
 set splitright                       " open new vertical split panes to right
 set history=200                      " increase history (default: 50)
-set hlsearch                         " highlight search results
 set incsearch                        " incremental search
 set ignorecase                       " ignore case on search ...
 set smartcase                        " ... except if query contains uppercase characters
