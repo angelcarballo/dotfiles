@@ -2,6 +2,9 @@
 
 # Common
 alias c='clear'
+alias cp='cp -i' # ask before overriding
+alias mv='mv -i' # ask before overriding
+alias df='df -h' # show human sizes
 alias celar='clear'
 alias lcear='clear'
 alias ls='ls -GFa --color=auto'
