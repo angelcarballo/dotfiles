@@ -220,6 +220,9 @@ nnoremap L $
 xnoremap H ^
 xnoremap L $
 
+" quick reformat whole buffer
+nmap gQ gqae
+
 " Exit neovim terminal mode like insert mode
 if exists(':tnoremap')
   tnoremap <Esc> <C-\><C-n>
