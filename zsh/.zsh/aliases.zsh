@@ -49,7 +49,8 @@ alias gll="git log --pretty=format:'%h - %an [%ar] %s'"
 alias gma="git merge --abort"
 alias gh='git browse-remote'
 alias gp='git pull'
-alias gr='git review'
+alias grev='git review'
+alias gr='git rebase'
 alias gri='git rebase -i'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
