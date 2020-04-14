@@ -34,7 +34,7 @@ set dictionary+=/usr/share/dict/words " autocomplete words from system dictionar
 set tags^=./.git/tags;               " read tags from git directory
 set path-=/usr/include               " remove default include folder from path
 
-set spellfile=~/Synology/vim/spell/en.utf-8.add
+set spellfile=~/Drive/vim/spell/en.utf-8.add
 set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 
 " setup completion (affects c-n, c-p, c-x c-n, c-x c-p)
