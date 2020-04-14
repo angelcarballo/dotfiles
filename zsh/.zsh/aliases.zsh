@@ -33,9 +33,8 @@ alias bpry='bundle exec pry'
 alias up='git pull && bundle'
 
 # Git
-alias br='branch' # custom zsh function
+alias br='branch' # fuzzy find branch (custom zsh function)
 alias co='git checkout '
-alias gco='git checkout '
 alias gb='git branch'
 alias gc='git commit'
 alias gcb='git checkout -b'
@@ -44,13 +43,17 @@ alias gd='git diff'
 alias gdh='git diff HEAD'
 alias gdm='git diff origin/master'
 alias gf='git fetch'
+alias fetch='git fetch'
 alias gl='git log --oneline --decorate --graph --all'
 alias gll="git log --pretty=format:'%h - %an [%ar] %s'"
 alias gma="git merge --abort"
 alias gh='git browse-remote'
 alias gp='git pull'
+alias pull='git pull'
 alias grev='git review'
 alias gr='git rebase'
+alias rebase='git rebase'
+alias push='git push'
 alias gri='git rebase -i'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
@@ -68,7 +71,6 @@ alias gj='git jump diff'
 alias gjm='git jump merge'
 alias grh='git reset --hard '
 alias gap='git add --patch '
-alias pr='gh pr view'
 alias gsearch='git log --source --all -S'
 
 # Vim
