@@ -1,22 +1,21 @@
 # Dotfiles
 
 My collection of dotfiles. If you want to reuse any of this, clone the
-repository and review the code, it's probably better to pick an choose what you
-need.
-
+repository and review the code, it's probably better to pick an choose
+what you need.
 
 ## Usage
 
-  ```sh
-  # initial setup
-  make setup_mac
+``` sh
+# initial setup
+make setup_mac
 
-  # set zsh as default shell
-  chsh -s $(which zsh)
+# set zsh as default shell
+chsh -s $(which zsh)
 
-  # update repo, links and vim plugins
-  make
-  ```
+# update repo, links and vim plugins
+make
+```
 
 ## Local changes and extra commands
 
