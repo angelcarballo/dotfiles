@@ -235,6 +235,9 @@ endif
 nnoremap ]f :<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(v:count1), ':.'))<cr><cr>
 nnoremap [f :<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(-v:count1), ':.'))<cr><cr>
 
+nnoremap [a :next<cr>
+nnoremap ]a :previous<cr>
+
 nnoremap [b :bprevious<cr>
 nnoremap ]b :bnext<cr>
 
