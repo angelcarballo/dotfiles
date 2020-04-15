@@ -221,7 +221,7 @@ xnoremap H ^
 xnoremap L $
 
 " quick reformat whole buffer
-nmap gQ gqae
+nmap gQ gwae
 
 " Exit neovim terminal mode like insert mode
 if exists(':tnoremap')
