@@ -71,6 +71,7 @@ alias gitfiles='git ls-files --modified --others --exclude-standard'
 alias gj='git jump diff'
 alias gjm='git jump merge'
 alias grh='git reset --hard '
+alias grs='git restore --staged '
 alias gap='git add --patch '
 alias gsearch='git log --source --all -S'
 
