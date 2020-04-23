@@ -66,7 +66,8 @@ runtime startup/plugin/vim-ruby.vim              " configuration for default vim
 "}}}
 
 filetype plugin indent on  " enable filetype and indentation plugins
-runtime macros/matchit.vim " load matchit plugin (shipped with vim)
+runtime macros/matchit.vim " match closing pairs
+runtime ftplugin/man.vim   " open man documentation
 
 " add OS global var
 if !exists('g:os')
