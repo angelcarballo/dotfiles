@@ -100,7 +100,7 @@ export HISTSIZE=10000
 export HISTFILE=~/.zsh_history
 
 # commands not added to history
-export HISTORY_IGNORE="(ll|clear|c|clear|ls|cd *|pwd|exit|cd ..|rm *|rc|bi|fs|gd|gs|gp|git push|git pull|git fetch|v|cd|pry|dark|light)"
+export HISTORY_IGNORE="(ll|clear|c|clear|ls|cd *|pwd|exit|cd ..|rm *|rc|bi|fs|gd|gs|gp|git push|git pull|git fetch|v|cd|pry|dark|light|up|master|co .|..|gl|ots|bpry|git ci|clar|cl4ar|bundle)"
 
 # dont use zle on emacs to aviod duplicated input
 if [[ -n ${INSIDE_EMACS} ]]; then
