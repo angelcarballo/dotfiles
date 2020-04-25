@@ -37,6 +37,7 @@ alias br='branch' # fuzzy find branch (custom zsh function)
 alias co='git checkout '
 alias gb='git branch'
 alias gc='git commit'
+alias gca='git clean -d'
 alias gcb='git checkout -b'
 alias gcm='git commit -m '
 alias gd='git diff'
