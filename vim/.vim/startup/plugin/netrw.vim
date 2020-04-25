@@ -3,3 +3,4 @@ let g:netrw_banner=0            " no banner
 let g:netrw_altv=1              " open files on right
 let g:netrw_preview=1           " open previews vertically
 let g:netrw_sizestyle='H'       " show human style file sizes
+let g:netrw_nogx = 1            " disable gx url command
