@@ -3,6 +3,9 @@
 " map leader to <space>
 let mapleader="\<space>"
 
+" don't go into Ex mode
+nnoremap Q <nop>
+
 " open url under cursor (default Netrw mapping is broken. See https://github.com/vim/vim/issues/4738)
 nnoremap <silent> gx :!open <cWORD><cr>
 
