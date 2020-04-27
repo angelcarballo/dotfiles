@@ -17,6 +17,12 @@ chsh -s $(which zsh)
 make
 ```
 
+## Minimal vimrc
+
+```sh
+curl https://raw.githubusercontent.com/angelcarballo/dotfiles/master/vim/.vimrc.min ~/.vimrc
+```
+
 ## Local changes and extra commands
 
 Zsh will try to source `~/.zshrc.local`. Put local settings, env vars,
