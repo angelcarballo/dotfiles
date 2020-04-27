@@ -1,0 +1,59 @@
+" Minimal Vim configuration
+"
+" This is supposed to be kept dependency-free to enable this file to be
+" downloaded directly into any Mac/Linux maching and provide basic
+" functionality.
+
+filetype plugin indent on  " enable filetype and indentation plugins
+runtime macros/matchit.vim " match closing pairs
+
+" Settings
+set showcmd                          " show complete commands
+set number                           " show line numbers
+set ruler                            " show cursor position
+set scrolloff=3                      " leave space after the current line
+set splitright                       " open new vertical split panes to right
+set history=200                      " increase history (default: 50)
+set incsearch                        " incremental search
+set ignorecase                       " ignore case on search ...
+set smartcase                        " ... except if query contains uppercase characters
+set infercase                        " ... same thing for keyword completion
+set nowrap                           " don't wrap lines when they're too long for current screen size
+set backspace=indent,eol,start       " backspace through everything
+set wildmenu                         " visual auto complete for command menu
+set formatoptions+=j                 " delete comment character when joining commented lines
+set omnifunc=syntaxcomplete#Complete " enable omni completion
+set magic                            " eval special character as 'special' by default, for example . is any character, and \. is a dot
+set autoread                         " if a file changes outside Vim, reload its contents automatically
+set nojoinspaces                     " only insert one space when joining after an '.'
+set breakindent                      " keep indentation on wrapped lines
+set tabstop=2                        " tabs use 2 spaces by default (filetypes override this)
+set expandtab                        " indent with spaces by default (overriden by filetype)
+
+" setup completion (affects c-n, c-p, c-x c-n, c-x c-p)
+set complete=
+set complete+=.  " complete with words from current buffer
+set complete+=w  " complete with words from other windows
+set complete+=b  " complete with words from other loaded buffers
+set complete+=u  " complete with words from other unloaded buffers
+
+" entire buffer text object
+onoremap ae :<c-u>normal! ggVG<cr>
+
+
+" Look & Feel
+syntax on                      " enable syntax highlighting
+set visualbell                 " visual flash instead of beeping
+set noerrorbells               " no flash on errors, only at beginning/end of file
+set laststatus=2               " always show status bar
+
+" Mappings
+
+" pane navigation
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+" easily exit insert mode
+inoremap kj <esc>

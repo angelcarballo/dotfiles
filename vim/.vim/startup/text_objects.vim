@@ -1,4 +1,4 @@
-"  next <surround object>
+" next <surround object>
 onoremap inb :<c-u>normal! f(vi(<cr>
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap in) :<c-u>normal! f(vi(<cr>
@@ -10,7 +10,7 @@ onoremap in} :<c-u>normal! f{vi{<cr>
 onoremap in' :<c-u>normal! f'vi'<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
 
-" whole file (entire)
+" entire buffer text object
 onoremap ae :<c-u>normal! ggVG<cr>
 
 " current line with/without <br>

@@ -190,7 +190,7 @@ nnoremap gp p
 nnoremap gP P
 
 " Search and replace current visual selection
-xnoremap <c-r> "hy:%s/<c-r>h//g<left><left>
+xnoremap <c-r> "zy:%s/<c-r>z//g<left><left>
 
 " Move around using visual lines, useful when wrap is enabled
 " if a count is provided, default j/k behavior is used
