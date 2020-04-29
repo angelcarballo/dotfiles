@@ -8,7 +8,7 @@
 # it gets replaced by the "replace" string.
 matches:
   - trigger: "wemail"
-    replace: "angelcarballo@simplybusiness.co.uk"
+    replace: "angel.carballo@simplybusiness.co.uk"
 
   - trigger: "pemail"
     replace: "contact@angelcarballo.com"
