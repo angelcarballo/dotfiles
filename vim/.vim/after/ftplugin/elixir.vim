@@ -11,5 +11,6 @@ inoreabbrev <buffer> eex <%= %><left><left><left>
 
 setlocal formatprg=mix\ format\ - 
 setlocal makeprg=mix\ compile
+setlocal foldmethod=indent
 
 nnoremap <buffer> K :DD<cr>
