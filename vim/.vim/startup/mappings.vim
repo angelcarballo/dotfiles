@@ -69,9 +69,9 @@ xnoremap <silent> <leader>em :call ExtractMethod()<cr>
 
 " f - File/Find
 nnoremap <leader>fs :up<cr>
-nnoremap <silent> <leader>fa :Files<cr>
+nnoremap <silent> <leader>ff :Files<cr>
 nnoremap <silent> <leader>fd :Files %:p:h<cr>
-nnoremap <silent> <leader>ff :GFiles<cr>
+nnoremap <silent> <leader>fF :Files<cr>
 nnoremap <silent> <leader>fg :GFiles?<cr>
 nnoremap <silent> <leader>fr :History<cr>
 nnoremap <silent> <leader>ft :Ag<cr>
