@@ -226,6 +226,9 @@ nnoremap L $
 xnoremap H ^
 xnoremap L $
 
+" Auto close xml/html tags
+iabbrev </ </<c-x><c-o>
+
 " quick reformat whole buffer
 nmap gQ gwae
 
