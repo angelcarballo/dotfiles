@@ -14,3 +14,4 @@ emacs/.emacs.d/
 node_modules/
 .git/
 Brewfile.lock.json
+_build/
