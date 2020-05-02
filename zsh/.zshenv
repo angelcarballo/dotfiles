@@ -22,6 +22,7 @@ export NOTES="$HOME/Drive/notes"
 # FZF settings
 export FZF_DEFAULT_OPTS=' --layout=reverse'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
+export FZF_COMPLETION_TRIGGER='ff'
 
 # Used for git review alias, it indicates the BASE branch for a merge or rebase
 export REVIEW_BASE="origin/master"
