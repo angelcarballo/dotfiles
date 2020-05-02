@@ -10,10 +10,10 @@ nnoremap Q <nop>
 nnoremap <silent> gx :!open <cWORD><cr>
 
 " Show and switch to buffers
-nnoremap <leader><space> :Buffers<cr>
+nnoremap <leader><space> :buffers<cr>:bu<space>
 
 " Show and navigate to mark
-nnoremap <leader>, :Marks<cr>
+nnoremap <leader>, :marks<cr>:mark <space>
 
 " Quick toggle between last two buffers
 nnoremap <tab> <c-^>
