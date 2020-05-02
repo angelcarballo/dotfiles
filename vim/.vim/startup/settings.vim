@@ -33,6 +33,7 @@ set cryptmethod=blowfish2            " use blowfish 2 crypto method by default (
 set dictionary+=/usr/share/dict/words " autocomplete words from system dictionary
 set tags^=./.git/tags;               " read tags from git directory
 set path-=/usr/include               " remove default include folder from path
+set path+=**                         " find recursivelly in subfolders
 
 set spellfile=~/Drive/vim/spell/en.utf-8.add
 set diffopt=filler,internal,algorithm:histogram,indent-heuristic
