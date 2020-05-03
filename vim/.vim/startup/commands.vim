@@ -12,5 +12,3 @@ endif
 
 " Delete current file
 command! Rm :call delete(expand('%')) | bdelete!
-command! Cp :!cp expand('%')<space>
-command! Mv :!Mv expand('%')<space>
