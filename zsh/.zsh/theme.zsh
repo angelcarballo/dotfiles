@@ -48,7 +48,7 @@ current_path() {
 }
 
 prompt_symbol_with_last_command_status() {
-  echo "%(?.%F{white}.%F{red})$%F{reset_color}"
+  echo "%-30(l::\n)%(?.%F{white}.%F{red})$%F{reset_color}"
 }
 
 username() {
