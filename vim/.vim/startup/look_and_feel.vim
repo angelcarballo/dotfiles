@@ -10,7 +10,6 @@ set laststatus=2               " always show status bar
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
 let &showbreak='↳ '            " indicator for wrapped lines
-set guifont=Iosevka\ Term:h16
 
 " statusline
 set statusline=                                     " custom status line
