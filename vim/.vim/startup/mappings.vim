@@ -30,8 +30,6 @@ xnoremap <leader>8 "zy:silent grep "<c-r>z" -g !spec<cr>
 
 
 " b - Buffers
-nnoremap <silent> <leader>bd :bprevious <bar> bdelete #<cr>
-nnoremap <silent> <leader>bb :Buffers<cr>
 nnoremap <silent> <leader>bo :w <bar> %bd <bar> e#<cr>
 
 " c - Copy/clear
@@ -62,9 +60,6 @@ nnoremap <leader>dl yy:Commentary<cr>p
 xnoremap <leader>dl ygv:Commentary<cr>']p
 
 " e - Explore/Extract
-nnoremap <silent> <leader>ei :Explore<cr>
-nnoremap <silent> <leader>es :Sex<cr>
-nnoremap <silent> <leader>ev :Vex<cr>
 xnoremap <silent> <leader>em :call ExtractMethod()<cr>
 
 " f - File/Find
@@ -101,9 +96,6 @@ nnoremap <leader>gt :VimuxRunCommand("ctags -R")<cr>
 " i - Indent / Insert
 nnoremap <leader>ij :%!python -m json.tool<cr>
 
-" m - Marks
-nnoremap <leader>mm :Marks<cr>
-
 " o - open
 nnoremap <leader>of :! open '%'<cr>
 nnoremap <leader>on :FZF $NOTES/<cr>
@@ -111,10 +103,6 @@ nnoremap <leader>on :FZF $NOTES/<cr>
 " P - Plugins
 nnoremap <leader>Pi :call minpac#update()<cr>
 nnoremap <leader>Pc :call minpac#clean()<cr>
-
-" q - Quit
-nnoremap <leader>q :q<cr>
-nnoremap <leader>Q :qall!<cr>
 
 " r - Remove
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
@@ -132,20 +120,9 @@ nnoremap <silent> <leader>Sf :echo @%<cr>
 nnoremap <silent> <leader>Sp :echo expand('%:p')<cr>
 nnoremap <silent> <leader>Sb :echo "Git branch: " . fugitive#head()<cr>
 
-" t - Tabs
-nnoremap <silent> <leader>tn :tabnew<cr>
-
 " V - Vimrc
 nnoremap <leader>Ve :e $MYVIMRC<cr>
 nnoremap <leader>Vs :so $MYVIMRC<cr>
-
-" w - Windows/Tabs
-nnoremap <silent> <leader>wq :wq<cr>
-nnoremap <silent> <leader>wo :only<cr>
-nnoremap <silent> <leader>we <c-w>=
-nnoremap <silent> <leader>ws :sp<cr>
-nnoremap <silent> <leader>wt :tabedit %<cr>
-nnoremap <silent> <leader>wv :vsp<cr>
 
 " x - eXecute
 " nnoremap <leader>x :call VimuxRunCommand(bufname("%"))<left>
@@ -165,22 +142,9 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
-" Easy history traversal on command line
-cnoremap <c-n> <up>
-cnoremap <c-p> <down>
-
 " Use tab for both indentation and autocomplete
 inoremap <tab> <c-r>=Tab_Or_Complete()<cr>
 
-" Easily exit insert mode
-inoremap kj <esc>
-
-" allows incsearch highlighting for range commands
-" i.e. search with /,? and then copy/move/delete
-cnoremap &y <cr>:copy''<cr>
-cnoremap &c <cr>:copy''<cr>
-cnoremap &m <cr>:move''<cr>
-cnoremap &d <cr>:delete<cr>``
 
 " Fix closest spelling error
 inoremap <c-f> <c-g>u<esc>[s1z=`]a<c-g>u
@@ -202,23 +166,18 @@ nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " Use cursors to resize windows
-noremap <silent> <left> :vertical resize -3<cr>
-noremap <silent> <right> :vertical resize +3<cr>
-noremap <silent> <down> :resize +3<cr>
-noremap <silent> <up> :resize -3<cr>
+noremap <left> :vertical resize -3<cr>
+noremap <right> :vertical resize +3<cr>
+noremap <down> :resize +3<cr>
+noremap <up> :resize -3<cr>
 
 " Use cursors to move lines in visual mode
 xnoremap <up> :move '<-2<cr>gv=gv
 xnoremap <down> :move '>+<cr>gv=gv
+
 " and to increase/decrease indentation
 xnoremap <right> >gv
 xnoremap <left> <gv
-
-" Easily run the last command on selected lines
-xnoremap . :norm.<cr>
-
-" Make Y behave like other capitals (yank from cursor to end of line)
-nnoremap Y y$
 
 " Easy beginning/end of line
 nnoremap H ^
@@ -229,10 +188,7 @@ xnoremap L $
 " Auto close xml/html tags
 iabbrev </ </<c-x><c-o>
 
-" quick reformat whole buffer
-nmap gQ gwae
-
-" Exit neovim terminal mode like insert mode
+" Exit terminal mode like insert mode
 if exists(':tnoremap')
   tnoremap <Esc> <C-\><C-n>
 endif
@@ -279,9 +235,6 @@ nnoremap col :call ToggleLocation()<cr>
 
 " ---------------------------------------------------------------------------}}}
 " Operators -----------------------------------------------------------------{{{
-
-" Align
-nnoremap ga =
 
 " web search operator
 nnoremap <silent> gs :set opfunc=WebSearch<cr>g@
