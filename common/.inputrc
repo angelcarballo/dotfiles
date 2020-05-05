@@ -1,6 +1,10 @@
 set editing-mode vi
 
 set keymap vi-insert
+
+"\C-n": history-search-backward
+"\C-p": history-search-forward
+
 $if mode=vi
         "kj": vi-movement-mode
         "\C-b": beginning-of-line

@@ -56,10 +56,10 @@ bindkey '^z' fancy-ctrl-z
 bindkey '^r' fzf-search-history
 
 # repeat last command
-bindkey -s '^p' "!!\n"
+bindkey -s '^l' "!!\n"
 
 # exit insert mode with kj, like in vim
-# bindkey -M viins 'kj' vi-cmd-mode
+bindkey -M viins 'kj' vi-cmd-mode
 
 # easier cd into frequent directories
 setopt auto_cd

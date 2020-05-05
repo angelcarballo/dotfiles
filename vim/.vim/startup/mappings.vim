@@ -3,6 +3,9 @@
 " map leader to <space>
 let mapleader="\<space>"
 
+" easily exit insert mode
+inoremap kj <esc>
+
 " don't go into Ex mode
 nnoremap Q <nop>
 
@@ -103,6 +106,9 @@ nnoremap <leader>on :FZF $NOTES/<cr>
 " P - Plugins
 nnoremap <leader>Pi :call minpac#update()<cr>
 nnoremap <leader>Pc :call minpac#clean()<cr>
+
+" q - Quit
+nnoremap <leader>q :q<cr>
 
 " r - Remove
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
