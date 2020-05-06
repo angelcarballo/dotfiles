@@ -23,7 +23,7 @@ nnoremap <tab> <c-^>
 
 " /,? - Search in project
 nnoremap <leader>/ :silent grep ""<left>
-nnoremap <leader>? :silent grep "" -g !spec<c-left><c-left><left><left>
+nnoremap <leader>? :silent grep -g !spec ""<left>
 
 " * - Search in file or project for word under cursor
 xnoremap * "zy/<c-r>z<cr>
