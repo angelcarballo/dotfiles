@@ -50,7 +50,6 @@ call minpac#add('junegunn/fzf.vim')                    " FZF helpers
 call minpac#add('romainl/vim-devdocs')                 " search documentation on DevDocs
 
 " Auto completion
-call minpac#add('jiangmiao/auto-pairs')                " auto close parenthesis/brackets/quotes
 call minpac#add('tpope/vim-endwise')                   " auto close do/end blocks and similar
 
 " Runners

@@ -142,6 +142,21 @@ nnoremap <leader>xf :call VimuxRunCommand(bufname("%"))<left>
 " ---------------------------------------------------------------------------}}}
 " Mappings (other) ----------------------------------------------------------{{{
 
+" auto close pairs
+inoremap ' ''<left>
+inoremap " ""<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap '' ''
+inoremap "" ""
+inoremap () ()
+inoremap [] []
+inoremap {} {}
+inoremap (<cr> (<cr>)<c-o>O<tab>
+inoremap [<cr> [<cr>]<c-o>O<tab>
+inoremap {<cr> {<cr>}<c-o>O<tab>
+
 " pane navigation
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
