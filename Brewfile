@@ -14,9 +14,6 @@ brew "libyaml"
 # zsh and plugin manager
 brew "zsh"
 
-# better diff formatting
-brew "diff-so-fancy"
-
 # general purpose fuzzy finder
 brew "fzf"
 
