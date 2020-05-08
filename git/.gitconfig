@@ -1,6 +1,6 @@
 [core]
 	excludesfile = ~/.gitignore_global
-	; pager = /usr/local/bin/diff-highlight | less
+	pager = /usr/local/bin/diff-highlight | less
 [clean]
 	requireForce = false
 [commit]

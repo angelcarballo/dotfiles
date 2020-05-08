@@ -15,12 +15,12 @@ GREEN=\033[1;32m
 NC=\033[0m # No Color
 
 # Tasks that do not generate a file (and are always executed)
-.PHONY: update_dotfiles update_base16 update_homebrew link_mac link_server update_vim_plugins vim_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac install_gitstatus update_cheats
+.PHONY: update_dotfiles update_base16 update_homebrew link_mac link_server update_vim_plugins vim_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac install_gitstatus update_cheats link_diff_highlight
 
 default:
 	$(MAKE) $(DEFAULT_TASK)
 
-default_mac: update link_mac update_vim_plugins update_base16 update_homebrew update_cheats
+default_mac: update link_mac update_vim_plugins update_base16 update_homebrew link_diff_highlight update_cheats
 
 default_server: update link_server update_vim_plugins
 
@@ -39,6 +39,11 @@ update_homebrew:
 	brew update
 	brew upgrade
 	brew cleanup
+
+link_diff_highlight:
+	@echo "\n${GREEN}Linking diff-highlight${NC}"
+	rm -f /usr/local/bin/diff-highlight
+	ln -s  `brew --cellar git`/`brew list --versions git | cut -d' ' -f2`/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
 
 link_mac:
 	@echo "\n${GREEN}Linking dotfiles (MacOS)${NC}"
