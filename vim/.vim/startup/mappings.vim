@@ -9,9 +9,6 @@ inoremap kj <esc>
 " don't go into Ex mode
 nnoremap Q <nop>
 
-" open url under cursor (default Netrw mapping is broken. See https://github.com/vim/vim/issues/4738)
-nnoremap <silent> gx :!open <cWORD><cr>
-
 " Show and switch to buffers
 nnoremap <leader><space> :buffers<cr>:bu<space>
 
@@ -93,8 +90,6 @@ nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gs :Gstatus\|wincmd T<cr>
 nnoremap <leader>gw :Gwrite<cr>
-
-nnoremap <leader>gt :VimuxRunCommand("ctags -R")<cr>
 
 " i - Indent / Insert
 nnoremap <leader>ij :%!python -m json.tool<cr>
