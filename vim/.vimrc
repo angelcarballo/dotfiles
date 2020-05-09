@@ -48,6 +48,7 @@ call minpac#add('romainl/vim-cool')                    " clear search highlight 
 call minpac#add('junegunn/fzf')                        " basic FZF support
 call minpac#add('junegunn/fzf.vim')                    " FZF helpers
 call minpac#add('romainl/vim-devdocs')                 " search documentation on DevDocs
+call minpac#add('ludovicchabant/vim-gutentags')    " auto generate and update tags
 
 " Auto completion
 call minpac#add('tpope/vim-endwise')                   " auto close do/end blocks and similar
