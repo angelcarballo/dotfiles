@@ -206,9 +206,6 @@ nnoremap L $
 xnoremap H ^
 xnoremap L $
 
-" Auto close xml/html tags
-iabbrev </ </<c-x><c-o>
-
 " Exit terminal mode like insert mode
 if exists(':tnoremap')
   tnoremap <Esc> <C-\><C-n>
