@@ -10,6 +10,4 @@ let b:execute_with='ruby'
 inoreabbrev <buffer> rk =>
 inoreabbrev <buffer> bpry require 'pry'; binding.pry
 
-let b:AutoPairs = AutoPairsDefine({'|' : '|'})
-
 nnoremap <buffer> K :DD<cr>
