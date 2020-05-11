@@ -55,9 +55,6 @@ bindkey '^z' fancy-ctrl-z
 # ctrl-r starts searching history backward
 bindkey '^r' fzf-search-history
 
-# repeat last command
-bindkey -s '^l' "!!\n"
-
 # exit insert mode with kj, like in vim
 bindkey -M viins 'kj' vi-cmd-mode
 
