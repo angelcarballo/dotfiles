@@ -1,6 +1,5 @@
 " Mappings (leader) ---------------------------------------------------------{{{
 
-" map leader to <space>
 let mapleader="\<space>"
 
 " easily exit insert mode
@@ -22,12 +21,10 @@ nnoremap <tab> <c-^>
 nnoremap <leader>/ :silent grep ""<left>
 nnoremap <leader>? :silent grep -g !spec ""<left>
 
-" * - Search in file or project for word under cursor
+" * - Search in file or project
 xnoremap * "zy/<c-r>z<cr>
 nnoremap <leader>8 :silent grep "<cword>"<cr>
-nnoremap <leader>* :silent grep "<cword>" -g !spec<cr>
-xnoremap <leader>8 "zy:silent grep "<c-r>z" -g !spec<cr>
-
+xnoremap <leader>8 "zy:silent grep "<c-r>z"<cr>
 
 " b - Buffers
 nnoremap <silent> <leader>bo :w <bar> %bd <bar> e#<cr>
@@ -61,6 +58,9 @@ xnoremap <leader>dl ygv:Commentary<cr>']p
 
 " e - Explore/Extract
 xnoremap <silent> <leader>em :call ExtractMethod()<cr>
+nnoremap <silent> <leader>ei :Explore<cr>
+nnoremap <silent> <leader>es :Sex<cr>
+nnoremap <silent> <leader>ev :Vex<cr>
 
 " f - File/Find
 nnoremap <leader>fs :up<cr>
@@ -124,6 +124,13 @@ nnoremap <silent> <leader>Sb :echo "Git branch: " . fugitive#head()<cr>
 " V - Vimrc
 nnoremap <leader>Ve :e $MYVIMRC<cr>
 nnoremap <leader>Vs :so $MYVIMRC<cr>
+
+" w - Windows/Tabs
+nnoremap <silent> <leader>wo :only<cr>
+nnoremap <silent> <leader>we <c-w>=
+nnoremap <silent> <leader>ws :sp<cr>
+nnoremap <silent> <leader>wt :tabedit %<cr>
+nnoremap <silent> <leader>wv :vsp<cr>
 
 " x - eXecute
 " nnoremap <leader>x :call VimuxRunCommand(bufname("%"))<left>
@@ -213,8 +220,8 @@ endif
 nnoremap ]f :<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(v:count1), ':.'))<cr><cr>
 nnoremap [f :<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(-v:count1), ':.'))<cr><cr>
 
-nnoremap [a :next<cr>
-nnoremap ]a :previous<cr>
+nnoremap ]a :next<cr>
+nnoremap [a :previous<cr>
 
 nnoremap [b :bprevious<cr>
 nnoremap ]b :bnext<cr>
@@ -222,8 +229,11 @@ nnoremap ]b :bnext<cr>
 nnoremap [q :cprevious<cr>
 nnoremap ]q :cnext<cr>
 
-nnoremap [e :lprevious<cr>
-nnoremap ]e :lnext<cr>
+nnoremap [Q :colder<cr>
+nnoremap ]Q :cnewer<cr>
+
+nnoremap [l :lprevious<cr>
+nnoremap ]l :lnext<cr>
 
 nnoremap [w :tabprevious<cr>
 nnoremap ]w :tabnext<cr>
