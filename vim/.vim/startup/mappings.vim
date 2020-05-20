@@ -121,6 +121,15 @@ nnoremap <silent> <leader>Sf :echo @%<cr>
 nnoremap <silent> <leader>Sp :echo expand('%:p')<cr>
 nnoremap <silent> <leader>Sb :echo "Git branch: " . fugitive#head()<cr>
 
+" T - Tabs
+nnoremap <silent> <leader>tn :tabnew<cr>
+
+" v - Vimux
+nnoremap <silent> <leader>vc :VimuxCloseRunner<cr>
+nnoremap <silent> <leader>vi :VimuxInspectRunner<cr>
+nnoremap <silent> <leader>vr :VimuxRunCommand("")<cr>
+nnoremap <leader>vf :call VimuxRunCommand(bufname("%"))<left>
+
 " V - Vimrc
 nnoremap <leader>Ve :e $MYVIMRC<cr>
 nnoremap <leader>Vs :so $MYVIMRC<cr>
@@ -132,20 +141,11 @@ nnoremap <silent> <leader>ws :sp<cr>
 nnoremap <silent> <leader>wt :tabedit %<cr>
 nnoremap <silent> <leader>wv :vsp<cr>
 
-" x - eXecute
-" nnoremap <leader>x :call VimuxRunCommand(bufname("%"))<left>
-nnoremap <silent> <leader>xc :VimuxCloseRunner<cr>
-nnoremap <silent> <leader>xi :VimuxInspectRunner<cr>
-nnoremap <silent> <leader>xo :VimuxRunCommand("")<cr>
-nnoremap <silent> <leader>xx :VimuxZoomRunner<cr>
-nnoremap <leader>xf :call VimuxRunCommand(bufname("%"))<left>
-
 
 " ---------------------------------------------------------------------------}}}
 " Mappings (other) ----------------------------------------------------------{{{
 
 " auto close pairs
-inoremap ' ''<left>
 inoremap " ""<left>
 inoremap ( ()<left>
 inoremap [ []<left>
