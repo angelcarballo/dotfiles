@@ -20,7 +20,7 @@ make
 ## Minimal vimrc
 
 ```sh
-curl https://raw.githubusercontent.com/angelcarballo/dotfiles/master/vim/.vimrc.min ~/.vimrc
+curl https://raw.githubusercontent.com/angelcarballo/dotfiles/master/vim/.vimrc.min -o ~/.vimrc
 ```
 
 ## Local changes and extra commands
