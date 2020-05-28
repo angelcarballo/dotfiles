@@ -104,6 +104,7 @@ nnoremap <leader>Pc :call minpac#clean()<cr>
 
 " q - Quit
 nnoremap <leader>q :q<cr>
+nnoremap <leader>Q :qall!<cr>
 
 " r - Remove
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
