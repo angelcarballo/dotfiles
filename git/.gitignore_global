@@ -1,6 +1,9 @@
 # Tmux session files
 .tmux-session
 
+# Vim session files
+Session.vim
+
 # Test output
 capybara-*.html
 
