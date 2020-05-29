@@ -69,7 +69,6 @@ nnoremap <silent> <leader>fd :Files %:p:h<cr>
 nnoremap <silent> <leader>fF :Files<cr>
 nnoremap <silent> <leader>fg :GFiles?<cr>
 nnoremap <silent> <leader>fr :History<cr>
-nnoremap <silent> <leader>ft :Ag<cr>
 nnoremap <silent> <leader>fh :Helptags<cr>
 nnoremap <silent> <leader>fm :Marks<cr>
 
