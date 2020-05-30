@@ -19,6 +19,9 @@ matches:
   - trigger: "myphone"
     replace: "07476725371"
 
+  - trigger: "lorem"
+    replace: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique dui non lectus laoreet laoreet. Maecenas sagittis nec mi posuere eleifend. Nunc condimentum urna neque, id ornare turpis dapibus id. Maecenas nec ultricies sem. Pellentesque nibh nisl, rutrum a porttitor ac, rutrum in velit. Nunc venenatis massa augue, non feugiat sem pulvinar non. Vivamus pharetra commodo lobortis. Maecenas justo nisi, pellentesque eleifend iaculis quis, mattis a nisl. Maecenas justo massa, tristique quis rhoncus sed, suscipit et dolor. Nam congue sapien id quam egestas sagittis vitae eget orci. Maecenas ut arcu libero. Aliquam erat volutpat. Etiam lobortis, felis in tincidunt scelerisque, mi lectus viverra odio, scelerisque ornare arcu ex eu enim. In congue dignissim felis eu pharetra. Aliquam ornare nec tortor ac hendrerit. Donec vehicula lectus nec quam bibendum, vitae aliquet lacus tincidunt."
+
   # Dates
   # - trigger: ":date"
   #   replace: "{{mydate}}"
