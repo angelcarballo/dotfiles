@@ -1,5 +1,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
+[pager]
+	diff = diff-highlight | less --pattern '^diff --'
 [clean]
 	requireForce = false
 [commit]
