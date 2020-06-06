@@ -24,9 +24,6 @@ export FZF_DEFAULT_OPTS=' --layout=reverse'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 export FZF_COMPLETION_TRIGGER='ff'
 
-# Used for git review alias, it indicates the BASE branch for a merge or rebase
-export REVIEW_BASE="origin/master"
-
 # Used to show git information on zsh prommpt
 export GITSTATUS_DIR="$HOME/src/gitstatus"
 

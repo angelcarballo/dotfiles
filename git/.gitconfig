@@ -15,14 +15,6 @@
 	f = fetch
 	p = pull
 	undo = reset --soft HEAD^
-	# list files which have changed since REVIEW_BASE
-	# (REVIEW_BASE defaults to 'master' in my zshrc)
-	files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
-	# Same as above, but with a diff stat instead of just names
-	# (better for interactive use)
-	stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
-	review = !vim $(git files)
-	reviewdiff = !vim -p $(git files) +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
