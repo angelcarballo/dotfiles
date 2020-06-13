@@ -27,3 +27,10 @@ augroup HELP
   " open help splitting to the right
   autocmd FileType help wincmd L
 augroup END
+
+augroup PROJECT_PATH
+  autocmd!
+
+  " open help splitting to the rightl
+  autocmd Bufread,BufNewFile */dotfiles/* set path+=vim/.vim/*,tmux/.tmmux/*,zsh/.zsh/*
+augroup END
