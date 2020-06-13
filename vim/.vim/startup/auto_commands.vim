@@ -22,6 +22,8 @@ augroup QUICKFIX
 augroup END
 
 augroup HELP
+  autocmd!
+
   " open help splitting to the right
   autocmd FileType help wincmd L
 augroup END
