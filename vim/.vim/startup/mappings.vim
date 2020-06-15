@@ -114,7 +114,6 @@ nnoremap <leader>sf :TestFile<cr>
 nnoremap <leader>sc :TestNearest<cr>
 nnoremap <leader>sl :TestLast<cr>
 nnoremap <leader>sg :TestVisit<cr>
-xnoremap <leader>s, :s/\,\s*/,\r/g<cr>
 
 " S - Show
 nnoremap <silent> <leader>Sf :echo @%<cr>
@@ -126,9 +125,7 @@ nnoremap <silent> <leader>tn :tabnew<cr>
 
 " v - Vimux
 nnoremap <silent> <leader>vc :VimuxCloseRunner<cr>
-nnoremap <silent> <leader>vi :VimuxInspectRunner<cr>
-nnoremap <silent> <leader>vr :VimuxRunCommand("")<cr>
-nnoremap <leader>vf :call VimuxRunCommand(bufname("%"))<left>
+nnoremap <silent> <leader>vo :VimuxRunCommand("")<cr>
 
 " V - Vimrc
 nnoremap <leader>Ve :e $MYVIMRC<cr>
