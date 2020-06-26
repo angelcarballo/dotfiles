@@ -4,11 +4,15 @@
 # Personal binary folders
 export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$PATH"
 
-# GNU Coreutils
-export PATH="/usr/local/opt/coreutils/libexec/gnubin/:$PATH"
+case "$OSTYPE" in
+  darwin*)
+    # GNU Coreutils
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin/:$PATH"
 
-# Homebrew
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+    # Homebrew
+    export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+  ;;
+esac
 
 # Rust's Cargo
 export PATH="$HOME/.cargo/bin:$PATH"

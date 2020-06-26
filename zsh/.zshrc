@@ -3,13 +3,17 @@
 
 # NOTE: For some reason setting CC env var makes zsh load slower
 
-# Shells on mac automatically load /etc/profile and this messes with the order
-# of PATH entries. Here we clear up the path and re-set it again.
-if [ -f /etc/profile ]; then
-    PATH=""
-    source /etc/profile
-    source $HOME/.zshenv
-fi
+case "$OSTYPE" in
+  darwin*)
+    # Shells on mac automatically load /etc/profile and this messes with the order
+    # of PATH entries. Here we clear up the path and re-set it again.
+    if [ -f /etc/profile ]; then
+        PATH=""
+        source /etc/profile
+        source $HOME/.zshenv
+    fi
+  ;;
+esac
 
 # theme
 source ~/.zsh/theme.zsh
