@@ -60,14 +60,9 @@ hostname() {
 }
 
 username_and_host_if_server() {
-  case `uname` in
-    Darwin)
-      ;;
-    Linux)
-      # Full user (%n) and short hostname (%m)
-      echo "%F{12}%n@%m:%F{reset_color}"
-      ;;
-  esac
+  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    echo "%F{12}%n@%m:%F{reset_color}"
+  fi
 }
 
 setopt prompt_subst
