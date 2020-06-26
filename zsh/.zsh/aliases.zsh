@@ -1,5 +1,17 @@
 ### Alias
 
+# OS specific
+case "$OSTYPE" in
+  darwin*)
+    alias copy='pbcopy'
+    alias paste='pbpaste'
+  ;;
+  linux*)
+    alias copy='xclip -selection clipboard'
+    alias paste='xclip -selection clipboard -o'
+  ;;
+esac
+
 # Common
 alias c='clear'
 alias cp='cp -i' # ask before overriding
@@ -67,7 +79,7 @@ alias gs='git status -uall'
 alias gsl='git stash list'
 alias gsp='git stash pop'
 alias master='git checkout master'
-alias cb='git rev-parse --abbrev-ref HEAD | pbcopy'
+alias cb='git rev-parse --abbrev-ref HEAD | copy'
 alias fetchall='ls -d ~/src/*/ | xargs -I{} git -C {} fetch'
 alias ghd='open `hub browse -u | sed s/\tree.*//g`/compare/`git rev-parse --abbrev-ref HEAD`'
 alias modified='git ls-files --modified'

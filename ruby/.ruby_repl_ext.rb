@@ -18,14 +18,14 @@ class String
     end
   end
 
-  # Copy to system clipboard using pbcopy (only MacOs)
+  # Copy to system clipboard
   def copy
-    self.public_send('|', 'pbcopy')
+    self.public_send('|', 'copy')
     self
   end
 end
 
-# Copy to system clipboard using pbcopy (only MacOs)
+# Copy to system clipboard
 def copy(obj)
   obj.to_s.copy
 end
