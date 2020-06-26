@@ -30,3 +30,6 @@
 	fontdiff = -family Iosevka -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 [pull]
 	ff = only
+[user]
+	email = contact@angelcarballo.com
+	name = Angel Carballo

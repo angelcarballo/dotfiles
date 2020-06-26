@@ -15,16 +15,17 @@ GREEN=\033[1;32m
 NC=\033[0m # No Color
 
 # Tasks that do not generate a file (and are always executed)
-.PHONY: update_dotfiles update_base16 update_homebrew link_mac link_server update_vim_plugins vim_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac install_gitstatus update_cheats link_diff_highlight
+.PHONY: update_dotfiles update_base16 update_homebrew link link_server update_vim_plugins install_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac install_gitstatus update_cheats link_diff_highlight_mac link_diff_highlight_linux
 
 default:
 	$(MAKE) $(DEFAULT_TASK)
 
-default_mac: update link_mac update_vim_plugins update_base16 update_homebrew link_diff_highlight update_cheats
-
+default_mac: update link update_vim_plugins update_base16 update_homebrew link_diff_highlight_mac update_cheats
+default_linux: update link update_vim_plugins update_base16 update_cheats link_diff_highlight_linux
 default_server: update link_server update_vim_plugins
 
 setup_mac: install_rbenv install_homebrew install_base16 default_mac install_gitstatus
+setup_linux: install_base16 install_minpac install_gitstatus default_linux
 
 update:
 	@echo "\n${GREEN}Updating dotfiles${NC}"
@@ -40,13 +41,20 @@ update_homebrew:
 	brew upgrade
 	brew cleanup
 
-link_diff_highlight:
+link_diff_highlight_mac:
 	@echo "\n${GREEN}Linking diff-highlight${NC}"
 	rm -f /usr/local/bin/diff-highlight
 	ln -s  `brew --cellar git`/`brew list --versions git | cut -d' ' -f2`/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
 
-link_mac:
-	@echo "\n${GREEN}Linking dotfiles (MacOS)${NC}"
+link_diff_highlight_linux:
+	@echo "\n${GREEN}Linking diff-highlight${NC}"
+	rm ~/src/dotfiles/bin/diff-highlight
+	ln -s  /usr/share/doc/git/contrib/diff-highlight/diff-highlight ~/src/dotfiles/bin/diff-highlight
+	sudo chmod +x ~/src/dotfiles/bin/diff-highlight
+
+
+link:
+	@echo "\n${GREEN}Linking dotfiles (MacOS/Linux)${NC}"
 	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK) --ignore='DS_Store'
 
 link_server:
@@ -60,7 +68,7 @@ update_vim_plugins:
 	vim "+call minpac#clean()" "+qall"
 
 # Install minpac vim plugin manager
-vim_minpac:
+install_minpac:
 	@echo "\n${GREEN}Installing minpac${NC}"
 	git clone https://github.com/k-takata/minpac.git $(DOTFILES)/vim/.vim/pack/minpac/opt/minpac
 
