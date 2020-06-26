@@ -1,5 +1,10 @@
 "" General
 set antialias
 set visualbell      " disable audible bell
-set guioptions-=T   " hide toolbar
-set guifont=Iosevka:h16
+set guioptions-=Tm  " hide toolbar, menu bar
+
+if g:os == 'Linux'
+  set guifont=Iosevka\ Term\ Medium\ 14
+elseif g:os == 'Darwin'
+  set guifont=Iosevka:h16
+endif
