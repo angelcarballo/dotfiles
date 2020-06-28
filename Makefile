@@ -15,7 +15,7 @@ GREEN=\033[1;32m
 NC=\033[0m # No Color
 
 # Tasks that do not generate a file (and are always executed)
-.PHONY: update_dotfiles update_base16 update_homebrew link link_server update_vim_plugins install_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac install_gitstatus update_cheats link_diff_highlight_mac link_diff_highlight_linux
+.PHONY: update_dotfiles update_base16 update_homebrew link link_server update_vim_plugins install_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac install_gitstatus update_cheats link_diff_highlight_mac link_diff_highlight_linux install_extrakto
 
 default:
 	$(MAKE) $(DEFAULT_TASK)
@@ -95,3 +95,8 @@ install_gitstatus:
 update_cheats:
 	@echo "\n${GREEN}Updating community cheats${NC}"
 	if [ -d ~/src/dotfiles/cheats/community ]; then cd ~/src/dotfiles/cheats/community && git pull; else git clone https://github.com/cheat/cheatsheets.git ~/src/dotfiles/cheats/community; fi
+
+install_extrakto:
+	@echo "\n${GREEN}Installing Tmux extrakco plugin${NC}"
+	git clone https://github.com/laktak/extrakto ~/src/extrakto
+
