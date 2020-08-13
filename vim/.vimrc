@@ -40,7 +40,6 @@ call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelCase, 
 call minpac#add('glts/vim-textobj-comment')            " comments text object <ic>, <ac>, <aC> to include whitespace
 
 " Look & Feel
-call minpac#add('chriskempson/base16-vim')             " base16 color schemes
 call minpac#add('romainl/vim-cool')                    " clear search highlight automatically
 
 " Navigation

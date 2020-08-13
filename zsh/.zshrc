@@ -32,10 +32,6 @@ export KEYTIMEOUT=15  # reduce delay when changing modes
 # even when using man
 export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -"
 
-# base16 color scripts
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
-
 # custom functions
 source ~/.zsh/custom-functions.zsh
 

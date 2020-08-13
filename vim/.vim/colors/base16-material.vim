@@ -1,4 +1,4 @@
-" Base16 material (https://github.com/chriskempson/base16)
+" Base16 material (https://github.com/chriskempson/
 " Scheme: Sean Washington (http://seanwash.com)
 
 " This enables the coresponding base16-shell script to run so that

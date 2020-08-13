@@ -101,10 +101,6 @@ alias v='vim .'
 alias ec='emacsclient -nw'
 alias e='emacsclient -nw .'
 
-# Colorschemes
-alias dark='base16_monokai'
-alias light='base16_solarized-light'
-
 # Python
 alias python='python3'
 alias pip='pip3'

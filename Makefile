@@ -15,25 +15,21 @@ GREEN=\033[1;32m
 NC=\033[0m # No Color
 
 # Tasks that do not generate a file (and are always executed)
-.PHONY: update_dotfiles update_base16 update_homebrew link link_server update_vim_plugins install_minpac install_rbenv install_homebrew install_base16 sync_tasks setup_mac install_gitstatus update_cheats link_diff_highlight_mac link_diff_highlight_linux install_extrakto
+.PHONY: update_dotfiles update_homebrew link link_server update_vim_plugins install_minpac install_rbenv install_homebrew  sync_tasks setup_mac install_gitstatus update_cheats link_diff_highlight_mac link_diff_highlight_linux install_extrakto
 
 default:
 	$(MAKE) $(DEFAULT_TASK)
 
-default_mac: update link update_vim_plugins update_base16 update_homebrew link_diff_highlight_mac update_cheats
-default_linux: update link update_vim_plugins update_base16 update_cheats link_diff_highlight_linux
+default_mac: update link update_vim_plugins  update_homebrew link_diff_highlight_mac update_cheats
+default_linux: update link update_vim_plugins  update_cheats link_diff_highlight_linux
 default_server: update link_server update_vim_plugins
 
-setup_mac: install_rbenv install_homebrew install_base16 default_mac install_gitstatus
-setup_linux: install_base16 install_minpac install_gitstatus default_linux
+setup_mac: install_rbenv install_homebrew  default_mac install_gitstatus
+setup_linux:  install_minpac install_gitstatus default_linux
 
 update:
 	@echo "\n${GREEN}Updating dotfiles${NC}"
 	git pull
-
-update_base16:
-	@echo "\n${GREEN}Updating Base16 colorschemes${NC}"
-	cd ~/.config/base16-shell && git pull
 
 update_homebrew:
 	@echo "\n${GREEN}Updating Homebrew packages${NC}"
@@ -82,11 +78,6 @@ install_homebrew:
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	brew tap Homebrew/bundle
 	brew bundle
-
-install_base16:
-	@echo "\n${GREEN}Installing Base16 colorschemes${NC}"
-	git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-	chmod +x ~/.config/base16-shell/scripts/*.sh
 
 install_gitstatus:
 	@echo "\n${GREEN}Installing Gitstatus plugin${NC}"
