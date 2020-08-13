@@ -41,6 +41,7 @@ call minpac#add('glts/vim-textobj-comment')            " comments text object <i
 
 " Look & Feel
 call minpac#add('romainl/vim-cool')                    " clear search highlight automatically
+call minpac#add('romainl/Apprentice')                    " clear search highlight automatically
 
 " Navigation
 call minpac#add('junegunn/fzf')                        " basic FZF support
