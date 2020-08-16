@@ -35,22 +35,22 @@ nnoremap <silent> <leader>bo :w <bar> %bd <bar> e#<cr>
 " c - Copy/clear
 if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy git branch
-  nnoremap <leader>cb :let @*=fugitive#head()<cr>:echo "Git branch copied"<cr>
+  nnoremap <leader>cb :let @*=fugitive#head()<cr>:echo "<c-r>*"<cr>
 
   " copy file name  (foo.txt)
-  nnoremap <leader>cfn :let @*=expand("%:t")<cr>:echo "Full name copied"<cr>
+  nnoremap <leader>cfn :let @*=expand("%:t")<cr>:echo "<c-r>*"<cr>
 
   " copy relative path  (src/foo.txt)
-  nnoremap <leader>cfp :let @*=expand("%")<cr>:echo "File path copied"<cr>
+  nnoremap <leader>cfp :let @*=expand("%")<cr>:echo "<c-r>*"<cr>
 
   " copy absolute path  (/something/src/foo.txt)
-  nnoremap <leader>cfP :let @*=expand("%:p")<cr>:echo "Full file path copied"<cr>
+  nnoremap <leader>cfP :let @*=expand("%:p")<cr>:echo "<c-r>*"<cr>
 
   " copy relative path with line number
-  nnoremap <leader>cfl :let @*=join([expand('%'),  line(".")], ':')<cr>:echo "File path including line number copied"<cr>
+  nnoremap <leader>cfl :let @*=join([expand('%'),  line(".")], ':')<cr>:echo "<c-r>*"<cr>
 
   " copy file folder path (src/)
-  nnoremap <leader>cff :let @*=expand("%:p:h")<cr>:echo "File folder path copied"<cr>
+  nnoremap <leader>cff :let @*=expand("%:p:h")<cr>:echo "<c-r>*"<cr>
 endif
 nnoremap <leader>cs :nohl<cr>
 
