@@ -123,5 +123,6 @@ case `uname` in
   ;;
   Linux)
     # commands for Linux go here
+    eval "$(rbenv init -)"
   ;;
 esac
