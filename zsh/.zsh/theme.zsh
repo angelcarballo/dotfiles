@@ -14,23 +14,24 @@ function gitstatus_prompt_update() {
 
   local reset='%f'
   local green='%F{010}'
-  local yellow='%F{011}'
+  local orange='%F{09}'
+  local yellow='%F{11}'
 
   local p
   if (( VCS_STATUS_HAS_STAGED || VCS_STATUS_HAS_UNSTAGED || VCS_STATUS_HAS_UNTRACKED )); then
-    p+=$yellow
+    p+=$orange
   else
-    p+=$green
+    p+=$yellow
   fi
   p+=${${VCS_STATUS_LOCAL_BRANCH:-@${VCS_STATUS_COMMIT}}//\%/%%}            # escape %
 
   [[ -n $VCS_STATUS_TAG               ]] && p+="#${VCS_STATUS_TAG//\%/%%}"  # escape %
-  [[ $VCS_STATUS_HAS_STAGED      == 1 ]] && p+="${yellow}+"
-  [[ $VCS_STATUS_HAS_UNSTAGED    == 1 ]] && p+="${yellow}!"
-  [[ $VCS_STATUS_HAS_UNTRACKED   == 1 ]] && p+="${yellow}?"
-  [[ $VCS_STATUS_COMMITS_AHEAD  -gt 0 ]] && p+="${green} ⇡${VCS_STATUS_COMMITS_AHEAD}"
-  [[ $VCS_STATUS_COMMITS_BEHIND -gt 0 ]] && p+="${green} ⇣${VCS_STATUS_COMMITS_BEHIND}"
-  [[ $VCS_STATUS_STASHES        -gt 0 ]] && p+="${green} *${VCS_STATUS_STASHES}"
+  [[ $VCS_STATUS_HAS_STAGED      == 1 ]] && p+="${orange}+"
+  [[ $VCS_STATUS_HAS_UNSTAGED    == 1 ]] && p+="${orange}!"
+  [[ $VCS_STATUS_HAS_UNTRACKED   == 1 ]] && p+="${orange}?"
+  [[ $VCS_STATUS_COMMITS_AHEAD  -gt 0 ]] && p+="${orange} ⇡${VCS_STATUS_COMMITS_AHEAD}"
+  [[ $VCS_STATUS_COMMITS_BEHIND -gt 0 ]] && p+="${orange} ⇣${VCS_STATUS_COMMITS_BEHIND}"
+  [[ $VCS_STATUS_STASHES        -gt 0 ]] && p+="${orange} *${VCS_STATUS_STASHES}"
 
   GITSTATUS_PROMPT="${reset}${p}${reset}"
 }
