@@ -11,3 +11,4 @@ iabbrev </ </<C-X><C-O>
 cnoreabbrev cfile %:p
 cnoreabbrev cdir %:p:h
 cnoreabbrev grep silent grep
+cnoreabbrev vf vert sf<space>
