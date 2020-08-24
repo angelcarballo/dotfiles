@@ -52,6 +52,7 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " copy file folder path (src/)
   nnoremap <leader>cff :let @*=expand("%:p:h")<cr>:echo "<c-r>*"<cr>
 endif
+nnoremap <leader>co :Git checkout<space>
 nnoremap <leader>cs :nohl<cr>
 nnoremap <leader>cf :Cfilter<space>
 nnoremap <leader>c! :Cfilter!<space>
@@ -80,9 +81,7 @@ nnoremap <silent> <leader>fm :Marks<cr>
 " g - Git/Generate
 nnoremap <leader>gD :Gdiff origin/master<cr>
 nnoremap <leader>gP :VimuxRunCommand("git push")<cr>
-nnoremap <leader>ga :Gcommit --amend<cr>
 nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gc :Gcommit<cr>i
 nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
 nnoremap <leader>gh :Gbrowse<cr>
