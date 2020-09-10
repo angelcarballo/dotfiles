@@ -15,4 +15,3 @@ node_modules/
 .git/
 Brewfile.lock.json
 _build/
-bin/diff-highlight
