@@ -233,8 +233,8 @@ nnoremap ]q :cnext<cr>
 nnoremap [Q :colder<cr>
 nnoremap ]Q :cnewer<cr>
 
-nnoremap [l :lprevious<cr>
-nnoremap ]l :lnext<cr>
+nnoremap [t :lprevious<cr>
+nnoremap ]t :lnext<cr>
 
 nnoremap [w :tabprevious<cr>
 nnoremap ]w :tabnext<cr>
