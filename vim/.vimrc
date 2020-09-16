@@ -29,7 +29,7 @@ call minpac#add('tpope/vim-surround')                  " alter surroundings (), 
 call minpac#add('tommcdo/vim-exchange')                " text exchange operator (cx..)
 call minpac#add('vim-scripts/ReplaceWithRegister')     " replace without yanking operator (gr..)
 call minpac#add('tpope/vim-commentary')                " un/comment code (gc)
-call minpac#add('tommcdo/vim-lion')                    " code align operator (gl)
+call minpac#add('tommcdo/vim-lion')                    " code align (gl)
 runtime startup/plugin/vim-lion.vim
 
 " Text objects
