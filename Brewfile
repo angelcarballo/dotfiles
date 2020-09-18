@@ -69,6 +69,3 @@ brew "entr"
 
 # open source clipboard manager for MacOs
 cask "maccy"
-
-# text expander
-brew "espanso"
