@@ -31,6 +31,18 @@ augroup END
 augroup PROJECT_PATH
   autocmd!
 
-  " open help splitting to the rightl
-  autocmd Bufread,BufNewFile */dotfiles/* set path+=vim/.vim/*,tmux/.tmmux/*,zsh/.zsh/*
+  autocmd Bufread,BufNewFile */dotfiles/* set path+=
+        \vim/.vim/.*,vim/.vim/after/**,vim/.vim/plugin/**,vim/.vim/scripts/**,vim/.vim/skeleton/**,vim/.vim/startup/**,
+        \bash/**,
+        \bin/**,
+        \cheats/**,
+        \common/**,
+        \git/**,
+        \osx/**,
+        \rbenv/**,
+        \rspec/**,
+        \ruby/**,
+        \tmux/**,tmux/.tmux/**,
+        \wasavi/**,
+        \zsh/**,zsh/.zsh/**
 augroup END
