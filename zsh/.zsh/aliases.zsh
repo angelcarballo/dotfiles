@@ -64,7 +64,7 @@ alias gd='git diff'
 alias gdh='git diff HEAD'
 alias gdm='git diff origin/master'
 alias gf='git fetch'
-alias gl='git log --oneline --decorate --graph --all'
+alias gl='git log'
 alias gll="git log --pretty=format:'%h - %an [%ar] %s'"
 alias gma="git merge --abort"
 alias gh='git browse-remote'
