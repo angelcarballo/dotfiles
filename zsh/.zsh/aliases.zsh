@@ -50,6 +50,7 @@ alias fetch='git fetch'
 alias merge='git merge'
 alias pull='git pull'
 alias push='git push'
+alias pushf='git push --force'
 alias rebase='git rebase'
 alias review='git review'
 
