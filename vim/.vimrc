@@ -67,19 +67,11 @@ runtime startup/plugin/vim-ruby.vim              " configuration for default vim
 
 "}}}
 
-filetype plugin indent on  " enable filetype and indentation plugins
+filetype plugin indent on  " enable filetype detection, plugins and indentation
 runtime macros/matchit.vim " match closing pairs
 runtime ftplugin/man.vim   " open man documentation
 
-" add OS global var
-if !exists('g:os')
-  if has('win32') || has('win16')
-    let g:os = 'Windows'
-  else
-    let g:os = substitute(system('uname'), '\n', '', '')
-  endif
-endif
-
+runtime startup/globals.vim
 runtime startup/abbreviations.vim
 runtime startup/auto_commands.vim
 runtime startup/commands.vim
