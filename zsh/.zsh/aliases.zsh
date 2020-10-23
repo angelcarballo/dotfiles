@@ -86,6 +86,7 @@ alias ghd='open `hub browse -u | sed s/\tree.*//g`/compare/`git rev-parse --abbr
 alias modified='git ls-files --modified'
 alias untracked='git ls-files --others --exclude-standard'
 alias gitfiles='git ls-files --modified --others --exclude-standard'
+alias vg='vim `gitfiles`'
 alias gj='git jump'
 alias gjm='git jump merge'
 alias grh='git reset --hard '
