@@ -1,6 +1,5 @@
 set autowrite                        " autowrite after make, ! and friends
 set showcmd                          " show complete commands
-set number                           " show line numbers
 set ruler                            " show cursor position
 set scrolloff=3                      " leave space after the current line
 set noswapfile                       " disable swap files, let git do the work
