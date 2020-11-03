@@ -1,26 +1,26 @@
-## What
+### What
 
 What are we going to do to solve the problem
 
-## Why
+### Why
 
 Why are we doing this? Give an outline of the problem
 
-## How
+### How
 
 More granular level detail on how we will achieve the what
 
-## Do we need to involve external teams?
+### Do we need to involve external teams?
 
 Think Info Sec/Bizops/Frontend
 
-## How do we test this?
+### How do we test this?
 
 Do we need to build anything to help with testing? Is this difficult to test? How can we make the testing easier?.
 
 Consider our [testing principles](https://github.com/simplybusiness/know/blob/master/how-we-roll/testing/TESTING_MANIFESTO.md)
 
-## Deployment
+### Deployment
 
 Can we deploy this change during business hours? If not, what do we need to do in order to allow us to deploy this
 change during business hours?
