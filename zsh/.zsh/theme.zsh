@@ -28,7 +28,7 @@ function gitstatus_prompt_update() {
   [[ -n $VCS_STATUS_TAG               ]] && p+="#${VCS_STATUS_TAG//\%/%%}"  # escape %
   [[ $VCS_STATUS_HAS_STAGED      == 1 ]] && p+="${orange}+"
   [[ $VCS_STATUS_HAS_UNSTAGED    == 1 ]] && p+="${orange}!"
-  [[ $VCS_STATUS_HAS_UNTRACKED   == 1 ]] && p+="${orange}?"
+  [[ $VCS_STATUS_HAS_UNTRACKED   == 1 ]] && p+="${orange}'"
   [[ $VCS_STATUS_COMMITS_AHEAD  -gt 0 ]] && p+="${orange} ⇡${VCS_STATUS_COMMITS_AHEAD}"
   [[ $VCS_STATUS_COMMITS_BEHIND -gt 0 ]] && p+="${orange} ⇣${VCS_STATUS_COMMITS_BEHIND}"
   [[ $VCS_STATUS_STASHES        -gt 0 ]] && p+="${orange} *${VCS_STATUS_STASHES}"
