@@ -67,5 +67,5 @@ brew "figlet"
 # simple interface for inotify (watch files and run commands)
 brew "entr"
 
-# open source clipboard manager for MacOs
-cask "maccy"
+# transform json into stream of flat lines, easier to grep
+brew "gron"

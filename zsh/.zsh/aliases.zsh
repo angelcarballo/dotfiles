@@ -117,3 +117,6 @@ alias t='task'
 
 # Call Markoff (markdown mac preview) from the shell
 alias markoff="open -a Markoff"
+
+# Gron
+alias ungron gron --ungron
