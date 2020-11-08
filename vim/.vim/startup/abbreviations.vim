@@ -12,3 +12,4 @@ cnoreabbrev cfile %:p
 cnoreabbrev cdir %:p:h
 cnoreabbrev grep silent grep
 cnoreabbrev vfind vert sf<space>
+cnoreabbrev no Cfilter!
