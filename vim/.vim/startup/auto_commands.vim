@@ -46,3 +46,14 @@ augroup PROJECT_PATH
         \wasavi/**,
         \zsh/**,zsh/.zsh/**
 augroup END
+
+augroup SYNTAX_COMPLETE
+  autocmd!
+
+  " Enalbe syntax based completion for filetypes that do not define their own
+  " function. This uses existing file type keywords as source.
+  autocmd Filetype *
+        \  if &omnifunc == "" |
+        \    setlocal omnifunc=syntaxcomplete#Complete |
+        \  endif
+augroup END
