@@ -9,3 +9,8 @@ set spell
 setlocal formatprg=pandoc\ --from=gfm\ --to=gfm
 
 xmap <buffer> K S]f]a(
+
+iab mdtable 
+\<CR>\| Column 1      \| Column 2     \| Column 3     \|
+\<CR>\| :-----------  \| :----------: \| -----------: \|
+\<CR>\| Cell content  \| Cell content \| Cell content \|
