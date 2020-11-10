@@ -7,7 +7,7 @@ command! -range ToMixedCase :call ToMixedCase()<cr>
 
 " Preview markdown files using markoff (only mac)
 if g:os == 'Darwin'
-  command! MarkdownPreview silent! execute "!markoff %" | redraw!
+  command! MarkdownPreview silent! execute "!open -a \"Marko\" %" | redraw!
 endif
 
 " Delete current file
