@@ -13,3 +13,7 @@ cnoreabbrev cdir %:p:h
 cnoreabbrev grep silent grep
 cnoreabbrev vfind vert sf<space>
 cnoreabbrev no Cfilter!
+
+" don't fight it!
+iabbr resopnse response
+iabbr resopnses responses
