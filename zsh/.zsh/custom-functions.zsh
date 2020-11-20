@@ -11,15 +11,6 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 # }}}
 
-# Checkout branch using fzf {{{
-branch() {
-  local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
-  branchname=$(echo "$branches" | fzf -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branchname" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-}
-# }}}
-
 # Open project tmux session {{{
 ss() {
   local project

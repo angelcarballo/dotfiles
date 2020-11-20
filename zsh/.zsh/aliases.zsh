@@ -54,7 +54,7 @@ alias pushf='git push --force'
 alias rebase='git rebase'
 alias review='git review'
 
-alias br='branch' # fuzzy find branch (custom zsh function)
+alias br='git co $(git branch -a --no-color | fzf)' # fuzzy find branch
 alias co='git checkout '
 alias gb='git branch'
 alias gc='git commit'
