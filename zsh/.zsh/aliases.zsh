@@ -52,7 +52,6 @@ alias pull='git pull'
 alias push='git push'
 alias pushf='git push --force'
 alias rebase='git rebase'
-alias review='git review'
 
 alias br='git co $(git branch -a --no-color | fzf)' # fuzzy find branch
 alias co='git checkout '
@@ -70,7 +69,6 @@ alias glo="git log --oneline"
 alias gma="git merge --abort"
 alias gh='git browse-remote'
 alias gp='git pull'
-alias grev='git review'
 alias gr='git rebase'
 alias grom='git rebase origin/master'
 alias gri='git rebase -i'
