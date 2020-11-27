@@ -14,22 +14,24 @@ set list                       " show extra whitespace
 let &showbreak='↳ '            " indicator for wrapped lines
 
 " statusline
-set statusline=                                     " custom status line
-set statusline+=%#Pmenu#                            " color...
-set statusline+=\ %f\                               " relative path
-set statusline+=%m                                  " modified flag
-set statusline+=%r                                  " read only flag
-set statusline+=%h                                  " help flag
-set statusline+=%w                                  " preview flag
-set statusline+=%=                                  " right align the following ...
-set statusline+=%#TabLine#                            " color...
-set statusline+=%c                                  " current column
-set statusline+=%#Pmenu#                            " color...
-set statusline+=\ %l\/%L\                           " current line and total lines
-set statusline+=%#error#                            " color ...
-set statusline+=%{StatuslineTrailingSpace()}        " trailing white space indicator
-set statusline+=%{StatuslineTabWarning()}           " mixed indentation indicator
-set statusline+=%*                                  " reset color
+set statusline=                              " custom status line
+set statusline+=%#Pmenu#                     " color...
+set statusline+=\ %f\                        " relative path
+set statusline+=%m                           " modified flag
+set statusline+=%r                           " read only flag
+set statusline+=%h                           " help flag
+set statusline+=%w                           " preview flag
+set statusline+=%=                           " right align the following ...
+set statusline+=%#TabLineFll#                " color...
+set statusline+=\ %{FugitiveHead()}          " current git branch
+set statusline+=\ %#TabLine#                 " color...
+set statusline+=\ %c                         " current column
+set statusline+=%#Pmenu#                     " color...
+set statusline+=\ %l\/%L\                    " current line and total lines
+set statusline+=%#error#                     " color ...
+set statusline+=%{StatuslineTrailingSpace()} " trailing white space indicator
+set statusline+=%{StatuslineTabWarning()}    " mixed indentation indicator
+set statusline+=%*                           " reset color
 
 " highlight spelling mistakes with an underline
 highlight clear SpellBad
