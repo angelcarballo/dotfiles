@@ -22,7 +22,7 @@ alias lcear='clear'
 alias ls='ls -GFa --color=auto'
 alias ll='ls -GFlah --color=auto'
 alias catcsv='column -s, -t '
-alias cat='bat'
+alias cat='bat --theme zenburn'
 alias update='git pull && bundle install'
 
 # Extension based aliases
