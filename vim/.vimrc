@@ -43,6 +43,7 @@ call minpac#add('romainl/Apprentice')                  " Apprentice colorscheme
 
 " Navigation
 call minpac#add('junegunn/fzf')                        " basic FZF support
+runtime startup/plugin/fzf.vim
 call minpac#add('junegunn/fzf.vim')                    " FZF helpers
 call minpac#add('romainl/vim-devdocs')                 " search documentation on DevDocs
 call minpac#add('ludovicchabant/vim-gutentags')        " auto generate and update tags
