@@ -86,8 +86,8 @@ nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
 nnoremap <leader>gh :Gbrowse<cr>
 xnoremap <leader>gh :Gbrowse<cr>
-nnoremap <leader>gl :0Gclog<cr>
-nnoremap <leader>gL :Gclog<cr>
+nnoremap <leader>glf :0Gclog<cr>
+nnoremap <leader>gl :Gclog -n 100<cr>
 xnoremap <leader>gl :Gclog<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gr :Gread<cr>
