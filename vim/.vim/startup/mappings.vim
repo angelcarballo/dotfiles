@@ -80,7 +80,6 @@ nnoremap <silent> <leader>fm :Marks<cr>
 
 " g - Git/Generate
 nnoremap <leader>gD :Gdiff origin/master<cr>
-nnoremap <leader>gP :VimuxRunCommand("git push")<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
@@ -91,7 +90,7 @@ nnoremap <leader>gl :Gclog -n 100<cr>
 xnoremap <leader>gl :Gclog<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gr :Gread<cr>
-nnoremap <leader>gs :Gstatus\|wincmd T<cr>
+nnoremap <leader>gs :Git\|wincmd T<cr>
 nnoremap <leader>gw :Gwrite<cr>
 
 " i - Indent / Insert
