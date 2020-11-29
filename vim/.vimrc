@@ -57,6 +57,7 @@ runtime startup/plugin/vim-closetag.vim
 
 " Runners
 call minpac#add('tpope/vim-dispatch')                  " generic runner, useful for fugitive
+runtime startup/plugin/vim-dipatch.vim
 call minpac#add('benmills/vimux')                      " tmux integration
 call minpac#add('janko-m/vim-test')                    " generic test runner
 runtime startup/plugin/vim-test.vim
