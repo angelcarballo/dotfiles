@@ -79,6 +79,7 @@ nnoremap <silent> <leader>fh :Helptags<cr>
 nnoremap <silent> <leader>fm :Marks<cr>
 
 " g - Git/Generate
+nnoremap <leader>gg :Git<space>
 nnoremap <leader>gD :Gdiff origin/master<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gd :Gdiff HEAD<cr>
