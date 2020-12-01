@@ -87,7 +87,7 @@ nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
 nnoremap <leader>gh :Gbrowse<cr>
 xnoremap <leader>gh :Gbrowse<cr>
 nnoremap <leader>glf :0Gclog<cr>
-nnoremap <leader>gl :Gclog -n 100<cr>
+nnoremap <leader>gl :tabnew\|Gclog -n 100\|wincmd L<cr>
 xnoremap <leader>gl :Gclog<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gr :Gread<cr>
