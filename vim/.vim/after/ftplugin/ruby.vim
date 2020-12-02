@@ -4,6 +4,7 @@ setlocal tabstop=2
 setlocal foldmethod=indent
 setlocal foldignore=
 setlocal nofoldenable
+setlocal textwidth=120
 
 let b:execute_with='ruby'
 
