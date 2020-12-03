@@ -86,11 +86,15 @@ nnoremap <leader>gd :Gdiff HEAD<cr>
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
 nnoremap <leader>gh :Gbrowse<cr>
 xnoremap <leader>gh :Gbrowse<cr>
-nnoremap <leader>glf :0Gclog<cr>
-nnoremap <leader>gl :tabnew\|Gclog -n 100\|wincmd L<cr>
-xnoremap <leader>gl :Gclog<cr>
-nnoremap <leader>gp :Gpull<cr>
+nnoremap <leader>glf :0Gclog -n 100<cr>
+nnoremap <leader>gl :vert G log -n 50<cr>
+xnoremap <leader>gl :Gclog -n 100<cr>
+nnoremap <leader>grc :Git rebase --continue<cr>
+nnoremap <leader>gp :Git pull<cr>
+nnoremap <leader>gP :Git push<cr>
 nnoremap <leader>gr :Gread<cr>
+nnoremap <leader>gc :Git commit<cr>
+nnoremap <leader>ga :Git commit --amend<cr>
 nnoremap <leader>gs :Git\|wincmd T<cr>
 nnoremap <leader>gw :Gwrite<cr>
 
