@@ -13,8 +13,6 @@
 	f = fetch
 	p = pull
 	undo = reset --soft HEAD^
-[color]
-	ui = always
 [include]
 	path = .gitconfig.local
 [help]
