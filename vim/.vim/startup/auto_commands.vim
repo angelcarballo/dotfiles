@@ -57,3 +57,12 @@ augroup SYNTAX_COMPLETE
         \    setlocal omnifunc=syntaxcomplete#Complete |
         \  endif
 augroup END
+
+augroup FUGITIVE
+  autocmd!
+
+  autocmd User fugitive
+    \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+    \   nnoremap <buffer> - :edit %:h<CR> |
+    \ endif
+augroup END
