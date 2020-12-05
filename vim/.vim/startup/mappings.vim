@@ -82,7 +82,7 @@ nnoremap <silent> <leader>fm :Marks<cr>
 nnoremap <leader>gg :Git<space>
 nnoremap <leader>gD :Gdiff origin/master<cr>
 nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gd :Gdiff HEAD<cr>
+nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
 nnoremap <leader>gh :Gbrowse<cr>
 xnoremap <leader>gh :Gbrowse<cr>
