@@ -135,7 +135,7 @@ nnoremap <silent> <leader>tn :tabnew<cr>
 " v - Vimux
 nnoremap <silent> <leader>vc :VimuxCloseRunner<cr>
 nnoremap <silent> <leader>vo :VimuxRunCommand("")<cr>
-nnoremap <silent> <leader>vo :VimuxRunLastCommand<cr>
+nnoremap <silent> <leader>vl :VimuxRunLastCommand<cr>
 nnoremap <silent> <leader>vv :VimuxRunCommand("")<left><left>
 
 " V - Vimrc
