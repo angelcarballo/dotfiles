@@ -31,6 +31,7 @@ nnoremap <leader>aa :argadd<cr>
 
 " b - Buffers
 nnoremap <silent> <leader>bo :w <bar> %bd <bar> e#<cr>
+nnoremap <silent> <leader>bb :Buffers<cr>
 
 " c - Copy/clear
 if has("mac") || has("gui_macvim") || has("gui_mac")
