@@ -113,8 +113,9 @@ nnoremap <leader>Pc :call minpac#clean()<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :qall!<cr>
 
-" r - Remove
+" r - Remove, redraw
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
+nnoremap <leader>rd :redraw!<cr>
 
 " s - Specs/Split
 nnoremap <leader>sa :TestSuite<cr>
