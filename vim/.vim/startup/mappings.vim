@@ -87,9 +87,9 @@ nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
 nnoremap <leader>gh :Gbrowse<cr>
 xnoremap <leader>gh :Gbrowse<cr>
-nnoremap <leader>glf :0Gclog -n 100<cr>
-nnoremap <leader>gl :vert G log -n 50<cr>
-xnoremap <leader>gl :Gclog -n 100<cr>
+nnoremap <leader>gl :0Gclog -n 50<cr>
+xnoremap <leader>gl :Gclog -n 50<cr>
+nnoremap <leader>gL :vert Git log -n 50<cr>
 nnoremap <leader>grc :Git rebase --continue<cr>
 nnoremap <leader>gp :Git pull<cr>
 nnoremap <leader>gP :Git push<cr>
@@ -98,6 +98,7 @@ nnoremap <leader>gc :Git commit<cr>
 nnoremap <leader>ga :Git commit --amend<cr>
 nnoremap <leader>gs :Git\|wincmd T<cr>
 nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>g/ :Git log -S'' -- %<left><left><left><left><left><left>
 
 " i - Indent / Insert
 nnoremap <leader>ij :%!python -m json.tool<cr>
