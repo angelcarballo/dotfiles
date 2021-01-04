@@ -57,3 +57,6 @@ node_modules/
 
 # This is only needed for ripgrep, when --hidden is specified
 .git
+
+# My own notes
+mynotes.md
