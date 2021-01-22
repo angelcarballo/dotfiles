@@ -9,7 +9,7 @@ inoremap kj <esc>
 nnoremap Q <nop>
 
 " Show and switch to buffers
-nnoremap <leader><space> :buffers<cr>:bu<space>
+nnoremap <leader><space> :Buffers<cr>
 
 " Show and navigate to mark
 nnoremap <leader>, :marks<cr>:mark <space>
