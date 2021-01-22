@@ -218,11 +218,6 @@ nnoremap L $
 xnoremap H ^
 xnoremap L $
 
-" Exit terminal mode like insert mode
-if exists(':tnoremap')
-  tnoremap <Esc> <C-\><C-n>
-endif
-
 " ---------------------------------------------------------------------------}}}
 " Unimpaired style ----------------------------------------------------------{{{
 
