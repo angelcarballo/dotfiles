@@ -18,8 +18,8 @@ nnoremap <leader>, :marks<cr>:mark <space>
 nnoremap <tab> <c-^>
 
 " /,? - Search in project
-nnoremap <leader>/ :silent grep ""<left>
-nnoremap <leader>? :silent grep -g !spec ""<left>
+nnoremap <leader>/ mZ:silent grep ""<left>
+nnoremap <leader>? mZ:silent grep -g !spec ""<left>
 
 " * - Search in file or project
 xnoremap * "zy/<c-r>z<cr>
@@ -188,6 +188,9 @@ nnoremap P P=`]<c-o>
 " keep originals too
 nnoremap gp p
 nnoremap gP P
+
+" go back after grep and friend (their mappings auto set mark Z)
+nnoremap gb `Z
 
 " Search and replace current visual selection
 xnoremap <c-r> "zy:%s/<c-r>z//g<left><left>
