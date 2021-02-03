@@ -55,8 +55,6 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
 endif
 nnoremap <leader>co :Git checkout<space>
 nnoremap <leader>cs :nohl<cr>
-nnoremap <leader>cf :Cfilter<space>
-nnoremap <leader>c! :Cfilter!<space>
 
 " d - Duplicate
 nnoremap <leader>dp yap}p
