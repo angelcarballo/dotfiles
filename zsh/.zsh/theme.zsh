@@ -50,8 +50,8 @@ add-zsh-hook precmd gitstatus_prompt_update
 
 
 # Vim mode indicator {{{
-vim_ins_mode="$ "
-vim_cmd_mode="$•"
+vim_ins_mode="$ %F{reset_color}"
+vim_cmd_mode="$•%F{15}"
 vim_mode=$vim_ins_mode
 
 function zle-keymap-select {
@@ -80,7 +80,8 @@ current_path() {
 }
 
 prompt_symbol_with_last_command_status() {
-  echo "%-30(l::\n)%(?.%F{white}.%F{red})${vim_mode}%F{reset_color}"
+  # echo "%-30(l::\n)%(?.%F{white}.%F{red})${vim_mode}%F{reset_color}"
+  echo "%-30(l::\n)%(?.%F{white}.%F{red})${vim_mode}"
 }
 
 username() {
