@@ -92,6 +92,9 @@ alias grs='git restore --staged '
 alias gap='git add --patch '
 alias gsearch='git log --source --all -S'
 
+# Npm/Node
+alias ni='npm install'
+
 # Vim
 alias v='vim .'
 alias vv='vim `gitfiles`'
