@@ -62,10 +62,6 @@ bindkey -M viins 'kj' vi-cmd-mode
 setopt auto_cd
 cdpath=($HOME/src)
 
-# enable autocompletion (tab-triggered)
-zmodload zsh/complist
-autoload -U compinit && compinit
-
 # share history between sessions
 setopt share_history
 
@@ -126,3 +122,10 @@ case `uname` in
     eval "$(rbenv init -)"
   ;;
 esac
+
+# enable autocompletion (tab-triggered) Is important to do this at the end, to
+# ensure any local configuration is loaded, otherwise some completions might be
+# enabled
+zmodload zsh/complist
+autoload -U compinit && compinit
+
