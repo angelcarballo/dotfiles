@@ -10,6 +10,13 @@ augroup STATUSLINE
   autocmd CursorHold,BufWritePost * unlet! b:statusline_tab_warning
 augroup END
 
+augroup GITCOMMIT
+  autocmd!
+
+  " open quickfix/location window after using grep
+  autocmd FileType gitcommit wincmd L
+augroup END
+
 augroup QUICKFIX
   autocmd!
 
