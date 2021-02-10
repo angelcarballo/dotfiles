@@ -29,9 +29,6 @@ export VISUAL=vim
 export EDITOR=vim
 export KEYTIMEOUT=15  # reduce delay when changing modes
 
-# even when using man
-export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -"
-
 # custom functions
 source ~/.zsh/custom-functions.zsh
 
