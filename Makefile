@@ -20,12 +20,12 @@ NC=\033[0m # No Color
 default:
 	$(MAKE) $(DEFAULT_TASK)
 
-default_mac: update link update_vim_plugins  update_homebrew update_cheats
-default_linux: update link update_vim_plugins  update_cheats
+default_mac: update link update_vim_plugins update_cheats
+default_linux: update link update_vim_plugins update_cheats
 default_server: update link_server update_vim_plugins
 
-setup_mac: install_rbenv install_homebrew  default_mac install_gitstatus
-setup_linux:  install_minpac install_gitstatus default_linux
+setup_mac: install_rbenv install_homebrew default_mac install_gitstatus
+setup_linux: install_minpac install_gitstatus default_linux
 
 update:
 	@echo "\n${GREEN}Updating dotfiles${NC}"
