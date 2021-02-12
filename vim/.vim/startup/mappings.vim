@@ -34,25 +34,25 @@ nnoremap <silent> <leader>bo :w <bar> %bd <bar> e#<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
 
 " c - Copy/clear
-if has("mac") || has("gui_macvim") || has("gui_mac")
-  " copy git branch
-  nnoremap <leader>cb :let @*=fugitive#head()<cr>:echo "<c-r>*"<cr>
 
-  " copy file name  (foo.txt)
-  nnoremap <leader>cfn :let @*=expand("%:t")<cr>:echo "<c-r>*"<cr>
+" copy git branch
+nnoremap <leader>cb :let @+=fugitive#head()<cr>:echo "<c-r>+"<cr>
 
-  " copy relative path  (src/foo.txt)
-  nnoremap <leader>cfp :let @*=expand("%")<cr>:echo "<c-r>*"<cr>
+" copy file name  (foo.txt)
+nnoremap <leader>cfn :let @+=expand("%:t")<cr>:echo "<c-r>+"<cr>
 
-  " copy absolute path  (/something/src/foo.txt)
-  nnoremap <leader>cfP :let @*=expand("%:p")<cr>:echo "<c-r>*"<cr>
+" copy relative path  (src/foo.txt)
+nnoremap <leader>cfp :let @+=expand("%")<cr>:echo "<c-r>+"<cr>
 
-  " copy relative path with line number
-  nnoremap <leader>cfl :let @*=join([expand('%'),  line(".")], ':')<cr>:echo "<c-r>*"<cr>
+" copy absolute path  (/something/src/foo.txt)
+nnoremap <leader>cfP :let @+=expand("%:p")<cr>:echo "<c-r>+"<cr>
 
-  " copy file folder path (src/)
-  nnoremap <leader>cff :let @*=expand("%:p:h")<cr>:echo "<c-r>*"<cr>
-endif
+" copy relative path with line number
+nnoremap <leader>cfl :let @+=join([expand('%'),  line(".")], ':')<cr>:echo "<c-r>+"<cr>
+
+" copy file folder path (src/)
+nnoremap <leader>cff :let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>
+
 nnoremap <leader>co :Git checkout<space>
 nnoremap <leader>cs :nohl<cr>
 
@@ -270,9 +270,9 @@ nnoremap <silent> gs :set opfunc=WebSearch<cr>g@
 xnoremap <silent> gs :<c-u>call WebSearch(visualmode(), 1)<cr>
 
 " copy to system clipboard
-nnoremap <silent> cP V"*y
-nnoremap <silent> cp "*y
-xnoremap <silent> cp "*y
+nnoremap <silent> cP V"+y
+nnoremap <silent> cp "+y
+xnoremap <silent> cp "+y
 
 " send text to tmux operator
 nnoremap <silent> gt :set opfunc=SendTextToTmux<cr>g@
