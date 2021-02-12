@@ -154,15 +154,6 @@ nnoremap <silent> <leader>wv :vsp<cr>
 " Mappings (other) ----------------------------------------------------------{{{
 
 " auto close pairs
-inoremap " ""<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap '' ''
-inoremap "" ""
-inoremap () ()
-inoremap [] []
-inoremap {} {}
 inoremap (<cr> (<cr>)<c-o>O<tab>
 inoremap [<cr> [<cr>]<c-o>O<tab>
 inoremap {<cr> {<cr>}<c-o>O<tab>
