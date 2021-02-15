@@ -24,6 +24,7 @@ call minpac#add('elixir-editors/vim-elixir')           " Elixir support
 call minpac#add('aklt/plantuml-syntax')                " PlantUML support
 call minpac#add('kchmck/vim-coffee-script')            " Coffeescript support
 call minpac#add('pangloss/vim-javascript')             " Improved Javascript syntax
+call minpac#add('MaxMEllon/vim-jsx-pretty')            " JSX syntax
 call minpac#add('evanleck/vim-svelte')                 " Svelte syntax
 
 " Operators
