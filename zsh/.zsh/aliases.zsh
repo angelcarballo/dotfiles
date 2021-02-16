@@ -9,6 +9,7 @@ case "$OSTYPE" in
   linux*)
     alias copy='xclip -selection clipboard'
     alias paste='xclip -selection clipboard -o'
+    alias open='xdg-open'
   ;;
 esac
 
