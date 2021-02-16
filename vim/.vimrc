@@ -55,7 +55,7 @@ call minpac#add('ludovicchabant/vim-gutentags')        " auto generate and updat
 " Auto completion
 call minpac#add('AndrewRadev/switch.vim')              " switch between pre-defined patterns (as in true/false)
 runtime startup/plugin/switch.vim
-call minpac#add('tpope/vim-endwise')                   " auto close do/end blocks and similar
+call minpac#add('cohama/lexima.vim')                   " auto close do/end blocks and similar
 call minpac#add('alvan/vim-closetag')                  " auto close html/xml tags
 runtime startup/plugin/vim-closetag.vim
 
