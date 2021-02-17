@@ -20,7 +20,17 @@ class String
 
   # Copy to system clipboard
   def copy
-    self.public_send('|', 'copy')
+    case RUBY_PLATFORM
+    when /linux/
+      IO.popen('xclip -selection clipboard', 'r+') do |pipe|
+        pipe.write(self)
+        pipe.close_write
+      end
+    when /darwin/
+      self.public_send('|', 'copy')
+    else
+      raise 'Unkown platform, cannot copy to clipboard'
+    end
     self
   end
 end
