@@ -25,12 +25,15 @@ alias ll='ls -GFlah --color=auto'
 alias catcsv='column -s, -t '
 alias cat='bat --theme zenburn'
 alias update='git pull && bundle install'
+alias reload='source ~/.zshrc'
 
 # Extension based aliases
 alias -s log='tail -f'
 
 # MacOS
 alias flushdns='dscacheutil -flushcache'
+alias dark="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true' && reload"
+alias light="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to false' && reload"
 
 # Ruby/Rails
 alias bus='bundle update --source'
