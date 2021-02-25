@@ -106,9 +106,6 @@ export CHEATCOLORS=true
 # source fzf fuzzy finder configuration is present
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# source local config if present
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
 case `uname` in
   Darwin)
     # enable rbenv
@@ -126,3 +123,5 @@ esac
 zmodload zsh/complist
 autoload -U compinit && compinit
 
+# source local config if present
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
