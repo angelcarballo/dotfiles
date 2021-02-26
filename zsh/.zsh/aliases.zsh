@@ -22,13 +22,13 @@ alias celar='clear'
 alias lcear='clear'
 alias ls='ls -GFa --color=auto'
 alias ll='ls -GFlah --color=auto'
-alias catcsv='column -s, -t '
 alias cat='bat'
 alias update='git pull && bundle install'
 alias reload='source ~/.zshrc'
 
-# Extension based aliases
+# Extension based aliases, they are used when the filename is used as a command
 alias -s log='tail -f'
+alias -s csv='column -s, -t'
 
 # MacOS
 alias flushdns='dscacheutil -flushcache'
