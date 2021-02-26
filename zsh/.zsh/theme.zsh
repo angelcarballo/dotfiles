@@ -15,25 +15,18 @@ function gitstatus_prompt_update() {
   [[ $VCS_STATUS_RESULT == ok-sync ]] || return 0  # not a git repo
 
   local reset='%f'
-  local green='%F{010}'
-  local orange='%F{09}'
   local yellow='%F{11}'
 
-  local p
-  if (( VCS_STATUS_HAS_STAGED || VCS_STATUS_HAS_UNSTAGED || VCS_STATUS_HAS_UNTRACKED )); then
-    p+=$orange
-  else
-    p+=$yellow
-  fi
+  p=$yellow
   p+=${${VCS_STATUS_LOCAL_BRANCH:-@${VCS_STATUS_COMMIT}}//\%/%%}            # escape %
 
   [[ -n $VCS_STATUS_TAG               ]] && p+="#${VCS_STATUS_TAG//\%/%%}"  # escape %
-  [[ $VCS_STATUS_HAS_STAGED      == 1 ]] && p+="${orange}+"
-  [[ $VCS_STATUS_HAS_UNSTAGED    == 1 ]] && p+="${orange}!"
-  [[ $VCS_STATUS_HAS_UNTRACKED   == 1 ]] && p+="${orange}'"
-  [[ $VCS_STATUS_COMMITS_AHEAD  -gt 0 ]] && p+="${orange} ⇡${VCS_STATUS_COMMITS_AHEAD}"
-  [[ $VCS_STATUS_COMMITS_BEHIND -gt 0 ]] && p+="${orange} ⇣${VCS_STATUS_COMMITS_BEHIND}"
-  [[ $VCS_STATUS_STASHES        -gt 0 ]] && p+="${orange} *${VCS_STATUS_STASHES}"
+  [[ $VCS_STATUS_HAS_STAGED      == 1 ]] && p+="+"
+  [[ $VCS_STATUS_HAS_UNSTAGED    == 1 ]] && p+="!"
+  [[ $VCS_STATUS_HAS_UNTRACKED   == 1 ]] && p+="?"
+  [[ $VCS_STATUS_COMMITS_AHEAD  -gt 0 ]] && p+=" ⇡${VCS_STATUS_COMMITS_AHEAD}"
+  [[ $VCS_STATUS_COMMITS_BEHIND -gt 0 ]] && p+=" ⇣${VCS_STATUS_COMMITS_BEHIND}"
+  [[ $VCS_STATUS_STASHES        -gt 0 ]] && p+=" *${VCS_STATUS_STASHES}"
 
   GITSTATUS_PROMPT="${reset}${p}${reset}"
 }
@@ -48,10 +41,9 @@ add-zsh-hook precmd gitstatus_prompt_update
 
 # }}}
 
-
 # Vim mode indicator {{{
-vim_ins_mode="$ %F{reset_color}"
-vim_cmd_mode="$•%F{15}"
+vim_ins_mode="$%F{reset_color}"
+vim_cmd_mode="•%F{reset_color}"
 vim_mode=$vim_ins_mode
 
 function zle-keymap-select {
@@ -74,14 +66,12 @@ function TRAPINT() {
 }
 # }}}
 
-
 current_path() {
   echo '%F{12}%~%F{reset_color}'
 }
 
 prompt_symbol_with_last_command_status() {
-  # echo "%-30(l::\n)%(?.%F{white}.%F{red})${vim_mode}%F{reset_color}"
-  echo "%-30(l::\n)%(?.%F{white}.%F{red})${vim_mode}"
+  echo "%-30(l::\n)%(?.%F{reset_color}.%F{red})${vim_mode}"
 }
 
 username() {
@@ -94,7 +84,7 @@ hostname() {
 
 username_and_host_if_server() {
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    echo "%F{12}%n@%m:%F{reset_color}"
+    echo "%F{9}%n@%m%F{reset_color} "
   fi
 }
 
