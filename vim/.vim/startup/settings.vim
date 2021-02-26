@@ -31,6 +31,7 @@ set cryptmethod=blowfish2            " use blowfish 2 crypto method by default (
 set dictionary+=/usr/share/dict/words " autocomplete words from system dictionary
 set tags^=./.git/tags;               " read tags from git directory
 set nofoldenable                     " do not fold by default
+set shortmess-=S                     " show total and number of current result after a search
 
 set path-=/usr/include
 set path+=lib/**,app/**,spec/**,test/**,config/**,bin/**
