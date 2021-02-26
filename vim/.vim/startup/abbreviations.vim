@@ -13,6 +13,7 @@ cnoreabbrev cdir %:p:h
 cnoreabbrev grep silent grep
 cnoreabbrev vfind vert sf<space>
 cnoreabbrev no Cfilter!
+cnoreabbrev force force-with-lease
 
 " don't fight it!
 iabbr resopnse response
