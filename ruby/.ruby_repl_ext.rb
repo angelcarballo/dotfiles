@@ -27,7 +27,7 @@ class String
         pipe.close_write
       end
     when /darwin/
-      self.public_send('|', 'copy')
+      self.public_send('|', 'pbcopy')
     else
       raise 'Unkown platform, cannot copy to clipboard'
     end
