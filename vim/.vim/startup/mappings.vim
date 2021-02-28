@@ -182,6 +182,9 @@ nnoremap gP P
 " go back after grep and friend (their mappings auto set mark Z)
 nnoremap gb `Z
 
+" format whole file and keep position (original map formats current line which is not that useful)
+noremap gqq mzgggqG`z
+
 " Search and replace current visual selection
 xnoremap <c-r> "zy:%s/<c-r>z//g<left><left>
 
