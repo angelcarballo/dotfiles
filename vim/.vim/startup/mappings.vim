@@ -85,6 +85,8 @@ nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
 nnoremap <leader>gh :Gbrowse<cr>
 xnoremap <leader>gh :Gbrowse<cr>
+nnoremap <leader>gH :Gbrowse!<cr>
+xnoremap <leader>gH :Gbrowse!<cr>
 nnoremap <leader>gl :0Gclog -n 50<cr>
 xnoremap <leader>gl :Gclog -n 50<cr>
 nnoremap <leader>gL :vert Git log -n 50<cr>
