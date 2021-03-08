@@ -101,9 +101,6 @@ nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>g/ :Git log -S'' -- %<left><left><left><left><left><left>
 nnoremap <leader>g? :Git log -S''<left>
 
-" i - Indent / Insert
-nnoremap <leader>ij :%!python -m json.tool<cr>
-
 " o - open
 nnoremap <leader>of :! open '%'<cr>
 nnoremap <leader>on :FZF $NOTES/<cr>
