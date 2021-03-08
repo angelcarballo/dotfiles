@@ -91,7 +91,7 @@ nnoremap <leader>gl :0Gclog -n 50<cr>
 xnoremap <leader>gl :Gclog -n 50<cr>
 nnoremap <leader>gL :vert Git log -n 50<cr>
 nnoremap <leader>grc :Git rebase --continue<cr>
-nnoremap <leader>gp :Git pull<cr>
+nnoremap <silent> <leader>gp :Git pull<cr>
 nnoremap <leader>gP :Git push<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gc :Git commit<cr>
