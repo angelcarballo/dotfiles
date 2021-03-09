@@ -1,3 +1,4 @@
+set number
 set autowrite                         " auto write after make, ! and friends
 set showcmd                           " show complete commands
 set ruler                             " show cursor position
