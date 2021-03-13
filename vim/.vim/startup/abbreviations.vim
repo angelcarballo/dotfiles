@@ -12,7 +12,8 @@ cnoreabbrev cfile %:p
 cnoreabbrev cdir %:p:h
 cnoreabbrev grep silent grep
 cnoreabbrev vfind vert sf<space>
-cnoreabbrev no Cfilter!
+cnoreabbrev <expr> no (getcmdtype() == ':' && getcmdline() =~ '^no$')? 'Cfilter!' : 'no'
+cnoreabbrev <expr> only (getcmdtype() == ':' && getcmdline() =~ '^only$')? 'Cfilter' : 'only'
 cnoreabbrev force force-with-lease
 cnoreabbrev run VimuxRunCommand<space>""<left>
 
