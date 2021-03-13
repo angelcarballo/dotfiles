@@ -29,8 +29,6 @@ alias lcear='clear'
 alias ls='ls -GFa --color=auto'
 alias ll='ls -GFlah --color=auto'
 alias cat='bat --theme base16'
-alias update='git pull && bundle install'
-alias reload='source ~/.zshrc'
 
 # Extension based aliases, they are used when the filename is used as a command
 alias -s log='tail -f'
