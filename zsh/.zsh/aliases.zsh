@@ -5,11 +5,17 @@ case "$OSTYPE" in
   darwin*)
     alias copy='pbcopy'
     alias paste='pbpaste'
+    alias flushdns='dscacheutil -flushcache'
+    alias dark="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true' && base16_phd"
+    alias light="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to false' && base16_solarized-light"
   ;;
   linux*)
     alias copy='xclip -selection clipboard'
     alias paste='xclip -selection clipboard -o'
+    alias markoff="open -a Markoff"
     alias open='xdg-open'
+    alias dark="base16_phd"
+    alias light="base16_solarized-light"
   ;;
 esac
 
@@ -29,11 +35,6 @@ alias reload='source ~/.zshrc'
 # Extension based aliases, they are used when the filename is used as a command
 alias -s log='tail -f'
 alias -s csv='column -s, -t'
-
-# MacOS
-alias flushdns='dscacheutil -flushcache'
-alias dark="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true' && base16_phd"
-alias light="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to false' && base16_horizon-dark"
 
 # Ruby/Rails
 alias bus='bundle update --source'
@@ -119,9 +120,6 @@ alias n='vim `find $NOTES -name "*.md" | sort | fzf --preview "cat {}"`'
 alias nn='vim $NOTES/00-sandbox.md'
 alias j='vim $NOTES/01-journal.md'
 alias t='task'
-
-# Call Markoff (markdown mac preview) from the shell
-alias markoff="open -a Markoff"
 
 # Gron
 alias ungron gron --ungron
