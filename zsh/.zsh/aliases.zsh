@@ -41,11 +41,7 @@ alias bi='bundle install'
 alias be='bundle exec'
 alias ber='bundle exec rspec --color'
 alias berf='bundle exec rspec --color --fail-fast'
-alias fs='foreman start'
-alias rs='bin/rails server -b 0.0.0.0'
-alias rc='bin/rails console'
 alias bpry='bundle exec pry'
-alias up='git pull && bundle'
 
 # Git
 alias clone='git clone'
