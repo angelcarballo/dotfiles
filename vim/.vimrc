@@ -44,6 +44,7 @@ call minpac#add('nelstrom/vim-textobj-rubyblock')      " ruby blocks/class/metho
 " Look & Feel
 call minpac#add('romainl/vim-cool')                    " clear search highlight automatically
 call minpac#add('romainl/Apprentice')                  " Apprentice colorscheme
+call minpac#add('chriskempson/base16-vim')             " Base16 colorschemes
 
 " Navigation
 call minpac#add('junegunn/fzf')                        " basic FZF support

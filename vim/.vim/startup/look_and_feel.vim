@@ -3,7 +3,10 @@ set t_8f=[38;2;%lu;%lu;%lum
 set t_8b=[48;2;%lu;%lu;%lum
 set termguicolors
 
-colorscheme apprentice
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 syntax on                      " enable syntax highlighting
 set visualbell                 " visual flash instead of beeping
@@ -22,9 +25,9 @@ set statusline+=%r                           " read only flag
 set statusline+=%h                           " help flag
 set statusline+=%w                           " preview flag
 set statusline+=%=                           " right align the following ...
-set statusline+=%#TabLineFll#                " color...
+" set statusline+=%#TabLineFll#                " color...
 set statusline+=\ %{FugitiveHead()}          " current git branch
-set statusline+=\ %#Pmenu#                     " color...
+" set statusline+=\ %#Pmenu#                     " color...
 " set statusline+=\ %c                         " current column
 set statusline+=\ %l\/%L\                    " current line and total lines
 set statusline+=%#error#                     " color ...

@@ -123,5 +123,10 @@ esac
 zmodload zsh/complist
 autoload -U compinit && compinit
 
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+  eval "$("$BASE16_SHELL/profile_helper.sh")"
+
 # source local config if present
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local

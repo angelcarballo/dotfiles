@@ -22,7 +22,7 @@ alias celar='clear'
 alias lcear='clear'
 alias ls='ls -GFa --color=auto'
 alias ll='ls -GFlah --color=auto'
-alias cat='bat'
+alias cat='bat --theme base16'
 alias update='git pull && bundle install'
 alias reload='source ~/.zshrc'
 
@@ -32,8 +32,8 @@ alias -s csv='column -s, -t'
 
 # MacOS
 alias flushdns='dscacheutil -flushcache'
-alias dark="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true' && reload"
-alias light="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to false' && reload"
+alias dark="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true' && base16_phd"
+alias light="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to false' && base16_horizon-dark"
 
 # Ruby/Rails
 alias bus='bundle update --source'
