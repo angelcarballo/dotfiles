@@ -1,0 +1,23 @@
+# Manage plugins
+asdf plugin list
+asdf plugin add erlang
+asdf plugin update --all
+asdf plugin update erlang
+asdf plugin remove erlang
+
+# List versions
+asdf current
+asdf list erlang
+asdf list all erlang
+asdf list all erlang 23
+asdf latest erlang
+
+# Manage versions
+asdf install erlang latest
+asdf install erlang 23.2.7
+asdf uninstall erlang 23.2.7
+
+# Set versions
+asdf global erlang 23.2.7
+asdf shell erlang 23.2.7
+asdf local erlang 23.2.7
