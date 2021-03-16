@@ -1,9 +1,6 @@
 # manage symlinks for dotfiles
 brew "stow"
 
-# ruby version manager
-brew "rbenv"
-
 # super fast replacement for Ack
 brew "ripgrep"
 
@@ -11,7 +8,7 @@ brew "ripgrep"
 brew "openssl"
 brew "libyaml"
 
-# zsh and plugin manager
+# our own zsh
 brew "zsh"
 
 # general purpose fuzzy finder
@@ -69,3 +66,6 @@ brew "entr"
 
 # transform json into stream of flat lines, easier to grep
 brew "gron"
+
+# generic version manager
+brew "asdf"
