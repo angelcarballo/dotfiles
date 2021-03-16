@@ -106,17 +106,6 @@ export CHEATCOLORS=true
 # source fzf fuzzy finder configuration is present
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-case `uname` in
-  Darwin)
-    # enable rbenv
-    eval "$(rbenv init -)"
-  ;;
-  Linux)
-    # commands for Linux go here
-    eval "$(rbenv init -)"
-  ;;
-esac
-
 # enable autocompletion (tab-triggered) Is important to do this at the end, to
 # ensure any local configuration is loaded, otherwise some completions might be
 # enabled
