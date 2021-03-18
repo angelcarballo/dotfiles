@@ -37,8 +37,7 @@ set statusline+=%*                           " reset color
 
 " highlight spelling mistakes with an underline
 highlight clear SpellBad
-highlight SpellBad cterm=underline
-highlight SpellBad gui=undercurl
+highlight SpellBad cterm=underline gui=undercurl
 
 " highlight current tab
 highlight TabLineSel guifg=bg guibg=fg
