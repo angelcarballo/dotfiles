@@ -43,6 +43,9 @@ alias ber='bundle exec rspec --color'
 alias berf='bundle exec rspec --color --fail-fast'
 alias bpry='bundle exec pry'
 
+# Elixir
+alias mdg='mix deps.get'
+
 # Git
 alias clone='git clone'
 alias fetch='git fetch'
