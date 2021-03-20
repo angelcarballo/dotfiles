@@ -110,7 +110,7 @@ alias python='python3'
 alias pip='pip3'
 
 # Elixir
-alias iex='rlwrap iex'
+alias iex='rlwrap -a iex'
 
 # Notes/tasks
 alias n='vim `find $NOTES -name "*.md" | sort | fzf --preview "cat {}"`'
