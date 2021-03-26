@@ -14,8 +14,7 @@ cnoreabbrev grep silent grep
 cnoreabbrev vfind vert sf<space>
 cnoreabbrev <expr> no (getcmdtype() == ':' && getcmdline() =~ '^no$')? 'Cfilter!' : 'no'
 cnoreabbrev <expr> only (getcmdtype() == ':' && getcmdline() =~ '^only$')? 'Cfilter' : 'only'
-cnoreabbrev force force-with-lease
-cnoreabbrev run VimuxRunCommand<space>""<left>
+cnoreabbrev <expr> run (getcmdtype() == ':' && getcmdline() =~ '^run$')? 'VimuxRunCommand<space>""<left>' : 'only'
 
 " don't fight it!
 iabbr resopnse response
