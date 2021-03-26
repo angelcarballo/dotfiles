@@ -153,6 +153,11 @@ nnoremap <silent> <leader>wv :vsp<cr>
 " ---------------------------------------------------------------------------}}}
 " Mappings (other) ----------------------------------------------------------{{{
 
+nnoremap <silent> ga :Files<cr>
+nnoremap go :find<space>
+nnoremap gb :buffers<cr>:bu<space>
+nnoremap gm :marks<cr>:mark <space>
+
 " auto close pairs
 inoremap (<cr> (<cr>)<c-o>O<tab>
 inoremap [<cr> [<cr>]<c-o>O<tab>
