@@ -69,3 +69,6 @@ brew "gron"
 
 # generic version manager
 brew "asdf"
+
+# wxwidgets (required for erlang observer, debugger, etc)
+brew "wxmac"
