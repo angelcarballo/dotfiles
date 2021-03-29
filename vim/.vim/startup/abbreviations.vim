@@ -15,6 +15,7 @@ cnoreabbrev vfind vert sf<space>
 cnoreabbrev <expr> no (getcmdtype() == ':' && getcmdline() =~ '^no$')? 'Cfilter!' : 'no'
 cnoreabbrev <expr> only (getcmdtype() == ':' && getcmdline() =~ '^only$')? 'Cfilter' : 'only'
 cnoreabbrev <expr> run (getcmdtype() == ':' && getcmdline() =~ '^run$')? 'VimuxRunCommand<space>""<left>' : 'only'
+cnoreabbrev <expr> dup (getcmdtype() == ':' && getcmdline() =~ '^dup$')? 'saveas %:s?' : 'dup'
 
 " don't fight it!
 iabbr resopnse response
