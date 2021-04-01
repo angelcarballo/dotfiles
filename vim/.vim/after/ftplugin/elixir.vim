@@ -16,3 +16,4 @@ setlocal foldmethod=indent
 setlocal foldlevel=1
 
 nnoremap <buffer> K :DD<cr>
+nnoremap <buffer> <leader>mf :%!mix format -<cr>
