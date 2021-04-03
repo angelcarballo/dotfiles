@@ -87,7 +87,7 @@ nnoremap <leader>gh :Gbrowse<cr>
 xnoremap <leader>gh :Gbrowse<cr>
 nnoremap <leader>gH :Gbrowse!<cr>
 xnoremap <leader>gH :Gbrowse!<cr>
-nnoremap <leader>gl :Git log -n 50<cr>
+nnoremap <leader>gl :vert Git log -n 50<cr>
 nnoremap <leader>gL :0Gclog -n 50<cr>
 xnoremap <leader>gl :Gclog -n 50<cr>
 nnoremap <leader>grc :Git rebase --continue<cr>
