@@ -40,6 +40,7 @@ call minpac#add('michaeljsmith/vim-indent-object')     " indentation based text 
 call minpac#add('Julian/vim-textobj-variable-segment') " segments of camelCase, snake_case and similar <av>, <iv>
 call minpac#add('glts/vim-textobj-comment')            " comments text object <ic>, <ac>, <aC> to include whitespace
 call minpac#add('nelstrom/vim-textobj-rubyblock')      " ruby blocks/class/method <ar>, <ir>
+call minpac#add('andyl/vim-textobj-elixir')            " elixir blocks/module/method <ae>, <ie>
 
 " Look & Feel
 call minpac#add('romainl/vim-cool')                    " clear search highlight automatically
