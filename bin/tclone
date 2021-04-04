@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Clone git repository and start tmux session for it (tclone)
+
+if [ $# -eq 0 ]; then
+  echo -e "Usage:\ntclone git@github.com:someuser/somerepo.git"
+else
+  session_name=$(basename $1 .git)
+  git clone $1 $HOME/src/$session_name && source $HOME/src/dotfiles/bin/ots $session_name
+fi
