@@ -10,8 +10,9 @@ iabbr <expr> cb fugitive#head()
 
 cnoreabbrev cfile %:p
 cnoreabbrev cdir %:p:h
-cnoreabbrev grep silent grep
 cnoreabbrev vfind vert sf<space>
+
+cnoreabbrev <expr> grep (getcmdtype() == ':' && getcmdline() =~ '^grep$')? 'silent grep' : 'grep'
 cnoreabbrev <expr> no (getcmdtype() == ':' && getcmdline() =~ '^no$')? 'Cfilter!' : 'no'
 cnoreabbrev <expr> only (getcmdtype() == ':' && getcmdline() =~ '^only$')? 'Cfilter' : 'only'
 cnoreabbrev <expr> run (getcmdtype() == ':' && getcmdline() =~ '^run$')? 'VimuxRunCommand<space>""<left>' : 'only'
