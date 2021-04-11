@@ -45,6 +45,7 @@ alias bpry='bundle exec pry'
 
 # Elixir
 alias mdg='mix deps.get'
+alias iexm='iex -S mix'
 
 # Git
 alias clone='git clone'
@@ -108,9 +109,6 @@ alias e='emacsclient -nw .'
 # Python
 alias python='python3'
 alias pip='pip3'
-
-# Elixir
-alias iex='rlwrap -a iex'
 
 # Notes/tasks
 alias n='vim `find $NOTES -name "*.md" | sort | fzf --preview "cat {}"`'
