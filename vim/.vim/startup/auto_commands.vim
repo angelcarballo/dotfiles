@@ -73,3 +73,10 @@ augroup FUGITIVE
     \   nnoremap <buffer> - :edit %:h<CR> |
     \ endif
 augroup END
+
+augroup OpenQuickfixWindowAfterMake
+  autocmd!
+
+  autocmd QuickFixCmdPost [^l]* nested cwindow
+  autocmd QuickFixCmdPost    l* nested lwindow
+augroup END
