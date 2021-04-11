@@ -10,7 +10,6 @@ inoreabbrev <buffer> ht [h \| t]
 inoreabbrev <buffer> eex <%= %><left><left><left>
 inoreabbrev <buffer> cmod %__MODULE__
 
-setlocal formatprg=mix\ format\ - 
 setlocal foldmethod=indent
 setlocal foldlevel=1
 
