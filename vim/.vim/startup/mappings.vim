@@ -132,8 +132,12 @@ nnoremap <silent> <leader>Sf :echo @%<cr>
 nnoremap <silent> <leader>Sp :echo expand('%:p')<cr>
 nnoremap <silent> <leader>Sb :echo "Git branch: " . fugitive#head()<cr>
 
-" T - Tabs
+" T - Tabs/tmux
 nnoremap <silent> <leader>tn :tabnew<cr>
+nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
+nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
+nnoremap <silent> <leader>tl :VimuxRunLastCommand<cr>
+nnoremap <silent> <leader>tt :VimuxRunCommand("")<left><left>
 
 " v - Vimux
 nnoremap <silent> <leader>vc :VimuxCloseRunner<cr>
