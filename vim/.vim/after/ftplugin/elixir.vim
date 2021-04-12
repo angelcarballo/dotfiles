@@ -8,7 +8,7 @@ inoreabbrev <buffer> af &(&1)<left>
 inoreabbrev <buffer> aff fn x -> end<left><left><left><left>
 inoreabbrev <buffer> ht [h \| t]
 inoreabbrev <buffer> eex <%= %><left><left><left>
-inoreabbrev <buffer> cmod %__MODULE__
+inoreabbrev <buffer> cmod __MODULE__
 
 setlocal foldmethod=indent
 setlocal foldlevel=1
