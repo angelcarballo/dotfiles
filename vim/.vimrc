@@ -12,6 +12,7 @@ call minpac#add('kana/vim-textobj-user')               " custom text object supp
 call minpac#add('tpope/vim-repeat')                    " extend repeat support
 call minpac#add('AndrewRadev/splitjoin.vim')           " split/join statements (gS, gJ)
 call minpac#add('wincent/terminus')                    " enhancements for terminal vim (focus events, cursor, etc.)
+call minpac#add('bogado/file-line')                    " allow opening file paths with line like foo/file.txt:25
 
 " Git
 call minpac#add('tpope/vim-fugitive')                  " git integration
