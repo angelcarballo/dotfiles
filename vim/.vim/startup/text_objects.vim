@@ -16,3 +16,6 @@ onoremap ae :<c-u>normal! ggVG<cr>
 " current line with/without <br>
 onoremap al :<c-u>normal! V<cr>
 onoremap il :<c-u>normal! 0v$h<cr>
+
+" last pasted text
+onoremap lp :<c-u>normal! `[v`]<cr>
