@@ -106,12 +106,6 @@ export CHEATCOLORS=true
 # source fzf fuzzy finder configuration is present
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# enable autocompletion (tab-triggered) Is important to do this at the end, to
-# ensure any local configuration is loaded, otherwise some completions might be
-# enabled
-zmodload zsh/complist
-autoload -U compinit && compinit
-
 # enable shell history on IEx and increase history size
 export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
 
@@ -122,3 +116,16 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 
 # source local config if present
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# enable autocompletion (tab-triggered)
+#
+# Is important to do this at the end, to ensure any local configuration is
+# loaded, otherwise some completions might be missed
+zmodload zsh/complist
+
+# load completions
+autoload -Uz compinit
+
+# initialize completions (-C omit check to see if there are new functions)
+# this means new completions might require running compinit manually
+compinit -C
