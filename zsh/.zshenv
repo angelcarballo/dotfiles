@@ -33,3 +33,6 @@ export GITSTATUS_DIR="$HOME/src/gitstatus"
 
 # Make path entries unique
 export -U PATH
+
+# Theme for cat replacement
+export BAT_THEME="Solarized (light)"
