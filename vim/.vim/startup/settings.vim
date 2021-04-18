@@ -34,9 +34,6 @@ set tags^=./.git/tags;                " read tags from git directory
 set nofoldenable                      " do not fold by default
 set shortmess-=S                      " show total and number of current result after a search
 
-set path-=/usr/include
-set path+=lib/**,app/**,spec/**,test/**,config/**,bin/**
-
 set spellfile=~/Drive/vim/spell/en.utf-8.add
 set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 
