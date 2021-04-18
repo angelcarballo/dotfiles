@@ -11,7 +11,7 @@ set -g status-right-length "100"
 set -g status-left " #S"
 
 # right > Boston time / London time
-set -g status-right "#(TZ='America/New_York' date +%%H:%%M) #(TZ='Europe/London' date +%%H:%%M) "
+set -g status-right "#(TZ='Europe/London' date +%%H:%%M)"
 
 setw -g window-status-format " #I.#W#{?window_zoomed_flag,#[fg=colour1]^#[fg=colour08],} "
 setw -g window-status-current-format "[#I.#W#{?window_zoomed_flag,#[fg=colour1]^#[fg=colour08],}]"
