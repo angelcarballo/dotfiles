@@ -11,6 +11,9 @@ brew "libyaml"
 # our own zsh
 brew "zsh"
 
+# our own bash (bits like tmux-extrakto require modern versions)
+brew "bash"
+
 # general purpose fuzzy finder
 brew "fzf"
 
