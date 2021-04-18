@@ -1,9 +1,9 @@
 function! StatuslineTrailingSpace()
   if !exists("b:statusline_trailing_space_warning")
     let trailing = search('\s\+$', 'nw') != 0
-    let help = &buftype == 'help'
+    let special = index(['help', 'fugitive', 'git'], &filetype) >= 0
 
-    if trailing && !help
+    if trailing && !special
       let b:statusline_trailing_space_warning = '[tw]'
     else
       let b:statusline_trailing_space_warning = ''
