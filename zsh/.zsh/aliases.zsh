@@ -6,7 +6,7 @@ case "$OSTYPE" in
     alias copy='pbcopy'
     alias paste='pbpaste'
     alias flushdns='dscacheutil -flushcache'
-    alias dark="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true' && base16_phd"
+    alias dark="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true' && base16_horizon-dark"
     alias light="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to false' && base16_solarized-light"
   ;;
   linux*)
