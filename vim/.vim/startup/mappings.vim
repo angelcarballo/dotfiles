@@ -102,7 +102,7 @@ nnoremap <leader>g/ :Git log -S'' -- %<left><left><left><left><left><left>
 nnoremap <leader>g? :Git log -S''<left>
 
 " m - make
-nnoremap <leader>m :Make<cr>
+nnoremap <leader>mm :Make<cr>
 
 " o - open
 nnoremap <leader>of :! open '%'<cr>
