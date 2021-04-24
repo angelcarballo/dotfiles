@@ -22,7 +22,6 @@ call minpac#add('tpope/vim-rhubarb')                   " github integration
 call minpac#add('tpope/vim-rbenv')                     " Rbenv support, used to get the current ruby version on `path`
 call minpac#add('tpope/vim-bundler')                   " Bundler support, used to get the current bundled gems on `path`
 call minpac#add('elixir-editors/vim-elixir')           " Elixir support
-call minpac#add('slashmili/alchemist.vim')             " Elixir support (LSP functionality)
 call minpac#add('aklt/plantuml-syntax')                " PlantUML support
 call minpac#add('kchmck/vim-coffee-script')            " Coffeescript support
 call minpac#add('pangloss/vim-javascript')             " Improved Javascript syntax
