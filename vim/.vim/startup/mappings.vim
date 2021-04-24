@@ -179,6 +179,8 @@ nnoremap <c-l> <c-w>l
 " Use tab for both indentation and autocomplete
 inoremap <tab> <c-r>=Tab_Or_Complete()<cr>
 
+" Make Y copy from position till end of line, like the docs suggest
+nnoremap Y y$
 
 " Fix closest spelling error
 inoremap <c-f> <c-g>u<esc>[s1z=`]a<c-g>u
