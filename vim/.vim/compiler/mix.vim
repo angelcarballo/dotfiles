@@ -36,6 +36,7 @@ CompilerSet errorformat+=
 " >     (stdlib 3.14.1) erl_eval.erl:680: :erl_eval.do_apply/6
 CompilerSet errorformat+=
       \%-GCompiling\ %.%#,
+      \%-GGenerated\ %.%#,
       \%-G,
       \%E==%.%#,
       \%C**\ (%\\w%\\+)\ %f:%l:%c:\ %m,
