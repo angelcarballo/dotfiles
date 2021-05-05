@@ -2,7 +2,7 @@
 set path-=/usr/include
 
 " Generic folders (ruby, elixir, etc...)
-set path+=lib/**,app/**,spec/**,test/**,config/**,bin/**
+set path+=lib/**,app/**,spec/**,test/**,config/**,bin/**,scripts/**
 
 " Elixir/Phoenix
 set path+=assets/*,assets/js/**,assets/css/**,assets/static/**,assets/vendor/**
