@@ -1,6 +1,5 @@
 [core]
 	excludesfile = ~/.gitignore_global
-	attributesfile = ~/.gitattributes
 [clean]
 	requireForce = false
 [commit]
