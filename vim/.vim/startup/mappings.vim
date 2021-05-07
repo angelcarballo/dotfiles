@@ -139,12 +139,6 @@ nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
 nnoremap <silent> <leader>tl :VimuxRunLastCommand<cr>
 nnoremap <silent> <leader>tt :VimuxRunCommand("")<left><left>
 
-" v - Vimux
-nnoremap <silent> <leader>vc :VimuxCloseRunner<cr>
-nnoremap <silent> <leader>vo :VimuxRunCommand("")<cr>
-nnoremap <silent> <leader>vl :VimuxRunLastCommand<cr>
-nnoremap <silent> <leader>vv :VimuxRunCommand("")<left><left>
-
 " V - Vimrc
 nnoremap <leader>Ve :e $MYVIMRC<cr>
 nnoremap <leader>Vs :so $MYVIMRC<cr>
