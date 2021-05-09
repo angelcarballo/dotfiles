@@ -25,5 +25,5 @@ curl https://raw.githubusercontent.com/angelcarballo/dotfiles/master/vim/.vimrc.
 
 ## Local changes and extra commands
 
-Zsh will try to source `~/.zshrc.local`. Put local settings, env vars,
-etc. there.
+Zsh will try to source `~/.zshrc.local`.
+Put local settings, env vars, etc. there.
