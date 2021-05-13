@@ -6,7 +6,7 @@ inoreabbrev <buffer> pry require IEx; IEx.pry
 inoreabbrev <buffer> bpry require IEx; IEx.pry
 inoreabbrev <buffer> echo IO.inspect(label: "")<left><left>
 inoreabbrev <buffer> af &(&1)<left>
-inoreabbrev <buffer> aff fn x -> end<left><left><left><left>
+inoreabbrev <buffer> aff fn -> end<c-o>b
 inoreabbrev <buffer> ht [h \| t]
 inoreabbrev <buffer> eex <%= %><left><left><left>
 inoreabbrev <buffer> cmod __MODULE__
