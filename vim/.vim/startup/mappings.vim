@@ -159,6 +159,8 @@ nnoremap go :find<space>
 nnoremap gb :buffers<cr>:bu<space>
 nnoremap gm :marks<cr>:mark <space>
 
+nnoremap gN :e story-notes.md<cr>
+
 " auto close pairs
 inoremap (<cr> (<cr>)<c-o>O<tab>
 inoremap [<cr> [<cr>]<c-o>O<tab>
