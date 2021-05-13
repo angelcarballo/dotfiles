@@ -17,6 +17,7 @@ let test#ruby#rspec#options = {
 
 let test#elixir#exunit#options = {
   \'suite': '--stale',
+  \'nearest': '--trace'
 \}
 
 " uncomment to use custom formater that populate quickfix with spec errors
