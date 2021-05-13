@@ -27,6 +27,7 @@ call minpac#add('kchmck/vim-coffee-script')            " Coffeescript support
 call minpac#add('pangloss/vim-javascript')             " Improved Javascript syntax
 call minpac#add('MaxMEllon/vim-jsx-pretty')            " JSX syntax
 call minpac#add('evanleck/vim-svelte')                 " Svelte syntax
+call minpac#add('leafgarland/typescript-vim')          " Typescript support
 
 " Operators
 call minpac#add('tpope/vim-surround')                  " alter surroundings (), [], '', {}
