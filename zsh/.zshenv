@@ -26,7 +26,6 @@ export NOTES="$HOME/Drive/notes"
 # FZF settings
 export FZF_DEFAULT_OPTS=' --layout=reverse'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
-export FZF_COMPLETION_TRIGGER='ff'
 
 # Used to show git information on zsh prommpt
 export GITSTATUS_DIR="$HOME/src/gitstatus"
