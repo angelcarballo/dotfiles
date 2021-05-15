@@ -100,7 +100,7 @@ alias gsearch='git log --source --all -S'
 alias ni='npm install'
 
 # Vim
-alias v='vim .'
+alias v='vim'
 alias vv='vim `gitfiles`'
 
 # Emacs
