@@ -13,7 +13,6 @@ augroup END
 augroup GITCOMMIT
   autocmd!
 
-  " open quickfix/location window after using grep
   autocmd FileType gitcommit wincmd L
 augroup END
 
@@ -22,7 +21,7 @@ augroup QUICKFIX
 
   " open quickfix/location window after using grep
   autocmd QuickFixCmdPost grep cwindow | redraw!
-  autocmd QuickFixCmdPost lgrep lwindow | redraw!
+  autocmd QuickFixCmdPost lgrep redraw!
 
   " quickfix window should always be full width
   autocmd FileType qf wincmd J

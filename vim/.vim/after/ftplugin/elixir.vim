@@ -16,4 +16,4 @@ setlocal foldlevel=1
 
 nnoremap <buffer> K :DD<cr>
 nnoremap <buffer> <leader>mf :%!mix format -<cr>
-nnoremap <buffer> gM :silent lgrep "defmodule <cWORD> do"<cr>:lclose\|redraw!<cr>
+nnoremap <buffer> gM :silent lgrep "defmodule <cWORD> do"<cr>:lclose<cr>
