@@ -15,5 +15,5 @@ setlocal foldmethod=indent
 setlocal foldlevel=1
 setlocal keywordprg=:Dash!
 
-nnoremap <buffer> <leader>mf :%!mix format -<cr>
+nnoremap <buffer> <leader>mf :MixFormat<cr>
 nnoremap <buffer> gM :silent lgrep "defmodule <cWORD> do"<cr>:lclose<cr>
