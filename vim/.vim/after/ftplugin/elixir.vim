@@ -4,8 +4,8 @@ inoreabbrev <buffer> rk =>
 inoreabbrev <buffer> pipe \|>
 inoreabbrev <buffer> pry require IEx; IEx.pry
 inoreabbrev <buffer> bpry require IEx; IEx.pry
-inoreabbrev <buffer> echo IO.inspect(label: "")<left><left>
-inoreabbrev <buffer> af &(&1)<left>
+inoreabbrev <buffer> echo IO.inspect(label: "\n")<left><left>
+inoreabbrev <buffer> af & &1
 inoreabbrev <buffer> aff fn -> end<c-o>b
 inoreabbrev <buffer> ht [h \| t]
 inoreabbrev <buffer> eex <%= %><left><left><left>
