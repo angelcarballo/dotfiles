@@ -4,6 +4,7 @@ vim/.vim/backup/
 vim/.vim/temp/
 vim/.vim/undo/
 vim/.vim/plugged/
+vim/.vim/view/
 vim/.vim/pack/minpac/start/
 vim/.vim/pack/minpac/opt/
 tmux/.tmux/plugins/
