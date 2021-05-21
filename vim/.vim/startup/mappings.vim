@@ -25,6 +25,7 @@ nnoremap <leader>? mZ:silent grep -g !spec ""<left>
 xnoremap * "zy/<c-r>z<cr>
 nnoremap <leader>8 :silent grep "<cword>"<cr>
 xnoremap <leader>8 "zy:silent grep "<c-r>z"<cr>
+nnoremap <leader>* :silent grep "<cWORD>"<cr>
 
 " args
 nnoremap <leader>aa :argadd<cr>
