@@ -90,6 +90,7 @@ runtime startup/globals.vim
 runtime startup/abbreviations.vim
 runtime startup/auto_commands.vim
 runtime startup/commands.vim
+runtime startup/operators.vim
 runtime startup/forced_file_types.vim
 runtime startup/path_and_ignored_patterns.vim
 runtime startup/look_and_feel.vim
