@@ -84,10 +84,10 @@ nnoremap <leader>gD :Gdiff origin/master<cr>
 nnoremap <leader>gb :Git blame<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
-nnoremap <leader>gh :Gbrowse<cr>
-xnoremap <leader>gh :Gbrowse<cr>
-nnoremap <leader>gH :Gbrowse!<cr>
-xnoremap <leader>gH :Gbrowse!<cr>
+nnoremap <leader>gh :GBrowse<cr>
+xnoremap <leader>gh :GBrowse<cr>
+nnoremap <leader>gH :GBrowse!<cr>
+xnoremap <leader>gH :GBrowse!<cr>
 nnoremap <leader>gl :vert Git log -n 50<cr>
 nnoremap <leader>gL :0Gclog -n 50<cr>
 xnoremap <leader>gl :Gclog -n 50<cr>
@@ -159,8 +159,6 @@ nnoremap <silent> ga :Files<cr>
 nnoremap go :find<space>
 nnoremap gb :buffers<cr>:bu<space>
 nnoremap gm :marks<cr>:mark <space>
-
-nnoremap gN :e story-notes.md<cr>
 
 " auto close pairs
 inoremap (<cr> (<cr>)<c-o>O<tab>
