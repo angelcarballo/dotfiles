@@ -55,6 +55,9 @@ alias pull='git pull'
 alias push='git push'
 alias pushf='git push --force-with-lease'
 alias rebase='git rebase'
+alias stash='git stash'
+alias stashd='git stash show -p'
+alias pop='git stash pop'
 
 alias br='git co $(git branch -a --no-color | fzf)' # fuzzy find branch
 alias co='git checkout '
