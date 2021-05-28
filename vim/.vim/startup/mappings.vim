@@ -80,7 +80,7 @@ nnoremap <silent> <leader>fm :Marks<cr>
 
 " g - Git/Generate
 nnoremap <leader>gg :Git<space>
-nnoremap <leader>gD :Gdiff origin/master<cr>
+nnoremap <leader>gD :Gdiff origin/main<cr>
 nnoremap <leader>gb :Git blame<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
