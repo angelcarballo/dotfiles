@@ -17,4 +17,6 @@ setlocal foldlevel=1
 setlocal keywordprg=:Dash!
 
 nnoremap <buffer> <leader>mf :MixFormat<cr>
+nnoremap <buffer> <leader>mc :call VimuxRunCommand("clear; mix credo suggest --format=flycheck --strict " . bufname("%"))<cr>
+
 nnoremap <buffer> gM :silent lgrep "defmodule <cWORD> do"<cr>:lclose<cr>
