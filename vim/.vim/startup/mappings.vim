@@ -21,6 +21,9 @@ nnoremap <tab> <c-^>
 nnoremap <leader>/ mZ:silent grep ""<left>
 nnoremap <leader>? mZ:silent grep -g !spec ""<left>
 
+" ] - Tags
+nnoremap <leader>] :Tags <c-r><c-w><cr>
+
 " * - Search in file or project
 xnoremap * "zy/<c-r>z<cr>
 nnoremap <leader>8 :silent grep "<cword>"<cr>
@@ -108,6 +111,9 @@ nnoremap <leader>mm :Make<cr>
 " o - open
 nnoremap <leader>of :! open '%'<cr>
 nnoremap <leader>on :FZF $NOTES/<cr>
+
+" p - preview
+nnoremap <leader>pc :pclose<cr>
 
 " P - Plugins
 nnoremap <leader>Pi :call minpac#update()<cr>
