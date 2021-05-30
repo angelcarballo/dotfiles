@@ -60,10 +60,13 @@ nnoremap <leader>cff :let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>
 nnoremap <leader>co :Git checkout<space>
 nnoremap <leader>cs :nohl<cr>
 
-" d - Duplicate
+" d - Duplicate, diff
 nnoremap <leader>dp yap}p
 nnoremap <leader>dl yy:Commentary<cr>p
 xnoremap <leader>dl ygv:Commentary<cr>']p
+
+nnoremap <leader>d< :diffget //2<cr>
+nnoremap <leader>d> :diffget //3<cr>
 
 " e - Explore/Extract
 xnoremap <silent> <leader>em :call ExtractMethod()<cr>
@@ -83,9 +86,9 @@ nnoremap <silent> <leader>fm :Marks<cr>
 
 " g - Git/Generate
 nnoremap <leader>gg :Git<space>
-nnoremap <leader>gD :Gdiff origin/main<cr>
+nnoremap <leader>gD :Gdiffsplit origin/main<cr>
 nnoremap <leader>gb :Git blame<cr>
-nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gd :Gdiffsplit<cr>
 nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
 nnoremap <leader>gh :GBrowse<cr>
 xnoremap <leader>gh :GBrowse<cr>
