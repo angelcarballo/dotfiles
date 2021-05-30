@@ -11,6 +11,7 @@ inoreabbrev <buffer> aff fn -> end<c-o>b
 inoreabbrev <buffer> ht [h \| t]
 inoreabbrev <buffer> eex <%= %><left><left><left>
 inoreabbrev <buffer> cmod __MODULE__
+inoreabbrev <buffer> peek \|> (fn arg -> require IEx; IEx.pry(); arg end).()
 
 setlocal foldmethod=indent
 setlocal foldlevel=1
