@@ -22,3 +22,9 @@ nnoremap <buffer> <leader>mc :call VimuxRunCommand("clear; mix credo suggest --s
 nnoremap <buffer> <leader>mC :call VimuxRunCommand("clear; mix credo suggest --strict --format oneline `gitfiles \| xargs -I{} echo \"--files-included {}\" \| xargs`")<cr>
 
 nnoremap <buffer> gM :silent lgrep "defmodule <cWORD> do"<cr>:lclose<cr>
+
+let g:dispatch_compilers = {
+          \ "mix test": "exunit",
+          \ "mix compile": "mix",
+          \ "mix credo": "credo"
+          \ }
