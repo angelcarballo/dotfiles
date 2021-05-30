@@ -89,7 +89,7 @@ nnoremap <leader>gg :Git<space>
 nnoremap <leader>gD :Gdiffsplit origin/main<cr>
 nnoremap <leader>gb :Git blame<cr>
 nnoremap <leader>gd :Gdiffsplit<cr>
-nnoremap <leader>gf :GitStatusFiles<cr><c-w>k
+nnoremap <leader>gf :GitStatusFiles<cr><c-w>k:redraw!<cr>
 nnoremap <leader>gh :GBrowse<cr>
 xnoremap <leader>gh :GBrowse<cr>
 nnoremap <leader>gH :GBrowse!<cr>
