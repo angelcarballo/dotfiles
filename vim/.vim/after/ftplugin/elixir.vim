@@ -17,6 +17,8 @@ setlocal foldlevel=1
 setlocal keywordprg=:Dash!
 
 nnoremap <buffer> <leader>mf :MixFormat<cr>
-nnoremap <buffer> <leader>mc :call VimuxRunCommand("clear; mix credo suggest --format=flycheck --strict " . bufname("%"))<cr>
+nnoremap <buffer> <leader>mF :call VimuxRunCommand("clear; mix format `gitfiles`")<cr>
+nnoremap <buffer> <leader>mc :call VimuxRunCommand("clear; mix credo suggest --strict --format oneline --files-included " . bufname("%"))<cr>
+nnoremap <buffer> <leader>mC :call VimuxRunCommand("clear; mix credo suggest --strict --format oneline `gitfiles \| xargs -I{} echo \"--files-included {}\" \| xargs`")<cr>
 
 nnoremap <buffer> gM :silent lgrep "defmodule <cWORD> do"<cr>:lclose<cr>
