@@ -100,3 +100,8 @@ runtime startup/text_objects.vim
 runtime startup/settings.vim
 runtime startup/skeletons.vim
 runtime startup/projections.vim
+
+" source local configuration, if present
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif

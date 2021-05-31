@@ -34,7 +34,7 @@ augroup HELP
   autocmd FileType help wincmd L
 augroup END
 
-augroup PROJECT_PATH
+augroup DOTFILES_PROJECT
   autocmd!
 
   autocmd Bufread,BufNewFile */dotfiles/* set path+=

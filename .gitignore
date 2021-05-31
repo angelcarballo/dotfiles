@@ -1,5 +1,6 @@
 .netrwhist
 cheats/community
+vim/.vimrc.local
 vim/.vim/backup/
 vim/.vim/temp/
 vim/.vim/undo/
