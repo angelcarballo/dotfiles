@@ -247,8 +247,8 @@ nnoremap ]b :bnext<cr>
 nnoremap [q :cprevious<cr>
 nnoremap ]q :cnext<cr>
 
-nnoremap [Q :colder<cr>
-nnoremap ]Q :cnewer<cr>
+nnoremap [Q :cfirst<cr>
+nnoremap ]Q :clast<cr>
 
 nnoremap [l :lprevious<cr>
 nnoremap ]l :lnext<cr>
