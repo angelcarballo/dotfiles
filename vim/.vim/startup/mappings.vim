@@ -256,6 +256,9 @@ nnoremap ]l :lnext<cr>
 nnoremap [w :tabprevious<cr>
 nnoremap ]w :tabnext<cr>
 
+nnoremap [t :pop<cr>
+nnoremap ]t :tag<cr>
+
 " Add new line above/bellow current one
 nnoremap [<space> :call append(line(".") -1, "")<cr>
 nnoremap ]<space> :call append(line("."), "")<cr>
