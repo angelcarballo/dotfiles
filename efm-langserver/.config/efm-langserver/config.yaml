@@ -1,0 +1,18 @@
+version: 2
+# log-file: /Users/angel/.config/efm-langserver/server.log
+# log-level: 1
+
+tools:
+  mix_credo: &mix_credo
+    lint-command: "MIX_ENV=test mix credo suggest --strict --format=flycheck --read-from-stdin ${INPUT}"
+    lint-stdin: true
+    lint-formats:
+      - '%f:%l:%c: %t: %m'
+      - '%f:%l: %t: %m'
+    root-markers:
+      - mix.lock
+      - mix.exs
+
+languages:
+  elixir:
+    - <<: *mix_credo

@@ -15,6 +15,8 @@ call minpac#add('wincent/terminus')                    " enhancements for termin
 call minpac#add('bogado/file-line')                    " allow opening file paths with line like foo/file.txt:25
 call minpac#add('rizzatti/dash.vim')                   " documentation browser
 call minpac#add('tpope/vim-dadbod')                    " interact with DBs
+call minpac#add('prabirshrestha/vim-lsp')              " LSP client
+runtime startup/plugin/vim-lsp.vim
 
 " Git
 call minpac#add('tpope/vim-fugitive')                  " git integration
