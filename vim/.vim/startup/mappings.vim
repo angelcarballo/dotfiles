@@ -196,8 +196,11 @@ nnoremap P P=`]<c-o>
 nnoremap gp p
 nnoremap gP P
 
+" go back to default local mark (m)
+nnoremap gb `m
+
 " go back after grep and friend (their mappings auto set mark Z)
-nnoremap gb `Z
+nnoremap gB `Z
 
 " format whole file and keep position (original map formats current line which is not that useful)
 noremap gqq mzgggqG`z
