@@ -25,14 +25,12 @@ set statusline+=%r                           " read only flag
 set statusline+=%h                           " help flag
 set statusline+=%w                           " preview flag
 set statusline+=%=                           " right align the following ...
-" set statusline+=%#TabLineFll#              " color...
-set statusline+=\ %-3.20{FugitiveHead()}     " current git branch
-" set statusline+=\ %#Pmenu#                 " color...
-set statusline+=\ %c\ %l\/%L                 " current column, line and total lines
 set statusline+=%#error#                     " color ...
 set statusline+=%{StatuslineTrailingSpace()} " trailing white space indicator
 set statusline+=%{StatuslineTabWarning()}    " mixed indentation indicator
-set statusline+=%*                           " reset color
+set statusline+=%#Pmenu#                     " reset color
+set statusline+=\ %-3.20{FugitiveHead()}     " current git branch
+set statusline+=\ %c\ %l\/%L                 " current column, line and total lines
 
 " highlight spelling mistakes with an underline
 highlight clear SpellBad
