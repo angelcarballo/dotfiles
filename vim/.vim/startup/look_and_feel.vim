@@ -14,6 +14,7 @@ set noerrorbells               " no flash on errors, only at beginning/end of fi
 set laststatus=2               " always show status bar
 set listchars=tab:▸\ ,trail:·  " symbols for invisible characters
 set list                       " show extra whitespace
+set previewheight=20           " make preview bigger
 let &showbreak='↳ '            " indicator for wrapped lines
 
 " statusline
