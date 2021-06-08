@@ -17,6 +17,7 @@ function! s:on_lsp_buffer_enabled() abort
     setlocal tagfunc=lsp#tagfunc
 
     nmap <buffer> <c-]> <plug>(lsp-definition)
+    nmap <silent><leader><c-]> <c-w><plug>(lsp-definition)<c-w>T
     nmap <buffer> ss <plug>(lsp-document-symbol-search)
     nmap <buffer> gR <plug>(lsp-references)
     nmap <buffer> [e <plug>(lsp-previous-diagnostic)
@@ -37,6 +38,12 @@ augroup END
 
 " Show error descriptions in command line
 let g:lsp_diagnostics_echo_cursor = 1
+
+" Opens preview windows as normal windows
+let g:lsp_preview_float = 0
+
+" Closes the preview window on the second call to preview
+let g:lsp_preview_doubletap = [function('lsp#ui#vim#output#closepreview')]
 
 let g:lsp_format_sync_timeout = 1000
 
