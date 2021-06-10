@@ -16,8 +16,6 @@ function! s:on_lsp_buffer_enabled() abort
     setlocal signcolumn=yes
     setlocal tagfunc=lsp#tagfunc
 
-    nmap <buffer> <c-]> <plug>(lsp-definition)
-    nmap <silent><leader><c-]> <c-w><plug>(lsp-definition)<c-w>T
     nmap <buffer> ss <plug>(lsp-document-symbol-search)
     nmap <buffer> gR <plug>(lsp-references)
     nmap <buffer> [e <plug>(lsp-previous-diagnostic)
@@ -25,7 +23,6 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> K <plug>(lsp-hover)
     nmap <buffer> gK :Dash!<cr>
 
-    let g:lsp_format_sync_timeout = 1000
     autocmd! BufWritePre *.ex,*.exs call execute('LspDocumentFormatSync')
 endfunction
 
@@ -45,6 +42,7 @@ let g:lsp_preview_float = 0
 " Closes the preview window on the second call to preview
 let g:lsp_preview_doubletap = [function('lsp#ui#vim#output#closepreview')]
 
+let g:lsp_tagfunc_source_methods = ['definition']
 let g:lsp_format_sync_timeout = 1000
 
 " let g:lsp_log_verbose = 1
