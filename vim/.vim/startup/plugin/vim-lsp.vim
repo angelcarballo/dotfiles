@@ -5,11 +5,11 @@ autocmd User lsp_setup call lsp#register_server({
       \ 'allowlist': ['elixir']
       \ })
 
-autocmd User lsp_setup call lsp#register_server({
-      \ 'name': 'efm-langserver',
-      \ 'cmd': {server_info->['efm-langserver', '-c=/Users/angel/.config/efm-langserver/config.yaml']},
-      \ 'allowlist': ['elixir']
-      \ })
+" autocmd User lsp_setup call lsp#register_server({
+"       \ 'name': 'efm-langserver',
+"       \ 'cmd': {server_info->['efm-langserver', '-c=/Users/angel/.config/efm-langserver/config.yaml']},
+"       \ 'allowlist': ['elixir']
+"       \ })
 
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
@@ -23,7 +23,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> K <plug>(lsp-hover)
     nmap <buffer> gK :Dash!<cr>
 
-    autocmd! BufWritePre *.ex,*.exs call execute('LspDocumentFormatSync')
+    " autocmd! BufWritePre *.ex,*.exs call execute('LspDocumentFormatSync')
 endfunction
 
 augroup lsp_install
@@ -43,6 +43,7 @@ let g:lsp_preview_float = 0
 let g:lsp_preview_doubletap = [function('lsp#ui#vim#output#closepreview')]
 
 let g:lsp_tagfunc_source_methods = ['definition']
+
 let g:lsp_format_sync_timeout = 1000
 
 " let g:lsp_log_verbose = 1
