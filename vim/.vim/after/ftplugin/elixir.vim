@@ -16,6 +16,8 @@ inoreabbrev <buffer> peek \|> (fn arg -> require IEx; IEx.pry(); arg end).()
 setlocal foldmethod=indent
 setlocal foldlevel=1
 setlocal keywordprg=:Dash!
+" this matches default line length used by mix format
+setlocal textwidth=98
 
 nnoremap <buffer> <leader>mf :MixFormat<cr>
 nnoremap <buffer> <leader>mF :call VimuxRunCommand("clear; mix format `gitfiles`")<cr>
