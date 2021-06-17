@@ -32,6 +32,7 @@ call minpac#add('pangloss/vim-javascript')             " Improved Javascript syn
 call minpac#add('MaxMEllon/vim-jsx-pretty')            " JSX syntax
 call minpac#add('evanleck/vim-svelte')                 " Svelte syntax
 call minpac#add('leafgarland/typescript-vim')          " Typescript support
+call minpac#add('jxnblk/vim-mdx-js')                   " MDX (markdown + JSX) support
 
 " Operators
 call minpac#add('tpope/vim-surround')                  " alter surroundings (), [], '', {}
