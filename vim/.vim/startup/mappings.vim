@@ -35,7 +35,7 @@ nnoremap <leader>* :silent grep "<cWORD>"<cr>
 nnoremap <leader>aa :argadd<cr>
 
 " b - Buffers
-nnoremap <silent> <leader>bo :w <bar> %bd <bar> e#<cr>
+nnoremap <silent> <leader>bo :Bdelete hidden<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
 
 " c - Copy/clear

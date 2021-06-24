@@ -61,6 +61,7 @@ call minpac#add('junegunn/fzf.vim')                    " FZF helpers
 call minpac#add('romainl/vim-devdocs')                 " search documentation on DevDocs
 call minpac#add('ludovicchabant/vim-gutentags')        " auto generate and update tags
 call minpac#add('tpope/vim-projectionist')             " projections for project file navigation
+call minpac#add('Asheq/close-buffers.vim')             " projections for project file navigation
 
 " Auto completion
 call minpac#add('AndrewRadev/switch.vim')              " switch between pre-defined patterns (as in true/false)
