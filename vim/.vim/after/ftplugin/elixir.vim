@@ -8,14 +8,12 @@ inoreabbrev <buffer> pecho \|> IO.inspect(label: "\nXXX")<left><left>
 inoreabbrev <buffer> echo IO.inspect(label: "\nXXX")<c-o>T(
 inoreabbrev <buffer> af & &1
 inoreabbrev <buffer> aff fn -> end<c-o>b
-inoreabbrev <buffer> ht [h \| t]
 inoreabbrev <buffer> eex <%= %><left><left><left>
 inoreabbrev <buffer> cmod __MODULE__
 inoreabbrev <buffer> peek \|> (fn arg -> require IEx; IEx.pry(); arg end).()
 
 setlocal foldmethod=indent
 setlocal foldlevel=1
-setlocal keywordprg=:Dash!
 " this matches default line length used by mix format
 setlocal textwidth=98
 

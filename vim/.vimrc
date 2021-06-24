@@ -13,7 +13,6 @@ call minpac#add('tpope/vim-repeat')                    " extend repeat support
 call minpac#add('AndrewRadev/splitjoin.vim')           " split/join statements (gS, gJ)
 call minpac#add('wincent/terminus')                    " enhancements for terminal vim (focus events, cursor, etc.)
 call minpac#add('bogado/file-line')                    " allow opening file paths with line like foo/file.txt:25
-call minpac#add('rizzatti/dash.vim')                   " documentation browser
 call minpac#add('tpope/vim-dadbod')                    " interact with DBs
 call minpac#add('prabirshrestha/vim-lsp')              " LSP client
 runtime startup/plugin/vim-lsp.vim
