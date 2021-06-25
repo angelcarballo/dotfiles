@@ -7,6 +7,9 @@ call minpac#init()
 " Bundled with vim
 packadd cfilter                                        " filter entries from quickfix or location lists
 
+" minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+
 " Basic plugins
 call minpac#add('kana/vim-textobj-user')               " custom text object support
 call minpac#add('tpope/vim-repeat')                    " extend repeat support
