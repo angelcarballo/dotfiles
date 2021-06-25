@@ -1,4 +1,4 @@
-let g:markdown_fenced_languages = ['ruby', 'bash=sh']
+let g:markdown_fenced_languages = ['ruby', 'bash=sh', 'javascript', 'js=javascript', 'elixir']
 
 set wrap
 set textwidth=1000
