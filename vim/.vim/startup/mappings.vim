@@ -145,10 +145,11 @@ nnoremap <silent> <leader>Sb :echo "Git branch: " . fugitive#head()<cr>
 
 " T - Tabs/tmux
 nnoremap <silent> <leader>tn :tabnew<cr>
-nnoremap <silent> <leader>tc :VimuxCloseRunner<cr>
+nnoremap <silent> <leader>tq :VimuxCloseRunner<cr>
 nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
 nnoremap <silent> <leader>tl :VimuxRunLastCommand<cr>
 nnoremap <silent> <leader>tt :VimuxRunCommand("")<left><left>
+nnoremap <silent> <leader>tc :VimuxInterruptRunner<cr>
 
 " V - Vimrc
 nnoremap <leader>Ve :e $MYVIMRC<cr>
