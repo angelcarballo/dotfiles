@@ -15,11 +15,13 @@ let test#ruby#rspec#options = {
   \ 'suite': '--fail-fast',
 \}
 
+" uncomment to use custom formater that populate quickfix with spec errors
+" let test#ruby#rspec#options = '--fail-fast --format progress --require ~/src/dotfiles/rspec/formatters/quickfix_formatter.rb --format QuickfixFormatter --out quickfix.out --order 0'
+
 let test#elixir#exunit#options = {
   \'suite': '--stale',
   \'file': '--trace',
   \'nearest': '--trace'
 \}
 
-" uncomment to use custom formater that populate quickfix with spec errors
-" let test#ruby#rspec#options = '--fail-fast --format progress --require ~/src/dotfiles/rspec/formatters/quickfix_formatter.rb --format QuickfixFormatter --out quickfix.out --order 0'
+let g:test#elixir#exunit#executable = 'mix test'
