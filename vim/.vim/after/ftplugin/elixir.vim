@@ -17,7 +17,7 @@ setlocal foldlevel=1
 " this matches default line length used by mix format
 setlocal textwidth=98
 
-nnoremap <buffer> <leader>mf :call execute('LspDocumentFormatSync')<cr>
+nnoremap <buffer> <leader>mf :!mix format %<cr>
 nnoremap <buffer> <leader>mF :call VimuxRunCommand("clear; mix format `gitfiles`")<cr>
 nnoremap <buffer> <leader>mc :call VimuxRunCommand("clear; mix credo suggest --strict --format oneline --files-included " . bufname("%"))<cr>
 nnoremap <buffer> <leader>mC :call VimuxRunCommand("clear; mix credo suggest --strict --format oneline `gitfiles \| xargs -I{} echo \"--files-included {}\" \| xargs`")<cr>
