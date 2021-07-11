@@ -23,6 +23,7 @@ runtime startup/plugin/vim-lsp.vim
 " Git
 call minpac#add('tpope/vim-fugitive')                  " git integration
 call minpac#add('tpope/vim-rhubarb')                   " github integration
+call minpac#add('airblade/vim-gitgutter')                   " github integration
 
 " Languages & frameworks
 call minpac#add('tpope/vim-rbenv')                     " Rbenv support, used to get the current ruby version on `path`
