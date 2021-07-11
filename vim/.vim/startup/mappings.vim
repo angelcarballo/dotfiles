@@ -268,19 +268,18 @@ nnoremap ]t :tag<cr>
 nnoremap [<space> :call append(line(".") -1, "")<cr>
 nnoremap ]<space> :call append(line("."), "")<cr>
 
-nnoremap coc :setlocal cursorline! cursorline?<cr>
 nnoremap coC :setlocal cursorcolumn! cursorcolumn?<cr>
+nnoremap coc :setlocal cursorline! cursorline?<cr>
 nnoremap cof :setlocal foldenable! foldenable?<cr>
 nnoremap coh :setlocal hlsearch! hlsearch?<cr>
-nnoremap con :setlocal number! number?<cr>
-nnoremap cop :setlocal paste! paste?<cr>
-nnoremap cos :setlocal spell! spell?<cr>
-nnoremap cow :setlocal wrap! wrap?<cr>
-
-nnoremap cot :call ToggleVimuxTarget()<cr>
-nnoremap coq :call ToggleQuickFix()<cr>
 nnoremap col :call ToggleLocation()<cr>
 nnoremap com :call ToggleExUnitIex()<cr>
+nnoremap con :setlocal number! number?<cr>
+nnoremap cop :setlocal paste! paste?<cr>
+nnoremap coq :call ToggleQuickFix()<cr>
+nnoremap cos :setlocal spell! spell?<cr>
+nnoremap cot :call ToggleVimuxTarget()<cr>
+nnoremap cow :setlocal wrap! wrap?<cr>
 
 
 " ---------------------------------------------------------------------------}}}
