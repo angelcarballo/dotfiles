@@ -20,7 +20,7 @@ let test#ruby#rspec#options = {
 
 let test#elixir#exunit#options = {
   \'suite': '--stale',
-  \'file': '--trace',
+  \'file': '--trace --seed 0',
   \'nearest': '--trace'
 \}
 
