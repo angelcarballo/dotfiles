@@ -149,7 +149,8 @@ nnoremap <silent> <leader>tq :VimuxCloseRunner<cr>
 nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
 nnoremap <silent> <leader>tl :VimuxRunLastCommand<cr>
 nnoremap <silent> <leader>tt :VimuxRunCommand("")<left><left>
-nnoremap <silent> <leader>tc :VimuxInterruptRunner<cr>
+" interrupt twice to auto-confirm
+nnoremap <silent> <leader>tc :VimuxInterruptRunner<cr>:VimuxInterruptRunner<cr>
 
 " V - Vimrc
 nnoremap <leader>Ve :e $MYVIMRC<cr>
