@@ -46,3 +46,11 @@ call matchadd('ColorColumn', '\%121v', 121)
 
 " highlight trailing spaces
 match ErrorMsg '\s\+$'
+
+" tidier fold lines
+function! CustomFold()
+  let line = getline(v:foldstart)
+  return ' » ' . line
+endfunction
+set foldtext=CustomFold()
+set fillchars=fold:\ 
