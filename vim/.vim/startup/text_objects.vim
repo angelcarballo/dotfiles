@@ -11,7 +11,7 @@ onoremap in' :<c-u>normal! f'vi'<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
 
 " entire buffer text object
-onoremap ae :<c-u>normal! ggVG<cr>
+onoremap aE :<c-u>normal! ggVG<cr>
 
 " current line with/without <br>
 onoremap al :<c-u>normal! V<cr>
