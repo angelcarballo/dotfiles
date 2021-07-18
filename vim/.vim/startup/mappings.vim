@@ -77,6 +77,7 @@ nnoremap <silent> <leader>ev :Vex<cr>
 
 " f - File/Find
 nnoremap <leader>fs :up<cr>
+nnoremap <silent> <c-p> :Files<cr>
 nnoremap <silent> <leader>ff :Files<cr>
 nnoremap <silent> <leader>fd :Files %:p:h<cr>
 nnoremap <silent> <leader>fF :Files<cr>
