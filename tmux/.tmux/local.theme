@@ -1,7 +1,7 @@
 # Status bar
 set-option -g status-position bottom
-set -g status-bg "colour18"
-set -g status-fg "colour07"
+set -g status-bg "colour07"
+set -g status-fg "colour11"
 set -g status-justify "centre"
 set -g status-left-length "100"
 set -g status "on"
@@ -13,10 +13,9 @@ set -g status-left " #S"
 # right > Boston time / London time
 set -g status-right "#(TZ='Europe/London' date +%%H:%%M)"
 
-setw -g window-status-format " #I.#W#{?window_zoomed_flag,#[fg=colour1]+#[fg=colour08],} "
-setw -g window-status-current-format "[#I.#W#{?window_zoomed_flag,#[fg=colour1]+#[fg=colour08],}]"
+setw -g window-status-format " #I.#W#{?window_zoomed_flag,#[fg=colour1]+#[fg=colour11],} "
+setw -g window-status-current-format "[#I.#W#{?window_zoomed_flag,#[fg=colour1]+#[fg=colour11],}]"
 
 # Pane borders
-set -g pane-border-style fg="colour18"
-set -g pane-active-border-style fg="colour18"
-
+set -g pane-border-style fg="colour07"
+set -g pane-active-border-style fg="colour07"

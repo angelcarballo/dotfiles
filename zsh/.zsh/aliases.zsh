@@ -6,16 +6,14 @@ case "$OSTYPE" in
     alias copy='pbcopy'
     alias paste='pbpaste'
     alias flushdns='dscacheutil -flushcache'
-    alias dark="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true' && base16_horizon-dark"
-    alias light="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to false' && base16_solarized-light"
+    alias dark="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true'"
+    alias light="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to false'"
   ;;
   linux*)
     alias copy='xclip -selection clipboard'
     alias paste='xclip -selection clipboard -o'
     alias markoff="open -a Markoff"
     alias open='xdg-open'
-    alias dark="base16_phd"
-    alias light="base16_solarized-light"
   ;;
 esac
 
@@ -28,7 +26,7 @@ alias celar='clear'
 alias lcear='clear'
 alias ls='ls -GFa --color=auto'
 alias ll='ls -GFlah --color=auto'
-alias cat='bat --theme base16'
+alias cat='bat'
 
 # Extension based aliases, they are used when the filename is used as a command
 alias -s log='tail -f'

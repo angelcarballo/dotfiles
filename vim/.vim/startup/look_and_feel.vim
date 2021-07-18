@@ -3,9 +3,27 @@ set t_8f=[38;2;%lu;%lu;%lum
 set t_8b=[48;2;%lu;%lu;%lum
 set termguicolors
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
+function SetDarkTheme()
+  set background=dark
+  colorscheme apprentice
+endfunction
+
+function SetLightTheme()
+  set background=light
+  let g:solarized_statusline="flat"  " flat variant has a less distracting statusline
+  let g:solarized_extra_hi_groups=1  " show filetype specific highlight groups
+  let g:solarized_diffmode="high"    " make diffs as contrasty as possible
+  colorscheme solarized8
+endfunction
+
+if g:os == "Darwin"
+  if system("defaults read -g AppleInterfaceStyle") =~ "Dark"
+    call SetDarkTheme()
+  else
+    call SetLightTheme()
+  endif
+else
+  call SetLightTheme()
 endif
 
 syntax on                      " enable syntax highlighting
@@ -26,7 +44,7 @@ set statusline+=%r                           " read only flag
 set statusline+=%h                           " help flag
 set statusline+=%w                           " preview flag
 set statusline+=%=                           " right align the following ...
-set statusline+=%#error#                     " color ...
+set statusline+=%#Error#                     " color ...
 set statusline+=%{StatuslineTrailingSpace()} " trailing white space indicator
 set statusline+=%{StatuslineTabWarning()}    " mixed indentation indicator
 set statusline+=%#Pmenu#                     " reset color

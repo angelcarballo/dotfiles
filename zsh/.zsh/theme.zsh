@@ -15,7 +15,7 @@ function gitstatus_prompt_update() {
   [[ $VCS_STATUS_RESULT == ok-sync ]] || return 0  # not a git repo
 
   local reset='%f'
-  local yellow='%F{11}'
+  local yellow='%F{3}'
 
   p=$yellow
   p+=${${VCS_STATUS_LOCAL_BRANCH:-@${VCS_STATUS_COMMIT}}//\%/%%}            # escape %
@@ -67,7 +67,7 @@ function TRAPINT() {
 # }}}
 
 current_path() {
-  echo '%F{12}%~%F{reset_color}'
+  echo '%F{4}%~%F{reset_color}'
 }
 
 prompt_symbol_with_last_command_status() {

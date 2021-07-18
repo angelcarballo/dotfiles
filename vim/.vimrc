@@ -55,7 +55,7 @@ call minpac#add('andyl/vim-textobj-elixir')            " elixir blocks/module/me
 " Look & Feel
 call minpac#add('romainl/vim-cool')                    " clear search highlight automatically
 call minpac#add('romainl/Apprentice')                  " Apprentice colorscheme
-call minpac#add('chriskempson/base16-vim')             " Base16 colorschemes
+call minpac#add('lifepillar/vim-solarized8')           " Solarized variant with some less cruft (but better looking than flattened)
 
 " Navigation
 call minpac#add('junegunn/fzf')                        " basic FZF support

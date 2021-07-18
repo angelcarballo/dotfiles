@@ -109,11 +109,6 @@ export CHEATCOLORS=true
 # enable shell history on IEx and increase history size
 export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-  eval "$("$BASE16_SHELL/profile_helper.sh")"
-
 # source local config if present
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
