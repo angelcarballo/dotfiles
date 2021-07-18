@@ -75,3 +75,6 @@ brew "asdf"
 
 # wxwidgets (required for erlang observer, debugger, etc)
 brew "wxmac"
+
+# Formatter for postgres-SQL queries
+brew "pgformatter"
