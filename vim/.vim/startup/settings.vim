@@ -12,6 +12,7 @@ set infercase                         " ... same thing for keyword completion
 set nowrap                            " don't wrap lines when they're too long for current screen size
 set backspace=indent,eol,start        " backspace through everything
 set wildmenu                          " visual auto complete for command menu
+set wildmode=longest:full,full        " complete with the longest matching substring, also show menu. Hitting tab again moves between matches
 set ttyfast                           " send extra characters to terminal (improves smoothness)
 set formatoptions+=j                  " delete comment character when joining commented lines
 set autoread                          " if a file changes outside Vim, reload its contents automatically
