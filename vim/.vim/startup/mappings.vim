@@ -2,6 +2,9 @@
 
 let mapleader="\<space>"
 
+" start in very-nomagic mode, effectively disabling all special characters
+nnoremap / /\V
+
 " easily exit insert mode
 inoremap kj <esc>
 
