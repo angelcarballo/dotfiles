@@ -1,7 +1,6 @@
 set number
 set autowrite                         " auto write after make, ! and friends
 set showcmd                           " show complete commands
-set ruler                             " show cursor position
 set scrolloff=3                       " leave space after the current line
 set noswapfile                        " disable swap files, let git do the work
 set splitright                        " open new vertical split panes to right
@@ -14,7 +13,6 @@ set nowrap                            " don't wrap lines when they're too long f
 set backspace=indent,eol,start        " backspace through everything
 set wildmenu                          " visual auto complete for command menu
 set ttyfast                           " send extra characters to terminal (improves smoothness)
-set lazyredraw                        " redraw only when needed
 set formatoptions+=j                  " delete comment character when joining commented lines
 set autoread                          " if a file changes outside Vim, reload its contents automatically
 set undofile                          " persist undo history
