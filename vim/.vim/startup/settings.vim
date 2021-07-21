@@ -33,6 +33,7 @@ set dictionary+=/usr/share/dict/words " auto complete words from system dictiona
 set tags^=./.git/tags;                " read tags from git directory
 set nofoldenable                      " do not fold by default
 set shortmess-=S                      " show total and number of current result after a search
+set hidden                            " allow closing buffers with unsaved changes
 
 set spellfile=~/Drive/vim/spell/en.utf-8.add
 set diffopt=filler,internal,algorithm:histogram,indent-heuristic
