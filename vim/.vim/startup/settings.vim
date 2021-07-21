@@ -16,7 +16,6 @@ set wildmenu                          " visual auto complete for command menu
 set ttyfast                           " send extra characters to terminal (improves smoothness)
 set lazyredraw                        " redraw only when needed
 set formatoptions+=j                  " delete comment character when joining commented lines
-set magic                             " eval special character as 'special' by default, for example . is any character, and \. is a dot
 set autoread                          " if a file changes outside Vim, reload its contents automatically
 set undofile                          " persist undo history
 set undodir=$HOME/.vim/undo           " where to store undo files
