@@ -68,7 +68,7 @@ match ErrorMsg '\s\+$'
 " tidier fold lines
 function! CustomFold()
   let line = getline(v:foldstart)
-  return ' » ' . line
+  return '… ' . line
 endfunction
 set foldtext=CustomFold()
 set fillchars=fold:\ 
