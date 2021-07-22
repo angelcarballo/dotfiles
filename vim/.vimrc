@@ -19,6 +19,7 @@ call minpac#add('bogado/file-line')                    " allow opening file path
 call minpac#add('tpope/vim-dadbod')                    " interact with DBs
 call minpac#add('prabirshrestha/vim-lsp')              " LSP client
 runtime startup/plugin/vim-lsp.vim
+call minpac#add('tpope/vim-eunuch')                    " basic unix shell command helpers (mv, rm, etc.)
 
 " Git
 call minpac#add('tpope/vim-fugitive')                  " git integration
