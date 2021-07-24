@@ -25,8 +25,9 @@ nnoremap <leader>/ mZ:silent grep ""<left>
 nnoremap <leader>? mZ:silent grep -g !spec ""<left>
 
 " ] - Tags
-nnoremap <leader>] :Tags <c-r><c-w><cr>
+" open tag in new tab
 nnoremap <silent><leader><c-]> <c-w><c-]><c-w>T
+nnoremap <c-w><c-t><c-]> <c-w><c-]><c-w>T
 
 " * - Search in file or project
 xnoremap * "zy/<c-r>z<cr>
