@@ -29,3 +29,20 @@ let g:dispatch_compilers = {
           \ "mix compile": "mix",
           \ "mix credo": "credo"
           \ }
+
+function! ElixirUmbrellaTransform(cmd) abort
+  if match(a:cmd, 'apps/') != -1
+    let l:app_path = matchlist(a:cmd, '\(apps/[^/]*\)/')[0]
+
+    " remove apps/some_app from the file path
+    let l:app_cmd = substitute(a:cmd, '\(apps/[^/]*\)/', '', '')
+
+    " run mix test command in a subshell to avoid switching the cwd
+    return "(cd " . l:app_path . "; " . l:app_cmd . ")"
+  else
+    return a:cmd
+  end
+endfunction
+
+let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
+let g:test#transformation = 'elixir_umbrella'
