@@ -1,7 +1,7 @@
 # Tmux session files
 .tmux-session
 
-# Vim session files
+# Vim stuff
 Session.vim
 
 # Test output

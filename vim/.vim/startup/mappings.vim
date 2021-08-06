@@ -117,8 +117,10 @@ nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>g/ :Git log -S'' -- %<left><left><left><left><left><left>
 nnoremap <leader>g? :Git log -S''<left>
 
-" m - make
-nnoremap <leader>mm :Make<cr>
+" m - marks
+nmap mm <Plug>BookmarkToggle
+nmap ma <Plug>BookmarkShowAll
+nmap md <Plug>BookmarkClearAll
 
 " o - open
 nnoremap <leader>of :! open '%'<cr>
