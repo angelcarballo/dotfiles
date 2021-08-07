@@ -162,6 +162,7 @@ nnoremap <silent> <leader>tq :VimuxCloseRunner<cr>
 nnoremap <silent> <leader>to :VimuxRunCommand("")<cr>
 nnoremap <silent> <leader>tl :VimuxRunLastCommand<cr>
 nnoremap <silent> <leader>tt :VimuxRunCommand("")<left><left>
+nnoremap <silent> <leader>t: :VimuxRunCommand("")<left><left>
 " interrupt twice to auto-confirm
 nnoremap <silent> <leader>tc :VimuxInterruptRunner<cr>:VimuxInterruptRunner<cr>
 
