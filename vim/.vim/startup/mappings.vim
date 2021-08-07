@@ -122,6 +122,9 @@ nmap mm <Plug>BookmarkToggle
 nmap ma <Plug>BookmarkShowAll
 nmap md <Plug>BookmarkClearAll
 
+" n - notes
+nnoremap <leader>nn :execute "edit ".BranchNotesPath()<cr>
+
 " o - open
 nnoremap <leader>of :! open '%'<cr>
 nnoremap <leader>on :FZF $NOTES/<cr>
