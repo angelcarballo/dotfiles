@@ -1,3 +1,4 @@
+let g:markdown_folding = 1
 let g:markdown_fenced_languages = ['ruby', 'bash=sh', 'javascript', 'js=javascript', 'elixir']
 
 set wrap
