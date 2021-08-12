@@ -270,8 +270,8 @@ nnoremap ]q :cnext<cr>
 nnoremap [Q :cfirst<cr>
 nnoremap ]Q :clast<cr>
 
-nnoremap [a :lprevious<cr>
-nnoremap ]a :lnext<cr>
+nnoremap [l :lprevious<cr>
+nnoremap ]l :lnext<cr>
 
 nnoremap [w :tabprevious<cr>
 nnoremap ]w :tabnext<cr>
