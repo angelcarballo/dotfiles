@@ -121,6 +121,8 @@ nnoremap <leader>g? :Git log -S''<left>
 nmap mm <Plug>BookmarkToggle
 nmap ma <Plug>BookmarkShowAll
 nmap md <Plug>BookmarkClearAll
+nmap ]m <Plug>BookmarkNext
+nmap [m <Plug>BookmarkPrev
 
 " n - notes
 nnoremap <leader>nn :execute "edit ".BranchNotesPath()<cr>
