@@ -5,6 +5,7 @@ autocmd User lsp_setup call lsp#register_server({
       \ 'allowlist': ['elixir']
       \ })
 
+" To enable credo linter (it seems to cause issues, so disabled for now)
 " autocmd User lsp_setup call lsp#register_server({
 "       \ 'name': 'efm-langserver',
 "       \ 'cmd': {server_info->['efm-langserver', '-c=/Users/angel/.config/efm-langserver/config.yaml']},
@@ -23,6 +24,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> K <plug>(lsp-hover)
     nmap <buffer> gK :Dash!<cr>
 
+    " Format on save?
     " autocmd! BufWritePre *.ex,*.exs call execute('LspDocumentFormatSync')
 endfunction
 
