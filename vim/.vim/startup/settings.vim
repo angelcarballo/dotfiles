@@ -1,4 +1,5 @@
 set number
+set confirm                           " ask instead of just erroring if the current file has unsaved changes
 set autowrite                         " auto write after make, ! and friends
 set showcmd                           " show complete commands
 set scrolloff=3                       " leave space after the current line
