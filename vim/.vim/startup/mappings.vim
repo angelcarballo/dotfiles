@@ -118,6 +118,9 @@ nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>g/ :Git log -S'' -- %<left><left><left><left><left><left>
 nnoremap <leader>g? :Git log -S''<left>
 
+nmap <silent> <leader>k <Plug>DashSearch
+
+
 " m - marks
 nmap mm <Plug>BookmarkToggle
 nmap ma <Plug>BookmarkShowAll

@@ -87,6 +87,7 @@ call minpac#add('mhinz/vim-mix-format')                " Elixir mix format utili
 runtime startup/plugin/vim-mix-format.vim
 
 " Extras
+call minpac#add('rizzatti/dash.vim')             " External doc browser (Mac only)
 runtime startup/plugin/netrw.vim                 " configuration for netrw
 runtime startup/plugin/vim-ruby.vim              " configuration for default vim-ruby
 
