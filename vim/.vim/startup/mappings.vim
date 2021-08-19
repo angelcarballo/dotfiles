@@ -21,8 +21,9 @@ nnoremap <leader>, :marks<cr>:mark <space>
 nnoremap <tab> <c-^>
 
 " /,? - Search in project
-nnoremap <leader>/ mZ:silent grep ""<left>
-nnoremap <leader>? mZ:silent grep -g !spec ""<left>
+" Use -F by default to disable regexp and search for a literal string
+nnoremap <leader>/ mZ:silent grep -F ""<left>
+nnoremap <leader>? mZ:silent grep -F -g !test ""<left>
 
 " ] - Tags
 " open tag in new tab
