@@ -79,3 +79,9 @@ augroup OpenQuickfixWindowAfterMake
   autocmd QuickFixCmdPost [^l]* nested cwindow
   autocmd QuickFixCmdPost    l* nested lwindow
 augroup END
+
+augroup BRANCH_NOTES
+  autocmd!
+
+  autocmd Bufread,BufNewFile */.git/notes-* set ft=markdown
+augroup END
