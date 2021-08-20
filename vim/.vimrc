@@ -24,7 +24,7 @@ call minpac#add('tpope/vim-eunuch')                    " basic unix shell comman
 " Git
 call minpac#add('tpope/vim-fugitive')                  " git integration
 call minpac#add('tpope/vim-rhubarb')                   " github integration
-call minpac#add('airblade/vim-gitgutter')                   " github integration
+call minpac#add('airblade/vim-gitgutter')              " show git changes on signcolumn
 
 " Languages & frameworks
 call minpac#add('tpope/vim-rbenv')                     " Rbenv support, used to get the current ruby version on `path`

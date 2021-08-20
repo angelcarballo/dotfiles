@@ -3,6 +3,11 @@ set t_8f=[38;2;%lu;%lu;%lum
 set t_8b=[48;2;%lu;%lu;%lum
 set termguicolors
 
+" Solarized8 settings
+let g:solarized_statusline="flat"  " flat variant has a less distracting statusline
+let g:solarized_extra_hi_groups=1  " show filetype specific highlight groups
+let g:solarized_diffmode="high"    " make diffs as contrasty as possible
+
 function SetDarkTheme()
   set background=dark
   colorscheme apprentice
@@ -10,9 +15,6 @@ endfunction
 
 function SetLightTheme()
   set background=light
-  let g:solarized_statusline="flat"  " flat variant has a less distracting statusline
-  let g:solarized_extra_hi_groups=1  " show filetype specific highlight groups
-  let g:solarized_diffmode="high"    " make diffs as contrasty as possible
   colorscheme solarized8
 endfunction
 
