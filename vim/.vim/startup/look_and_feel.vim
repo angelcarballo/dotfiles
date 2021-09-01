@@ -50,7 +50,7 @@ set statusline+=%#Error#                     " color ...
 set statusline+=%{StatuslineTrailingSpace()} " trailing white space indicator
 set statusline+=%{StatuslineTabWarning()}    " mixed indentation indicator
 set statusline+=%#Pmenu#                     " reset color
-set statusline+=\ %-3.30{FugitiveHead()}     " current git branch
+" set statusline+=\ %-3.30{FugitiveHead()}     " current git branch
 set statusline+=\ %c\ %l\/%L                 " current column, line and total lines
 
 " highlight spelling mistakes with an underline
