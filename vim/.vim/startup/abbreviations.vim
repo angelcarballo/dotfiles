@@ -12,6 +12,7 @@ cnoreabbrev cfile %:p
 cnoreabbrev cdir %:p:h
 cnoreabbrev vfind vert sf<space>
 
+" abbreviations expanded only at the beginning of the command line
 cnoreabbrev <expr> grep (getcmdtype() == ':' && getcmdline() =~ '^grep$')? 'silent grep' : 'grep'
 cnoreabbrev <expr> no (getcmdtype() == ':' && getcmdline() =~ '^no$')? 'Cfilter!' : 'no'
 cnoreabbrev <expr> only (getcmdtype() == ':' && getcmdline() =~ '^only$')? 'Cfilter' : 'only'

@@ -122,9 +122,9 @@ nmap <silent> <leader>k <Plug>DashSearch
 
 
 " m - marks
-nmap mm <Plug>BookmarkToggle
-nmap ma <Plug>BookmarkShowAll
-nmap md <Plug>BookmarkClearAll
+nmap <leader>mm <Plug>BookmarkToggle
+nmap <leader>ma <Plug>BookmarkShowAll
+nmap <leader>md <Plug>BookmarkClearAll
 nmap ]m <Plug>BookmarkNext
 nmap [m <Plug>BookmarkPrev
 
