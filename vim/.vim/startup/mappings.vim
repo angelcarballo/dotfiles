@@ -60,8 +60,9 @@ nnoremap <leader>cfP :let @+=expand("%:p")<cr>:echo "<c-r>+"<cr>
 " copy relative path with line number
 nnoremap <leader>cfl :let @+=join([expand('%'),  line(".")], ':')<cr>:echo "<c-r>+"<cr>
 
-" copy file folder path (src/)
+" copy file directory/folder path (src/)
 nnoremap <leader>cff :let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>
+nnoremap <leader>cfd :let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>
 
 nnoremap <leader>co :Git checkout<space>
 nnoremap <leader>cs :nohl<cr>
