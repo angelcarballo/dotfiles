@@ -56,6 +56,7 @@ alias rebase='git rebase'
 alias stash='git stash'
 alias stashd='git stash show -p'
 alias pop='git stash pop'
+alias recent='git recent'
 
 alias br='git co $(git branch -a --no-color | fzf)' # fuzzy find branch
 alias co='git checkout '
