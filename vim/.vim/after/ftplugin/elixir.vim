@@ -10,7 +10,8 @@ inoreabbrev <buffer> af & &1
 inoreabbrev <buffer> aff fn -> end<c-o>b
 inoreabbrev <buffer> eex <%= %><left><left><left>
 inoreabbrev <buffer> cmod __MODULE__
-inoreabbrev <buffer> peek \|> (fn arg -> require IEx; IEx.pry(); arg end).()
+inoreabbrev <buffer> peek \|> tap(fn current -> require IEx; IEx.pry(); end)
+inoreabbrev <buffer> shout IO.puts("=======>")
 
 setlocal foldmethod=indent
 setlocal foldlevel=1
