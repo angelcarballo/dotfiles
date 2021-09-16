@@ -83,8 +83,6 @@ runtime startup/plugin/vimux.vim
 call minpac#add('janko-m/vim-test')                    " generic test runner
 runtime startup/plugin/vim-test.vim
 call minpac#add('junegunn/vader.vim')                  " vimscript test framework
-call minpac#add('mhinz/vim-mix-format')                " Elixir mix format utility
-runtime startup/plugin/vim-mix-format.vim
 
 " Extras
 call minpac#add('rizzatti/dash.vim')             " External doc browser (Mac only)
