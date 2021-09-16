@@ -11,7 +11,7 @@ inoreabbrev <buffer> aff fn -> end<c-o>b
 inoreabbrev <buffer> eex <%= %><left><left><left>
 inoreabbrev <buffer> cmod __MODULE__
 inoreabbrev <buffer> peek \|> tap(fn current -> require IEx; IEx.pry(); end)
-inoreabbrev <buffer> shout IO.puts("=======>")
+inoreabbrev <buffer> shout IO.puts("=======> ")<left><left>
 
 setlocal foldmethod=indent
 setlocal foldlevel=1
