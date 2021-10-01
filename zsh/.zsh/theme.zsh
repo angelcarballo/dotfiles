@@ -1,3 +1,5 @@
+# vim: foldmethod=marker foldlevel=0
+
 # Gitstatus {{{
 
 # Load gitstatus plugin

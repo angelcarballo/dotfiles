@@ -1,3 +1,5 @@
+# vim: foldmethod=marker foldlevel=0
+
 # Altern between foreground/background with Ctrl-z {{{
 fancy-ctrl-z () {
     if [[ $#BUFFER -eq 0 ]]; then

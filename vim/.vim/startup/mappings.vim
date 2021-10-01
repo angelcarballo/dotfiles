@@ -1,3 +1,5 @@
+" vim: foldmethod=marker foldlevel=0
+
 " Mappings (leader) ---------------------------------------------------------{{{
 
 let mapleader="\<space>"

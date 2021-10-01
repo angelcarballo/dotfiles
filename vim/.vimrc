@@ -1,3 +1,5 @@
+" vim: foldmethod=marker foldlevel=0
+
 " initialize plugin manager
 packadd minpac
 call minpac#init()
