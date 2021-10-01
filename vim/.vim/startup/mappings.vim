@@ -11,8 +11,11 @@ inoremap kj <esc>
 " don't go into Ex mode
 nnoremap Q <nop>
 
-" Show and switch to buffers
-nnoremap <leader><space> :buffers<cr>:bu<space>
+" switch to buffers using FZF
+nnoremap <leader><space> :Buffers<cr>
+
+" switch to buffers with listing (bad if list of buffers doesn't fit the screen)
+" nnoremap <leader><space> :buffers<cr>:bu<space>
 
 " Show and navigate to mark
 nnoremap <leader>, :marks<cr>:mark <space>
