@@ -101,6 +101,7 @@ alias ni='npm install'
 # Vim
 alias v='vim'
 alias vv='vim `gitfiles`'
+alias nv='nvim'
 
 # Emacs
 alias ec='emacsclient -nw'
