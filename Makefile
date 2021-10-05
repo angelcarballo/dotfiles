@@ -79,3 +79,7 @@ install_extrakto:
 	@echo "\n${GREEN}Installing Tmux extrakco plugin${NC}"
 	git clone https://github.com/laktak/extrakto ~/src/extrakto
 
+setup_mac_theme_notifier:
+	@echo "\n${GREEN}Setting up mac dark/light notifier${NC}"
+	swiftc ~/src/dotfiles/macos/dark-mode-notify.swift -o /usr/local/bin/dark-mode-notify
+	cp ~/src/dotfiles/macos/ke.bou.dark-mode-notify.plist ~/Library/LaunchAgents/
