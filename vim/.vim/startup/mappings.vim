@@ -218,13 +218,6 @@ nnoremap Y y$
 " Fix closest spelling error
 inoremap <c-f> <c-g>u<esc>[s1z=`]a<c-g>u
 
-" Auto indent pasted text
-nnoremap p p=`]<c-o>
-nnoremap P P=`]<c-o>
-" keep originals too
-nnoremap gp p
-nnoremap gP P
-
 " go back to default local mark (m)
 nnoremap gb `m
 
