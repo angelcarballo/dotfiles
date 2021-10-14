@@ -110,6 +110,7 @@ nnoremap <leader>gh :GBrowse<cr>
 xnoremap <leader>gh :GBrowse<cr>
 nnoremap <leader>gH :GBrowse!<cr>
 xnoremap <leader>gH :GBrowse!<cr>
+nnoremap <leader>GH :!gh<cr>
 nnoremap <leader>gl :vert Git log -n 50<cr>
 nnoremap <leader>gL :0Gclog -n 50<cr>
 xnoremap <leader>gl :Gclog -n 50<cr>
