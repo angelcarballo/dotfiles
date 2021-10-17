@@ -19,6 +19,14 @@ vim.g['VimuxRunnerType']='pane'
 vim.g['VimuxOrientation'] = 'v'
 
 -- Plugin: vim-test
+vim.cmd [[
+  " Custom strategy to avoid echoing command
+  function! CustomVimuxStrategy(cmd)
+    call VimuxRunCommand(a:cmd)
+  endfunction
+  let g:test#custom_strategies = {'customvimux': function('CustomVimuxStrategy')}
+  let g:test#strategy = 'customvimux'
+]]
 vim.g['test#python#runner']  = 'pytest'
 vim.g['test#python#pytest#executable']  = 'pipenv run pytest'
 
@@ -53,18 +61,10 @@ vim.g.ruby_indent_block_style = 'do'   -- better syntax for nested blocks
 -- Plugin: telescope
 require('telescope').load_extension('fzf')
 require('telescope').setup{
-  defaults = {
-    -- Default configuration for telescope goes here:
-    -- config_key = value,
-    -- ..
-  },
   pickers = {
-    find_files = { theme = "ivy" },
-    git_files = { theme = "ivy" },
-    oldfiles = { theme = "ivy" },
-    help_tags = { theme = "ivy" },
     lsp_code_actions = { theme = "cursor" }
   },
+  -- defaults = {},
   -- extensions = {}
 }
 
@@ -77,7 +77,7 @@ let g:projectionist_heuristics = {
   \        "make": "mix",
   \        "alternate": "test/{}_test.exs",
   \        "template": [
-  \          "defmodule {dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize} do",
+  \          "defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize} do",
   \          "end"
   \        ]
   \      },
@@ -86,7 +86,7 @@ let g:projectionist_heuristics = {
   \        "make": "iex -S mix test",
   \        "alternate": "lib/{}.ex",
   \        "template": [
-  \          "defmodule {dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}Test do",
+  \          "defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}Test do",
   \          "  use ExUnit.Case, async: true",
   \          "",
   \          "  alias {dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}",

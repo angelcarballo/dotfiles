@@ -99,6 +99,7 @@ map {'n', '<leader>fg', '<cmd>Telescope git_files<cr>'}
 map {'n', '<leader>fr', '<cmd>Telescope oldfiles<cr>'}
 map {'n', '<leader>fh', '<cmd>Telescope help_tags<cr>'}
 map {'n', '<leader>fm', '<cmd>Telescope marks<cr>'}
+map {'n', '<leader>fl', '<cmd>Telescope lsp_code_actions<cr>'}
 
 -- g - Git/Generate
 map {'n', '<leader>gg', ':Git<space>'}
@@ -300,7 +301,6 @@ map {'x', 'gt', ':<c-u>call SendTextToTmux(visualmode(), 1)<cr>'}
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  print("Connected: " .. bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   -- Enable completion triggered by <c-x><c-o>
@@ -313,26 +313,20 @@ local on_attach = function(client, bufnr)
   map {'n', '[e', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>'}
   map {'n', ']e', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>'}
   map {'n', '<leader>fm', '<cmd>lua vim.lsp.buf.formatting()<CR>'}
+  map {'n', 'gqq', '<cmd>lua vim.lsp.buf.formatting()<CR>'}
 end
 
 require 'lspconfig'.elixirls.setup{
   cmd = { "/Users/angel/src/elixir-ls/release/language_server.sh" };
   filetypes = {'elixir', 'eelixir'};
-  root_dir = require 'lspconfig/util'.root_pattern(".git");
+  on_attach = on_attach;
   settings = {
     elixirLS = {
-      -- I choose to disable dialyzer for personal reasons, but
-      -- I would suggest you also disable it unless you are well
-      -- aquainted with dialzyer and know how to use it.
       dialyzerEnabled = false,
-      -- I also choose to turn off the auto dep fetching feature.
-      -- It often get's into a weird state that requires deleting
-      -- the .elixir_ls directory and restarting your editor.
-      fetchDeps = false
+      -- Deps are fetched by default
+      -- fetchDeps = true
     }
   };
-  on_attach = on_attach;
-  flags = {debounce_text_changes = 150}
 }
 
 -- }}}
