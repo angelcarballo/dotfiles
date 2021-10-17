@@ -86,4 +86,8 @@ vim.cmd [[
 
     autocmd Bufread,BufNewFile */.git/notes-* set ft=markdown
   augroup END
+
+  augroup LSPAutoFormatting
+    autocmd BufWritePre *.ex,*.exs lua vim.lsp.buf.formatting_sync(nil, 100)
+  augroup END
 ]]
