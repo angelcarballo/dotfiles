@@ -99,6 +99,7 @@ nnoremap <silent> <leader>fg :GFiles?<cr>
 nnoremap <silent> <leader>fr :History<cr>
 nnoremap <silent> <leader>fh :Helptags<cr>
 nnoremap <silent> <leader>fm :Marks<cr>
+nnoremap <silent> <leader>ft :Tags<cr>
 
 " g - Git/Generate
 nnoremap <leader>gg :Git<space>
