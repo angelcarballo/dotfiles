@@ -20,6 +20,6 @@
 
 -- Include PID in prompt
 \set PROMPT1 '%~ (%p) > '
-
+\set PROMPT2 '%~ > '
 
 \set QUIET OFF
