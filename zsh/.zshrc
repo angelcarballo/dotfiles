@@ -42,9 +42,10 @@ bindkey '^n' up-history
 bindkey '^p' down-history
 
 # edit current command with VIM (or whatever $EDITOR is set to)
+# this maps vim's C-f to use the command-line window
 autoload -z edit-command-line
 zle -N edit-command-line
-bindkey "^v" edit-command-line
+bindkey "^f" edit-command-line
 
 # altern between foreground/background with Ctrl-z (see custom-functions.zsh)
 bindkey '^z' fancy-ctrl-z
