@@ -73,9 +73,6 @@ nnoremap <leader>co :Git checkout<space>
 nnoremap <leader>cs :nohl<cr>
 
 " d - Duplicate, diff, db
-nnoremap <leader>db :%DB<cr>
-xnoremap <leader>db :DB<cr>
-
 nnoremap <leader>dp yap}p
 nnoremap <leader>dl yy:Commentary<cr>p
 xnoremap <leader>dl ygv:Commentary<cr>']p
