@@ -18,7 +18,7 @@ function! s:on_lsp_buffer_enabled() abort
     setlocal tagfunc=lsp#tagfunc
 
     nmap <buffer> ss <plug>(lsp-document-symbol-search)
-    nmap <buffer> gR <plug>(lsp-references)
+    nmap <buffer> fR <plug>(lsp-references)
     nmap <buffer> [e <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]e <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
@@ -39,10 +39,10 @@ augroup END
 let g:lsp_diagnostics_echo_cursor = 1
 
 " Opens preview windows as normal windows
-let g:lsp_preview_float = 0
+" let g:lsp_preview_float = 0
 
 " Closes the preview window on the second call to preview
-let g:lsp_preview_doubletap = [function('lsp#ui#vim#output#closepreview')]
+" let g:lsp_preview_doubletap = [function('lsp#ui#vim#output#closepreview')]
 
 let g:lsp_tagfunc_source_methods = ['definition']
 
