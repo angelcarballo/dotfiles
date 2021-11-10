@@ -20,6 +20,7 @@ setlocal textwidth=98
 
 " nnoremap <buffer> <leader>mf :MixFormat<cr>
 nnoremap <buffer> <leader>mf :LspDocumentFormat<cr>
+nnoremap <buffer> <leader>mf :call VimuxRunCommand("clear; mix format " . bufname("%"))<cr>
 nnoremap <buffer> <leader>mF :call VimuxRunCommand("clear; mix format `gitfiles`")<cr>
 nnoremap <buffer> <leader>mc :call VimuxRunCommand("clear; mix credo suggest --strict --format oneline --files-included " . bufname("%"))<cr>
 nnoremap <buffer> <leader>mC :call VimuxRunCommand("clear; mix credo suggest --strict --format oneline `gitfiles \| xargs -I{} echo \"--files-included {}\" \| xargs`")<cr>
