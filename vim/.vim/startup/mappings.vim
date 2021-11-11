@@ -154,6 +154,7 @@ nnoremap <leader>Q :qall!<cr>
 " r - Remove, redraw
 nnoremap <silent> <leader>rw :%s/\s\+$//<cr>:w<cr>
 nnoremap <leader>rd :redraw!<cr>
+nnoremap <leader>rl :e %<cr>
 
 " s - Specs/Split
 nnoremap <leader>sa :TestSuite<cr>

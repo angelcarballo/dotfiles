@@ -85,3 +85,9 @@ augroup BRANCH_NOTES
 
   autocmd Bufread,BufNewFile */.git/notes-* set ft=markdown
 augroup END
+
+augroup DETECT_FILE_CHANGES
+  autocmd!
+
+  autocmd FocusGained,BufEnter * :silent! checktime
+augroup END
