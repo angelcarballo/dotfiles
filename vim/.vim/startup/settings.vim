@@ -47,10 +47,9 @@ set complete+=b  " complete with words from other loaded buffers
 set complete+=u  " complete with words from other unloaded buffers
 set complete+=t  " complete with tags
 
-" Extended mouse support
-if !has('nvim')
-  set ttymouse=xterm2
-endif
+" enable mouse support
+set ttymouse=sgr
+set mouse=a
 
 if executable('rg')
   " Use ripgrep over Grep
