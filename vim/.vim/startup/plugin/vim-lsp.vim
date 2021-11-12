@@ -22,10 +22,6 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> [e <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]e <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
-    nmap <buffer> gK :Dash!<cr>
-
-    " Format on save?
-    " autocmd! BufWritePre *.ex,*.exs call execute('LspDocumentFormatSync')
 endfunction
 
 augroup lsp_install
@@ -45,8 +41,6 @@ let g:lsp_diagnostics_echo_cursor = 1
 " let g:lsp_preview_doubletap = [function('lsp#ui#vim#output#closepreview')]
 
 let g:lsp_tagfunc_source_methods = ['definition']
-
-let g:lsp_format_sync_timeout = 1000
 
 " Do not show docs/preview window unless requested
 let g:lsp_completion_documentation_delay = 999999
