@@ -7,6 +7,7 @@ set termguicolors
 let g:solarized_statusline="flat"  " flat variant has a less distracting statusline
 let g:solarized_extra_hi_groups=1  " show filetype specific highlight groups
 let g:solarized_diffmode="high"    " make diffs as contrasty as possible
+let g:solarized_visibility = "high"
 
 function SetDarkTheme()
   set background=dark
