@@ -20,6 +20,7 @@ call minpac#add('bogado/file-line')                    " allow opening file path
 call minpac#add('prabirshrestha/vim-lsp')              " LSP client
 runtime startup/plugin/vim-lsp.vim
 call minpac#add('tpope/vim-eunuch')                    " basic unix shell command helpers (mv, rm, etc.)
+call minpac#add('pnetherwood/vim-term-focus')          " support for focus events on terminal emulators
 
 " Git
 call minpac#add('tpope/vim-fugitive')                  " git integration
@@ -98,7 +99,6 @@ runtime ftplugin/man.vim   " open man documentation
 
 runtime startup/globals.vim
 runtime startup/abbreviations.vim
-runtime startup/auto_commands.vim
 runtime startup/commands.vim
 runtime startup/operators.vim
 runtime startup/forced_file_types.vim
@@ -109,6 +109,9 @@ runtime startup/text_objects.vim
 runtime startup/settings.vim
 runtime startup/skeletons.vim
 runtime startup/projections.vim
+" is important to define auto commands last, since previous files might have
+" defined functions used here
+runtime startup/auto_commands.vim
 
 " source local configuration, if present
 if filereadable(expand("~/.vimrc.local"))

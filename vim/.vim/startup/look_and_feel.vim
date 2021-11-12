@@ -19,7 +19,7 @@ function SetLightTheme()
   colorscheme solarized8
 endfunction
 
-function SetTheme(timer)
+function SetTheme()
   if g:os == "Darwin"
     if system("defaults read -g AppleInterfaceStyle") =~ "Dark"
       call SetDarkTheme()
@@ -29,13 +29,9 @@ function SetTheme(timer)
   else
     call SetLightTheme()
   endif
-
-  " re-check every 5 seconds. There's probably a more elegant way of tracking
-  " the theme change, but FocusGained doesn't seem to work with ALacritty/Tmux
-  call timer_start(5000, 'SetTheme')
 endfunction
 
-call SetTheme(0)
+call SetTheme()
 
 syntax on                      " enable syntax highlighting
 set visualbell                 " visual flash instead of beeping
