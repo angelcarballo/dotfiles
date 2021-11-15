@@ -78,3 +78,6 @@ brew "wxmac"
 
 # Formatter for postgres-SQL queries
 brew "pgformatter"
+
+# Extra unix tools, like vidir
+brew "moreutils"
