@@ -28,9 +28,7 @@ set expandtab                         " indent with spaces by default (override 
 set spelllang=en_us,es                " enable English spell check
 set spellsuggest=fast,20              " don't show too many suggestions for spell check
 set spellcapcheck=                    " don't check for end of sentence and capitalization, it doesn't work well with abbreviations
-if !has('nvim')
-  set cryptmethod=blowfish2             " use blowfish 2 crypto method by default (zip is too weak)
-endif
+set cryptmethod=blowfish2             " use blowfish 2 crypto method by default (zip is too weak)
 set dictionary+=/usr/share/dict/words " auto complete words from system dictionary
 set tags^=./.git/tags;                " read tags from git directory
 set nofoldenable                      " do not fold by default
