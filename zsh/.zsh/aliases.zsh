@@ -69,7 +69,7 @@ alias gd='git diff'
 alias gdh='git diff HEAD'
 alias gdm='git diff origin/main'
 alias gf='git fetch'
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gl="git log --pretty=oneline"
 alias gma="git merge --abort"
 alias gh='git browse-remote --pr'
 alias gp='git pull'
