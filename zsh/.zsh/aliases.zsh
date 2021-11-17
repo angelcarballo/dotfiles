@@ -94,6 +94,8 @@ alias grho='git reset --hard origin/`git rev-parse --abbrev-ref HEAD`'
 alias grs='git restore --staged '
 alias gap='git add --patch '
 alias gsearch='git log --source --all -S'
+alias gw='git worktree'
+alias gwl='git worktree list'
 
 # Npm/Node
 alias ni='npm install'
