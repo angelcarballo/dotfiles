@@ -86,6 +86,7 @@ runtime startup/plugin/vim-test.vim
 call minpac#add('junegunn/vader.vim')                  " vimscript test framework
 
 " Extras
+call minpac#add('pnetherwood/vim-term-focus')    " Enable focus events for terminal vim
 call minpac#add('rizzatti/dash.vim')             " External doc browser (Mac only)
 runtime startup/plugin/netrw.vim                 " configuration for netrw
 runtime startup/plugin/vim-ruby.vim              " configuration for default vim-ruby

@@ -95,5 +95,5 @@ augroup END
 augroup DETECT_THEME_CHANGES
   autocmd!
 
-  autocmd FocusLost * :call SetTheme()
+  autocmd FocusGained,FocusLost * :call SetTheme()
 augroup END
