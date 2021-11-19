@@ -26,3 +26,7 @@ colors:
     magenta: '0x8787af'
     cyan:    '0x5fafaf'
     white:   '0xffffff'
+
+  cursor:
+   text: '#000000'
+   cursor: '#FFFFFF'
