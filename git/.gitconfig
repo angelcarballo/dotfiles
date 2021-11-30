@@ -31,3 +31,5 @@
 	colorMoved = default
 [include]
 	path = ~/.gitconfig.local
+[absorb]
+  maxStack=50
