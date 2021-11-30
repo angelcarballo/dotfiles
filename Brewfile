@@ -73,11 +73,14 @@ brew "gron"
 # generic version manager
 brew "asdf"
 
-# wxwidgets (required for erlang observer, debugger, etc)
-brew "wxmac"
+# UI framework required for erlang observer, debugger, etc
+brew "wxwidgets"
 
 # Formatter for postgres-SQL queries
 brew "pgformatter"
 
 # Extra unix tools, like vidir
 brew "moreutils"
+
+# Github command line tooling
+brew "gh"
