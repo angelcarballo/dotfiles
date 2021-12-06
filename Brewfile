@@ -84,3 +84,6 @@ brew "moreutils"
 
 # Github command line tooling
 brew "gh"
+
+# More convinient than curl
+brew "wget"
