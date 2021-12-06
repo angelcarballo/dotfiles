@@ -322,11 +322,16 @@ require 'lspconfig'.elixirls.setup{
   on_attach = on_attach;
   settings = {
     elixirLS = {
-      dialyzerEnabled = false,
+      dialyzerEnabled = true,
       -- Deps are fetched by default
-      -- fetchDeps = true
+      fetchDeps = true
     }
   };
+}
+
+require 'lspconfig'.efm.setup{
+  -- cmd = { "/Users/angel/src/elixir-ls/release/language_server.sh" };
+  filetypes = {'elixir', 'eelixir'};
 }
 
 -- }}}
