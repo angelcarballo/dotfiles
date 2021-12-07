@@ -22,6 +22,7 @@ set.autoread = true                            -- if a file changes outside Vim,
 set.undofile = true                            -- persist undo history
 set.joinspaces = false                         -- only insert one space when joining after an '.'
 set.breakindent = true                         -- keep indentation on wrapped lines
+set.shiftwidth = 2                             -- space identation use 2 spaces by default (file types override this)
 set.tabstop = 2                                -- tabs use 2 spaces by default (file types override this)
 set.expandtab = true                           -- indent with spaces by default (override by file type)
 set.regexpengine = 1                           -- use old regexp engine, as new one has low performance with big ruby files
