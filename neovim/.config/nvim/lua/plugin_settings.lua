@@ -64,7 +64,18 @@ require('telescope').setup{
   pickers = {
     lsp_code_actions = { theme = "cursor" }
   },
-  -- defaults = {},
+  defaults = {
+    mappings = {
+      i = {
+        -- map actions.which_key to <C-h> (default: <C-/>)
+        -- actions.which_key shows the mappings for your picker,
+        -- e.g. git_{create, delete, ...}_branch for the git_branches picker
+        ["<C-h>"] = "which_key",
+        ["<C-k>"] = "move_selection_previous",
+        ["<C-j>"] = "move_selection_next"
+      }
+    }
+  },
   -- extensions = {}
 }
 
