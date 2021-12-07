@@ -16,6 +16,7 @@ return require('packer').startup(function()
   use 'tpope/vim-repeat'                    -- extend repeat support
   use 'AndrewRadev/splitjoin.vim'           -- split/join statements (gS, gJ)
   use 'tpope/vim-eunuch'                    -- basic unix shell command helpers (mv, rm, etc.)
+  use 'pnetherwood/vim-term-focus'          -- support for focus events when running in the terminal
 
   -- Git
   use 'tpope/vim-fugitive'                  -- git integration
@@ -56,8 +57,6 @@ return require('packer').startup(function()
   -- generic fuzzy finder
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}}}
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
-  use 'romainl/vim-devdocs'                 -- search documentation on DevDocs
-  use 'ludovicchabant/vim-gutentags'        -- auto generate and update tags
   use 'tpope/vim-projectionist'             -- projections for project file navigation
   use 'Asheq/close-buffers.vim'             -- provides :Bdelete <type> to easily delete buffers
 
@@ -69,7 +68,6 @@ return require('packer').startup(function()
   use 'tpope/vim-dispatch'                  -- generic runner, useful for fugitive
   use 'benmills/vimux'                      -- tmux integration
   use 'janko-m/vim-test'                    -- generic test runner
-  use 'junegunn/vader.vim'                  -- vimscript test framework
 
   -- Extras
   use 'rizzatti/dash.vim'             -- External doc browser (Mac only)
