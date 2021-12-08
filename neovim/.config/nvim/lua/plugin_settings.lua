@@ -67,9 +67,6 @@ require('telescope').setup{
   defaults = {
     mappings = {
       i = {
-        -- map actions.which_key to <C-h> (default: <C-/>)
-        -- actions.which_key shows the mappings for your picker,
-        -- e.g. git_{create, delete, ...}_branch for the git_branches picker
         ["<C-h>"] = "which_key",
         ["<C-k>"] = "move_selection_previous",
         ["<C-j>"] = "move_selection_next"
@@ -115,14 +112,20 @@ vim.diagnostic.config {
   underline = true,
 }
 
+-- Use downcased sign texts
+vim.fn.sign_define("DiagnosticSignError", { text = "e", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "w", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = "i", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "h", texthl = "DiagnosticSignHint" })
+
 -- Plugin: gitsigns
 require('gitsigns').setup {
   signs = {
-    add          = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-    change       = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-    delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    add          = {hl = 'Comment', text = '+', numhl='Comment', linehl='Comment'},
+    change       = {hl = 'Comment', text = '~', numhl='Comment', linehl='Comment'},
+    delete       = {hl = 'Comment', text = '_', numhl='Comment', linehl='Comment'},
+    topdelete    = {hl = 'Comment', text = '‾', numhl='Comment', linehl='Comment'},
+    changedelete = {hl = 'Comment', text = '~', numhl='Comment', linehl='Comment'},
   },
   keymaps = {
     -- Default keymap options
