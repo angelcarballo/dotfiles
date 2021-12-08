@@ -102,4 +102,9 @@ vim.cmd [[
   augroup LSPAutoFormatting
     autocmd BufWritePre *.ex,*.exs lua vim.lsp.buf.formatting_sync(nil, 100)
   augroup END
+
+  augroup AUTOCLOSE_PREVIEW
+    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+  augroup END
 ]]

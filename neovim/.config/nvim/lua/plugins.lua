@@ -21,7 +21,11 @@ return require('packer').startup(function()
   -- Git
   use 'tpope/vim-fugitive'                  -- git integration
   use 'tpope/vim-rhubarb'                   -- github integration
-  use 'airblade/vim-gitgutter'              -- show git changes on signcolumn
+  use {
+    'lewis6991/gitsigns.nvim',              -- git signs and chunk navigation
+    requires = {'nvim-lua/plenary.nvim'}
+  }
+
 
   -- Languages & frameworks
   use 'tpope/vim-rbenv'                     -- Rbenv support, used to get the current ruby version on `path`

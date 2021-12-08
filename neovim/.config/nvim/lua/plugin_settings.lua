@@ -107,3 +107,32 @@ let g:projectionist_heuristics = {
   \    }
   \  }
 ]]
+
+-- Plugin: native LSP
+vim.diagnostic.config {
+  virtual_text = false,
+  signs = true,
+  underline = true,
+}
+
+-- Plugin: gitsigns
+require('gitsigns').setup {
+  signs = {
+    add          = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    change       = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+  },
+  keymaps = {
+    -- Default keymap options
+    noremap = true,
+
+    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'"},
+    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'"},
+
+    -- Text objects
+    -- ['o ih'] = ':<C-U>Gitsigns select_hunk<CR>',
+    -- ['x ih'] = ':<C-U>Gitsigns select_hunk<CR>'
+  },
+}

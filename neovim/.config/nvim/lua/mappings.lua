@@ -14,15 +14,6 @@ end
 vim.g.mapleader = ' '
 
 -- Use Tab for aucocompletion
-vim.cmd [[
-  function! Tab_Or_Complete()
-    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-      return "\<c-n>"
-    else
-      return "\<tab>"
-    endif
-  endfunction
-]]
 map {'i', '<tab>', '<c-r>=Tab_Or_Complete()<cr>'}
 
 -- Basic mappings ----------------------------------------------------------------- {{{
@@ -95,11 +86,11 @@ map {'n', '<leader>ev', ':Vex<cr>'}
 map {'n', '<leader>fs', ':up<cr>'}
 map {'n', '<leader>fF', "<cmd>lua require'telescope.builtin'<cr>"}
 map {'n', '<leader>ff', "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>"}
-map {'n', '<leader>fg', '<cmd>Telescope git_files<cr>'}
+map {'n', '<leader>fg', '<cmd>Telescope git_status<cr>'}
 map {'n', '<leader>fr', '<cmd>Telescope oldfiles<cr>'}
 map {'n', '<leader>fh', '<cmd>Telescope help_tags<cr>'}
 map {'n', '<leader>fm', '<cmd>Telescope marks<cr>'}
-map {'n', '<leader>fl', '<cmd>Telescope lsp_code_actions<cr>'}
+-- map {'n', '<leader>fl', '<cmd>Telescope lsp_code_actions<cr>'}
 
 -- g - Git/Generate
 map {'n', '<leader>gg', ':Git<space>'}
@@ -194,9 +185,6 @@ map {'n', '<c-h>', '<c-w>h'}
 map {'n', '<c-j>', '<c-w>j'}
 map {'n', '<c-k>', '<c-w>k'}
 map {'n', '<c-l>', '<c-w>l'}
-
--- Make Y copy from position till end of line, like the docs suggest
-map {'n', 'Y', 'y$'}
 
 -- Fix closest spelling error
 map {'i', '<c-f>', '<c-g>u<esc>[s1z=`]a<c-g>u'}
@@ -301,10 +289,18 @@ map {'x', 'gt', ':<c-u>call SendTextToTmux(visualmode(), 1)<cr>'}
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  -- skip buffers with special URI, e.g. fugitive://...
+  if vim.api.nvim_buf_get_name(bufnr):match "^%a+://" then
+    return
+  end
+
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Use LSP as the handler for formatexpr.
+  buf_set_option('formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   map {'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>'}
@@ -312,9 +308,13 @@ local on_attach = function(client, bufnr)
   map {'n', 'gR', '<cmd>lua vim.lsp.buf.references()<CR>'}
   map {'n', '[e', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>'}
   map {'n', ']e', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>'}
-  map {'n', '<leader>fm', '<cmd>lua vim.lsp.buf.formatting()<CR>'}
-  map {'n', 'gqq', '<cmd>lua vim.lsp.buf.formatting()<CR>'}
+  map {'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<CR>'}
 end
+
+-- efm-langserver runs credo
+require 'lspconfig'.efm.setup{
+  filetypes = {'elixir', 'eelixir'};
+}
 
 require 'lspconfig'.elixirls.setup{
   cmd = { "/Users/angel/src/elixir-ls/release/language_server.sh" };
@@ -322,16 +322,10 @@ require 'lspconfig'.elixirls.setup{
   on_attach = on_attach;
   settings = {
     elixirLS = {
-      dialyzerEnabled = true,
-      -- Deps are fetched by default
+      dialyzerEnabled = false,
       fetchDeps = true
     }
   };
-}
-
-require 'lspconfig'.efm.setup{
-  -- cmd = { "/Users/angel/src/elixir-ls/release/language_server.sh" };
-  filetypes = {'elixir', 'eelixir'};
 }
 
 -- }}}
