@@ -20,7 +20,6 @@ set.ttyfast = true                             -- send extra characters to termi
 set.formatoptions:append('j')                  -- delete comment character when joining commented lines
 set.autoread = true                            -- if a file changes outside Vim, reload its contents automatically
 set.undofile = true                            -- persist undo history
-set.joinspaces = false                         -- only insert one space when joining after an '.'
 set.breakindent = true                         -- keep indentation on wrapped lines
 set.shiftwidth = 2                             -- space identation use 2 spaces by default (file types override this)
 set.tabstop = 2                                -- tabs use 2 spaces by default (file types override this)
@@ -47,16 +46,10 @@ set.complete= {
   't'  --  complete with tags
 }
 
--- if executable('rg')
-  -- " Use ripgrep over Grep
-  -- set grepprg=rg\ --vimgrep\ --no-heading\ --hidden\ --smart-case
-  -- set grepformat=%f:%l:%c:%m,%f:%l:%m
--- endif
-
--- " Activate bracketed paste in tmux
--- if &term =~ "screen"
--- let &t_BE = "\e[?2004h"
--- let &t_BD = "\e[?2004l"
--- exec "set t_PS=\e[200~"
--- exec "set t_PE=\e[201~"
--- endif
+vim.cmd [[
+  if executable('rg')
+    " Use ripgrep over Grep
+    set grepprg=rg\ --vimgrep\ --no-heading\ --hidden\ --smart-case
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+  endif
+]]
