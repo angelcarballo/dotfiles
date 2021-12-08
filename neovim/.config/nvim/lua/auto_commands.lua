@@ -87,6 +87,18 @@ vim.cmd [[
     autocmd Bufread,BufNewFile */.git/notes-* set ft=markdown
   augroup END
 
+  augroup DETECT_FILE_CHANGES
+    autocmd!
+
+    autocmd FocusGained,BufEnter * :silent! checktime
+  augroup END
+
+  augroup DETECT_THEME_CHANGES
+    autocmd!
+
+    autocmd FocusGained,FocusLost * :call SetTheme()
+  augroup END
+
   augroup LSPAutoFormatting
     autocmd BufWritePre *.ex,*.exs lua vim.lsp.buf.formatting_sync(nil, 100)
   augroup END

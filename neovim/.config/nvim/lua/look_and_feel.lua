@@ -14,15 +14,19 @@ vim.cmd [[
     colorscheme solarized8
   endfunction
 
-  if g:os == "Darwin"
-    if system("defaults read -g AppleInterfaceStyle") =~ "Dark"
-      call SetDarkTheme()
+  function SetTheme()
+    if g:os == "Darwin"
+      if system("defaults read -g AppleInterfaceStyle") =~ "Dark"
+        call SetDarkTheme()
+      else
+        call SetLightTheme()
+      endif
     else
       call SetLightTheme()
     endif
-  else
-    call SetLightTheme()
-  endif
+  endfunction
+
+  call SetTheme()
 ]]
 
 vim.opt.visualbell = true                   -- visual flash instead of beeping
@@ -79,10 +83,10 @@ vim.cmd [[
   set statusline+=%w                           " preview flag
   set statusline+=%=                           " right align the following ...
   set statusline+=%#Error#                     " color ...
-  " "set statusline+=%{StatuslineTrailingSpace()} " trailing white space indicator
-  " "set statusline+=%{StatuslineTabWarning()}    " mixed indentation indicator
+  " set statusline+=%{StatuslineTrailingSpace()} " trailing white space indicator
+  " set statusline+=%{StatuslineTabWarning()}    " mixed indentation indicator
   set statusline+=%#Pmenu#                     " reset color
-  set statusline+=\ %-3.30{FugitiveHead()}     " current git branch
+  " set statusline+=\ %-3.30{FugitiveHead()}     " current git branch
   set statusline+=\ %c\ %l\/%L                 " current column, line and total lines
 ]]
 
