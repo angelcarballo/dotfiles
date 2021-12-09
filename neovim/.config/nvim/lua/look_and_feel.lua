@@ -3,10 +3,32 @@ vim.g.solarized_statusline = 'flat' -- flat variant has a less distracting statu
 vim.g.solarized_extra_hi_groups = 1 -- show filetype specific highlight groups
 vim.g.solarized_diffmode = 'high'   -- make diffs as contrasty as possible
 
+require("catppuccin").setup({
+  integrations = {
+    native_lsp = {
+      enabled = true,
+      virtual_text = {
+        errors = "italic",
+        hints = "italic",
+        warnings = "italic",
+        information = "italic",
+      },
+      underlines = {
+        errors = "underline",
+        hints = "underline",
+        warnings = "underline",
+        information = "underline",
+      },
+    },
+    gitsigns = false,
+    telescope = false,
+  },
+})
+
 vim.cmd [[
   function SetDarkTheme()
     set background=dark
-    colorscheme apprentice
+    colorscheme catppuccin
   endfunction
 
   function SetLightTheme()
