@@ -57,8 +57,8 @@ return require('packer').startup(function()
 
   -- Look & Feel
   use 'romainl/vim-cool'                    -- clear search highlight automatically
-  use 'lifepillar/vim-solarized8'           -- Solarized variant with some less cruft (but better looking than flattened)
-  use 'romainl/Apprentice'                  -- Solarized variant with some less cruft (but better looking than flattened)
+  use 'romainl/Apprentice'
+  use 'ishan9299/nvim-solarized-lua'
 
   -- Navigation
   -- generic fuzzy finder

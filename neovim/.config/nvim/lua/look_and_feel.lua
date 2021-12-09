@@ -11,7 +11,7 @@ vim.cmd [[
 
   function SetLightTheme()
     set background=light
-    colorscheme solarized8
+    colorscheme solarized-flat
   endfunction
 
   function SetTheme()
