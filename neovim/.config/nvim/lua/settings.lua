@@ -41,9 +41,6 @@ set.diffopt = {'filler', 'internal', 'algorithm:histogram', 'indent-heuristic'}
 set.complete= {
   '.', --  complete with words from current buffer
   'w', --  complete with words from other windows
-  'b', --  complete with words from other loaded buffers
-  'u', --  complete with words from other unloaded buffers
-  't'  --  complete with tags
 }
 
 vim.cmd [[
