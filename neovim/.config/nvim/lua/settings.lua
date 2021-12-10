@@ -39,6 +39,7 @@ set.spellfile = '~/Drive/vim/spell/en.utf-8.add' -- point to custom spell file f
 set.diffopt = {'filler', 'internal', 'algorithm:histogram', 'indent-heuristic'}
 
 -- setup completion (affects c-n, c-p, c-x c-n, c-x c-p)
+set.completeopt = {'menu', 'preview', 'menuone'}
 set.complete= {
   '.', --  complete with words from current buffer
   'w', --  complete with words from other windows
