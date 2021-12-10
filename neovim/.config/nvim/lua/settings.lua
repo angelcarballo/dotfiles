@@ -33,6 +33,7 @@ set.tags:prepend('./.git/tags')                -- read tags from git directory
 set.foldenable = false                         -- do not fold by default
 set.shortmess:remove('S')                      -- show total and number of current result after a search
 set.hidden = true                              -- allow closing buffers with unsaved changes
+set.mouse = 'a'
 
 set.spellfile = '~/Drive/vim/spell/en.utf-8.add' -- point to custom spell file from Synology Drive
 set.diffopt = {'filler', 'internal', 'algorithm:histogram', 'indent-heuristic'}
