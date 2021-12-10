@@ -8,7 +8,6 @@ vim/.vim/plugged/
 vim/.vim/view/
 vim/.vim/pack/minpac/start/
 vim/.vim/pack/minpac/opt/
-neovim/.config/nvim/plugin/*
 neovim/.config/nvim/undo/*
 tmux/.tmux/plugins/
 emacs/.emacs.d/
