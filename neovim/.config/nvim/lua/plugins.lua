@@ -57,9 +57,11 @@ return require('packer').startup(function()
 
   -- Look & Feel
   use 'romainl/vim-cool'                    -- clear search highlight automatically
-  use 'romainl/Apprentice'
   use 'ishan9299/nvim-solarized-lua'
-  use 'projekt0n/github-nvim-theme'
+  use({
+    "catppuccin/nvim",
+    as = "catppuccin"
+  })
 
   -- Navigation
   -- generic fuzzy finder
@@ -80,8 +82,4 @@ return require('packer').startup(function()
   -- Extras
   use 'rizzatti/dash.vim'             -- External doc browser (Mac only)
   use 'neovim/nvim-lspconfig'         -- Configuration for native LSP
-  use({
-    "catppuccin/nvim",
-    as = "catppuccin"
-  })
 end)
