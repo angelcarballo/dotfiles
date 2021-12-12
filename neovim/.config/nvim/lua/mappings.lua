@@ -84,8 +84,8 @@ map {'n', '<leader>ev', ':Vex<cr>'}
 
 -- f - File/Find
 map {'n', '<leader>fs', ':up<cr>'}
-map {'n', '<leader>fF', "<cmd>lua require'telescope.builtin'<cr>"}
-map {'n', '<leader>ff', "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>"}
+map {'n', '<leader>fF', "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>"}
+map {'n', '<leader>ff', "<cmd>Telescope git_files<cr>"}
 map {'n', '<leader>fg', '<cmd>Telescope git_status<cr>'}
 map {'n', '<leader>fr', '<cmd>Telescope oldfiles<cr>'}
 map {'n', '<leader>fh', '<cmd>Telescope help_tags<cr>'}

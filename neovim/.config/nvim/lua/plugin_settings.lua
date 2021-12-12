@@ -59,10 +59,18 @@ vim.g.ruby_minlines = 500              -- avoid syntax errors while scrolling on
 vim.g.ruby_indent_block_style = 'do'   -- better syntax for nested blocks
 
 -- Plugin: telescope
-require('telescope').load_extension('fzf')
-require('telescope').setup{
+local telescope = require('telescope')
+telescope.load_extension('fzf')
+telescope.setup{
   pickers = {
-    lsp_code_actions = { theme = "cursor" }
+    buffers = { theme = "ivy" },
+    find_files = { theme = "ivy" },
+    git_files = { theme = "ivy" },
+    git_status = { theme = "ivy" },
+    help_tags = { theme = "ivy" },
+    lsp_code_actions = { theme = "cursor" },
+    marks = { theme = "ivy" },
+    oldfiles = { theme = "ivy" },
   },
   defaults = {
     mappings = {
