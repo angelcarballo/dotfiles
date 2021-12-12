@@ -101,8 +101,9 @@ alias gwl='git worktree list'
 alias ni='npm install'
 
 # Vim
-alias v='vim'
-alias vv='vim `gitfiles`'
+alias v='nvim'
+alias vim='nvim'
+alias vv='nvim `gitfiles`'
 alias nv='nvim'
 
 # Emacs
