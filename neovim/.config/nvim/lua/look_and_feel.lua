@@ -1,7 +1,6 @@
 vim.opt.termguicolors = true        -- enable truecolor (24 bit)
 vim.g.solarized_statusline = 'flat' -- flat variant has a less distracting statusline
 vim.g.solarized_extra_hi_groups = 1 -- show filetype specific highlight groups
-vim.g.solarized_diffmode = 'high'   -- make diffs as contrasty as possible
 
 require("catppuccin").setup({
   integrations = {
