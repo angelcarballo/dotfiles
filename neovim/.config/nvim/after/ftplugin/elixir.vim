@@ -49,3 +49,4 @@ endfunction
 
 let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
 let g:test#transformation = 'elixir_umbrella'
+let g:test#elixir#exunit#executable = 'mix test'
