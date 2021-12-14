@@ -4,9 +4,6 @@ vim.g.lion_squeeze_spaces = 1
 -- Plugin: closetag
 vim.g.closetag_filetypes = 'html,xhtml,erb,eelixir'
 
--- Plugin: dispatch
-vim.g.dispatch_no_maps = 1
-
 -- Plugin: vimux
 -- Send the following to the runner pane before every command:
 -- q     : ensure we're not in tmux scroll/copy mode
