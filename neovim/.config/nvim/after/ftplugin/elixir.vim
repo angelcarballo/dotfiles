@@ -1,5 +1,3 @@
-let b:execute_with='elixir'
-
 inoreabbrev <buffer> rk =>
 inoreabbrev <buffer> pipe \|>
 inoreabbrev <buffer> pry require IEx; IEx.pry
@@ -16,17 +14,9 @@ inoreabbrev <buffer> importham  import Hammox, only: [expect: 3, verify_on_exit!
 
 setlocal foldmethod=indent
 setlocal foldlevel=1
-" this matches default line length used by mix format
+
+" Match the default line length used by mix format
 setlocal textwidth=98
-
-" nnoremap <buffer> <leader>mf :MixFormat<cr>
-nnoremap <buffer> <leader>mf :LspDocumentFormat<cr>
-nnoremap <buffer> <leader>mf :call VimuxRunCommand("clear; mix format " . bufname("%"))<cr>
-nnoremap <buffer> <leader>mF :call VimuxRunCommand("clear; mix format `gitfiles`")<cr>
-nnoremap <buffer> <leader>mc :call VimuxRunCommand("clear; mix credo suggest --strict --format oneline --files-included " . bufname("%"))<cr>
-nnoremap <buffer> <leader>mC :call VimuxRunCommand("clear; mix credo suggest --strict --format oneline `gitfiles \| xargs -I{} echo \"--files-included {}\" \| xargs`")<cr>
-
-nnoremap <buffer> gM :silent lgrep "defmodule <cWORD> do"<cr>:lclose<cr>
 
 let g:dispatch_compilers = {
           \ "mix test": "exunit",
@@ -46,6 +36,17 @@ function! ElixirUmbrellaTransform(cmd) abort
   else
     return a:cmd
   end
+endfunction
+
+" Enable/disable running mix tests on an IEx shell
+function! ToggleExUnit()
+  if g:test#elixir#exunit#executable == 'iex -S mix test'
+    let g:test#elixir#exunit#executable = 'mix test'
+    echo "Run ExUnit with: mix test"
+  else
+    let g:test#elixir#exunit#executable = 'iex -S mix test'
+    echo "Run ExUnit with: iex -S mix test"
+  endif
 endfunction
 
 let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}

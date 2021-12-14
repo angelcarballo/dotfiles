@@ -259,7 +259,7 @@ map {'n', 'coc', ':setlocal cursorline! cursorline?<cr>'}
 map {'n', 'cof', ':setlocal foldenable! foldenable?<cr>'}
 map {'n', 'coh', ':setlocal hlsearch! hlsearch?<cr>'}
 map {'n', 'col', ':call ToggleLocation()<cr>'}
-map {'n', 'com', ':call ToggleExUnitIex()<cr>'}
+map {'n', 'com', ':call ToggleExUnit()<cr>'}
 map {'n', 'con', ':setlocal number! number?<cr>'}
 map {'n', 'cop', ':setlocal paste! paste?<cr>'}
 map {'n', 'coq', ':call ToggleQuickFix()<cr>'}
