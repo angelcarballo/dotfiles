@@ -12,6 +12,7 @@ inoreabbrev <buffer> eex <%= %><left><left><left>
 inoreabbrev <buffer> cmod __MODULE__
 inoreabbrev <buffer> peek \|> tap(fn current -> require IEx; IEx.pry(); end)
 inoreabbrev <buffer> shout IO.puts("=======> ")<left><left>
+inoreabbrev <buffer> importham  import Hammox, only: [expect: 3, verify_on_exit!: 1]
 
 setlocal foldmethod=indent
 setlocal foldlevel=1
