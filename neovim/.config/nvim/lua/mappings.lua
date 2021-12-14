@@ -300,9 +300,6 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Use LSP as the handler for formatexpr.
-  buf_set_option('formatexpr', 'v:lua.vim.lsp.formatexpr()')
-
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   map {'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>'}
   map {'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>'}
