@@ -116,7 +116,7 @@ map {'n', '<leader>gs', ':Git|wincmd T<cr>'}
 map {'n', '<leader>gw', ':Gwrite<cr>'}
 map {'n', '<leader>g/', ':Git log -S\'\'<left>'}
 
-map {'n', '<leader>k', '<Plug>DashSearch'}
+map {'n', '<leader>k', ':Dash<cr>'}
 
 -- m - marks
 map {'n', '<leader>mm', '<Plug>BookmarkToggle'}
