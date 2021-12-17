@@ -9,6 +9,7 @@ vim/.vim/view/
 vim/.vim/pack/minpac/start/
 vim/.vim/pack/minpac/opt/
 neovim/.config/nvim/undo/*
+neovim/.config/nvim/plugin/packer_compiled.lua
 tmux/.tmux/plugins/
 emacs/.emacs.d/
 !emacs/.emacs.d/init.el
