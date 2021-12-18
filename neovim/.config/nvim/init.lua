@@ -1,4 +1,4 @@
--- vim: foldmethod=marker foldlevel=0
+-- vim: foldmethod=marker foldlevel=0 foldenable
 
 local acg = require('acg')
 local map = acg.map
@@ -104,6 +104,7 @@ require 'paq' {
   'romainl/vim-cool';                                         -- clear search highlight automatically
   'ishan9299/nvim-solarized-lua';                             -- solarized theme implemented in lua, compabible with all solarized8 options
   'catppuccin/nvim';                                          -- colorful dark colorscheme
+  'nvim-lualine/lualine.nvim';                                -- statusline replacement
   'nvim-lua/plenary.nvim';                                    -- dependency for telescope
   'nvim-telescope/telescope.nvim';                            -- generic fuzzy finder
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}; -- fzf plugin for telescope
@@ -354,22 +355,70 @@ require("catppuccin").setup({
       },
     },
     gitsigns = false,
-    telescope = false,
+    telescope = true,
   },
 })
 
+-- Status line
+local trailing_whitespace = function()
+  local space = vim.fn.search([[\s\+$]], 'nwc')
+  return space ~= 0 and "TW:"..space or ""
+end
+
+local lualine_sections = {
+  lualine_a = {
+    {
+      'filename',
+      file_status = true,              -- displays file status (readonly status, modified status)
+      path = 1,                        -- relative path
+      shorting_target = 20,            -- shortens path to leave 20 chars in the window
+    }
+  },
+  lualine_b = {
+    {
+      'diagnostics',                   -- Use lowercase indicators
+      symbols = {
+        error = 'e',
+        warn = 'w',
+        info = 'i',
+        hint = 'h'
+      },
+    }
+  },
+  lualine_c = {},
+  lualine_x = {},
+  lualine_y = { trailing_whitespace }, -- Trailing whitespace indicator
+  lualine_z = {'%c %l/%L'}             -- column current-line/total-lines
+}
+
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+  },
+  sections = lualine_sections,
+  inactive_sections = lualine_sections,
+  tabline = {},
+  extensions = {}
+}
+
+-- Colorscheme
 vim.cmd [[
-  function SetDarkTheme()
+  function! SetDarkTheme()
     set background=dark
     colorscheme catppuccin
   endfunction
 
-  function SetLightTheme()
+  function! SetLightTheme()
     set background=light
     colorscheme solarized-flat
   endfunction
 
-  function SetTheme()
+  function! SetTheme()
     if g:os == "Darwin"
       if system("defaults read -g AppleInterfaceStyle") =~ "Dark"
         call SetDarkTheme()
