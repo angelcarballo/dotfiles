@@ -122,3 +122,6 @@ alias t='task'
 
 # Gron
 alias ungron gron --ungron
+
+# Use a generic TERM for ssh connections, they probably don't support tmux-xxx
+alias ssh='TERM=xterm-256color ssh'
