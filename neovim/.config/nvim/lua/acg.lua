@@ -31,12 +31,15 @@ end
 
 -- Set theme/colorscheme based on MacOs Dark/Light mode
 function acg.auto_set_theme()
-  local result = os.execute('defaults read -g AppleInterfaceStyle')
+  -- we have to redirect output to avoid flicker
+  local result = os.execute([[sh -c "defaults read -g AppleInterfaceStyle &> /dev/null"]])
 
   -- The shell command succeeds (0 result code) in dark mode
   if result == 0 then
+    os.execute('tmux source-file ~/.tmux/local_dark.theme')
     acg.set_theme('catppuccin', 'dark')
   else
+    os.execute('tmux source-file ~/.tmux/local_light.theme')
     acg.set_theme('solarized-flat', 'light')
   end
 end
