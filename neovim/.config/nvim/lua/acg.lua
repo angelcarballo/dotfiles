@@ -34,10 +34,33 @@ function acg.auto_set_theme()
   local output = assert(cmd:read('*a'))
   cmd:close()
 
-  if string.find(output, 'Dark') then 
+  if string.find(output, 'Dark') then
     acg.set_theme('catppuccin', 'dark')
   else
     acg.set_theme('solarized-flat', 'light')
+  end
+end
+
+-- Check if the given path exists
+-- taken from https://stackoverflow.com/questions/1340230/check-if-directory-exists-in-lua
+function acg.exists(file)
+   local ok, err, code = os.rename(file, file)
+   return ok, err
+end
+
+--- Check if a directory exists in this path
+function acg.is_dir(path)
+   return acg.exists(path.."/") -- "/" works on both Unix and Windows
+end
+
+-- Find path for editing notes:
+--   if we're in a git repository, notes are stored in the .git folder using the branch's name
+--   if we're NOT in a git repository, use a generic .notes file
+function acg.notes_path()
+  if acg.is_dir('.git') then
+    return '.git/' .. vim.api.nvim_eval('FugitiveHead()')
+  else
+    return('.notes')
   end
 end
 

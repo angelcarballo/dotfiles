@@ -505,7 +505,7 @@ map {'n', '<leader>q', ':q<cr>'}
 map {'n', '<leader>Q', ':qall!<cr>'}
 
 -- n - notes
-map {'n', '<leader>nn', ':execute "edit ".BranchNotesPath()<cr>'}
+map {'n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()\')<cr>'}
 
 --" o - open
 map {'n', '<leader>of', ":! open '%'<cr>"}
@@ -762,6 +762,7 @@ Loading order:
 1. This file: init.lua
 2. Files under /plugin
 3. Files under /after
+
 See `:scriptnames` for a list of all scripts, in evaluation order.
 
 Launch Neovim with `nvim --startuptime nvim.log` for profiling info.
