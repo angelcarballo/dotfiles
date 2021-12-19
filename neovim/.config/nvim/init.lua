@@ -248,7 +248,8 @@ telescope.setup{
     git_files = { theme = "ivy" },
     git_status = { theme = "ivy" },
     help_tags = { theme = "ivy" },
-    lsp_code_actions = { theme = "cursor" },
+    live_grep = { theme = "ivy" },
+    lsp_document_symbols = { theme = "ivy" },
     marks = { theme = "ivy" },
     oldfiles = { theme = "ivy" },
   },
@@ -464,7 +465,8 @@ map {'n', '<leader>fg', '<cmd>Telescope git_status<cr>'}
 map {'n', '<leader>fr', '<cmd>Telescope oldfiles<cr>'}
 map {'n', '<leader>fh', '<cmd>Telescope help_tags<cr>'}
 map {'n', '<leader>fm', '<cmd>Telescope marks<cr>'}
--- map {'n', '<leader>fl', '<cmd>Telescope lsp_code_actions<cr>'}
+map {'n', '<leader>ft', '<cmd>Telescope live_grep<cr>'}
+map {'n', '<leader>fl', '<cmd>Telescope lsp_document_symbols<cr>'}
 
 -- g - Git/Generate
 map {'n', '<leader>gg', ':Git<space>'}
