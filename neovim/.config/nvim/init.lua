@@ -2,7 +2,6 @@
 
 local acg = require('acg')
 local map = acg.map
-vim.g.os = 'Darwin'
 
 -- {{{ Settings
 vim.opt.number = true                                  -- show line numbers
@@ -330,8 +329,9 @@ require('gitsigns').setup {
 
 -- }}}
 
--- {{{ Look & Feel, themes, colorschemes
+-- {{{ Look & Feel
 
+--  {{{ Colorschemes
 -- Colorscheme: solarized
 vim.g.solarized_statusline = 'flat' -- flat variant has a less distracting statusline
 vim.g.solarized_extra_hi_groups = 1 -- show filetype specific highlight groups
@@ -358,8 +358,9 @@ require("catppuccin").setup({
     telescope = true,
   },
 })
+--   }}}
 
--- {{{ Status line
+--  {{{ Status line
 local trailing_whitespace = function()
   local space = vim.fn.search([[\s\+$]], 'nwc')
   return space ~= 0 and "TW:"..space or ""
@@ -380,11 +381,14 @@ function status_line()
 end
 
 vim.opt.statusline = "%!luaeval('status_line()')"
--- }}}
+--  }}}
 
 acg.auto_set_theme()
 
-require('look_and_feel')
+vim.cmd 'highlight clear SpellBad'                         -- remove default spell highlighting
+vim.cmd 'highlight SpellBad cterm=underline gui=undercurl' -- underline spelling errors
+vim.cmd 'highlight TabLineSel guifg=bg guibg=fg'           -- highlight current tab
+vim.cmd "match ErrorMsg '\\s\\+$'"                         -- highlight trailing spaces
 -- }}}
 
 -- {{{ Mappings
@@ -754,8 +758,10 @@ acg.augroup('preview_window', {
 -- {{{ Footer
 --[[
 
-After this file is sourced, plugin code will be evaluated (eg. ~/.config/nvim/plugin/* and so on ).
-See ~/.config/nvim/after for files evaluated after that.
+Loading order:
+1. This file: init.lua
+2. Files under /plugin
+3. Files under /after
 See `:scriptnames` for a list of all scripts, in evaluation order.
 
 Launch Neovim with `nvim --startuptime nvim.log` for profiling info.
