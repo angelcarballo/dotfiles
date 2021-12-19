@@ -1,7 +1,8 @@
 -- vim: foldmethod=marker foldlevel=0 foldenable
 
-local acg = require('acg')
-local map = acg.map
+local acg = require('acg') -- utility functions
+local map = acg.map        -- alias since it's used a lot
+_G.acg = _G.acg or {}      -- put personal module in global scope, easier to call from vimscript
 
 -- Settings {{{
 vim.opt.number = true                                  -- show line numbers
@@ -369,7 +370,7 @@ vim.g.firenvim_config = {
     }
   }
 }
-if vim.api.nvim_eval("exists('g:started_by_firenvim')") then
+if vim.api.nvim_eval("exists('g:started_by_firenvim')") == 1 then
   vim.opt.guifont = 'Iosevka:h22'                      -- use larger font
   vim.opt.laststatus = 0                               -- hide statusline
 end
