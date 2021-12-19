@@ -2,7 +2,6 @@
 
 local acg = require('acg') -- utility functions
 local map = acg.map        -- alias since it's used a lot
-_G.acg = _G.acg or {}      -- put personal module in global scope, easier to call from vimscript
 
 -- Settings {{{
 vim.opt.number = true                                  -- show line numbers
@@ -135,6 +134,10 @@ require 'paq' {
   'alvan/vim-closetag';                                       -- auto close html/xml tags
   'nvim-telescope/telescope.nvim';                            -- generic fuzzy finder
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}; -- fzf plugin for telescope
+  'hrsh7th/nvim-cmp';                                         -- completion engine
+  'hrsh7th/cmp-nvim-lsp';                                     -- nvim-lsp source for nvim-cmp
+  'L3MON4D3/LuaSnip';                                         -- snippet manager
+  'saadparwaiz1/cmp_luasnip';                                 -- luasnip source for nvim-cmp
   -- }}}
 
   -- Runners and navigation {{{
@@ -220,7 +223,6 @@ vim.opt.wildignore:append({
 -- }}}
 
 -- Plugin Settings {{{
-
 --   vim-lion {{{
 vim.g.lion_squeeze_spaces = 1 -- remove unnecessary spaces
 --  }}}
@@ -378,7 +380,52 @@ acg.augroup("firenvime_file_types", {
   {'BufEnter', 'github.com_*.txt', 'set ft=markdown'}; -- default to markdown for Github
 })
 --  }}}
+--   nvim-cmp {{{
+local cmp = require('cmp')
+local luasnip = require("luasnip")
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 
+cmp.setup({
+  completion = {
+      autocomplete = false,                            -- disable auto-completion.
+  },
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)         -- use luasnip (required)
+    end,
+  },
+  mapping = {
+    ['<cr>'] = cmp.mapping.confirm({ select = true }), -- <cr> accepts current selection
+    ["<c-x><c-o>"] = cmp.mapping(function(fallback)    -- use cmp instead of default onmicomplete
+      cmp.complete()
+    end, { "i", "s" }),
+    ["<c-j>"] = cmp.mapping(function(fallback)         -- move down in the result list with c-j (c-n also works)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<c-k>"] = cmp.mapping(function(fallback)         -- move up in the result list with c-k (c-p also works)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+  },
+  sources = cmp.config.sources(
+    {
+      { name = 'nvim_lsp' },
+      { name = 'luasnip' },
+    }, {}
+  )
+})
+
+--  }}}
 -- }}}
 
 -- Look & Feel {{{
@@ -700,6 +747,8 @@ map {'x', 'gt', ':<c-u>call SendTextToTmux(visualmode(), 1)<cr>'}
 
 -- LSP {{{
 
+local lsp_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -731,6 +780,7 @@ require 'lspconfig'.elixirls.setup{
   cmd = { "/Users/angel/src/elixir-ls/release/language_server.sh" };
   filetypes = {'elixir', 'eelixir'};
   on_attach = on_attach;
+  capabilities = capabilities;
   settings = {
     elixirLS = {
       dialyzerEnabled = false,
@@ -796,6 +846,8 @@ acg.augroup('preview_window', {
 -- }}}
 
 -- Footer {{{
+require 'snippets'
+
 --[[
 
 Loading order:
