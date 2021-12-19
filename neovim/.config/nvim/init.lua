@@ -706,6 +706,10 @@ acg.augroup('help_window', {
   {'FileType', 'help', 'wincmd L'};                            -- open help always on the right
 })
 
+acg.augroup('commit_window', {
+  {'FileType', 'gitcommit', 'wincmd L'};                       -- open commit always on the right
+})
+
 acg.augroup('quickfix_after_make', {
   {'QuickFixCmdPost', '[^l]*', 'nested cwindow'};              -- open quickfix window after make
   {'QuickFixCmdPost', 'l*', 'nested lwindow'};                 -- open location window after lmake
