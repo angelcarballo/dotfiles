@@ -73,15 +73,21 @@ vim.cmd 'packadd cfilter' -- quickfix filter plugin (bundled with vim)
 
 require 'paq' {
   'savq/paq-nvim';                                            -- let Paq manage itself
+
+  -- Dependencies {{{
+  'nvim-lua/plenary.nvim';                                    -- dependency for gitsigns and telescope
+  -- }}}
+
+  -- Basic {{{
+  'neovim/nvim-lspconfig';                                    -- configuration for native LSP
   'kana/vim-textobj-user';                                    -- custom text object support
   'tpope/vim-repeat';                                         -- extend repeat support
   'AndrewRadev/splitjoin.vim';                                -- split/join statements (gS, gJ)
   'tpope/vim-eunuch';                                         -- basic unix shell command helpers (mv, rm, etc.)
   'pnetherwood/vim-term-focus';                               -- support for focus events when running in the terminal
-  'tpope/vim-fugitive';                                       -- git integration
-  'tpope/vim-rhubarb';                                        -- github integration
-  'nvim-lua/plenary.nvim';                                    -- dependency for gitsigns
-  'lewis6991/gitsigns.nvim';                                  -- git signs and chunk navigation
+  -- }}}
+
+  -- Language support {{{
   'tpope/vim-rbenv';                                          -- Rbenv support, used to get the current ruby version on `path`
   'tpope/vim-bundler';                                        -- Bundler support, used to get the current bundled gems on `path`
   'elixir-editors/vim-elixir';                                -- Elixir support
@@ -92,29 +98,50 @@ require 'paq' {
   'evanleck/vim-svelte';                                      -- Svelte syntax
   'leafgarland/typescript-vim';                               -- Typescript support
   'jxnblk/vim-mdx-js';                                        -- MDX (markdown + JSX) support
+  -- }}}
+
+  -- Git {{{
+  'tpope/vim-fugitive';                                       -- git integration
+  'tpope/vim-rhubarb';                                        -- github integration
+  'lewis6991/gitsigns.nvim';                                  -- git signs and chunk navigation
+  -- }}}
+
+  -- Operators and commands {{{
   'tpope/vim-surround';                                       -- alter surroundings (), [], '', {}
   'tommcdo/vim-exchange';                                     -- text exchange operator (cx..)
   'vim-scripts/ReplaceWithRegister';                          -- replace without yanking operator (gr..)
   'tpope/vim-commentary';                                     -- un/comment code (gc)
   'tommcdo/vim-lion';                                         -- align code
+  'Asheq/close-buffers.vim';                                  -- provides :Bdelete <type> to easily delete buffers
+  -- }}}
+
+  -- Text objects {{{
   'michaeljsmith/vim-indent-object';                          -- indentation based text object <ai>, <ii>
   'Julian/vim-textobj-variable-segment';                      -- segments of camelCase, snake_case and similar <av>, <iv>
   'glts/vim-textobj-comment';                                 -- comments text object <ic>, <ac>, <aC> to include whitespace
   'nelstrom/vim-textobj-rubyblock';                           -- ruby blocks/class/method <ar>, <ir>
+  -- }}}
+
+  -- Colorschemes and look & feel {{{
   'romainl/vim-cool';                                         -- clear search highlight automatically
   'ishan9299/nvim-solarized-lua';                             -- solarized theme implemented in lua, compabible with all solarized8 options
   'catppuccin/nvim';                                          -- colorful dark colorscheme
-  'nvim-lua/plenary.nvim';                                    -- dependency for telescope
-  'nvim-telescope/telescope.nvim';                            -- generic fuzzy finder
-  {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}; -- fzf plugin for telescope
-  'tpope/vim-projectionist';                                  -- projections for project file navigation
-  'Asheq/close-buffers.vim';                                  -- provides :Bdelete <type> to easily delete buffers
+  -- }}}
+
+  -- Search and completion {{{
+  'windwp/nvim-autopairs';                                    -- auto close pairs (parenthesis, brackets, ...)
   'cohama/lexima.vim';                                        -- auto close do/end blocks and similar
   'alvan/vim-closetag';                                       -- auto close html/xml tags
+  'nvim-telescope/telescope.nvim';                            -- generic fuzzy finder
+  {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}; -- fzf plugin for telescope
+  -- }}}
+
+  -- Runners and navigation {{{
+  'tpope/vim-projectionist';                                  -- projections for project file navigation
   'benmills/vimux';                                           -- tmux integration
   'janko-m/vim-test';                                         -- generic test runner
-  'rizzatti/dash.vim';                                        -- External doc browser (Mac only)
-  'neovim/nvim-lspconfig';                                    -- Configuration for native LSP
+  'rizzatti/dash.vim';                                        -- external doc browser (Mac only)
+  -- }}}
 }
 -- }}}
 
@@ -327,6 +354,9 @@ require('gitsigns').setup {
     ['x ic'] = ':<C-U>Gitsigns select_hunk<CR>'
   }
 }
+
+-- Plugin: nvim-autopairs
+require('nvim-autopairs').setup{}
 
 -- }}}
 
@@ -546,11 +576,6 @@ map {'n', '<leader>wv', ':vsp<cr>'}
 
  -- Use Tab for aucocompletion
 map {'i', '<tab>', '<c-r>=Tab_Or_Complete()<cr>'}
-
--- auto close pairs
-map {'i', '(<cr>', '(<cr>)<c-o>O<tab>'}
-map {'i', '[<cr>', '[<cr>]<c-o>O<tab>'}
-map {'i', '{<cr>', '{<cr>}<c-o>O<tab>'}
 
 -- pane navigation
 map {'n', '<c-h>', '<c-w>h'}
