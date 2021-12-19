@@ -3,7 +3,7 @@
 local acg = require('acg')
 local map = acg.map
 
--- {{{ Settings
+-- Settings {{{
 vim.opt.number = true                                  -- show line numbers
 vim.opt.confirm = true                                 -- ask instead of just erroring if the current file has unsaved changes
 vim.opt.autowrite = true                               -- auto write after make, ! and friends
@@ -68,7 +68,7 @@ vim.cmd [[
 ]]
 -- }}}
 
--- {{{ Plugins
+-- Plugins {{{
 vim.cmd 'packadd cfilter' -- quickfix filter plugin (bundled with vim)
 
 require 'paq' {
@@ -118,7 +118,7 @@ require 'paq' {
 }
 -- }}}
 
--- {{{ Forced file types
+-- Forced file types {{{
 acg.augroup("forced_file_types", {
     {'BufRead,BufNewFile', '*.jbuilder',   'setfiletype ruby'};
     {'BufRead,BufNewFile', '*.prawn',      'setfiletype ruby'};
@@ -134,7 +134,7 @@ acg.augroup("forced_file_types", {
 })
 -- }}}
 
--- {{{ Custom text object
+-- Custom text object {{{
 
 -- next parenthesis, brackets, quotes, etc. in current line
 map {'o', 'inb', ':<c-u>normal! f(vi(<cr>'}
@@ -150,7 +150,7 @@ map {'o', 'in"', ':<c-u>normal! f"vi"<cr>'}
 
 -- }}}
 
--- {{{ Path and ignored patterns
+-- Path and ignored patterns {{{
 vim.opt.path:remove('/usr/include') -- include folder is added by default, no need for it
 vim.opt.path:append({
   -- generic app and test paths
@@ -188,7 +188,7 @@ vim.opt.wildignore:append({
 })
 -- }}}
 
--- {{{ Plugin Settings
+-- Plugin Settings {{{
 
 -- Plugin: vim-lion
 vim.g.lion_squeeze_spaces = 1 -- remove unnecessary spaces
@@ -329,9 +329,9 @@ require('gitsigns').setup {
 
 -- }}}
 
--- {{{ Look & Feel
+-- Look & Feel {{{
 
---  {{{ Colorschemes
+--  Colorschemes {{{
 -- Colorscheme: solarized
 vim.g.solarized_statusline = 'flat' -- flat variant has a less distracting statusline
 vim.g.solarized_extra_hi_groups = 1 -- show filetype specific highlight groups
@@ -360,7 +360,7 @@ require("catppuccin").setup({
 })
 --   }}}
 
---  {{{ Status line
+--  Status line {{{
 local trailing_whitespace = function()
   local space = vim.fn.search([[\s\+$]], 'nwc')
   return space ~= 0 and "TW:"..space or ""
@@ -391,25 +391,23 @@ vim.cmd 'highlight TabLineSel guifg=bg guibg=fg'           -- highlight current 
 vim.cmd "match ErrorMsg '\\s\\+$'"                         -- highlight trailing spaces
 -- }}}
 
--- {{{ Mappings
-
-vim.g.mapleader = ' '                             -- Use <sapce> as leader key
-map {'i', '<tab>', '<c-r>=Tab_Or_Complete()<cr>'} -- Use Tab for aucocompletion
-
--- Basic mappings ----------------------------------------------------------------- {{{
+-- Mappings {{{
+--   Basic mappings {{{
 map {'i', 'kj', '<esc>'}                                   -- easily exit insert mode
 map {'n', 'Q', '<nop>'}                                    -- don't go inTo Ex mode
-map {'n', '<leader><space>', '<cmd>Telescope buffers<cr>'} -- quick buffer switch
 map {'n', '<tab>', '<c-^>'}                                -- quick toggle between last two buffers
 map {'n', 'j', 'gj'}                                       -- Move around using visual lines, useful when wrap is enabled
 map {'n', 'k', 'gk'}
 -- }}}
--- Leader mappings ---------------------------------------------------------------- {{{
+--   Leader mappings {{{
+
+vim.g.mapleader = ' '                                      -- Use <sapce> as leader key
+map {'n', '<leader><space>', ':b '}                        -- quick buffer switch
 
 -- /,? - Search in project
 -- Use -F by default to disable regexp and search for a literal string
-map {'n', '<leader>/', 'mZ:silent grep -F ""<left>'}
-map {'n', '<leader>?', 'mZ:silent grep -F -g !test ""<left>'}
+map {'n', '<leader>/', ':silent grep -F ""<left>'}
+map {'n', '<leader>?', ':silent grep -F -g !test ""<left>'}
 
 -- ] - Tags
 map {'n', '<silent><leader><c-]>', '<c-w><c-]><c-w>T'} -- open tag in new tab
@@ -491,14 +489,8 @@ map {'n', '<leader>gs', ':Git|wincmd T<cr>'}
 map {'n', '<leader>gw', ':Gwrite<cr>'}
 map {'n', '<leader>g/', ':Git log -S\'\'<left>'}
 
+-- k - Keyword documentation
 map {'n', '<leader>k', ':Dash<cr>'}
-
--- m - marks
-map {'n', '<leader>mm', '<Plug>BookmarkToggle'}
-map {'n', '<leader>ma', '<Plug>BookmarkShowAll'}
-map {'n', '<leader>md', '<Plug>BookmarkClearAll'}
-map {'n', ']m', '<Plug>BookmarkNext'}
-map {'n', '[m', '<Plug>BookmarkPrev'}
 
 -- q - Quit
 map {'n', '<leader>q', ':q<cr>'}
@@ -526,7 +518,6 @@ map {'n', '<leader>Sf', ':echo @%<cr>'}
 map {'n', '<leader>Sp', ':echo expand(\'%:p\')<cr>'}
 map {'n', '<leader>Sb', ':echo "Git branch: " . fugitive#head()<cr>'}
 
-
 -- T - Tabs/tmux
 map {'n', '<leader>tn', ':tabnew<cr>'}
 map {'n', '<leader>tq', ':VimuxCloseRunner<cr>'}
@@ -538,8 +529,8 @@ map {'n', '<leader>t:', 'VimuxRunCommand("")<left><left>'}
 map {'n', '<leader>tc', ':VimuxInterruptRunner<cr>:VimuxInterruptRunner<cr>'}
 
 -- V - Vimrc
-map {'n', '<leader>Ve', ':e $MYVIMRC<cr>'}
-map {'n', '<leader>Vs', ':so $MYVIMRC<cr>'}
+map {'n', '<leader>Ve', ':edit $MYVIMRC<cr>'}
+map {'n', '<leader>Vs', ':source $MYVIMRC<cr>'}
 
 -- w - Windows/Tabs
 map {'n', '<leader>wo', ':only<cr>'}
@@ -548,8 +539,11 @@ map {'n', '<leader>ws', ':sp<cr>'}
 map {'n', '<leader>wt', ':tabedit %<cr>'}
 map {'n', '<leader>wv', ':vsp<cr>'}
 
+--   }}}
+--    Non-leader mappings {{{
 
--- Non-leader mappings
+ -- Use Tab for aucocompletion
+map {'i', '<tab>', '<c-r>=Tab_Or_Complete()<cr>'}
 
 -- auto close pairs
 map {'i', '(<cr>', '(<cr>)<c-o>O<tab>'}
@@ -564,12 +558,6 @@ map {'n', '<c-l>', '<c-w>l'}
 
 -- Fix closest spelling error
 map {'i', '<c-f>', '<c-g>u<esc>[s1z=`]a<c-g>u'}
-
--- go back to default local mark (m)
-map {'n', 'gb', '`m'}
-
--- go back after grep and friend (their mappings auto set mark Z)
-map {'n', 'gB', '`Z'}
 
 -- format whole file and keep position (original map formats current line which is not that useful)
 map {noremap = false, 'n', 'gqq', 'mzgggqG`z'}
@@ -597,8 +585,8 @@ map {'n', 'L', '$'}
 map {'x', 'H', '^'}
 map {'x', 'L', '$'}
 
--- }}}
--- Unimpaired style --------------------------------------------------------------- {{{
+--   }}}
+--   Unimpaired style {{{
 
 -- previous/next file in current folder
 map {'n', ']f', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(v:count1), ':.'))<cr><cr>"}
@@ -642,8 +630,8 @@ map {'n', 'cos', ':setlocal spell! spell?<cr>'}
 map {'n', 'cot', ':call ToggleVimuxTarget()<cr>'}
 map {'n', 'cow', ':setlocal wrap! wrap?<cr>'}
 
--- }}}
--- Operators ---------------------------------------------------------------------- {{{
+--   }}}
+--   Operators {{{
 
 -- web search operator
 map {'n', 'gs', ':set opfunc=WebSearch<cr>g@'}
@@ -659,10 +647,10 @@ map {'n', 'gt', ':set opfunc=SendTextToTmux<cr>g@'}
 map {'n', 'gtt', 'V:<c-u>call SendTextToTmux(visualmode(), 1)<cr>'}
 map {'x', 'gt', ':<c-u>call SendTextToTmux(visualmode(), 1)<cr>'}
 
--- }}}
+--   }}}
 -- }}}
 
--- {{{ LSP
+-- LSP {{{
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -705,7 +693,7 @@ require 'lspconfig'.elixirls.setup{
 
 -- }}}
 
--- {{{ Autocommands
+-- Autocommands {{{
 acg.augroup('quickfix_window', {
   {'QuickFixCmdPost', 'grep cwindow | redraw!'};               -- open quickfix window after using grep
   {'QuickFixCmdPost', 'lgrep redraw!'};                        -- open location window after using grep
@@ -755,7 +743,7 @@ acg.augroup('preview_window', {
 
 -- }}}
 
--- {{{ Footer
+-- Footer {{{
 --[[
 
 Loading order:
