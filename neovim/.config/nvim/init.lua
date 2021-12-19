@@ -45,11 +45,10 @@ vim.opt.errorbells = false                             -- no flash on errors, on
 vim.opt.laststatus = 2                                 -- always show status bar
 vim.opt.list = true                                    -- show extra whitespace
 vim.opt.previewheight = 20                             -- make preview bigger
-vim.cmd [[
-   set listchars=tab:▸\ ,trail:·                       " symbols for invisible characters
-   let &showbreak='↳ '                                 " indicator for wrapped lines
-]]
 vim.opt.spellfile = '~/Drive/vim/spell/en.utf-8.add'   -- point to custom spell file from Synology Drive
+vim.opt.grepprg = 'rg --vimgrep --hidden --smart-case' -- use ripgrep, much faster than regular grep
+vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'            -- use ripgrep's format
+vim.g.vimsyn_embed = 1                                 -- highlight lua and other languages inside vim files
 vim.opt.diffopt = {
   'filler',                                            -- show filler lines to keep diffs aligned
   'internal',                                          -- use vim's internal diff library
@@ -64,8 +63,10 @@ vim.opt.complete= {
   '.',                                                 -- complete with words from current buffer
   'w',                                                 -- complete with words from other windows
 }
-vim.opt.grepprg = 'rg --vimgrep --hidden --smart-case' -- use ripgrep, much faster than regular grep
-vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'            -- use ripgrep's format
+vim.cmd [[
+   set listchars=tab:▸\ ,trail:·                       " symbols for invisible characters
+   let &showbreak='↳ '                                 " indicator for wrapped lines
+]]
 -- }}}
 
 -- {{{ Plugins
@@ -120,7 +121,7 @@ require 'paq' {
 -- }}}
 
 -- {{{ Forced file types
-acg.augroup("FORCED_FILE_TYPES", {
+acg.augroup("forced_file_types", {
     {'BufRead,BufNewFile', '*.jbuilder',   'setfiletype ruby'};
     {'BufRead,BufNewFile', '*.prawn',      'setfiletype ruby'};
     {'BufRead,BufNewFile', '*.tmux',       'setfiletype tmux'};
@@ -359,13 +360,14 @@ require("catppuccin").setup({
   },
 })
 
--- Status line
+-- {{{ Status line
 local trailing_whitespace = function()
   local space = vim.fn.search([[\s\+$]], 'nwc')
   return space ~= 0 and "TW:"..space or ""
 end
 
 local lualine_sections = {
+  lualine_b = {},
   lualine_a = {
     {
       'filename',
@@ -374,20 +376,20 @@ local lualine_sections = {
       shorting_target = 20,            -- shortens path to leave 20 chars in the window
     }
   },
-  lualine_b = {
+  lualine_c = {},
+  lualine_x = {},
+  lualine_y = {
     {
-      'diagnostics',                   -- Use lowercase indicators
-      symbols = {
+      'diagnostics',                   -- show errors, warnings, etc
+      symbols = {                      -- ... using lowercase indicators
         error = 'e',
         warn = 'w',
         info = 'i',
         hint = 'h'
       },
-    }
+    },
+    trailing_whitespace -- Trailing whitespace indicator
   },
-  lualine_c = {},
-  lualine_x = {},
-  lualine_y = { trailing_whitespace }, -- Trailing whitespace indicator
   lualine_z = {'%c %l/%L'}             -- column current-line/total-lines
 }
 
@@ -405,33 +407,9 @@ require('lualine').setup {
   tabline = {},
   extensions = {}
 }
+-- }}}
 
--- Colorscheme
-vim.cmd [[
-  function! SetDarkTheme()
-    set background=dark
-    colorscheme catppuccin
-  endfunction
-
-  function! SetLightTheme()
-    set background=light
-    colorscheme solarized-flat
-  endfunction
-
-  function! SetTheme()
-    if g:os == "Darwin"
-      if system("defaults read -g AppleInterfaceStyle") =~ "Dark"
-        call SetDarkTheme()
-      else
-        call SetLightTheme()
-      endif
-    else
-      call SetLightTheme()
-    endif
-  endfunction
-
-  call SetTheme()
-]]
+acg.auto_set_theme()
 
 require('look_and_feel')
 -- }}}
@@ -747,6 +725,56 @@ require 'lspconfig'.elixirls.setup{
     }
   };
 }
+
+-- }}}
+
+-- {{{ Autocommands
+acg.augroup('quickfix_window', {
+  {'QuickFixCmdPost', 'grep cwindow | redraw!'};               -- open quickfix window after using grep
+  {'QuickFixCmdPost', 'lgrep redraw!'};                        -- open location window after using grep
+  {'FileType', 'qf wincmd J'};                                 -- quickfix window should always be full width
+})
+
+acg.augroup('help_window', {
+  {'FileType', 'help', 'wincmd L'};                            -- open help always on the right
+})
+
+acg.augroup('quickfix_after_make', {
+  {'QuickFixCmdPost', '[^l]*', 'nested cwindow'};              -- open quickfix window after make
+  {'QuickFixCmdPost', 'l*', 'nested lwindow'};                 -- open location window after lmake
+})
+
+acg.augroup('branch_notes', {
+  {'Bufread,BufNewFile', '*/.git/notes-*', 'set ft=markdown'}; -- own notes are all markdown
+})
+
+acg.augroup('detect_file_changes', {
+  {'FocusGained,BufEnter', '*', ':silent! checktime'};
+})
+
+acg.augroup('detect_theme_changes', {
+  {                                                            -- auto switch theme when MacOs does
+    'FocusGained,FocusLost',
+    '*',
+    'lua require("acg").auto_set_theme()'
+  };
+})
+
+acg.augroup('lsp_auto_formatting', {
+  {                                                            -- auto format files that support it via LSP
+    'BufWritePre',
+    '*.ex,*.exs',
+    'lua vim.lsp.buf.formatting_sync(nil, 100)'
+  };
+})
+
+acg.augroup('preview_window', {
+  {                                                            -- close preview window automatically
+    'CursorMovedI,InsertLeave',
+    '*',
+    'if pumvisible() == 0|pclose|endif'
+  }
+})
 
 -- }}}
 
