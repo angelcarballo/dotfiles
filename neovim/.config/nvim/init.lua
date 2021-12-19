@@ -220,18 +220,18 @@ vim.opt.wildignore:append({
 
 -- Plugin Settings {{{
 
--- Plugin: vim-lion
+--   vim-lion {{{
 vim.g.lion_squeeze_spaces = 1 -- remove unnecessary spaces
-
--- Plugin: closetag
+--  }}}
+--   closetag {{{
 vim.g.closetag_filetypes = 'html,xhtml,erb,eelixir'
-
--- Plugin: vimux
+--  }}}
+--   vimux {{{
 vim.g['VimuxResetSequence'] = 'qC' -- for every command, send first: q -> exit scroll/copy mode, <esc> -> enter readline normal mode, C -> replace whole line
 vim.g['VimuxRunnerType']='pane' -- use a pane
 vim.g['VimuxOrientation'] = 'v' -- on the bottom half of the window
-
--- Plugin: vim-test
+--  }}}
+--   vim-test {{{
 vim.g['test#ruby#use_binstubs'] = 1                          -- use bin/xxx when available, which should use Spring automatically
 vim.g['test#ruby#rspec#options'] = {
   nearest = '--fail-fast --order 0 --format documentation',  -- for single tests, run in verbose mode
@@ -254,21 +254,21 @@ vim.cmd(                                                     -- custom strategy 
   let g:test#custom_strategies = {'customvimux': function('CustomVimuxStrategy')}
   let g:test#strategy = 'customvimux'
 ]])
-
--- Plugin: netrw
+--  }}}
+--   netrw {{{
 vim.g['g:netrw_liststyle']  = 0         -- thin (change to 3 for tree)
 vim.g['g:netrw_banner']  = 0            -- no banner
 vim.g['g:netrw_altv']  = 1              -- open files on right
 vim.g['g:netrw_preview']  = 1           -- open previews vertically
 vim.g['g:netrw_sizestyle']  = 'H'       -- show human style file sizes
 vim.g['g:netrw_nogx']  = 1              -- disable gx url command
-
--- Plugin: vim-ruby
+--  }}}
+--   vim-ruby {{{
 vim.g.ruby_spellcheck_strings = 1      -- enable spellcheck inside ruby strings
 vim.g.ruby_minlines = 500              -- avoid syntax errors while scrolling on large files
 vim.g.ruby_indent_block_style = 'do'   -- better syntax for nested blocks
-
--- Plugin: telescope
+--  }}}
+--   telescope {{{
 local telescope = require('telescope')
 telescope.load_extension('fzf')
 telescope.setup{
@@ -294,8 +294,8 @@ telescope.setup{
   },
   -- extensions = {}
 }
-
--- Plugin: projectionist
+--  }}}
+--   projectionist {{{
 vim.cmd [[
 let g:projectionist_heuristics = {
   \    "mix.exs": {
@@ -323,8 +323,8 @@ let g:projectionist_heuristics = {
   \    }
   \  }
 ]]
-
--- Plugin: native diagnostic plugin
+--  }}}
+--   diagnostic {{{
 vim.diagnostic.config {
   virtual_text = false, -- don't show virtualtext
   signs = true,         -- but do show signs
@@ -335,8 +335,8 @@ vim.fn.sign_define("DiagnosticSignError", { text = "e", texthl = "DiagnosticSign
 vim.fn.sign_define("DiagnosticSignWarn", { text = "w", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = "i", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "h", texthl = "DiagnosticSignHint" })
-
--- Plugin: gitsigns
+--  }}}
+--   gitsigns {{{
 require('gitsigns').setup {
   signs = {
     add          = {hl = 'Comment', text = '+', numhl='Comment', linehl='Comment'},
@@ -357,11 +357,11 @@ require('gitsigns').setup {
     ['x ic'] = ':<C-U>Gitsigns select_hunk<CR>'
   }
 }
-
--- Plugin: nvim-autopairs
-require('nvim-autopairs').setup{}
-
--- Plugin: firenvim
+--  }}}
+--   nvim-autopairs {{{
+require('nvim-autopairs').setup {}
+--  }}}
+--   firenvim {{{
 vim.g.firenvim_config = {
   localSettings = {
     ['.*'] = {
@@ -376,6 +376,7 @@ end
 acg.augroup("firenvime_file_types", {
   {'BufEnter', 'github.com_*.txt', 'set ft=markdown'}; -- default to markdown for Github
 })
+--  }}}
 
 -- }}}
 
