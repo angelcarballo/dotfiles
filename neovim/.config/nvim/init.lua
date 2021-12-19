@@ -43,6 +43,7 @@ vim.opt.visualbell = true                              -- visual flash instead o
 vim.opt.errorbells = false                             -- no flash on errors, only at beginning/end of file
 vim.opt.laststatus = 2                                 -- always show status bar
 vim.opt.list = true                                    -- show extra whitespace
+vim.opt.foldopen:remove('search')                      -- ignore folded lines when searching
 vim.opt.previewheight = 20                             -- make preview bigger
 vim.opt.spellfile = '~/Drive/vim/spell/en.utf-8.add'   -- point to custom spell file from Synology Drive
 vim.opt.grepprg = 'rg --vimgrep --hidden --smart-case' -- use ripgrep, much faster than regular grep
