@@ -105,7 +105,6 @@ require 'paq' {
   'romainl/vim-cool';                                         -- clear search highlight automatically
   'ishan9299/nvim-solarized-lua';                             -- solarized theme implemented in lua, compabible with all solarized8 options
   'catppuccin/nvim';                                          -- colorful dark colorscheme
-  'nvim-lualine/lualine.nvim';                                -- statusline replacement
   'nvim-lua/plenary.nvim';                                    -- dependency for telescope
   'nvim-telescope/telescope.nvim';                            -- generic fuzzy finder
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}; -- fzf plugin for telescope
@@ -366,47 +365,21 @@ local trailing_whitespace = function()
   return space ~= 0 and "TW:"..space or ""
 end
 
-local lualine_sections = {
-  lualine_b = {},
-  lualine_a = {
-    {
-      'filename',
-      file_status = true,              -- displays file status (readonly status, modified status)
-      path = 1,                        -- relative path
-      shorting_target = 20,            -- shortens path to leave 20 chars in the window
-    }
-  },
-  lualine_c = {},
-  lualine_x = {},
-  lualine_y = {
-    {
-      'diagnostics',                   -- show errors, warnings, etc
-      symbols = {                      -- ... using lowercase indicators
-        error = 'e',
-        warn = 'w',
-        info = 'i',
-        hint = 'h'
-      },
-    },
-    trailing_whitespace -- Trailing whitespace indicator
-  },
-  lualine_z = {'%c %l/%L'}             -- column current-line/total-lines
-}
+function status_line()
+  return table.concat {
+    '%#Pmenu#',            -- color
+    ' %f ',                -- relative file path
+    '%m',                  -- modified flag
+    '%r',                  -- read-only flag
+    '%h',                  -- help flag
+    '%w',                  -- preview flag
+    '%=',                  -- right aling the following...
+    trailing_whitespace(), -- trailing space indicator
+    ' %c %l/%L'            -- current column, current line and total lines
+  }
+end
 
-require('lualine').setup {
-  options = {
-    icons_enabled = false,
-    theme = 'auto',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    disabled_filetypes = {},
-    always_divide_middle = true,
-  },
-  sections = lualine_sections,
-  inactive_sections = lualine_sections,
-  tabline = {},
-  extensions = {}
-}
+vim.opt.statusline = "%!luaeval('status_line()')"
 -- }}}
 
 acg.auto_set_theme()
@@ -752,13 +725,13 @@ acg.augroup('detect_file_changes', {
   {'FocusGained,BufEnter', '*', ':silent! checktime'};
 })
 
-acg.augroup('detect_theme_changes', {
-  {                                                            -- auto switch theme when MacOs does
-    'FocusGained,FocusLost',
-    '*',
-    'lua require("acg").auto_set_theme()'
-  };
-})
+-- acg.augroup('detect_theme_changes', {
+--   {                                                            -- auto switch theme when MacOs does
+--     'FocusGained,FocusLost',
+--     '*',
+--     'lua require("acg").auto_set_theme()'
+--   };
+-- })
 
 acg.augroup('lsp_auto_formatting', {
   {                                                            -- auto format files that support it via LSP
