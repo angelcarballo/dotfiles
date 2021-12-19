@@ -141,6 +141,9 @@ require 'paq' {
   'benmills/vimux';                                           -- tmux integration
   'janko-m/vim-test';                                         -- generic test runner
   'rizzatti/dash.vim';                                        -- external doc browser (Mac only)
+  { 'glacambre/firenvim',                                     -- use nvim in browser textareas
+    run = function() vim.fn['firenvim#install'](0) end
+  };
   -- }}}
 }
 -- }}}
@@ -357,6 +360,22 @@ require('gitsigns').setup {
 
 -- Plugin: nvim-autopairs
 require('nvim-autopairs').setup{}
+
+-- Plugin: firenvim
+vim.g.firenvim_config = {
+  localSettings = {
+    ['.*'] = {
+        takeover = 'never'                             -- don't enable automatically
+    }
+  }
+}
+if vim.api.nvim_eval("exists('g:started_by_firenvim')") then
+  vim.opt.guifont = 'Iosevka:h22'                      -- use larger font
+  vim.opt.laststatus = 0                               -- hide statusline
+end
+acg.augroup("firenvime_file_types", {
+  {'BufEnter', 'github.com_*.txt', 'set ft=markdown'}; -- default to markdown for Github
+})
 
 -- }}}
 
