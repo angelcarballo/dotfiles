@@ -23,6 +23,7 @@ function acg.map(key)
   vim.api.nvim_set_keymap(key[1], key[2], key[3], opts)
 end
 
+-- Helper to set colorscheme and background together
 function acg.set_theme(colorscheme, background)
   vim.opt.background = background
   vim.cmd('colorscheme ' .. colorscheme)
@@ -30,11 +31,10 @@ end
 
 -- Set theme/colorscheme based on MacOs Dark/Light mode
 function acg.auto_set_theme()
-  local cmd = assert(io.popen('defaults read -g AppleInterfaceStyle', 'r'))
-  local output = assert(cmd:read('*a'))
-  cmd:close()
+  local result = os.execute('defaults read -g AppleInterfaceStyle')
 
-  if string.find(output, 'Dark') then
+  -- The shell command succeeds (0 result code) in dark mode
+  if result == 0 then
     acg.set_theme('catppuccin', 'dark')
   else
     acg.set_theme('solarized-flat', 'light')

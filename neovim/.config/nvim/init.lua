@@ -483,8 +483,6 @@ end
 vim.opt.statusline = "%!luaeval('status_line()')"
 --  }}}
 
-acg.auto_set_theme()
-
 vim.cmd 'highlight clear SpellBad'                         -- remove default spell highlighting
 vim.cmd 'highlight SpellBad cterm=underline gui=undercurl' -- underline spelling errors
 vim.cmd 'highlight TabLineSel guifg=bg guibg=fg'           -- highlight current tab
@@ -820,13 +818,13 @@ acg.augroup('detect_file_changes', {
   {'FocusGained,BufEnter', '*', ':silent! checktime'};
 })
 
--- acg.augroup('detect_theme_changes', {
---   {                                                            -- auto switch theme when MacOs does
---     'FocusGained,FocusLost',
---     '*',
---     'lua require("acg").auto_set_theme()'
---   };
--- })
+acg.augroup('detect_theme_changes', {
+  {                                                            -- auto switch theme when MacOs does
+    'VimEnter,FocusGained,FocusLost',
+    '*',
+    'lua require("acg").auto_set_theme()'
+  };
+})
 
 acg.augroup('lsp_auto_formatting', {
   {                                                            -- auto format files that support it via LSP
