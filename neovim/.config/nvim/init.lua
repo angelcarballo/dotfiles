@@ -677,6 +677,9 @@ map {'n', 'L', '$'}
 map {'x', 'H', '^'}
 map {'x', 'L', '$'}
 
+-- Super quick global mark
+map {'n', 'M', 'mM'}
+
 --   }}}
 --   Unimpaired style {{{
 
