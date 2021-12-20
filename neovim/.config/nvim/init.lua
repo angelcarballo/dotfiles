@@ -507,7 +507,6 @@ map {'n', '<leader><space>', ':b '}                        -- quick buffer switc
 map {'n', '<leader>/', ':silent grep -F ""<left>'}
 map {'n', '<leader>?', ':silent grep -F -g !test ""<left>'}
 
-
 --  * - Search in file or project
 map {'x', '*', ''}
 map {'n', '<leader>8', ':silent grep "<cword>"<cr>'}
@@ -534,7 +533,6 @@ map {'n', '<leader>cfd', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>'} -- cop
 map {'n', '<leader>cs', ':nohl<cr>'}
 
 -- d - Duplicate, diff, db
-
 map {'n', '<leader>dp', 'yap}p'}
 map {'n', '<leader>dl', 'yy:Commentary<cr>p'}
 map {'x', '<leader>dl', 'ygv:Commentary<cr>\']p'}
