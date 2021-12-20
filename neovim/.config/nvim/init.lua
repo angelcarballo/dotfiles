@@ -103,7 +103,7 @@ require 'paq' {
 
   -- Git {{{
   'tpope/vim-fugitive';                                       -- git integration
-  'tpope/vim-rhubarb';                                        -- github integration
+  'tpope/vim-rhubarb';                                        -- github integration for vim-fugitive
   'lewis6991/gitsigns.nvim';                                  -- git signs and chunk navigation
   -- }}}
 
