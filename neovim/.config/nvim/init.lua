@@ -507,8 +507,6 @@ map {'n', '<leader><space>', ':b '}                        -- quick buffer switc
 map {'n', '<leader>/', ':silent grep -F ""<left>'}
 map {'n', '<leader>?', ':silent grep -F -g !test ""<left>'}
 
--- ] - Tags
-map {'n', '<silent><leader><c-]>', '<c-w><c-]><c-w>T'} -- open tag in new tab
 
 --  * - Search in file or project
 map {'x', '*', ''}
@@ -533,12 +531,9 @@ map {'n', '<leader>cfl', ':let @+=join([expand(\'%\'),  line(".")], \':\')<cr>:e
 map {'n', '<leader>cff', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>'} -- copy file directory/folder path (src/)
 map {'n', '<leader>cfd', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>'} -- copy file directory/folder path (src/)
 
-map {'n', '<leader>co', ':Git checkout<space>'}
 map {'n', '<leader>cs', ':nohl<cr>'}
 
 -- d - Duplicate, diff, db
-map {'n', '<leader>db', ':%DB<cr>'}
-map {'x', '<leader>db', ':DB<cr>'}
 
 map {'n', '<leader>dp', 'yap}p'}
 map {'n', '<leader>dl', 'yy:Commentary<cr>p'}
@@ -605,7 +600,7 @@ map {'n', '<leader>on', ':FZF $NOTES/<cr>'}
 --" r - Remove, redraw
 map {'n', '<leader>rd', ':redraw!<cr>'}
 
---" s - Specs/Split
+--" s - Specs
 map {'n', '<leader>sa', ':TestSuite<cr>'}
 map {'n', '<leader>sf', ':TestFile<cr>'}
 map {'n', '<leader>sc', ':TestNearest<cr>'}
