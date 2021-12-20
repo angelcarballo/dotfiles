@@ -597,6 +597,9 @@ map {'n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()\
 map {'n', '<leader>of', ":! open '%'<cr>"}
 map {'n', '<leader>on', ':FZF $NOTES/<cr>'}
 
+--" p - package
+map {'n', '<leader>ps', ":PaqSync<cr>"}
+
 --" r - Remove, redraw
 map {'n', '<leader>rd', ':redraw!<cr>'}
 
