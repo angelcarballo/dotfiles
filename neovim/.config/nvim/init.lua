@@ -565,6 +565,7 @@ map {'n', '<leader>gg', ':Git<space>'}
 map {'n', '<leader>gD', ':Gdiffsplit origin/main<cr>'}
 map {'n', '<leader>gb', ':Git blame<cr>'}
 map {'n', '<leader>gd', ':Gdiffsplit<cr>'}
+map {'n', '<leader>g3', ':Gdiffsplit!<cr>'}
 map {'n', '<leader>gf', ':GitStatusFiles<cr><c-w>k:redraw!<cr>'}
 map {'n', '<leader>gh', ':GBrowse<cr>'}
 map {'x', '<leader>gh', ':GBrowse<cr>'}
