@@ -779,7 +779,7 @@ require 'lspconfig'.elixirls.setup{
   cmd = { "/Users/angel/src/elixir-ls/release/language_server.sh" };
   filetypes = {'elixir', 'eelixir'};
   on_attach = on_attach;
-  capabilities = capabilities;
+  capabilities = lsp_capabilities;
   settings = {
     elixirLS = {
       dialyzerEnabled = false,
