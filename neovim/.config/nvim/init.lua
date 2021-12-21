@@ -650,8 +650,8 @@ map {'n', '<c-l>', '<c-w>l'}
 -- Fix closest spelling error
 map {'i', '<c-f>', '<c-g>u<esc>[s1z=`]a<c-g>u'}
 
--- format whole file and keep position (original map formats current line which is not that useful)
-map {noremap = false, 'n', 'gqq', 'mzgggqG`z'}
+-- format whole file and keep position (original map enter ex mode)
+map {'n', 'gQ', 'mzgggqG`z'}
 
 -- Search and replace current visual selection
 map {'x', '<c-r>', '"zy:%s/<c-r>z//g<left><left>'}
