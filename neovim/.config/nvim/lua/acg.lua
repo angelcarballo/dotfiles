@@ -56,12 +56,28 @@ function acg.is_dir(path)
    return acg.exists(path.."/") -- "/" works on both Unix and Windows
 end
 
+--- Read a whole file in binary mode
+function acg.read_file(path)
+  local file = io.open(path, "rb") -- (r)ead mode, (b)inary mode
+  local contents = file:read "*a" -- (a)ll the file
+  file:close()
+  return contents
+end
+
 -- Find path for editing notes:
 --   if we're in a git repository, notes are stored in the .git folder using the branch's name
 --   if we're NOT in a git repository, use a generic .notes file
 function acg.notes_path()
   if acg.is_dir('.git') then
+    -- regular git folder
     return '.git/' .. vim.api.nvim_eval('FugitiveHead()')
+  elseif acg.exists('.git') then
+    -- git folder using worktrees. The .git file will contain a pointer to the main git repo location:
+    --   gitdir: /some/folder/.git/worktrees/current-branch
+    local path = acg.read_file('.git')
+    from, _ = path.find(path, '/')
+    _, to = path.find(path, '.git/')
+    return path.sub(path, from, to) .. vim.api.nvim_eval('FugitiveHead()')
   else
     return('.notes')
   end
