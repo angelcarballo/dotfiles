@@ -6,8 +6,9 @@ export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$PATH"
 
 case "$OSTYPE" in
   darwin*)
-    # GNU Coreutils
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin/:$PATH"
+    # GNU Coreutils, put them **after** since some scripts require the default versions shipped with MacOs
+    # All the duplicated GNU binaries can be accessed with g-prefixed commands: mktemp -> gmktemp
+    export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin/"
 
     # Homebrew
     export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
