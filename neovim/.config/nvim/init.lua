@@ -49,6 +49,8 @@ vim.opt.spellfile = '~/Drive/vim/spell/en.utf-8.add'   -- point to custom spell 
 vim.opt.grepprg = 'rg --vimgrep --hidden --smart-case' -- use ripgrep, much faster than regular grep
 vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'            -- use ripgrep's format
 vim.g.vimsyn_embed = 1                                 -- highlight lua and other languages inside vim files
+vim.opt.listchars = { tab = "▸ ", trail = "·" }        -- symbols for invisible characters
+vim.cmd [[ let &showbreak='↳ ' ]]                      -- indicator for wrapped lines
 vim.opt.diffopt = {
   'filler',                                            -- show filler lines to keep diffs aligned
   'internal',                                          -- use vim's internal diff library
@@ -63,11 +65,6 @@ vim.opt.complete= {
   '.',                                                 -- complete with words from current buffer
   'w',                                                 -- complete with words from other windows
 }
-vim.cmd [[
-   set listchars=tab:▸\ ,trail:·                       " symbols for invisible characters
-   let &showbreak='↳ '                                 " indicator for wrapped lines
-]]
--- }}}
 
 -- Plugins {{{
 vim.cmd 'packadd cfilter' -- quickfix filter plugin (bundled with vim)
