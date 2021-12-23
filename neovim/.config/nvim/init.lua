@@ -63,7 +63,7 @@ vim.opt.completeopt = {
 }
 vim.opt.complete= {
   '.',                                                 -- complete with words from current buffer
-  'w',                                                 -- complete with words from other windows
+  'b',                                                 -- complete with words from other loaded buffers
 }
 
 -- Plugins {{{
