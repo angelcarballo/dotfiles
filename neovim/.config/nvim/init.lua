@@ -65,6 +65,7 @@ vim.opt.complete= {
   '.',                                                 -- complete with words from current buffer
   'b',                                                 -- complete with words from other loaded buffers
 }
+-- }}}
 
 -- Plugins {{{
 vim.cmd 'packadd cfilter' -- quickfix filter plugin (bundled with vim)
