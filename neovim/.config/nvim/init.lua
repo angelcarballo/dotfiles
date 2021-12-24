@@ -478,14 +478,16 @@ require("catppuccin").setup({
 --   }}}
 
 --  Status line {{{
+local status_color = '%#Pmenu#'
+
 local trailing_whitespace = function()
   local space = vim.fn.search([[\s\+$]], 'nwc')
-  return space ~= 0 and "TW:"..space or ""
+  return space ~= 0 and "%#DiffDelete#TW:"..space..status_color or ""
 end
 
 function status_line()
   return table.concat {
-    '%#Pmenu#',            -- color
+    status_color,          -- color
     ' %f ',                -- relative file path
     '%m',                  -- modified flag
     '%r',                  -- read-only flag
