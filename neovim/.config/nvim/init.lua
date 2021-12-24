@@ -135,6 +135,7 @@ require 'paq' {
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}; -- fzf plugin for telescope
   'hrsh7th/nvim-cmp';                                         -- completion engine
   'hrsh7th/cmp-nvim-lsp';                                     -- nvim-lsp source for nvim-cmp
+  'hrsh7th/cmp-buffer';                                       -- buffer text source for nvim-cmp
   'L3MON4D3/LuaSnip';                                         -- snippet manager
   'saadparwaiz1/cmp_luasnip';                                 -- luasnip source for nvim-cmp
   -- }}}
@@ -401,6 +402,18 @@ cmp.setup({
     ["<c-x><c-o>"] = cmp.mapping(function(fallback)    -- use cmp instead of default onmicomplete
       cmp.complete()
     end, { "i", "s" }),
+    ["<tab>"] = cmp.mapping(function(fallback)         -- use tab for completion, cycle through results and regular tab if there's no text before
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif acg.has_words_before() then
+        cmp.complete()
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
     ["<c-j>"] = cmp.mapping(function(fallback)         -- move down in the result list with c-j (c-n also works)
       if cmp.visible() then
         cmp.select_next_item()
@@ -419,9 +432,15 @@ cmp.setup({
   sources = cmp.config.sources(
     {
       { name = 'nvim_lsp' },
+      { name = 'buffer',
+        option = { keyword_length = 4 }                --seldom need to complete 3-letter words
+      },
       { name = 'luasnip' },
     }, {}
-  )
+  ),
+  experimental = {
+    ghost_text = true                                  -- show current slected item as ghost text
+  }
 })
 
 --  }}}
@@ -635,9 +654,6 @@ map {'n', '<leader>wv', ':vsp<cr>'}
 
 --   }}}
 --    Non-leader mappings {{{
-
- -- Use Tab for aucocompletion
-map {'i', '<tab>', '<c-r>=Tab_Or_Complete()<cr>'}
 
 -- pane navigation
 map {'n', '<c-h>', '<c-w>h'}
