@@ -352,12 +352,12 @@ require('gitsigns').setup {
     -- Default keymap options
     noremap = true,
 
-    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'"},
-    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'"},
+    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<cr>'"},
+    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<cr>'"},
 
     -- Text objects
-    ['o ic'] = ':<C-U>Gitsigns select_hunk<CR>',
-    ['x ic'] = ':<C-U>Gitsigns select_hunk<CR>'
+    ['o ic'] = ':<c-u>Gitsigns select_hunk<cr>',
+    ['x ic'] = ':<c-u>Gitsigns select_hunk<cr>'
   }
 }
 --  }}}
@@ -778,12 +778,12 @@ local on_attach = function(client, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  map {'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>'}
-  map {'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>'}
-  map {'n', 'gR', '<cmd>lua vim.lsp.buf.references()<CR>'}
-  map {'n', '[e', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>'}
-  map {'n', ']e', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>'}
-  map {'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<CR>'}
+  map {'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<cr>'}
+  map {'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>'}
+  map {'n', 'gR', '<cmd>lua vim.lsp.buf.references()<cr>'}
+  map {'n', '[e', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>'}
+  map {'n', ']e', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>'}
+  map {'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>'}
 end
 
 -- efm-langserver runs credo
