@@ -170,6 +170,9 @@ acg.augroup("forced_file_types", {
 
 -- Custom text object {{{
 
+-- entire buffer
+map {'o', 'ae', ':<c-u>normal! ggVG<cr>'}
+
 -- next parenthesis, brackets, quotes, etc. in current line
 map {'o', 'inb', ':<c-u>normal! f(vi(<cr>'}
 map {'o', 'in(', ':<c-u>normal! f(vi(<cr>'}
