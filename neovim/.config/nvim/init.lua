@@ -784,8 +784,8 @@ local on_attach = function(client, bufnr)
   map {'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<cr>'}
   map {'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>'}
   map {'n', 'gR', '<cmd>lua vim.lsp.buf.references()<cr>'}
-  map {'n', '[e', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>'}
-  map {'n', ']e', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>'}
+  map {'n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<cr>'}
+  map {'n', ']e', '<cmd>lua vim.diagnostic.goto_next()<cr>'}
   map {'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>'}
 end
 
