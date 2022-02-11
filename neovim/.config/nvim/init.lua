@@ -714,6 +714,7 @@ local on_attach = function(client, bufnr)
 
   require "lsp_signature".on_attach({
     bind = true,
+    max_height = 20,
     hint_enable = false,
     toggle_key = '<c-h>',
     -- Don't show by default, effectively require manually toggling per-buffer
