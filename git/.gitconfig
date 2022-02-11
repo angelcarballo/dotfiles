@@ -33,3 +33,5 @@
 	path = ~/.gitconfig.local
 [absorb]
   maxStack=50
+[push]
+	default = current
