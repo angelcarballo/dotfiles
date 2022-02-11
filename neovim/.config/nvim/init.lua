@@ -134,7 +134,6 @@ require 'paq' {
   'nvim-telescope/telescope.nvim';                            -- generic fuzzy finder
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}; -- fzf plugin for telescope
   'ray-x/lsp_signature.nvim';                                 -- dynamically show function signature
-  'L3MON4D3/LuaSnip';                                         -- snippet manager
   -- }}}
 
   -- Runners and navigation {{{
@@ -805,7 +804,6 @@ acg.augroup('preview_window', {
 -- }}}
 
 -- Footer {{{
-require 'snippets'
 
 --[[
 
@@ -823,4 +821,5 @@ To see all leader mappings, including those from plugins:
   nvim -c 'map <LocalLeader>'
 
 --]]
+
 -- }}}
