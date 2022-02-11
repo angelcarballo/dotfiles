@@ -133,11 +133,8 @@ require 'paq' {
   'alvan/vim-closetag';                                       -- auto close html/xml tags
   'nvim-telescope/telescope.nvim';                            -- generic fuzzy finder
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}; -- fzf plugin for telescope
-  'hrsh7th/nvim-cmp';                                         -- completion engine
-  'hrsh7th/cmp-nvim-lsp';                                     -- nvim-lsp source for nvim-cmp
-  'hrsh7th/cmp-buffer';                                       -- buffer text source for nvim-cmp
+  'ray-x/lsp_signature.nvim';                                 -- dynamically show function signature
   'L3MON4D3/LuaSnip';                                         -- snippet manager
-  'saadparwaiz1/cmp_luasnip';                                 -- luasnip source for nvim-cmp
   -- }}}
 
   -- Runners and navigation {{{
@@ -383,70 +380,6 @@ acg.augroup("firenvime_file_types", {
   {'BufEnter', 'github.com_*.txt', 'set ft=markdown'}; -- default to markdown for Github
 })
 --  }}}
---   nvim-cmp {{{
-local cmp = require('cmp')
-local luasnip = require("luasnip")
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-cmp.setup({
-  completion = {
-      autocomplete = false,                            -- disable auto-completion.
-  },
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)         -- use luasnip (required)
-    end,
-  },
-  mapping = {
-    ['<cr>'] = cmp.mapping.confirm({ select = true }), -- <cr> accepts current selection
-    ["<c-x><c-o>"] = cmp.mapping(function(fallback)    -- use cmp instead of default onmicomplete
-      cmp.complete()
-    end, { "i", "s" }),
-    ["<tab>"] = cmp.mapping(function(fallback)         -- use tab for completion, cycle through results and regular tab if there's no text before
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif acg.has_words_before() then
-        cmp.complete()
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<c-j>"] = cmp.mapping(function(fallback)         -- move down in the result list with c-j (c-n also works)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<c-k>"] = cmp.mapping(function(fallback)         -- move up in the result list with c-k (c-p also works)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-  },
-  sources = cmp.config.sources(
-    {
-      { name = 'nvim_lsp' },
-      { name = 'buffer',
-        option = { keyword_length = 4 }                --seldom need to complete 3-letter words
-      },
-      { name = 'luasnip' },
-    }, {}
-  ),
-  experimental = {
-    ghost_text = true                                  -- show current slected item as ghost text
-  }
-})
-
---  }}}
 -- }}}
 
 -- Look & Feel {{{
@@ -514,6 +447,7 @@ vim.cmd "match ErrorMsg '\\s\\+$'"                         -- highlight trailing
 -- Mappings {{{
 --   Basic mappings {{{
 map {'i', 'kj', '<esc>'}                                   -- easily exit insert mode
+map {'i', '<tab>', '<c-r>=Tab_Or_Complete()<cr>'}          -- context aware tab or complete
 map {'n', 'Q', '<nop>'}                                    -- don't go inTo Ex mode
 map {'n', '<tab>', '<c-^>'}                                -- quick toggle between last two buffers
 map {'n', 'j', 'gj'}                                       -- Move around using visual lines, useful when wrap is enabled
@@ -765,8 +699,6 @@ map {'x', 'gt', ':<c-u>call SendTextToTmux(visualmode(), 1)<cr>'}
 
 -- LSP {{{
 
-local lsp_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -779,6 +711,14 @@ local on_attach = function(client, bufnr)
 
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  require "lsp_signature".on_attach({
+    bind = true,
+    hint_enable = false,
+    toggle_key = '<c-h>',
+    -- Don't show by default, effectively require manually toggling per-buffer
+    floating_window = false
+  }, bufnr)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   map {'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<cr>'}
