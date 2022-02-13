@@ -272,7 +272,6 @@ vim.g.ruby_indent_block_style = 'do'   -- better syntax for nested blocks
 --  }}}
 --   telescope {{{
 local telescope = require('telescope')
-telescope.load_extension('fzf')
 telescope.setup{
   pickers = {
     buffers = { theme = "ivy" },
@@ -296,6 +295,7 @@ telescope.setup{
   },
   -- extensions = {}
 }
+telescope.load_extension('fzf')
 --  }}}
 --   projectionist {{{
 vim.cmd [[
