@@ -559,6 +559,7 @@ map {'n', '<leader>rd', ':redraw!<cr>'}
 
 --" s - Specs
 map {'n', '<leader>sa', ':TestSuite<cr>'}
+map {'n', '<leader>ss', ':TestSuite<cr>'}
 map {'n', '<leader>sf', ':TestFile<cr>'}
 map {'n', '<leader>sc', ':TestNearest<cr>'}
 map {'n', '<leader>sl', ':TestLast<cr>'}
