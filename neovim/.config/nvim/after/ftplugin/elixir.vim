@@ -14,6 +14,8 @@ inoreabbrev <buffer> importham  import Hammox, only: [expect: 3, verify_on_exit!
 inoreabbrev <buffer> importdecimal  import Duffel.Core.Sigils, only: [sigil_d: 2]
 inoreabbrev <buffer> rawquery Ecto.Adapters.SQL.to_sql(:all, Repo, )
 
+" Remove deps from path to speed up find & friends on large projects
+setlocal path-=deps/**/lib/**,deps/**/src/**
 
 setlocal foldmethod=indent
 setlocal foldlevel=1
