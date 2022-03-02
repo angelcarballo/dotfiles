@@ -19,3 +19,4 @@ node_modules/
 .git/
 Brewfile.lock.json
 _build/
+github/.config/gh/hosts.yml
