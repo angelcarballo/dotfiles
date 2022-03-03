@@ -1,4 +1,4 @@
-# catpuccin colors
+# Catpuccin colors (see: https://github.com/catppuccin/nvim)
 thm_bg="#1e1e28"
 thm_fg="#d7dae0"
 thm_cyan="#c2e7f0"
@@ -14,20 +14,21 @@ thm_orange="#f7c196"
 catppuccin12="#3e4058"
 
 # Status bar
-set-option -g status-position bottom
+set -g status "on"
 set -g status-bg "${thm_bg}"
 set -g status-fg "${thm_fg}"
 set -g status-justify "centre"
 set -g status-left-length "100"
-set -g status "on"
+set -g status-position bottom
 set -g status-right-length "100"
 
-# left > current session name
+# Left > current session name
 set -g status-left " #S"
 
 # right > London time
 set -g status-right "#(TZ='Europe/London' date +%%H:%%M)"
 
+# Window list
 setw -g window-status-format " #W#{?window_zoomed_flag,#[fg=${thm_red}]+#[fg=${thm_fg}],} "
 setw -g window-status-current-format "[#W#{?window_zoomed_flag,#[fg=${thm_red}]+#[fg=${thm_fg}],}]"
 
