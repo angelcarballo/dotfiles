@@ -520,10 +520,10 @@ map {'n', '<leader>gb', ':Git blame<cr>'}
 map {'n', '<leader>gd', ':Gdiffsplit<cr>'}
 map {'n', '<leader>g3', ':Gdiffsplit!<cr>'}
 map {'n', '<leader>gf', ':GitStatusFiles<cr><c-w>k:redraw!<cr>'}
-map {'n', '<leader>gh', ':GBrowse<cr>'}
-map {'x', '<leader>gh', ':GBrowse<cr>'}
-map {'n', '<leader>gH', ':GBrowse!<cr>'}
-map {'x', '<leader>gH', ':GBrowse!<cr>'}
+map {'n', '<leader>gbr', ':GBrowse<cr>'}
+map {'x', '<leader>gbr', ':GBrowse<cr>'}
+map {'n', '<leader>gcr', ':GBrowse!<cr>'}
+map {'x', '<leader>gcr', ':GBrowse!<cr>'}
 map {'n', '<leader>gl', ':vert Git log -n 50<cr>'}
 map {'n', '<leader>gL', ':0Gclog -n 50<cr>'}
 map {'x', '<leader>gl', ':Gclog -n 50<cr>'}
