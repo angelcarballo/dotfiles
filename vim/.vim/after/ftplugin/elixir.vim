@@ -18,6 +18,10 @@ setlocal foldlevel=1
 " this matches default line length used by mix format
 setlocal textwidth=98
 
+" onmifunc is set when LSP server is attached, we do it here to prevent the
+" default behaviour being triggered if the server is still loading
+setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
 " nnoremap <buffer> <leader>mf :MixFormat<cr>
 nnoremap <buffer> <leader>mf :LspDocumentFormat<cr>
 nnoremap <buffer> <leader>mf :call VimuxRunCommand("clear; mix format " . bufname("%"))<cr>
