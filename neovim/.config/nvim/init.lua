@@ -59,7 +59,8 @@ vim.opt.diffopt = {
 }
 vim.opt.completeopt = {
   'menu',                                              -- show popup menu for completion
-  'menuone'                                            -- show popup menu even if there is only one result
+  'menuone',                                           -- show popup menu even if there is only one result
+  'noselect'                                           -- don't auto select, force the user to pick a result
 }
 vim.opt.complete= {
   '.',                                                 -- complete with words from current buffer
@@ -133,7 +134,14 @@ require 'paq' {
   'alvan/vim-closetag';                                       -- auto close html/xml tags
   'nvim-telescope/telescope.nvim';                            -- generic fuzzy finder
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}; -- fzf plugin for telescope
-  'ray-x/lsp_signature.nvim';                                 -- dynamically show function signature
+
+  'hrsh7th/cmp-nvim-lsp';                                     -- autocompletion plus plugins
+  'hrsh7th/cmp-buffer';
+  'hrsh7th/cmp-path';
+  'hrsh7th/nvim-cmp';
+
+  'L3MON4D3/LuaSnip';                                         -- snippet support
+  'saadparwaiz1/cmp_luasnip';
   -- }}}
 
   -- Runners and navigation {{{
@@ -379,6 +387,56 @@ acg.augroup("firenvime_file_types", {
   {'BufEnter', 'github.com_*.txt', 'set ft=markdown'}; -- default to markdown for Github
 })
 --  }}}
+--   vim-cmp {{{
+local cmp = require'cmp'
+local luasnip = require("luasnip")
+
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  mapping = {
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ['<C-k>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-j>'] = cmp.mapping.scroll_docs(4),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' }, -- For luasnip users.
+  }, {
+    { name = 'buffer' },
+  })
+})
+--  }}}
 -- }}}
 
 -- Look & Feel {{{
@@ -446,7 +504,7 @@ vim.cmd "match ErrorMsg '\\s\\+$'"                         -- highlight trailing
 -- Mappings {{{
 --   Basic mappings {{{
 map {'i', 'kj', '<esc>'}                                   -- easily exit insert mode
-map {'i', '<tab>', '<c-r>=Tab_Or_Complete()<cr>'}          -- context aware tab or complete
+-- map {'i', '<tab>', '<c-r>=Tab_Or_Complete()<cr>'}          -- context aware tab or complete
 map {'n', 'Q', '<nop>'}                                    -- don't go inTo Ex mode
 map {'n', '<tab>', '<c-^>'}                                -- quick toggle between last two buffers
 map {'n', 'j', 'gj'}                                       -- Move around using visual lines, useful when wrap is enabled
@@ -712,14 +770,14 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  require "lsp_signature".on_attach({
-    bind = true,
-    max_height = 20,
-    hint_enable = false,
-    toggle_key = '<c-h>',
-    -- Don't show by default, effectively require manually toggling per-buffer
-    floating_window = false
-  }, bufnr)
+  -- require "lsp_signature".on_attach({
+  --   bind = true,
+  --   max_height = 20,
+  --   hint_enable = false,
+  --   toggle_key = '<c-h>',
+  --   -- Don't show by default, effectively require manually toggling per-buffer
+  --   floating_window = false
+  -- }, bufnr)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   map {'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<cr>'}
@@ -733,11 +791,13 @@ end
 -- efm-langserver runs credo
 require 'lspconfig'.efm.setup{
   filetypes = {'elixir', 'eelixir'};
+  capabilities = lsp_capabilities
 }
 
 require 'lspconfig'.elixirls.setup{
   cmd = { "/Users/angel/src/elixir-ls/release/language_server.sh" };
   filetypes = {'elixir', 'eelixir'};
+  capabilities = lsp_capabilities;
   on_attach = on_attach;
   capabilities = lsp_capabilities;
   settings = {
