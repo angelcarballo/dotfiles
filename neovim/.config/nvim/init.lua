@@ -557,6 +557,7 @@ map {'n', '<leader>ps', ":PaqSync<cr>"}
 
 --" r - Remove, redraw
 map {'n', '<leader>rd', ':redraw!<cr>'}
+map {'n', '<leader>rw', 'mz:%s/\\s\\+$//g<cr>:w<cr>\'z'}
 
 --" s - Specs
 map {'n', '<leader>sa', ':TestSuite<cr>'}
