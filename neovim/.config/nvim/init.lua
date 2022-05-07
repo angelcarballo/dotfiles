@@ -478,6 +478,7 @@ map {'n', '<leader>bb', '<cmd>Telescope buffers<cr>'}
 
 -- c - Copy/clear
 map {'n', '<leader>cb', ':let @+=fugitive#head()<cr>:echo "<c-r>+"<cr>'} -- copy git branch
+map {'n', '<leader>ca', 'mzgg"+yG\'z'} -- copy all/entire buffer
 map {'n', '<leader>cfn', ':let @+=expand("%:t")<cr>:echo "<c-r>+"<cr>'} -- copy file name  (foo.txt)
 map {'n', '<leader>cfp', ':let @+=expand("%")<cr>:echo "<c-r>+"<cr>'} -- copy relative path  (src/foo.txt)
 map {'n', '<leader>cfP', ':let @+=expand("%:p")<cr>:echo "<c-r>+"<cr>'} -- copy absolute path  (/something/src/foo.txt)
