@@ -142,6 +142,8 @@ require 'paq' {
 
   'L3MON4D3/LuaSnip';                                         -- snippet support
   'saadparwaiz1/cmp_luasnip';
+
+  'jose-elias-alvarez/null-ls.nvim';                          -- lsp plugin for non-lsp sources
   -- }}}
 
   -- Runners and navigation {{{
@@ -437,6 +439,13 @@ cmp.setup({
   })
 })
 --  }}}
+--   null-ls {{{
+require("null-ls").setup({
+  sources = {
+    require("null-ls").builtins.diagnostics.vale,
+  },
+})
+--   }}}
 -- }}}
 
 -- Look & Feel {{{
@@ -736,6 +745,9 @@ map {'n', 'cos', ':setlocal spell! spell?<cr>'}
 map {'n', 'cot', ':call ToggleVimuxTarget()<cr>'}
 map {'n', 'cow', ':setlocal wrap! wrap?<cr>'}
 
+map {'n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<cr>'}
+map {'n', ']e', '<cmd>lua vim.diagnostic.goto_next()<cr>'}
+map {'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>'}
 --   }}}
 --   Operators {{{
 
@@ -773,9 +785,6 @@ local on_attach = function(client, bufnr)
   map {'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<cr>'}
   map {'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>'}
   map {'n', 'gR', '<cmd>lua vim.lsp.buf.references()<cr>'}
-  map {'n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<cr>'}
-  map {'n', ']e', '<cmd>lua vim.diagnostic.goto_next()<cr>'}
-  map {'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>'}
 end
 
 -- efm-langserver runs credo
