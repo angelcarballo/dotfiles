@@ -504,7 +504,6 @@ vim.cmd "match ErrorMsg '\\s\\+$'"                         -- highlight trailing
 -- Mappings {{{
 --   Basic mappings {{{
 map {'i', 'kj', '<esc>'}                                   -- easily exit insert mode
--- map {'i', '<tab>', '<c-r>=Tab_Or_Complete()<cr>'}          -- context aware tab or complete
 map {'n', 'Q', '<nop>'}                                    -- don't go inTo Ex mode
 map {'n', '<tab>', '<c-^>'}                                -- quick toggle between last two buffers
 map {'n', 'j', 'gj'}                                       -- Move around using visual lines, useful when wrap is enabled
@@ -769,15 +768,6 @@ local on_attach = function(client, bufnr)
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- require "lsp_signature".on_attach({
-  --   bind = true,
-  --   max_height = 20,
-  --   hint_enable = false,
-  --   toggle_key = '<c-h>',
-  --   -- Don't show by default, effectively require manually toggling per-buffer
-  --   floating_window = false
-  -- }, bufnr)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   map {'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<cr>'}
