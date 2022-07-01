@@ -88,6 +88,7 @@ require 'paq' {
   -- }}}
 
   -- Language support {{{
+  'gpanders/editorconfig.nvim';                               -- Support for .editorconfig files
   'tpope/vim-rbenv';                                          -- Rbenv support, used to get the current ruby version on `path`
   'tpope/vim-bundler';                                        -- Bundler support, used to get the current bundled gems on `path`
   'elixir-editors/vim-elixir';                                -- Elixir support
