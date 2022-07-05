@@ -79,6 +79,7 @@ require 'paq' {
   -- }}}
 
   -- Basic {{{
+  'nvim-treesitter/nvim-treesitter';                          -- Treesitter support
   'neovim/nvim-lspconfig';                                    -- configuration for native LSP
   'kana/vim-textobj-user';                                    -- custom text object support
   'tpope/vim-repeat';                                         -- extend repeat support
@@ -808,6 +809,15 @@ require 'lspconfig'.elixirls.setup{
   };
 }
 
+-- }}}
+
+-- Treesitter {{{
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+  },
+}
 -- }}}
 
 -- Autocommands {{{
