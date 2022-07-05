@@ -2,13 +2,13 @@
 set -g status "on"
 set -g status-bg "colour07"
 set -g status-fg "colour11"
-set -g status-justify "centre"
+set -g status-justify "left"
 set -g status-left-length "100"
 set -g status-position bottom
 set -g status-right-length "100"
 
 # Left > current session name
-set -g status-left " #S #[fg=colour3]#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD)#[fg=colour11]"
+set -g status-left " #S #[fg=colour3]#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD)#[fg=colour11] ~ "
 
 # Right > London time
 set -g status-right "#(TZ='Europe/London' date +%%H:%%M)"
