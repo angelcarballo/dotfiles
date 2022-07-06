@@ -118,6 +118,7 @@ require 'paq' {
   -- }}}
 
   -- Text objects {{{
+  'nvim-treesitter/nvim-treesitter-textobjects';              -- Treesitter based text objects (function, module, class, etc.)
   'michaeljsmith/vim-indent-object';                          -- indentation based text object <ai>, <ii>
   'Julian/vim-textobj-variable-segment';                      -- segments of camelCase, snake_case and similar <av>, <iv>
   'glts/vim-textobj-comment';                                 -- comments text object <ic>, <ac>, <aC> to include whitespace
@@ -814,8 +815,45 @@ require 'lspconfig'.elixirls.setup{
 -- Treesitter {{{
 require'nvim-treesitter.configs'.setup {
   highlight = {
-    -- `false` will disable the whole extension
     enable = true,
+  },
+  textobjects = {
+    select = {
+      enable = true,
+
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["am"] = "@class.outer",
+        ["im"] = "@class.inner",
+        ["ak"] = "@block.outer",
+        ["ik"] = "@block.inner",
+      },
+    },
+
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        ["]m"] = "@function.outer",
+        ["]]"] = "@block.outer",
+      },
+      goto_next_end = {
+        ["]M"] = "@function.outer",
+        ["]["] = "@block.outer",
+      },
+      goto_previous_start = {
+        ["[m"] = "@function.outer",
+        ["[["] = "@block.outer",
+      },
+      goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[]"] = "@block.outer",
+      },
+    },
   },
 }
 -- }}}
