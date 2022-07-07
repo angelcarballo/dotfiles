@@ -80,6 +80,7 @@ require 'paq' {
 
   -- Basic {{{
   'nvim-treesitter/nvim-treesitter';                          -- Treesitter support
+  'nvim-treesitter/playground';                               -- Treesitter helpers
   'neovim/nvim-lspconfig';                                    -- configuration for native LSP
   'kana/vim-textobj-user';                                    -- custom text object support
   'tpope/vim-repeat';                                         -- extend repeat support
@@ -855,6 +856,9 @@ require'nvim-treesitter.configs'.setup {
       },
     },
   },
+  playground = {
+    enable = false,
+  }
 }
 -- }}}
 
