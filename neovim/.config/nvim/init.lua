@@ -155,6 +155,7 @@ require 'paq' {
   'benmills/vimux';                                           -- tmux integration
   'janko-m/vim-test';                                         -- generic test runner
   'rizzatti/dash.vim';                                        -- external doc browser (Mac only)
+  'rmagatti/auto-session';                                    -- auto save & restore sessions (per folder, per branch, etc.)
   -- }}}
 }
 -- }}}
@@ -429,6 +430,11 @@ require("null-ls").setup({
   sources = {
     require("null-ls").builtins.diagnostics.vale,
   },
+})
+--   }}}
+--   auto-session {{{
+require("auto-session").setup({
+  auto_session_use_git_branch = true,
 })
 --   }}}
 -- }}}
