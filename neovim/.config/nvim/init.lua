@@ -618,11 +618,10 @@ map {'n', '<leader>rw', 'mz:%s/\\s\\+$//g<cr>:w<cr>\'z'}
 
 --" s - Specs
 map {'n', '<leader>sa', ':TestSuite<cr>'}
-map {'n', '<leader>ss', ':TestSuite<cr>'}
+map {'n', '<leader>ss', ':TestVisit<cr>'}
 map {'n', '<leader>sf', ':TestFile<cr>'}
 map {'n', '<leader>sc', ':TestNearest<cr>'}
 map {'n', '<leader>sl', ':TestLast<cr>'}
-map {'n', '<leader>sg', ':TestVisit<cr>'}
 
 -- S - Show
 map {'n', '<leader>Sf', ':echo @%<cr>'}
