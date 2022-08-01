@@ -44,6 +44,7 @@ alias bpry='bundle exec pry'
 # Elixir
 alias mdg='mix deps.get'
 alias iexm='iex -S mix'
+alias iexn='iex -S mix run --no-start'
 
 # Git
 alias clone='git clone'
