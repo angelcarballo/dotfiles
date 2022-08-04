@@ -172,6 +172,7 @@ acg.augroup("forced_file_types", {
     {'BufRead,BufNewFile', '*.hocon',      'setfiletype yaml'};
     {'BufRead,BufNewFile', '*.md',         'setfiletype markdown'};
     {'BufRead,BufNewFile', '*.trello',     'setfiletype markdown'};
+    {'BufRead,BufNewFile', '*.livemd',     'setfiletype markdown'};
     {'BufRead,BufNewFile', '*.vader',      'setfiletype vim'};
 })
 -- }}}
