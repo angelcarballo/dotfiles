@@ -107,6 +107,7 @@ require 'paq' {
   'tpope/vim-fugitive';                                       -- git integration
   'tpope/vim-rhubarb';                                        -- github integration for vim-fugitive
   'lewis6991/gitsigns.nvim';                                  -- git signs and chunk navigation
+  'pwntester/octo.nvim';                                      -- github PR & issue manager
   -- }}}
 
   -- Operators and commands {{{
@@ -437,6 +438,9 @@ require("null-ls").setup({
 require("auto-session").setup({
   auto_session_use_git_branch = true,
 })
+--   }}}
+--   octo {{{
+require"octo".setup()
 --   }}}
 -- }}}
 
