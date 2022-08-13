@@ -63,6 +63,7 @@ alias prfiles='gh prfiles'
 alias br='git co $(git branch -a --no-color | fzf)' # fuzzy find branch
 alias cb='git rev-parse --abbrev-ref HEAD | copy'
 alias co='git checkout '
+alias cco='git fetch && git checkout '
 alias gap='git add --patch '
 alias gb='git branch'
 alias gc='git commit'
