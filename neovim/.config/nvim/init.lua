@@ -769,9 +769,9 @@ require 'lspconfig'.efm.setup{
 require 'lspconfig'.elixirls.setup{
   cmd = { "/Users/angel/src/elixir-ls/release/language_server.sh" };
   filetypes = {'elixir', 'eelixir'};
+  root_dir = require('lspconfig/util').root_pattern(".git");
   capabilities = lsp_capabilities;
   on_attach = on_attach;
-  capabilities = lsp_capabilities;
   settings = {
     elixirLS = {
       dialyzerEnabled = false,
@@ -901,6 +901,8 @@ Launch Neovim with `nvim --startuptime nvim.log` for profiling info.
 To see all leader mappings, including those from plugins:
   nvim -c 'map <Leader>'
   nvim -c 'map <LocalLeader>'
+
+LSP logs are available in ~/.cache/nvim/lsp.log
 
 --]]
 
