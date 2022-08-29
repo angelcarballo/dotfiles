@@ -4,6 +4,7 @@ version: 2
 
 tools:
   mix_credo: &mix_credo
+    lint-ignore-exit-code: true
     lint-command: "MIX_ENV=test mix credo suggest --strict --format=flycheck --read-from-stdin ${INPUT}"
     lint-stdin: true
     lint-formats:
