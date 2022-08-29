@@ -780,6 +780,15 @@ require 'lspconfig'.elixirls.setup{
   };
 }
 
+-- DB configuration is loaded from ~/.config/sqls/config.yml
+require'lspconfig'.sqls.setup{
+  filetypes = {'sql'};
+  cmd = {"/Users/angel/.asdf/installs/golang/1.17.5/packages/bin/sqls"};
+  root_dir = require('lspconfig/util').root_pattern(".git");
+  capabilities = lsp_capabilities;
+  on_attach = on_attach;
+}
+
 -- }}}
 
 -- Treesitter {{{
