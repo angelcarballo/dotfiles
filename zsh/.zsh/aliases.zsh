@@ -45,6 +45,7 @@ alias bpry='bundle exec pry'
 alias mdg='mix deps.get'
 alias iexm='iex -S mix'
 alias iexn='iex -S mix run --no-start'
+alias mcc='mix compile && MIX_ENV=test mix compile'
 
 # Git
 alias clone='git clone'
