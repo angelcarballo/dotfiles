@@ -2,6 +2,7 @@
 
 local acg = require('acg') -- utility functions
 local map = acg.map        -- alias since it's used a lot
+require("snippets")        -- custom snippets
 
 -- Settings {{{
 vim.opt.number = true                                  -- show line numbers
@@ -76,13 +77,12 @@ require 'paq' {
 
   -- Dependencies {{{
   'nvim-lua/plenary.nvim';                                    -- dependency for gitsigns and telescope
+  'kana/vim-textobj-user';                                    -- custom text object support
   -- }}}
 
   -- Basic {{{
   'nvim-treesitter/nvim-treesitter';                          -- Treesitter support
-  'nvim-treesitter/playground';                               -- Treesitter helpers
   'neovim/nvim-lspconfig';                                    -- configuration for native LSP
-  'kana/vim-textobj-user';                                    -- custom text object support
   'tpope/vim-repeat';                                         -- extend repeat support
   'AndrewRadev/splitjoin.vim';                                -- split/join statements (gS, gJ)
   'tpope/vim-eunuch';                                         -- basic unix shell command helpers (mv, rm, etc.)
