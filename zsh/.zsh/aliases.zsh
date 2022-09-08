@@ -101,6 +101,7 @@ alias gw='git worktree'
 alias gwl='git worktree list'
 alias modified='git ls-files --modified'
 alias untracked='git ls-files --others --exclude-standard'
+alias wip='git ci -m "WIP"'
 
 # Npm/Node
 alias ni='npm install'
