@@ -70,17 +70,21 @@ end
 function acg.notes_path()
   if acg.is_dir('.git') then
     -- regular git folder
-    return '.git/' .. vim.api.nvim_eval('FugitiveHead()')
+    return '.git/' .. acg.sanitized_branch_name()
   elseif acg.exists('.git') then
     -- git folder using worktrees. The .git file will contain a pointer to the main git repo location:
     --   gitdir: /some/folder/.git/worktrees/current-branch
     local path = acg.read_file('.git')
     from, _ = path.find(path, '/')
     _, to = path.find(path, '.git/')
-    return path.sub(path, from, to) .. vim.api.nvim_eval('FugitiveHead()')
+    return path.sub(path, from, to) .. acg.sanitized_branch_name()
   else
     return('.notes')
   end
+end
+
+function acg.sanitized_branch_name()
+  return vim.api.nvim_eval("FugitiveHead()"):gsub("/", "-") .. '.notes'
 end
 
 -- Check if we're at the end of a word, useful to trigger completion conditionally
