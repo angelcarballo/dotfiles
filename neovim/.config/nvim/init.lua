@@ -689,8 +689,8 @@ map {'n', ']b', ':bnext<cr>'}
 map {'n', '[q', ':cprevious<cr>'}
 map {'n', ']q', ':cnext<cr>'}
 
-map {'n', '[Q', ':cfirst<cr>'}
-map {'n', ']Q', ':clast<cr>'}
+map {'n', '[Q', ':colder<cr>'}
+map {'n', ']Q', ':cnewer<cr>'}
 
 map {'n', '[l', ':lprevious<cr>'}
 map {'n', ']l', ':lnext<cr>'}
