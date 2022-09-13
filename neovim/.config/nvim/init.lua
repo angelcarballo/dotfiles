@@ -30,7 +30,7 @@ vim.opt.shiftwidth = 2                                 -- space identation use 2
 vim.opt.tabstop = 2                                    -- tabs use 2 spaces by default (file types override this)
 vim.opt.expandtab = true                               -- indent with spaces by default (override by file type)
 vim.opt.regexpengine = 1                               -- use old regexp engine, as new one has low performance with big ruby files
-vim.opt.spelllang = 'en_us'                            -- enable English spell check
+vim.opt.spelllang = 'en_gb'                            -- enable English spell check
 vim.opt.spellsuggest = {'fast','20'}                   -- don't show too many suggestions for spell check
 vim.opt.spellcapcheck= ''                              -- don't check for end of sentence and capitalization, it doesn't work well with abbreviations
 vim.opt.dictionary:append('/usr/share/dict/words')     -- auto complete words from system dictionary

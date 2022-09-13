@@ -25,7 +25,7 @@ set tabstop=2                         " tab indent with 2 spaces by default (fil
 set shiftwidth=2                      " shift indent with 2 spaces by default (file types override this)
 set expandtab                         " indent with spaces by default (override by file type)
 " set regexpengine=1                  " use old regexp engine, as new one has low performance with big ruby files
-set spelllang=en_us,es                " enable English spell check
+set spelllang=en_gb,es                " enable English spell check
 set spellsuggest=fast,20              " don't show too many suggestions for spell check
 set spellcapcheck=                    " don't check for end of sentence and capitalization, it doesn't work well with abbreviations
 set cryptmethod=blowfish2             " use blowfish 2 crypto method by default (zip is too weak)
