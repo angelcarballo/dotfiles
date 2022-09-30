@@ -1,5 +1,5 @@
 let g:markdown_folding = 1
-let g:markdown_fenced_languages = ['ruby', 'bash=sh', 'javascript', 'js=javascript', 'elixir']
+let g:markdown_fenced_languages = ['ruby', 'bash=sh', 'javascript', 'js=javascript', 'elixir', 'json', 'python']
 
 set wrap
 set textwidth=1000
