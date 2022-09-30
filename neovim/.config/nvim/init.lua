@@ -124,6 +124,7 @@ require 'paq' {
   'Julian/vim-textobj-variable-segment';                      -- segments of camelCase, snake_case and similar <av>, <iv>
   'glts/vim-textobj-comment';                                 -- comments text object <ic>, <ac>, <aC> to include whitespace
   'nelstrom/vim-textobj-rubyblock';                           -- ruby blocks/class/method <ar>, <ir>
+  'vim-scripts/argtextobj.vim';                               -- function arguments <ia>, <aa>
   -- }}}
 
   -- Colorschemes and look & feel {{{
