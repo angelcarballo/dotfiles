@@ -764,11 +764,7 @@ local on_attach = function(client, bufnr)
     return
   end
 
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  map {'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<cr>'}
   map {'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>'}
   map {'n', 'gR', '<cmd>lua vim.lsp.buf.references()<cr>'}
 end
