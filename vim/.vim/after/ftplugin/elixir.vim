@@ -4,14 +4,10 @@ inoreabbrev <buffer> rk =>
 inoreabbrev <buffer> pipe \|>
 inoreabbrev <buffer> pry require IEx; IEx.pry
 inoreabbrev <buffer> bpry require IEx; IEx.pry
-inoreabbrev <buffer> pecho \|> IO.inspect(label: "\nXXX")<left><left>
-inoreabbrev <buffer> echo IO.inspect(label: "\nXXX")<c-o>T(
 inoreabbrev <buffer> af & &1
 inoreabbrev <buffer> aff fn -> end<c-o>b
 inoreabbrev <buffer> eex <%= %><left><left><left>
 inoreabbrev <buffer> cmod __MODULE__
-inoreabbrev <buffer> peek \|> tap(fn current -> require IEx; IEx.pry(); end)
-inoreabbrev <buffer> shout IO.puts("=======> ")<left><left>
 
 setlocal foldmethod=indent
 setlocal foldlevel=1
