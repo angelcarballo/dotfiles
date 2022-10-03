@@ -87,3 +87,6 @@ brew "gh"
 
 # More convinient than curl
 brew "wget"
+
+# Lua language server, mostly for NeoVim
+brew "lua-language-server"
