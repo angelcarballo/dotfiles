@@ -139,7 +139,6 @@ require 'paq' {
   'alvan/vim-closetag';                                       -- auto close html/xml tags
   'nvim-telescope/telescope.nvim';                            -- generic fuzzy finder
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}; -- fzf plugin for telescope
-  'ThePrimeagen/harpoon';                                     -- custom per-project marks
 
   'hrsh7th/cmp-nvim-lsp';                                     -- autocompletion plus plugins
   'hrsh7th/cmp-buffer';
@@ -285,17 +284,8 @@ vim.g.ruby_spellcheck_strings = 1      -- enable spellcheck inside ruby strings
 vim.g.ruby_minlines = 500              -- avoid syntax errors while scrolling on large files
 vim.g.ruby_indent_block_style = 'do'   -- better syntax for nested blocks
 --  }}}
---   harpoon {{{
-require("harpoon").setup({
-  -- set marks specific to each git branch inside git repository
-  mark_branch = true,
-})
-
---   }}}
 --   telescope {{{
 local telescope = require('telescope')
-telescope.load_extension('fzf')
-telescope.load_extension('harpoon')
 telescope.setup{
   pickers = {
     buffers = { theme = "ivy" },
@@ -317,7 +307,9 @@ telescope.setup{
       }
     }
   },
+  -- extensions = {}
 }
+telescope.load_extension('fzf')
 --  }}}
 --   projectionist {{{
 vim.cmd [[
@@ -558,9 +550,8 @@ map {'n', '<leader>fF', "<cmd>lua require'telescope.builtin'.find_files({ hidden
 map {'n', '<leader>ff', "<cmd>Telescope git_files<cr>"}
 map {'n', '<leader>fg', '<cmd>Telescope git_status<cr>'}
 map {'n', '<leader>fr', '<cmd>Telescope oldfiles<cr>'}
--- map {'n', '<leader>fh', '<cmd>Telescope help_tags<cr>'}
-map {'n', '<leader>fM', '<cmd>Telescope marks theme=ivy<cr>'}
-map {'n', '<leader>fm', '<cmd>Telescope harpoon marks theme=ivy<cr>'}
+map {'n', '<leader>fh', '<cmd>Telescope help_tags<cr>'}
+map {'n', '<leader>fm', '<cmd>Telescope marks<cr>'}
 map {'n', '<leader>ft', '<cmd>Telescope live_grep<cr>'}
 map {'n', '<leader>fl', '<cmd>Telescope lsp_document_symbols<cr>'}
 
@@ -594,9 +585,6 @@ map {'n', '<leader>k', ':Dash<cr>'}
 -- q - Quit
 map {'n', '<leader>q', ':q<cr>'}
 map {'n', '<leader>Q', ':qall!<cr>'}
-
--- m - Marks/Harpoon
-map {'n', '<leader>mm', ':lua require("harpoon.mark").add_file()<cr>'}
 
 -- n - notes
 map {'n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()\')<cr>'}
@@ -704,9 +692,6 @@ map {'n', ']Q', ':cnewer<cr>'}
 
 map {'n', '[l', ':lprevious<cr>'}
 map {'n', ']l', ':lnext<cr>'}
-
-map {'n', '[m', ':lua require("harpoon.ui").nav_prev()<cr>'}
-map {'n', 'm]', ':lua require("harpoon.ui").nav_next()<cr>'}
 
 map {'n', '[w', ':tabprevious<cr>'}
 map {'n', ']w', ':tabnext<cr>'}
