@@ -46,6 +46,7 @@ alias mdg='mix deps.get'
 alias iexm='iex -S mix'
 alias iexn='iex -S mix run --no-start'
 alias mcc='mix compile && MIX_ENV=test mix compile'
+alias mcw='mix compile --warnings-as-errors'
 
 # Git
 alias clone='git clone'
