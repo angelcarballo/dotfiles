@@ -504,7 +504,6 @@ map {'n', '<leader>/', ':silent grep -F ""<left>'}
 map {'n', '<leader>?', ':silent grep -F -g !test ""<left>'}
 
 --  * - Search in file or project
-map {'x', '*', ''}
 map {'n', '<leader>8', ':silent grep "<cword>"<cr>'}
 map {'x', '<leader>8', '"zy:silent grep "<c-r>z"<cr>'}
 map {'n', '<leader>*', ':silent grep "<cWORD>"<cr>'}
