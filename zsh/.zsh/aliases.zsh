@@ -3,14 +3,14 @@
 # OS specific
 case "$OSTYPE" in
   darwin*)
-    alias copy='pbcopy'
+    alias copy='tee >(pbcopy)'
     alias paste='pbpaste'
     alias flushdns='dscacheutil -flushcache'
     alias dark="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true'"
     alias light="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to false'"
   ;;
   linux*)
-    alias copy='xclip -selection clipboard'
+    alias copy='tee > (xclip -selection clipboard)'
     alias paste='xclip -selection clipboard -o'
     alias markoff="open -a Markoff"
     alias open='xdg-open'
