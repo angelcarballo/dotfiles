@@ -31,8 +31,9 @@ vim.opt.tabstop = 2                                    -- tabs use 2 spaces by d
 vim.opt.expandtab = true                               -- indent with spaces by default (override by file type)
 vim.opt.regexpengine = 1                               -- use old regexp engine, as new one has low performance with big ruby files
 vim.opt.spelllang = 'en_gb'                            -- enable English spell check
-vim.opt.spellsuggest = {'fast','20'}                   -- don't show too many suggestions for spell check
+vim.opt.spellsuggest = {'best','20'}                   -- don't show too many suggestions for spell check
 vim.opt.spellcapcheck= ''                              -- don't check for end of sentence and capitalization, it doesn't work well with abbreviations
+vim.opt.spellfile = vim.fn.expand('~/Drive/vim/spell/en.utf-8.add')
 vim.opt.dictionary:append('/usr/share/dict/words')     -- auto complete words from system dictionary
 vim.opt.tags:prepend('./.git/tags')                    -- read tags from git directory
 vim.opt.foldenable = false                             -- do not fold by default
@@ -46,7 +47,6 @@ vim.opt.laststatus = 2                                 -- always show status bar
 vim.opt.list = true                                    -- show extra whitespace
 vim.opt.foldopen:remove('search')                      -- ignore folded lines when searching
 vim.opt.previewheight = 20                             -- make preview bigger
-vim.opt.spellfile = '~/Drive/vim/spell/en.utf-8.add'   -- point to custom spell file from Synology Drive
 vim.opt.grepprg = 'rg --vimgrep --hidden --smart-case' -- use ripgrep, much faster than regular grep
 vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'            -- use ripgrep's format
 vim.g.vimsyn_embed = 1                                 -- highlight lua and other languages inside vim files
