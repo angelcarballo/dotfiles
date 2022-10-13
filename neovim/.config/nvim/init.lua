@@ -423,7 +423,15 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'luasnip' }, -- For luasnip users.
   }, {
-    { name = 'buffer' },
+    {
+      name = 'buffer',
+      option = {
+        -- autocomplete from all loaded buffers
+        get_bufnrs = function()
+          return vim.api.nvim_list_bufs()
+        end
+      }
+    },
   })
 })
 --  }}}
