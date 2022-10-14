@@ -545,7 +545,6 @@ map {'n', '<leader>d<', ':diffget //2<cr>'}
 map {'n', '<leader>d>', ':diffget //3<cr>'}
 
 -- e - Explore/Extract
-map {'x', '<leader>em', ':call ExtractMethod()<cr>'}
 map {'n', '<leader>ei', ':Explore<cr>'}
 map {'n', '<leader>es', ':Sex<cr>'}
 map {'n', '<leader>ev', ':Vex<cr>'}
