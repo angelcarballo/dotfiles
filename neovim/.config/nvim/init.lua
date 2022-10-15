@@ -272,12 +272,12 @@ vim.cmd(                                                     -- custom strategy 
 ]])
 --  }}}
 --   netrw {{{
-vim.g['g:netrw_liststyle']  = 0         -- thin (change to 3 for tree)
-vim.g['g:netrw_banner']  = 0            -- no banner
-vim.g['g:netrw_altv']  = 1              -- open files on right
-vim.g['g:netrw_preview']  = 1           -- open previews vertically
-vim.g['g:netrw_sizestyle']  = 'H'       -- show human style file sizes
-vim.g['g:netrw_nogx']  = 1              -- disable gx url command
+vim.g.netrw_liststyle  = 0         -- thin (change to 3 for tree)
+vim.g.netrw_banner = 0             -- no banner
+vim.g.netrw_altv  = 1              -- open files on right
+vim.g.netrw_preview  = 1           -- open previews vertically
+vim.g.netrw_sizestyle  = 'H'       -- show human style file sizes
+vim.g.netrw_nogx  = 1              -- disable gx url command
 --  }}}
 --   vim-ruby {{{
 vim.g.ruby_spellcheck_strings = 1      -- enable spellcheck inside ruby strings
