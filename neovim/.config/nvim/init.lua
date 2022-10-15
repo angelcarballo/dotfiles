@@ -907,14 +907,6 @@ acg.augroup('lsp_auto_formatting', {
   };
 })
 
-acg.augroup('preview_window', {
-  {                                                            -- close preview window automatically
-    'CursorMovedI,InsertLeave',
-    '*',
-    'if pumvisible() == 0|pclose|endif'
-  }
-})
-
 -- }}}
 
 -- Footer {{{
