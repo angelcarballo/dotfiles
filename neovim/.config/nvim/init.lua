@@ -87,6 +87,7 @@ require 'paq' {
   'AndrewRadev/splitjoin.vim';                                -- split/join statements (gS, gJ)
   'tpope/vim-eunuch';                                         -- basic unix shell command helpers (mv, rm, etc.)
   'pnetherwood/vim-term-focus';                               -- support for focus events when running in the terminal
+  'tpope/vim-vinegar';                                        -- netrw tweaks and extensions
   -- }}}
 
   -- Language support {{{
