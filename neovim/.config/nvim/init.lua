@@ -471,7 +471,7 @@ local trailing_whitespace = function()
   return space ~= 0 and "%#DiffDelete#TW:"..space..status_color or ""
 end
 
-function status_line()
+function Status_line()
   return table.concat {
     status_color,          -- color
     ' %f ',                -- relative file path
@@ -485,7 +485,7 @@ function status_line()
   }
 end
 
-vim.opt.statusline = "%!luaeval('status_line()')"
+vim.opt.statusline = "%!luaeval('Status_line()')"
 --  }}}
 
 vim.cmd 'highlight clear SpellBad'                         -- remove default spell highlighting
