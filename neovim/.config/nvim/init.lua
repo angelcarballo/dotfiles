@@ -158,6 +158,7 @@ require 'paq' {
   'janko-m/vim-test';                                         -- generic test runner
   'rizzatti/dash.vim';                                        -- external doc browser (Mac only)
   'rmagatti/auto-session';                                    -- auto save & restore sessions (per folder, per branch, etc.)
+  'kwkarlwang/bufjump.nvim';                                  -- navigate through files in the jumplist
   -- }}}
 }
 -- }}}
@@ -726,6 +727,11 @@ map {'n', 'cow', ':setlocal wrap! wrap?<cr>'}
 map {'n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<cr>'}
 map {'n', ']e', '<cmd>lua vim.diagnostic.goto_next()<cr>'}
 map {'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>'}
+
+-- Previous/next file (based on jumplist)
+map {'n', ']f', ":lua require('bufjump').forward()<cr>"}
+map {'n', '[f', ":lua require('bufjump').backward()<cr>"}
+
 --   }}}
 --   Operators {{{
 
@@ -841,19 +847,19 @@ require'nvim-treesitter.configs'.setup {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
-        ["]f"] = "@function.outer",
+        ["]m"] = "@function.outer",
         ["]]"] = "@block.outer",
       },
       goto_next_end = {
-        ["]F"] = "@function.outer",
+        ["]M"] = "@function.outer",
         ["]["] = "@block.outer",
       },
       goto_previous_start = {
-        ["[f"] = "@function.outer",
+        ["[m"] = "@function.outer",
         ["[["] = "@block.outer",
       },
       goto_previous_end = {
-        ["[F"] = "@function.outer",
+        ["[m"] = "@function.outer",
         ["[]"] = "@block.outer",
       },
     },
