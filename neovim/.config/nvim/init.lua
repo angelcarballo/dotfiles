@@ -908,7 +908,7 @@ acg.augroup('lsp_auto_formatting', {
   {                                                            -- auto format files that support it via LSP
     'BufWritePre',
     '*.ex,*.exs',
-    'lua vim.lsp.buf.format()'
+    'lua vim.lsp.buf.formatting_sync()'
   };
 })
 
