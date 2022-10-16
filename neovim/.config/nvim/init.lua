@@ -156,7 +156,6 @@ require 'paq' {
   'tpope/vim-projectionist';                                  -- projections for project file navigation
   'benmills/vimux';                                           -- tmux integration
   'janko-m/vim-test';                                         -- generic test runner
-  'rizzatti/dash.vim';                                        -- external doc browser (Mac only)
   'rmagatti/auto-session';                                    -- auto save & restore sessions (per folder, per branch, etc.)
   'kwkarlwang/bufjump.nvim';                                  -- navigate through files in the jumplist
   -- }}}
@@ -586,9 +585,6 @@ map {'n', '<leader>ga', ':Git commit --amend<cr>'}
 map {'n', '<leader>gs', ':Git|wincmd T<cr>'}
 map {'n', '<leader>gw', ':Gwrite<cr>'}
 map {'n', '<leader>g/', ':Git log -S\'\'<left>'}
-
--- k - Keyword documentation
-map {'n', '<leader>k', ':Dash<cr>'}
 
 -- q - Quit
 map {'n', '<leader>q', ':q<cr>'}
