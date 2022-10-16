@@ -1,9 +1,9 @@
 " enable folding using markers on 1 level
-set foldenable
-set foldmethod=marker
-set foldlevel=1
-set tabstop=2
-set shiftwidth=2
+setlocal foldenable
+setlocal foldmethod=marker
+setlocal foldlevel=1
+setlocal tabstop=2
+setlocal shiftwidth=2
 
 " include vim folder in path
 set path+=~/.vim

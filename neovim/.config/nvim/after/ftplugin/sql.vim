@@ -1,3 +1,3 @@
-set tabstop=4
-set shiftwidth=4
-set equalprg=pg_format\ -
+setlocal tabstop=4
+setlocal shiftwidth=4
+setlocal equalprg=pg_format\ -
