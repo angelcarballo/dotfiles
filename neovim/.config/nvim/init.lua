@@ -767,17 +767,19 @@ local on_attach = function(client, bufnr)
   map {'n', 'gR', '<cmd>lua vim.lsp.buf.references()<cr>'}
 end
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- efm-langserver runs credo
 require 'lspconfig'.efm.setup{
   filetypes = {'elixir', 'eelixir'};
-  capabilities = lsp_capabilities
+  capabilities = capabilities
 }
 
 require 'lspconfig'.elixirls.setup{
   cmd = { "/Users/angel/src/elixir-ls/release/language_server.sh" };
   filetypes = {'elixir', 'eelixir'};
   root_dir = require('lspconfig/util').root_pattern(".git");
-  capabilities = lsp_capabilities;
+  capabilities = capabilities;
   on_attach = on_attach;
   settings = {
     elixirLS = {
@@ -815,7 +817,7 @@ require'lspconfig'.sqls.setup{
   filetypes = {'sql'};
   cmd = {"/Users/angel/.asdf/installs/golang/1.17.5/packages/bin/sqls"};
   root_dir = require('lspconfig/util').root_pattern(".git");
-  capabilities = lsp_capabilities;
+  capabilities = capabilities;
   on_attach = on_attach;
 }
 

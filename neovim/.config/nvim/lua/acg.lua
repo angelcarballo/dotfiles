@@ -59,7 +59,7 @@ end
 --- Read a whole file in binary mode
 function acg.read_file(path)
   local file = io.open(path, "rb") -- (r)ead mode, (b)inary mode
-  local contents = file:read "*a" -- (a)ll the file
+  local contents = file:read("*a") -- (a)ll the file
   file:close()
   return contents
 end
