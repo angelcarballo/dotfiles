@@ -683,8 +683,8 @@ map {'x', 'L', '$'}
 --   Unimpaired style {{{
 
 -- previous/next file in current folder
-map {'n', ']f', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(v:count1), ':.'))<cr><cr>"}
-map {'n', '[f', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(-v:count1), ':.'))<cr><cr>"}
+map {'n', ']d', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(v:count1), ':.'))<cr><cr>"}
+map {'n', '[d', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(-v:count1), ':.'))<cr><cr>"}
 
 map {'n', ']a', ':next<cr>'}
 map {'n', '[a', ':previous<cr>'}
