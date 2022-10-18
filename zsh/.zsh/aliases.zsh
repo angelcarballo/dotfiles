@@ -62,6 +62,8 @@ alias stashd='git stash show -p'
 alias pop='git stash pop'
 alias recent='git recent'
 alias prfiles='github prfiles'
+alias main='git checkout main'
+alias master='git checkout master'
 
 alias br='git co $(git branch -a --no-color | fzf)' # fuzzy find branch
 alias cb='git rev-parse --abbrev-ref HEAD | copy'
