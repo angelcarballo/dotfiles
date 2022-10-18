@@ -380,12 +380,6 @@ require('nvim-autopairs').setup {}
 --  }}}
 --   vim-cmp {{{
 local cmp = require'cmp'
-local luasnip = require("luasnip")
-
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
 
 cmp.setup({
   snippet = {
@@ -733,7 +727,7 @@ map {'x', 'gt', ':<c-u>call SendTextToTmux(visualmode(), 1)<cr>'}
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_client, bufnr)
   -- skip buffers with special URI, e.g. fugitive://...
   if vim.api.nvim_buf_get_name(bufnr):match "^%a+://" then
     return
