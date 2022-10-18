@@ -10,10 +10,6 @@ setlocal foldlevel=1
 " Match the default line length used by mix format
 setlocal textwidth=98
 
-" Enable spell check. Thanks to Treesitter this will apply only to comments
-" and strings
-setlocal spell
-
 let g:dispatch_compilers = {
           \ "mix test": "exunit",
           \ "mix compile": "mix",
