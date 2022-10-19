@@ -56,6 +56,10 @@ ls.add_snippets(nil, {
       t("|> dbg()")
     }),
 
+    s({trig = "usedatacase", name = "use Duffel.Core.DataCase", dscr = "use Duffel.Core.DataCase"}, {
+      t("use Duffel.Core.DataCase, async: true")
+    }),
+
     s({trig = "importham", name = "import Hammox", dscr = "import Hammox"}, {
       t("import Hammox, only: [expect: 3, verify_on_exit!: 1]", "setup :verify_on_exit!")
     }),
