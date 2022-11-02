@@ -866,11 +866,6 @@ acg.augroup('commit_window', {
   {'FileType', 'gitcommit', 'wincmd L'};                       -- open commit always on the right
 })
 
-acg.augroup('quickfix_after_make', {
-  {'QuickFixCmdPost', '[^l]*', 'nested cwindow'};              -- open quickfix window after make
-  {'QuickFixCmdPost', 'l*', 'nested lwindow'};                 -- open location window after lmake
-})
-
 acg.augroup('branch_notes', {
   {'Bufread,BufNewFile', '*/.git/notes-*', 'set ft=markdown'}; -- own notes are all markdown
 })
