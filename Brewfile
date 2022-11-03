@@ -34,7 +34,7 @@ brew "ctags"
 brew "tmux"
 
 # ...to rule them all
-brew "macvim"
+brew "neovim"
 
 # gnu tree to display directory structures
 brew "tree"
@@ -75,9 +75,6 @@ brew "asdf"
 
 # UI framework required for erlang observer, debugger, etc
 brew "wxwidgets"
-
-# Formatter for postgres-SQL queries
-brew "pgformatter"
 
 # Extra unix tools, like vidir
 brew "moreutils"
