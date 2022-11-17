@@ -75,11 +75,17 @@ update_cheats:
 	@echo "\n${GREEN}Updating community cheats${NC}"
 	if [ -d ~/src/dotfiles/cheats/community ]; then cd ~/src/dotfiles/cheats/community && git pull; else git clone https://github.com/cheat/cheatsheets.git ~/src/dotfiles/cheats/community; fi
 
-install_extrakto:
-	@echo "\n${GREEN}Installing Tmux extrakco plugin${NC}"
-	git clone https://github.com/laktak/extrakto ~/src/extrakto
+install_tpm:
+	@echo "\n${GREEN}Installing Tmux Plugin Manager${NC}"
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+install_base16_shell:
+	@echo "\n${GREEN}Installing Base16-Shell${NC}"
+	git clone https://github.com/tinted-theming/base16-shell.git ~/.config/base16-shell
+	git clone https://github.com/tinted-theming/base16-fzf.git ~/.config/base16-fzf
 
 setup_mac_theme_notifier:
 	@echo "\n${GREEN}Setting up mac dark/light notifier${NC}"
 	swiftc ~/src/dotfiles/macos/dark-mode-notify.swift -o /usr/local/bin/dark-mode-notify
 	cp ~/src/dotfiles/macos/ke.bou.dark-mode-notify.plist ~/Library/LaunchAgents/
+

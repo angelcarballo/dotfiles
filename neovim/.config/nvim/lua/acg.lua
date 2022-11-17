@@ -23,32 +23,21 @@ function acg.map(key)
   vim.api.nvim_set_keymap(key[1], key[2], key[3], opts)
 end
 
--- Helper to set colorscheme and background together
-function acg.set_theme(colorscheme, background)
-  vim.opt.background = background
-  vim.cmd('colorscheme ' .. colorscheme)
-end
-
 -- Set theme/colorscheme based on MacOs Dark/Light mode
 function acg.auto_set_theme()
-  -- we have to redirect output to avoid flicker
-  local result = os.execute([[sh -c "defaults read -g AppleInterfaceStyle &> /dev/null"]])
+  -- Load Base16-Shell theme
+  local set_theme_path = "$HOME/.config/tinted-theming/set_theme.lua"
 
-  -- The shell command succeeds (0 result code) in dark mode
-  if result == 0 then
-    os.execute('tmux source-file ~/.tmux/local_dark.theme')
-    acg.set_theme('catppuccin', 'dark')
-  else
-    os.execute('tmux source-file ~/.tmux/local_light.theme')
-    acg.set_theme('solarized-flat', 'light')
+  if acg.exists(set_theme_path) then
+    vim.cmd("let base16colorspace=256")
+    vim.cmd("source " .. set_theme_path)
   end
 end
 
 -- Check if the given path exists
 -- taken from https://stackoverflow.com/questions/1340230/check-if-directory-exists-in-lua
 function acg.exists(file)
-   local ok, err, code = os.rename(file, file)
-   return ok, err
+  return vim.fn.filereadable(vim.fn.expand(file)) == 1 and true or false
 end
 
 --- Check if a directory exists in this path

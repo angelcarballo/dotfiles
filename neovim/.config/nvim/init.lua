@@ -130,8 +130,7 @@ require 'paq' {
 
   -- Colorschemes and look & feel {{{
   'romainl/vim-cool';                                         -- clear search highlight automatically
-  'ishan9299/nvim-solarized-lua';                             -- solarized theme implemented in lua, compabible with all solarized8 options
-  'catppuccin/nvim';                                          -- colorful dark colorscheme
+  'tinted-theming/base16-vim';                                -- base16 theme collection
   -- }}}
 
   -- Search and completion {{{
@@ -426,17 +425,6 @@ require("auto-session").setup({
 -- }}}
 
 -- Look & Feel {{{
-
---  Colorschemes {{{
--- Colorscheme: solarized
-vim.g.solarized_statusline = 'flat' -- flat variant has a less distracting statusline
-vim.g.solarized_extra_hi_groups = 1 -- show filetype specific highlight groups
-
--- Colorscheme: catppuccin
-vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
-require("catppuccin").setup({
-})
---   }}}
 
 --  Status line {{{
 local status_color = '%#Pmenu#'

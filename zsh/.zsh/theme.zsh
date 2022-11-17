@@ -68,7 +68,7 @@ function TRAPINT() {
 # }}}
 
 current_path() {
-  echo '%F{4}%~%F{reset_color}'
+  echo '%~%F{reset_color}'
 }
 
 prompt_symbol_with_last_command_status() {
