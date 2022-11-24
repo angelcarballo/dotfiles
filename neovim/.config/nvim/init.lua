@@ -433,8 +433,18 @@ vim.g.solarized_statusline = 'flat' -- flat variant has a less distracting statu
 vim.g.solarized_extra_hi_groups = 1 -- show filetype specific highlight groups
 
 -- Colorscheme: catppuccin
-vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 require("catppuccin").setup({
+  flavour = "mocha", -- latte, frappe, macchiato, mocha
+  integrations = {
+    cmp = true,
+    gitsigns = true,
+    mini = false,
+    notify = false,
+    nvimtree = false,
+    telescope = true,
+    treesitter = true
+    -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+  },
 })
 --   }}}
 
