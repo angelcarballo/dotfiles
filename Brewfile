@@ -87,3 +87,7 @@ brew "wget"
 
 # Lua language server, mostly for NeoVim
 brew "lua-language-server"
+
+# Emacs
+tap "d12frosted/emacs-plus"
+brew "emacs-plus" --with-no-titlebar-and-round-corners --with-xwidgets --with-imagemagick

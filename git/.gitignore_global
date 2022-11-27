@@ -4,6 +4,9 @@
 # Vim stuff
 Session.vim
 
+# Emacs stuff
+.dir-locals.el
+
 # Test output
 capybara-*.html
 
