@@ -126,6 +126,14 @@
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
 
+(use-package projectile
+  :config
+  (setq projectile-sort-order 'recentf)
+  (setq projectile-enable-caching t)
+  (setq projectile-project-search-path '("~/src/"))
+  :init
+  (projectile-mode +1))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Version Control
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -272,16 +280,20 @@
   :keymaps 'normal
   "/" 'consult-ripgrep
   "SPC" 'consult-buffer
-  "bb" 'consult-project-buffer
+  "bb" 'projectile-switch-to-buffer
+  "bo" 'projectile-switch-to-buffer-other-window
   "cfn" 'acg-kill-buffer-file-name
   "cfp" 'acg-kill-buffer-file-path-absolute
-  "dp" 'project-dired
+  "dp" 'projectile-dired
+  "do" 'projectile-dired-other-window
   "dd" 'dired-jump
   "eb" 'eval-buffer
+  "fa" 'projectile-toggle-between-implementation-and-test
   "fD" 'find-dired
   "fF" 'find-file
-  "ff" 'project-find-file
-  "fp" 'project-switch-project
+  "ff" 'projectile-find-file
+  "fo" 'projectile-find-file-other-window
+  "fp" 'projectile-switch-project
   "gb" 'magit-blame-addition
   "gd" 'magit-diff-buffer-file
   "gs" 'magit
