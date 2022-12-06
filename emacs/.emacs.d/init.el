@@ -301,6 +301,7 @@
   "gd" 'magit-diff-buffer-file
   "gs" 'magit
   "gr" 'magit-file-checkout
+  "o" 'other-window
   "p" 'yank-pop
   "q" 'evil-quit
   "Q" 'evil-quit-all
