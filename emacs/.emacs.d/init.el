@@ -126,6 +126,8 @@
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
 
+(use-package rg) 
+
 (use-package projectile
   :config
   (setq projectile-sort-order 'recentf)
@@ -278,7 +280,8 @@
 
 (leader-define-key
   :keymaps 'normal
-  "/" 'consult-ripgrep
+  "/" 'projectile-ripgrep
+  "*" 'consult-ripgrep
   "SPC" 'consult-buffer
   "bb" 'projectile-switch-to-buffer
   "bo" 'projectile-switch-to-buffer-other-window
