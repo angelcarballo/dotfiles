@@ -283,8 +283,9 @@
   "ff" 'project-find-file
   "fp" 'project-switch-project
   "gb" 'magit-blame-addition
-  "gs" 'magit
   "gd" 'magit-diff-buffer-file
+  "gs" 'magit
+  "gr" 'magit-file-checkout
   "p" 'yank-pop
   "q" 'evil-quit
   "Q" 'evil-quit-all
