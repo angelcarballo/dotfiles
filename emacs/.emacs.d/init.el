@@ -305,6 +305,7 @@
   "p" 'yank-pop
   "q" 'evil-quit
   "Q" 'evil-quit-all
+  "r" 'projectile-replace
   "tw" 'toggle-truncate-lines
   "tn" 'tab-new
   "ws" 'google-this
