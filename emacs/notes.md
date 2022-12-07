@@ -26,3 +26,7 @@ s-Ret -> open on separate buffer
 # TODO
 
 [x] Setup projectile
+[x] Search, navigate results
+[x] Search & replace in project
+[ ] Search, cfdo, cdo and friends
+[ ] Credo checks
