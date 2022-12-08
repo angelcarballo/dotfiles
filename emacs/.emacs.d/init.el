@@ -18,6 +18,8 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+(straight-use-package 'use-package)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -106,6 +108,7 @@
 ;; Font and theme
 (set-face-attribute 'default nil :font "Iosevka Term" :height 180)
 
+(use-package autothemer)
 (use-package catppuccin-theme
   :config
   (load-theme 'catppuccin-mocha))
@@ -190,7 +193,6 @@
   :config
   (setq eglot-extend-to-xref t))
 
-(add-hook 'elixir-mode-hook 'eglot-ensure)
 (add-to-list 'eglot-server-programs '(elixir-mode "~/src/elixir-ls/release/language_server.sh"))
 
 (setq eldoc-echo-area-use-multiline-p nil)
