@@ -120,7 +120,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Navigation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq dired-listing-switches "-agho")
+
+;; ls args:
+;; -a : show hidden files
+;; -g : long list format without owner
+;; -h : human units for file sizes
+(setq dired-listing-switches "-agh")
 
 ;; Auto refresh buffers
 (global-auto-revert-mode 1)
@@ -129,6 +134,7 @@
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
 
+;; Use ripgrep since it's much faster than grep
 (use-package rg) 
 
 (use-package projectile
@@ -192,10 +198,12 @@
 (use-package eglot
   :config
   (setq eglot-extend-to-xref t)
+  ;; Prevent Eglot from replacing company-backends
   (add-to-list 'eglot-stay-out-of 'company))
 
 (add-to-list 'eglot-server-programs '(elixir-mode "~/src/elixir-ls/release/language_server.sh"))
 
+;; Don't expand the minibuffer when showing docs for the symbol at point
 (setq eldoc-echo-area-use-multiline-p nil)
 
 ;; The depth of -10 places this before eglot's willSave notification,
