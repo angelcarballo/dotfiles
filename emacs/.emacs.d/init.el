@@ -177,7 +177,7 @@
 
 (use-package company
   :init
-  (setq company-backends '((company-capf company-dabbrev-code company-files)))
+  (setq company-backends '((company-capf :with company-dabbrev-code company-files)))
   :config
   (add-hook 'after-init-hook 'global-company-mode)
   (add-hook 'after-init-hook 'company-tng-mode))
@@ -191,11 +191,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package eglot
   :config
-  (setq eglot-extend-to-xref t))
+  (setq eglot-extend-to-xref t)
+  (add-to-list 'eglot-stay-out-of 'company))
 
 (add-to-list 'eglot-server-programs '(elixir-mode "~/src/elixir-ls/release/language_server.sh"))
 
 (setq eldoc-echo-area-use-multiline-p nil)
+
+;; The depth of -10 places this before eglot's willSave notification,
+;; so that that notification reports the actual contents that will be saved.
+(defun eglot-format-buffer-on-save ()
+  (add-hook 'before-save-hook #'eglot-format-buffer -10 t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Evil
@@ -351,6 +357,7 @@
 (add-hook 'elixir-mode-hook 'exunit-mode)
 (add-hook 'elixir-mode-hook 'flymake-mode)
 (add-hook 'elixir-mode-hook 'eglot-ensure)
+(add-hook 'elixir-mode-hook #'eglot-format-buffer-on-save)
 
 (leader-define-key
   :keymaps 'elixir-mode-map
