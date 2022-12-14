@@ -60,7 +60,6 @@ vim.opt.diffopt = {
 vim.opt.completeopt = {
   'menu',                                              -- show popup menu for completion
   'menuone',                                           -- show popup menu even if there is only one result
-  'noselect'                                           -- don't auto select, force the user to pick a result
 }
 vim.opt.complete= {
   '.',                                                 -- complete with words from current buffer
@@ -129,6 +128,7 @@ require 'paq' {
   'romainl/vim-cool';                                         -- clear search highlight automatically
   'ishan9299/nvim-solarized-lua';                             -- solarized theme implemented in lua, compabible with all solarized8 options
   'catppuccin/nvim';                                          -- colorful dark colorscheme
+  'ncm2/float-preview.nvim';                                  -- nicer preview window when using completion
   -- }}}
 
   -- Search and completion {{{
@@ -426,6 +426,18 @@ vim.cmd "match ErrorMsg '\\s\\+$'"                         -- highlight trailing
 
 -- Mappings {{{
 --   Basic mappings {{{
+--
+vim.cmd [[
+  function! Tab_Or_Complete()
+    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+      return "\<c-n>"
+    else
+      return "\<tab>"
+    endif
+  endfunction
+]]
+
+map {'i', '<tab>', '<c-r>=Tab_Or_Complete()<cr>'}          -- indent or trigger default word completion
 map {'i', 'kj', '<esc>'}                                   -- easily exit insert mode
 map {'n', 'Q', '<nop>'}                                    -- don't go inTo Ex mode
 map {'n', '<tab>', '<c-^>'}                                -- quick toggle between last two buffers
