@@ -2,7 +2,6 @@
 
 local acg = require('acg') -- utility functions
 local map = acg.map        -- alias since it's used a lot
-require("snippets")        -- custom snippets
 
 -- Settings {{{
 vim.opt.number = true                                  -- show line numbers
@@ -81,7 +80,6 @@ require 'paq' {
   -- }}}
 
   -- Basic {{{
-  'nvim-treesitter/nvim-treesitter';                          -- Treesitter support
   'neovim/nvim-lspconfig';                                    -- configuration for native LSP
   'tpope/vim-repeat';                                         -- extend repeat support
   'AndrewRadev/splitjoin.vim';                                -- split/join statements (gS, gJ)
@@ -120,7 +118,6 @@ require 'paq' {
   -- }}}
 
   -- Text objects {{{
-  'nvim-treesitter/nvim-treesitter-textobjects';              -- Treesitter based text objects (function, module, class, etc.)
   'michaeljsmith/vim-indent-object';                          -- indentation based text object <ai>, <ii>
   'Julian/vim-textobj-variable-segment';                      -- segments of camelCase, snake_case and similar <av>, <iv>
   'glts/vim-textobj-comment';                                 -- comments text object <ic>, <ac>, <aC> to include whitespace
@@ -140,16 +137,6 @@ require 'paq' {
   'alvan/vim-closetag';                                       -- auto close html/xml tags
   'nvim-telescope/telescope.nvim';                            -- generic fuzzy finder
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}; -- fzf plugin for telescope
-
-  'hrsh7th/cmp-nvim-lsp';                                     -- autocompletion plus plugins
-  'hrsh7th/cmp-buffer';
-  'hrsh7th/cmp-path';
-  'hrsh7th/nvim-cmp';
-
-  'L3MON4D3/LuaSnip';                                         -- snippet support
-  'saadparwaiz1/cmp_luasnip';
-
-  'jose-elias-alvarez/null-ls.nvim';                          -- lsp plugin for non-lsp sources
   -- }}}
 
   -- Runners and navigation {{{
@@ -378,46 +365,6 @@ require('gitsigns').setup {
 --   nvim-autopairs {{{
 require('nvim-autopairs').setup {}
 --  }}}
---   vim-cmp {{{
-local cmp = require'cmp'
-
-cmp.setup({
-  snippet = {
-    -- REQUIRED - you must specify a snippet engine
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  }, {
-    {
-      name = 'buffer',
-      option = {
-        -- autocomplete from all loaded buffers
-        get_bufnrs = function()
-          return vim.api.nvim_list_bufs()
-        end
-      }
-    },
-  })
-})
---  }}}
---   null-ls {{{
-require("null-ls").setup({
-  sources = {
-    require("null-ls").builtins.diagnostics.vale,
-  },
-})
---   }}}
 --   auto-session {{{
 require("auto-session").setup({
   auto_session_use_git_branch = true,
@@ -436,13 +383,11 @@ vim.g.solarized_extra_hi_groups = 1 -- show filetype specific highlight groups
 require("catppuccin").setup({
   flavour = "mocha", -- latte, frappe, macchiato, mocha
   integrations = {
-    cmp = true,
     gitsigns = true,
     mini = false,
     notify = false,
     nvimtree = false,
     telescope = true,
-    treesitter = true
     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   },
 })
@@ -551,6 +496,8 @@ map {'n', '<leader>fl', '<cmd>Telescope lsp_document_symbols<cr>'}
 map {'n', '<leader>gg', ':Git<space>'}
 map {'n', '<leader>gD', ':vertical leftabove Gdiffsplit origin/main<cr>'}
 map {'n', '<leader>gb', ':Git blame<cr>'}
+map {'n', '<leader>gcb', ':Git checkout -b '}
+map {'n', '<leader>gco', ':Git checkout '}
 map {'n', '<leader>gd', ':vertical leftabove Gdiffsplit<cr>'}
 map {'n', '<leader>g3', ':vertical leftabove Gdiffsplit!<cr>'}
 map {'n', '<leader>gf', ':GitStatusFiles<cr><c-w>k:redraw!<cr>'}
@@ -599,7 +546,6 @@ map {'n', '<leader>sl', ':TestLast<cr>'}
 -- S - Show
 map {'n', '<leader>Sf', ':echo @%<cr>'}
 map {'n', '<leader>Sp', ':echo expand(\'%:p\')<cr>'}
-map {'n', '<leader>Sb', ':echo "Git branch: " . fugitive#head()<cr>'}
 
 -- T - Tabs/tmux
 map {'n', '<leader>tn', ':tabnew<cr>'}
@@ -748,8 +694,6 @@ local on_attach = function(_client, bufnr)
   map {'n', 'gR', '<cmd>lua vim.lsp.buf.references()<cr>'}
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 -- Display borders
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
@@ -810,55 +754,6 @@ require'lspconfig'.sqls.setup{
   on_attach = on_attach;
 }
 
--- }}}
-
--- Treesitter {{{
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-  },
-  textobjects = {
-    select = {
-      enable = true,
-
-      -- Automatically jump forward to textobj, similar to targets.vim
-      lookahead = true,
-
-      keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["am"] = "@class.outer",
-        ["im"] = "@class.inner",
-        ["ak"] = "@block.outer",
-        ["ik"] = "@block.inner",
-      },
-    },
-
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        ["]m"] = "@function.outer",
-        ["]]"] = "@block.outer",
-      },
-      goto_next_end = {
-        ["]M"] = "@function.outer",
-        ["]["] = "@block.outer",
-      },
-      goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[["] = "@block.outer",
-      },
-      goto_previous_end = {
-        ["[m"] = "@function.outer",
-        ["[]"] = "@block.outer",
-      },
-    },
-  },
-  playground = {
-    enable = false,
-  }
-}
 -- }}}
 
 -- Autocommands {{{
