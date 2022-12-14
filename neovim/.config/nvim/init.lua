@@ -725,12 +725,13 @@ require 'lspconfig'.elixirls.setup{
   settings = {
     elixirLS = {
       dialyzerEnabled = false,
-      fetchDeps = true
+      fetchDeps = false
     }
   };
 }
 
 require'lspconfig'.sumneko_lua.setup {
+  on_attach = on_attach;
   settings = {
     Lua = {
       runtime = {
