@@ -132,7 +132,6 @@ require 'paq' {
   -- }}}
 
   -- Search and completion {{{
-  'windwp/nvim-autopairs';                                    -- auto close pairs (parenthesis, brackets, ...)
   'cohama/lexima.vim';                                        -- auto close do/end blocks and similar
   'alvan/vim-closetag';                                       -- auto close html/xml tags
   'nvim-telescope/telescope.nvim';                            -- generic fuzzy finder
@@ -361,9 +360,6 @@ require('gitsigns').setup {
     ['x ic'] = ':<c-u>Gitsigns select_hunk<cr>'
   }
 }
---  }}}
---   nvim-autopairs {{{
-require('nvim-autopairs').setup {}
 --  }}}
 --   auto-session {{{
 require("auto-session").setup({
