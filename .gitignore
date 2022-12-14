@@ -10,6 +10,7 @@ vim/.vim/pack/minpac/start/
 vim/.vim/pack/minpac/opt/
 neovim/.config/nvim/undo/*
 neovim/.config/nvim/plugin/packer_compiled.lua
+neovim/.config/nvim/lua/.luarc.json
 tmux/.tmux/plugins/
 emacs/.emacs.d/
 !emacs/.emacs.d/init.el
