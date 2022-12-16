@@ -37,10 +37,10 @@ function acg.auto_set_theme()
   -- The shell command succeeds (0 result code) in dark mode
   if result == 0 then
     os.execute('tmux source-file ~/.tmux/local_dark.theme')
-    acg.set_theme('catppuccin', 'dark')
+    acg.set_theme('kanagawa', 'dark')
   else
     os.execute('tmux source-file ~/.tmux/local_light.theme')
-    acg.set_theme('solarized-flat', 'light')
+    acg.set_theme('kanagawa', 'light')
   end
 end
 

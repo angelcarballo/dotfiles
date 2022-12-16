@@ -1,17 +1,46 @@
-# Catpuccin colors (see: https://github.com/catppuccin/nvim)
-thm_bg="#1e1e28"
-thm_fg="#d7dae0"
-thm_cyan="#c2e7f0"
-thm_black="#15121c"
-thm_gray="#2d293b"
-thm_magenta="#c6aae8"
-thm_pink="#f0afe1"
-thm_red="#e28c8c"
-thm_green="#b3e1a3"
-thm_yellow="#eadda0"
-thm_blue="#a4b9ef"
-thm_orange="#f7c196"
-catppuccin12="#3e4058"
+# Kanagawa colors (see: https://github.com/rebelot/kanagawa.nvim)
+fujiWhite="#DCD7BA" # Default
+oldWhite="#C8C093" # Dark
+sumiInk0="#16161D" # Dark
+sumiInk1="#1F1F28" # Default
+sumiInk2="#2A2A37" # Lighter
+sumiInk3="#363646" # Lighter
+sumiInk4="#54546D" # Darker
+waveBlue1="#223249" # Popup
+waveBlue2="#2D4F67" # Popup
+winterGreen="#2B3328" # Diff
+winterYellow="#49443C" # Diff
+winterRed="#43242B" # Diff
+winterBlue="#252535" # Diff
+autumnGreen="#76946A" # Git
+autumnRed="#C34043" # Git
+autumnYellow="#DCA561" # Git
+samuraiRed="#E82424" # Diagnostic
+roninYellow="#FF9E3B" # Diagnostic
+waveAqua1="#6A9589" # Diagnostic
+dragonBlue="#658594" # Diagnostic
+fujiGray="#727169" # Comments
+springViolet1="#938AA9" # Light
+oniViolet="#957FB8" # Statements
+crystalBlue="#7E9CD8" # Functions
+springViolet2="#9CABCA" # Brackets
+springBlue="#7FB4CA" # Specials
+lightBlue="#A3D4D5" # Not
+waveAqua2="#7AA89F" # Types
+springGreen="#98BB6C" # Strings
+boatYellow1="#938056" # Not
+boatYellow2="#C0A36E" # Operators,
+carpYellow="#E6C384" # Identifiers
+sakuraPink="#D27E99" # Numbers
+waveRed="#E46876" # Standout
+peachRed="#FF5D62" # Standout
+surimiOrange="#FFA066" # Constants,
+
+thm_bg=${waveBlue1}
+thm_fg=${fujiWhite}
+thm_error=${autumnRed}
+thm_border=${sumIInk0}
+thm_accent=${autumnYellow}
 
 # Status bar
 set -g status "on"
@@ -23,16 +52,15 @@ set -g status-position bottom
 set -g status-right-length "100"
 
 # Left > current session name
-set -g status-left " #S"
-set -g status-left " #S #[fg=${thm_yellow}]#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD)#[fg=${thm_fg}] ~ "
+set -g status-left " #S (git:#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD)) ~ "
 
 # right > London time
-set -g status-right "#(TZ='Europe/London' date +%%H:%%M)"
+set -g status-right "#(TZ='Europe/London' date +%%H:%%M) "
 
 # Window list
-setw -g window-status-format " #W#{?window_zoomed_flag,#[fg=${thm_red}]+#[fg=${thm_fg}],} "
-setw -g window-status-current-format "[#W#{?window_zoomed_flag,#[fg=${thm_red}]+#[fg=${thm_fg}],}]"
+setw -g window-status-format " #W#{?window_zoomed_flag,#[fg=${thm_error}]+#[fg=${thm_fg}],} "
+setw -g window-status-current-format "[#W#{?window_zoomed_flag,#[fg=${thm_error}]+#[fg=${thm_fg}],}]"
 
 # Pane borders
-set -g pane-border-style fg="${catppuccin12}"
-set -g pane-active-border-style fg="${catppuccin12}"
+set -g pane-border-style fg="${thm_border}"
+set -g pane-active-border-style fg="${thm_border}"

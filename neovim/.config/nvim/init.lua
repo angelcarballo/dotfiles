@@ -127,9 +127,8 @@ require 'paq' {
 
   -- Colorschemes and look & feel {{{
   'romainl/vim-cool';                                         -- clear search highlight automatically
-  'ishan9299/nvim-solarized-lua';                             -- solarized theme implemented in lua, compabible with all solarized8 options
-  'catppuccin/nvim';                                          -- colorful dark colorscheme
   'ncm2/float-preview.nvim';                                  -- nicer preview window when using completion
+  'rebelot/kanagawa.nvim';                                    -- colorscheme inspired by the colors of the famous painting by Katsushika Hokusai
   -- }}}
 
   -- Search and completion {{{
@@ -380,24 +379,6 @@ require("auto-session").setup({
 
 -- Look & Feel {{{
 
---  Colorschemes {{{
--- Colorscheme: solarized
-vim.g.solarized_statusline = 'flat' -- flat variant has a less distracting statusline
-vim.g.solarized_extra_hi_groups = 1 -- show filetype specific highlight groups
-
--- Colorscheme: catppuccin
-require("catppuccin").setup({
-  flavour = "mocha", -- latte, frappe, macchiato, mocha
-  integrations = {
-    gitsigns = true,
-    mini = false,
-    notify = false,
-    nvimtree = false,
-    telescope = true,
-  },
-})
---   }}}
-
 --  Status line {{{
 local status_color = '%#Pmenu#'
 
@@ -416,13 +397,14 @@ function Status_line()
     '%w',                  -- preview flag
     '%=',                  -- right aling the following...
     trailing_whitespace(), -- trailing space indicator
-    ' %c %l/%L'            -- current column, current line and total lines
+    ' %c %l/%L '            -- current column, current line and total lines
   }
 end
 
 vim.opt.statusline = "%!luaeval('Status_line()')"
 --  }}}
 
+vim.cmd("colorscheme kanagawa")
 vim.cmd 'highlight clear SpellBad'                         -- remove default spell highlighting
 vim.cmd 'highlight SpellBad cterm=underline gui=undercurl' -- underline spelling errors
 vim.cmd 'highlight TabLineSel guifg=bg guibg=fg'           -- highlight current tab
@@ -547,7 +529,7 @@ map {'n', '<leader>of', ":! open '%'<cr>"}
 map {'n', '<leader>on', ':FZF $NOTES/<cr>'}
 
 --" p - package
-map {'n', '<leader>ps', ":PaqSync<cr>"}
+map {'n', '<leader>P', ":PaqSync<cr>"}
 
 --" r - Remove, redraw
 map {'n', '<leader>rd', ':redraw!<cr>'}
@@ -794,13 +776,13 @@ acg.augroup('detect_file_changes', {
   {'FocusGained,BufEnter', '*', ':silent! checktime'};
 })
 
-acg.augroup('detect_theme_changes', {
-  {                                                            -- auto switch theme when MacOs does
-    'VimEnter,FocusGained,FocusLost',
-    '*',
-    'lua require("acg").auto_set_theme()'
-  };
-})
+-- acg.augroup('detect_theme_changes', {
+--   {                                                            -- auto switch theme when MacOs does
+--     'VimEnter,FocusGained,FocusLost',
+--     '*',
+--     'lua require("acg").auto_set_theme()'
+--   };
+-- })
 
 acg.augroup('lsp_auto_formatting', {
   {                                                            -- auto format files that support it via LSP

@@ -1,32 +1,38 @@
-# Colors (Solarized Light)
 colors:
-  # Default colors
+  # Kanagawa light
   primary:
-    background: '0xfdf6e3'
-    foreground: '0x586e75'
+    # light
+    background: '#f6f0c8'
+    foreground: '0x1f1f28'
 
-  # Normal colors
   normal:
-    black:   '0x073642'
-    red:     '0xdc322f'
-    green:   '0x859900'
-    yellow:  '0xb58900'
-    blue:    '0x268bd2'
-    magenta: '0xd33682'
-    cyan:    '0x2aa198'
-    white:   '0xeee8d5'
+    black:   '0x090618'
+    red:     '0xc34043'
+    green:   '0x76946a'
+    # light
+    yellow:  '0xffa066'
+    blue:    '0x7e9cd8'
+    magenta: '0x957fb8'
+    cyan:    '0x6a9589'
+    white:   '0xc8c093'
 
-  # Bright colors
   bright:
-    black:   '0x002b36'
-    red:     '0xcb4b16'
-    green:   '0x586e75'
-    yellow:  '0x657b83'
-    blue:    '0x839496'
-    magenta: '0x6c71c4'
-    cyan:    '0x93a1a1'
-    white:   '0xfdf6e3'
+    black:   '0x727169'
+    red:     '0xe82424'
+    green:   '0x98bb6c'
+    #light
+    yellow:  '0xffa066'
+    blue:    '0x7fb4ca'
+    magenta: '0x938aa9'
+    cyan:    '0x7aa89f'
+    white:   '0xdcd7ba'
 
-  cursor:
-   text: '#FFFFFF'
-   cursor: '#000000'
+  selection:
+    background: '0x2d4f67'
+    foreground: '0xc8c093'
+
+  indexed_colors:
+    - { index: 16, color: '0xffa066' }
+    - { index: 17, color: '0xff5d62' }
+
+  # END Kanagawa
