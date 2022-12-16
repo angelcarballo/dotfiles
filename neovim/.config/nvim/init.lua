@@ -85,6 +85,7 @@ require 'paq' {
   'tpope/vim-eunuch';                                         -- basic unix shell command helpers (mv, rm, etc.)
   'pnetherwood/vim-term-focus';                               -- support for focus events when running in the terminal
   'tpope/vim-vinegar';                                        -- netrw tweaks and extensions
+  'justinmk/vim-dirvish';                                     -- file manager
   -- }}}
 
   -- Language support {{{
@@ -223,6 +224,15 @@ vim.opt.wildignore:append({
 -- }}}
 
 -- Plugin Settings {{{
+--   vim-dirvish {{{
+vim.g.dirvish_mode = ":sort ,^.*[\\/]," -- show folders first
+vim.g.loaded_netrwPlugin = 1            -- disable netrw and replace its commands
+vim.cmd [[
+  command! -nargs=? -complete=dir Explore Dirvish <args>
+  command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
+  command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
+]]
+--  }}}
 --   vim-lion {{{
 vim.g.lion_squeeze_spaces = 1 -- remove unnecessary spaces
 --  }}}
