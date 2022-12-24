@@ -36,18 +36,18 @@ function acg.auto_set_theme()
 
   -- The shell command succeeds (0 result code) in dark mode
   if result == 0 then
-    os.execute('tmux source-file ~/.tmux/local_dark.theme')
-    acg.set_theme('catppuccin', 'dark')
+    acg.set_theme('zenbones', 'dark')
   else
-    os.execute('tmux source-file ~/.tmux/local_light.theme')
-    acg.set_theme('solarized-flat', 'light')
+    acg.set_theme('zenbones', 'light')
   end
+
+  os.execute('tmux source-file ~/.tmux.conf')
 end
 
 -- Check if the given path exists
 -- taken from https://stackoverflow.com/questions/1340230/check-if-directory-exists-in-lua
 function acg.exists(file)
-   local ok, err, code = os.rename(file, file)
+   local ok, err, _ = os.rename(file, file)
    return ok, err
 end
 
@@ -59,6 +59,11 @@ end
 --- Read a whole file in binary mode
 function acg.read_file(path)
   local file = io.open(path, "rb") -- (r)ead mode, (b)inary mode
+
+  if not file then
+    return
+  end
+
   local contents = file:read("*a") -- (a)ll the file
   file:close()
   return contents
@@ -75,7 +80,7 @@ function acg.notes_path()
     -- git folder using worktrees. The .git file will contain a pointer to the main git repo location:
     --   gitdir: /some/folder/.git/worktrees/current-branch
     local path = acg.read_file('.git')
-    from, _ = path.find(path, '/')
+    local from, _ = path.find(path, '/')
     _, to = path.find(path, '.git/')
     return path.sub(path, from, to) .. acg.sanitized_branch_name()
   else

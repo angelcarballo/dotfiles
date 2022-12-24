@@ -15,17 +15,17 @@ GREEN=\033[1;32m
 NC=\033[0m # No Color
 
 # Tasks that do not generate a file (and are always executed)
-.PHONY: update_dotfiles update_homebrew link link_server update_vim_plugins install_minpac install_rbenv install_homebrew  sync_tasks setup_mac install_gitstatus update_cheats install_extrakto
+.PHONY: update_dotfiles update_homebrew link link_server install_rbenv install_homebrew  sync_tasks setup_mac install_gitstatus update_cheats install_extrakto
 
 default:
 	$(MAKE) $(DEFAULT_TASK)
 
-default_mac: update link update_vim_plugins update_cheats
-default_linux: update link update_vim_plugins update_cheats
+default_mac: update link update_cheats
+default_linux: update link update_cheats
 default_server: update link_server update_vim_plugins
 
 setup_mac: install_rbenv install_homebrew default_mac install_gitstatus
-setup_linux: install_minpac install_gitstatus default_linux
+setup_linux: install_gitstatus default_linux
 
 update:
 	@echo "\n${GREEN}Updating dotfiles${NC}"
@@ -44,21 +44,6 @@ link:
 link_server:
 	@echo "\n${GREEN}Linking dotfiles (Server)${NC}"
 	stow -v -t $(HOME) -d $(DOTFILES) $(FOLDERS_TO_LINK_ON_SERVERS)
-
-# Install new vim plugins, update existing and cleanup old ones
-update_vim_plugins:
-	@echo "\n${GREEN}Updating Vim plugins${NC}"
-	vim "+call minpac#update()" "+qall"
-	vim "+call minpac#clean()" "+qall"
-
-# Install minpac vim plugin manager
-install_minpac:
-	@echo "\n${GREEN}Installing minpac${NC}"
-	git clone https://github.com/k-takata/minpac.git $(DOTFILES)/vim/.vim/pack/minpac/opt/minpac
-
-sync_tasks:
-	@echo "\n${GREEN}Syncing tasks${NC}"
-	task sync
 
 # Install homebrew and install dependencies with homebrew/bundle
 install_homebrew:
@@ -83,3 +68,14 @@ setup_mac_theme_notifier:
 	@echo "\n${GREEN}Setting up mac dark/light notifier${NC}"
 	swiftc ~/src/dotfiles/macos/dark-mode-notify.swift -o /usr/local/bin/dark-mode-notify
 	cp ~/src/dotfiles/macos/ke.bou.dark-mode-notify.plist ~/Library/LaunchAgents/
+
+clean:
+	@echo "\n${GREEN}Cleaning up cache (NeoVim)${NC}"
+	rm -rf ~/.cache/nvim
+	rm -rf ~/.local/state/nvim
+	rm -rf ~/.local/share/nvim
+	@echo "\n${GREEN}Cleaning up cache (Homebrew)${NC}"
+	brew cleanup
+	@echo "\n${GREEN}Cleaning up cache (Docker)${NC}"
+	docker system prune
+
