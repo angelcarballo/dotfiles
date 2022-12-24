@@ -1,32 +1,20 @@
-# Catpuccin colors (see: https://github.com/catppuccin/nvim)
-thm_bg="#1e1e28"
-thm_fg="#d7dae0"
-thm_cyan="#c2e7f0"
-thm_black="#15121c"
-thm_gray="#2d293b"
-thm_magenta="#c6aae8"
-thm_pink="#f0afe1"
-thm_red="#e28c8c"
-thm_green="#b3e1a3"
-thm_yellow="#eadda0"
-thm_blue="#a4b9ef"
-thm_orange="#f7c196"
-catppuccin12="#3e4058"
+theme_bg="#302B29"
+theme_fg="colour7"
+theme_accent="colour3"
 
 # Status bar
 set -g status "on"
-set -g status-bg "${thm_bg}"
-set -g status-fg "${thm_fg}"
+set -g status-bg ${theme_bg}
+set -g status-fg ${theme_fg}
 set -g status-justify "left"
 set -g status-left-length "100"
 set -g status-position bottom
 set -g status-right-length "100"
 
 # Left > current session name
-set -g status-left " #S"
-set -g status-left " #S #[fg=${thm_yellow}]#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD)#[fg=${thm_fg}] ~ "
+set -g status-left " #S #[fg=${theme_accent}]#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD)#[fg=${theme_accent}] ~ "
 
-# right > London time
+# Right > London time
 set -g status-right "#(TZ='Europe/London' date +%%H:%%M)"
 
 # Window list
@@ -34,5 +22,5 @@ setw -g window-status-format " #W#{?window_zoomed_flag,#[fg=${thm_red}]+#[fg=${t
 setw -g window-status-current-format "[#W#{?window_zoomed_flag,#[fg=${thm_red}]+#[fg=${thm_fg}],}]"
 
 # Pane borders
-set -g pane-border-style fg="${catppuccin12}"
-set -g pane-active-border-style fg="${catppuccin12}"
+set -g pane-border-style fg=${theme_bg}
+set -g pane-active-border-style fg=${theme_bg}
