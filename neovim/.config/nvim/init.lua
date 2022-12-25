@@ -86,6 +86,7 @@ require('packer').startup(function(use)
   use 'kwkarlwang/bufjump.nvim'; -- Navigate through files in the jumplist
   -- }}}
   -- Look & Feel {{{
+  use 'ray-x/lsp_signature.nvim'; -- Show hint about function arguments as you type
   use 'romainl/vim-cool'; -- Clear search highlight automatically
   use 'ncm2/float-preview.nvim'; -- Nicer preview window when using completion
   use { -- Contrast based themes
@@ -299,6 +300,12 @@ require('nvim-treesitter.configs').setup {
 -- }}}
 -- {{{ comment.nvim
 require('comment').setup()
+-- }}}
+-- {{{ lsp_signature
+require "lsp_signature".setup({
+  floating_window = false, -- Don't show function documentation, that can be triggered manually with K when needed
+  hint_prefix = "» " -- default is a panda emoji...
+})
 -- }}}
 -- }}}
 -- Settings {{{
