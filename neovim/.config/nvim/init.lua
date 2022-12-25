@@ -497,6 +497,7 @@ map { 'n', 'k', 'gk' }
 
 vim.g.mapleader = ' ' -- Use <sapce> as leader key
 map { 'n', '<leader><space>', ':b ' } -- Quick buffer switch
+map { 'n', '<leader><tab>', ':find ' } -- Quick file search
 
 -- /,? - Search in project
 -- Use -F by default to disable regexp and search for a literal string
