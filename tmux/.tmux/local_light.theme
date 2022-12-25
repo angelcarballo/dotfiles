@@ -15,7 +15,7 @@ set -g status-right-length "100"
 set -g status-left " #S #[fg=${theme_accent}]#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD)#[fg=${theme_accent}] ~ "
 
 # Right > London time
-set -g status-right "#(TZ='Europe/London' date +%%H:%%M)"
+set -g status-right "#(TZ='Europe/London' date +%%H:%%M) "
 
 # Window list
 setw -g window-status-format " #W#{?window_zoomed_flag,#[fg=${thm_red}]+#[fg=${thm_fg}],} "

@@ -160,14 +160,6 @@ vim.cmd(-- Custom strategy to avoid echoing the command to the terminal before r
   let g:test#strategy = 'customvimux'
 ]])
 --  }}}
---   netrw {{{
-vim.g.netrw_liststyle         = 0 -- Thin (change to 3 for tree)
-vim.g.netrw_banner            = 0 -- No banner
-vim.g.netrw_altv              = 1 -- Open files on right
-vim.g.netrw_preview           = 1 -- Open previews vertically
-vim.g.netrw_sizestyle         = 'H' -- Show human style file sizes
-vim.g.netrw_nogx              = 1 -- Disable gx url command
---  }}}
 --   vim-ruby {{{
 vim.g.ruby_spellcheck_strings = 1 -- Enable spellcheck inside ruby strings
 vim.g.ruby_minlines           = 500 -- Avoid syntax errors while scrolling on large files
@@ -241,13 +233,6 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "h", texthl = "DiagnosticSignH
 --  }}}
 --   gitsigns {{{
 require('gitsigns').setup {
-  signs = {
-    add          = { hl = 'Comment', text = '+', numhl = 'Comment', linehl = 'Comment' },
-    change       = { hl = 'Comment', text = '~', numhl = 'Comment', linehl = 'Comment' },
-    delete       = { hl = 'Comment', text = '_', numhl = 'Comment', linehl = 'Comment' },
-    topdelete    = { hl = 'Comment', text = '‾', numhl = 'Comment', linehl = 'Comment' },
-    changedelete = { hl = 'Comment', text = '~', numhl = 'Comment', linehl = 'Comment' },
-  },
   keymaps = {
     -- Default keymap options
     noremap = true,
@@ -477,7 +462,7 @@ function Status_line()
     '%w', -- Preview flag
     '%=', -- Right aling the following...
     trailing_whitespace(), -- Trailing space indicator
-    ' %c %l/%L' -- Current column, current line and total lines
+    ' %c %l/%L ' -- Current column, current line and total lines
   }
 end
 
@@ -606,9 +591,6 @@ map { 'n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()
 --" o - open
 map { 'n', '<leader>of', ":! open '%'<cr>" }
 map { 'n', '<leader>on', ':FZF $NOTES/<cr>' }
-
---" p - package
-map { 'n', '<leader>ps', ":PaqSync<cr>" }
 
 --" r - Remove, redraw
 map { 'n', '<leader>rd', ':redraw!<cr>' }
@@ -792,31 +774,34 @@ local servers = {
     };
   },
   -- efm-langserver runs credo
+  -- see: efm-langserver/.config/efm-langserver/config.yaml
   efm = {
     filetypes = { 'elixir', 'eelixir' };
   },
   sumneko_lua = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
+    settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = 'LuaJIT',
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = { 'vim' },
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = vim.api.nvim_get_runtime_file("", true),
+          -- Don't bother with external library support
+          -- see: https://github.com/sumneko/lua-language-server/discussions/1688
+          checkThirdParty = false,
+        },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = {
+          enable = false,
+        },
       },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-        -- Don't bother with external library support
-        -- see: https://github.com/sumneko/lua-language-server/discussions/1688
-        checkThirdParty = false,
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
+    }
   },
 }
 
@@ -830,10 +815,8 @@ require('mason-lspconfig').setup {
 
 require('mason-lspconfig').setup_handlers {
   function(server_name)
-    require('lspconfig')[server_name].setup {
-      on_attach = on_attach,
-      settings = servers[server_name],
-    }
+    servers[server_name].on_attach = on_attach
+    require('lspconfig')[server_name].setup(servers[server_name])
   end,
 }
 -- }}}
@@ -894,7 +877,7 @@ To see all leader mappings, including those from plugins:
   nvim -c 'map <Leader>'
   nvim -c 'map <LocalLeader>'
 
-LSP logs are available in ~/.cache/nvim/lsp.log
+LSP logs are available in ~/.local/state/nvim/lsp.log
 
 --]]
 
