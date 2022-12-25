@@ -14,7 +14,7 @@ end
 -- Helper to generate mappings
 -- example: { 'i', '<leader>xx', ':Foo<cr>', noremap = false }
 function acg.map(key)
-  local opts = {noremap = true} -- default options
+  local opts = { noremap = true } -- default options
 
   for i, v in pairs(key) do
     if type(i) == 'string' then opts[i] = v end
@@ -47,13 +47,13 @@ end
 -- Check if the given path exists
 -- taken from https://stackoverflow.com/questions/1340230/check-if-directory-exists-in-lua
 function acg.exists(file)
-   local ok, err, _ = os.rename(file, file)
-   return ok, err
+  local ok, err, _ = os.rename(file, file)
+  return ok, err
 end
 
 --- Check if a directory exists in this path
 function acg.is_dir(path)
-   return acg.exists(path.."/") -- "/" works on both Unix and Windows
+  return acg.exists(path .. "/") -- "/" works on both Unix and Windows
 end
 
 --- Read a whole file in binary mode
@@ -84,7 +84,7 @@ function acg.notes_path()
     _, to = path.find(path, '.git/')
     return path.sub(path, from, to) .. acg.sanitized_branch_name()
   else
-    return('.notes')
+    return ('.notes')
   end
 end
 

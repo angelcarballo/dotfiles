@@ -20,11 +20,11 @@ local i = ls.insert_node
 
 ls.add_snippets(nil, {
   elixir = {
-    s({trig = "af", name = "Anonymous function", dscr = "Anonymous function"}, {
+    s({ trig = "af", name = "Anonymous function", dscr = "Anonymous function" }, {
       t("& &1")
     }),
 
-    s({trig = "fn", name = "fn", dscr = "Lambda function"}, {
+    s({ trig = "fn", name = "fn", dscr = "Lambda function" }, {
       t("fn "),
       i(1, "args"),
       t(" -> "),
@@ -32,7 +32,7 @@ ls.add_snippets(nil, {
       t(" end ")
     }),
 
-    s({trig = "echo", name = "echo", dscr = "Inspect with label"}, {
+    s({ trig = "echo", name = "echo", dscr = "Inspect with label" }, {
       t("IO.inspect("),
       i(1, "variable"),
       t(", label: \""),
@@ -40,49 +40,50 @@ ls.add_snippets(nil, {
       t("\")")
     }),
 
-    s({trig = "pecho", name = "pecho", dscr = "Inspect in pipeline"}, {
+    s({ trig = "pecho", name = "pecho", dscr = "Inspect in pipeline" }, {
       t("|> IO.inspect(label: \""),
       i(1, "label"),
       t("\")")
     }),
 
-    s({trig = "shout", name = "shout", dscr = "Shout to terminal"}, {
+    s({ trig = "shout", name = "shout", dscr = "Shout to terminal" }, {
       t("IO.puts(\"========> "),
       i(1, "t"),
       t("\")")
     }),
 
-    s({trig = "pdbg", name = "Pipe debug", dscr = "Pipe debug"}, {
+    s({ trig = "pdbg", name = "Pipe debug", dscr = "Pipe debug" }, {
       t("|> dbg()")
     }),
 
-    s({trig = "usedatacase", name = "use Duffel.Core.DataCase", dscr = "use Duffel.Core.DataCase"}, {
+    s({ trig = "usedatacase", name = "use Duffel.Core.DataCase", dscr = "use Duffel.Core.DataCase" }, {
       t("use Duffel.Core.DataCase, async: true")
     }),
 
-    s({trig = "importham", name = "import Hammox", dscr = "import Hammox"}, {
+    s({ trig = "importham", name = "import Hammox", dscr = "import Hammox" }, {
       t("import Hammox, only: [expect: 3, verify_on_exit!: 1]", "setup :verify_on_exit!")
     }),
 
-    s({trig = "importdecimal", name = "import Decimal sigil", dscr = "import Decimal sigil"}, {
+    s({ trig = "importdecimal", name = "import Decimal sigil", dscr = "import Decimal sigil" }, {
       t("import Duffel.Core.Sigils, only: [sigil_d: 2]")
     }),
 
-    s({trig = "importecto", name = "import Ecto.Query.from", dscr = "import Decimal sigil"}, {
+    s({ trig = "importecto", name = "import Ecto.Query.from", dscr = "import Decimal sigil" }, {
       t("import Ecto.Query, only: [from: 2]")
     }),
 
-    s({trig = "rawquery", name = "Return raw sql for a given Ecto query", dscr = "Return raw sql for a given Ecto query"}, {
+    s({ trig = "rawquery", name = "Return raw sql for a given Ecto query", dscr = "Return raw sql for a given Ecto query" }
+      , {
       t("Ecto.Adapters.SQL.to_sql(:all, Repo, )")
     }),
 
-    s({trig = "eex", name = "EEX tag", dscr = "EEX tag"}, {
+    s({ trig = "eex", name = "EEX tag", dscr = "EEX tag" }, {
       t("<%= "),
       i(1, "content"),
       t(" %>")
     }),
 
-    s({trig = "cmod", name = "__MODULE__", dscr = "__MODULE__"}, {
+    s({ trig = "cmod", name = "__MODULE__", dscr = "__MODULE__" }, {
       t("__MODULE__")
     })
   }
