@@ -87,7 +87,6 @@ require('packer').startup(function(use)
   -- Look & Feel {{{
   use 'ray-x/lsp_signature.nvim'; -- Show hint about function arguments as you type
   use 'romainl/vim-cool'; -- Clear search highlight automatically
-  use 'ncm2/float-preview.nvim'; -- Nicer preview window when using completion
   use { -- Contrast based themes
     "mcchrish/zenbones.nvim",
     requires = "rktjmp/lush.nvim"
@@ -837,10 +836,6 @@ acg.augroup('commit_window', {
 
 acg.augroup('branch_notes', {
   { 'Bufread,BufNewFile', '*/.git/notes-*', 'set ft=markdown' }; -- Own notes are all markdown
-})
-
-acg.augroup('detect_file_changes', {
-  { 'FocusGained,BufEnter', '*', ':silent! checktime' };
 })
 
 acg.augroup('detect_theme_changes', {
