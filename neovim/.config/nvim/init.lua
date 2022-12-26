@@ -17,7 +17,6 @@ require('packer').startup(function(use)
   -- Core {{{
   use 'wbthomason/packer.nvim' -- Let packer manage itself
   use 'tpope/vim-repeat'; -- Extended repeat support
-  use 'tpope/vim-eunuch'; -- Basic unix shell command helpers (mv, rm, etc.)
   use 'justinmk/vim-dirvish'; -- File manager
   use {
     'neovim/nvim-lspconfig',
@@ -78,6 +77,7 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
   -- }}}
   -- Runners and navigation {{{
+  use 'tpope/vim-eunuch'; -- Basic unix shell command helpers (mv, rm, etc.)
   use 'tpope/vim-projectionist'; -- Projections for project file navigation
   use 'benmills/vimux'; -- Tmux integration
   use 'janko-m/vim-test'; -- Generic test runner
