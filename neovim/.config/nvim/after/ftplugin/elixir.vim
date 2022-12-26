@@ -1,5 +1,18 @@
 inoreabbrev <buffer> rk =>
 inoreabbrev <buffer> pipe \|>
+inoreabbrev <buffer> pry require IEx; IEx.pry
+inoreabbrev <buffer> bpry require IEx; IEx.pry
+inoreabbrev <buffer> af & &1
+inoreabbrev <buffer> aff fn -> end<c-o>b
+inoreabbrev <buffer> eex <%= %><left><left><left>
+inoreabbrev <buffer> cmod __MODULE__
+inoreabbrev <buffer> shout IO.puts("=======> ")<left><left>
+inoreabbrev <buffer> importham import Hammox, only: [expect: 3, verify_on_exit!: 1]\rsetup :verify_on_exit!
+inoreabbrev <buffer> importdecimal import Duffel.Core.Sigils, only: [sigil_d: 2]
+inoreabbrev <buffer> importecto import Ecto.Query, only: [from: 2]
+inoreabbrev <buffer> usedatacase use Duffel.Core.DataCase, async: true
+inoreabbrev <buffer> rawquery Ecto.Adapters.SQL.to_sql(:all, Repo, )<left>
+inoreabbrev <buffer> ii <esc>biinspect(<esc>A, pretty: true, limit: :infinity)
 
 " Remove deps from path to speed up find & friends on large projects
 setlocal path-=deps/**/lib/**,deps/**/src/**
@@ -7,15 +20,9 @@ setlocal path-=deps/**/lib/**,deps/**/src/**
 setlocal foldmethod=indent
 setlocal foldlevel=1
 
-" Match the default line length used by mix format
-setlocal textwidth=98
-
-let g:dispatch_compilers = {
-          \ "mix test": "exunit",
-          \ "mix compile": "mix",
-          \ "mix credo": "credo"
-          \ }
-
+" When running tests from an umbrella app, run them locally instead of using
+" the top level. This avoid loading the whole app which usually speeds up
+" things.
 function! ElixirUmbrellaTransform(cmd) abort
   if match(a:cmd, 'apps/') != -1
     let l:app_path = matchlist(a:cmd, '\(apps/[^/]*\)/')[0]
