@@ -802,6 +802,7 @@ local servers = {
       },
     }
   },
+  awk_ls = {}
 }
 
 -- Setup mason so it can manage external tooling
@@ -849,7 +850,7 @@ acg.augroup('detect_theme_changes', {
 acg.augroup('lsp_auto_formatting', {
   { -- Auto format files that support it via LSP
     'BufWritePre',
-    '*.ex,*.exs,*.lua',
+    '*.ex,*.exs,*.lua,*.awk',
     'lua vim.lsp.buf.formatting_sync()'
   };
 })
