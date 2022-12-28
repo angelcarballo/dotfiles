@@ -86,10 +86,7 @@ require('packer').startup(function(use)
   -- Look & Feel {{{
   use 'ray-x/lsp_signature.nvim'; -- Show hint about function arguments as you type
   use 'romainl/vim-cool'; -- Clear search highlight automatically
-  use { -- Contrast based themes
-    "mcchrish/zenbones.nvim",
-    requires = "rktjmp/lush.nvim"
-  }
+  use { "mcchrish/zenbones.nvim", requires = "rktjmp/lush.nvim" } -- Contrast based themes
   -- }}}
 
   if is_bootstrap then
@@ -646,6 +643,9 @@ map { 'n', 'gQ', 'mzgggqG`z' }
 
 -- Search and replace current visual selection
 map { 'x', '<c-r>', '"zy:%s/<c-r>z//g<left><left>' }
+
+-- Open URLs, a-la Netrw
+map { 'n', 'gx', ":execute 'silent! !open ' . shellescape(expand('<cfile>'), 1)<cr>" }
 
 -- Use cursors to resize windows
 map { 'n', '<left>', ':vertical resize -3<cr>' }
