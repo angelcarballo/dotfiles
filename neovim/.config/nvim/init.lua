@@ -58,7 +58,6 @@ require('packer').startup(function(use)
   use 'kana/vim-textobj-user'; -- Custom text object support
   use 'michaeljsmith/vim-indent-object'; -- Indentation based text object <ai>, <ii>
   use 'Julian/vim-textobj-variable-segment'; -- Segments of camelCase, snake_case and similar <av>, <iv>
-  use 'glts/vim-textobj-comment'; -- Comments text object <ic>, <ac>, <aC> to include whitespace
   -- }}}
   -- Operators and commands {{{
   use 'AndrewRadev/splitjoin.vim'; -- Split/join statements (gS, gJ)
