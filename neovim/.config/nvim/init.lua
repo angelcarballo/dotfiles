@@ -268,6 +268,9 @@ require('nvim-treesitter.configs').setup {
         ['ia'] = '@parameter.inner',
         ['af'] = '@function.outer',
         ['if'] = '@function.inner',
+        -- Duplicated mappings to cover (c)lass and (m)odule
+        ['am'] = '@class.outer',
+        ['im'] = '@class.inner',
         ['ac'] = '@class.outer',
         ['ic'] = '@class.inner',
       },
