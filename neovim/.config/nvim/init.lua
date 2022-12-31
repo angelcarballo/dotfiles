@@ -804,7 +804,8 @@ local servers = {
       },
     }
   },
-  awk_ls = {}
+  awk_ls = {},
+  vimls = {},
 }
 
 -- Setup mason so it can manage external tooling
