@@ -369,22 +369,6 @@ vim.opt.complete = {
   'b', -- Complete with words from other loaded buffers
 }
 -- }}}
--- Forced file types {{{
-acg.augroup("forced_file_types", {
-  { 'BufRead,BufNewFile', '*.jbuilder', 'setfiletype ruby' };
-  { 'BufRead,BufNewFile', '*.prawn', 'setfiletype ruby' };
-  { 'BufRead,BufNewFile', '*.tmux', 'setfiletype tmux' };
-  { 'BufRead,BufNewFile', '*tmux/*', 'setfiletype tmux' };
-  { 'BufRead,BufNewFile', '*.cfg', 'setfiletype puppet' };
-  { 'BufRead,BufNewFile', 'init.el', 'setfiletype lisp' };
-  { 'BufRead,BufNewFile', '.spacemacs', 'setfiletype lisp' };
-  { 'BufRead,BufNewFile', '*.hocon', 'setfiletype yaml' };
-  { 'BufRead,BufNewFile', '*.md', 'setfiletype markdown' };
-  { 'BufRead,BufNewFile', '*.trello', 'setfiletype markdown' };
-  { 'BufRead,BufNewFile', '*.livemd', 'setfiletype markdown' };
-  { 'BufRead,BufNewFile', '*.vader', 'setfiletype vim' };
-})
--- }}}
 -- Custom text object {{{
 
 -- entire buffer
@@ -824,6 +808,26 @@ require('mason-lspconfig').setup_handlers {
 }
 -- }}}
 -- Autocommands {{{
+acg.augroup("forced_file_types", {
+  { 'BufRead,BufNewFile', '*.jbuilder', 'setfiletype ruby' };
+  { 'BufRead,BufNewFile', '*.prawn', 'setfiletype ruby' };
+  { 'BufRead,BufNewFile', '*.tmux', 'setfiletype tmux' };
+  { 'BufRead,BufNewFile', '*tmux/*', 'setfiletype tmux' };
+  { 'BufRead,BufNewFile', '*.cfg', 'setfiletype puppet' };
+  { 'BufRead,BufNewFile', 'init.el', 'setfiletype lisp' };
+  { 'BufRead,BufNewFile', '.spacemacs', 'setfiletype lisp' };
+  { 'BufRead,BufNewFile', '*.hocon', 'setfiletype yaml' };
+  { 'BufRead,BufNewFile', '*.md', 'setfiletype markdown' };
+  { 'BufRead,BufNewFile', '*.trello', 'setfiletype markdown' };
+  { 'BufRead,BufNewFile', '*.livemd', 'setfiletype markdown' };
+  { 'BufRead,BufNewFile', '*.vader', 'setfiletype vim' };
+})
+
+acg.augroup("file_type_templates", {
+  { 'BufNewFile', 'Makefile', '0read ~/.config/nvim/ft_templates/Makefile' },
+  { 'BufNewFile', '*.awk', '0read ~/.config/nvim/ft_templates/command.awk' }
+})
+
 acg.augroup('quickfix_window', {
   { 'QuickFixCmdPost', 'grep cwindow | redraw!' }; -- Open quickfix window after using grep
   { 'QuickFixCmdPost', 'lgrep redraw!' }; -- Open location window after using grep
