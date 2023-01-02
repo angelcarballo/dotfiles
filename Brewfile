@@ -1,55 +1,55 @@
-# manage symlinks for dotfiles
+# Manage symlinks for dotfiles
 brew "stow"
 
-# super fast replacement for Ack
+# Super fast replacement for Ack
 brew "ripgrep"
 
-# ruby build dependencies
+# Ruby build dependencies
 brew "openssl"
 brew "libyaml"
 
-# our own zsh
+# Our own zsh
 brew "zsh"
 
-# our own bash (bits like tmux-extrakto require modern versions)
+# Our own bash (bits like tmux-extrakto require modern versions)
 brew "bash"
 
-# general purpose fuzzy finder
+# General purpose fuzzy finder
 brew "fzf"
 
-# nice cheats for unix commands (like man but without the noise)
+# Nice cheats for unix commands (like man but without the noise)
 brew "cheat"
 
-# use our own python
+# Use our own python
 brew "python"
 
-# use our own git
+# Use our own git
 brew "git"
 brew "git-gui"
 
-# use our own ctags
+# Use our own ctags
 brew "ctags"
 
-# terminal multiplexer
+# Terminal multiplexer
 brew "tmux"
 
 # ...to rule them all
 brew "neovim"
 
-# gnu tree to display directory structures
+# Gnu tree to display directory structures
 brew "tree"
 
 # AWS command line tools
 brew "awscli"
 
 # You want to edit those docx files with Vim right?
-# it may require BasicTeX (https://www.tug.org/mactex/morepackages.html)
+# It may require BasicTeX (https://www.tug.org/mactex/morepackages.html)
 brew "pandoc"
 
 # Wrapper to allow supporting .inputrc settings on bad repls like <iex>
 brew "rlwrap"
 
-# grep-like json processor
+# Grep-like json processor
 brew "jq"
 
 # GNU core utilities
@@ -61,16 +61,16 @@ brew "plantuml"
 # Cat like viewer with syntax highlighting, git support and other goodies
 brew "bat"
 
-# fancy ascii header generator
+# Fancy ascii header generator
 brew "figlet"
 
-# simple interface for inotify (watch files and run commands)
+# Simple interface for inotify (watch files and run commands)
 brew "entr"
 
-# transform json into stream of flat lines, easier to grep
+# Transform json into stream of flat lines, easier to grep
 brew "gron"
 
-# generic version manager
+# Generic version manager
 brew "asdf"
 
 # UI framework required for erlang observer, debugger, etc
@@ -87,3 +87,6 @@ brew "wget"
 
 # Lua language server, mostly for NeoVim
 brew "lua-language-server"
+
+# Nice looking monospaced font
+brew "font-jetbrains-mono"
