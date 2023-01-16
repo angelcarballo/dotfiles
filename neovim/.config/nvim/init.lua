@@ -347,7 +347,6 @@ vim.opt.visualbell = true -- Visual flash instead of beeping
 vim.opt.errorbells = false -- No flash on errors, only at beginning/end of file
 vim.opt.laststatus = 2 -- Always show status bar
 vim.opt.list = true -- Show extra whitespace
-vim.opt.foldopen:remove('search') -- Ignore folded lines when searching
 vim.opt.previewheight = 20 -- Make preview bigger
 vim.opt.grepprg = 'rg --vimgrep --hidden --smart-case' -- Use ripgrep, much faster than regular grep
 vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m' -- Use ripgrep's format
