@@ -820,6 +820,7 @@ acg.augroup("forced_file_types", {
   { 'BufRead,BufNewFile', '*.trello', 'setfiletype markdown' };
   { 'BufRead,BufNewFile', '*.livemd', 'setfiletype markdown' };
   { 'BufRead,BufNewFile', '*.vader', 'setfiletype vim' };
+  { 'BufRead,BufNewFile', '*.heex', 'setfiletype elixir' };
 })
 
 acg.augroup("file_type_templates", {
