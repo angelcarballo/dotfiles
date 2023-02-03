@@ -25,8 +25,8 @@ export LC_CTYPE=$LANG
 
 # vim everywhere
 bindkey -v
-export VISUAL=vim
-export EDITOR=vim
+export VISUAL=nvim
+export EDITOR=nvim
 export KEYTIMEOUT=15  # reduce delay when changing modes
 
 # custom functions
