@@ -566,6 +566,9 @@ map { 'n', '<leader>g/', ':Git log -S\'\'<left>' }
 map { 'n', '<leader>q', ':q<cr>' }
 map { 'n', '<leader>Q', ':qall!<cr>' }
 
+-- m - Mix
+map { 'n', '<leader>mf', ':VimuxRunCommand("mix format")<cr>' }
+
 -- n - notes
 map { 'n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()\')<cr>' }
 
