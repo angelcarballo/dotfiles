@@ -483,7 +483,7 @@ map { 'n', 'k', 'gk' }
 --   Leader mappings {{{
 
 vim.g.mapleader = ' ' -- Use <sapce> as leader key
-map { 'n', '<leader><space>', ':b ' } -- Quick buffer switch
+map { 'n', '<leader><space>', '<cmd>Telescope buffers<cr>' } -- Quick buffer switch
 map { 'n', '<leader><tab>', ':find ' } -- Quick file search
 
 -- /,? - Search in project
