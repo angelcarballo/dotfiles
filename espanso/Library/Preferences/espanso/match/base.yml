@@ -1,0 +1,110 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  # - trigger: ":espanso"
+  #   replace: "Hi there!"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  # - trigger: ":date"
+  #   replace: "{{mydate}}"
+  #   vars:
+  #     - name: mydate
+  #       type: date
+  #       params:
+  #         format: "%m/%d/%Y"
+
+  # Print the output of a shell command
+  # - trigger: ":shell"
+  #   replace: "{{output}}"
+  #   vars:
+  #     - name: output
+  #       type: shell
+  #       params:
+  #         cmd: "echo 'Hello from your shell'"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
+
+  - trigger: "wemm"
+    replace: "angel@duffel.com"
+
+  - trigger: "pemm"
+    replace: "contact@angelcarballo.com"
+
+  - trigger: "gemm"
+    replace: "angelcarballo@gmail.com"
+
+  - trigger: "stripecard"
+    replace: "4242424242424242"
+
+  - trigger: "ukphone"
+    replace: "07476725371"
+
+  - trigger: "esphone"
+    replace: "666461481"
+
+  - trigger: ":cdate"
+    replace: "{{cdate}}"
+    vars:
+      - name: cdate
+        type: date
+        params:
+          format: "%d/%m/%Y"
+
+  - trigger: ":idate"
+    replace: "{{idate}}"
+    vars:
+      - name: idate
+        type: date
+        params:
+          format: "%Y/%m/%d"
+
+  - trigger: ":lorem"
+    replace: "Lorem ipsum dolor sit amet"
+
+  - trigger: ":plorem"
+    replace: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\neiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris\nnisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\nvoluptate velit esse cillum dolore eu fugiat nulla\npariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui\nofficia deserunt mollit anim id est laborum"
+
+  - trigger: ":prc"
+    replace: "**{{label}}**: $|$"
+    vars:
+      - name: label
+        type: choice
+        params:
+          values:
+            - "chore"
+            - "issue"
+            - "nitpick"
+            - "note"
+            - "praise"
+            - "question"
+            - "suggestion"
+            - "thought"
+            - "todo"
+            - "typo"
+
+  - trigger: ":cmsg"
+    replace: "**{{label}}**: $|$"
+    vars:
+      - name: label
+        type: choice
+        params:
+          values:
+          - "fix"
+          - "feat"
+          - "chore"
+          - "docs"
+          - "refactor"
+          - "perf"
+          - "test"
