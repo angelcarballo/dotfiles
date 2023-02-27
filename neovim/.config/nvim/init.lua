@@ -843,8 +843,8 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      elseif luasnip.jumpable( -1) then
+        luasnip.jump( -1)
       else
         fallback()
       end
@@ -858,42 +858,42 @@ cmp.setup {
 -- }}}
 -- Autocommands {{{
 acg.augroup("forced_file_types", {
-  { 'BufRead,BufNewFile', '*.jbuilder', 'setfiletype ruby' };
-  { 'BufRead,BufNewFile', '*.prawn', 'setfiletype ruby' };
-  { 'BufRead,BufNewFile', '*.tmux', 'setfiletype tmux' };
-  { 'BufRead,BufNewFile', '*tmux/*', 'setfiletype tmux' };
-  { 'BufRead,BufNewFile', '*.cfg', 'setfiletype puppet' };
-  { 'BufRead,BufNewFile', 'init.el', 'setfiletype lisp' };
-  { 'BufRead,BufNewFile', '.spacemacs', 'setfiletype lisp' };
-  { 'BufRead,BufNewFile', '*.hocon', 'setfiletype yaml' };
-  { 'BufRead,BufNewFile', '*.md', 'setfiletype markdown' };
-  { 'BufRead,BufNewFile', '*.trello', 'setfiletype markdown' };
-  { 'BufRead,BufNewFile', '*.livemd', 'setfiletype markdown' };
-  { 'BufRead,BufNewFile', '*.vader', 'setfiletype vim' };
-  { 'BufRead,BufNewFile', '*.heex', 'setfiletype elixir' };
+  { 'BufRead,BufNewFile', '*.jbuilder', 'setfiletype ruby' },
+  { 'BufRead,BufNewFile', '*.prawn',    'setfiletype ruby' },
+  { 'BufRead,BufNewFile', '*.tmux',     'setfiletype tmux' },
+  { 'BufRead,BufNewFile', '*tmux/*',    'setfiletype tmux' },
+  { 'BufRead,BufNewFile', '*.cfg',      'setfiletype puppet' },
+  { 'BufRead,BufNewFile', 'init.el',    'setfiletype lisp' },
+  { 'BufRead,BufNewFile', '.spacemacs', 'setfiletype lisp' },
+  { 'BufRead,BufNewFile', '*.hocon',    'setfiletype yaml' },
+  { 'BufRead,BufNewFile', '*.md',       'setfiletype markdown' },
+  { 'BufRead,BufNewFile', '*.trello',   'setfiletype markdown' },
+  { 'BufRead,BufNewFile', '*.livemd',   'setfiletype markdown' },
+  { 'BufRead,BufNewFile', '*.vader',    'setfiletype vim' },
+  { 'BufRead,BufNewFile', '*.heex',     'setfiletype elixir' },
 })
 
 acg.augroup("file_type_templates", {
   { 'BufNewFile', 'Makefile', '0read ~/.config/nvim/ft_templates/Makefile' },
-  { 'BufNewFile', '*.awk', '0read ~/.config/nvim/ft_templates/command.awk' }
+  { 'BufNewFile', '*.awk',    '0read ~/.config/nvim/ft_templates/command.awk' }
 })
 
 acg.augroup('quickfix_window', {
-  { 'QuickFixCmdPost', 'grep cwindow | redraw!' }; -- Open quickfix window after using grep
-  { 'QuickFixCmdPost', 'lgrep redraw!' }; -- Open location window after using grep
-  { 'FileType', 'qf wincmd J' }; -- Quickfix window should always be full width
+  { 'QuickFixCmdPost', 'grep cwindow | redraw!' }, -- Open quickfix window after using grep
+  { 'QuickFixCmdPost', 'lgrep redraw!' }, -- Open location window after using grep
+  { 'FileType',        'qf wincmd J' }, -- Quickfix window should always be full width
 })
 
 acg.augroup('help_window', {
-  { 'FileType', 'help', 'wincmd L' }; -- Open help always on the right
+  { 'FileType', 'help', 'wincmd L' }, -- Open help always on the right
 })
 
 acg.augroup('commit_window', {
-  { 'FileType', 'gitcommit', 'wincmd L' }; -- Open commit always on the right
+  { 'FileType', 'gitcommit', 'wincmd L' }, -- Open commit always on the right
 })
 
 acg.augroup('branch_notes', {
-  { 'Bufread,BufNewFile', '*/.git/notes-*', 'set ft=markdown' }; -- Own notes are all markdown
+  { 'Bufread,BufNewFile', '*/.git/notes-*', 'set ft=markdown' }, -- Own notes are all markdown
 })
 
 acg.augroup('detect_theme_changes', {
@@ -901,7 +901,7 @@ acg.augroup('detect_theme_changes', {
     'VimEnter,FocusGained,FocusLost',
     '*',
     'lua require("acg").auto_set_theme()'
-  };
+  },
 })
 
 acg.augroup('lsp_auto_formatting', {
@@ -909,7 +909,7 @@ acg.augroup('lsp_auto_formatting', {
     'BufWritePre',
     '*.ex,*.exs,*.lua,*.awk',
     'lua vim.lsp.buf.formatting_sync()'
-  };
+  },
 })
 
 -- }}}
@@ -933,5 +933,4 @@ To see all leader mappings, including those from plugins:
 LSP logs are available in ~/.local/state/nvim/lsp.log
 
 --]]
-
 -- }}}
