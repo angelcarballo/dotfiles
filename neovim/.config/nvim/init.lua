@@ -760,19 +760,19 @@ end
 -- Enable the following language servers. They will automatically be installed.
 local servers = {
   elixirls = {
-    filetypes = { 'elixir', 'eelixir' };
+    filetypes = { 'elixir', 'eelixir' },
     -- root_dir = require('lspconfig/util').root_pattern(".git");
     settings = {
       elixirLS = {
         dialyzerEnabled = false,
         -- fetchDeps = false
       }
-    };
+    },
   },
   -- efm-langserver runs credo
   -- see: efm-langserver/.config/efm-langserver/config.yaml
   efm = {
-    filetypes = { 'elixir', 'eelixir' };
+    filetypes = { 'elixir', 'eelixir' },
   },
   lua_ls = {
     settings = {

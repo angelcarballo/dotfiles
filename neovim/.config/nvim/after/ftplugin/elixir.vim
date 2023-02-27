@@ -25,16 +25,23 @@ setlocal foldlevel=1
 " the top level. This avoid loading the whole app which usually speeds up
 " things.
 function! ElixirUmbrellaTransform(cmd) abort
-  if match(a:cmd, 'apps/') != -1
-    let l:app_path = matchlist(a:cmd, '\(apps/[^/]*\)/')[0]
+  " Unit test env uses a different jet task
+  if match(a:cmd, 'unit_test') != -1
+    let l:cmd = substitute(a:cmd, 'mix test', 'mix unit_test', '')
+  else
+    let l:cmd = a:cmd
+  end
+
+  if match(l:cmd, 'apps/') != -1
+    let l:app_path = matchlist(l:cmd, '\(apps/[^/]*\)/')[0]
 
     " remove apps/some_app from the file path
-    let l:app_cmd = substitute(a:cmd, '\(apps/[^/]*\)/', '', '')
+    let l:app_cmd = substitute(l:cmd, '\(apps/[^/]*\)/', '', '')
 
     " run mix test command in a subshell to avoid switching the cwd
     return "(cd " . l:app_path . "; " . l:app_cmd . ")"
   else
-    return a:cmd
+    return l:cmd
   end
 endfunction
 
