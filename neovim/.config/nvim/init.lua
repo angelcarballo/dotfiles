@@ -126,7 +126,8 @@ vim.g.lion_squeeze_spaces = 1 -- Remove unnecessary spaces
 vim.g.closetag_filetypes = 'html,xhtml,erb,eelixir'
 --  }}}
 --   vimux {{{
-vim.g['VimuxResetSequence'] = 'qC' -- For every command, send first: q -> exit scroll/copy mode, <esc> -> enter readline normal mode, C -> replace whole line
+vim.g['VimuxResetSequence'] =
+'qC' -- For every command, send first: q -> exit scroll/copy mode, <esc> -> enter readline normal mode, C -> replace whole line
 vim.g['VimuxRunnerType'] = 'pane' -- Use a pane
 vim.g['VimuxOrientation'] = 'v' -- On the bottom half of the window
 --  }}}
@@ -145,7 +146,7 @@ vim.g['test#elixir#exunit#options'] = {
   file = '--trace --seed 0', -- For single files, run in verbose mode and in original order
   nearest = '--trace'
 }
-vim.cmd(-- Custom strategy to avoid echoing the command to the terminal before running it
+vim.cmd( -- Custom strategy to avoid echoing the command to the terminal before running it
   [[
   function! CustomVimuxStrategy(cmd)
     call VimuxRunCommand(a:cmd)
@@ -574,7 +575,6 @@ map { 'n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()
 
 --" o - open
 map { 'n', '<leader>of', ":! open '%'<cr>" }
-map { 'n', '<leader>on', ':FZF $NOTES/<cr>' }
 
 --" r - Remove, redraw
 map { 'n', '<leader>rd', ':redraw!<cr>' }
@@ -826,7 +826,6 @@ cmp.setup {
   mapping = cmp.mapping.preset.insert {
     ['<C-d>'] = cmp.mapping.scroll_docs( -4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
