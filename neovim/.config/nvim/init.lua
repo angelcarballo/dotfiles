@@ -73,8 +73,7 @@ require('packer').startup(function(use)
   use 'cohama/lexima.vim'; -- Auto close do/end blocks and similar
   use 'alvan/vim-closetag'; -- Auto close html/xml tags
   -- Fuzzy Finder
-  use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+  use { 'ibhagwan/fzf-lua' }
   -- Autocompletion
   use {
     'hrsh7th/nvim-cmp',
@@ -160,30 +159,11 @@ vim.g.ruby_spellcheck_strings = 1 -- Enable spellcheck inside ruby strings
 vim.g.ruby_minlines           = 500 -- Avoid syntax errors while scrolling on large files
 vim.g.ruby_indent_block_style = 'do' -- Better syntax for nested blocks
 --  }}}
---   telescope {{{
-require('telescope').setup {
-  pickers = {
-    buffers = { theme = "ivy" },
-    find_files = { theme = "ivy" },
-    git_files = { theme = "ivy" },
-    git_status = { theme = "ivy" },
-    help_tags = { theme = "ivy" },
-    live_grep = { theme = "ivy" },
-    lsp_document_symbols = { theme = "ivy" },
-    marks = { theme = "ivy" },
-    oldfiles = { theme = "ivy" },
-  },
-  defaults = {
-    mappings = {
-      i = {
-        ["<C-h>"] = "which_key",
-        ["<C-k>"] = "move_selection_previous",
-        ["<C-j>"] = "move_selection_next"
-      }
-    }
-  },
+--   fzf-lua {{{
+require("fzf-lua").setup {
+  -- disable all previews by default
+  winopts = { preview = { hidden = 'hidden' } }
 }
-pcall(require('telescope').load_extension, 'fzf')
 --  }}}
 --   projectionist {{{
 vim.cmd [[
@@ -475,7 +455,7 @@ map { 'n', 'k', 'gk' }
 --   Leader mappings {{{
 
 vim.g.mapleader = ' ' -- Use <sapce> as leader key
-map { 'n', '<leader><space>', '<cmd>Telescope buffers<cr>' } -- Quick buffer switch
+map { 'n', '<leader><space>', ':FzfLua buffers<cr>' } -- Quick buffer switch
 map { 'n', '<leader><tab>', ':find ' } -- Quick file search
 
 -- /,? - Search in project
@@ -494,7 +474,7 @@ map { 'n', '<leader>aa', ':argadd<cr>' }
 -- b - Buffers
 map { 'n', '<leader>aa', ':argadd<cr>' }
 map { 'n', '<leader>bo', ':Bdelete hidden<cr>' }
-map { 'n', '<leader>bb', '<cmd>Telescope buffers<cr>' }
+map { 'n', '<leader>bb', ':FzfLua buffers<cr>' }
 
 -- c - Copy/clear
 map { 'n', '<leader>cb', ':let @+=fugitive#head()<cr>:echo "<c-r>+"<cr>' } -- Copy git branch
@@ -523,16 +503,14 @@ map { 'n', '<leader>ev', ':Vex<cr>' }
 
 -- f - File/Find
 map { 'n', '<leader>fs', ':up<cr>' }
-map { 'n', '<leader>fa', "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>" }
-map { 'n', '<leader>fF', "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>" }
-map { 'n', '<leader>ff', "<cmd>Telescope git_files<cr>" }
-map { 'n', '<leader>fg', '<cmd>Telescope git_status<cr>' }
-map { 'n', '<leader>fr', '<cmd>Telescope oldfiles<cr>' }
-map { 'n', '<leader>fh', '<cmd>Telescope help_tags<cr>' }
-map { 'n', '<leader>fm', '<cmd>Telescope marks<cr>' }
-map { 'n', '<leader>ft', '<cmd>Telescope live_grep<cr>' }
-map { 'n', '<leader>fl', '<cmd>Telescope lsp_document_symbols<cr>' }
-map { 'n', '<leader>fL', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>' }
+map { 'n', '<leader>fF', ':FzfLua files<cr>' }
+map { 'n', '<leader>ff', ':FzfLua git_files<cr>' }
+map { 'n', '<leader>fg', ':FzfLua git_status<cr>' }
+map { 'n', '<leader>fc', ':FzfLua git_status<cr>' }
+map { 'n', '<leader>fr', ':FzfLua oldfiles<cr>' }
+map { 'n', '<leader>fh', ':FzfLua help_tags<cr>' }
+map { 'n', '<leader>fm', ':FzfLua marks<cr>' }
+map { 'n', '<leader>ft', ':FzfLua live_grep_native<cr>' }
 
 -- g - Git/Generate
 map { 'n', '<leader>gg', ':Git<space>' }
