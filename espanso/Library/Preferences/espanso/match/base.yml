@@ -95,7 +95,7 @@ matches:
             - "typo"
 
   - trigger: ":cmsg"
-    replace: "**{{label}}**: $|$"
+    replace: "{{label}}: $|$"
     vars:
       - name: label
         type: choice
