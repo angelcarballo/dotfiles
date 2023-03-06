@@ -1,7 +1,7 @@
 -- vim: foldmethod=marker foldlevel=0 foldenable
 
 local acg = require('acg') -- Utility functions
-local map = acg.map -- Alias since it's used a lot
+local map = acg.map        -- Alias since it's used a lot
 
 -- {{{ Packer setup
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -16,8 +16,8 @@ end
 require('packer').startup(function(use)
   -- Core {{{
   use 'wbthomason/packer.nvim' -- Let packer manage itself
-  use 'tpope/vim-repeat'; -- Extended repeat support
-  use 'justinmk/vim-dirvish'; -- File manager
+  use 'tpope/vim-repeat';      -- Extended repeat support
+  use 'justinmk/vim-dirvish';  -- File manager
   use {
     'neovim/nvim-lspconfig',
     requires = {
@@ -37,40 +37,40 @@ require('packer').startup(function(use)
   }
   -- }}}
   -- Version control (git) {{{
-  use 'tpope/vim-fugitive'; -- Git integration
-  use 'tpope/vim-rhubarb'; -- Github integration for vim-fugitive
+  use 'tpope/vim-fugitive';      -- Git integration
+  use 'tpope/vim-rhubarb';       -- Github integration for vim-fugitive
   use 'lewis6991/gitsigns.nvim'; -- Git signs and chunk navigation
   -- }}}
   -- Language support {{{
-  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+  use 'tpope/vim-sleuth'            -- Detect tabstop and shiftwidth automatically
   use 'gpanders/editorconfig.nvim'; -- Support for .editorconfig files
-  use 'tpope/vim-rbenv'; -- Rbenv support, used to get the current ruby version on `path`
-  use 'tpope/vim-bundler'; -- Bundler support, used to get the current bundled gems on `path`
-  use 'elixir-editors/vim-elixir'; -- Elixir support
-  use 'aklt/plantuml-syntax'; -- PlantUML support
-  use 'kchmck/vim-coffee-script'; -- Coffeescript support
-  use 'pangloss/vim-javascript'; -- Improved Javascript syntax
-  use 'MaxMEllon/vim-jsx-pretty'; -- JSX syntax
+  use 'tpope/vim-rbenv';            -- Rbenv support, used to get the current ruby version on `path`
+  use 'tpope/vim-bundler';          -- Bundler support, used to get the current bundled gems on `path`
+  use 'elixir-editors/vim-elixir';  -- Elixir support
+  use 'aklt/plantuml-syntax';       -- PlantUML support
+  use 'kchmck/vim-coffee-script';   -- Coffeescript support
+  use 'pangloss/vim-javascript';    -- Improved Javascript syntax
+  use 'MaxMEllon/vim-jsx-pretty';   -- JSX syntax
   use 'leafgarland/typescript-vim'; -- Typescript support
-  use 'jxnblk/vim-mdx-js'; -- MDX (markdown + JSX) support
+  use 'jxnblk/vim-mdx-js';          -- MDX (markdown + JSX) support
   -- }}}
   -- Text objects {{{
-  use 'kana/vim-textobj-user'; -- Custom text object support
-  use 'michaeljsmith/vim-indent-object'; -- Indentation based text object <ai>, <ii>
+  use 'kana/vim-textobj-user';               -- Custom text object support
+  use 'michaeljsmith/vim-indent-object';     -- Indentation based text object <ai>, <ii>
   use 'Julian/vim-textobj-variable-segment'; -- Segments of camelCase, snake_case and similar <av>, <iv>
   -- }}}
   -- Operators and commands {{{
-  use 'AndrewRadev/splitjoin.vim'; -- Split/join statements (gS, gJ)
-  use 'tpope/vim-surround'; -- Alter surroundings (), [], '', {}
-  use 'tommcdo/vim-exchange'; -- Text exchange operator (cx..)
+  use 'AndrewRadev/splitjoin.vim';       -- Split/join statements (gS, gJ)
+  use 'tpope/vim-surround';              -- Alter surroundings (), [], '', {}
+  use 'tommcdo/vim-exchange';            -- Text exchange operator (cx..)
   use 'vim-scripts/ReplaceWithRegister'; -- Replace without yanking operator (gr..)
-  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-  use 'tommcdo/vim-lion'; -- Align code
-  use 'Asheq/close-buffers.vim'; -- Provides :Bdelete <type> to easily delete buffers
-  use 'rizzatti/dash.vim'; -- Open Dash documentation tool
+  use 'numToStr/Comment.nvim'            -- "gc" to comment visual regions/lines
+  use 'tommcdo/vim-lion';                -- Align code
+  use 'Asheq/close-buffers.vim';         -- Provides :Bdelete <type> to easily delete buffers
+  use 'rizzatti/dash.vim';               -- Open Dash documentation tool
   -- }}}
   -- Search and completion {{{
-  use 'cohama/lexima.vim'; -- Auto close do/end blocks and similar
+  use 'cohama/lexima.vim';  -- Auto close do/end blocks and similar
   use 'alvan/vim-closetag'; -- Auto close html/xml tags
   -- Fuzzy Finder
   use { 'ibhagwan/fzf-lua' }
@@ -81,16 +81,16 @@ require('packer').startup(function(use)
   }
   -- }}}
   -- Runners and navigation {{{
-  use 'tpope/vim-eunuch'; -- Basic unix shell command helpers (mv, rm, etc.)
+  use 'tpope/vim-eunuch';        -- Basic unix shell command helpers (mv, rm, etc.)
   use 'tpope/vim-projectionist'; -- Projections for project file navigation
-  use 'benmills/vimux'; -- Tmux integration
-  use 'janko-m/vim-test'; -- Generic test runner
-  use 'rmagatti/auto-session'; -- Auto save & restore sessions (per folder, per branch, etc.)
+  use 'benmills/vimux';          -- Tmux integration
+  use 'janko-m/vim-test';        -- Generic test runner
+  use 'rmagatti/auto-session';   -- Auto save & restore sessions (per folder, per branch, etc.)
   use 'kwkarlwang/bufjump.nvim'; -- Navigate through files in the jumplist
   -- }}}
   -- Look & Feel {{{
-  use 'ray-x/lsp_signature.nvim'; -- Show hint about function arguments as you type
-  use 'romainl/vim-cool'; -- Clear search highlight automatically
+  use 'ray-x/lsp_signature.nvim';                                 -- Show hint about function arguments as you type
+  use 'romainl/vim-cool';                                         -- Clear search highlight automatically
   use { "mcchrish/zenbones.nvim", requires = "rktjmp/lush.nvim" } -- Contrast based themes
   -- }}}
 
@@ -111,7 +111,7 @@ end
 -- Plugin Settings {{{
 --   vim-dirvish {{{
 vim.g.dirvish_mode = ":sort ,^.*[\\/]," -- Show folders first
-vim.g.loaded_netrwPlugin = 1 -- Disable netrw and replace its commands
+vim.g.loaded_netrwPlugin = 1            -- Disable netrw and replace its commands
 vim.cmd [[
   command! -nargs=? -complete=dir Explore Dirvish <args>
   command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
@@ -126,23 +126,23 @@ vim.g.closetag_filetypes = 'html,xhtml,erb,eelixir'
 --  }}}
 --   vimux {{{
 vim.g['VimuxResetSequence'] =
-'qC' -- For every command, send first: q -> exit scroll/copy mode, <esc> -> enter readline normal mode, C -> replace whole line
+'qC'                             -- For every command, send first: q -> exit scroll/copy mode, <esc> -> enter readline normal mode, C -> replace whole line
 vim.g['VimuxRunnerType'] = 'pane' -- Use a pane
-vim.g['VimuxOrientation'] = 'v' -- On the bottom half of the window
+vim.g['VimuxOrientation'] = 'v'   -- On the bottom half of the window
 --  }}}
 --   vim-test {{{
-vim.g['test#ruby#use_binstubs'] = 1 -- Use bin/xxx when available, which should use Spring automatically
+vim.g['test#ruby#use_binstubs'] = 1                          -- Use bin/xxx when available, which should use Spring automatically
 vim.g['test#ruby#rspec#options'] = {
-  nearest = '--fail-fast --order 0 --format documentation', -- For single tests, run in verbose mode
-  file = '--fail-fast --order 0 --format documentation', -- Same for single file, also keep always original order to make it easier to debug errors
-  suite = '--fail-fast', -- For whole suite, useful to keep randomness
+  nearest = '--fail-fast --order 0 --format documentation',  -- For single tests, run in verbose mode
+  file = '--fail-fast --order 0 --format documentation',     -- Same for single file, also keep always original order to make it easier to debug errors
+  suite = '--fail-fast',                                     -- For whole suite, useful to keep randomness
 }
-vim.g['test#python#runner'] = 'pytest' -- Use pytest for pytong specs ...
+vim.g['test#python#runner'] = 'pytest'                       -- Use pytest for pytong specs ...
 vim.g['test#python#pytest#executable'] = 'pipenv run pytest' -- ... using the right environment
-vim.g['g:test#elixir#exunit#executable'] = 'mix test' -- Use mix, this should probably be the default
+vim.g['g:test#elixir#exunit#executable'] = 'mix test'        -- Use mix, this should probably be the default
 vim.g['test#elixir#exunit#options'] = {
-  suite = '--stale', -- Only run changed tests
-  file = '--trace --seed 0', -- For single files, run in verbose mode and in original order
+  suite = '--stale',                                         -- Only run changed tests
+  file = '--trace --seed 0',                                 -- For single files, run in verbose mode and in original order
   nearest = '--trace'
 }
 vim.cmd( -- Custom strategy to avoid echoing the command to the terminal before running it
@@ -155,8 +155,8 @@ vim.cmd( -- Custom strategy to avoid echoing the command to the terminal before 
 ]])
 --  }}}
 --   vim-ruby {{{
-vim.g.ruby_spellcheck_strings = 1 -- Enable spellcheck inside ruby strings
-vim.g.ruby_minlines           = 500 -- Avoid syntax errors while scrolling on large files
+vim.g.ruby_spellcheck_strings = 1    -- Enable spellcheck inside ruby strings
+vim.g.ruby_minlines           = 500  -- Avoid syntax errors while scrolling on large files
 vim.g.ruby_indent_block_style = 'do' -- Better syntax for nested blocks
 --  }}}
 --   fzf-lua {{{
@@ -197,8 +197,8 @@ let g:projectionist_heuristics = {
 --   diagnostic {{{
 vim.diagnostic.config {
   virtual_text = false, -- Don't show virtualtext
-  signs = true, -- But do show signs
-  underline = true, -- And underline over the diagnosed text
+  signs = true,         -- But do show signs
+  underline = true,     -- And underline over the diagnosed text
 }
 -- Use downcased sign texts
 vim.fn.sign_define("DiagnosticSignError", { text = "e", texthl = "DiagnosticSignError" })
@@ -211,13 +211,11 @@ require('gitsigns').setup {
   keymaps = {
     -- Default keymap options
     noremap = true,
-
-    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<cr>'" },
-    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<cr>'" },
-
+        ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<cr>'" },
+        ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<cr>'" },
     -- Text objects
-    ['o ic'] = ':<c-u>Gitsigns select_hunk<cr>',
-    ['x ic'] = ':<c-u>Gitsigns select_hunk<cr>'
+        ['o ic'] = ':<c-u>Gitsigns select_hunk<cr>',
+        ['x ic'] = ':<c-u>Gitsigns select_hunk<cr>'
   }
 }
 --  }}}
@@ -229,7 +227,7 @@ require("auto-session").setup({
 -- {{{ treesitter
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'lua', 'elixir', 'python', 'ruby', 'javascript', 'typescript', 'help' },
+  ensure_installed = { 'elixir', 'python', 'ruby', 'javascript', 'typescript', 'help', 'lua' },
 
   highlight = { enable = true },
   indent = { enable = true },
@@ -239,35 +237,35 @@ require('nvim-treesitter.configs').setup {
       lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
+            ['aa'] = '@parameter.outer',
+            ['ia'] = '@parameter.inner',
+            ['af'] = '@function.outer',
+            ['if'] = '@function.inner',
         -- Duplicated mappings to cover (c)lass and (m)odule
-        ['am'] = '@class.outer',
-        ['im'] = '@class.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
+            ['am'] = '@class.outer',
+            ['im'] = '@class.inner',
+            ['ac'] = '@class.outer',
+            ['ic'] = '@class.inner',
       },
     },
     Move = {
       Enable = true,
       Set_jumps = true, -- Whether to set jumps in the jumplist
       Goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
+            [']m'] = '@function.outer',
+            [']]'] = '@class.outer',
       },
       Goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
+            [']M'] = '@function.outer',
+            [']['] = '@class.outer',
       },
       Goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
+            ['[m'] = '@function.outer',
+            ['[['] = '@class.outer',
       },
       Goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
+            ['[M'] = '@function.outer',
+            ['[]'] = '@class.outer',
       },
     },
   },
@@ -279,66 +277,66 @@ require('comment').setup()
 -- {{{ lsp_signature
 require "lsp_signature".setup({
   floating_window = false, -- Don't show function documentation, that can be triggered manually with K when needed
-  hint_prefix = "» " -- default is a panda emoji...
+  hint_prefix = "» "      -- default is a panda emoji...
 })
 -- }}}
 -- }}}
 -- Settings {{{
-vim.cmd('packadd cfilter') -- Quickfix filter plugin (bundled with vim)
-vim.opt.number = true -- Show line numbers
-vim.opt.confirm = true -- Ask instead of just erroring if the current file has unsaved changes
-vim.opt.autowrite = true -- Auto write after make, ! and friends
-vim.opt.showcmd = true -- Show complete commands
-vim.opt.scrolloff = 3 -- Leave space after the current line
-vim.opt.swapfile = false -- Disable swap files, let git do the work
-vim.opt.splitright = true -- Open new vertical split panes to right
-vim.opt.history = 200 -- Increase history (default: 50)
-vim.opt.incsearch = true -- Incremental search
-vim.opt.ignorecase = true -- Ignore case on search ...
-vim.opt.smartcase = true -- ... except if query contains uppercase characters
-vim.opt.infercase = true -- ... same thing for keyword completion
-vim.opt.wrap = false -- Don't wrap lines when they're too long for current screen size
-vim.opt.backspace = { 'indent', 'eol', 'start' } -- Backspace through everything
-vim.opt.wildmenu = true -- Visual auto complete for command menu
-vim.opt.wildmode = { 'longest:full', 'full' } -- Complete with the longest matching substring, also show menu. Hitting tab again moves between matches
-vim.opt.ttyfast = true -- Send extra characters to terminal (improves smoothness)
-vim.opt.formatoptions:append('j') -- Delete comment character when joining commented lines
-vim.opt.autoread = true -- If a file changes outside Vim, reload its contents automatically
-vim.opt.undofile = true -- Persist undo history
-vim.opt.breakindent = true -- Keep indentation on wrapped lines
-vim.opt.shiftwidth = 2 -- Space identation use 2 spaces by default (file types override this)
-vim.opt.tabstop = 2 -- Tabs use 2 spaces by default (file types override this)
-vim.opt.expandtab = true -- Indent with spaces by default (override by file type)
-vim.opt.regexpengine = 1 -- Use old regexp engine, as new one has low performance with big ruby files
-vim.opt.spelllang = 'en_gb' -- Enable English spell check
-vim.opt.spellsuggest = { 'best', '20' } -- Don't show too many suggestions for spell check
-vim.opt.spellcapcheck = '' -- Don't check for end of sentence and capitalization, it doesn't work well with abbreviations
+vim.cmd('packadd cfilter')                             -- Quickfix filter plugin (bundled with vim)
+vim.opt.number = true                                  -- Show line numbers
+vim.opt.confirm = true                                 -- Ask instead of just erroring if the current file has unsaved changes
+vim.opt.autowrite = true                               -- Auto write after make, ! and friends
+vim.opt.showcmd = true                                 -- Show complete commands
+vim.opt.scrolloff = 3                                  -- Leave space after the current line
+vim.opt.swapfile = false                               -- Disable swap files, let git do the work
+vim.opt.splitright = true                              -- Open new vertical split panes to right
+vim.opt.history = 200                                  -- Increase history (default: 50)
+vim.opt.incsearch = true                               -- Incremental search
+vim.opt.ignorecase = true                              -- Ignore case on search ...
+vim.opt.smartcase = true                               -- ... except if query contains uppercase characters
+vim.opt.infercase = true                               -- ... same thing for keyword completion
+vim.opt.wrap = false                                   -- Don't wrap lines when they're too long for current screen size
+vim.opt.backspace = { 'indent', 'eol', 'start' }       -- Backspace through everything
+vim.opt.wildmenu = true                                -- Visual auto complete for command menu
+vim.opt.wildmode = { 'longest:full', 'full' }          -- Complete with the longest matching substring, also show menu. Hitting tab again moves between matches
+vim.opt.ttyfast = true                                 -- Send extra characters to terminal (improves smoothness)
+vim.opt.formatoptions:append('j')                      -- Delete comment character when joining commented lines
+vim.opt.autoread = true                                -- If a file changes outside Vim, reload its contents automatically
+vim.opt.undofile = true                                -- Persist undo history
+vim.opt.breakindent = true                             -- Keep indentation on wrapped lines
+vim.opt.shiftwidth = 2                                 -- Space identation use 2 spaces by default (file types override this)
+vim.opt.tabstop = 2                                    -- Tabs use 2 spaces by default (file types override this)
+vim.opt.expandtab = true                               -- Indent with spaces by default (override by file type)
+vim.opt.regexpengine = 1                               -- Use old regexp engine, as new one has low performance with big ruby files
+vim.opt.spelllang = 'en_gb'                            -- Enable English spell check
+vim.opt.spellsuggest = { 'best', '20' }                -- Don't show too many suggestions for spell check
+vim.opt.spellcapcheck = ''                             -- Don't check for end of sentence and capitalization, it doesn't work well with abbreviations
 vim.opt.spellfile = vim.fn.expand('~/Drive/vim/spell/en.utf-8.add')
-vim.opt.dictionary:append('/usr/share/dict/words') -- Auto complete words from system dictionary
-vim.opt.tags:prepend('./.git/tags') -- Read tags from git directory
-vim.opt.foldenable = false -- Do not fold by default
-vim.opt.shortmess:remove('S') -- Show total and number of current result after a search
-vim.opt.hidden = true -- Allow closing buffers with unsaved changes
-vim.opt.mouse = 'a' -- Enable mouse support in all modes
-vim.opt.termguicolors = true -- Enable truecolor (24 bit)
-vim.opt.visualbell = true -- Visual flash instead of beeping
-vim.opt.errorbells = false -- No flash on errors, only at beginning/end of file
-vim.opt.laststatus = 2 -- Always show status bar
-vim.opt.list = true -- Show extra whitespace
-vim.opt.previewheight = 20 -- Make preview bigger
+vim.opt.dictionary:append('/usr/share/dict/words')     -- Auto complete words from system dictionary
+vim.opt.tags:prepend('./.git/tags')                    -- Read tags from git directory
+vim.opt.foldenable = false                             -- Do not fold by default
+vim.opt.shortmess:remove('S')                          -- Show total and number of current result after a search
+vim.opt.hidden = true                                  -- Allow closing buffers with unsaved changes
+vim.opt.mouse = 'a'                                    -- Enable mouse support in all modes
+vim.opt.termguicolors = true                           -- Enable truecolor (24 bit)
+vim.opt.visualbell = true                              -- Visual flash instead of beeping
+vim.opt.errorbells = false                             -- No flash on errors, only at beginning/end of file
+vim.opt.laststatus = 2                                 -- Always show status bar
+vim.opt.list = true                                    -- Show extra whitespace
+vim.opt.previewheight = 20                             -- Make preview bigger
 vim.opt.grepprg = 'rg --vimgrep --hidden --smart-case' -- Use ripgrep, much faster than regular grep
-vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m' -- Use ripgrep's format
-vim.g.vimsyn_embed = 1 -- Highlight lua and other languages inside vim files
-vim.opt.listchars = { tab = "▸ ", trail = "·" } -- Symbols for invisible characters
-vim.cmd [[ let &showbreak='↳ ' ]] -- Indicator for wrapped lines
+vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'            -- Use ripgrep's format
+vim.g.vimsyn_embed = 1                                 -- Highlight lua and other languages inside vim files
+vim.opt.listchars = { tab = "▸ ", trail = "·" }     -- Symbols for invisible characters
+vim.cmd [[ let &showbreak='↳ ' ]]                    -- Indicator for wrapped lines
 vim.opt.diffopt = {
-  'filler', -- Show filler lines to keep diffs aligned
-  'internal', -- Use vim's internal diff library
-  'indent-heuristic', -- Use vim's internal diff library for indentation
-  'algorithm:histogram' -- Histogram is better at highlighting line changes
+  'filler',                                            -- Show filler lines to keep diffs aligned
+  'internal',                                          -- Use vim's internal diff library
+  'indent-heuristic',                                  -- Use vim's internal diff library for indentation
+  'algorithm:histogram'                                -- Histogram is better at highlighting line changes
 }
 vim.opt.completeopt = {
-  'menu', -- Show popup menu for completion
+  'menu',    -- Show popup menu for completion
   'menuone', -- Show popup menu even if there is only one result
 }
 vim.opt.complete = {
@@ -391,14 +389,14 @@ vim.opt.path:append({
   'assets/vendor/**'
 })
 vim.opt.wildignore:append({
-  '*.swp,*.bak,*.pyc,*.class', -- Common
+  '*.swp,*.bak,*.pyc,*.class',    -- Common
   '*/tmp/*,*.so,*.zip,.DS_Store', -- MacOSX/Linux
-  '*\\tmp\\*,*.zip,*.exe', -- Windows
-  '*/temp/*,*/backup/*', -- Vim
-  '*/_site/*', -- Jekyll
-  '*/log/*,*.log', -- Log files
-  '*.eof,*.ttf,*.woff', -- Font files
-  '**/node_modules/**' -- Node artefacts
+  '*\\tmp\\*,*.zip,*.exe',        -- Windows
+  '*/temp/*,*/backup/*',          -- Vim
+  '*/_site/*',                    -- Jekyll
+  '*/log/*,*.log',                -- Log files
+  '*.eof,*.ttf,*.woff',           -- Font files
+  '**/node_modules/**'            -- Node artefacts
 })
 -- }}}
 -- Look & Feel {{{
@@ -412,25 +410,25 @@ end
 
 function Status_line()
   return table.concat {
-    status_color, -- Color
-    ' %f ', -- Relative file path
-    '%m', -- Modified flag
-    '%r', -- Read-only flag
-    '%h', -- Help flag
-    '%w', -- Preview flag
-    '%=', -- Right aling the following...
+    status_color,          -- Color
+    ' %f ',                -- Relative file path
+    '%m',                  -- Modified flag
+    '%r',                  -- Read-only flag
+    '%h',                  -- Help flag
+    '%w',                  -- Preview flag
+    '%=',                  -- Right aling the following...
     trailing_whitespace(), -- Trailing space indicator
-    ' %c %l/%L ' -- Current column, current line and total lines
+    ' %c %l/%L '           -- Current column, current line and total lines
   }
 end
 
 vim.opt.statusline = "%!luaeval('Status_line()')"
 --  }}}
 
-vim.cmd 'highlight clear SpellBad' -- Remove default spell highlighting
+vim.cmd 'highlight clear SpellBad'                         -- Remove default spell highlighting
 vim.cmd 'highlight SpellBad cterm=underline gui=undercurl' -- Underline spelling errors
-vim.cmd 'highlight TabLineSel guifg=bg guibg=fg' -- Highlight current tab
-vim.cmd "match ErrorMsg '\\s\\+$'" -- Highlight trailing spaces
+vim.cmd 'highlight TabLineSel guifg=bg guibg=fg'           -- Highlight current tab
+vim.cmd "match ErrorMsg '\\s\\+$'"                         -- Highlight trailing spaces
 -- }}}
 -- Mappings {{{
 --   Basic mappings {{{
@@ -446,17 +444,17 @@ vim.cmd [[
 ]]
 
 map { 'i', '<tab>', '<c-r>=Tab_Or_Complete()<cr>' } -- Indent or trigger default word completion
-map { 'i', 'kj', '<esc>' } -- Easily exit insert mode
-map { 'n', 'Q', '<nop>' } -- Don't go inTo Ex mode
-map { 'n', '<tab>', '<c-^>' } -- Quick toggle between last two buffers
-map { 'n', 'j', 'gj' } -- Move around using visual lines, useful when wrap is enabled
+map { 'i', 'kj', '<esc>' }                          -- Easily exit insert mode
+map { 'n', 'Q', '<nop>' }                           -- Don't go inTo Ex mode
+map { 'n', '<tab>', '<c-^>' }                       -- Quick toggle between last two buffers
+map { 'n', 'j', 'gj' }                              -- Move around using visual lines, useful when wrap is enabled
 map { 'n', 'k', 'gk' }
 -- }}}
 --   Leader mappings {{{
 
-vim.g.mapleader = ' ' -- Use <sapce> as leader key
+vim.g.mapleader = ' '                                 -- Use <sapce> as leader key
 map { 'n', '<leader><space>', ':FzfLua buffers<cr>' } -- Quick buffer switch
-map { 'n', '<leader><tab>', ':find ' } -- Quick file search
+map { 'n', '<leader><tab>', ':find ' }                -- Quick file search
 
 -- /,? - Search in project
 -- Use -F by default to disable regexp and search for a literal string
@@ -477,21 +475,21 @@ map { 'n', '<leader>bo', ':Bdelete hidden<cr>' }
 map { 'n', '<leader>bb', ':FzfLua buffers<cr>' }
 
 -- c - Copy/clear
-map { 'n', '<leader>cb', ':let @+=fugitive#head()<cr>:echo "<c-r>+"<cr>' } -- Copy git branch
-map { 'n', '<leader>ca', 'mzgg"+yG\'z' } -- Copy all/entire buffer
-map { 'n', '<leader>cfn', ':let @+=expand("%:t")<cr>:echo "<c-r>+"<cr>' } -- Copy file name  (foo.txt)
-map { 'n', '<leader>cfp', ':let @+=expand("%")<cr>:echo "<c-r>+"<cr>' } -- Copy relative path  (src/foo.txt)
-map { 'n', '<leader>cfP', ':let @+=expand("%:p")<cr>:echo "<c-r>+"<cr>' } -- Copy absolute path  (/something/src/foo.txt)
+map { 'n', '<leader>cb', ':let @+=fugitive#head()<cr>:echo "<c-r>+"<cr>' }                           -- Copy git branch
+map { 'n', '<leader>ca', 'mzgg"+yG\'z' }                                                             -- Copy all/entire buffer
+map { 'n', '<leader>cfn', ':let @+=expand("%:t")<cr>:echo "<c-r>+"<cr>' }                            -- Copy file name  (foo.txt)
+map { 'n', '<leader>cfp', ':let @+=expand("%")<cr>:echo "<c-r>+"<cr>' }                              -- Copy relative path  (src/foo.txt)
+map { 'n', '<leader>cfP', ':let @+=expand("%:p")<cr>:echo "<c-r>+"<cr>' }                            -- Copy absolute path  (/something/src/foo.txt)
 map { 'n', '<leader>cfl', ':let @+=join([expand(\'%\'),  line(".")], \':\')<cr>:echo "<c-r>+"<cr>' } -- Copy relative path with line number
-map { 'n', '<leader>cff', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>' } -- Copy file directory/folder path (src/)
-map { 'n', '<leader>cfd', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>' } -- Copy file directory/folder path (src/)
+map { 'n', '<leader>cff', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>' }                          -- Copy file directory/folder path (src/)
+map { 'n', '<leader>cfd', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>' }                          -- Copy file directory/folder path (src/)
 
 map { 'n', '<leader>cs', ':nohl<cr>' }
 
 -- d - Duplicate, diff, db
 map { 'n', '<leader>dp', 'yapgcip}p', noremap = false }
-map { 'n', '<leader>dl', 'yygccp', noremap = false}
-map { 'x', '<leader>dl', 'ygvgc`>p', noremap = false}
+map { 'n', '<leader>dl', 'yygccp', noremap = false }
+map { 'x', '<leader>dl', 'ygvgc`>p', noremap = false }
 
 map { 'n', '<leader>d<', ':diffget //2<cr>' }
 map { 'n', '<leader>d>', ':diffget //3<cr>' }
@@ -803,13 +801,13 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert {
-    ['<C-d>'] = cmp.mapping.scroll_docs( -4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<CR>'] = cmp.mapping.confirm {
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
+        ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -818,11 +816,11 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable( -1) then
-        luasnip.jump( -1)
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
@@ -858,8 +856,8 @@ acg.augroup("file_type_templates", {
 
 acg.augroup('quickfix_window', {
   { 'QuickFixCmdPost', 'grep cwindow | redraw!' }, -- Open quickfix window after using grep
-  { 'QuickFixCmdPost', 'lgrep redraw!' }, -- Open location window after using grep
-  { 'FileType',        'qf wincmd J' }, -- Quickfix window should always be full width
+  { 'QuickFixCmdPost', 'lgrep redraw!' },          -- Open location window after using grep
+  { 'FileType',        'qf wincmd J' },            -- Quickfix window should always be full width
 })
 
 acg.augroup('help_window', {
