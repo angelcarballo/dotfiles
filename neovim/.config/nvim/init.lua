@@ -47,6 +47,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-rbenv';            -- Rbenv support, used to get the current ruby version on `path`
   use 'tpope/vim-bundler';          -- Bundler support, used to get the current bundled gems on `path`
   use 'elixir-editors/vim-elixir';  -- Elixir support
+  use 'mhinz/vim-mix-format';       -- Elixir formatter support
   use 'aklt/plantuml-syntax';       -- PlantUML support
   use 'kchmck/vim-coffee-script';   -- Coffeescript support
   use 'pangloss/vim-javascript';    -- Improved Javascript syntax
@@ -279,6 +280,10 @@ require "lsp_signature".setup({
   floating_window = false, -- Don't show function documentation, that can be triggered manually with K when needed
   hint_prefix = "» "      -- default is a panda emoji...
 })
+-- }}}
+-- {{{ vim-mix-format
+vim.g.mix_format_on_save = 1
+vim.g.mix_format_silent_errors = 1 -- do not open a window with stacktrace if the formatter errors
 -- }}}
 -- }}}
 -- Settings {{{
@@ -883,7 +888,7 @@ acg.augroup('detect_theme_changes', {
 acg.augroup('lsp_auto_formatting', {
   { -- Auto format files that support it via LSP
     'BufWritePre',
-    '*.ex,*.exs,*.lua,*.awk',
+    '*.lua,*.awk',
     'lua vim.lsp.buf.formatting_sync()'
   },
 })
