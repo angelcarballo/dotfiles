@@ -515,6 +515,8 @@ map { 'n', '<leader>fr', ':FzfLua oldfiles<cr>' }
 map { 'n', '<leader>fh', ':FzfLua help_tags<cr>' }
 map { 'n', '<leader>fm', ':FzfLua marks<cr>' }
 map { 'n', '<leader>ft', ':FzfLua live_grep_native<cr>' }
+map { 'n', '<leader>fl', ':FzfLua lsp_document_symbols<cr>' }
+map { 'n', '<leader>fL', ':FzfLua lsp_live_workspace_symbols<cr>' }
 
 -- g - Git/Generate
 map { 'n', '<leader>gg', ':Git<space>' }
