@@ -310,7 +310,8 @@ vim.opt.expandtab = true                               -- Indent with spaces by 
 vim.opt.regexpengine = 1                               -- Use old regexp engine, as new one has low performance with big ruby files
 vim.opt.spelllang = 'en_gb'                            -- Enable English spell check
 vim.opt.spellsuggest = { 'best', '20' }                -- Don't show too many suggestions for spell check
-vim.opt.spellcapcheck = ''                             -- Don't check for end of sentence and capitalization, it doesn't work well with abbreviations
+vim.opt.spellcapcheck =
+''                                                     -- Don't check for end of sentence and capitalization, it doesn't work well with abbreviations
 vim.opt.spellfile = vim.fn.expand('~/Drive/vim/spell/en.utf-8.add')
 vim.opt.dictionary:append('/usr/share/dict/words')     -- Auto complete words from system dictionary
 vim.opt.tags:prepend('./.git/tags')                    -- Read tags from git directory
