@@ -66,7 +66,7 @@ alias main='git checkout main'
 alias master='git checkout master'
 
 alias br='git co $(git branch -a --no-color | fzf)' # fuzzy find branch
-alias cb='git rev-parse --abbrev-ref HEAD | copy'
+alias cb="git rev-parse --abbrev-ref HEAD | tr -d '\n' | copy"
 alias co='git checkout '
 alias cco='git fetch && git checkout '
 alias gap='git add --patch '
