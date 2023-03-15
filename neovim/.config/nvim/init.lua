@@ -493,9 +493,12 @@ map { 'n', '<leader>cfd', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>' }     
 map { 'n', '<leader>cs', ':nohl<cr>' }
 
 -- d - Duplicate, diff, db
-map { 'n', '<leader>dp', 'yapgcip}p', noremap = false }
-map { 'n', '<leader>dl', 'yygccp', noremap = false }
-map { 'x', '<leader>dl', 'ygvgc`>p', noremap = false }
+map { 'n', '<leader>dp', 'yap}p' }
+map { 'x', '<leader>dl', 'y`>p' }
+
+map { 'n', '<leader>dcp', 'yapgcip}p', noremap = false }
+map { 'n', '<leader>dcl', 'yygccp', noremap = false }
+map { 'x', '<leader>dcl', 'ygvgc`>p', noremap = false }
 
 map { 'n', '<leader>d<', ':diffget //2<cr>' }
 map { 'n', '<leader>d>', ':diffget //3<cr>' }
