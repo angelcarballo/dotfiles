@@ -512,6 +512,7 @@ map { 'n', '<leader>ev', ':Vex<cr>' }
 
 -- f - File/Find
 map { 'n', '<leader>fs', ':up<cr>' }
+map { 'n', '<leader>fb', ':FzfLua git_branches<cr>' }
 map { 'n', '<leader>fF', ':FzfLua files<cr>' }
 map { 'n', '<leader>ff', ':FzfLua git_files<cr>' }
 map { 'n', '<leader>fg', ':FzfLua git_status<cr>' }
