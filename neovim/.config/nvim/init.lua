@@ -81,6 +81,7 @@ require('packer').startup(function(use)
     'hrsh7th/nvim-cmp',
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   }
+  use 'github/copilot.vim'
   -- }}}
   -- Runners and navigation {{{
   use 'tpope/vim-eunuch';        -- Basic unix shell command helpers (mv, rm, etc.)
@@ -601,6 +602,12 @@ map { 'n', '<leader>wv', ':vsp<cr>' }
 
 --   }}}
 --    Non-leader mappings {{{
+
+-- Copilot
+vim.cmd [[
+  inoremap <silent><script><expr> <C-B> copilot#Accept("")
+  let g:copilot_no_tab_map = v:true
+]]
 
 -- pane navigation
 map { 'n', '<c-h>', '<c-w>h' }
