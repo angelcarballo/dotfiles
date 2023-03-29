@@ -1,4 +1,4 @@
-noremap <leader>nf :e %
-noremap <leader>nd :!mkdir -p %
-nmap <leader>D .rm -rf
-xmap <leader>D .rm -rf
+noremap <buffer> % :e %
+noremap <buffer> <leader>d :!mkdir -p %
+noremap <buffer> <leader>D .rm -rf
+xmap <buffer> <leader>D .rm -rf
