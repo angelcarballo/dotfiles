@@ -63,6 +63,7 @@ require('packer').startup(function(use)
   -- Operators and commands {{{
   use 'AndrewRadev/splitjoin.vim';       -- Split/join statements (gS, gJ)
   use 'tpope/vim-surround';              -- Alter surroundings (), [], '', {}
+  use 'tpope/vim-abolish';               -- Work with word variants (change casing, smart substitute, etc.)
   use 'tommcdo/vim-exchange';            -- Text exchange operator (cx..)
   use 'vim-scripts/ReplaceWithRegister'; -- Replace without yanking operator (gr..)
   use 'numToStr/Comment.nvim'            -- "gc" to comment visual regions/lines
