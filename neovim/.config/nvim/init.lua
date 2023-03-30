@@ -903,6 +903,11 @@ acg.augroup('lsp_auto_formatting', {
   },
 })
 
+-- Automatically create directories when writting files
+vim.cmd [[
+  au BufWritePre,FileWritePre * silent! call mkdir(expand('<afile>:p:h'), 'p')
+]]
+
 -- }}}
 -- Footer {{{
 
