@@ -164,8 +164,14 @@ vim.g.ruby_indent_block_style = 'do' -- Better syntax for nested blocks
 --  }}}
 --   fzf-lua {{{
 require("fzf-lua").setup {
-  -- disable all previews by default
-  winopts = { preview = { hidden = 'hidden' } }
+  winopts = {
+    height = 0.3,
+    width = 1,
+    row = 1,
+    col = 0,
+    -- disable all previews by default
+    preview = { hidden = 'hidden' }
+  }
 }
 --  }}}
 --   projectionist {{{
