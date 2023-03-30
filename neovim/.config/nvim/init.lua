@@ -612,7 +612,7 @@ map { 'n', '<leader>wv', ':vsp<cr>' }
 
 -- Copilot
 vim.cmd [[
-  inoremap <silent><script><expr> <C-B> copilot#Accept("")
+  inoremap <silent><script><expr> <C-j> copilot#Accept("")
   let g:copilot_no_tab_map = v:true
 ]]
 
