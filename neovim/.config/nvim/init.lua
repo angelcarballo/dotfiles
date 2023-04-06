@@ -290,7 +290,7 @@ require "lsp_signature".setup({
 })
 -- }}}
 -- {{{ vim-mix-format
-vim.g.mix_format_on_save = 1
+vim.g.mix_format_on_save = 0
 vim.g.mix_format_silent_errors = 1 -- do not open a window with stacktrace if the formatter errors
 -- }}}
 -- }}}
@@ -563,7 +563,7 @@ map { 'n', '<leader>q', ':q<cr>' }
 map { 'n', '<leader>Q', ':qall!<cr>' }
 
 -- m - Mix
-map { 'n', '<leader>mf', ':VimuxRunCommand("mix format")<cr>' }
+map { 'n', '<leader>mf', ':MixFormat<cr>' }
 
 -- n - notes
 map { 'n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()\')<cr>' }
