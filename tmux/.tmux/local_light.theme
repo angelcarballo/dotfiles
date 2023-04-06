@@ -1,6 +1,6 @@
 theme_bg="#DAD3CF"
 theme_fg="colour7"
-theme_accent="colour3"
+theme_accent="colour15"
 
 # Status bar
 set -g status "on"
