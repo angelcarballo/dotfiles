@@ -469,7 +469,7 @@ map { 'n', 'k', 'gk' }
 
 vim.g.mapleader = ' '                                 -- Use <sapce> as leader key
 map { 'n', '<leader><space>', ':FzfLua buffers<cr>' } -- Quick buffer switch
-map { 'n', '<leader><tab>', ':find ' }                -- Quick file search
+map { 'n', '<leader>;', ':FzfLua commands<cr>' }      -- Run vim commannds
 
 -- /,? - Search in project
 -- Use -F by default to disable regexp and search for a literal string
@@ -571,6 +571,9 @@ map { 'n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()
 
 --" o - open
 map { 'n', '<leader>of', ":! open '%'<cr>" }
+
+--" p - paste
+map { 'n', '<leader>p', ':FzfLua registers<cr>' }
 
 --" r - Remove, redraw
 map { 'n', '<leader>rd', ':redraw!<cr>' }
