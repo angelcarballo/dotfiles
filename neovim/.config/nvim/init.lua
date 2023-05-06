@@ -19,22 +19,16 @@ require('packer').startup(function(use)
   use 'tpope/vim-repeat';      -- Extended repeat support
   use 'justinmk/vim-dirvish';  -- File manager
   use {
-    'neovim/nvim-lspconfig',
-    requires = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim'
-    },
-  }
-  use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
-  }
+  };
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
-  }
+  };
+  use {'neoclide/coc.nvim', branch = 'release'};
   -- }}}
   -- Version control (git) {{{
   use 'tpope/vim-fugitive';      -- Git integration
@@ -76,11 +70,6 @@ require('packer').startup(function(use)
   use 'alvan/vim-closetag'; -- Auto close html/xml tags
   -- Fuzzy Finder
   use { 'ibhagwan/fzf-lua' }
-  -- Autocompletion
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-  }
   use 'github/copilot.vim'
   -- }}}
   -- Runners and navigation {{{
@@ -92,7 +81,6 @@ require('packer').startup(function(use)
   use 'kwkarlwang/bufjump.nvim'; -- Navigate through files in the jumplist
   -- }}}
   -- Look & Feel {{{
-  use 'ray-x/lsp_signature.nvim';                                 -- Show hint about function arguments as you type
   use 'romainl/vim-cool';                                         -- Clear search highlight automatically
   use { "mcchrish/zenbones.nvim", requires = "rktjmp/lush.nvim" } -- Contrast based themes
   -- }}}
@@ -284,12 +272,6 @@ require('nvim-treesitter.configs').setup {
 -- {{{ comment.nvim
 require('comment').setup()
 -- }}}
--- {{{ lsp_signature
-require "lsp_signature".setup({
-  floating_window = false, -- Don't show function documentation, that can be triggered manually with K when needed
-  hint_prefix = "» "      -- default is a panda emoji...
-})
--- }}}
 -- {{{ vim-mix-format
 vim.g.mix_format_on_save = 0
 vim.g.mix_format_silent_errors = 1 -- do not open a window with stacktrace if the formatter errors
@@ -324,8 +306,7 @@ vim.opt.expandtab = true                               -- Indent with spaces by 
 vim.opt.regexpengine = 1                               -- Use old regexp engine, as new one has low performance with big ruby files
 vim.opt.spelllang = 'en_gb'                            -- Enable English spell check
 vim.opt.spellsuggest = { 'best', '20' }                -- Don't show too many suggestions for spell check
-vim.opt.spellcapcheck =
-''                                                     -- Don't check for end of sentence and capitalization, it doesn't work well with abbreviations
+vim.opt.spellcapcheck = ''                             -- Don't check for end of sentence and capitalization, it doesn't work well with abbreviations
 vim.opt.spellfile = vim.fn.expand('~/Drive/vim/spell/en.utf-8.add')
 vim.opt.dictionary:append('/usr/share/dict/words')     -- Auto complete words from system dictionary
 vim.opt.tags:prepend('./.git/tags')                    -- Read tags from git directory
@@ -342,8 +323,8 @@ vim.opt.previewheight = 20                             -- Make preview bigger
 vim.opt.grepprg = 'rg --vimgrep --hidden --smart-case' -- Use ripgrep, much faster than regular grep
 vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'            -- Use ripgrep's format
 vim.g.vimsyn_embed = 1                                 -- Highlight lua and other languages inside vim files
-vim.opt.listchars = { tab = "▸ ", trail = "·" }     -- Symbols for invisible characters
-vim.cmd [[ let &showbreak='↳ ' ]]                    -- Indicator for wrapped lines
+vim.opt.listchars = { tab = "▸ ", trail = "·" }        -- Symbols for invisible characters
+vim.cmd [[ let &showbreak='↳ ' ]]                      -- Indicator for wrapped lines
 vim.opt.diffopt = {
   'filler',                                            -- Show filler lines to keep diffs aligned
   'internal',                                          -- Use vim's internal diff library
@@ -358,6 +339,16 @@ vim.opt.complete = {
   '.', -- Complete with words from current buffer
   'b', -- Complete with words from other loaded buffers
 }
+-- Coc related settings
+-- Some Coc servers have issues with backup files
+vim.opt.backup = false
+vim.opt.writebackup = false
+-- Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+-- delays and poor user experience
+vim.opt.updatetime = 300
+-- Always show the signcolumn, otherwise it would shift the text each time
+-- diagnostics appeared/became resolved
+vim.opt.signcolumn = "yes"
 -- }}}
 -- Custom text object {{{
 
@@ -448,17 +439,6 @@ vim.cmd "match ErrorMsg '\\s\\+$'"                         -- Highlight trailing
 -- Mappings {{{
 --   Basic mappings {{{
 --
-vim.cmd [[
-  function! Tab_Or_Complete()
-    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-      return "\<c-n>"
-    else
-      return "\<tab>"
-    endif
-  endfunction
-]]
-
-map { 'i', '<tab>', '<c-r>=Tab_Or_Complete()<cr>' } -- Indent or trigger default word completion
 map { 'i', 'kj', '<esc>' }                          -- Easily exit insert mode
 map { 'n', 'Q', '<nop>' }                           -- Don't go inTo Ex mode
 map { 'n', '<tab>', '<c-^>' }                       -- Quick toggle between last two buffers
@@ -528,8 +508,6 @@ map { 'n', '<leader>fr', ':FzfLua oldfiles<cr>' }
 map { 'n', '<leader>fh', ':FzfLua help_tags<cr>' }
 map { 'n', '<leader>fm', ':FzfLua marks<cr>' }
 map { 'n', '<leader>ft', ':FzfLua live_grep_native<cr>' }
-map { 'n', '<leader>fl', ':FzfLua lsp_document_symbols<cr>' }
-map { 'n', '<leader>fL', ':FzfLua lsp_live_workspace_symbols<cr>' }
 
 -- g - Git/Generate
 map { 'n', '<leader>gg', ':Git<space>' }
@@ -703,8 +681,6 @@ map { 'n', 'cos', ':setlocal spell! spell?<cr>' }
 map { 'n', 'cot', ':call ToggleVimuxTarget()<cr>' }
 map { 'n', 'cow', ':setlocal wrap! wrap?<cr>' }
 
-map { 'n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<cr>' }
-map { 'n', ']e', '<cmd>lua vim.diagnostic.goto_next()<cr>' }
 map { 'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>' }
 
 -- Previous/next file (based on jumplist)
@@ -730,132 +706,76 @@ map { 'x', 'gt', ':<c-u>call SendTextToTmux(visualmode(), 1)<cr>' }
 
 --   }}}
 -- }}}
--- LSP {{{
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(_, bufnr)
-  -- Skip buffers with special URI, e.g. fugitive://...
-  if vim.api.nvim_buf_get_name(bufnr):match "^%a+://" then
-    return
-  end
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  map { 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>' }
-  map { 'n', 'gR', '<cmd>lua vim.lsp.buf.references()<cr>' }
+-- CoC {{{
+--
+local keyset = vim.keymap.set
+-- Autocomplete
+function _G.check_back_space()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
 
--- Display borders
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = opts.border or "single"
-  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+-- Use Tab for trigger completion with characters ahead and navigate
+-- NOTE: There's always a completion item selected by default, you may want to enable
+-- no select by setting `"suggest.noselect": true` in your configuration file
+-- NOTE: Use command ':verbose imap <tab>' to make sure Tab is not mapped by
+-- other plugins before putting this into your config
+local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
+keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+
+-- Make <CR> to accept selected completion item or notify coc.nvim to format
+-- <C-g>u breaks current undo, please make your own choice
+keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+
+-- Use <c-j> to trigger snippets
+keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
+-- Use <c-space> to trigger completion
+keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
+
+-- Use `[e` and `]e` to navigate diagnostics
+-- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+keyset("n", "[e", "<Plug>(coc-diagnostic-prev)", {silent = true})
+keyset("n", "]e", "<Plug>(coc-diagnostic-next)", {silent = true})
+
+-- GoTo code navigation
+keyset("n", "<C-]>", "<Plug>(coc-definition)", {silent = true})
+
+-- Find symbol of current document
+keyset("n", "<leader>fl", ":<C-u>CocList outline<cr>", {silent = true, nowait = true})
+
+-- Use K to show documentation in preview window
+function _G.show_docs()
+    local cw = vim.fn.expand('<cword>')
+    if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
+        vim.api.nvim_command('h ' .. cw)
+    elseif vim.api.nvim_eval('coc#rpc#ready()') then
+        vim.fn.CocActionAsync('doHover')
+    else
+        vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
+    end
 end
+keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 
--- Enable the following language servers. They will automatically be installed.
-local servers = {
-  elixirls = {
-    filetypes = { 'elixir', 'eelixir' },
-    -- root_dir = require('lspconfig/util').root_pattern(".git");
-    settings = {
-      elixirLS = {
-        dialyzerEnabled = false,
-        -- fetchDeps = false
-      }
-    },
-  },
-  -- efm-langserver runs credo
-  -- see: efm-langserver/.config/efm-langserver/config.yaml
-  efm = {
-    filetypes = { 'elixir', 'eelixir' },
-  },
-  -- disable due to large mem consumtption
-  lua_ls = {
-    settings = {
-      Lua = {
-        runtime = {
-          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-          version = 'LuaJIT',
-        },
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = { 'vim' },
-        },
-        workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
-          -- Don't bother with external library support
-          -- see: https://github.com/sumneko/lua-language-server/discussions/1688
-          checkThirdParty = false,
-        },
-        -- Do not send telemetry data containing a randomized but unique identifier
-        telemetry = {
-          enable = false,
-        },
-      },
-    }
-  },
-  awk_ls = {},
-  vimls = {},
-}
+vim.api.nvim_create_augroup("CocGroup", {})
 
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+-- Setup formatexpr specified filetype(s)
+vim.api.nvim_create_autocmd("FileType", {
+    group = "CocGroup",
+    pattern = "typescript,json,elixir,eelixir",
+    command = "setl formatexpr=CocAction('formatSelected')",
+    desc = "Setup formatexpr specified filetype(s)."
+})
 
--- Setup mason so it can manage external tooling
-require('mason').setup()
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = "CocGroup",
+  pattern = "elixir,eelixir",
+  command = "call CocAction('format')",
+  desc = "Auto format on save"
+})
 
--- Ensure the servers above are installed
-require('mason-lspconfig').setup {
-  ensure_installed = vim.tbl_keys(servers),
-}
-
-require('mason-lspconfig').setup_handlers {
-  function(server_name)
-    servers[server_name].on_attach = on_attach
-    require('lspconfig')[server_name].setup(servers[server_name])
-  end,
-}
--- }}}
--- {{{ CMP
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
-
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<Tab>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<C-n>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<C-p>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end, { 'i', 's' })
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  },
-}
+vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
+vim.cmd [[ autocmd BufWritePre *.ex,*.exs,*.heex call CocAction('format') ]]
 -- }}}
 -- Autocommands {{{
 acg.augroup("forced_file_types", {
@@ -905,14 +825,6 @@ acg.augroup('detect_theme_changes', {
   },
 })
 
-acg.augroup('lsp_auto_formatting', {
-  { -- Auto format files that support it via LSP
-    'BufWritePre',
-    '*.lua,*.awk',
-    'lua vim.lsp.buf.formatting_sync()'
-  },
-})
-
 -- Automatically create directories when writting files
 vim.cmd [[
   au BufWritePre,FileWritePre * silent! call mkdir(expand('<afile>:p:h'), 'p')
@@ -935,8 +847,6 @@ Launch Neovim with `nvim --startuptime nvim.log` for profiling info.
 To see all leader mappings, including those from plugins:
   nvim -c 'map <Leader>'
   nvim -c 'map <LocalLeader>'
-
-LSP logs are available in ~/.local/state/nvim/lsp.log
 
 --]]
 -- }}}
