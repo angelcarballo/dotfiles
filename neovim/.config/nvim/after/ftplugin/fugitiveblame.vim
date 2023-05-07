@@ -1,2 +1,4 @@
-nnoremap <buffer> gb :GBrowse <c-r><c-w><cr>
-nnoremap <buffer> gh :GBrowse <c-r><c-w><cr>
+nnoremap <buffer> gb :GBrowse <cword><cr>
+nnoremap <buffer> gh :GBrowse <cword><cr>
+nnoremap <buffer> <leader>gb :GBrowse <cword><cr>
+nnoremap <buffer> <leader>gh :GBrowse <cword><cr>
