@@ -1,7 +1,7 @@
 -- vim: foldmethod=marker foldlevel=0 foldenable
 
 local acg = require('acg') -- Utility functions
-local map = acg.map        -- Alias since it's used a lot
+local map = vim.keymap.set
 
 -- {{{ Packer setup
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -353,19 +353,19 @@ vim.opt.signcolumn = "yes"
 -- Custom text object {{{
 
 -- entire buffer
-map { 'o', 'ae', ':<c-u>normal! ggVG<cr>' }
+map('o', 'ae', ':<c-u>normal! ggVG<cr>')
 
 -- next parenthesis, brackets, quotes, etc. in current line
-map { 'o', 'inb', ':<c-u>normal! f(vi(<cr>' }
-map { 'o', 'in(', ':<c-u>normal! f(vi(<cr>' }
-map { 'o', 'in)', ':<c-u>normal! f(vi(<cr>' }
-map { 'o', 'inB', ':<c-u>normal! f(vi(<cr>' }
-map { 'o', 'in[', ':<c-u>normal! f[vi[<cr>' }
-map { 'o', 'in]', ':<c-u>normal! f[vi[<cr>' }
-map { 'o', 'in{', ':<c-u>normal! f{vi{<cr>' }
-map { 'o', 'in}', ':<c-u>normal! f{vi{<cr>' }
-map { 'o', "in'", ":<c-u>normal! f'vi'<cr>" }
-map { 'o', 'in"', ':<c-u>normal! f"vi"<cr>' }
+map('o', 'inb', ':<c-u>normal! f(vi(<cr>')
+map('o', 'in(', ':<c-u>normal! f(vi(<cr>')
+map('o', 'in)', ':<c-u>normal! f(vi(<cr>')
+map('o', 'inB', ':<c-u>normal! f(vi(<cr>')
+map('o', 'in[', ':<c-u>normal! f[vi[<cr>')
+map('o', 'in]', ':<c-u>normal! f[vi[<cr>')
+map('o', 'in{', ':<c-u>normal! f{vi{<cr>')
+map('o', 'in}', ':<c-u>normal! f{vi{<cr>')
+map('o', "in'", ":<c-u>normal! f'vi'<cr>")
+map('o', 'in"', ':<c-u>normal! f"vi"<cr>')
 
 -- }}}
 -- Path and ignored patterns {{{
@@ -439,155 +439,155 @@ vim.cmd "match ErrorMsg '\\s\\+$'"                         -- Highlight trailing
 -- Mappings {{{
 --   Basic mappings {{{
 --
-map { 'i', 'kj', '<esc>' }                          -- Easily exit insert mode
-map { 'n', 'Q', '<nop>' }                           -- Don't go inTo Ex mode
-map { 'n', '<tab>', '<c-^>' }                       -- Quick toggle between last two buffers
-map { 'n', 'j', 'gj' }                              -- Move around using visual lines, useful when wrap is enabled
-map { 'n', 'k', 'gk' }
+map('i', 'kj', '<esc>')                          -- Easily exit insert mode
+map('n', 'Q', '<nop>')                           -- Don't go inTo Ex mode
+map('n', '<tab>', '<c-^>')                       -- Quick toggle between last two buffers
+map('n', 'j', 'gj')                              -- Move around using visual lines, useful when wrap is enabled
+map('n', 'k', 'gk')
 -- }}}
 --   Leader mappings {{{
 
 vim.g.mapleader = ' '                                 -- Use <sapce> as leader key
-map { 'n', '<leader><space>', ':FzfLua buffers<cr>' } -- Quick buffer switch
-map { 'n', '<leader>;', ':FzfLua commands<cr>' }      -- Run vim commannds
+map('n', '<leader><space>', ':FzfLua buffers<cr>') -- Quick buffer switch
+map('n', '<leader>;', ':FzfLua commands<cr>')      -- Run vim commannds
 
 -- /,? - Search in project
 -- Use -F by default to disable regexp and search for a literal string
-map { 'n', '<leader>/', ':silent grep -F ""<left>' }
-map { 'n', '<leader>?', ':silent grep -F -g !test ""<left>' }
+map('n', '<leader>/', ':silent grep -F ""<left>')
+map('n', '<leader>?', ':silent grep -F -g !test ""<left>')
 
 --  * - Search in file or project
-map { 'n', '<leader>8', ':silent grep "<cword>"<cr>' }
-map { 'x', '<leader>8', '"zy:silent grep "<c-r>z"<cr>' }
-map { 'n', '<leader>*', ':silent grep "<cWORD>"<cr>' }
+map('n', '<leader>8', ':silent grep "<cword>"<cr>')
+map('x', '<leader>8', '"zy:silent grep "<c-r>z"<cr>')
+map('n', '<leader>*', ':silent grep "<cWORD>"<cr>')
 
 -- args
-map { 'n', '<leader>aa', ':argadd<cr>' }
+map('n', '<leader>aa', ':argadd<cr>')
 
 -- b - Buffers
-map { 'n', '<leader>aa', ':argadd<cr>' }
-map { 'n', '<leader>bo', ':Bdelete hidden<cr>' }
-map { 'n', '<leader>bb', ':FzfLua buffers<cr>' }
+map('n', '<leader>aa', ':argadd<cr>')
+map('n', '<leader>bo', ':Bdelete hidden<cr>')
+map('n', '<leader>bb', ':FzfLua buffers<cr>')
 
 -- c - Copy/clear
-map { 'n', '<leader>cb', ':let @+=fugitive#head()<cr>:echo "<c-r>+"<cr>' }                           -- Copy git branch
-map { 'n', '<leader>ca', 'mzgg"+yG\'z' }                                                             -- Copy all/entire buffer
-map { 'n', '<leader>cfn', ':let @+=expand("%:t")<cr>:echo "<c-r>+"<cr>' }                            -- Copy file name  (foo.txt)
-map { 'n', '<leader>cfp', ':let @+=expand("%")<cr>:echo "<c-r>+"<cr>' }                              -- Copy relative path  (src/foo.txt)
-map { 'n', '<leader>cfP', ':let @+=expand("%:p")<cr>:echo "<c-r>+"<cr>' }                            -- Copy absolute path  (/something/src/foo.txt)
-map { 'n', '<leader>cfl', ':let @+=join([expand(\'%\'),  line(".")], \':\')<cr>:echo "<c-r>+"<cr>' } -- Copy relative path with line number
-map { 'n', '<leader>cff', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>' }                          -- Copy file directory/folder path (src/)
-map { 'n', '<leader>cfd', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>' }                          -- Copy file directory/folder path (src/)
+map('n', '<leader>cb', ':let @+=fugitive#head)<cr>:echo "<c-r>+"<cr>' )                           -- Copy git branch
+map('n', '<leader>ca', 'mzgg"+yG\'z')                                                             -- Copy all/entire buffer
+map('n', '<leader>cfn', ':let @+=expand("%:t)<cr>:echo "<c-r>+"<cr>' )                            -- Copy file name  (foo.txt)
+map('n', '<leader>cfp', ':let @+=expand("%)<cr>:echo "<c-r>+"<cr>' )                              -- Copy relative path  (src/foo.txt)
+map('n', '<leader>cfP', ':let @+=expand("%:p)<cr>:echo "<c-r>+"<cr>' )                            -- Copy absolute path  (/something/src/foo.txt)
+map('n', '<leader>cfl',   ':let @+=join([expand(\'%\'),  line(".")], \':\')<cr>:echo "<c-r>+"<cr>' ) -- Copy relative path with line number
+map('n', '<leader>cff', ':let @+=expand("%:p:h)<cr>:echo "<c-r>+"<cr>' )                          -- Copy file directory/folder path (src/)
+map('n', '<leader>cfd', ':let @+=expand("%:p:h)<cr>:echo "<c-r>+"<cr>' )                          -- Copy file directory/folder path (src/)
 
-map { 'n', '<leader>cs', ':nohl<cr>' }
+map('n', '<leader>cs', ':nohl<cr>')
 
 -- d - Duplicate, diff, db
-map { 'n', '<leader>dp', 'yap}p' }
-map { 'x', '<leader>dl', 'y`>p' }
+map('n', '<leader>dp', 'yap}p')
+map('x', '<leader>dl', 'y`>p')
 
-map { 'n', '<leader>dcp', 'yapgcip}p', noremap = false }
-map { 'n', '<leader>dcl', 'yygccp', noremap = false }
-map { 'x', '<leader>dcl', 'ygvgc`>p', noremap = false }
+map('n',   '<leader>dcp', 'yapgcip}p', {remap = true})
+map('n', '<leader>dcl', 'yygccp', {remap = true})
+map('x', '<leader>dcl', 'ygvgc`>p', {remap = true})
 
-map { 'n', '<leader>d<', ':diffget //2<cr>' }
-map { 'n', '<leader>d>', ':diffget //3<cr>' }
+map('n', '<leader>d<', ':diffget //2<cr>')
+map('n', '<leader>d>', ':diffget //3<cr>')
 
 -- e - Explore/Extract
-map { 'n', '<leader>ei', ':Explore<cr>' }
-map { 'n', '<leader>es', ':Sex<cr>' }
-map { 'n', '<leader>ev', ':Vex<cr>' }
+map('n', '<leader>ei', ':Explore<cr>')
+map('n', '<leader>es', ':Sex<cr>')
+map('n', '<leader>ev', ':Vex<cr>')
 
 -- f - File/Find
-map { 'n', '<leader>fs', ':up<cr>' }
-map { 'n', '<leader>fb', ':FzfLua git_branches<cr>' }
-map { 'n', '<leader>fF', ':FzfLua files<cr>' }
-map { 'n', '<leader>ff', ':FzfLua git_files<cr>' }
-map { 'n', '<leader>fg', ':FzfLua git_status<cr>' }
-map { 'n', '<leader>fc', ':FzfLua git_status<cr>' }
-map { 'n', '<leader>fr', ':FzfLua oldfiles<cr>' }
-map { 'n', '<leader>fh', ':FzfLua help_tags<cr>' }
-map { 'n', '<leader>fm', ':FzfLua marks<cr>' }
-map { 'n', '<leader>ft', ':FzfLua live_grep_native<cr>' }
+map('n', '<leader>fs', ':up<cr>')
+map('n', '<leader>fb', ':FzfLua git_branches<cr>')
+map('n', '<leader>fF', ':FzfLua files<cr>')
+map('n', '<leader>ff', ':FzfLua git_files<cr>')
+map('n', '<leader>fg', ':FzfLua git_status<cr>')
+map('n', '<leader>fc', ':FzfLua git_status<cr>')
+map('n', '<leader>fr', ':FzfLua oldfiles<cr>')
+map('n', '<leader>fh', ':FzfLua help_tags<cr>')
+map('n', '<leader>fm', ':FzfLua marks<cr>')
+map('n', '<leader>ft', ':FzfLua live_grep_native<cr>')
 
 -- g - Git/Generate
-map { 'n', '<leader>gg', ':Git<space>' }
-map { 'n', '<leader>gD', ':vertical leftabove Gdiffsplit origin/main<cr>' }
-map { 'n', '<leader>gb', ':Git blame<cr>' }
-map { 'n', '<leader>gcb', ':Git checkout -b ' }
-map { 'n', '<leader>gco', ':Git checkout ' }
-map { 'n', '<leader>gd', ':vertical leftabove Gdiffsplit<cr>' }
-map { 'n', '<leader>g3', ':vertical leftabove Gdiffsplit!<cr>' }
-map { 'n', '<leader>gf', ':GitStatusFiles<cr><c-w>k:redraw!<cr>' }
-map { 'n', '<leader>gh', ':GBrowse<cr>' }
-map { 'x', '<leader>gh', ':GBrowse<cr>' }
-map { 'n', '<leader>gH', ':GBrowse!<cr>' }
-map { 'x', '<leader>gH', ':GBrowse!<cr>' }
-map { 'n', '<leader>gl', ':vert Git log -n 50<cr>' }
-map { 'n', '<leader>gL', ':0Gclog -n 50<cr>' }
-map { 'x', '<leader>gl', ':Gclog -n 50<cr>' }
-map { 'n', '<leader>grc', ':Git rebase --continue<cr>' }
-map { 'n', '<leader>gpr', ':silent! !github pr view --web<cr>' }
-map { 'n', '<leader>gr', ':Gread<cr>' }
-map { 'n', '<leader>gc', ':Git commit<cr>' }
-map { 'n', '<leader>ga', ':Git commit --amend<cr>' }
-map { 'n', '<leader>gs', ':Git|wincmd T<cr>' }
-map { 'n', '<leader>gw', ':Gwrite<cr>' }
-map { 'n', '<leader>g/', ':Git log -S\'\'<left>' }
+map('n', '<leader>gg', ':Git<space>')
+map('n', '<leader>gD', ':vertical leftabove Gdiffsplit origin/main<cr>')
+map('n', '<leader>gb', ':Git blame<cr>')
+map('n', '<leader>gcb', ':Git checkout -b ')
+map('n', '<leader>gco', ':Git checkout ')
+map('n', '<leader>gd', ':vertical leftabove Gdiffsplit<cr>')
+map('n', '<leader>g3', ':vertical leftabove Gdiffsplit!<cr>')
+map('n', '<leader>gf', ':GitStatusFiles<cr><c-w>k:redraw!<cr>')
+map('n', '<leader>gh', ':GBrowse<cr>')
+map('x', '<leader>gh', ':GBrowse<cr>')
+map('n', '<leader>gH', ':GBrowse!<cr>')
+map('x', '<leader>gH', ':GBrowse!<cr>')
+map('n', '<leader>gl', ':vert Git log -n 50<cr>')
+map('n', '<leader>gL', ':0Gclog -n 50<cr>')
+map('x', '<leader>gl', ':Gclog -n 50<cr>')
+map('n', '<leader>grc', ':Git rebase --continue<cr>')
+map('n', '<leader>gpr', ':silent! !github pr view --web<cr>')
+map('n', '<leader>gr', ':Gread<cr>')
+map('n', '<leader>gc', ':Git commit<cr>')
+map('n', '<leader>ga', ':Git commit --amend<cr>')
+map('n', '<leader>gs', ':Git|wincmd T<cr>')
+map('n', '<leader>gw', ':Gwrite<cr>')
+map('n', '<leader>g/', ':Git log -S\'\'<left>')
 
 -- k - Documentation
-map { 'n', '<leader>k', ':Dash!<cr>' }
+map('n', '<leader>k', ':Dash!<cr>')
 
 -- q - Quit
-map { 'n', '<leader>q', ':q<cr>' }
-map { 'n', '<leader>Q', ':qall!<cr>' }
+map('n', '<leader>q', ':q<cr>')
+map('n', '<leader>Q', ':qall!<cr>')
 
 -- m - Mix
-map { 'n', '<leader>mf', ':MixFormat<cr>' }
+map('n', '<leader>mf', ':MixFormat<cr>')
 
 -- n - notes
-map { 'n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()\')<cr>' }
+map('n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg).notes_path()\')<cr>' )
 
 --" o - open
-map { 'n', '<leader>of', ":! open '%'<cr>" }
+map('n', '<leader>of', ":! open '%'<cr>")
 
 --" p - paste
-map { 'n', '<leader>p', ':FzfLua registers<cr>' }
+map('n', '<leader>p', ':FzfLua registers<cr>')
 
 --" r - Remove, redraw
-map { 'n', '<leader>rd', ':redraw!<cr>' }
-map { 'n', '<leader>rw', 'mz:%s/\\s\\+$//g<cr>:w<cr>\'z' }
+map('n', '<leader>rd', ':redraw!<cr>')
+map('n', '<leader>rw', 'mz:%s/\\s\\+$//g<cr>:w<cr>\'z')
 
 --" s - Specs
-map { 'n', '<leader>sa', ':TestSuite<cr>' }
-map { 'n', '<leader>ss', ':TestVisit<cr>' }
-map { 'n', '<leader>sf', ':TestFile<cr>' }
-map { 'n', '<leader>sc', ':TestNearest<cr>' }
-map { 'n', '<leader>sl', ':TestLast<cr>' }
+map('n', '<leader>sa', ':TestSuite<cr>')
+map('n', '<leader>ss', ':TestVisit<cr>')
+map('n', '<leader>sf', ':TestFile<cr>')
+map('n', '<leader>sc', ':TestNearest<cr>')
+map('n', '<leader>sl', ':TestLast<cr>')
 
 -- S - Show
-map { 'n', '<leader>Sf', ':echo @%<cr>' }
-map { 'n', '<leader>Sp', ':echo expand(\'%:p\')<cr>' }
+map('n', '<leader>Sf', ':echo @%<cr>')
+map('n', '<leader>Sp',   ':echo expand(\'%:p\')<cr>' )
 
 -- T - Tabs/tmux
-map { 'n', '<leader>tn', ':tabnew<cr>' }
-map { 'n', '<leader>tq', ':VimuxCloseRunner<cr>' }
-map { 'n', '<leader>to', ':VimuxRunCommand("")<cr>' }
-map { 'n', '<leader>tl', ':VimuxRunLastCommand<cr>' }
-map { 'n', '<leader>tt', ':VimuxRunCommand("")<left><left>' }
-map { 'n', '<leader>t:', 'VimuxRunCommand("")<left><left>' }
+map('n', '<leader>tn', ':tabnew<cr>')
+map('n', '<leader>tq', ':VimuxCloseRunner<cr>')
+map('n', '<leader>to', ':VimuxRunCommand(")<cr>' )
+map('n', '<leader>tl', ':VimuxRunLastCommand<cr>')
+map('n', '<leader>tt', ':VimuxRunCommand(")<left><left>' )
+map('n', '<leader>t:', 'VimuxRunCommand(")<left><left>' )
 -- interrupt twice to auto-confirm
-map { 'n', '<leader>tc', ':VimuxInterruptRunner<cr>:VimuxInterruptRunner<cr>' }
+map('n', '<leader>tc', ':VimuxInterruptRunner<cr>:VimuxInterruptRunner<cr>')
 
 -- V - Vimrc
-map { 'n', '<leader>Ve', ':edit $MYVIMRC<cr>' }
-map { 'n', '<leader>Vs', ':source $MYVIMRC<cr>' }
+map('n', '<leader>Ve', ':edit $MYVIMRC<cr>')
+map('n', '<leader>Vs', ':source $MYVIMRC<cr>')
 
 -- w - Windows/Tabs
-map { 'n', '<leader>wo', ':only<cr>' }
-map { 'n', '<leader>we', '<c-w>=' }
-map { 'n', '<leader>ws', ':sp<cr>' }
-map { 'n', '<leader>wt', ':tabedit %<cr>' }
-map { 'n', '<leader>wv', ':vsp<cr>' }
+map('n', '<leader>wo', ':only<cr>')
+map('n', '<leader>we', '<c-w>=')
+map('n', '<leader>ws', ':sp<cr>')
+map('n', '<leader>wt', ':tabedit %<cr>')
+map('n', '<leader>wv', ':vsp<cr>')
 
 --   }}}
 --    Non-leader mappings {{{
@@ -599,116 +599,115 @@ vim.cmd [[
 ]]
 
 -- pane navigation
-map { 'n', '<c-h>', '<c-w>h' }
-map { 'n', '<c-j>', '<c-w>j' }
-map { 'n', '<c-k>', '<c-w>k' }
-map { 'n', '<c-l>', '<c-w>l' }
+map('n', '<c-h>', '<c-w>h')
+map('n', '<c-j>', '<c-w>j')
+map('n', '<c-k>', '<c-w>k')
+map('n', '<c-l>', '<c-w>l')
 
 -- Fix closest spelling error
-map { 'i', '<c-f>', '<c-g>u<esc>[s1z=`]a<c-g>u' }
+map('i', '<c-f>', '<c-g>u<esc>[s1z=`]a<c-g>u')
 
 -- format whole file and keep position (original map enter ex mode)
-map { 'n', 'gQ', 'mzgggqG`z' }
+map('n', 'gQ', 'mzgggqG`z')
 
 -- Search and replace current visual selection
-map { 'x', '<c-r>', '"zy:%s/<c-r>z//g<left><left>' }
+map('x', '<c-r>', '"zy:%s/<c-r>z//g<left><left>')
 
 -- Open URLs, a-la Netrw
-map { 'n', 'gx', ":execute 'silent! !open ' . shellescape(expand('<cfile>'), 1)<cr>" }
+map('n', 'gx', ":execute 'silent! !open ' . shellescape(expand('<cfile>), 1)<cr>" )
 
 -- Use cursors to resize windows
-map { 'n', '<left>', ':vertical resize -3<cr>' }
-map { 'n', '<right>', ':vertical resize +3<cr>' }
-map { 'n', '<down>', ':resize +3<cr>' }
-map { 'n', '<up>', ':resize -3<cr>' }
+map('n', '<left>', ':vertical resize -3<cr>')
+map('n', '<right>', ':vertical resize +3<cr>')
+map('n', '<down>', ':resize +3<cr>')
+map('n', '<up>', ':resize -3<cr>')
 
 -- Use cursors to move lines in visual mode
-map { 'x', '<up>', ':move \'<-2<cr>gv=gv' }
-map { 'x', '<down>', ':move \'>+<cr>gv=gv' }
+map('x', '<up>', ':move \'<-2<cr>gv=gv')
+map('x', '<down>', ':move \'>+<cr>gv=gv')
 
 -- and to increase/decrease indentation
-map { 'x', '<right>', '>gv' }
-map { 'x', '<left>', '<gv' }
+map('x', '<right>', '>gv')
+map('x', '<left>', '<gv')
 
 -- Easy beginning/end of line
-map { 'n', 'H', '^' }
-map { 'n', 'L', '$' }
-map { 'x', 'H', '^' }
-map { 'x', 'L', '$' }
+map('n', 'H', '^')
+map('n', 'L', '$')
+map('x', 'H', '^')
+map('x', 'L', '$')
 
 --   }}}
 --   Unimpaired style {{{
 
 -- previous/next file in current folder
-map { 'n', ']d', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(v:count1), ':.'))<cr><cr>" }
-map { 'n', '[d', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(-v:count1), ':.'))<cr><cr>" }
+map('n', ']d', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(v:count), ':.'))<cr><cr>" )
+map('n', '[d', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(-v:count), ':.'))<cr><cr>" )
 
-map { 'n', ']a', ':next<cr>' }
-map { 'n', '[a', ':previous<cr>' }
+map('n', ']a', ':next<cr>')
+map('n', '[a', ':previous<cr>')
 
-map { 'n', '[b', ':bprevious<cr>' }
-map { 'n', ']b', ':bnext<cr>' }
+map('n', '[b', ':bprevious<cr>')
+map('n', ']b', ':bnext<cr>')
 
-map { 'n', '[q', ':cprevious<cr>' }
-map { 'n', ']q', ':cnext<cr>' }
+map('n', '[q', ':cprevious<cr>')
+map('n', ']q', ':cnext<cr>')
 
-map { 'n', '[Q', ':colder<cr>' }
-map { 'n', ']Q', ':cnewer<cr>' }
+map('n', '[Q', ':colder<cr>')
+map('n', ']Q', ':cnewer<cr>')
 
-map { 'n', '[l', ':lprevious<cr>' }
-map { 'n', ']l', ':lnext<cr>' }
+map('n', '[l', ':lprevious<cr>')
+map('n', ']l', ':lnext<cr>')
 
-map { 'n', '[w', ':tabprevious<cr>' }
-map { 'n', ']w', ':tabnext<cr>' }
+map('n', '[w', ':tabprevious<cr>')
+map('n', ']w', ':tabnext<cr>')
 
-map { 'n', '[t', ':pop<cr>' }
-map { 'n', ']t', ':tag<cr>' }
+map('n', '[t', ':pop<cr>')
+map('n', ']t', ':tag<cr>')
 
 -- Add new line above/bellow current one
-map { 'n', '[<space>', ':call append(line(".") -1, "")<cr>' }
-map { 'n', ']<space>', ':call append(line("."), "")<cr>' }
+map('n', '[<space>', ':call append(line(".) -1, "")<cr>' )
+map('n', ']<space>', ':call append(line(".), "")<cr>' )
 
-map { 'n', 'coC', ':setlocal cursorcolumn! cursorcolumn?<cr>' }
-map { 'n', 'coc', ':setlocal cursorline! cursorline?<cr>' }
-map { 'n', 'cof', ':setlocal foldenable! foldenable?<cr>' }
-map { 'n', 'coh', ':setlocal hlsearch! hlsearch?<cr>' }
-map { 'n', 'col', ':call ToggleLocation()<cr>' }
-map { 'n', 'com', ':call ToggleExUnit()<cr>' }
-map { 'n', 'con', ':setlocal number! number?<cr>' }
-map { 'n', 'cop', ':setlocal paste! paste?<cr>' }
-map { 'n', 'coq', ':call ToggleQuickFix()<cr>' }
-map { 'n', 'cos', ':setlocal spell! spell?<cr>' }
-map { 'n', 'cot', ':call ToggleVimuxTarget()<cr>' }
-map { 'n', 'cow', ':setlocal wrap! wrap?<cr>' }
+map('n', 'coC', ':setlocal cursorcolumn! cursorcolumn?<cr>')
+map('n', 'coc', ':setlocal cursorline! cursorline?<cr>')
+map('n', 'cof', ':setlocal foldenable! foldenable?<cr>')
+map('n', 'coh', ':setlocal hlsearch! hlsearch?<cr>')
+map('n', 'col', ':call ToggleLocation)<cr>' )
+map('n', 'com', ':call ToggleExUnit)<cr>' )
+map('n', 'con', ':setlocal number! number?<cr>')
+map('n', 'cop', ':setlocal paste! paste?<cr>')
+map('n', 'coq', ':call ToggleQuickFix)<cr>' )
+map('n', 'cos', ':setlocal spell! spell?<cr>')
+map('n', 'cot', ':call ToggleVimuxTarget)<cr>' )
+map('n', 'cow', ':setlocal wrap! wrap?<cr>')
 
-map { 'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>' }
+map( 'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>')
 
 -- Previous/next file (based on jumplist)
-map { 'n', ']f', ":lua require('bufjump').forward()<cr>" }
-map { 'n', '[f', ":lua require('bufjump').backward()<cr>" }
+map('n', ']f', ":lua require('bufjump).forward()<cr>" )
+map('n', '[f', ":lua require('bufjump).backward()<cr>" )
 
 --   }}}
 --   Operators {{{
 
 -- web search operator
-map { 'n', 'gs', ':set opfunc=WebSearch<cr>g@' }
-map { 'x', 'gs', ':<c-u>call WebSearch(visualmode(), 1)<cr>' }
+map('n', 'gs', ':set opfunc=WebSearch<cr>g@')
+map('x', 'gs', ':<c-u>call WebSearch(visualmode), 1)<cr>')
 
 -- copy to system clipboard
-map { 'n', 'cP', 'V"+y' }
-map { 'n', 'cp', '"+y' }
-map { 'x', 'cp', '"+y' }
+map('n', 'cP', 'V"+y')
+map('n', 'cp', '"+y')
+map('x', 'cp', '"+y')
 
 -- send text to tmux operator
-map { 'n', 'gt', ':set opfunc=SendTextToTmux<cr>g@' }
-map { 'n', 'gtt', 'V:<c-u>call SendTextToTmux(visualmode(), 1)<cr>' }
-map { 'x', 'gt', ':<c-u>call SendTextToTmux(visualmode(), 1)<cr>' }
+map('n', 'gt', ':set opfunc=SendTextToTmux<cr>g@')
+map('n', 'gtt', 'V:<c-u>call SendTextToTmux(visualmode), 1)<cr>' )
+map('x', 'gt', ':<c-u>call SendTextToTmux(visualmode), 1)<cr>' )
 
 --   }}}
 -- }}}
 -- CoC {{{
 --
-local keyset = vim.keymap.set
 -- Autocomplete
 function _G.check_back_space()
     local col = vim.fn.col('.') - 1
@@ -721,28 +720,28 @@ end
 -- NOTE: Use command ':verbose imap <tab>' to make sure Tab is not mapped by
 -- other plugins before putting this into your config
 local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
-keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
-keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+map("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+map("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 
 -- Make <CR> to accept selected completion item or notify coc.nvim to format
 -- <C-g>u breaks current undo, please make your own choice
-keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+map("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
 -- Use <c-j> to trigger snippets
-keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
+map("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
 -- Use <c-space> to trigger completion
-keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
+map("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
 
 -- Use `[e` and `]e` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-keyset("n", "[e", "<Plug>(coc-diagnostic-prev)", {silent = true})
-keyset("n", "]e", "<Plug>(coc-diagnostic-next)", {silent = true})
+map("n", "[e", "<Plug>(coc-diagnostic-prev)", {silent = true})
+map("n", "]e", "<Plug>(coc-diagnostic-next)", {silent = true})
 
 -- GoTo code navigation
-keyset("n", "<C-]>", "<Plug>(coc-definition)", {silent = true})
+map("n", "<C-]>", "<Plug>(coc-definition)", {silent = true})
 
 -- Find symbol of current document
-keyset("n", "<leader>fl", ":<C-u>CocList outline<cr>", {silent = true, nowait = true})
+map("n", "<leader>fl", ":<C-u>CocList outline<cr>", {silent = true, nowait = true})
 
 -- Use K to show documentation in preview window
 function _G.show_docs()
@@ -755,7 +754,7 @@ function _G.show_docs()
         vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
     end
 end
-keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+map("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 
 vim.api.nvim_create_augroup("CocGroup", {})
 

@@ -11,18 +11,6 @@ function acg.augroup(name, autocmds)
   vim.cmd('augroup END')
 end
 
--- Helper to generate mappings
--- example: { 'i', '<leader>xx', ':Foo<cr>', noremap = false }
-function acg.map(key)
-  local opts = { noremap = true } -- default options
-
-  for i, v in pairs(key) do
-    if type(i) == 'string' then opts[i] = v end
-  end
-
-  vim.api.nvim_set_keymap(key[1], key[2], key[3], opts)
-end
-
 -- Helper to set colorscheme and background together
 function acg.set_theme(colorscheme, background)
   vim.opt.background = background
