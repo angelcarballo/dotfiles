@@ -25,8 +25,8 @@ export LC_CTYPE=$LANG
 
 # vim everywhere
 bindkey -v
-export VISUAL=nvim
-export EDITOR=nvim
+export VISUAL="nvim -c 'set wrap'"
+export EDITOR="nvim -c 'set wrap'"
 export KEYTIMEOUT=15  # reduce delay when changing modes
 
 # custom functions
