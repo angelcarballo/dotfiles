@@ -1,3 +1,4 @@
 {
-  "elixir.pathToElixirLS": "~/src/elixirls/release/language_server.sh"
+  "elixir.pathToElixirLS": "~/src/elixirls/release/language_server.sh",
+  "elixirLS.dialyzerEnabled": false
 }
