@@ -614,7 +614,7 @@ map('n', 'gQ', 'mzgggqG`z')
 map('x', '<c-r>', '"zy:%s/<c-r>z//g<left><left>')
 
 -- Open URLs, a-la Netrw
-map('n', 'gx', ":execute 'silent! !open ' . shellescape(expand('<cfile>), 1)<cr>" )
+map('n', 'gx', ":execute 'silent! !open ' . shellescape(expand('<cfile>'), 1)<cr>" )
 
 -- Use cursors to resize windows
 map('n', '<left>', ':vertical resize -3<cr>')
@@ -774,7 +774,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
-vim.cmd [[ autocmd BufWritePre *.ex,*.exs,*.heex call CocAction('format') ]]
+vim.cmd [[ autocmd BufWritePre *.ex,*.exs,*.heex silent call CocAction('format') ]]
 -- }}}
 -- Autocommands {{{
 acg.augroup("forced_file_types", {
