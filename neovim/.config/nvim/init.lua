@@ -755,26 +755,7 @@ function _G.show_docs()
     end
 end
 map("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
-
-vim.api.nvim_create_augroup("CocGroup", {})
-
--- Setup formatexpr specified filetype(s)
-vim.api.nvim_create_autocmd("FileType", {
-    group = "CocGroup",
-    pattern = "typescript,json,elixir,eelixir",
-    command = "setl formatexpr=CocAction('formatSelected')",
-    desc = "Setup formatexpr specified filetype(s)."
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-  group = "CocGroup",
-  pattern = "elixir,eelixir",
-  command = "call CocAction('format')",
-  desc = "Auto format on save"
-})
-
 vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
-vim.cmd [[ autocmd BufWritePre *.ex,*.exs,*.heex silent call CocAction('format') ]]
 -- }}}
 -- Autocommands {{{
 acg.augroup("forced_file_types", {

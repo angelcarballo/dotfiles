@@ -1,4 +1,8 @@
 {
   "elixir.pathToElixirLS": "~/src/elixirls/release/language_server.sh",
-  "elixirLS.dialyzerEnabled": false
+  "elixirLS.dialyzerEnabled": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "elixir",
+    "eelixir"
+   ],
 }
