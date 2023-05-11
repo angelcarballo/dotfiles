@@ -1,16 +1,7 @@
-# Make vi insert/command modes more visible in prompts
-set show-mode-in-prompt on
-set vi-cmd-mode-string "\1\e[2 q\2• "
-set vi-ins-mode-string "\1\e[6 q\2"
+# Search command history
+"\C-p": history-search-backward
+"\C-n": history-search-forward
 
-set editing-mode vi
-
-set keymap vi-insert
-
-"\C-n": history-search-backward
-"\C-p": history-search-forward
-
-$if mode=vi
-        "kj": vi-movement-mode
-        "\C-b": beginning-of-line
-$endif
+# Move words with Alt-Left/Right
+"\e[1;3C": forward-word
+"\e[1;3D": backward-word

@@ -43,36 +43,12 @@ add-zsh-hook precmd gitstatus_prompt_update
 
 # }}}
 
-# Vim mode indicator {{{
-vim_ins_mode="$%F{reset_color}"
-vim_cmd_mode="•%F{reset_color}"
-vim_mode=$vim_ins_mode
-
-function zle-keymap-select {
-  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-  zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-finish {
-  vim_mode=$vim_ins_mode
-}
-zle -N zle-line-finish
-
-# Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode indicator, while in fact you would be in INS mode
-# Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
-function TRAPINT() {
-  vim_mode=$vim_ins_mode
-  return $(( 128 + $1 ))
-}
-# }}}
-
 current_path() {
   echo '%F{4}%~%F{reset_color}'
 }
 
 prompt_symbol_with_last_command_status() {
-  echo "%-30(l::\n)%(?.%F{reset_color}.%F{red})${vim_mode}"
+  echo "%-30(l::\n)%(?.%F{reset_color}.%F{red})"
 }
 
 username() {
@@ -90,7 +66,7 @@ username_and_host_if_server() {
 }
 
 setopt prompt_subst
-PROMPT='$(username_and_host_if_server)$(current_path)${GITSTATUS_PROMPT:+ $GITSTATUS_PROMPT} $(prompt_symbol_with_last_command_status) '
+PROMPT='$(username_and_host_if_server)$(current_path)${GITSTATUS_PROMPT:+ $GITSTATUS_PROMPT} $(prompt_symbol_with_last_command_status)%F{reset_color} '
 
 zmodload -a colors
 zmodload -a autocomplete

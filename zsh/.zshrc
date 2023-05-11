@@ -23,29 +23,21 @@ export LANG=en_GB.UTF-8
 export LC_ALL=$LANG
 export LC_CTYPE=$LANG
 
-# vim everywhere
-bindkey -v
+# (n)vim as editor. Wrap by default to help when editing long shell commands
 export VISUAL="nvim -c 'set wrap'"
 export EDITOR="nvim -c 'set wrap'"
-export KEYTIMEOUT=15  # reduce delay when changing modes
+
+# but use emacs for default bindings as they match readline
+bindkey -e
 
 # custom functions
 source ~/.zsh/custom-functions.zsh
 
-# custom emacs-like bindings (useful on insert mode)
-bindkey '^b' beginning-of-line
-bindkey '^e' end-of-line
-bindkey '^w' backward-kill-word
-
-# vim-style history navigation
-bindkey '^n' up-history
-bindkey '^p' down-history
-
-# edit current command with VIM (or whatever $EDITOR is set to)
-# this maps vim's C-f to use the command-line window
+# Edit current command with VIM (or whatever $EDITOR is set to)
+# C-xC-e is the default readline shortcut, so this keeps it consistent
 autoload -z edit-command-line
 zle -N edit-command-line
-bindkey "^f" edit-command-line
+bindkey '^x^e' edit-command-line
 
 # altern between foreground/background with Ctrl-z (see custom-functions.zsh)
 bindkey '^z' fancy-ctrl-z
@@ -53,8 +45,10 @@ bindkey '^z' fancy-ctrl-z
 # ctrl-r starts searching history backward
 bindkey '^r' fzf-search-history
 
-# exit insert mode with kj, like in vim
-bindkey -M viins 'kj' vi-cmd-mode
+# Move words with Alt-left/right like on regular textareas
+# it's more ergonomic than emacs Alt-b Alt-f
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 
 # easier cd into frequent directories
 setopt auto_cd

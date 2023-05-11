@@ -82,6 +82,7 @@ require('packer').startup(function(use)
   -- }}}
   -- Look & Feel {{{
   use 'romainl/vim-cool';                                         -- Clear search highlight automatically
+  use 'tpope/vim-rsi';                                            -- Readline style shortcuts on insert and command line modes
   use { "mcchrish/zenbones.nvim", requires = "rktjmp/lush.nvim" } -- Contrast based themes
   -- }}}
 
@@ -116,8 +117,6 @@ vim.g.lion_squeeze_spaces = 1 -- Remove unnecessary spaces
 vim.g.closetag_filetypes = 'html,xhtml,erb,eelixir'
 --  }}}
 --   vimux {{{
-vim.g['VimuxResetSequence'] =
-'qC'                             -- For every command, send first: q -> exit scroll/copy mode, <esc> -> enter readline normal mode, C -> replace whole line
 vim.g['VimuxRunnerType'] = 'pane' -- Use a pane
 vim.g['VimuxOrientation'] = 'v'   -- On the bottom half of the window
 --  }}}
