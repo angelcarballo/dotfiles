@@ -108,3 +108,6 @@ matches:
           - "refactor"
           - "perf"
           - "test"
+
+  - trigger: ":md>"
+    replace: "<details>\n  <summary>Click me</summary>\n\n  Content\n</details>"
