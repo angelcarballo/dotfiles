@@ -44,11 +44,11 @@ add-zsh-hook precmd gitstatus_prompt_update
 # }}}
 
 current_path() {
-  echo '%F{4}%~%F{reset_color}'
+  echo '%F{7}%~%F{reset_color}'
 }
 
 prompt_symbol_with_last_command_status() {
-  echo "%-30(l::\n)%(?.%F{reset_color}.%F{red})"
+  echo "%-30(l::\n)%(?.%F{reset_color}.%F{red}) $"
 }
 
 username() {
@@ -66,7 +66,7 @@ username_and_host_if_server() {
 }
 
 setopt prompt_subst
-PROMPT='$(username_and_host_if_server)$(current_path)${GITSTATUS_PROMPT:+ $GITSTATUS_PROMPT} $(prompt_symbol_with_last_command_status)%F{reset_color} '
+PROMPT='$(username_and_host_if_server)$(current_path)${GITSTATUS_PROMPT:+ $GITSTATUS_PROMPT}$(prompt_symbol_with_last_command_status)%F{reset_color} '
 
 zmodload -a colors
 zmodload -a autocomplete
