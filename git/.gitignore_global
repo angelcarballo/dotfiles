@@ -55,6 +55,9 @@ quickfix.out
 # NPM stuff
 node_modules/
 
+# Sql language server config files
+.sqllsrc.json
+
 # This is only needed for ripgrep, when --hidden is specified
 .git
 

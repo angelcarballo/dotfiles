@@ -1,8 +1,14 @@
 {
   "elixir.pathToElixirLS": "~/src/elixirls/release/language_server.sh",
   "elixirLS.dialyzerEnabled": false,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "elixir",
-    "eelixir"
-   ],
+
+  "languageserver": {
+    "sql": {
+      "module": "~/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/sql-language-server/dist/bin/cli.js",
+      "args": ["up", "--method", "node-ipc"],
+      "filetypes": ["sql", "mysql"]
+    }
+  },
+
+  "coc.preferences.formatOnSaveFiletypes": ["elixir", "eelixir", "sql"]
 }
