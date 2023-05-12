@@ -732,6 +732,9 @@ map("n", "<C-]>", "<Plug>(coc-definition)", {silent = true})
 -- Find symbol of current document
 map("n", "<leader>fl", ":<C-u>CocList outline<cr>", {silent = true, nowait = true})
 
+-- Show outline pane
+map("n", "coo", ":CocOutline<cr>", {})
+
 -- Use K to show documentation in preview window
 function _G.show_docs()
     local cw = vim.fn.expand('<cword>')
