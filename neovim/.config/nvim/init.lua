@@ -595,6 +595,9 @@ map('n', '<leader>wv', ':vsp<cr>')
 vim.cmd [[
   inoremap <silent><script><expr> <C-j> copilot#Accept("")
   let g:copilot_no_tab_map = v:true
+  let g:copilot_filetypes = {
+        \ 'elixir': v:false,
+        \ }
 ]]
 
 -- pane navigation
