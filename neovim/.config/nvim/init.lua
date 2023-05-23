@@ -606,9 +606,6 @@ map('n', '<c-j>', '<c-w>j')
 map('n', '<c-k>', '<c-w>k')
 map('n', '<c-l>', '<c-w>l')
 
--- Fix closest spelling error
-map('i', '<c-f>', '<c-g>u<esc>[s1z=`]a<c-g>u')
-
 -- format whole file and keep position (original map enter ex mode)
 map('n', 'gQ', 'mzgggqG`z')
 
