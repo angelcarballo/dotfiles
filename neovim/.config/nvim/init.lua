@@ -570,10 +570,10 @@ map('n', '<leader>Sp',   ':echo expand(\'%:p\')<cr>' )
 -- T - Tabs/tmux
 map('n', '<leader>tn', ':tabnew<cr>')
 map('n', '<leader>tq', ':VimuxCloseRunner<cr>')
-map('n', '<leader>to', ':VimuxRunCommand(")<cr>' )
+map('n', '<leader>to', ':VimuxRunCommand("")<cr>' )
 map('n', '<leader>tl', ':VimuxRunLastCommand<cr>')
-map('n', '<leader>tt', ':VimuxRunCommand(")<left><left>' )
-map('n', '<leader>t:', 'VimuxRunCommand(")<left><left>' )
+map('n', '<leader>tt', ':VimuxRunCommand("")<left><left>' )
+map('n', '<leader>t:', 'VimuxRunCommand("")<left><left>' )
 -- interrupt twice to auto-confirm
 map('n', '<leader>tc', ':VimuxInterruptRunner<cr>:VimuxInterruptRunner<cr>')
 
