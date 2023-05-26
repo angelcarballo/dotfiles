@@ -74,6 +74,7 @@ require('packer').startup(function(use)
   -- }}}
   -- Runners and navigation {{{
   use 'tpope/vim-eunuch';        -- Basic unix shell command helpers (mv, rm, etc.)
+  use 'tpope/vim-dispatch';      -- Async job runner
   use 'tpope/vim-projectionist'; -- Projections for project file navigation
   use 'benmills/vimux';          -- Tmux integration
   use 'janko-m/vim-test';        -- Generic test runner
@@ -639,8 +640,8 @@ map('x', 'L', '$')
 --   Unimpaired style {{{
 
 -- previous/next file in current folder
-map('n', ']d', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(v:count), ':.'))<cr><cr>" )
-map('n', '[d', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(-v:count), ':.'))<cr><cr>" )
+map('n', ']d', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(v:count1), ':.'))<cr><cr>" )
+map('n', '[d', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(-v:count1), ':.'))<cr><cr>" )
 
 map('n', ']a', ':next<cr>')
 map('n', '[a', ':previous<cr>')
@@ -683,8 +684,8 @@ map('n', 'cow', ':setlocal wrap! wrap?<cr>')
 map( 'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>')
 
 -- Previous/next file (based on jumplist)
-map('n', ']f', ":lua require('bufjump).forward()<cr>" )
-map('n', '[f', ":lua require('bufjump).backward()<cr>" )
+map('n', ']f', ":lua require('bufjump').forward()<cr>" )
+map('n', '[f', ":lua require('bufjump').backward()<cr>" )
 
 --   }}}
 --   Operators {{{
