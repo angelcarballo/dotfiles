@@ -444,6 +444,8 @@ map('n', 'Q', '<nop>')                           -- Don't go inTo Ex mode
 map('n', '<tab>', '<c-^>')                       -- Quick toggle between last two buffers
 map('n', 'j', 'gj')                              -- Move around using visual lines, useful when wrap is enabled
 map('n', 'k', 'gk')
+map('i', '<M-Right>', '<c-o>w')                  -- Move between words with Alt-<arrow> like in most apps
+map('i', '<M-Left>', '<c-o>b')
 -- }}}
 --   Leader mappings {{{
 
