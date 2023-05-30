@@ -16,3 +16,6 @@ defmodule AC do
 end
 
 import AC
+
+# Map keys seem randomly ordered since OTP 26, sort them by default when inspecting
+IEx.configure(inspect: [custom_options: [sort_maps: true]])
