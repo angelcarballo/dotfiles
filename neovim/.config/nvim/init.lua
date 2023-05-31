@@ -225,7 +225,7 @@ require("auto-session").setup({
 -- {{{ treesitter
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'elixir', 'python', 'ruby', 'javascript', 'typescript', 'help', 'lua' },
+  ensure_installed = { 'elixir', 'python', 'ruby', 'javascript', 'typescript', 'lua' },
 
   highlight = { enable = true },
   indent = { enable = true },
