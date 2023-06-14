@@ -681,6 +681,7 @@ map('n', 'cop', ':setlocal paste! paste?<cr>')
 map('n', 'coq', ':call ToggleQuickFix()<cr>' )
 map('n', 'cos', ':setlocal spell! spell?<cr>')
 map('n', 'cot', ':call ToggleVimuxTarget()<cr>' )
+map('n', 'cot', ':silent !tmux resize-pane -Z<cr>' )
 map('n', 'cow', ':setlocal wrap! wrap?<cr>')
 
 map( 'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>')
