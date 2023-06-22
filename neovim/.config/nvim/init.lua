@@ -485,7 +485,7 @@ map('n', '<leader>cs', ':nohl<cr>')
 
 -- d - Duplicate, diff, db
 map('n', '<leader>dp', 'yap}p')
-map('x', '<leader>dl', 'y`>p')
+map('n', '<leader>dl', 'yygccp', {remap = true})
 
 map('n',   '<leader>dcp', 'yapgcip}p', {remap = true})
 map('n', '<leader>dcl', 'yygccp', {remap = true})
@@ -547,7 +547,7 @@ map('n', '<leader>Q', ':qall!<cr>')
 map('n', '<leader>mf', ':MixFormat<cr>')
 
 -- n - notes
-map('n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg).notes_path()\')<cr>' )
+map('n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()\')<cr>' )
 
 --" o - open
 map('n', '<leader>of', ":! open '%'<cr>")
@@ -695,7 +695,7 @@ map('n', '[f', ":lua require('bufjump').backward()<cr>" )
 
 -- web search operator
 map('n', 'gs', ':set opfunc=WebSearch<cr>g@')
-map('x', 'gs', ':<c-u>call WebSearch(visualmode), 1)<cr>')
+map('x', 'gs', ':<c-u>call WebSearch(visualmode(), 1)<cr>')
 
 -- copy to system clipboard
 map('n', 'cP', 'V"+y')
@@ -704,8 +704,8 @@ map('x', 'cp', '"+y')
 
 -- send text to tmux operator
 map('n', 'gt', ':set opfunc=SendTextToTmux<cr>g@')
-map('n', 'gtt', 'V:<c-u>call SendTextToTmux(visualmode), 1)<cr>' )
-map('x', 'gt', ':<c-u>call SendTextToTmux(visualmode), 1)<cr>' )
+map('n', 'gtt', 'V:<c-u>call SendTextToTmux(visualmode(), 1)<cr>' )
+map('x', 'gt', ':<c-u>call SendTextToTmux(visualmode(), 1)<cr>' )
 
 --   }}}
 -- }}}
