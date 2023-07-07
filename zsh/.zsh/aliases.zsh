@@ -1,4 +1,4 @@
-### Alias
+## Alias
 
 # OS specific
 case "$OSTYPE" in
@@ -45,6 +45,7 @@ alias bpry='bundle exec pry'
 alias mdg='mix deps.get'
 alias iexm='iex -S mix'
 alias iexn='iex -S mix run --no-start'
+alias mc='mix compile'
 alias mcc='mix compile && MIX_ENV=test mix compile'
 alias mcw='mix compile --warnings-as-errors'
 alias migrate='MIX_ENV=dev mix ecto.migrate && MIX_ENV=test mix ecto.migrate'
