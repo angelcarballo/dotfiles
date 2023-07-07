@@ -512,7 +512,7 @@ map('n', '<leader>ei', ':Explore<cr>')
 map('n', '<leader>es', ':Sex<cr>')
 map('n', '<leader>ev', ':Vex<cr>')
 
--- f - File/Find
+-- f - File/format
 map('n', '<leader>fs', ':up<cr>')
 map('n', '<leader>fb', ':FzfLua git_branches<cr>')
 map('n', '<leader>fF', ':FzfLua files<cr>')
@@ -523,6 +523,10 @@ map('n', '<leader>fr', ':FzfLua oldfiles<cr>')
 map('n', '<leader>fh', ':FzfLua help_tags<cr>')
 map('n', '<leader>fm', ':FzfLua marks<cr>')
 map('n', '<leader>ft', ':FzfLua live_grep_native<cr>')
+
+-- Format json shortcut, since it's used often
+map('n', '<leader>fj', ':set ft=json<bar>%!jq<cr>')
+map('n', '<leader>fx', ':set ft=xml<bar>%!xmllint --format --recover --nowarning<cr>')
 
 -- g - Git/Generate
 map('n', '<leader>gg', ':Git<space>')
