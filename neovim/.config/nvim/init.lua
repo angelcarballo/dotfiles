@@ -205,15 +205,28 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "h", texthl = "DiagnosticSignH
 --  }}}
 --   gitsigns {{{
 require('gitsigns').setup {
-  keymaps = {
-    -- Default keymap options
-    noremap = true,
-    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<cr>'" },
-    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<cr>'" },
-    -- Text objects
-    ['o ic'] = ':<c-u>Gitsigns select_hunk<cr>',
-    ['x ic'] = ':<c-u>Gitsigns select_hunk<cr>'
-  }
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+  end
 }
 --  }}}
 --   auto-session {{{
