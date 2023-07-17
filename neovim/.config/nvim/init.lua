@@ -17,7 +17,7 @@ require('packer').startup(function(use)
   -- Core {{{
   use 'wbthomason/packer.nvim' -- Let packer manage itself
   use 'tpope/vim-repeat';      -- Extended repeat support
-  use 'justinmk/vim-dirvish';  -- File manager
+  use 'tpope/vim-vinegar';     -- Netrw improvements
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
@@ -102,15 +102,6 @@ if is_bootstrap then
 end
 -- }}}
 -- Plugin Settings {{{
---   vim-dirvish {{{
-vim.g.dirvish_mode = ":sort ,^.*[\\/]," -- Show folders first
-vim.g.loaded_netrwPlugin = 1            -- Disable netrw and replace its commands
-vim.cmd [[
-  command! -nargs=? -complete=dir Explore Dirvish <args>
-  command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
-  command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
-]]
---  }}}
 --   vim-lion {{{
 vim.g.lion_squeeze_spaces = 1 -- Remove unnecessary spaces
 --  }}}
@@ -613,11 +604,8 @@ map('n', '<leader>wv', ':vsp<cr>')
 
 -- Copilot
 vim.cmd [[
-  inoremap <silent><script><expr> <C-j> copilot#Accept("")
   let g:copilot_no_tab_map = v:true
-  let g:copilot_filetypes = {
-        \ 'elixir': v:false,
-        \ }
+  inoremap <silent><script><expr> <C-j> copilot#Accept("")
 ]]
 
 -- pane navigation
