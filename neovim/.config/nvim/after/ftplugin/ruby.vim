@@ -6,5 +6,3 @@ setlocal textwidth=120
 
 inoreabbrev <buffer> rk =>
 inoreabbrev <buffer> bpry require 'pry'; binding.pry
-
-nnoremap <buffer> K :DD<cr>
