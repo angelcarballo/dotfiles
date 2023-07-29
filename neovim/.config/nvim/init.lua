@@ -620,9 +620,6 @@ map('n', 'gQ', 'mzgggqG`z')
 -- Search and replace current visual selection
 map('x', '<c-r>', '"zy:%s/<c-r>z//g<left><left>')
 
--- Open URLs, a-la Netrw
-map('n', 'gx', ":execute 'silent! !open ' . shellescape(expand('<cfile>'), 1)<cr>" )
-
 -- Use cursors to resize windows
 map('n', '<left>', ':vertical resize -3<cr>')
 map('n', '<right>', ':vertical resize +3<cr>')
@@ -762,10 +759,8 @@ map("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 local opts = {silent = true, nowait = true, expr = true}
 map("n", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
 map("n", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
-map("i", "<C-f>",
-       'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>" : "<Right>"', opts)
-map("i", "<C-b>",
-       'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(0)<cr>" : "<Left>"', opts)
+map("i", "<C-f>", 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>" : "<Right>"', opts)
+map("i", "<C-b>", 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(0)<cr>" : "<Left>"', opts)
 map("v", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
 map("v", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
 
