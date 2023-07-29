@@ -452,8 +452,11 @@ map('i', '<M-Left>', '<c-o>b')
 -- }}}
 --   Leader mappings {{{
 
-vim.g.mapleader = ' '                                 -- Use <sapce> as leader key
-map('n', '<leader><space>', ':FzfLua buffers<cr>') -- Quick buffer switch
+vim.g.mapleader = ' '                              -- Use <sapce> as leader key
+
+map('n', '<leader>.', ':find ')                    -- Quick find
+map('n', '<leader>,', ':b ')                       -- Quick buffer switch
+map('n', '<leader><space>', ':FzfLua buffers<cr>') -- Quick buffer switch (fuzzy)
 map('n', '<leader>;', ':FzfLua commands<cr>')      -- Run vim commannds
 
 -- /,? - Search in project
