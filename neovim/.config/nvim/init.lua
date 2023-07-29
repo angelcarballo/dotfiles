@@ -63,7 +63,6 @@ require('packer').startup(function(use)
   use 'numToStr/Comment.nvim'            -- "gc" to comment visual regions/lines
   use 'tommcdo/vim-lion';                -- Align code
   use 'Asheq/close-buffers.vim';         -- Provides :Bdelete <type> to easily delete buffers
-  use 'rizzatti/dash.vim';               -- Open Dash documentation tool
   -- }}}
   -- Search and completion {{{
   use 'cohama/lexima.vim';  -- Auto close do/end blocks and similar
@@ -545,7 +544,8 @@ map('n', '<leader>gw', ':Gwrite<cr>')
 map('n', '<leader>g/', ':Git log -S\'\'<left>')
 
 -- k - Documentation
-map('n', '<leader>k', ':Dash!<cr>')
+map('n', '<leader>k', ':silent !open dash://<cword><cr>')
+map('x', '<leader>k', '"zy:silent !open dash://<c-r>z<cr>')
 
 -- q - Quit
 map('n', '<leader>q', ':q<cr>')
