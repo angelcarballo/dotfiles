@@ -235,39 +235,32 @@ require('nvim-treesitter.configs').setup {
   textobjects = {
     select = {
       enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = false, -- Automatically jump forward to textobj, similar to targets.vim
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
         ['aa'] = '@parameter.outer',
         ['ia'] = '@parameter.inner',
         ['af'] = '@function.outer',
         ['if'] = '@function.inner',
-        -- Duplicated mappings to cover (c)lass and (m)odule
+
+        -- Use m for module, since it makes more sense in Elixir
         ['am'] = '@class.outer',
         ['im'] = '@class.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
+
+        -- This applies to do/end blocks in Elixir
+        ['ik'] = '@block.inner',
+        ['ak'] = '@block.outer',
       },
     },
-    Move = {
-      Enable = true,
-      Set_jumps = true, -- Whether to set jumps in the jumplist
-      Goto_next_start = {
+    move = {
+      enable = true,
+      set_jumps = true, -- Whether to set jumps in the jumplist
+      goto_next_start = {
         [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
       },
-      Goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
-      },
-      Goto_previous_start = {
+      goto_previous_start = {
         ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      Goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
-      },
+      }
     },
   },
 }
