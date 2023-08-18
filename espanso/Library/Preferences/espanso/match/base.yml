@@ -54,6 +54,9 @@ matches:
   - trigger: "esphone"
     replace: "666461481"
 
+  - trigger: "pzip"
+    replace: "E1W2JH"
+
   - trigger: ":cdate"
     replace: "{{cdate}}"
     vars:
