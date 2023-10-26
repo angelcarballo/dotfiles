@@ -24,7 +24,7 @@ default_mac: update link update_cheats
 default_linux: update link update_cheats
 default_server: update link_server update_vim_plugins
 
-setup_mac: install_rbenv install_homebrew default_mac install_gitstatus
+setup_mac: install_homebrew default_mac install_gitstatus install_extrakto
 setup_linux: install_gitstatus default_linux
 
 update:
@@ -48,7 +48,7 @@ link_server:
 # Install homebrew and install dependencies with homebrew/bundle
 install_homebrew:
 	@echo "\n${GREEN}Installing Homebrew${NC}"
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	brew tap Homebrew/bundle
 	brew bundle
 

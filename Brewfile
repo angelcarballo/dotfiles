@@ -71,7 +71,7 @@ brew "entr"
 brew "gron"
 
 # Generic version manager
-brew "asdf"
+brew "rtx"
 
 # UI framework required for erlang observer, debugger, etc
 brew "wxwidgets"
@@ -90,3 +90,9 @@ brew "lua-language-server"
 
 # Nice looking monospaced font
 brew "font-jetbrains-mono"
+
+# Auto text-expansion
+brew "espanso"
+
+# Terminal of choice
+brew "alacritty""
