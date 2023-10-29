@@ -28,7 +28,16 @@ require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
   };
-  use {'neoclide/coc.nvim', branch = 'release'};
+  -- }}}
+  -- LSP {{{
+  use 'neovim/nvim-lspconfig';
+  use 'hrsh7th/cmp-nvim-lsp';
+  use 'hrsh7th/cmp-buffer';
+  use 'hrsh7th/cmp-path';
+  use 'hrsh7th/vim-vsnip';
+  use 'hrsh7th/nvim-cmp';
+  use "ray-x/lsp_signature.nvim";
+
   -- }}}
   -- Version control (git) {{{
   use 'tpope/vim-fugitive';      -- Git integration
@@ -101,6 +110,80 @@ if is_bootstrap then
 end
 -- }}}
 -- Plugin Settings {{{
+--   cmp {{{
+local cmp = require'cmp'
+
+cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    end,
+  },
+  window = {
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' }, -- For vsnip users.
+    -- { name = 'luasnip' }, -- For luasnip users.
+    -- { name = 'ultisnips' }, -- For ultisnips users.
+    -- { name = 'snippy' }, -- For snippy users.
+  }, {
+      { name = 'buffer' },
+    })
+})
+
+-- -- Set configuration for specific filetype.
+-- cmp.setup.filetype('gitcommit', {
+--   sources = cmp.config.sources({
+--     { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+--   }, {
+--       { name = 'buffer' },
+--     })
+-- })
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+-- cmp.setup.cmdline({ '/', '?' }, {
+--   mapping = cmp.mapping.preset.cmdline(),
+--   sources = {
+--     { name = 'buffer' }
+--   }
+-- })
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+-- cmp.setup.cmdline(':', {
+--   mapping = cmp.mapping.preset.cmdline(),
+--   sources = cmp.config.sources({
+--     { name = 'path' }
+--   }, {
+--       { name = 'cmdline' }
+--     })
+-- })
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+--  }}}
+--   lsp {{{
+require('lspconfig').elixirls.setup{
+  cmd = { "/Users/angel/src/elixirls/release/language_server.sh" };
+  capabilities = capabilities;
+  settings = {
+    elixirLS = {
+      dialyzerEnabled = false
+    }
+  }
+}
+-- vim.lsp.set_log_level("debug")
+
+--  }}}
 --   vim-lion {{{
 vim.g.lion_squeeze_spaces = 1 -- Remove unnecessary spaces
 --  }}}
@@ -335,16 +418,6 @@ vim.opt.complete = {
   '.', -- Complete with words from current buffer
   'b', -- Complete with words from other loaded buffers
 }
--- Coc related settings
--- Some Coc servers have issues with backup files
-vim.opt.backup = false
-vim.opt.writebackup = false
--- Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
--- delays and poor user experience
-vim.opt.updatetime = 300
--- Always show the signcolumn, otherwise it would shift the text each time
--- diagnostics appeared/became resolved
-vim.opt.signcolumn = "yes"
 -- }}}
 -- Custom text object {{{
 
@@ -707,62 +780,6 @@ map('x', 'gt', ':<c-u>call SendTextToTmux(visualmode(), 1)<cr>' )
 
 --   }}}
 -- }}}
--- CoC {{{
---
--- Autocomplete
-function _G.check_back_space()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
-end
-
-local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
-map("i", "<C-n>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<C-n>" : coc#refresh()', opts)
-map("i", "<C-p>", [[coc#pum#visible() ? coc#pum#prev(1) : "<C-p>"]], opts)
-
--- Make <tab> to accept selected completion item or notify coc.nvim to format
--- <C-g>u breaks current undo, please make your own choice
-map("i", "<tab>", [[coc#pum#visible() ? coc#pum#confirm() : "<tab>"]], opts)
-
--- Use `[e` and `]e` to navigate diagnostics
--- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-map("n", "[e", "<Plug>(coc-diagnostic-prev)", {silent = true})
-map("n", "]e", "<Plug>(coc-diagnostic-next)", {silent = true})
-
--- GoTo code navigation
-map("n", "<C-]>", "<Plug>(coc-definition)", {silent = true})
-
--- Find symbol of current document
-map("n", "<leader>fl", ":<C-u>CocList outline<cr>", {silent = true, nowait = true})
-
--- Show outline pane
-map("n", "coo", ":CocOutline<cr>", {})
-
--- Use K to show documentation in preview window
-function _G.show_docs()
-    local cw = vim.fn.expand('<cword>')
-    if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
-        vim.api.nvim_command('h ' .. cw)
-    elseif vim.api.nvim_eval('coc#rpc#ready()') then
-        vim.fn.CocActionAsync('doHover')
-    else
-        vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
-    end
-end
-map("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
-
--- Remap <C-f> and <C-b> to scroll float windows/popups
----@diagnostic disable-next-line: redefined-local
-local opts = {silent = true, nowait = true, expr = true}
-map("n", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
-map("n", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
-map("i", "<C-f>", 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>" : "<Right>"', opts)
-map("i", "<C-b>", 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(0)<cr>" : "<Left>"', opts)
-map("v", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
-map("v", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
-
--- Add :Format for convenience
-vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
--- }}}
 -- Autocommands {{{
 acg.augroup("forced_file_types", {
   { 'BufRead,BufNewFile', '*.jbuilder', 'setfiletype ruby' },
@@ -809,6 +826,37 @@ acg.augroup('detect_theme_changes', {
     '*',
     'lua require("acg").auto_set_theme()'
   },
+})
+
+acg.augroup('lsp_format_on_save', {
+  {
+    'BufWritePre',
+    '*.ex',
+    'lua vim.lsp.buf.format({ async = false })'
+  },
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable function signature
+    require "lsp_signature".on_attach({
+      doclines = 0,
+      floating_window = false,
+      hint_prefix = ''
+    }, ev.buf)
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
+    vim.keymap.set('n', ']e', vim.diagnostic.goto_next)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>ll', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
 })
 
 -- Automatically create directories when writting files
