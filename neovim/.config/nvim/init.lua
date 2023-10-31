@@ -852,7 +852,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
     vim.keymap.set('n', ']e', vim.diagnostic.goto_next)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<space>ll', function()
       vim.lsp.buf.format { async = true }
     end, opts)
