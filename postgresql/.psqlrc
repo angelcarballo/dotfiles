@@ -23,3 +23,6 @@
 \set PROMPT2 '%~ > '
 
 \set QUIET OFF
+
+-- Row-per-field output
+\pset expanded
