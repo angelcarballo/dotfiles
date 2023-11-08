@@ -358,6 +358,7 @@ vim.g.mix_format_silent_errors = 1 -- do not open a window with stacktrace if th
 -- }}}
 -- Settings {{{
 vim.cmd('packadd cfilter')                             -- Quickfix filter plugin (bundled with vim)
+vim.opt.cursorline = true                              -- Highlight cursor line
 vim.opt.number = true                                  -- Show line numbers
 vim.opt.confirm = true                                 -- Ask instead of just erroring if the current file has unsaved changes
 vim.opt.autowrite = true                               -- Auto write after make, ! and friends
