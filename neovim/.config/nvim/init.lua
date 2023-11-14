@@ -546,7 +546,6 @@ map('n', '<leader>bb', ':FzfLua buffers<cr>')
 
 -- c - Copy/clear
 map('n', '<leader>cb', ':let @+=FugitiveHead()<cr>:echo "<c-r>+"<cr>')                             -- Copy git branch
-map('n', '<leader>ca', 'mzgg"+yG\'z')                                                              -- Copy all/entire buffer
 map('n', '<leader>cfn', ':let @+=expand("%:t")<cr>:echo "<c-r>+"<cr>' )                            -- Copy file name  (foo.txt)
 map('n', '<leader>cfp', ':let @+=expand("%")<cr>:echo "<c-r>+"<cr>' )                              -- Copy relative path  (src/foo.txt)
 map('n', '<leader>cfP', ':let @+=expand("%:p")<cr>:echo "<c-r>+"<cr>' )                            -- Copy absolute path  (/something/src/foo.txt)
@@ -707,6 +706,9 @@ map('n', 'H', '^')
 map('n', 'L', '$')
 map('x', 'H', '^')
 map('x', 'L', '$')
+
+-- This is to overwrite copy entire buffer, so that it keeps cursor position
+map('n', 'cpae', 'mzgg"+yG\'z')                                                              -- Copy all/entire buffer
 
 --   }}}
 --   Unimpaired style {{{
