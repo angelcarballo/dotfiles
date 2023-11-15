@@ -646,7 +646,7 @@ map('n', '<leader>sl', ':TestLast<cr>')
 map('n', '<leader>Sf', ':echo @%<cr>')
 map('n', '<leader>Sp',   ':echo expand(\'%:p\')<cr>' )
 
--- T - Tabs/tmux
+-- T - Tabs/tmux/transform
 map('n', '<leader>tn', ':tabnew<cr>')
 map('n', '<leader>tq', ':VimuxCloseRunner<cr>')
 map('n', '<leader>to', ':VimuxRunCommand("")<cr>' )
@@ -655,6 +655,24 @@ map('n', '<leader>tt', ':VimuxRunCommand("")<left><left>' )
 map('n', '<leader>t:', 'VimuxRunCommand("")<left><left>' )
 -- interrupt twice to auto-confirm
 map('n', '<leader>tc', ':VimuxInterruptRunner<cr>:VimuxInterruptRunner<cr>')
+
+
+vim.cmd [[
+" Transform a rocket map pair into a colon one
+"    before: {"something" => 1}
+"    after:  {something: 1}
+nnoremap <silent> <Plug>RocketToColon /=><cr>daWF"r:F"x
+    \ :call repeat#set("\<Plug>RocketToColon", v:count)<cr>
+nmap <Leader>t:  <Plug>RocketToColon
+
+" Transform a colon map pair into a rocket one
+"    before: {something: 1}
+"    after:  {"something" => 1}
+nnoremap <silent> <Plug>ColonToRocket f:r"bi"<esc>f a=> <esc>
+    \ :call repeat#set("\<Plug>ColonToRocket", v:count)<cr>
+nmap <Leader>t>  <Plug>ColonToRocket
+]]
+
 
 -- V - Vimrc
 map('n', '<leader>Ve', ':edit $MYVIMRC<cr>')
