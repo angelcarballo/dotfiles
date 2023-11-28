@@ -63,15 +63,7 @@ matches:
       - name: cdate
         type: date
         params:
-          format: "%d/%m/%Y"
-
-  - trigger: ":idate"
-    replace: "{{idate}}"
-    vars:
-      - name: idate
-        type: date
-        params:
-          format: "%Y/%m/%d"
+          format: "%Y-%m-%d"
 
   - trigger: ":lorem"
     replace: "Lorem ipsum dolor sit amet"
