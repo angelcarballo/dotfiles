@@ -20,9 +20,6 @@ brew "fzf"
 # Nice cheats for unix commands (like man but without the noise)
 brew "cheat"
 
-# Use our own python
-brew "python"
-
 # Use our own git
 brew "git"
 brew "git-gui"
