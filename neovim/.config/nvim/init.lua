@@ -72,6 +72,7 @@ require('packer').startup(function(use)
   use 'numToStr/Comment.nvim'            -- "gc" to comment visual regions/lines
   use 'tommcdo/vim-lion';                -- Align code
   use 'Asheq/close-buffers.vim';         -- Provides :Bdelete <type> to easily delete buffers
+  use 'machakann/vim-swap';              -- Swap delimited items (arguments, map pairs, etc.) (g>, g<)
   -- }}}
   -- Search and completion {{{
   use 'cohama/lexima.vim';  -- Auto close do/end blocks and similar
@@ -189,7 +190,7 @@ vim.g.lion_squeeze_spaces = 1 -- Remove unnecessary spaces
 --  }}}
 --   closetag {{{
 vim.g.closetag_filetypes = 'html,xhtml,erb,eelixir'
---  }}}
+--  }}k
 --   vimux {{{
 vim.g['VimuxRunnerType'] = 'pane' -- Use a pane
 vim.g['VimuxOrientation'] = 'v'   -- On the bottom half of the window
