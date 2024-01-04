@@ -3,360 +3,422 @@
 local acg = require('acg') -- Utility functions
 local map = vim.keymap.set
 
--- {{{ Packer setup
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-local is_bootstrap = false
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  is_bootstrap = true
-  vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-  vim.cmd [[packadd packer.nvim]]
+-- {{{ Lazy Bootstrap
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({ 'git', 'clone', '--filter=blob:none', 'https://github.com/folke/lazy.nvim.git', '--branch=stable', lazypath })
 end
+vim.opt.rtp:prepend(lazypath)
+
 -- }}}
 -- {{{ Plugins
-require('packer').startup(function(use)
-  -- Core {{{
-  use 'wbthomason/packer.nvim' -- Let packer manage itself
-  use 'tpope/vim-repeat';      -- Extended repeat support
-  use 'tpope/vim-vinegar';     -- Netrw improvements
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
-  };
-  use {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter',
-  };
-  -- }}}
-  -- LSP {{{
-  use 'neovim/nvim-lspconfig';
-  use 'hrsh7th/cmp-nvim-lsp';
-  use 'hrsh7th/cmp-buffer';
-  use 'hrsh7th/cmp-path';
-  use 'hrsh7th/vim-vsnip';
-  use 'hrsh7th/nvim-cmp';
-  use "ray-x/lsp_signature.nvim";
 
-  -- }}}
-  -- Version control (git) {{{
-  use 'tpope/vim-fugitive';      -- Git integration
-  use 'tpope/vim-rhubarb';       -- Github integration for vim-fugitive
-  use 'lewis6991/gitsigns.nvim'; -- Git signs and chunk navigation
-  -- }}}
-  -- Language support {{{
-  use 'tpope/vim-sleuth'            -- Detect tabstop and shiftwidth automatically
-  use 'gpanders/editorconfig.nvim'; -- Support for .editorconfig files
-  use 'tpope/vim-rbenv';            -- Rbenv support, used to get the current ruby version on `path`
-  use 'tpope/vim-bundler';          -- Bundler support, used to get the current bundled gems on `path`
-  use 'elixir-editors/vim-elixir';  -- Elixir support
-  use 'mhinz/vim-mix-format';       -- Elixir formatter support
-  use 'aklt/plantuml-syntax';       -- PlantUML support
-  use 'kchmck/vim-coffee-script';   -- Coffeescript support
-  use 'pangloss/vim-javascript';    -- Improved Javascript syntax
-  use 'MaxMEllon/vim-jsx-pretty';   -- JSX syntax
-  use 'leafgarland/typescript-vim'; -- Typescript support
-  use 'jxnblk/vim-mdx-js';          -- MDX (markdown + JSX) support
-  -- }}}
-  -- Text objects {{{
-  use 'kana/vim-textobj-user';               -- Custom text object support
-  use 'michaeljsmith/vim-indent-object';     -- Indentation based text object <ai>, <ii>
-  use 'Julian/vim-textobj-variable-segment'; -- Segments of camelCase, snake_case and similar <av>, <iv>
-  -- }}}
-  -- Operators and commands {{{
-  use 'AndrewRadev/splitjoin.vim';       -- Split/join statements (gS, gJ)
-  use 'tpope/vim-surround';              -- Alter surroundings (), [], '', {}
-  use 'tpope/vim-abolish';               -- Work with word variants (change casing, smart substitute, etc.)
-  use 'tommcdo/vim-exchange';            -- Text exchange operator (cx..)
-  use 'vim-scripts/ReplaceWithRegister'; -- Replace without yanking operator (gr..)
-  use 'numToStr/Comment.nvim'            -- "gc" to comment visual regions/lines
-  use 'tommcdo/vim-lion';                -- Align code
-  use 'Asheq/close-buffers.vim';         -- Provides :Bdelete <type> to easily delete buffers
-  use 'machakann/vim-swap';              -- Swap delimited items (arguments, map pairs, etc.) (g>, g<)
-  -- }}}
-  -- Search and completion {{{
-  use 'cohama/lexima.vim';  -- Auto close do/end blocks and similar
-  use 'alvan/vim-closetag'; -- Auto close html/xml tags
-  -- Fuzzy Finder
-  use { 'ibhagwan/fzf-lua' }
-  use 'github/copilot.vim'
-  -- }}}
-  -- Runners and navigation {{{
-  use 'tpope/vim-eunuch';        -- Basic unix shell command helpers (mv, rm, etc.)
-  use 'tpope/vim-dispatch';      -- Async job runner
-  use 'tpope/vim-projectionist'; -- Projections for project file navigation
-  use 'benmills/vimux';          -- Tmux integration
-  use 'janko-m/vim-test';        -- Generic test runner
-  use 'rmagatti/auto-session';   -- Auto save & restore sessions (per folder, per branch, etc.)
-  use 'kwkarlwang/bufjump.nvim'; -- Navigate through files in the jumplist
-  -- }}}
-  -- Look & Feel {{{
-  use 'romainl/vim-cool';                                         -- Clear search highlight automatically
-  use 'tpope/vim-rsi';                                            -- Readline style shortcuts on insert and command line modes
-  use { "mcchrish/zenbones.nvim", requires = "rktjmp/lush.nvim" } -- Contrast based themes
-  -- }}}
+-- This has to be set before the plugin is loaded
+vim.g.swap_no_default_key_mappings = true
 
-  if is_bootstrap then
-    require('packer').sync()
-  end
-end)
+-- Do not draw indent lines
+vim.g.miniindentscope_disable = true
 
-if is_bootstrap then
-  print '=================================='
-  print '    Plugins are being installed'
-  print '    Wait until Packer completes,'
-  print '       then restart nvim'
-  print '=================================='
-  return
-end
--- }}}
--- Plugin Settings {{{
---   cmp {{{
-local cmp = require'cmp'
+require('lazy').setup({
+  -- Utility collection
+  { 'echasnovski/mini.nvim', version = false, config = function()
+    -- Split/join lists of arguments, key/value pairs, etc.
+    require('mini.splitjoin').setup()
 
-cmp.setup({
-  snippet = {
-    -- REQUIRED - you must specify a snippet engine
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-    end,
-  },
-  window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
-  }, {
-      { name = 'buffer' },
+    -- Exchange (gx), evaluate (g=), multiply (gm), replace with register (gr), sort (gs)
+    require('mini.operators').setup()
+
+    -- Auto close pairs
+    require('mini.pairs').setup()
+
+    -- Manage surrounding chars, tags, etc.
+    require('mini.surround').setup()
+
+    -- Align text (ga)
+    require('mini.align').setup()
+
+    -- Comment text (gc)
+    require('mini.comment').setup()
+
+    -- Indentation based scope and navigation
+    require('mini.indentscope').setup()
+
+    -- Unimpaired style maps
+    require('mini.bracketed').setup({
+      buffer     = { suffix = 'b' },
+      comment    = { suffix = 'c' },
+      conflict   = { suffix = 'x' },
+      diagnostic = { suffix = 'e' },
+      file       = { suffix = 'f' },
+      location   = { suffix = 'l' },
+      quickfix   = { suffix = 'q' },
+      treesitter = { suffix = 't' },
+      window     = { suffix = 'w' },
+
+      -- disabled
+      indent     = { suffix = '' },
+      jump       = { suffix = '' },
+      oldfile    = { suffix = '' },
+      undo       = { suffix = '' },
+      yank       = { suffix = '' },
     })
-})
+  end},
 
--- -- Set configuration for specific filetype.
--- cmp.setup.filetype('gitcommit', {
---   sources = cmp.config.sources({
---     { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
---   }, {
---       { name = 'buffer' },
---     })
--- })
+  -- Navigate through files in the jumplist
+  {'kwkarlwang/bufjump.nvim', config = function()
+    map('n', ']g', ":lua require('bufjump').forward()<cr>" )
+    map('n', '[g', ":lua require('bufjump').backward()<cr>" )
+  end},
 
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline({ '/', '?' }, {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = {
---     { name = 'buffer' }
---   }
--- })
+  -- provides :bdelete <type> to easily delete buffers
+  'asheq/close-buffers.vim',
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline(':', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = cmp.config.sources({
---     { name = 'path' }
---   }, {
---       { name = 'cmdline' }
---     })
--- })
+  -- Magic!
+  'github/copilot.vim',
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
---  }}}
---   lsp {{{
-require('lspconfig').elixirls.setup{
-  cmd = { "/Users/angel/src/elixirls/release/language_server.sh" };
-  capabilities = capabilities;
-  settings = {
-    elixirLS = {
-      dialyzerEnabled = false
+  -- Support for .editorconfig files
+  'gpanders/editorconfig.nvim',
+
+  -- custom text object support
+  'kana/vim-textobj-user',
+
+  -- swap delimited items (arguments, map pairs, etc.) (g>, g<)
+  {'machakann/vim-swap', config = function()
+    map('n', 'g<', '<Plug>(swap-prev)')
+    map('n', 'g<', '<Plug>(swap-next)')
+  end},
+
+  -- Show info about current function+method (LSP)
+  'ray-x/lsp_signature.nvim',
+
+  -- Clear search highlight automatically
+  'romainl/vim-cool',
+
+  -- work with word variants (change casing, smart substitute, etc.)
+  {'tpope/vim-abolish', lazy = true},
+
+  -- Async job runner
+  {'tpope/vim-dispatch', lazy = true},
+
+  -- Basic unix shell command helpers (mv, rm, etc.)
+  {'tpope/vim-eunuch', lazy = true},
+
+  -- Extended repeat support
+  'tpope/vim-repeat',
+
+  -- Readline style shortcuts on insert and command line modes
+  'tpope/vim-rsi',
+
+  -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-sleuth',
+
+  -- Netrw improvements
+  'tpope/vim-vinegar',
+
+  -- Contrast based themes
+  {'mcchrish/zenbones.nvim', dependencies = {'rktjmp/lush.nvim'}},
+
+  -- plantuml support
+  {'aklt/plantuml-syntax', lazy = true, ft = {'plantuml'}},
+
+  -- segments of camelcase, snake_case and similar <av>, <iv>
+  {'julian/vim-textobj-variable-segment', dependencies={'kana/vim-textobj-user'}},
+
+  -- mdx (markdown + jsx) support
+  {'jxnblk/vim-mdx-js', lazy = true, ft = {'javascript'}},
+
+  -- coffeescript support
+  {'kchmck/vim-coffee-script', lazy = true, ft = {'ruby', 'markdown'}},
+
+  -- typescript support
+  {'leafgarland/typescript-vim', lazy = true, ft = {'typescript', 'markdown'}},
+
+  -- jsx syntax
+  {'maxmellon/vim-jsx-pretty', lazy = true, ft = {'javascript'}},
+
+  -- improved javascript syntax
+  {'pangloss/vim-javascript', lazy = true, ft = {'javascript', 'markdown'}},
+
+  -- Bundler support, used to get the current bundled gems on `path`
+  {'tpope/vim-bundler', lazy = true, ft = {'ruby'}},
+
+  -- Git integration
+  {'tpope/vim-fugitive', dependencies={'tpope/vim-rhubarb'}},
+
+  -- Rbenv support, used to get the current ruby version on `path`
+  {'tpope/vim-rbenv', lazy = true, ft = {'ruby'}},
+
+
+  -- Treesitter
+  { 'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        -- Add languages to be installed here that you want installed for treesitter
+        ensure_installed = { 'elixir', 'heex', 'python', 'ruby', 'javascript', 'typescript', 'lua' },
+
+        highlight = { enable = true },
+        indent = { enable = true },
+
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = false, -- Automatically jump forward to textobj, similar to targets.vim
+            keymaps = {
+              -- You can use the capture groups defined in textobjects.scm
+              ['aa'] = '@parameter.outer',
+              ['ia'] = '@parameter.inner',
+              ['af'] = '@function.outer',
+              ['if'] = '@function.inner',
+
+              -- Use m for module, since it makes more sense in Elixir
+              ['am'] = '@class.outer',
+              ['im'] = '@class.inner',
+
+              -- This applies to do/end blocks in Elixir
+              ['ik'] = '@block.inner',
+              ['ak'] = '@block.outer',
+            },
+          },
+          move = {
+            enable = true,
+            set_jumps = true, -- Whether to set jumps in the jumplist
+            goto_next_start = {
+              [']m'] = '@function.outer',
+            },
+            goto_previous_start = {
+              ['[m'] = '@function.outer',
+            }
+          },
+        },
+      }
+    end
+  },
+  'nvim-treesitter/nvim-treesitter-textobjects',
+
+  -- Completion
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/vim-vsnip',
+  {'hrsh7th/nvim-cmp',
+    config = function()
+      local cmp = require'cmp'
+
+      cmp.setup({
+        snippet = {
+          -- REQUIRED - you must specify a snippet engine
+          expand = function(args)
+            vim.fn['vsnip#anonymous'](args.body) -- For `vsnip` users.
+          end,
+        },
+        window = {
+          -- completion = cmp.config.window.bordered(),
+          -- documentation = cmp.config.window.bordered(),
+        },
+        mapping = cmp.mapping.preset.insert({
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.abort(),
+          -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+        }),
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+          { name = 'vsnip' }, -- For vsnip users.
+        }, {
+            { name = 'buffer' },
+          })
+      })
+
+      -- -- Set configuration for specific filetype.
+      -- cmp.setup.filetype('gitcommit', {
+      --   sources = cmp.config.sources({
+      --     { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+      --   }, {
+      --       { name = 'buffer' },
+      --     })
+      -- })
+
+      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+      cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      })
+    end,
+  },
+
+  {'neovim/nvim-lspconfig',
+    config = function()
+      require('lspconfig').elixirls.setup{
+        cmd = { '/Users/angel/src/elixirls/release/language_server.sh' };
+        capabilities = require('cmp_nvim_lsp').default_capabilities();
+        settings = {
+          elixirLS = {
+            dialyzerEnabled = false
+          }
+        }
+      }
+    end},
+
+  -- Git signs and chunk navigation
+  {'lewis6991/gitsigns.nvim', config = function()
+    require('gitsigns').setup {
+      on_attach = function(bufnr)
+        local gs = package.loaded.gitsigns
+
+        local function map(mode, l, r, opts)
+          opts = opts or {}
+          opts.buffer = bufnr
+          vim.keymap.set(mode, l, r, opts)
+        end
+
+        -- Navigation
+        map('n', ']c', function()
+          if vim.wo.diff then return ']c' end
+          vim.schedule(function() gs.next_hunk() end)
+          return '<Ignore>'
+        end, {expr=true})
+
+        map('n', '[c', function()
+          if vim.wo.diff then return '[c' end
+          vim.schedule(function() gs.prev_hunk() end)
+          return '<Ignore>'
+        end, {expr=true})
+      end
     }
-  }
-}
--- vim.lsp.set_log_level("debug")
+  end},
 
---  }}}
---   vim-lion {{{
-vim.g.lion_squeeze_spaces = 1 -- Remove unnecessary spaces
---  }}}
---   closetag {{{
-vim.g.closetag_filetypes = 'html,xhtml,erb,eelixir'
---  }}k
---   vimux {{{
-vim.g['VimuxRunnerType'] = 'pane' -- Use a pane
-vim.g['VimuxOrientation'] = 'v'   -- On the bottom half of the window
---  }}}
---   vim-test {{{
-vim.g['test#ruby#use_binstubs'] = 1                          -- Use bin/xxx when available, which should use Spring automatically
-vim.g['test#ruby#rspec#options'] = {
-  nearest = '--fail-fast --order 0 --format documentation',  -- For single tests, run in verbose mode
-  file = '--fail-fast --order 0 --format documentation',     -- Same for single file, also keep always original order to make it easier to debug errors
-  suite = '--fail-fast',                                     -- For whole suite, useful to keep randomness
-}
-vim.g['test#python#runner'] = 'pytest'                       -- Use pytest for pytong specs ...
-vim.g['test#python#pytest#executable'] = 'pipenv run pytest' -- ... using the right environment
-vim.g['g:test#elixir#exunit#executable'] = 'mix test'        -- Use mix, this should probably be the default
-vim.g['test#elixir#exunit#options'] = {
-  suite = '--stale',                                         -- Only run changed tests
-  file = '--trace --seed 0',                                 -- For single files, run in verbose mode and in original order
-  nearest = '--trace'
-}
-vim.cmd( -- Custom strategy to avoid echoing the command to the terminal before running it
-  [[
-  function! CustomVimuxStrategy(cmd)
-    call VimuxRunCommand(a:cmd)
-  endfunction
-  let g:test#custom_strategies = {'customvimux': function('CustomVimuxStrategy')}
-  let g:test#strategy = 'customvimux'
-]])
---  }}}
---   vim-ruby {{{
+
+   -- Elixir support
+  {'elixir-editors/vim-elixir', lazy = true, ft = {'elixir', 'heex', 'markdown'}},
+  {'mhinz/vim-mix-format', lazy = true, ft = {'elixir', 'heex'},
+    config = function()
+      vim.g.mix_format_on_save = 0
+      vim.g.mix_format_silent_errors = 1 -- do not open a window with stacktrace if the formatter errors
+    end
+  },
+
+  -- Auto close html/xml tags
+  {'alvan/vim-closetag', config = function()
+    vim.g.closetag_filetypes = 'html,xhtml,erb,eelixir'
+  end},
+
+   -- Fuzzy Finder
+  {'ibhagwan/fzf-lua', config = function()
+    require('fzf-lua').setup {
+      winopts = {
+        height = 0.3,
+        width = 1,
+        row = 1,
+        col = 0,
+        -- disable all previews by default
+        preview = { hidden = 'hidden' }
+      }
+    }
+  end},
+
+  -- Projections for project file navigation
+  {'tpope/vim-projectionist', config = function()
+    vim.cmd [[
+        let g:projectionist_heuristics = {
+        \    "mix.exs": {
+        \      "lib/*.ex": {
+        \        "type": "lib",
+        \        "make": "mix",
+        \        "alternate": "test/{}_test.exs",
+        \        "template": [
+        \          "defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize} do",
+        \          "end"
+        \        ]
+        \      },
+        \      "test/*_test.exs": {
+        \        "type": "test",
+        \        "make": "iex -S mix test",
+        \        "alternate": "lib/{}.ex",
+        \        "template": [
+        \          "defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}Test do",
+        \          "  use ExUnit.Case, async: true",
+        \          "",
+        \          "  alias {dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}",
+        \          "end"
+        \        ]
+        \      }
+        \    }
+        \  }
+    ]]
+  end},
+
+  -- Tmux integration
+  {'benmills/vimux', config = function()
+    vim.g['VimuxRunnerType'] = 'pane' -- Use a pane
+    vim.g['VimuxOrientation'] = 'v'   -- On the bottom half of the window
+  end},
+
+  -- Generic test runner
+  {'janko-m/vim-test', config = function()
+    vim.g['test#ruby#use_binstubs'] = 1                          -- Use bin/xxx when available, which should use Spring automatically
+    vim.g['test#ruby#rspec#options'] = {
+      nearest = '--fail-fast --order 0 --format documentation',  -- For single tests, run in verbose mode
+      file = '--fail-fast --order 0 --format documentation',     -- Same for single file, also keep always original order to make it easier to debug errors
+      suite = '--fail-fast',                                     -- For whole suite, useful to keep randomness
+    }
+    vim.g['test#python#runner'] = 'pytest'                       -- Use pytest for pytong specs ...
+    vim.g['test#python#pytest#executable'] = 'pipenv run pytest' -- ... using the right environment
+    vim.g['g:test#elixir#exunit#executable'] = 'mix test'        -- Use mix, this should probably be the default
+    vim.g['test#elixir#exunit#options'] = {
+      suite = '--stale',                                         -- Only run changed tests
+      file = '--trace --seed 0',                                 -- For single files, run in verbose mode and in original order
+      nearest = '--trace'
+    }
+    vim.cmd( -- Custom strategy to avoid echoing the command to the terminal before running it
+      [[
+        function! CustomVimuxStrategy(cmd)
+        call VimuxRunCommand(a:cmd)
+        endfunction
+        let g:test#custom_strategies = {'customvimux': function('CustomVimuxStrategy')}
+        let g:test#strategy = 'customvimux'
+      ]])
+  end},
+
+  -- Auto save & restore sessions (per folder, per branch, etc.)
+  {'rmagatti/auto-session', config = function()
+    require('auto-session').setup({
+      auto_session_use_git_branch = true,
+      auto_restore_enabled = false
+    })
+  end},
+}, {
+    dev = {
+      path = '~/src', -- where to find local plugins
+    }
+  })
+
+-- }}}
+-- Bundled plugins {{{
+
+-- Vim-ruby
 vim.g.ruby_spellcheck_strings = 1    -- Enable spellcheck inside ruby strings
 vim.g.ruby_minlines           = 500  -- Avoid syntax errors while scrolling on large files
 vim.g.ruby_indent_block_style = 'do' -- Better syntax for nested blocks
---  }}}
---   fzf-lua {{{
-require("fzf-lua").setup {
-  winopts = {
-    height = 0.3,
-    width = 1,
-    row = 1,
-    col = 0,
-    -- disable all previews by default
-    preview = { hidden = 'hidden' }
-  }
-}
---  }}}
---   projectionist {{{
-vim.cmd [[
-let g:projectionist_heuristics = {
-  \    "mix.exs": {
-  \      "lib/*.ex": {
-  \        "type": "lib",
-  \        "make": "mix",
-  \        "alternate": "test/{}_test.exs",
-  \        "template": [
-  \          "defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize} do",
-  \          "end"
-  \        ]
-  \      },
-  \      "test/*_test.exs": {
-  \        "type": "test",
-  \        "make": "iex -S mix test",
-  \        "alternate": "lib/{}.ex",
-  \        "template": [
-  \          "defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}Test do",
-  \          "  use ExUnit.Case, async: true",
-  \          "",
-  \          "  alias {dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}",
-  \          "end"
-  \        ]
-  \      }
-  \    }
-  \  }
-]]
---  }}}
---   diagnostic {{{
+
+-- Diagnostics
 vim.diagnostic.config {
   virtual_text = false, -- Don't show virtualtext
   signs = true,         -- But do show signs
   underline = true,     -- And underline over the diagnosed text
 }
--- Use downcased sign texts
+-- Use lowercase sign indicators
 vim.fn.sign_define("DiagnosticSignError", { text = "e", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "w", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = "i", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "h", texthl = "DiagnosticSignHint" })
+
+-- vim.lsp.set_log_level('debug')
 --  }}}
---   gitsigns {{{
-require('gitsigns').setup {
-  on_attach = function(bufnr)
-    local gs = package.loaded.gitsigns
-
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
-    end
-
-    -- Navigation
-    map('n', ']c', function()
-      if vim.wo.diff then return ']c' end
-      vim.schedule(function() gs.next_hunk() end)
-      return '<Ignore>'
-    end, {expr=true})
-
-    map('n', '[c', function()
-      if vim.wo.diff then return '[c' end
-      vim.schedule(function() gs.prev_hunk() end)
-      return '<Ignore>'
-    end, {expr=true})
-  end
-}
---  }}}
---   auto-session {{{
-require("auto-session").setup({
-  auto_session_use_git_branch = true,
-  auto_restore_enabled = false
-})
---   }}}
--- {{{ treesitter
-require('nvim-treesitter.configs').setup {
-  -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'elixir', 'heex', 'python', 'ruby', 'javascript', 'typescript', 'lua' },
-
-  highlight = { enable = true },
-  indent = { enable = true },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = false, -- Automatically jump forward to textobj, similar to targets.vim
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-
-        -- Use m for module, since it makes more sense in Elixir
-        ['am'] = '@class.outer',
-        ['im'] = '@class.inner',
-
-        -- This applies to do/end blocks in Elixir
-        ['ik'] = '@block.inner',
-        ['ak'] = '@block.outer',
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true, -- Whether to set jumps in the jumplist
-      goto_next_start = {
-        [']m'] = '@function.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-      }
-    },
-  },
-}
--- }}}
--- {{{ comment.nvim
-require('comment').setup()
--- }}}
--- {{{ vim-mix-format
-vim.g.mix_format_on_save = 0
-vim.g.mix_format_silent_errors = 1 -- do not open a window with stacktrace if the formatter errors
--- }}}
--- }}}
 -- Settings {{{
 vim.cmd('packadd cfilter')                             -- Quickfix filter plugin (bundled with vim)
 vim.opt.cursorline = true                              -- Highlight cursor line
@@ -404,7 +466,7 @@ vim.opt.previewheight = 20                             -- Make preview bigger
 vim.opt.grepprg = 'rg --vimgrep --hidden --smart-case' -- Use ripgrep, much faster than regular grep
 vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'            -- Use ripgrep's format
 vim.g.vimsyn_embed = 1                                 -- Highlight lua and other languages inside vim files
-vim.opt.listchars = { tab = "▸ ", trail = "·" }        -- Symbols for invisible characters
+vim.opt.listchars = { tab = '▸ ', trail = '·' }        -- Symbols for invisible characters
 vim.cmd [[ let &showbreak='↳ ' ]]                      -- Indicator for wrapped lines
 vim.opt.diffopt = {
   'filler',                                            -- Show filler lines to keep diffs aligned
@@ -482,7 +544,7 @@ local status_color = '%#Pmenu#'
 
 local trailing_whitespace = function()
   local space = vim.fn.search([[\s\+$]], 'nwc')
-  return space ~= 0 and "%#DiffDelete#TW:" .. space .. status_color or ""
+  return space ~= 0 and '%#DiffDelete#TW:' .. space .. status_color or ""
 end
 
 function Status_line()
@@ -583,8 +645,8 @@ map('n', '<leader>fm', ':FzfLua marks<cr>')
 map('n', '<leader>ft', ':FzfLua live_grep_native<cr>')
 
 -- Format json shortcut, since it's used often
-map('n', '<leader>fj', ':set ft=json<bar>%!jq<cr>')
-map('n', '<leader>fx', ':set ft=xml<bar>%!xmllint --format --recover --nowarning<cr>')
+map('n', '<leader>fj', ':set ft = json<bar>%!jq<cr>')
+map('n', '<leader>fx', ':set ft = xml<bar>%!xmllint --format --recover --nowarning<cr>')
 
 -- g - Git/Generate
 map('n', '<leader>gg', ':Git<space>')
@@ -663,14 +725,14 @@ vim.cmd [[
 "    before: {"something" => 1}
 "    after:  {something: 1}
 nnoremap <silent> <Plug>RocketToColon /=><cr>daWF"r:F"x
-    \ :call repeat#set("\<Plug>RocketToColon", v:count)<cr>
+\ :call repeat#set("\<Plug>RocketToColon", v:count)<cr>
 nmap <Leader>t:  <Plug>RocketToColon
 
 " Transform a colon map pair into a rocket one
 "    before: {something: 1}
 "    after:  {"something" => 1}
 nnoremap <silent> <Plug>ColonToRocket f:r"bi"<esc>f a=> <esc>
-    \ :call repeat#set("\<Plug>ColonToRocket", v:count)<cr>
+\ :call repeat#set("\<Plug>ColonToRocket", v:count)<cr>
 nmap <Leader>t>  <Plug>ColonToRocket
 ]]
 
@@ -731,32 +793,6 @@ map('x', 'L', '$')
 map('n', 'cpae', 'mzgg"+yG\'z')                                                              -- Copy all/entire buffer
 
 --   }}}
---   Unimpaired style {{{
-
--- previous/next file in current folder
-map('n', ']d', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(v:count1), ':.'))<cr><cr>" )
-map('n', '[d', ":<c-u>edit <c-r>=Fnameescape(fnamemodify(FileByOffset(-v:count1), ':.'))<cr><cr>" )
-
-map('n', ']a', ':next<cr>')
-map('n', '[a', ':previous<cr>')
-
-map('n', '[b', ':bprevious<cr>')
-map('n', ']b', ':bnext<cr>')
-
-map('n', '[q', ':cprevious<cr>')
-map('n', ']q', ':cnext<cr>')
-
-map('n', '[Q', ':colder<cr>')
-map('n', ']Q', ':cnewer<cr>')
-
-map('n', '[l', ':lprevious<cr>')
-map('n', ']l', ':lnext<cr>')
-
-map('n', '[w', ':tabprevious<cr>')
-map('n', ']w', ':tabnext<cr>')
-
-map('n', '[t', ':pop<cr>')
-map('n', ']t', ':tag<cr>')
 
 -- Add new line above/bellow current one
 map('n', '[<space>', ':call append(line(".") -1, "")<cr>' )
@@ -775,19 +811,14 @@ map('n', 'cos', ':setlocal spell! spell?<cr>')
 map('n', 'coT', ':call ToggleVimuxTarget()<cr>' )
 map('n', 'cot', ':silent !tmux resize-pane -Z<cr>' )
 map('n', 'cow', ':setlocal wrap! wrap?<cr>')
-
 map( 'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>')
-
--- Previous/next file (based on jumplist)
-map('n', ']f', ":lua require('bufjump').forward()<cr>" )
-map('n', '[f', ":lua require('bufjump').backward()<cr>" )
 
 --   }}}
 --   Operators {{{
 
 -- web search operator
-map('n', 'gs', ':set opfunc=WebSearch<cr>g@')
-map('x', 'gs', ':<c-u>call WebSearch(visualmode(), 1)<cr>')
+map('n', 'go', ':set opfunc=WebSearch<cr>g@')
+map('x', 'go', ':<c-u>call WebSearch(visualmode(), 1)<cr>')
 
 -- copy to system clipboard
 map('n', 'cP', 'V"+y')
@@ -838,7 +869,7 @@ acg.augroup('commit_window', {
 })
 
 acg.augroup('branch_notes', {
-  { 'Bufread,BufNewFile', '*/.git/notes-*', 'set ft=markdown' }, -- Own notes are all markdown
+  { 'Bufread,BufNewFile', '*/.git/notes-*', 'set ft = markdown' }, -- Own notes are all markdown
 })
 
 acg.augroup('detect_theme_changes', {
@@ -870,8 +901,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
-    vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
-    vim.keymap.set('n', ']e', vim.diagnostic.goto_next)
+    -- vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
+    -- vim.keymap.set('n', ']e', vim.diagnostic.goto_next)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', '<space>ll', function()
       vim.lsp.buf.format { async = true }
