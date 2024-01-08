@@ -112,8 +112,15 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  -- Netrw improvements
-  'tpope/vim-vinegar',
+  -- File manager
+  { 'stevearc/oil.nvim', config = function()
+    require("oil").setup({
+      -- Skip the confirmation popup for simple operations
+      skip_confirm_for_simple_edits = true,
+    })
+
+    map("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+  end},
 
   -- Contrast based themes
   {'mcchrish/zenbones.nvim', dependencies = {'rktjmp/lush.nvim'}},
