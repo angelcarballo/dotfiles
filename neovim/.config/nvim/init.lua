@@ -97,14 +97,8 @@ require('lazy').setup({
   -- work with word variants (change casing, smart substitute, etc.)
   {'tpope/vim-abolish', lazy = true},
 
-  -- Async job runner
-  {'tpope/vim-dispatch', lazy = true},
-
   -- Basic unix shell command helpers (mv, rm, etc.)
   {'tpope/vim-eunuch', lazy = true},
-
-  -- Extended repeat support
-  'tpope/vim-repeat',
 
   -- Readline style shortcuts on insert and command line modes
   'tpope/vim-rsi',
