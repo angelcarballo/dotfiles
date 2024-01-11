@@ -85,7 +85,7 @@ require('lazy').setup({
   -- swap delimited items (arguments, map pairs, etc.) (g>, g<)
   {'machakann/vim-swap', config = function()
     map('n', 'g<', '<Plug>(swap-prev)')
-    map('n', 'g<', '<Plug>(swap-next)')
+    map('n', 'g>', '<Plug>(swap-next)')
   end},
 
   -- Show info about current function+method (LSP)
