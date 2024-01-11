@@ -45,7 +45,6 @@ require('lazy').setup({
 
     -- Unimpaired style maps
     require('mini.bracketed').setup({
-      buffer     = { suffix = 'b' },
       comment    = { suffix = 'c' },
       conflict   = { suffix = 'x' },
       diagnostic = { suffix = 'e' },
@@ -61,13 +60,14 @@ require('lazy').setup({
       undo       = { suffix = '' },
       yank       = { suffix = '' },
       window     = { suffix = '' },
+      buffer     = { suffix = '' },
     })
   end},
 
   -- Navigate through files in the jumplist
   {'kwkarlwang/bufjump.nvim', config = function()
-    map('n', ']f', ":lua require('bufjump').forward()<cr>" )
-    map('n', '[f', ":lua require('bufjump').backward()<cr>" )
+    map('n', ']b', ":lua require('bufjump').forward()<cr>" )
+    map('n', '[b', ":lua require('bufjump').backward()<cr>" )
   end},
 
   -- provides :bdelete <type> to easily delete buffers
@@ -178,10 +178,6 @@ require('lazy').setup({
               ['af'] = '@function.outer',
               ['if'] = '@function.inner',
 
-              -- Use m for module, since it makes more sense in Elixir
-              ['am'] = '@class.outer',
-              ['im'] = '@class.inner',
-
               -- This applies to do/end blocks in Elixir
               ['ik'] = '@block.inner',
               ['ak'] = '@block.outer',
@@ -191,10 +187,10 @@ require('lazy').setup({
             enable = true,
             set_jumps = true, -- Whether to set jumps in the jumplist
             goto_next_start = {
-              [']m'] = '@function.outer',
+              [']f'] = '@function.outer',
             },
             goto_previous_start = {
-              ['[m'] = '@function.outer',
+              ['[f'] = '@function.outer',
             }
           },
         },
