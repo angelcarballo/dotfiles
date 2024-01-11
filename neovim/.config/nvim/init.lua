@@ -49,11 +49,10 @@ require('lazy').setup({
       comment    = { suffix = 'c' },
       conflict   = { suffix = 'x' },
       diagnostic = { suffix = 'e' },
-      file       = { suffix = 'f' },
+      file       = { suffix = 'd' },
       location   = { suffix = 'l' },
       quickfix   = { suffix = 'q' },
       treesitter = { suffix = 't' },
-      window     = { suffix = 'w' },
 
       -- disabled
       indent     = { suffix = '' },
@@ -61,13 +60,14 @@ require('lazy').setup({
       oldfile    = { suffix = '' },
       undo       = { suffix = '' },
       yank       = { suffix = '' },
+      window     = { suffix = '' },
     })
   end},
 
   -- Navigate through files in the jumplist
   {'kwkarlwang/bufjump.nvim', config = function()
-    map('n', ']g', ":lua require('bufjump').forward()<cr>" )
-    map('n', '[g', ":lua require('bufjump').backward()<cr>" )
+    map('n', ']f', ":lua require('bufjump').forward()<cr>" )
+    map('n', '[f', ":lua require('bufjump').backward()<cr>" )
   end},
 
   -- provides :bdelete <type> to easily delete buffers
@@ -763,6 +763,11 @@ vim.cmd [[
   let g:copilot_no_tab_map = v:true
   inoremap <silent><script><expr> <C-j> copilot#Accept("")
 ]]
+
+
+-- Unimpaired style tab navigation
+map('n', '[w', ':tabprevious<cr>')
+map('n', ']w', ':tabnext<cr>')
 
 -- pane navigation
 map('n', '<c-h>', '<c-w>h')
