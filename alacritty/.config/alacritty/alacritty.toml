@@ -1,0 +1,48 @@
+import = ["/Users/angel/.config/alacritty/dark_theme.toml"]
+
+[cursor]
+blink_interval = 350
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "Always"
+
+[font]
+size = 16.0
+
+[font.bold]
+family = "Iosevka Term"
+style = "Bold"
+
+[font.bold_italic]
+family = "Iosevka Term"
+style = "Bold Italic"
+
+[font.italic]
+family = "Iosevka Term"
+style = "Italic"
+
+[font.normal]
+family = "Iosevka Term"
+style = "Regular"
+
+[[hints.enabled]]
+command = "open"
+post_processing = true
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
+
+[hints.enabled.binding]
+key = "U"
+mods = "Super"
+
+[hints.enabled.mouse]
+enabled = true
+mods = "None"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+
+[window.padding]
+x = 5
+y = 5
