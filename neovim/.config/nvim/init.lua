@@ -160,7 +160,7 @@ require('lazy').setup({
     config = function()
       require('nvim-treesitter.configs').setup {
         -- Add languages to be installed here that you want installed for treesitter
-        ensure_installed = { 'elixir', 'heex', 'python', 'ruby', 'javascript', 'typescript', 'lua' },
+        ensure_installed = { 'elixir', 'heex', 'python', 'ruby', 'javascript', 'typescript', 'lua', 'vim' },
 
         highlight = { enable = true },
         indent = { enable = true },
@@ -829,7 +829,6 @@ map('n', 'gtt', 'V:<c-u>call SendTextToTmux(visualmode(), 1)<cr>' )
 map('x', 'gt', ':<c-u>call SendTextToTmux(visualmode(), 1)<cr>' )
 
 --   }}}
--- }}}
 -- Autocommands {{{
 acg.augroup("forced_file_types", {
   { 'BufRead,BufNewFile', '*.jbuilder', 'setfiletype ruby' },
