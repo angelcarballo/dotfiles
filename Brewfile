@@ -39,10 +39,6 @@ brew "tree"
 # AWS command line tools
 brew "awscli"
 
-# You want to edit those docx files with Vim right?
-# It may require BasicTeX (https://www.tug.org/mactex/morepackages.html)
-brew "pandoc"
-
 # Wrapper to allow supporting .inputrc settings on bad repls like <iex>
 brew "rlwrap"
 
@@ -86,7 +82,8 @@ brew "wget"
 brew "lua-language-server"
 
 # Nice looking monospaced font
-brew "font-jetbrains-mono"
+tap homebrew/cask-fonts
+brew "font-iosevka"
 
 # Auto text-expansion
 brew "espanso"
