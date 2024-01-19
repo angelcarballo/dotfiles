@@ -111,6 +111,10 @@ require('lazy').setup({
     require("oil").setup({
       -- Skip the confirmation popup for simple operations
       skip_confirm_for_simple_edits = true,
+      view_options = {
+        -- Show files and directories that start with "."
+        show_hidden = true,
+      }
     })
 
     map("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
