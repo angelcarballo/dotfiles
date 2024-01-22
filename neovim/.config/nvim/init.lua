@@ -635,6 +635,7 @@ map('n', '<leader>fc', ':FzfLua git_status<cr>')
 map('n', '<leader>fr', ':FzfLua oldfiles<cr>')
 map('n', '<leader>fh', ':FzfLua help_tags<cr>')
 map('n', '<leader>fm', ':FzfLua marks<cr>')
+map('n', '<leader>fn', ':lua require("fzf-lua").files({cwd="$NOTES" })<cr>')
 map('n', '<leader>ft', ':FzfLua live_grep_native<cr>')
 
 -- Format json shortcut, since it's used often
