@@ -1,4 +1,9 @@
 import = ["/Users/angel/.config/alacritty/dark_theme.toml"]
+# To avoid noise, changes to this file are ignored via: $ git update-index --assume-unchanged <file>
+# this can be undone with: $ git update-index --no-assume-unchanged <filename>
+
+# This line gets updated automatically when the system goes from dark to light mode by
+# the script in alacritty/.config/alacritty/switch_theme.sh
 
 [cursor]
 blink_interval = 350
