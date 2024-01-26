@@ -11,6 +11,9 @@ inoreabbrev <buffer> importecto import Ecto.Query, only: [from: 2]
 inoreabbrev <buffer> usedatacase use Duffel.Core.DataCase, async: true
 inoreabbrev <buffer> rawquery Ecto.Adapters.SQL.to_sql(:all, Repo, )<left>
 
+" Spell check strings and comments
+setlocal spell
+
 " Remove deps from path to speed up find & friends on large projects
 setlocal path-=deps/**/lib/**,deps/**/src/**
 
