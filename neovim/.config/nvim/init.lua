@@ -66,8 +66,8 @@ require('lazy').setup({
 
   -- Navigate through files in the jumplist
   {'kwkarlwang/bufjump.nvim', config = function()
-    map('n', ']b', ":lua require('bufjump').forward()<cr>" )
-    map('n', '[b', ":lua require('bufjump').backward()<cr>" )
+    map('n', ']f', ":lua require('bufjump').forward()<cr>" )
+    map('n', '[f', ":lua require('bufjump').backward()<cr>" )
   end},
 
   -- provides :bdelete <type> to easily delete buffers
@@ -180,17 +180,7 @@ require('lazy').setup({
               ['ik'] = '@block.inner',
               ['ak'] = '@block.outer',
             },
-          },
-          move = {
-            enable = true,
-            set_jumps = true, -- Whether to set jumps in the jumplist
-            goto_next_start = {
-              [']f'] = '@function.outer',
-            },
-            goto_previous_start = {
-              ['[f'] = '@function.outer',
-            }
-          },
+          }
         },
       }
     end
