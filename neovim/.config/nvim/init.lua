@@ -64,6 +64,51 @@ require('lazy').setup({
     })
   end},
 
+  { 'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  },
+
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.5',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      local actions = require("telescope.actions")
+
+      require('telescope').setup({
+        defaults = {
+          preview = false,
+          mappings = {
+            i = {
+              ["<esc>"] = actions.close
+            },
+          },
+        },
+        extensions = {
+          fzf = {
+            fuzzy = true,                    -- false will only do exact matching
+            override_generic_sorter = true,  -- override the generic sorter
+            override_file_sorter = true,     -- override the file sorter
+            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+          }
+        },
+        pickers = {
+          find_files = {theme = "ivy"},
+          buffers = { theme = "ivy"},
+          commands = { theme = "ivy"},
+          git_branches = { theme = "ivy"},
+          find_files = { theme = "ivy"},
+          git_files = { theme = "ivy"},
+          git_status = { theme = "ivy"},
+          oldfiles = { theme = "ivy"},
+          help_tags = { theme = "ivy"},
+          marks = { theme = "ivy"},
+          live_grep = { theme = "ivy"},
+          registers = { theme = "ivy"}
+        },
+      })
+    end
+  },
+
   -- Navigate through files in the jumplist
   {'kwkarlwang/bufjump.nvim', config = function()
     map('n', ']f', ":lua require('bufjump').forward()<cr>" )
@@ -288,20 +333,6 @@ require('lazy').setup({
   -- Auto close html/xml tags
   {'alvan/vim-closetag', config = function()
     vim.g.closetag_filetypes = 'html,xhtml,erb,eelixir'
-  end},
-
-   -- Fuzzy Finder
-  {'ibhagwan/fzf-lua', config = function()
-    require('fzf-lua').setup {
-      winopts = {
-        height = 0.3,
-        width = 1,
-        row = 1,
-        col = 0,
-        -- disable all previews by default
-        preview = { hidden = 'hidden' }
-      }
-    }
   end},
 
   -- Projections for project file navigation
@@ -553,6 +584,9 @@ vim.cmd 'highlight TabLineSel guifg=bg guibg=fg'           -- Highlight current 
 vim.cmd "match ErrorMsg '\\s\\+$'"                         -- Highlight trailing spaces
 -- }}}
 -- Mappings {{{
+require('telescope').load_extension('fzf')
+local telescope = require('telescope.builtin')
+
 --   Basic mappings {{{
 --
 map('i', 'kj', '<esc>')                          -- Easily exit insert mode
@@ -562,6 +596,7 @@ map('n', 'j', 'gj')                              -- Move around using visual lin
 map('n', 'k', 'gk')
 map('i', '<M-Right>', '<c-o>w')                  -- Move between words with Alt-<arrow> like in most apps
 map('i', '<M-Left>', '<c-o>b')
+map('i', '<c-q>', telescope.registers)           -- Paste from register
 -- }}}
 --   Leader mappings {{{
 
@@ -569,8 +604,8 @@ vim.g.mapleader = ' '                              -- Use <sapce> as leader key
 
 map('n', '<leader>.', ':find ')                    -- Quick find
 map('n', '<leader>,', ':b ')                       -- Quick buffer switch
-map('n', '<leader><space>', ':FzfLua buffers<cr>') -- Quick buffer switch (fuzzy)
-map('n', '<leader>;', ':FzfLua commands<cr>')      -- Run vim commannds
+map('n', '<leader><space>', telescope.buffers) -- Quick buffer switch (fuzzy)
+map('n', '<leader>;', telescope.commands)      -- Run vim commannds
 
 -- /,? - Search in project
 -- Use -F by default to disable regexp and search for a literal string
@@ -588,7 +623,7 @@ map('n', '<leader>aa', ':argadd<cr>')
 -- b - Buffers
 map('n', '<leader>aa', ':argadd<cr>')
 map('n', '<leader>bo', ':Bdelete hidden<cr>')
-map('n', '<leader>bb', ':FzfLua buffers<cr>')
+map('n', '<leader>bb', telescope.buffers)
 
 -- c - Copy/clear
 map('n', '<leader>cb', ':let @+=FugitiveHead()<cr>:echo "<c-r>+"<cr>')                             -- Copy git branch
@@ -617,16 +652,16 @@ map('n', '<leader>ev', ':Vex<cr>')
 
 -- f - File/format
 map('n', '<leader>fs', ':up<cr>')
-map('n', '<leader>fb', ':FzfLua git_branches<cr>')
-map('n', '<leader>fF', ':FzfLua files<cr>')
-map('n', '<leader>ff', ':FzfLua git_files<cr>')
-map('n', '<leader>fg', ':FzfLua git_status<cr>')
-map('n', '<leader>fc', ':FzfLua git_status<cr>')
-map('n', '<leader>fr', ':FzfLua oldfiles<cr>')
-map('n', '<leader>fh', ':FzfLua help_tags<cr>')
-map('n', '<leader>fm', ':FzfLua marks<cr>')
-map('n', '<leader>fn', ':lua require("fzf-lua").files({cwd="$NOTES" })<cr>')
-map('n', '<leader>ft', ':FzfLua live_grep_native<cr>')
+map('n', '<leader>fb', telescope.git_branches)
+map('n', '<leader>fF', telescope.find_files)
+map('n', '<leader>ff', telescope.git_files)
+map('n', '<leader>fg', telescope.git_status)
+map('n', '<leader>fc', telescope.git_status)
+map('n', '<leader>fr', telescope.oldfiles)
+map('n', '<leader>fh', telescope.help_tags)
+map('n', '<leader>fm', telescope.marks)
+map('n', '<leader>fn', function() telescope.find_files({ cwd = vim.fn.expand('$NOTES') }) end)
+map('n', '<leader>ft', telescope.live_grep)
 
 -- Format json shortcut, since it's used often
 map('n', '<leader>fj', ':set ft = json<bar>%!jq<cr>')
@@ -676,7 +711,7 @@ map('n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()\'
 map('n', '<leader>of', ":! open '%'<cr>")
 
 --" p - paste
-map('n', '<leader>p', ':FzfLua registers<cr>')
+map('n', '<leader>p', telescope.registers)
 
 --" r - Remove, redraw
 map('n', '<leader>rd', ':redraw!<cr>')
