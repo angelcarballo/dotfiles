@@ -198,7 +198,6 @@ require('lazy').setup({
   -- Rbenv support, used to get the current ruby version on `path`
   {'tpope/vim-rbenv', lazy = true, ft = {'ruby'}},
 
-
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
@@ -245,37 +244,23 @@ require('lazy').setup({
         snippet = {
           -- REQUIRED - you must specify a snippet engine
           expand = function(args)
-            vim.fn['vsnip#anonymous'](args.body) -- For `vsnip` users.
+            vim.fn['vsnip#anonymous'](args.body)
           end,
-        },
-        window = {
-          -- completion = cmp.config.window.bordered(),
-          -- documentation = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.abort(),
-          -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
           ['<Tab>'] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
-          { name = 'vsnip' }, -- For vsnip users.
+          { name = 'vsnip' },
         }, {
             { name = 'buffer' },
           })
       })
-
-      -- -- Set configuration for specific filetype.
-      -- cmp.setup.filetype('gitcommit', {
-      --   sources = cmp.config.sources({
-      --     { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-      --   }, {
-      --       { name = 'buffer' },
-      --     })
-      -- })
     end,
   },
 
