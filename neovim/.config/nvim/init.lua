@@ -31,9 +31,6 @@ require('lazy').setup({
     -- Auto close pairs
     require('mini.pairs').setup()
 
-    -- Manage surrounding chars, tags, etc.
-    require('mini.surround').setup()
-
     -- Align text (ga)
     require('mini.align').setup()
 
@@ -150,6 +147,9 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+
+  -- Manage surround pairs (cs, ds, yss, etc.)
+  'tpope/vim-surround',
 
   -- File manager
   { 'stevearc/oil.nvim', config = function()
