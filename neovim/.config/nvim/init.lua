@@ -853,6 +853,7 @@ acg.augroup("forced_file_types", {
   { 'BufRead,BufNewFile', '*.md',       'setfiletype markdown' },
   { 'BufRead,BufNewFile', '*.trello',   'setfiletype markdown' },
   { 'BufRead,BufNewFile', '*.livemd',   'setfiletype markdown' },
+  { 'BufRead,BufNewFile', '*.notes',    'setfiletype markdown' },
   { 'BufRead,BufNewFile', '*.vader',    'setfiletype vim' },
   { 'BufRead,BufNewFile', '*.heex',     'setfiletype eelixir' },
 })
@@ -877,7 +878,7 @@ acg.augroup('commit_window', {
 })
 
 acg.augroup('branch_notes', {
-  { 'Bufread,BufNewFile', '*/.git/notes-*', 'set ft = markdown' }, -- Own notes are all markdown
+  { 'Bufread,BufNewFile', '*/.git/notes-*', 'set ft=markdown' }, -- Own notes are all markdown
 })
 
 acg.augroup('detect_theme_changes', {
