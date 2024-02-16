@@ -149,7 +149,7 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- Manage surround pairs (cs, ds, yss, etc.)
-  'tpope/vim-surround',
+  {'tpope/vim-surround', dependencies = { 'tpope/vim-repeat' }},
 
   -- File manager
   { 'stevearc/oil.nvim', config = function()
