@@ -720,6 +720,7 @@ map('n', '<leader>to', ':VimuxRunCommand("")<cr>' )
 map('n', '<leader>tl', ':VimuxRunCommand("!!")<cr>')
 map('n', '<leader>tt', ':VimuxRunCommand("")<left><left>' )
 map('n', '<leader>t:', 'VimuxRunCommand("")<left><left>' )
+map('n', '<leader>tw', ':VimuxClearTerminalScreen<CR>' )
 -- interrupt twice to auto-confirm
 map('n', '<leader>tc', ':VimuxInterruptRunner<cr>:VimuxInterruptRunner<cr>')
 
