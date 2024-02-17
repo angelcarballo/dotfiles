@@ -70,13 +70,18 @@ require('lazy').setup({
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local actions = require("telescope.actions")
+      local action_layout = require("telescope.actions.layout")
 
       require('telescope').setup({
         defaults = {
-          preview = false,
+          preview = { hide_on_startup = true },
           mappings = {
             i = {
-              ["<esc>"] = actions.close
+              ["<esc>"] = actions.close,
+              ["<c-j>"] = action_layout.toggle_preview
+            },
+            n = {
+              ["<c-j>"] = action_layout.toggle_preview
             },
           },
         },
