@@ -660,8 +660,7 @@ map('n', '<leader>fx', ':set ft = xml<bar>%!xmllint --format --recover --nowarni
 -- g - Git/Generate
 map('n', '<leader>gg', ':Git<space>')
 map('n', '<leader>gD', ':vertical leftabove Gdiffsplit origin/main<cr>')
--- Blame ignoring whitespace (-w), and attributing considering moved lines (-C -C -C)
-map('n', '<leader>gb', ':Git blame -C -C -C -w<cr>')
+map('n', '<leader>gb', ':Git blame<cr>')
 map('n', '<leader>gcb', ':Git checkout -b ')
 map('n', '<leader>gco', ':Git checkout ')
 map('n', '<leader>gd', ':vertical leftabove Gdiffsplit<cr>')
