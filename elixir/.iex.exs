@@ -13,6 +13,8 @@ defmodule AC do
 
     :ok
   end
+
+  def exit, do: System.halt
 end
 
 import AC
