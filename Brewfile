@@ -1,3 +1,5 @@
+tap "homebrew/cask-fonts"
+
 # Manage symlinks for dotfiles
 brew "stow"
 
@@ -39,17 +41,14 @@ brew "tree"
 # AWS command line tools
 brew "awscli"
 
-# Wrapper to allow supporting .inputrc settings on bad repls like <iex>
-brew "rlwrap"
+# AWS command line tools
+cask "google-cloud-sdk"
 
 # Grep-like json processor
 brew "jq"
 
 # GNU core utilities
 brew "coreutils"
-
-# Text to UML (flow, class and other diagrams)
-brew "plantuml"
 
 # Cat like viewer with syntax highlighting, git support and other goodies
 brew "bat"
@@ -64,13 +63,10 @@ brew "entr"
 brew "gron"
 
 # Generic version manager
-brew "rtx"
+brew "mise"
 
 # UI framework required for erlang observer, debugger, etc
 brew "wxwidgets"
-
-# Extra unix tools, like vidir
-brew "moreutils"
 
 # Github command line tooling
 brew "gh"
@@ -82,11 +78,13 @@ brew "wget"
 brew "lua-language-server"
 
 # Nice looking monospaced font
-tap homebrew/cask-fonts
-brew "font-iosevka"
+cask "font-iosevka"
 
 # Auto text-expansion
-brew "espanso"
+cask "espanso"
 
 # Terminal of choice
-brew "alacritty""
+cask "alacritty"
+
+# Required to install things like fzf
+brew "cmake"
