@@ -60,13 +60,21 @@ matches:
   - trigger: "pzip"
     replace: "E1W2JH"
 
-  - trigger: ":cdate"
+  - trigger: "cdate"
     replace: "{{cdate}}"
     vars:
       - name: cdate
         type: date
         params:
-          format: "%Y-%m-%d"
+          format: "%F"
+
+  - trigger: "fdate"
+    replace: "{{fdate}}"
+    vars:
+      - name: fdate
+        type: date
+        params:
+          format: "%a %e %b %Y"
 
   - trigger: ":lorem"
     replace: "Lorem ipsum dolor sit amet"
