@@ -539,7 +539,8 @@ vim.opt.wildignore:append({
   '*/_site/*',                    -- Jekyll
   '*/log/*,*.log',                -- Log files
   '*.eof,*.ttf,*.woff',           -- Font files
-  '**/node_modules/**'            -- Node artefacts
+  '**/node_modules/**',           -- Node artefacts
+  '.yarn/**'                      -- Yarn modules
 })
 -- }}}
 -- Look & Feel {{{
