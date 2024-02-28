@@ -88,3 +88,6 @@ cask "alacritty"
 
 # Required to install things like fzf
 brew "cmake"
+
+# Used for test automation, PDF generation, etc.
+cask "chromium"
