@@ -50,6 +50,8 @@ alias mcc='mix compile && MIX_ENV=test mix compile'
 alias mcw='mix compile --warnings-as-errors'
 alias migrate='MIX_ENV=dev mix ecto.migrate && MIX_ENV=test mix ecto.migrate'
 alias rollback='MIX_ENV=dev mix ecto.rollback -n1 && MIX_ENV=test mix ecto.rollback -n1'
+alias formatpr='mix format `prfiles`'
+alias credopr='mix credo --strict `prfiles`'
 
 # Git
 alias clone='git clone'
