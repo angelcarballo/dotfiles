@@ -6,7 +6,7 @@ what you need.
 
 ## Usage
 
-``` sh
+```sh
 # initial setup
 make setup_mac
 
@@ -25,4 +25,4 @@ curl https://raw.githubusercontent.com/angelcarballo/dotfiles/master/vim/.vimrc.
 
 ## Notes
 
-Zsh will try to source `~/.zshrc.local`.
+ZSH will try to source `~/.zshrc.local`.

@@ -209,7 +209,9 @@ require('lazy').setup({
     config = function()
       require('nvim-treesitter.configs').setup {
         -- Add languages to be installed here that you want installed for treesitter
-        ensure_installed = { 'elixir', 'heex', 'eex', 'python', 'ruby', 'javascript', 'typescript', 'lua', 'vim', 'sql', 'yaml', 'toml' },
+        ensure_installed = { 'elixir', 'heex', 'eex', 'python', 'ruby',
+          'javascript', 'typescript', 'lua', 'vim', 'sql', 'yaml', 'toml',
+          'markdown', 'markdown_inline' },
 
         highlight = { enable = true },
         indent = { enable = true },
