@@ -660,6 +660,7 @@ map('n', '<leader>fh', telescope.help_tags)
 map('n', '<leader>fm', telescope.marks)
 map('n', '<leader>fn', function() telescope.find_files({ cwd = vim.fn.expand('$NOTES') }) end)
 map('n', '<leader>ft', telescope.live_grep)
+map('n', '<leader>fl', telescope.lsp_document_symbols)
 
 -- Format json shortcut, since it's used often
 map('n', '<leader>fj', ':set ft = json<bar>%!jq<cr>')
