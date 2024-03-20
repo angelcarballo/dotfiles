@@ -20,6 +20,7 @@ function gitstatus_prompt_update() {
   local yellow='%F{3}'
 
   p=$yellow
+  p+="@"
   p+=${${VCS_STATUS_LOCAL_BRANCH:-@${VCS_STATUS_COMMIT}}//\%/%%}            # escape %
 
   [[ -n $VCS_STATUS_TAG               ]] && p+="#${VCS_STATUS_TAG//\%/%%}"  # escape %
