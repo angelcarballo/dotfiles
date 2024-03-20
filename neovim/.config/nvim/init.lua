@@ -84,6 +84,14 @@ require('lazy').setup({
               ["<c-j>"] = action_layout.toggle_preview
             },
           },
+          layout_strategy = "bottom_pane",
+          layout_config = {
+            bottom_pane = {
+              height = 20,
+              preview_cutoff = 120,
+              prompt_position = "bottom"
+            }
+          }
         },
         extensions = {
           fzf = {
@@ -92,21 +100,7 @@ require('lazy').setup({
             override_file_sorter = true,     -- override the file sorter
             case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
           }
-        },
-        pickers = {
-          find_files = {theme = "ivy"},
-          buffers = { theme = "ivy"},
-          commands = { theme = "ivy"},
-          git_branches = { theme = "ivy"},
-          find_files = { theme = "ivy"},
-          git_files = { theme = "ivy"},
-          git_status = { theme = "ivy"},
-          oldfiles = { theme = "ivy"},
-          help_tags = { theme = "ivy"},
-          marks = { theme = "ivy"},
-          live_grep = { theme = "ivy"},
-          registers = { theme = "ivy"}
-        },
+        }
       })
     end
   },
