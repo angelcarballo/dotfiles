@@ -92,3 +92,6 @@ brew "cmake"
 
 # Used for test automation, PDF generation, etc.
 cask "chromium"
+
+# Use GNU version of cal
+brew "gcal"

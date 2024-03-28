@@ -27,6 +27,7 @@ alias lcear='clear'
 alias ls='ls -GFa --color=auto'
 alias ll='ls -GFlah --color=auto'
 alias cat='bat'
+alias cal='gcal --starting-day=1'
 
 # Extension based aliases, they are used when the filename is used as a command
 alias -s log='tail -f'
