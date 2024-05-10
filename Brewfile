@@ -95,3 +95,6 @@ cask "chromium"
 
 # Use GNU version of cal
 brew "gcal"
+
+# Used to format MD files, conversion to/from docx, etc.
+brew "pandoc"
