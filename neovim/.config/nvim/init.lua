@@ -287,6 +287,12 @@ require('lazy').setup({
           }
         }
       }
+
+      require('lspconfig').sqls.setup{
+        on_attach = function(client, bufnr)
+          require('sqls').on_attach(client, bufnr)
+        end
+      }
     end},
 
   -- Git signs and chunk navigation
@@ -402,6 +408,8 @@ require('lazy').setup({
       auto_restore_enabled = false
     })
   end},
+
+  'nanotee/sqls.nvim',
 }, {
     dev = {
       path = '~/src', -- where to find local plugins
