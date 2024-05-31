@@ -158,9 +158,26 @@ require('lazy').setup({
       view_options = {
         -- Show files and directories that start with "."
         show_hidden = true,
-      }
+      },
+      -- Default maps clash with pane navigation
+      use_default_keymaps = false,
+      keymaps = {
+        ["g?"] = "actions.show_help",
+        ["<CR>"] = "actions.select",
+        ["<C-v>"] = "actions.select_vsplit",
+        ["<C-s>"] = "actions.select_split",
+        ["<C-t>"] = "actions.select_tab",
+        ["<C-p>"] = "actions.preview",
+        ["<C-l>"] = "actions.refresh",
+        ["-"] = "actions.parent",
+        ["_"] = "actions.open_cwd",
+        ["`"] = "actions.cd",
+        ["~"] = "actions.tcd",
+        ["gs"] = "actions.change_sort",
+        ["gx"] = "actions.open_external",
+        ["g."] = "actions.toggle_hidden",
+      },
     })
-
     map("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
   end},
 
@@ -823,6 +840,9 @@ map('x', 'L', '$')
 
 -- This is to overwrite copy entire buffer, so that it keeps cursor position
 map('n', 'cpae', 'mzgg"+yG\'z')                                                              -- Copy all/entire buffer
+
+-- Format the whole buffer, keeping cursor position
+map('n', 'fff', 'mzgg=G\'z')
 
 --   }}}
 
