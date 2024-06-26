@@ -35,7 +35,13 @@ require('lazy').setup({
     require('mini.align').setup()
 
     -- Comment text (gc)
-    require('mini.comment').setup()
+    require('mini.comment').setup({
+      mappings = {
+        -- Define 'comment' textobject (like `dgc` - delete whole comment block)
+        -- Works also in Visual mode if mapping differs from `comment_visual`
+        textobject = 'ac',
+      }
+    })
 
     -- Indentation based scope and navigation
     require('mini.indentscope').setup()
