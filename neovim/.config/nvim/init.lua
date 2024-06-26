@@ -84,7 +84,8 @@ require('lazy').setup({
           mappings = {
             i = {
               ["<esc>"] = actions.close,
-              ["<c-j>"] = action_layout.toggle_preview
+              ["<c-j>"] = action_layout.toggle_preview,
+              ["<C-h>"] = "which_key"
             },
             n = {
               ["<c-j>"] = action_layout.toggle_preview
