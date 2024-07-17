@@ -349,8 +349,8 @@ require('lazy').setup({
 
 
    -- Elixir support
-  {'elixir-editors/vim-elixir', lazy = true, ft = {'elixir', 'heex', 'markdown'}},
-  {'mhinz/vim-mix-format', lazy = true, ft = {'elixir', 'heex'},
+  {'elixir-editors/vim-elixir', lazy = true, ft = {'elixir', 'heex', 'markdown', 'eelixir'}},
+  {'mhinz/vim-mix-format', lazy = true, ft = {'elixir', 'heex', 'eelixir'},
     config = function()
       vim.g.mix_format_on_save = 0
       vim.g.mix_format_silent_errors = 1 -- do not open a window with stacktrace if the formatter errors
