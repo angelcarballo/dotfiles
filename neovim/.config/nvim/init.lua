@@ -433,7 +433,11 @@ require('lazy').setup({
     })
   end},
 
+  -- SQL Language server
   'nanotee/sqls.nvim',
+
+  -- Goodies and automation for bulleted lists (mostly for markdown)
+  'bullets-vim/bullets.vim'
 }, {
     dev = {
       path = '~/src', -- where to find local plugins
