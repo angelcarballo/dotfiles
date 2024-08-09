@@ -307,7 +307,8 @@ require('lazy').setup({
         capabilities = require('cmp_nvim_lsp').default_capabilities();
         settings = {
           elixirLS = {
-            dialyzerEnabled = false
+            dialyzerEnabled = false,
+            fetchDeps = true
           }
         }
       }
