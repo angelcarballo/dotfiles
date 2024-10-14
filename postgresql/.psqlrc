@@ -16,9 +16,6 @@
 \set PROMPT1 '%~ (%p) > '
 \set PROMPT2 '%~ > '
 
--- Row-per-field output
-\pset expanded
-
 -- Display query time
 \timing
 
