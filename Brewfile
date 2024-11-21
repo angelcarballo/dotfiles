@@ -1,5 +1,3 @@
-tap "homebrew/cask-fonts"
-
 # Manage symlinks for dotfiles
 brew "stow"
 
@@ -93,8 +91,8 @@ brew "cmake"
 # Used for test automation, PDF generation, etc.
 cask "chromium"
 
-# Use GNU version of cal
-brew "gcal"
-
 # Used to format MD files, conversion to/from docx, etc.
 brew "pandoc"
+
+# Used to authenticate to github when cloning http repos
+cask "git-credential-manager"
