@@ -16,6 +16,8 @@ setlocal spell
 
 " Remove deps from path to speed up find & friends on large projects
 setlocal path-=deps/**/lib/**,deps/**/src/**
+" Some projects have unit_test env
+setlocal path+=unit_test/**
 
 setlocal foldmethod=indent
 setlocal foldlevel=1
