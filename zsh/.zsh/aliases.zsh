@@ -6,8 +6,8 @@ case "$OSTYPE" in
     alias copy='tee >(pbcopy)'
     alias paste='pbpaste'
     alias flushdns='dscacheutil -flushcache'
-    alias dark="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true'"
-    alias light="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to false'"
+    alias dark="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true' & sed -i '' 's/light_theme/dark_theme/' ~/.config/alacritty/alacritty.toml"
+    alias light="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to false' & sed -i '' 's/dark_theme/light_theme/' ~/.config/alacritty/alacritty.toml"
   ;;
   linux*)
     alias copy='tee > (xclip -selection clipboard)'
