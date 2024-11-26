@@ -49,6 +49,9 @@ brew "jq"
 # GNU core utilities
 brew "coreutils"
 
+# GNU sed, easier to use and more features than the version shipped with MacOs
+brew "gnu-sed"
+
 # Cat like viewer with syntax highlighting, git support and other goodies
 brew "bat"
 
