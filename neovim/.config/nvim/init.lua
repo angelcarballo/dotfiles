@@ -886,6 +886,7 @@ map('x', 'go', ':<c-u>call WebSearch(visualmode(), 1)<cr>')
 
 -- copy to system clipboard
 map('n', 'cP', 'V"+y')
+map('n', 'cpp', 'V"+y')
 map('n', 'cp', '"+y')
 map('x', 'cp', '"+y')
 
