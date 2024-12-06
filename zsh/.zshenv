@@ -34,3 +34,6 @@ export GITSTATUS_DIR="$HOME/src/gitstatus"
 
 # Make path entries unique
 export -U PATH
+
+# Include go binaries in path
+export PATH=$PATH:$GOBIN

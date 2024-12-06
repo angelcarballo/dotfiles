@@ -300,6 +300,9 @@ require('lazy').setup({
     end,
   },
 
+  -- SQL Language server
+  'nanotee/sqls.nvim',
+
   {'neovim/nvim-lspconfig',
     config = function()
       require('lspconfig').elixirls.setup{
@@ -314,6 +317,7 @@ require('lazy').setup({
       }
 
       require('lspconfig').sqls.setup{
+        cmd = {"/Users/angel/.local/share/mise/installs/go/1.23.4/bin/sqls", "-config", "/Users/angel/.config/sqls/config.yml"};
         on_attach = function(client, bufnr)
           require('sqls').on_attach(client, bufnr)
         end
@@ -433,9 +437,6 @@ require('lazy').setup({
       auto_restore_enabled = false
     })
   end},
-
-  -- SQL Language server
-  'nanotee/sqls.nvim',
 
   -- Goodies and automation for bulleted lists (mostly for markdown)
   'bullets-vim/bullets.vim'
