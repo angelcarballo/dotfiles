@@ -40,7 +40,7 @@ brew "tree"
 # AWS command line tools
 brew "awscli"
 
-# AWS command line tools
+# GCS command line tools
 cask "google-cloud-sdk"
 
 # Grep-like json processor
