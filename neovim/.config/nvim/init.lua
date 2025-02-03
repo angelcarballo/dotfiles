@@ -355,7 +355,7 @@ require('lazy').setup({
 
    -- Elixir support
   {'elixir-editors/vim-elixir', lazy = true, ft = {'elixir', 'heex', 'markdown', 'eelixir'}},
-  {'mhinz/vim-mix-format', lazy = true, ft = {'elixir', 'heex', 'eelixir'},
+  {'mhinz/vim-mix-format', lazy = false, ft = {'elixir', 'heex', 'eelixir'},
     config = function()
       vim.g.mix_format_on_save = 0
       vim.g.mix_format_silent_errors = 1 -- do not open a window with stacktrace if the formatter errors
@@ -363,8 +363,8 @@ require('lazy').setup({
   },
 
   -- Auto close html/xml tags
-  {'alvan/vim-closetag', config = function()
-    vim.g.closetag_filetypes = 'html,xhtml,erb,eelixir'
+  {'alvan/vim-closetag', init = function()
+    vim.g.closetag_filetypes = 'html,xhtml,erb,eelixir,heex'
   end},
 
   -- Projections for project file navigation
