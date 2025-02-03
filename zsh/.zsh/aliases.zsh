@@ -6,8 +6,8 @@ case "$OSTYPE" in
     alias copy='tee >(pbcopy)'
     alias paste='pbpaste'
     alias flushdns='dscacheutil -flushcache'
-    alias dark="sed -i '' 's/light_theme/dark_theme/' ~/.config/alacritty/alacritty.toml & osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true'"
-    alias light="sed -i '' 's/dark_theme/light_theme/' ~/.config/alacritty/alacritty.toml & osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to false'"
+    alias dark="sed -i '' 's/light_theme/dark_theme/' ~/.config/alacritty/alacritty.toml & osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to true' & tmux source-file ~/.tmux.conf"
+    alias light="sed -i '' 's/dark_theme/light_theme/' ~/.config/alacritty/alacritty.toml & osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to false' & tmux source-file ~/.tmux.conf"
   ;;
   linux*)
     alias copy='tee > (xclip -selection clipboard)'
