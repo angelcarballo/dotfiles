@@ -355,12 +355,6 @@ require('lazy').setup({
 
    -- Elixir support
   {'elixir-editors/vim-elixir', lazy = true, ft = {'elixir', 'heex', 'markdown', 'eelixir'}},
-  {'mhinz/vim-mix-format', lazy = false, ft = {'elixir', 'heex', 'eelixir'},
-    config = function()
-      vim.g.mix_format_on_save = 0
-      vim.g.mix_format_silent_errors = 1 -- do not open a window with stacktrace if the formatter errors
-    end
-  },
 
   -- Auto close html/xml tags
   {'alvan/vim-closetag', init = function()
@@ -739,7 +733,7 @@ map('n', '<leader>q', ':q<cr>')
 map('n', '<leader>Q', ':qall!<cr>')
 
 -- m - Mix
-map('n', '<leader>mf', ':MixFormat<cr>')
+map('n', '<leader>mf', ':lua vim.lsp.buf.format()<cr>')
 
 -- n - notes
 map('n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()\')<cr>' )
@@ -949,7 +943,7 @@ acg.augroup('detect_theme_changes', {
 acg.augroup('lsp_format_on_save', {
   {
     'BufWritePre',
-    '*.ex',
+    '*.ex,*.exs,*.heex',
     'lua vim.lsp.buf.format({ async = false })'
   },
 })
