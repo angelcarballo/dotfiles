@@ -85,10 +85,12 @@ require('lazy').setup({
             i = {
               ["<esc>"] = actions.close,
               ["<c-j>"] = action_layout.toggle_preview,
-              ["<C-h>"] = "which_key"
+              ["<C-h>"] = "which_key",
+              ["<c-x>"] = actions.delete_buffer
             },
             n = {
-              ["<c-j>"] = action_layout.toggle_preview
+              ["<c-j>"] = action_layout.toggle_preview,
+              ["<c-x>"] = actions.delete_buffer
             },
           },
           layout_strategy = "bottom_pane",
