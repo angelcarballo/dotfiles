@@ -29,13 +29,17 @@
 	process = git-lfs filter-process
 	required = true
 [diff]
-	colorMoved = default
+	colorMoved = plain
+	algorithm = histogram
+	mnemonicPrefix = true
+	renames = true
 [include]
 	path = ~/.gitconfig.local
 [absorb]
 	maxStack=50
 [push]
 	default = current
+	autoSetupRemote = true
 [init]
 	defaultBranch = main
 [rerere]
@@ -47,3 +51,11 @@
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
