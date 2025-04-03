@@ -99,3 +99,6 @@ brew "pandoc"
 
 # Used to authenticate to github when cloning http repos
 cask "git-credential-manager"
+
+# To display next meeting in the statusbar
+cask "meetingbar"
