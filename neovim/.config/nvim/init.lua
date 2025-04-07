@@ -413,9 +413,11 @@ require('lazy').setup({
     vim.g['g:test#elixir#exunit#executable'] = 'mix test'        -- Use mix, this should probably be the default
     vim.g['test#elixir#exunit#options'] = {
       suite = '--stale',                                         -- Only run changed tests
-      file = '--trace --seed 0',                                 -- For single files, run in verbose mode and in original order
-      nearest = '--trace'
+      file = '--seed 0',                                         -- For single files, run in original order
+      nearest = '--trace'                                        -- For single tests, run in verbose mode
     }
+    vim.g['test#javascript#runner'] = 'yarn test'
+    vim.g['test#javascript#mocha#file_pattern'] = '\\v.*\\.spec\\.(ts|tsx)$'
     vim.cmd( -- Custom strategy to avoid echoing the command to the terminal before running it
       [[
         function! CustomVimuxStrategy(cmd)
