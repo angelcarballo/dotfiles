@@ -28,22 +28,16 @@ setlocal foldlevel=1
 " things.
 function! ElixirUmbrellaTransform(cmd) abort
   " Unit test env uses a different jet task
-  if match(a:cmd, 'unit_test') != -1
+  if match(a:cmd, 'unit_test/') != -1
     let l:cmd = substitute(a:cmd, 'mix test', 'mix unit_test', '')
-  else
-    let l:cmd = a:cmd
-  end
-
-  if match(l:cmd, 'apps/') != -1
     let l:app_path = matchlist(l:cmd, '\(apps/[^/]*\)/')[0]
 
-    " remove apps/some_app from the file path
-    let l:app_cmd = substitute(l:cmd, '\(apps/[^/]*\)/', '', '')
+    " remove apps/some_app from the file path as unit_test requires it
+    let l:unit_test_cmd = substitute(l:cmd, '\(apps/[^/]*\)/', '', '')
 
-    " run mix test command in a subshell to avoid switching the cwd
-    return "(cd " . l:app_path . "; " . l:app_cmd . ")"
+    return l:unit_test_cmd
   else
-    return l:cmd
+    return a:cmd
   end
 endfunction
 
