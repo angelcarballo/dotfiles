@@ -66,3 +66,6 @@ mynotes.md
 story-notes.md
 scratch
 .notes
+
+# Postgres LSP project configuration (https://pgtools.dev/)
+postgrestools.jsonc
