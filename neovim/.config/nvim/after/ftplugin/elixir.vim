@@ -10,6 +10,7 @@ inoreabbrev <buffer> importdecimal import Duffel.Core.Sigils, only: [sigil_d: 2]
 inoreabbrev <buffer> importecto import Ecto.Query, only: [from: 2]
 inoreabbrev <buffer> usedatacase use Duffel.Core.DataCase, async: true
 inoreabbrev <buffer> rawquery Ecto.Adapters.SQL.to_sql(:all, Repo, )<left>
+inoreabbrev <buffer> pdbg \|> dbg()
 
 " Spell check strings and comments
 setlocal spell
