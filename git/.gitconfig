@@ -44,10 +44,10 @@
 	defaultBranch = main
 [rerere]
 	enabled = true
+	autoupdate = true
 [rebase]
 	autoStash = true
 [credential]
-	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
@@ -55,7 +55,3 @@
 	ui = auto
 [branch]
 	sort = -committerdate
-[fetch]
-	prune = true
-	pruneTags = true
-	all = true
