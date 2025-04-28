@@ -69,3 +69,6 @@ scratch
 
 # Postgres LSP project configuration (https://pgtools.dev/)
 postgrestools.jsonc
+
+# Cspell (spelling LSP)
+cspell.json
