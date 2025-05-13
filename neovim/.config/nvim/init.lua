@@ -437,7 +437,23 @@ require('lazy').setup({
   end},
 
   -- Goodies and automation for bulleted lists (mostly for markdown)
-  'bullets-vim/bullets.vim'
+  'bullets-vim/bullets.vim',
+
+  {
+    "frankroeder/parrot.nvim",
+    dependencies = { 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim' },
+    -- optionally include "folke/noice.nvim" or "rcarriga/nvim-notify" for beautiful notifications
+    config = function()
+      require("parrot").setup {
+        -- Providers must be explicitly added to make them available.
+        providers = {
+          anthropic = {
+            api_key = os.getenv "ANTHROPIC_API_KEY",
+          }
+        },
+      }
+    end,
+  }
 }, {
     dev = {
       path = '~/src', -- where to find local plugins
@@ -875,6 +891,10 @@ map('n', 'coT', ':call ToggleVimuxTarget()<cr>' )
 map('n', 'cot', ':silent !tmux resize-pane -Z<cr>' )
 map('n', 'cow', ':setlocal wrap! wrap?<cr>')
 map( 'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>')
+
+-- Inline assist
+map('x', 'ga', ':PrtRewrite<cr>')
+
 
 --   }}}
 --   Operators {{{
