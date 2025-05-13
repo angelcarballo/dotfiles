@@ -355,7 +355,7 @@ require('lazy').setup({
   end},
 
 
-   -- Elixir support
+  -- Elixir support
   {'elixir-editors/vim-elixir', lazy = true, ft = {'elixir', 'heex', 'markdown', 'eelixir'}},
 
   -- Auto close html/xml tags
@@ -391,7 +391,7 @@ require('lazy').setup({
         \      }
         \    }
         \  }
-    ]]
+        ]]
   end},
 
   -- Tmux integration
@@ -425,7 +425,7 @@ require('lazy').setup({
         endfunction
         let g:test#custom_strategies = {'customvimux': function('CustomVimuxStrategy')}
         let g:test#strategy = 'customvimux'
-      ]])
+        ]])
   end},
 
   -- Auto save & restore sessions (per folder, per branch, etc.)
