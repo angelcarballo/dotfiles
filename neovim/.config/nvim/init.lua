@@ -319,7 +319,7 @@ require('lazy').setup({
       }
 
       require('lspconfig').sqls.setup{
-        cmd = {"/Users/angel/.local/share/mise/installs/go/1.23.4/bin/sqls", "-config", "/Users/angel/.config/sqls/config.yml"};
+        cmd = {"/Users/angel/.local/share/mise/installs/go/latest/bin/sqls", "-config", "/Users/angel/.config/sqls/config.yml"};
         on_attach = function(client, bufnr)
           require('sqls').on_attach(client, bufnr)
         end
