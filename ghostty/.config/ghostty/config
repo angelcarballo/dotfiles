@@ -1,0 +1,16 @@
+scrollback-limit = 1000000
+window-save-state = always
+font-family = "Iosevka"
+font-size = 16
+mouse-hide-while-typing = true
+
+keybind = ctrl+a>n=new_tab
+keybind = ctrl+a>h=goto_split:left
+keybind = ctrl+a>j=goto_split:bottom
+keybind = ctrl+a>k=goto_split:top
+keybind = ctrl+a>l=goto_split:right
+keybind = ctrl+a>-=new_split:down
+keybind = ctrl+a>\=new_split:right
+keybind = ctrl+a>space=toggle_split_zoom
+keybind = ctrl+a>]=next_tab
+keybind = ctrl+a>[=previous_tab
