@@ -72,3 +72,6 @@ postgrestools.jsonc
 
 # Cspell (spelling LSP)
 cspell.json
+
+# LLMs
+.claude/
