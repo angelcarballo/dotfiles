@@ -887,6 +887,7 @@ map('n', 'fff', 'mzgg=G\'z')
 map('n', '[<space>', ':call append(line(".") -1, "")<cr>' )
 map('n', ']<space>', ':call append(line("."), "")<cr>' )
 
+map( 'n', "cob", ':TSContextToggle<cr>')
 map( 'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>')
 map('n', 'coC', ':setlocal cursorcolumn! cursorcolumn?<cr>')
 map('n', 'coT', ':call ToggleVimuxTarget()<cr>' )
