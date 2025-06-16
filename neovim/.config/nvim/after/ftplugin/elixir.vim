@@ -4,7 +4,7 @@ inoreabbrev <buffer> af & &1
 inoreabbrev <buffer> aff fn -> end<c-o>b
 inoreabbrev <buffer> eex <%= %><left><left><left>
 inoreabbrev <buffer> cmod __MODULE__
-inoreabbrev <buffer> shout IO.puts("=======> ")<left><left>
+inoreabbrev <buffer> shout IO.puts("=======> #{__MODULE__} ")<left><left>
 inoreabbrev <buffer> importham import Hammox, only: [expect: 3, verify_on_exit!: 1]\rsetup :verify_on_exit!
 inoreabbrev <buffer> importdecimal import Duffel.Core.Sigils, only: [sigil_d: 2]
 inoreabbrev <buffer> importecto import Ecto.Query, only: [from: 2]
