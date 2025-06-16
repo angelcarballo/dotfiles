@@ -458,7 +458,8 @@ require('lazy').setup({
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
       require'treesitter-context'.setup{
-        enable = true
+        enable = true,
+        multiline_threshold=2
       }
     end,
   }
@@ -841,6 +842,11 @@ vim.cmd [[
 -- Unimpaired style tab navigation
 map('n', '[w', ':tabprevious<cr>')
 map('n', ']w', ':tabnext<cr>')
+
+-- Navigate to previous header (from treesitter-context)
+vim.keymap.set("n", "[h", function()
+  require("treesitter-context").go_to_context(vim.v.count1)
+end, { silent = true })
 
 -- pane navigation
 map('n', '<c-h>', '<c-w>h')
