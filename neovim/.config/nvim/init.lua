@@ -145,7 +145,7 @@ require('lazy').setup({
   'romainl/vim-cool',
 
   -- work with word variants (change casing, smart substitute, etc.)
-  {'tpope/vim-abolish', lazy = true},
+  {'tpope/vim-abolish'},
 
   -- Basic unix shell command helpers (mv, rm, etc.)
   {'tpope/vim-eunuch', lazy = true},
