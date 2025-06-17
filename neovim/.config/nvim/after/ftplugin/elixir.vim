@@ -30,12 +30,7 @@ function! ElixirUmbrellaTransform(cmd) abort
   " Unit test env uses a different jet task
   if match(a:cmd, 'unit_test/') != -1
     let l:cmd = substitute(a:cmd, 'mix test', 'mix unit_test', '')
-    let l:app_path = matchlist(l:cmd, '\(apps/[^/]*\)/')[0]
-
-    " remove apps/some_app from the file path as unit_test requires it
-    let l:unit_test_cmd = substitute(l:cmd, '\(apps/[^/]*\)/', '', '')
-
-    return l:unit_test_cmd
+    return l:cmd
   else
     return a:cmd
   end
