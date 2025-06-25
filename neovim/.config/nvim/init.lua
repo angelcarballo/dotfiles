@@ -528,6 +528,7 @@ vim.opt.dictionary:append('/usr/share/dict/words')     -- Auto complete words fr
 vim.opt.tags:prepend('./.git/tags')                    -- Read tags from git directory
 vim.opt.foldenable = false                             -- Do not fold by default
 vim.opt.shortmess:remove('S')                          -- Show total and number of current result after a search
+vim.opt.shortmess:prepend('T')                         -- Truncate messages on command line. Helps to avoid "Press ENTER or type command to continue"
 vim.opt.hidden = true                                  -- Allow closing buffers with unsaved changes
 vim.opt.mouse = 'a'                                    -- Enable mouse support in all modes
 vim.opt.termguicolors = true                           -- Enable truecolor (24 bit)
