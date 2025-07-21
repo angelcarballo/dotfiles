@@ -95,14 +95,8 @@ fi
 # fix bug when passing arguments to rake
 unsetopt nomatch
 
-# enable syntax for cheat (see: https://github.com/chrisallenlane/cheat)
-export CHEATCOLORS=true
-
 # source fzf fuzzy finder configuration is present
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# enable shell history on IEx and increase history size
-export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
 
 # source local config if present
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local

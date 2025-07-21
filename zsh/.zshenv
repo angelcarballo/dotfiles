@@ -37,3 +37,10 @@ export -U PATH
 
 # Include go binaries in path
 export PATH=$PATH:$GOBIN
+
+# Enable syntax for cheat (see: https://github.com/chrisallenlane/cheat)
+export CHEATCOLORS=true
+
+# enable shell history on IEx and increase history size
+export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
+
