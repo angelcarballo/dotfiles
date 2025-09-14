@@ -22,11 +22,7 @@ brew "cheat"
 
 # Use our own git
 brew "git"
-brew "git-gui"
 brew "git-absorb"
-
-# Use our own ctags
-brew "ctags"
 
 # Terminal multiplexer
 brew "tmux"
