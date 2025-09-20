@@ -46,6 +46,9 @@ require('lazy').setup({
     -- Indentation based scope and navigation
     require('mini.indentscope').setup()
 
+    -- Join/split lists of items (i.e function arguments)
+    require('mini.splitjoin').setup()
+
     -- Unimpaired style maps
     require('mini.bracketed').setup({
       conflict   = { suffix = 'x' },
