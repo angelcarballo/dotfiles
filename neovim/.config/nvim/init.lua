@@ -123,9 +123,6 @@ require('lazy').setup({
   -- provides :bdelete <type> to easily delete buffers
   'asheq/close-buffers.vim',
 
-  -- Magic!
-  'github/copilot.vim',
-
   -- Support for .editorconfig files
   'gpanders/editorconfig.nvim',
 
@@ -816,13 +813,6 @@ map('n', '<leader>wv', ':vsp<cr>')
 
 --   }}}
 --    Non-leader mappings {{{
-
--- Copilot
-vim.cmd [[
-  let g:copilot_no_tab_map = v:true
-  inoremap <silent><script><expr> <C-j> copilot#Accept("")
-]]
-
 
 -- Unimpaired style tab navigation
 map('n', '[w', ':tabprevious<cr>')
