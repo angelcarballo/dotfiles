@@ -48,7 +48,6 @@ require('lazy').setup({
 
     -- Unimpaired style maps
     require('mini.bracketed').setup({
-      comment    = { suffix = 'c' },
       conflict   = { suffix = 'x' },
       diagnostic = { suffix = 'e' },
       file       = { suffix = 'd' },
@@ -57,6 +56,7 @@ require('lazy').setup({
       treesitter = { suffix = 't' },
 
       -- disabled
+      comment    = { suffix = '' },
       indent     = { suffix = '' },
       jump       = { suffix = '' },
       oldfile    = { suffix = '' },
