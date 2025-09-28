@@ -435,6 +435,8 @@ require('lazy').setup({
   -- Goodies and automation for bulleted lists (mostly for markdown)
   'bullets-vim/bullets.vim',
 
+  'oxcafedead/vimyac',
+
   {
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
