@@ -20,7 +20,6 @@ function gitstatus_prompt_update() {
   local yellow='%F{3}'
 
   p=$yellow
-  p+="@"
   p+=${${VCS_STATUS_LOCAL_BRANCH:-@${VCS_STATUS_COMMIT}}//\%/%%}            # escape %
 
   [[ -n $VCS_STATUS_TAG               ]] && p+="#${VCS_STATUS_TAG//\%/%%}"  # escape %
@@ -68,7 +67,3 @@ username_and_host_if_server() {
 
 setopt prompt_subst
 PROMPT='$(username_and_host_if_server)$(current_path)${GITSTATUS_PROMPT:+ $GITSTATUS_PROMPT}$(prompt_symbol_with_last_command_status)%F{reset_color} '
-
-zmodload -a colors
-zmodload -a autocomplete
-zmodload -a complist
