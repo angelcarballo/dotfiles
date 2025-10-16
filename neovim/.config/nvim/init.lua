@@ -820,6 +820,10 @@ map('n', '<leader>wv', ':vsp<cr>')
 map('n', '[w', ':tabprevious<cr>')
 map('n', ']w', ':tabnext<cr>')
 
+-- Unimpaired style quickfix history navigation
+map('n', '[Q', ':colder<cr>')
+map('n', ']Q', ':cnewer<cr>')
+
 -- Navigate to previous header (from treesitter-context)
 vim.keymap.set("n", "[h", function()
   require("treesitter-context").go_to_context(vim.v.count1)
