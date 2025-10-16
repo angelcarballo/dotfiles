@@ -18,3 +18,4 @@ cnoreabbrev <expr> dup (getcmdtype() == ':' && getcmdline() =~ '^dup$')? 'saveas
 " don't fight it!
 iabbr resopnse response
 iabbr resopnses responses
+iabbr ariline airline
