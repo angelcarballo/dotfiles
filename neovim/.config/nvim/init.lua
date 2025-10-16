@@ -649,7 +649,6 @@ map('i', '<c-q>', telescope.registers)           -- Paste from register
 vim.g.mapleader = ' '                              -- Use <sapce> as leader key
 
 map('n', '<leader>.', ':find ')                    -- Quick find
-map('n', '<leader>,', ':b ')                       -- Quick buffer switch
 map('n', '<leader><space>', telescope.buffers) -- Quick buffer switch (fuzzy)
 map('n', '<leader>;', telescope.commands)      -- Run vim commannds
 
@@ -705,7 +704,6 @@ map('n', '<leader>fg', telescope.git_status)
 map('n', '<leader>fc', telescope.git_status)
 map('n', '<leader>fr', telescope.oldfiles)
 map('n', '<leader>fh', telescope.help_tags)
-map('n', '<leader>fm', telescope.marks)
 map('n', '<leader>fn', function() telescope.find_files({ cwd = vim.fn.expand('$NOTES') }) end)
 map('n', '<leader>ft', telescope.live_grep)
 map('n', '<leader>fl', telescope.lsp_document_symbols)
