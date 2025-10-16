@@ -303,7 +303,7 @@ require('lazy').setup({
 
   {'neovim/nvim-lspconfig',
     config = function()
-      require('lspconfig').elixirls.setup{
+      vim.lsp.config.elixirls = {
         cmd = { '/Users/angel/src/elixirls/release/language_server.sh' };
         capabilities = require('cmp_nvim_lsp').default_capabilities();
         settings = {
@@ -314,12 +314,14 @@ require('lazy').setup({
         }
       }
 
-      require('lspconfig').sqls.setup{
+      vim.lsp.config.sqls = {
         cmd = {"/Users/angel/.local/share/mise/installs/go/latest/bin/sqls", "-config", "/Users/angel/.config/sqls/config.yml"};
         on_attach = function(client, bufnr)
           require('sqls').on_attach(client, bufnr)
         end
       }
+
+      vim.lsp.enable("elixirls", "sqls")
     end},
 
   -- Git signs and chunk navigation
@@ -445,7 +447,7 @@ require('lazy').setup({
         multiline_threshold=2
       }
     end,
-  }
+  },
 
 }, {
     dev = {
