@@ -75,3 +75,7 @@ cspell.json
 
 # LLMs
 .claude/
+CLAUDE.md
+
+# HTTP request definitions
+.requests/
