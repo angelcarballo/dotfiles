@@ -663,10 +663,12 @@ map('x', '<leader>8', '"zy:silent grep "<c-r>z"<cr>')
 map('n', '<leader>*', ':silent grep "<cWORD>"<cr>')
 
 -- args
-map('n', '<leader>aa', ':argadd<cr>')
+map('n', '<leader>aa', function()
+  vim.cmd("argadd %")
+  vim.cmd("argdedup")
+end)
 
 -- b - Buffers
-map('n', '<leader>aa', ':argadd<cr>')
 map('n', '<leader>bo', ':Bdelete hidden<cr>')
 map('n', '<leader>bb', telescope.buffers)
 
@@ -823,6 +825,10 @@ map('n', ']w', ':tabnext<cr>')
 -- Unimpaired style quickfix history navigation
 map('n', '[Q', ':colder<cr>')
 map('n', ']Q', ':cnewer<cr>')
+
+-- Unimpaired style arg navigation
+map('n', '[a', ':next<cr>')
+map('n', ']a', ':previous<cr>')
 
 -- Navigate to previous header (from treesitter-context)
 vim.keymap.set("n", "[h", function()
