@@ -24,8 +24,8 @@ export LC_ALL=$LANG
 export LC_CTYPE=$LANG
 
 # (n)vim as editor. Wrap by default to help when editing long shell commands
-export VISUAL="nvim -c 'set wrap'"
-export EDITOR="nvim -c 'set wrap'"
+export VISUAL="nvim"
+export EDITOR="nvim"
 
 # but use emacs for default bindings as they match readline
 bindkey -e
