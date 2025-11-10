@@ -21,3 +21,4 @@ node_modules/
 Brewfile.lock.json
 _build/
 github/.config/gh/hosts.yml
+espanso/Library
