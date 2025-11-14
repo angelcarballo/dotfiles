@@ -642,7 +642,7 @@ map('n', 'j', 'gj')                              -- Move around using visual lin
 map('n', 'k', 'gk')
 map('i', '<M-Right>', '<c-o>w')                  -- Move between words with Alt-<arrow> like in most apps
 map('i', '<M-Left>', '<c-o>b')
-map('i', '<c-q>', telescope.registers)           -- Paste from register
+map('i', '<c-v>', telescope.registers)           -- Paste from register
 -- }}}
 --   Leader mappings {{{
 
@@ -749,7 +749,7 @@ map('n', '<leader>q', ':q<cr>')
 map('n', '<leader>Q', ':qall!<cr>')
 
 -- m - Mix
-map('n', '<leader>mf', ':lua vim.lsp.buf.format()<cr>')
+map('n', '<leader>mf', ':!mix format %<cr>')
 
 -- n - notes
 map('n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()\')<cr>' )
@@ -793,14 +793,14 @@ vim.cmd [[
 "    after:  {something: 1}
 nnoremap <silent> <Plug>RocketToColon /=><cr>daWF"r:F"x
 \ :call repeat#set("\<Plug>RocketToColon", v:count)<cr>
-nmap <Leader>t:  <Plug>RocketToColon
+nmap <leader>t:  <Plug>RocketToColon
 
 " Transform a colon map pair into a rocket one
 "    before: {something: 1}
 "    after:  {"something" => 1}
 nnoremap <silent> <Plug>ColonToRocket f:r"bi"<esc>f a=> <esc>
 \ :call repeat#set("\<Plug>ColonToRocket", v:count)<cr>
-nmap <Leader>t>  <Plug>ColonToRocket
+nmap <leader>t>  <Plug>ColonToRocket
 ]]
 
 
