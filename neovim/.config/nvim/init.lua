@@ -56,16 +56,16 @@ require('lazy').setup({
       file       = { suffix = 'd' },
       location   = { suffix = 'l' },
       quickfix   = { suffix = 'q' },
-      treesitter = { suffix = 't' },
+      window     = { suffix = 'w' },
 
       -- disabled
+      treesitter = { suffix = '' },
       comment    = { suffix = '' },
       indent     = { suffix = '' },
       jump       = { suffix = '' },
       oldfile    = { suffix = '' },
       undo       = { suffix = '' },
       yank       = { suffix = '' },
-      window     = { suffix = '' },
       buffer     = { suffix = '' },
     })
   end},
