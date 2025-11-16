@@ -449,6 +449,29 @@ require('lazy').setup({
     end,
   },
 
+  {
+    "olimorris/codecompanion.nvim",
+    opts = {
+      strategies = {
+        inline = {
+          adapter = "gemini"
+        },
+        chat = {
+          adapter = "gemini"
+          -- model = "claude-sonnet-4-20250514"
+        },
+      },
+      opts = {
+        log_level = "DEBUG",
+      },
+
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "ravitemer/mcphub.nvim"
+    },
+  },
+
 }, {
     dev = {
       path = '~/src', -- where to find local plugins
@@ -672,7 +695,7 @@ end)
 map('n', '<leader>bo', ':Bdelete hidden<cr>')
 map('n', '<leader>bb', telescope.buffers)
 
--- c - Copy/clear
+-- c - Copy/clear/CodeCompanion
 map('n', '<leader>cb', ':let @+=FugitiveHead()<cr>:echo "<c-r>+"<cr>')                             -- Copy git branch
 map('n', '<leader>cfn', ':let @+=expand("%:t")<cr>:echo "<c-r>+"<cr>' )                            -- Copy file name  (foo.txt)
 map('n', '<leader>cfp', ':let @+=expand("%")<cr>:echo "<c-r>+"<cr>' )                              -- Copy relative path  (src/foo.txt)
@@ -680,6 +703,10 @@ map('n', '<leader>cfP', ':let @+=expand("%:p")<cr>:echo "<c-r>+"<cr>' )         
 map('n', '<leader>cfl', ':let @+=join([expand(\'%\'),  line(".")], \':\')<cr>:echo "<c-r>+"<cr>' ) -- Copy relative path with line number
 map('n', '<leader>cff', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>' )                          -- Copy file directory/folder path (src/)
 map('n', '<leader>cfd', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>' )                          -- Copy file directory/folder path (src/)
+
+map('x', '<leader>cc', ':CodeCompanion ' )  -- AI prompt with selected text
+map('n', '<leader>cc', ':CodeCompanion ' )  -- AI prompt with selected text
+map('n', '<leader>chat ', ':CodeCompanionChat<cr>' )  -- Agent chat
 
 -- d - Duplicate, diff, db
 map('n', '<leader>dp', 'yap}p')
@@ -879,25 +906,19 @@ map('n', 'fff', 'mzgg=G\'z')
 map('n', '[<space>', ':call append(line(".") -1, "")<cr>' )
 map('n', ']<space>', ':call append(line("."), "")<cr>' )
 
-map( 'n', "cob", ':TSContextToggle<cr>')
-map( 'n', "coe", '<cmd>lua vim.diagnostic.setqflist({open = true})<cr>')
 map('n', 'coC', ':setlocal cursorcolumn! cursorcolumn?<cr>')
 map('n', 'coT', ':call ToggleVimuxTarget()<cr>' )
 map('n', 'coc', ':setlocal cursorline! cursorline?<cr>')
 map('n', 'cof', ':setlocal foldenable! foldenable?<cr>')
 map('n', 'coh', ':setlocal hlsearch! hlsearch?<cr>')
 map('n', 'col', ':call ToggleLocation()<cr>' )
-map('n', 'com', ':call ToggleExUnit()<cr>' )
 map('n', 'con', ':setlocal number! number?<cr>')
 map('n', 'cop', ':setlocal paste! paste?<cr>')
 map('n', 'coq', ':call ToggleQuickFix()<cr>' )
 map('n', 'cos', ':setlocal spell! spell?<cr>')
 map('n', 'cot', ':silent !tmux resize-pane -Z<cr>' )
 map('n', 'cow', ':setlocal wrap! wrap?<cr>')
-
--- Inline assist
-map('x', 'ga', ':PrtRewrite<cr>')
-
+map('n', 'coa', ':CodeCompanionChat Toggle<cr>')
 
 --   }}}
 --   Operators {{{
