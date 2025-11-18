@@ -254,6 +254,22 @@ require('lazy').setup({
   },
   'nvim-treesitter/nvim-treesitter-textobjects',
 
+  {'zbirenbaum/copilot.lua',
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end
+  },
+
+  {
+  "zbirenbaum/copilot-cmp",
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  },
+
   -- Completion
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
@@ -278,6 +294,7 @@ require('lazy').setup({
           ['<Tab>'] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
+          { name = 'copilot' },
           { name = 'nvim_lsp' },
           { name = 'vsnip' },
         }, {
