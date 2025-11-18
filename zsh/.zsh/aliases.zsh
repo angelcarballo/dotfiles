@@ -116,11 +116,10 @@ alias wip='git ci -m "WIP"'
 alias ni='npm install'
 
 # Vim
-alias v='nvim'
-alias vim='nvim'
-alias vv='nvim `gitfiles`'
-alias nv='nvim'
-alias vpr='nvim `gh prfiles`'
+alias v='mise exec node@latest -- nvim'
+alias vim='mise exec node@latest -- nvim'
+alias vv='mise exec node@latest -- nvim `gitfiles`'
+alias vpr='mise exec node@latest -- nvim `gh prfiles`'
 
 # Emacs
 alias ec='emacsclient -nw'
