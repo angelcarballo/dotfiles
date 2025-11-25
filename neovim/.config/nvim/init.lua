@@ -255,47 +255,24 @@ require('lazy').setup({
   'nvim-treesitter/nvim-treesitter-textobjects',
 
   -- Completion
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'hrsh7th/vim-vsnip',
-  {'hrsh7th/nvim-cmp',
-    config = function()
-      local cmp = require'cmp'
+  {
+    'saghen/blink.cmp',
+    -- optional: provides snippets for the snippet source
+    dependencies = { 'rafamadriz/friendly-snippets' },
 
-      cmp.setup({
-        snippet = {
-          -- REQUIRED - you must specify a snippet engine
-          expand = function(args)
-            vim.fn['vsnip#anonymous'](args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-        }),
-        sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'vsnip' },
-        }, {
-            {
-              name = 'buffer',
-              option = {
-                get_bufnrs = function()
-                  local bufs = {}
-                  for _, win in ipairs(vim.api.nvim_list_wins()) do
-                    bufs[vim.api.nvim_win_get_buf(win)] = true
-                  end
-                  return vim.tbl_keys(bufs)
-                end
-              }
-            },
-          })
-      })
-    end,
+    -- use a release tag to download pre-built binaries
+    version = '1.*',
+
+    opts = {
+      keymap = { preset = 'super-tab' },
+      appearance = {
+        nerd_font_variant = 'mono'
+      },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+    },
+    opts_extend = { "sources.default" }
   },
 
   -- SQL Language server
@@ -305,7 +282,6 @@ require('lazy').setup({
     config = function()
       vim.lsp.config.elixirls = {
         cmd = { '/Users/angel/src/elixirls/release/language_server.sh' };
-        capabilities = require('cmp_nvim_lsp').default_capabilities();
         settings = {
           elixirLS = {
             dialyzerEnabled = false,
