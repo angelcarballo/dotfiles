@@ -15,19 +15,19 @@ blinking = "Always"
 size = 16.0
 
 [font.bold]
-family = "Iosevka Term"
+family = "IosevkaTerm Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "Iosevka Term"
+family = "IosevkaTerm Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "Iosevka Term"
+family = "IosevkaTerm Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "Iosevka Term"
+family = "IosevkaTerm Nerd Font"
 style = "Regular"
 
 [[hints.enabled]]
@@ -52,4 +52,4 @@ x = 5
 y = 5
 
 [general]
-import = ["/Users/angel/.config/alacritty/light_theme.toml"]
+import = ["/Users/angel/.config/alacritty/dark_theme.toml"]
