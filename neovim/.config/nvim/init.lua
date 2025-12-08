@@ -49,6 +49,25 @@ require('lazy').setup({
     -- Join/split lists of items (i.e function arguments)
     require('mini.splitjoin').setup()
 
+    -- General purpose picker
+    require('mini.pick').setup({
+      options = {
+        -- Whether to show content from bottom to top
+        content_from_bottom = true,
+
+        -- Whether to cache matches (more speed and memory on repeated prompts)
+        use_cache = true
+      }
+    })
+
+    -- Register custom pickers
+    MiniPick.registry.notes = function()
+      return MiniPick.builtin.files(nil, { source = { name = "Notes", cwd = vim.fn.expand("$NOTES") } })
+    end
+
+    -- Additional pickers for mini.pick
+    require('mini.extra').setup()
+
     -- Unimpaired style maps
     require('mini.bracketed').setup({
       conflict   = { suffix = 'x' },
@@ -69,53 +88,6 @@ require('lazy').setup({
       buffer     = { suffix = '' },
     })
   end},
-
-  { 'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-  },
-
-  {
-    'nvim-telescope/telescope.nvim', tag = '0.1.5',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      local actions = require("telescope.actions")
-      local action_layout = require("telescope.actions.layout")
-
-      require('telescope').setup({
-        defaults = {
-          preview = { hide_on_startup = true },
-          mappings = {
-            i = {
-              ["<esc>"] = actions.close,
-              ["<c-j>"] = action_layout.toggle_preview,
-              ["<C-h>"] = "which_key",
-              ["<c-x>"] = actions.delete_buffer
-            },
-            n = {
-              ["<c-j>"] = action_layout.toggle_preview,
-              ["<c-x>"] = actions.delete_buffer
-            },
-          },
-          layout_strategy = "bottom_pane",
-          layout_config = {
-            bottom_pane = {
-              height = 20,
-              preview_cutoff = 120,
-              prompt_position = "bottom"
-            }
-          }
-        },
-        extensions = {
-          fzf = {
-            fuzzy = true,                    -- false will only do exact matching
-            override_generic_sorter = true,  -- override the generic sorter
-            override_file_sorter = true,     -- override the file sorter
-            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-          }
-        }
-      })
-    end
-  },
 
   -- Navigate through files in the jumplist
   {'kwkarlwang/bufjump.nvim', config = function()
@@ -629,8 +601,6 @@ vim.cmd 'highlight TabLineSel guifg=bg guibg=fg'           -- Highlight current 
 vim.cmd "match ErrorMsg '\\s\\+$'"                         -- Highlight trailing spaces
 -- }}}
 -- Mappings {{{
-require('telescope').load_extension('fzf')
-local telescope = require('telescope.builtin')
 
 --   Basic mappings {{{
 --
@@ -641,15 +611,15 @@ map('n', 'j', 'gj')                              -- Move around using visual lin
 map('n', 'k', 'gk')
 map('i', '<M-Right>', '<c-o>w')                  -- Move between words with Alt-<arrow> like in most apps
 map('i', '<M-Left>', '<c-o>b')
-map('i', '<c-v>', telescope.registers)           -- Paste from register
+-- map('i', '<c-v>', MiniPick.builtin.files({ tool = 'git' }))           -- Paste from register
 -- }}}
 --   Leader mappings {{{
 
 vim.g.mapleader = ' '                              -- Use <sapce> as leader key
 
 map('n', '<leader>.', ':find ')                    -- Quick find
-map('n', '<leader><space>', telescope.buffers) -- Quick buffer switch (fuzzy)
-map('n', '<leader>;', telescope.commands)      -- Run vim commannds
+map('n', '<leader><space>', MiniPick.builtin.buffers) -- Quick buffer switch (fuzzy)
+map('n', '<leader>;', MiniExtra.pickers.commands)      -- Run vim commannds
 
 -- /,? - Search in project
 -- Use -F by default to disable regexp and search for a literal string
@@ -669,7 +639,7 @@ end)
 
 -- b - Buffers
 map('n', '<leader>bo', ':Bdelete hidden<cr>')
-map('n', '<leader>bb', telescope.buffers)
+map('n', '<leader>bb', MiniPick.builtin.buffers)
 
 -- c - Copy/clear/CodeCompanion
 map('n', '<leader>cb', ':let @+=FugitiveHead()<cr>:echo "<c-r>+"<cr>')                             -- Copy git branch
@@ -702,16 +672,16 @@ map('n', '<leader>ev', ':Vex<cr>')
 
 -- f - File/format
 map('n', '<leader>fs', ':up<cr>')
-map('n', '<leader>fb', telescope.git_branches)
-map('n', '<leader>fF', telescope.find_files)
-map('n', '<leader>ff', telescope.git_files)
-map('n', '<leader>fg', telescope.git_status)
-map('n', '<leader>fc', telescope.git_status)
-map('n', '<leader>fr', telescope.oldfiles)
-map('n', '<leader>fh', telescope.help_tags)
-map('n', '<leader>fn', function() telescope.find_files({ cwd = vim.fn.expand('$NOTES') }) end)
-map('n', '<leader>ft', telescope.live_grep)
-map('n', '<leader>fl', telescope.lsp_document_symbols)
+map('n', '<leader>fb', ":Pick git_branches<cr>")
+map('n', '<leader>fF', ":Pick files<cr>")
+map('n', '<leader>ff', ":Pick files tool='git'<cr>")
+map('n', '<leader>fg', ":Pick git_files scope='modified'<cr>")
+map('n', '<leader>fr', ":Pick oldfiles<cr>")
+map('n', '<leader>fh', ":Pick help<cr>")
+map('n', '<leader>fn', ":Pick notes<cr>")
+map('n', '<leader>ft', ":Pick grep_live<cr>")
+map('n', '<leader>fl', ":Pick lsp scope='document_symbol'<cr>")
+map('n', '<leader>fm', ":Pick marks")
 
 -- Format json shortcut, since it's used often
 map('n', '<leader>fj', ':set ft = json<bar>%!jq<cr>')
@@ -761,7 +731,7 @@ map('n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()\'
 map('n', '<leader>of', ":! open '%'<cr>")
 
 --" p - paste
-map('n', '<leader>p', telescope.registers)
+map('n', '<leader>p', ":Pick registers<cr>")
 
 --" r - Remove, redraw
 map('n', '<leader>rd', ':redraw!<cr>')
