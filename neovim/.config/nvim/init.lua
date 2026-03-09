@@ -252,15 +252,6 @@ require('lazy').setup({
 
   {'neovim/nvim-lspconfig',
     config = function()
-      vim.lsp.config.elixirls = {
-        cmd = { '/Users/angel/src/elixirls/release/language_server.sh' };
-        settings = {
-          elixirLS = {
-            dialyzerEnabled = false,
-            fetchDeps = true
-          }
-        }
-      }
 
       vim.lsp.config.sqls = {
         cmd = {"/Users/angel/.local/share/mise/installs/go/latest/bin/sqls", "-config", "/Users/angel/.config/sqls/config.yml"};
@@ -269,7 +260,13 @@ require('lazy').setup({
         end
       }
 
-      vim.lsp.enable("elixirls", "sqls")
+      vim.lsp.config('expert', {
+        cmd = { '/Users/angel/src/expert/apps/expert/_build/prod/rel/plain/bin/start_expert', '--stdio' },
+        root_markers = { 'mix.exs', '.git' },
+        filetypes = { 'elixir', 'eelixir', 'heex' },
+      })
+
+      vim.lsp.enable("expert", "sqls")
     end},
 
   -- Git signs and chunk navigation
