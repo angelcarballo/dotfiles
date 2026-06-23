@@ -23,7 +23,6 @@ export LANG=en_GB.UTF-8
 export LC_ALL=$LANG
 export LC_CTYPE=$LANG
 
-# (n)vim as editor. Wrap by default to help when editing long shell commands
 export VISUAL="nvim"
 export EDITOR="nvim"
 
@@ -39,7 +38,7 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
-# altern between foreground/background with Ctrl-z (see custom-functions.zsh)
+# alternate between foreground/background with Ctrl-z (see custom-functions.zsh)
 bindkey '^z' fancy-ctrl-z
 
 # ctrl-r starts searching history backward
@@ -87,13 +86,10 @@ export HISTFILE=~/.zsh_history
 # commands not added to history
 export HISTORY_IGNORE="(ll|clear|c|clear|ls|cd *|pwd|exit|cd ..|rm *|rc|bi|fs|gd|gs|gp|git push|git pull|git fetch|v|cd|pry|dark|light|up|master|co .|..|gl|ots|bpry|git ci|clar|cl4ar|bundle)"
 
-# dont use zle on emacs to aviod duplicated input
+# don't use zle on emacs to avoid duplicated input
 if [[ -n ${INSIDE_EMACS} ]]; then
         unsetopt zle
 fi
-
-# fix bug when passing arguments to rake
-unsetopt nomatch
 
 # source fzf fuzzy finder configuration is present
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
