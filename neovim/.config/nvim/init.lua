@@ -217,25 +217,6 @@ require('lazy').setup({
   -- SQL Language server
   'nanotee/sqls.nvim',
 
-  {'neovim/nvim-lspconfig',
-    config = function()
-
-      vim.lsp.config.sqls = {
-        cmd = {"/Users/angel/.local/share/mise/installs/go/latest/bin/sqls", "-config", "/Users/angel/.config/sqls/config.yml"};
-        on_attach = function(client, bufnr)
-          require('sqls').on_attach(client, bufnr)
-        end
-      }
-
-      vim.lsp.config('expert', {
-        cmd = { '/Users/angel/src/expert/apps/expert/_build/prod/rel/plain/bin/start_expert', '--stdio' },
-        root_markers = { 'mix.exs', '.git' },
-        filetypes = { 'elixir', 'eelixir', 'heex' },
-      })
-
-      vim.lsp.enable("expert", "sqls")
-    end},
-
   -- Git signs and chunk navigation
   {'lewis6991/gitsigns.nvim', config = function()
     require('gitsigns').setup {
@@ -476,6 +457,23 @@ vim.opt.complete = {
   '.', -- Complete with words from current buffer
   'b', -- Complete with words from other loaded buffers
 }
+
+vim.lsp.config['sqls'] = {
+  cmd = {"/Users/angel/.local/share/mise/installs/go/latest/bin/sqls", "-config", "/Users/angel/.config/sqls/config.yml"},
+  filetypes = { 'sql' },
+  on_attach = function(client, bufnr)
+    require('sqls').on_attach(client, bufnr)
+  end
+}
+
+vim.lsp.config['expert'] = {
+  cmd = { '/Users/angel/src/expert/apps/expert/_build/prod/rel/plain/bin/start_expert', '--stdio' },
+  root_markers = { 'mix.exs', '.git' },
+  filetypes = { 'elixir', 'eelixir', 'heex' },
+}
+
+vim.lsp.enable({'expert', 'sqls'})
+
 -- }}}
 -- Custom text object {{{
 
