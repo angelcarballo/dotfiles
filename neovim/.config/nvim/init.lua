@@ -191,40 +191,7 @@ require('lazy').setup({
   -- Rbenv support, used to get the current ruby version on `path`
   {'tpope/vim-rbenv', lazy = true, ft = {'ruby'}},
 
-  -- Treesitter
-  { 'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        -- Add languages to be installed here that you want installed for treesitter
-        ensure_installed = { 'elixir', 'heex', 'eex', 'python', 'ruby',
-          'javascript', 'typescript', 'lua', 'vim', 'sql', 'yaml', 'toml',
-          'markdown', 'markdown_inline' },
-
-        highlight = { enable = true },
-        indent = { enable = true },
-
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = false, -- Automatically jump forward to textobj, similar to targets.vim
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              ['aa'] = '@parameter.outer',
-              ['ia'] = '@parameter.inner',
-              ['af'] = '@function.outer',
-              ['if'] = '@function.inner',
-
-              -- This applies to do/end blocks in Elixir
-              ['ik'] = '@block.inner',
-              ['ak'] = '@block.outer',
-            },
-          }
-        },
-      }
-    end
-  },
-  'nvim-treesitter/nvim-treesitter-textobjects',
+  -- 'nvim-treesitter/nvim-treesitter-textobjects',
 
   -- Completion
   {
@@ -384,15 +351,15 @@ require('lazy').setup({
 
   'oxcafedead/vimyac',
 
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    config = function()
-      require'treesitter-context'.setup{
-        enable = true,
-        multiline_threshold=2
-      }
-    end,
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter-context",
+  --   config = function()
+  --     require'treesitter-context'.setup{
+  --       enable = true,
+  --       multiline_threshold=2
+  --     }
+  --   end,
+  -- },
 
   {
     "olimorris/codecompanion.nvim",
@@ -801,9 +768,9 @@ map('n', '[a', ':next<cr>')
 map('n', ']a', ':previous<cr>')
 
 -- Navigate to previous header (from treesitter-context)
-vim.keymap.set("n", "[h", function()
-  require("treesitter-context").go_to_context(vim.v.count1)
-end, { silent = true })
+-- vim.keymap.set("n", "[h", function()
+--   require("treesitter-context").go_to_context(vim.v.count1)
+-- end, { silent = true })
 
 -- pane navigation
 map('n', '<c-h>', '<c-w>h')
