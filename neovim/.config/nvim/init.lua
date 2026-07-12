@@ -472,7 +472,7 @@ vim.lsp.config['expert'] = {
   filetypes = { 'elixir', 'eelixir', 'heex' },
 }
 
-vim.lsp.enable({'expert', 'sqls'})
+vim.lsp.enable({'expert', 'sqls', 'tsserver'})
 
 -- }}}
 -- Custom text object {{{
