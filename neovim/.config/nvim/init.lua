@@ -5,7 +5,7 @@ local map = vim.keymap.set
 
 -- {{{ Lazy Bootstrap
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({ 'git', 'clone', '--filter=blob:none', 'https://github.com/folke/lazy.nvim.git', '--branch=stable', lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
@@ -209,6 +209,9 @@ require('lazy').setup({
       },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
+        per_filetype = {
+          codecompanion = { "codecompanion" },
+        }
       },
     },
     opts_extend = { "sources.default" }
@@ -344,24 +347,31 @@ require('lazy').setup({
 
   {
     "olimorris/codecompanion.nvim",
-    opts = {
-      strategies = {
-        inline = {
-          adapter = "gemini"
-        },
-        chat = {
-          adapter = "gemini"
-          -- model = "claude-sonnet-4-20250514"
-        },
-      },
-      opts = {
-        log_level = "DEBUG",
-      },
-
-    },
+    version = "^19.0.0",
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "ravitemer/mcphub.nvim"
+      "nvim-lua/plenary.nvim"
+    },
+    opts = {
+      interactions = {
+        chat = {
+          adapter = {
+            name = "anthropic",
+            model = "claude-sonnet-4-20250514"
+          }
+        },
+        inline = {
+          adapter = {
+            name = "anthropic",
+            model = "claude-sonnet-4-20250514"
+          }
+        },
+        cmd = {
+          adapter = {
+            name = "anthropic",
+            model = "claude-sonnet-4-20250514"
+          }
+        },
+      },
     },
   },
 
