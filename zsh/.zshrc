@@ -53,6 +53,9 @@ bindkey "^[[1;3D" backward-word
 setopt auto_cd
 cdpath=($HOME/src)
 
+# Include dotfiles/hidden directories in filename completion
+setopt GLOB_DOTS
+
 # share history between sessions
 setopt share_history
 
