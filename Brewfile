@@ -98,3 +98,6 @@ cask "git-credential-manager"
 
 # To display next meeting in the statusbar
 cask "meetingbar"
+
+# To manually install treesitter syntax
+brew "tree-sitter-cli"
