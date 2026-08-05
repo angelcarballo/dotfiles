@@ -112,10 +112,14 @@ alias modified='git ls-files --modified'
 alias untracked='git ls-files --others --exclude-standard'
 alias wip='git ci -m "WIP"'
 
+# Agents
+alias cc='claude'
+
 # Npm/Node
 alias ni='npm install'
 
 # Vim
+alias nv='nvim'
 alias v='mise exec node@latest -- nvim .'
 alias vim='mise exec node@latest -- nvim'
 alias vv='mise exec node@latest -- nvim `gitfiles`'
