@@ -39,6 +39,9 @@ matches:
   - trigger: "wemm"
     replace: "angel@duffel.com"
 
+  - trigger: "demm"
+    replace: "angel@duffel.com"
+
   - trigger: "pemm"
     replace: "contact@angelcarballo.com"
 
