@@ -88,4 +88,24 @@ function acg.ping()
   print 'PONG'
 end
 
+-- Populate quickfix with modified, staged and untracked files
+function acg.quickfix_git_changed()
+  local staged_unstaged = vim.fn.systemlist('git diff --name-only HEAD')
+  local untracked = vim.fn.systemlist('git ls-files --others --exclude-standard')
+  local files = {}
+  for _, f in ipairs(staged_unstaged) do
+    if f ~= '' then table.insert(files, f) end
+  end
+  for _, f in ipairs(untracked) do
+    if f ~= '' then table.insert(files, f) end
+  end
+  if #files == 0 then
+    print('No changed files')
+    return
+  end
+  vim.fn.setqflist({})
+  vim.fn.setqflist(vim.tbl_map(function(f) return {filename = f, text = ''} end, files))
+  vim.cmd('copen')
+end
+
 return acg

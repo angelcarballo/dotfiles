@@ -191,8 +191,6 @@ require('lazy').setup({
   -- Rbenv support, used to get the current ruby version on `path`
   {'tpope/vim-rbenv', lazy = true, ft = {'ruby'}},
 
-  -- 'nvim-treesitter/nvim-treesitter-textobjects',
-
   -- Completion
   {
     'saghen/blink.cmp',
@@ -667,7 +665,7 @@ map('n', '<leader>gcb', ':Git checkout -b ')
 map('n', '<leader>gco', ':Git checkout ')
 map('n', '<leader>gd', ':vertical leftabove Gdiffsplit<cr>')
 map('n', '<leader>g3', ':vertical leftabove Gdiffsplit!<cr>')
-map('n', '<leader>gf', ':GitStatusFiles<cr><c-w>k:redraw!<cr>')
+map('n', '<leader>gf', acg.quickfix_git_changed)
 map('n', '<leader>gh', ':GBrowse<cr>')
 map('x', '<leader>gh', ':GBrowse<cr>')
 map('n', '<leader>gH', ':GBrowse!<cr>')
