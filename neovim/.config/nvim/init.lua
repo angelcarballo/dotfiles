@@ -331,18 +331,6 @@ require('lazy').setup({
   -- Goodies and automation for bulleted lists (mostly for markdown)
   'bullets-vim/bullets.vim',
 
-  'oxcafedead/vimyac',
-
-  -- {
-  --   "nvim-treesitter/nvim-treesitter-context",
-  --   config = function()
-  --     require'treesitter-context'.setup{
-  --       enable = true,
-  --       multiline_threshold=2
-  --     }
-  --   end,
-  -- },
-
   {
     "olimorris/codecompanion.nvim",
     version = "^19.0.0",
