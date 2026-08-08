@@ -101,3 +101,6 @@ cask "meetingbar"
 
 # To manually install treesitter syntax
 brew "tree-sitter-cli"
+
+# Nice easy to setup prompt
+brew "starship"

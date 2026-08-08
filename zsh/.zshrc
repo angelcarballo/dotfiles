@@ -15,9 +15,6 @@ case "$OSTYPE" in
   ;;
 esac
 
-# theme
-source ~/.zsh/theme.zsh
-
 # locales
 export LANG=en_GB.UTF-8
 export LC_ALL=$LANG
@@ -112,3 +109,6 @@ autoload -Uz compinit
 # initialize completions (-C omit check to see if there are new functions)
 # this means new completions might require running compinit manually
 compinit -C
+
+# prompt
+eval "$(starship init zsh)"
