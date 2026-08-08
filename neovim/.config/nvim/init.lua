@@ -206,10 +206,7 @@ require('lazy').setup({
         nerd_font_variant = 'mono'
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
-        per_filetype = {
-          codecompanion = { "codecompanion" },
-        }
+        default = { 'lsp', 'path', 'snippets', 'buffer' }
       },
     },
     opts_extend = { "sources.default" }
@@ -330,36 +327,6 @@ require('lazy').setup({
 
   -- Goodies and automation for bulleted lists (mostly for markdown)
   'bullets-vim/bullets.vim',
-
-  {
-    "olimorris/codecompanion.nvim",
-    version = "^19.0.0",
-    dependencies = {
-      "nvim-lua/plenary.nvim"
-    },
-    opts = {
-      interactions = {
-        chat = {
-          adapter = {
-            name = "anthropic",
-            model = "claude-sonnet-4-20250514"
-          }
-        },
-        inline = {
-          adapter = {
-            name = "anthropic",
-            model = "claude-sonnet-4-20250514"
-          }
-        },
-        cmd = {
-          adapter = {
-            name = "anthropic",
-            model = "claude-sonnet-4-20250514"
-          }
-        },
-      },
-    },
-  },
 
 }, {
     dev = {
@@ -599,7 +566,7 @@ end)
 map('n', '<leader>bo', ':Bdelete hidden<cr>')
 map('n', '<leader>bb', MiniPick.builtin.buffers)
 
--- c - Copy/clear/CodeCompanion
+-- c - Copy/clear
 map('n', '<leader>cb', ':let @+=FugitiveHead()<cr>:echo "<c-r>+"<cr>')                             -- Copy git branch
 map('n', '<leader>cfn', ':let @+=expand("%:t")<cr>:echo "<c-r>+"<cr>' )                            -- Copy file name  (foo.txt)
 map('n', '<leader>cfp', ':let @+=expand("%")<cr>:echo "<c-r>+"<cr>' )                              -- Copy relative path  (src/foo.txt)
@@ -607,10 +574,6 @@ map('n', '<leader>cfP', ':let @+=expand("%:p")<cr>:echo "<c-r>+"<cr>' )         
 map('n', '<leader>cfl', ':let @+=join([expand(\'%\'),  line(".")], \':\')<cr>:echo "<c-r>+"<cr>' ) -- Copy relative path with line number
 map('n', '<leader>cff', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>' )                          -- Copy file directory/folder path (src/)
 map('n', '<leader>cfd', ':let @+=expand("%:p:h")<cr>:echo "<c-r>+"<cr>' )                          -- Copy file directory/folder path (src/)
-
-map('x', '<leader>cc', ':CodeCompanion ' )  -- AI prompt with selected text
-map('n', '<leader>cc', ':CodeCompanion ' )  -- AI prompt with selected text
-map('n', '<leader>chat ', ':CodeCompanionChat<cr>' )  -- Agent chat
 
 -- d - Duplicate, diff, db
 map('n', '<leader>dp', 'yap}p')
@@ -822,7 +785,6 @@ map('n', 'coq', ':call ToggleQuickFix()<cr>' )
 map('n', 'cos', ':setlocal spell! spell?<cr>')
 map('n', 'cot', ':silent !tmux resize-pane -Z<cr>' )
 map('n', 'cow', ':setlocal wrap! wrap?<cr>')
-map('n', 'coa', ':CodeCompanionChat Toggle<cr>')
 
 --   }}}
 --   Operators {{{
