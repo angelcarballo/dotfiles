@@ -120,10 +120,10 @@ alias ni='npm install'
 
 # Vim
 alias nv='nvim'
-alias v='mise exec node@latest -- nvim .'
-alias vim='mise exec node@latest -- nvim'
-alias vv='mise exec node@latest -- nvim `gitfiles`'
-alias vpr='mise exec node@latest -- nvim `gh prfiles`'
+alias v='nvim .'
+alias vim='nvim'
+alias vv='nvim `gitfiles`'
+alias vpr='nvim `gh prfiles`'
 
 # Emacs
 alias ec='emacsclient -nw'
