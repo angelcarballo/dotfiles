@@ -5,7 +5,6 @@ setlocal wrap
 setlocal textwidth=1000
 setlocal foldlevel=99
 setlocal spell
-setlocal formatprg=pandoc\ --from=gfm\ --to=gfm
 
 xmap <buffer> K S]f]a(
 
