@@ -57,7 +57,13 @@ require('lazy').setup({
 
         -- Whether to cache matches (more speed and memory on repeated prompts)
         use_cache = true
-      }
+      },
+      -- Explicit source to disable icons
+      source = {
+        show = function(buf_id, items, query)
+          return MiniPick.default_show(buf_id, items, query, { show_icons = false })
+        end,
+      },
     })
 
     -- Register custom pickers
@@ -208,6 +214,19 @@ require('lazy').setup({
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' }
       },
+      completion = {
+        menu = {
+          draw = {
+            columns = {
+              -- Explicit columns to remove icons
+              { "label", "label_description", gap = 1 },
+              { "kind" },
+            },
+          },
+        },
+      },
+
+
     },
     opts_extend = { "sources.default" }
   },
