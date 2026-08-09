@@ -4,6 +4,10 @@
 # Personal binary folders
 export PATH="$HOME/bin:$HOME/src/dotfiles/bin:$PATH"
 
+# Local binaries
+export PATH="$HOME/.local/bin:$PATH"
+
+
 case "$OSTYPE" in
   darwin*)
     # GNU Coreutils, put them **after** since some scripts require the default versions shipped with MacOs
