@@ -1,0 +1,12 @@
+# Leave copy for tmux
+copy-on-select = false
+
+# Free up tmux prefix
+keybind = ctrl+a=unbind
+
+# Look  & feel
+font-family = "Iosevka Term"
+theme = dark:Zenbones Dark,light:Zenbones Light
+macos-titlebar-proxy-icon = hidden
+title = " "
+
