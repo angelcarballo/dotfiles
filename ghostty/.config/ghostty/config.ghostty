@@ -9,4 +9,4 @@ font-family = "Iosevka Term"
 theme = dark:Zenbones Dark,light:Zenbones Light
 macos-titlebar-proxy-icon = hidden
 title = " "
-
+window-padding-x = 8
