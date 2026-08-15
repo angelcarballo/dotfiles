@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Rename the tmux window hosting this Claude Code session after the session
+# title. Claude does not pass the title to hooks, so it is read back out of the
+# transcript, where it is appended as ai-title/custom-title entries.
+
+set -u
+
+MAX_LENGTH=30
+
+# Only meaningful inside tmux, and only if we know which pane we are in.
+[ -n "${TMUX:-}" ] || exit 0
+[ -n "${TMUX_PANE:-}" ] || exit 0
+
+transcript=$(jq -r '.transcript_path // empty')
+[ -n "$transcript" ] && [ -f "$transcript" ] || exit 0
+
+# Titles are appended every time they change, so the last one is current.
+# custom-title (set by hand) takes precedence over ai-title on the same line.
+title=$(grep -e '"type":"ai-title"' -e '"type":"custom-title"' "$transcript" |
+  tail -1 |
+  jq -r '.customTitle // .aiTitle // empty')
+
+[ -n "$title" ] || exit 0
+
+if [ "${#title}" -gt "$MAX_LENGTH" ]; then
+  title="${title:0:$((MAX_LENGTH - 1))}…"
+fi
+
+tmux rename-window -t "$TMUX_PANE" "$title"
