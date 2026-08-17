@@ -424,12 +424,17 @@ vim.opt.grepprg = 'rg --vimgrep --hidden --smart-case' -- Use ripgrep, much fast
 vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'            -- Use ripgrep's format
 vim.g.vimsyn_embed = 1                                 -- Highlight lua and other languages inside vim files
 vim.opt.listchars = { tab = '▸ ', trail = '·' }        -- Symbols for invisible characters
+vim.opt.fillchars:append({ diff = '╱' })               -- Hatching instead of --- for diff filler
 vim.cmd [[ let &showbreak='↳ ' ]]                      -- Indicator for wrapped lines
 vim.opt.diffopt = {
   'filler',                                            -- Show filler lines to keep diffs aligned
   'internal',                                          -- Use vim's internal diff library
   'indent-heuristic',                                  -- Use vim's internal diff library for indentation
-  'algorithm:histogram'                                -- Histogram is better at highlighting line changes
+  'algorithm:histogram',                               -- Histogram is better at highlighting line changes
+  'closeoff',                                          -- Leave diff mode when the other diff window closes
+  'inline:char',                                       -- Highlight the changed characters within a line
+  'linematch:60',                                      -- Realign lines within a hunk so they pair up visually
+  'vertical'                                           -- Always split diffs side by side
 }
 vim.opt.completeopt = {
   'menu',    -- Show popup menu for completion
@@ -650,6 +655,11 @@ map('n', '<leader>gc', ':Git commit<cr>')
 map('n', '<leader>ga', ':Git commit --amend<cr>')
 map('n', '<leader>gu', ':Git commit --amend --no-edit<cr>')
 map('n', '<leader>gs', ':Git|wincmd T<cr>')
+-- ^! is "this commit vs its parent"; the ! needs escaping and the cursor is
+-- parked just before it, so <leader>gt HEAD gives :Git difftool -y HEAD^\!
+map('n', '<leader>gt', ':Git difftool -y ^\\!<left><left><left>') -- every file in a commit, one tab each
+map('n', '<leader>gT', ':Git difftool ^\\!<left><left><left>')    -- every hunk in a commit, into quickfix
+map('n', '<leader>gv', ':vertical leftabove Gvdiffsplit ')        -- current file against a revision
 map('n', '<leader>gw', ':Gwrite<cr>')
 map('n', '<leader>g/', ':Git log -S\'\'<left>')
 
@@ -734,6 +744,10 @@ map('n', '<leader>wv', ':vsp<cr>')
 -- Unimpaired style tab navigation
 map('n', '[w', ':tabprevious<cr>')
 map('n', ']w', ':tabnext<cr>')
+
+-- Unimpaired style quickfix navigation
+map('n', '[q', ':cprevious<cr>')
+map('n', ']q', ':cnext<cr>')
 
 -- Unimpaired style quickfix history navigation
 map('n', '[Q', ':colder<cr>')
@@ -859,6 +873,11 @@ acg.augroup('help_window', {
 
 acg.augroup('commit_window', {
   { 'FileType', 'gitcommit', 'wincmd L' }, -- Open commit always on the right
+})
+
+acg.augroup('diff_folds', {
+  -- foldenable is off globally, but in a diff we want unchanged regions collapsed
+  { 'OptionSet', 'diff', 'let &l:foldenable = v:option_new' },
 })
 
 acg.augroup('branch_notes', {
