@@ -197,40 +197,6 @@ require('lazy').setup({
   -- Rbenv support, used to get the current ruby version on `path`
   {'tpope/vim-rbenv', lazy = true, ft = {'ruby'}},
 
-  -- Completion
-  {
-    'saghen/blink.cmp',
-    -- optional: provides snippets for the snippet source
-    dependencies = { 'rafamadriz/friendly-snippets' },
-
-    -- use a release tag to download pre-built binaries
-    version = '1.*',
-
-    opts = {
-      keymap = { preset = 'super-tab' },
-      appearance = {
-        nerd_font_variant = 'mono'
-      },
-      sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' }
-      },
-      completion = {
-        menu = {
-          draw = {
-            columns = {
-              -- Explicit columns to remove icons
-              { "label", "label_description", gap = 1 },
-              { "kind" },
-            },
-          },
-        },
-      },
-
-
-    },
-    opts_extend = { "sources.default" }
-  },
-
   -- SQL Language server
   'nanotee/sqls.nvim',
 
@@ -436,13 +402,17 @@ vim.opt.diffopt = {
   'linematch:60',                                      -- Realign lines within a hunk so they pair up visually
   'vertical'                                           -- Always split diffs side by side
 }
+vim.o.autocomplete = true                              -- Show completion popup while typing (:h ins-autocompletion)
 vim.opt.completeopt = {
-  'menu',    -- Show popup menu for completion
-  'menuone', -- Show popup menu even if there is only one result
+  'menu',      -- Show popup menu for completion
+  'menuone',   -- Show popup menu even if there is only one result
+  'popup',     -- Show additional information
+  'preinsert', -- Ghost text for the first (pre-selected) result, so <tab> accepts it
 }
+-- Buffers with an LSP attached use 'omnifunc' instead, see the LspAttach autocmd
 vim.opt.complete = {
-  '.', -- Complete with words from current buffer
-  'b', -- Complete with words from other loaded buffers
+  '.^5', -- Complete with words from current buffer, at most 5
+  'b^5', -- Complete with words from other loaded buffers, at most 5
 }
 
 vim.lsp.config['sqls'] = {
@@ -560,6 +530,17 @@ map('n', 'j', 'gj')                              -- Move around using visual lin
 map('n', 'k', 'gk')
 map('i', '<M-Right>', '<c-o>w')                  -- Move between words with Alt-<arrow> like in most apps
 map('i', '<M-Left>', '<c-o>b')
+
+-- Completion: accept the pre-selected result, otherwise indent as usual
+map('i', '<tab>', function()
+  return vim.fn.pumvisible() == 1 and '<c-y>' or '<tab>'
+end, { expr = true, desc = 'Accept completion / indent' })
+
+-- Walk back through the results (<c-n> walks forward)
+map('i', '<s-tab>', function()
+  return vim.fn.pumvisible() == 1 and '<c-p>' or '<s-tab>'
+end, { expr = true, desc = 'Previous completion result' })
+
 -- map('i', '<c-v>', MiniPick.builtin.files({ tool = 'git' }))           -- Paste from register
 -- }}}
 --   Leader mappings {{{
@@ -732,6 +713,7 @@ map('n', '<leader>Ve', ':edit $MYVIMRC<cr>')
 map('n', '<leader>Vs', ':source $MYVIMRC<cr>')
 
 -- w - Windows/Tabs
+map('n', '<leader>wO', ':tabonly<cr>')
 map('n', '<leader>wo', ':only<cr>')
 map('n', '<leader>we', '<c-w>=')
 map('n', '<leader>ws', ':sp<cr>')
@@ -909,6 +891,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
       floating_window = false,
       hint_prefix = ''
     }, ev.buf)
+
+    -- Feed LSP items into the completion popup, and apply snippets,
+    -- auto-imports, etc. when accepting an item
+    vim.lsp.completion.enable(true, ev.data.client_id, ev.buf)
+
+    -- Complete from the LSP only. Words from buffers arrive before the (async)
+    -- LSP results, which would leave them always at the top of the popup.
+    -- They are still available on demand with <c-x><c-n>
+    vim.bo[ev.buf].complete = 'o'
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
