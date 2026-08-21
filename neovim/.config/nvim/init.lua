@@ -3,84 +3,25 @@
 local acg = require('acg') -- Utility functions
 local map = vim.keymap.set
 
--- {{{ Lazy Bootstrap
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not vim.uv.fs_stat(lazypath) then
-  vim.fn.system({ 'git', 'clone', '--filter=blob:none', 'https://github.com/folke/lazy.nvim.git', '--branch=stable', lazypath })
-end
-vim.opt.rtp:prepend(lazypath)
-
--- }}}
 -- {{{ Plugins
-
--- This has to be set before the plugin is loaded
-vim.g.swap_no_default_key_mappings = true
 
 -- Do not draw indent lines
 vim.g.miniindentscope_disable = true
 
-require('lazy').setup({
+-- Has to be set before vim-closetag loads
+vim.g.closetag_filetypes = 'html,xhtml,erb,eelixir,heex'
+
+local gh = function(repo) return 'https://github.com/' .. repo end
+
+vim.pack.add(vim.tbl_map(gh, {
   -- Utility collection
-  { 'echasnovski/mini.nvim', version = false, config = function()
-    -- Split/join lists of arguments, key/value pairs, etc.
-    require('mini.splitjoin').setup()
-
-    -- Exchange (gx), evaluate (g=), multiply (gm), replace with register (gr), sort (gs)
-    require('mini.operators').setup()
-
-    -- Auto close pairs
-    require('mini.pairs').setup()
-
-    -- Align text (ga)
-    require('mini.align').setup()
-
-    -- Comment text (gc)
-    require('mini.comment').setup({
-      mappings = {
-        -- Define 'comment' textobject (like `dgc` - delete whole comment block)
-        -- Works also in Visual mode if mapping differs from `comment_visual`
-        textobject = 'ac',
-      }
-    })
-
-    -- Indentation based scope and navigation
-    require('mini.indentscope').setup()
-
-    -- Join/split lists of items (i.e function arguments)
-    require('mini.splitjoin').setup()
-
-    -- Unimpaired style maps
-    require('mini.bracketed').setup({
-      conflict   = { suffix = 'x' },
-      diagnostic = { suffix = 'e' },
-      file       = { suffix = 'd' },
-      location   = { suffix = 'l' },
-      quickfix   = { suffix = 'q' },
-      window     = { suffix = 'w' },
-
-      -- disabled
-      treesitter = { suffix = '' },
-      comment    = { suffix = '' },
-      indent     = { suffix = '' },
-      jump       = { suffix = '' },
-      oldfile    = { suffix = '' },
-      undo       = { suffix = '' },
-      yank       = { suffix = '' },
-      buffer     = { suffix = '' },
-    })
-  end},
+  'echasnovski/mini.nvim',
 
   -- Navigate through files in the jumplist
-  {'kwkarlwang/bufjump.nvim', config = function()
-    map('n', ']f', ":lua require('bufjump').forward()<cr>" )
-    map('n', '[f', ":lua require('bufjump').backward()<cr>" )
-  end},
+  'kwkarlwang/bufjump.nvim',
 
   -- provides :bdelete <type> to easily delete buffers
   'asheq/close-buffers.vim',
-
-  -- Support for .editorconfig files
-  'gpanders/editorconfig.nvim',
 
   -- custom text object support
   'kana/vim-textobj-user',
@@ -89,7 +30,7 @@ require('lazy').setup({
   'romainl/vim-cool',
 
   -- Basic unix shell command helpers (mv, rm, etc.)
-  {'tpope/vim-eunuch', lazy = true},
+  'tpope/vim-eunuch',
 
   -- Readline style shortcuts on insert and command line modes
   'tpope/vim-rsi',
@@ -98,189 +39,244 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- Manage surround pairs (cs, ds, yss, etc.)
-  {'tpope/vim-surround', dependencies = { 'tpope/vim-repeat' }},
+  'tpope/vim-surround',
+  'tpope/vim-repeat', -- makes surround (and others) repeatable with `.`
 
   -- File manager
-  { 'stevearc/oil.nvim', config = function()
-    require("oil").setup({
-      -- Skip the confirmation popup for simple operations
-      skip_confirm_for_simple_edits = true,
-      view_options = {
-        -- Show files and directories that start with "."
-        show_hidden = true,
-      },
-      -- Default maps clash with pane navigation
-      use_default_keymaps = false,
-      keymaps = {
-        ["g?"] = "actions.show_help",
-        ["<CR>"] = "actions.select",
-        ["<C-v>"] = "actions.select_vsplit",
-        ["<C-s>"] = "actions.select_split",
-        ["<C-t>"] = "actions.select_tab",
-        ["<C-p>"] = "actions.preview",
-        ["-"] = "actions.parent",
-        ["gs"] = "actions.change_sort",
-        ["gx"] = "actions.open_external",
-        ["g."] = "actions.toggle_hidden",
-      },
-    })
-    map("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
-  end},
+  'stevearc/oil.nvim',
 
   -- Contrast based themes
-  {'mcchrish/zenbones.nvim', dependencies = {'rktjmp/lush.nvim'}},
+  'mcchrish/zenbones.nvim',
+  'rktjmp/lush.nvim', -- colorscheme toolkit zenbones is built on
 
   -- plantuml support
-  {'aklt/plantuml-syntax', lazy = true, ft = {'plantuml'}},
+  'aklt/plantuml-syntax',
 
   -- segments of camelcase, snake_case and similar <av>, <iv>
-  {'julian/vim-textobj-variable-segment', dependencies={'kana/vim-textobj-user'}},
+  'julian/vim-textobj-variable-segment',
 
   -- mdx (markdown + jsx) support
-  {'jxnblk/vim-mdx-js', lazy = true, ft = {'javascript'}},
+  'jxnblk/vim-mdx-js',
 
   -- coffeescript support
-  {'kchmck/vim-coffee-script', lazy = true, ft = {'ruby', 'markdown'}},
+  'kchmck/vim-coffee-script',
 
   -- typescript support
-  {'leafgarland/typescript-vim', lazy = true, ft = {'typescript', 'markdown'}},
+  'leafgarland/typescript-vim',
 
   -- jsx syntax
-  {'maxmellon/vim-jsx-pretty', lazy = true, ft = {'javascript'}},
+  'maxmellon/vim-jsx-pretty',
 
   -- improved javascript syntax
-  {'pangloss/vim-javascript', lazy = true, ft = {'javascript', 'markdown'}},
+  'pangloss/vim-javascript',
 
   -- Bundler support, used to get the current bundled gems on `path`
-  {'tpope/vim-bundler', lazy = true, ft = {'ruby'}},
+  'tpope/vim-bundler',
 
   -- Git integration
-  {'tpope/vim-fugitive', dependencies={'tpope/vim-rhubarb'}},
+  'tpope/vim-fugitive',
+  'tpope/vim-rhubarb', -- :GBrowse support for github
 
   -- Rbenv support, used to get the current ruby version on `path`
-  {'tpope/vim-rbenv', lazy = true, ft = {'ruby'}},
+  'tpope/vim-rbenv',
 
   -- SQL Language server
   'nanotee/sqls.nvim',
 
   -- Git signs and chunk navigation
-  {'lewis6991/gitsigns.nvim', config = function()
-    require('gitsigns').setup {
-      on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
-
-        local function map(mode, l, r, opts)
-          opts = opts or {}
-          opts.buffer = bufnr
-          vim.keymap.set(mode, l, r, opts)
-        end
-
-        -- Navigation
-        map('n', ']c', function()
-          if vim.wo.diff then return ']c' end
-          vim.schedule(function() gs.next_hunk() end)
-          return '<Ignore>'
-        end, {expr=true})
-
-        map('n', '[c', function()
-          if vim.wo.diff then return '[c' end
-          vim.schedule(function() gs.prev_hunk() end)
-          return '<Ignore>'
-        end, {expr=true})
-      end
-    }
-  end},
-
+  'lewis6991/gitsigns.nvim',
 
   -- Elixir support
-  {'elixir-editors/vim-elixir', lazy = true, ft = {'elixir', 'heex', 'markdown', 'eelixir'}},
+  'elixir-editors/vim-elixir',
 
   -- Auto close html/xml tags
-  {'alvan/vim-closetag', init = function()
-    vim.g.closetag_filetypes = 'html,xhtml,erb,eelixir,heex'
-  end},
+  'alvan/vim-closetag',
 
   -- Projections for project file navigation
-  {'tpope/vim-projectionist', config = function()
-    vim.cmd [[
-        let g:projectionist_heuristics = {
-        \    "mix.exs": {
-        \      "lib/*.ex": {
-        \        "type": "lib",
-        \        "make": "mix",
-        \        "alternate": "test/{}_test.exs",
-        \        "template": [
-        \          "defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize} do",
-        \          "end"
-        \        ]
-        \      },
-        \      "test/*_test.exs": {
-        \        "type": "test",
-        \        "make": "iex -S mix test",
-        \        "alternate": "lib/{}.ex",
-        \        "template": [
-        \          "defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}Test do",
-        \          "  use ExUnit.Case, async: true",
-        \          "",
-        \          "  alias {dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}",
-        \          "end"
-        \        ]
-        \      }
-        \    }
-        \  }
-        ]]
-  end},
+  'tpope/vim-projectionist',
 
   -- Tmux integration
-  {'benmills/vimux', config = function()
-    vim.g['VimuxRunnerType'] = 'pane' -- Use a pane
-    vim.g['VimuxOrientation'] = 'v'   -- On the bottom half of the window
-  end},
+  'benmills/vimux',
 
   -- Generic test runner
-  {'janko-m/vim-test', config = function()
-    vim.g['test#ruby#use_binstubs'] = 1                          -- Use bin/xxx when available, which should use Spring automatically
-    vim.g['test#ruby#rspec#options'] = {
-      nearest = '--fail-fast --order 0 --format documentation',  -- For single tests, run in verbose mode
-      file = '--fail-fast --order 0 --format documentation',     -- Same for single file, also keep always original order to make it easier to debug errors
-      suite = '--fail-fast',                                     -- For whole suite, useful to keep randomness
-    }
-    vim.g['test#python#runner'] = 'pytest'                       -- Use pytest for pytong specs ...
-    vim.g['test#python#pytest#executable'] = 'pipenv run pytest' -- ... using the right environment
-    vim.g['g:test#elixir#exunit#executable'] = 'mix test'        -- Use mix, this should probably be the default
-    vim.g['test#elixir#exunit#options'] = {
-      suite = '--stale',                                         -- Only run changed tests
-      file = '--seed 0',                                         -- For single files, run in original order
-      nearest = '--trace'                                        -- For single tests, run in verbose mode
-    }
-    vim.g['test#javascript#runner'] = 'yarn test'
-    vim.g['test#javascript#mocha#file_pattern'] = '\\v.*\\.spec\\.(ts|tsx)$'
-    vim.cmd( -- Custom strategy to avoid echoing the command to the terminal before running it
-      [[
-        function! CustomVimuxStrategy(cmd)
-        call VimuxRunCommand(a:cmd)
-        endfunction
-        let g:test#custom_strategies = {'customvimux': function('CustomVimuxStrategy')}
-        let g:test#strategy = 'customvimux'
-        ]])
-  end},
+  'janko-m/vim-test',
 
   -- Auto save & restore sessions (per folder, per branch, etc.)
-  {'rmagatti/auto-session', config = function()
-    require('auto-session').setup({
-      auto_session_use_git_branch = true,
-      auto_restore_enabled = false
-    })
-  end},
+  'rmagatti/auto-session',
 
   -- Goodies and automation for bulleted lists (mostly for markdown)
   'bullets-vim/bullets.vim',
+}))
 
-}, {
-    dev = {
-      path = '~/src', -- where to find local plugins
+-- }}}
+-- Plugin settings {{{
+
+-- Utility collection
+do
+  -- Split/join lists of arguments, key/value pairs, etc.
+  require('mini.splitjoin').setup()
+
+  -- Exchange (gx), evaluate (g=), multiply (gm), replace with register (gr), sort (gs)
+  require('mini.operators').setup()
+
+  -- Auto close pairs
+  require('mini.pairs').setup()
+
+  -- Align text (ga)
+  require('mini.align').setup()
+
+  -- Comment text (gc)
+  require('mini.comment').setup({
+    mappings = {
+      -- Define 'comment' textobject (like `dgc` - delete whole comment block)
+      -- Works also in Visual mode if mapping differs from `comment_visual`
+      textobject = 'ac',
     }
   })
+
+  -- Indentation based scope and navigation
+  require('mini.indentscope').setup()
+
+  -- Unimpaired style maps
+  require('mini.bracketed').setup({
+    conflict   = { suffix = 'x' },
+    diagnostic = { suffix = 'e' },
+    file       = { suffix = 'd' },
+    location   = { suffix = 'l' },
+    quickfix   = { suffix = 'q' },
+    window     = { suffix = 'w' },
+
+    -- disabled
+    treesitter = { suffix = '' },
+    comment    = { suffix = '' },
+    indent     = { suffix = '' },
+    jump       = { suffix = '' },
+    oldfile    = { suffix = '' },
+    undo       = { suffix = '' },
+    yank       = { suffix = '' },
+    buffer     = { suffix = '' },
+  })
+end
+
+-- Navigate through files in the jumplist
+map('n', ']f', ":lua require('bufjump').forward()<cr>" )
+map('n', '[f', ":lua require('bufjump').backward()<cr>" )
+
+-- File manager
+require('oil').setup({
+  -- Skip the confirmation popup for simple operations
+  skip_confirm_for_simple_edits = true,
+  view_options = {
+    -- Show files and directories that start with "."
+    show_hidden = true,
+  },
+  -- Default maps clash with pane navigation
+  use_default_keymaps = false,
+  keymaps = {
+    ["g?"] = "actions.show_help",
+    ["<CR>"] = "actions.select",
+    ["<C-v>"] = "actions.select_vsplit",
+    ["<C-s>"] = "actions.select_split",
+    ["<C-t>"] = "actions.select_tab",
+    ["<C-p>"] = "actions.preview",
+    ["-"] = "actions.parent",
+    ["gs"] = "actions.change_sort",
+    ["gx"] = "actions.open_external",
+    ["g."] = "actions.toggle_hidden",
+  },
+})
+map("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+
+-- Git signs and chunk navigation
+require('gitsigns').setup {
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+  end
+}
+
+-- Projections for project file navigation
+vim.cmd [[
+    let g:projectionist_heuristics = {
+    \    "mix.exs": {
+    \      "lib/*.ex": {
+    \        "type": "lib",
+    \        "make": "mix",
+    \        "alternate": "test/{}_test.exs",
+    \        "template": [
+    \          "defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize} do",
+    \          "end"
+    \        ]
+    \      },
+    \      "test/*_test.exs": {
+    \        "type": "test",
+    \        "make": "iex -S mix test",
+    \        "alternate": "lib/{}.ex",
+    \        "template": [
+    \          "defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}Test do",
+    \          "  use ExUnit.Case, async: true",
+    \          "",
+    \          "  alias {dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}",
+    \          "end"
+    \        ]
+    \      }
+    \    }
+    \  }
+    ]]
+
+-- Tmux integration
+vim.g['VimuxRunnerType'] = 'pane' -- Use a pane
+vim.g['VimuxOrientation'] = 'v'   -- On the bottom half of the window
+
+-- Generic test runner
+vim.g['test#ruby#use_binstubs'] = 1                          -- Use bin/xxx when available, which should use Spring automatically
+vim.g['test#ruby#rspec#options'] = {
+  nearest = '--fail-fast --order 0 --format documentation',  -- For single tests, run in verbose mode
+  file = '--fail-fast --order 0 --format documentation',     -- Same for single file, also keep always original order to make it easier to debug errors
+  suite = '--fail-fast',                                     -- For whole suite, useful to keep randomness
+}
+vim.g['test#python#runner'] = 'pytest'                       -- Use pytest for pytong specs ...
+vim.g['test#python#pytest#executable'] = 'pipenv run pytest' -- ... using the right environment
+vim.g['g:test#elixir#exunit#executable'] = 'mix test'        -- Use mix, this should probably be the default
+vim.g['test#elixir#exunit#options'] = {
+  suite = '--stale',                                         -- Only run changed tests
+  file = '--seed 0',                                         -- For single files, run in original order
+  nearest = '--trace'                                        -- For single tests, run in verbose mode
+}
+vim.g['test#javascript#runner'] = 'yarn test'
+vim.g['test#javascript#mocha#file_pattern'] = '\\v.*\\.spec\\.(ts|tsx)$'
+vim.cmd( -- Custom strategy to avoid echoing the command to the terminal before running it
+  [[
+    function! CustomVimuxStrategy(cmd)
+    call VimuxRunCommand(a:cmd)
+    endfunction
+    let g:test#custom_strategies = {'customvimux': function('CustomVimuxStrategy')}
+    let g:test#strategy = 'customvimux'
+    ]])
+
+-- Auto save & restore sessions (per folder, per branch, etc.)
+require('auto-session').setup({
+  auto_session_use_git_branch = true,
+  auto_restore_enabled = false
+})
 
 -- }}}
 -- Bundled plugins {{{
@@ -1052,13 +1048,6 @@ acg.augroup('lsp_format_on_save', {
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
-    -- Enable function signature
-    require "lsp_signature".on_attach({
-      doclines = 0,
-      floating_window = false,
-      hint_prefix = ''
-    }, ev.buf)
-
     -- Feed LSP items into the completion popup, and apply snippets,
     -- auto-imports, etc. when accepting an item
     vim.lsp.completion.enable(true, ev.data.client_id, ev.buf)
