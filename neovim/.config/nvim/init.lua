@@ -49,31 +49,6 @@ require('lazy').setup({
     -- Join/split lists of items (i.e function arguments)
     require('mini.splitjoin').setup()
 
-    -- General purpose picker
-    require('mini.pick').setup({
-      options = {
-        -- Whether to show content from bottom to top
-        content_from_bottom = true,
-
-        -- Whether to cache matches (more speed and memory on repeated prompts)
-        use_cache = true
-      },
-      -- Explicit source to disable icons
-      source = {
-        show = function(buf_id, items, query)
-          return MiniPick.default_show(buf_id, items, query, { show_icons = false })
-        end,
-      },
-    })
-
-    -- Register custom pickers
-    MiniPick.registry.notes = function()
-      return MiniPick.builtin.files(nil, { source = { name = "Notes", cwd = vim.fn.expand("$NOTES") } })
-    end
-
-    -- Additional pickers for mini.pick
-    require('mini.extra').setup()
-
     -- Unimpaired style maps
     require('mini.bracketed').setup({
       conflict   = { suffix = 'x' },
@@ -359,7 +334,8 @@ vim.opt.infercase = true                               -- ... same thing for key
 vim.opt.wrap = false                                   -- Don't wrap lines when they're too long for current screen size
 vim.opt.backspace = { 'indent', 'eol', 'start' }       -- Backspace through everything
 vim.opt.wildmenu = true                                -- Visual auto complete for command menu
-vim.opt.wildmode = { 'longest:full', 'full' }          -- Complete with the longest matching substring, also show menu. Hitting tab again moves between matches
+vim.opt.wildmode = { 'noselect:lastused', 'full' }     -- Show the menu without pre-selecting, so typing keeps filtering the results
+vim.opt.wildoptions = { 'pum', 'tagfile', 'fuzzy' }    -- Popup menu for completions, matched fuzzily. Does not affect file names, those go through 'findfunc'
 vim.opt.ttyfast = true                                 -- Send extra characters to terminal (improves smoothness)
 vim.opt.formatoptions:append('j')                      -- Delete comment character when joining commented lines
 vim.opt.autoread = true                                -- If a file changes outside Vim, reload its contents automatically
@@ -488,9 +464,191 @@ vim.opt.wildignore:append({
   '.yarn/**'                      -- Yarn modules
 })
 -- }}}
+-- Fuzzy find {{{
+-- :help fuzzy-file-picker
+
+local FILES_CMD = 'rg --files --hidden --glob "!.git"'
+local MAX_RESULTS = 20
+
+-- Caches are rebuilt at most once per command line, see CmdlineEnter below
+local caches = {}
+
+-- Fuzzy match `query` against `candidates`, the full list when nothing is typed
+local function fuzzy_match(candidates, query)
+  if query == '' then return candidates end
+
+  return vim.fn.matchfuzzy(candidates, query)
+end
+
+-- Keep only the best matches, then reverse: the popup renders above the command
+-- line, so the last item is the one nearest the prompt. Display only, resolving
+-- still runs over every match and takes the best
+local function for_display(matches)
+  local out = {}
+  for i = math.min(#matches, MAX_RESULTS), 1, -1 do table.insert(out, matches[i]) end
+
+  return out
+end
+
+-- Called by `:find`, both to complete and to resolve the final argument
+function _G.acg_find(cmdarg, cmdcomplete)
+  if vim.tbl_isempty(caches.files or {}) then
+    -- Same tool as 'grepprg', so both respect .gitignore in the same way
+    caches.files = vim.fn.systemlist(FILES_CMD)
+  end
+
+  local matches = fuzzy_match(caches.files, cmdarg)
+
+  return cmdcomplete and for_display(matches) or matches
+end
+
+-- Turn `:find` into a fuzzy file picker
+-- Note this bypasses 'path', which is still used by `gf`, `:sfind` and `[i`
+vim.o.findfunc = 'v:lua.acg_find'
+
+-- Define a command that fuzzy completes over `candidates()` and runs `action`
+-- on the result. Pressing <cr> without picking from the menu uses the best
+-- match, so these behave like `:find` does through 'findfunc'
+local function fuzzy_command(name, candidates, action, desc)
+  local key = name:lower()
+
+  local function matches(query)
+    if vim.tbl_isempty(caches[key] or {}) then caches[key] = candidates() end
+
+    return fuzzy_match(caches[key], query)
+  end
+
+  vim.api.nvim_create_user_command(name, function(cmd)
+    local best = matches(cmd.args)[1]
+    if best then action(best) end
+  end, {
+    nargs = '*', -- Accept spaces, so paths containing them still resolve
+    complete = function(arglead) return for_display(matches(arglead)) end,
+    desc = desc
+  })
+end
+
+local function edit(path) vim.cmd.edit(vim.fn.fnameescape(path)) end
+
+-- `:buffer` only matches substrings, so resolve the choice back to a number
+local buffer_numbers = {}
+
+fuzzy_command('Buffer', function()
+  buffer_numbers = {}
+  local names = {}
+
+  for _, buffer in ipairs(vim.fn.getbufinfo({ buflisted = 1 })) do
+    if buffer.name ~= '' then
+      local name = vim.fn.fnamemodify(buffer.name, ':.')
+      buffer_numbers[name] = buffer.bufnr
+      table.insert(names, name)
+    end
+  end
+
+  return names
+end, function(name) vim.cmd.buffer(buffer_numbers[name] or name) end, 'Fuzzy switch buffer')
+
+-- Every file, including the ones ignored by git
+fuzzy_command('FindAll', function()
+  return vim.fn.systemlist('rg --files --hidden --no-ignore --glob "!.git"')
+end, edit, 'Fuzzy find any file, including ignored ones')
+
+-- Modified, staged and untracked files
+fuzzy_command('Modified', function()
+  local changed = vim.fn.systemlist('git diff --name-only HEAD')
+  local untracked = vim.fn.systemlist('git ls-files --others --exclude-standard')
+  return vim.list_extend(changed, untracked)
+end, edit, 'Fuzzy find a file changed since HEAD')
+
+-- Previously edited files, most recent first
+fuzzy_command('Oldfiles', function()
+  return vim.tbl_filter(function(f) return vim.fn.filereadable(f) == 1 end, vim.v.oldfiles)
+end, edit, 'Fuzzy find a recently edited file')
+
+fuzzy_command('Notes', function()
+  return vim.fn.systemlist(FILES_CMD .. ' ' .. vim.fn.expand('$NOTES'))
+end, edit, 'Fuzzy find a note')
+
+fuzzy_command('Branch', function()
+  return vim.fn.systemlist('git branch --format="%(refname:short)" --sort=-committerdate')
+end, function(branch) vim.cmd('Git switch ' .. vim.fn.shellescape(branch)) end, 'Fuzzy switch git branch')
+
+-- Live grep: 'grepprg' runs on every keystroke and the matches become the
+-- completion menu, see :help live-grep
+local grep_selected = nil
+
+local function grep_matches(arglead)
+  -- Below two characters the result set is too big to be useful
+  if #arglead < 2 then return {} end
+
+  local prg = vim.o.grepprg
+  if not prg:find('%$%*', 1) then prg = prg .. ' $*' end
+
+  local pattern = vim.fn.shellescape(vim.fn.escape(arglead, '\\'))
+
+  return vim.fn.systemlist((prg:gsub('%$%*', function() return pattern end, 1)))
+end
+
+local function grep_complete(arglead) return for_display(grep_matches(arglead)) end
+
+vim.api.nvim_create_user_command('Grep', function(cmd)
+  -- Nothing was highlighted, so fall back to the best match for what was typed
+  local match = grep_selected or grep_matches(cmd.args)[1]
+  grep_selected = nil
+  if not match then return end
+
+  -- 'grepformat' knows how to turn a match back into a file, line and column
+  local item = vim.fn.getqflist({ lines = { match } }).items[1]
+  if not item or item.bufnr == 0 then return end
+
+  vim.bo[item.bufnr].buflisted = true
+  vim.api.nvim_win_set_buf(0, item.bufnr)
+  vim.api.nvim_win_set_cursor(0, { item.lnum, math.max(item.col - 1, 0) })
+end, { nargs = '*', complete = grep_complete, desc = 'Live grep the project' })
+
+local cmdline_group = vim.api.nvim_create_augroup('CmdlineAutocomplete', {})
+
+-- Show the completion menu while typing, see :help cmdline-autocompletion
+vim.api.nvim_create_autocmd('CmdlineChanged', {
+  group = cmdline_group,
+  pattern = { ':', '/', '?' },
+  callback = function()
+    -- Commands show all their candidates straight away, so `:find ` lists every
+    -- file. An empty command line is left alone, as neither the full command
+    -- list nor every search term is worth a menu. <tab> still opens those
+    if vim.fn.getcmdline() ~= '' then vim.fn.wildtrigger() end
+  end,
+})
+
+-- The external commands only run when a picker is actually used, so dropping
+-- the caches on every `:` is cheap
+vim.api.nvim_create_autocmd('CmdlineEnter', {
+  group = cmdline_group,
+  pattern = ':',
+  callback = function() caches = {} end,
+})
+
+-- `:Grep` completion returns "file:line:col:text" matches rather than an
+-- argument, so remember the highlighted one and restore the command line
+vim.api.nvim_create_autocmd('CmdlineLeavePre', {
+  group = cmdline_group,
+  pattern = ':',
+  callback = function()
+    if not vim.fn.getcmdline():match('^%s*Grep%s') then return end
+
+    local info = vim.fn.cmdcomplete_info()
+    local matches = info.matches or {}
+    if vim.tbl_isempty(matches) then return end
+
+    -- Matches are reversed, so the best one is last when nothing is selected
+    grep_selected = matches[info.selected + 1] or matches[#matches]
+    vim.fn.setcmdline(info.cmdline_orig)
+  end,
+})
+-- }}}
 -- Look & Feel {{{
 --   Status line {{{
-local status_color = '%#Pmenu#'
+-- local status_color = '%#StatusLine#'
 
 local trailing_whitespace = function()
   local space = vim.fn.search([[\s\+$]], 'nwc')
@@ -499,7 +657,6 @@ end
 
 function Status_line()
   return table.concat {
-    status_color,          -- Color
     ' %f ',                -- Relative file path
     '%m',                  -- Modified flag
     '%r',                  -- Read-only flag
@@ -513,6 +670,15 @@ end
 
 vim.opt.statusline = "%!luaeval('Status_line()')"
 --  }}}
+
+-- Keep the completion popup distinct from the status line, see acg.popup_colors.
+-- Registered before the colorscheme so it also runs on the initial load, and
+-- again whenever the terminal reports a light/dark switch, as changing
+-- 'background' reloads the colorscheme
+vim.api.nvim_create_autocmd('ColorScheme', { callback = function() acg.popup_colors() end })
+
+-- 'background' is detected from the terminal, see :help 'background'
+vim.cmd('colorscheme zenbones')
 
 vim.cmd 'highlight clear SpellBad'                         -- Remove default spell highlighting
 vim.cmd 'highlight SpellBad cterm=underline gui=undercurl' -- Underline spelling errors
@@ -536,20 +702,47 @@ map('i', '<tab>', function()
   return vim.fn.pumvisible() == 1 and '<c-y>' or '<tab>'
 end, { expr = true, desc = 'Accept completion / indent' })
 
--- Walk back through the results (<c-n> walks forward)
+-- Walk back through the results in insert mode (<c-n> walks forward)
 map('i', '<s-tab>', function()
   return vim.fn.pumvisible() == 1 and '<c-p>' or '<s-tab>'
 end, { expr = true, desc = 'Previous completion result' })
 
--- map('i', '<c-v>', MiniPick.builtin.files({ tool = 'git' }))           -- Paste from register
+-- Results are reversed, so walk backwards to start from the best match
+map('c', '<tab>', function()
+  return vim.fn.wildmenumode() == 1 and '<c-p>' or '<tab>'
+end, { expr = true, desc = 'Previous completion result' })
+
+map('c', '<s-tab>', function()
+  return vim.fn.wildmenumode() == 1 and '<c-n>' or '<s-tab>'
+end, { expr = true, desc = 'Next completion result' })
+
+-- Same swap for <c-n>/<c-p>, which otherwise start from the top of the popup.
+-- Without the menu they still recall command line history, see :help c_CTRL-N
+map('c', '<c-n>', function()
+  return vim.fn.wildmenumode() == 1 and '<c-p>' or '<c-n>'
+end, { expr = true, desc = 'Previous completion result' })
+
+map('c', '<c-p>', function()
+  return vim.fn.wildmenumode() == 1 and '<c-n>' or '<c-p>'
+end, { expr = true, desc = 'Next completion result' })
+
+-- The command line popup steals <Up>/<Down>, dismiss it to walk the history
+map('c', '<Up>', function()
+  return vim.fn.wildmenumode() == 1 and '<c-e><Up>' or '<Up>'
+end, { expr = true, desc = 'Previous command in history' })
+
+map('c', '<Down>', function()
+  return vim.fn.wildmenumode() == 1 and '<c-e><Down>' or '<Down>'
+end, { expr = true, desc = 'Next command in history' })
+
 -- }}}
 --   Leader mappings {{{
 
 vim.g.mapleader = ' '                              -- Use <sapce> as leader key
 
 map('n', '<leader>.', ':find ')                    -- Quick find
-map('n', '<leader><space>', MiniPick.builtin.buffers) -- Quick buffer switch (fuzzy)
-map('n', '<leader>;', MiniExtra.pickers.commands)      -- Run vim commannds
+map('n', '<leader><space>', ':Buffer ')            -- Quick buffer switch (fuzzy)
+map('n', '<leader>;', ':')                         -- Run vim commands
 
 -- /,? - Search in project
 -- Use -F by default to disable regexp and search for a literal string
@@ -569,7 +762,7 @@ end)
 
 -- b - Buffers
 map('n', '<leader>bo', ':Bdelete hidden<cr>')
-map('n', '<leader>bb', MiniPick.builtin.buffers)
+map('n', '<leader>bb', ':Buffer ')
 
 -- c - Copy/clear
 map('n', '<leader>cb', ':let @+=FugitiveHead()<cr>:echo "<c-r>+"<cr>')                             -- Copy git branch
@@ -598,16 +791,16 @@ map('n', '<leader>ev', ':Vex<cr>')
 
 -- f - File/format
 map('n', '<leader>fs', ':up<cr>')
-map('n', '<leader>fb', ":Pick git_branches<cr>")
-map('n', '<leader>fF', ":Pick files<cr>")
-map('n', '<leader>ff', ":Pick files tool='git'<cr>")
-map('n', '<leader>fg', ":Pick git_files scope='modified'<cr>")
-map('n', '<leader>fr', ":Pick oldfiles<cr>")
-map('n', '<leader>fh', ":Pick help<cr>")
-map('n', '<leader>fn', ":Pick notes<cr>")
-map('n', '<leader>ft', ":Pick grep_live<cr>")
-map('n', '<leader>fl', ":Pick lsp scope='document_symbol'<cr>")
-map('n', '<leader>fm', ":Pick marks")
+map('n', '<leader>fb', ':Branch ')
+map('n', '<leader>fF', ':FindAll ')
+map('n', '<leader>ff', ':find ')
+map('n', '<leader>fg', ':Modified ')
+map('n', '<leader>fr', ':Oldfiles ')
+map('n', '<leader>fh', ':help ')
+map('n', '<leader>fn', ':Notes ')
+map('n', '<leader>ft', ':Grep ')
+map('n', '<leader>fl', vim.lsp.buf.document_symbol)
+map('n', '<leader>fm', ':marks<cr>')
 
 -- Format json shortcut, since it's used often
 map('n', '<leader>fj', ':set ft = json<bar>%!jq<cr>')
@@ -662,7 +855,7 @@ map('n', '<leader>nn', ':execute "edit ".luaeval(\'require("acg").notes_path()\'
 map('n', '<leader>of', ":! open '%'<cr>")
 
 --" p - paste
-map('n', '<leader>p', ":Pick registers<cr>")
+map('n', '<leader>p', ':registers<cr>')
 
 --" r - Remove, redraw
 map('n', '<leader>rd', ':redraw!<cr>')
@@ -864,14 +1057,6 @@ acg.augroup('diff_folds', {
 
 acg.augroup('branch_notes', {
   { 'Bufread,BufNewFile', '*/.git/notes-*', 'set ft=markdown' }, -- Own notes are all markdown
-})
-
-acg.augroup('detect_theme_changes', {
-  { -- Auto switch theme when MacOs does
-    'VimEnter,FocusGained,FocusLost',
-    '*',
-    'lua require("acg").auto_set_theme()'
-  },
 })
 
 acg.augroup('lsp_format_on_save', {

@@ -11,25 +11,27 @@ function acg.augroup(name, autocmds)
   vim.cmd('augroup END')
 end
 
--- Helper to set colorscheme and background together
-function acg.set_theme(colorscheme, background)
-  vim.opt.background = background
-  vim.cmd('colorscheme ' .. colorscheme)
-end
+-- Shift `color` towards black on dark themes and towards white on light ones
+local function shaded(color, amount)
+  local target = vim.o.background == 'dark' and 0 or 255
+  local channels = { math.floor(color / 65536) % 256, math.floor(color / 256) % 256, color % 256 }
 
--- Set theme/colorscheme based on MacOs Dark/Light mode
-function acg.auto_set_theme()
-  -- we have to redirect output to avoid flicker
-  local result = os.execute([[sh -c "defaults read -g AppleInterfaceStyle &> /dev/null"]])
-
-  -- The shell command succeeds (0 result code) in dark mode
-  if result == 0 then
-    acg.set_theme('zenbones', 'dark')
-  else
-    acg.set_theme('zenbones', 'light')
+  for i, channel in ipairs(channels) do
+    channels[i] = math.floor(channel + (target - channel) * amount)
   end
 
-  os.execute('tmux source-file ~/.tmux.conf')
+  return channels[1] * 65536 + channels[2] * 256 + channels[3]
+end
+
+-- The status line sits directly below the completion popup and the theme paints
+-- both in near identical greys. Push the popup past the buffer background, in
+-- the opposite direction to the status line, so the two never read as one
+function acg.popup_colors()
+  local normal = vim.api.nvim_get_hl(0, { name = 'Normal', link = false }).bg
+
+  if normal then vim.api.nvim_set_hl(0, 'Pmenu', { bg = shaded(normal, 0.45) }) end
+
+  vim.api.nvim_set_hl(0, 'PmenuSel', { link = 'WildMenu' })
 end
 
 -- Check if the given path exists
