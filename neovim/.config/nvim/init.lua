@@ -375,21 +375,13 @@ vim.opt.complete = {
   'b^5', -- Complete with words from other loaded buffers, at most 5
 }
 
-vim.lsp.config['sqls'] = {
-  cmd = {"/Users/angel/.local/share/mise/installs/go/latest/bin/sqls", "-config", "/Users/angel/.config/sqls/config.yml"},
-  filetypes = { 'sql' },
-  on_attach = function(client, bufnr)
-    require('sqls').on_attach(client, bufnr)
-  end
-}
-
-vim.lsp.config['expert'] = {
-  cmd = { '/Users/angel/src/expert/apps/expert/_build/prod/rel/plain/bin/start_expert', '--stdio' },
+vim.lsp.config('expert', {
+  cmd = { 'expert', '--stdio' },
   root_markers = { 'mix.exs', '.git' },
   filetypes = { 'elixir', 'eelixir', 'heex' },
-}
+})
 
-vim.lsp.enable({'expert', 'sqls', 'tsserver'})
+vim.lsp.enable({'expert', 'tsserver'})
 
 -- }}}
 -- Custom text object {{{

@@ -82,7 +82,7 @@ cask "font-iosevka"
 cask "espanso"
 
 # Terminal of choice
-cask "alacritty"
+cask "ghostty"
 
 # Required to install things like fzf
 brew "cmake"
@@ -104,3 +104,6 @@ brew "tree-sitter-cli"
 
 # Nice easy to setup prompt
 brew "starship"
+
+# Elixir LSP
+brew "expert"
