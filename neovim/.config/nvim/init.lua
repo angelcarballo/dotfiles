@@ -381,7 +381,7 @@ vim.lsp.config('expert', {
   filetypes = { 'elixir', 'eelixir', 'heex' },
 })
 
-vim.lsp.enable({'expert', 'tsserver'})
+vim.lsp.enable('expert')
 
 -- }}}
 -- Custom text object {{{
@@ -489,7 +489,7 @@ local function fuzzy_command(name, candidates, action, desc)
   local key = name:lower()
 
   local function matches(query)
-    if vim.tbl_isempty(caches[key] or {}) then caches[key] = candidates() end
+    if caches[key] == nil then caches[key] = candidates() end
 
     return fuzzy_match(caches[key], query)
   end
@@ -548,6 +548,49 @@ end, edit, 'Fuzzy find a note')
 fuzzy_command('Branch', function()
   return vim.fn.systemlist('git branch --format="%(refname:short)" --sort=-committerdate')
 end, function(branch) vim.cmd('Git switch ' .. vim.fn.shellescape(branch)) end, 'Fuzzy switch git branch')
+
+-- `:Symbol` completes over names, so resolve the choice back to a position
+local symbol_positions = {}
+
+-- Document symbols for the current buffer. Blocking, but the result is cached for
+-- the rest of the command line, so this runs once per `:Symbol` rather than once
+-- per keystroke
+local function document_symbols()
+  symbol_positions = {}
+
+  local buffer = vim.api.nvim_get_current_buf()
+  local client = vim.lsp.get_clients({ bufnr = buffer, method = 'textDocument/documentSymbol' })[1]
+  if not client then return {} end
+
+  local response = client:request_sync(
+    'textDocument/documentSymbol',
+    { textDocument = vim.lsp.util.make_text_document_params(buffer) },
+    1000,
+    buffer
+  )
+  if not response or response.err or not response.result then return {} end
+
+  local names = {}
+
+  -- Flattens nested symbols and converts LSP's UTF-16 columns to byte offsets
+  for _, item in ipairs(vim.lsp.util.symbols_to_items(response.result, buffer, client.offset_encoding)) do
+    -- The line keeps overloads and same named symbols apart
+    local name = item.text:gsub('^%[%w+%]%s*', '') .. ':' .. item.lnum
+    symbol_positions[name] = { item.lnum, math.max(item.col - 1, 0) }
+    table.insert(names, name)
+  end
+
+  return names
+end
+
+fuzzy_command('Symbol', document_symbols, function(name)
+  local position = symbol_positions[name]
+  if not position then return end
+
+  vim.cmd("normal! m'") -- Leave a jumplist entry, so `<c-o>` comes back
+  vim.api.nvim_win_set_cursor(0, position)
+  vim.cmd('normal! zz')
+end, 'Fuzzy jump to a symbol in the buffer')
 
 -- Live grep: 'grepprg' runs on every keystroke and the matches become the
 -- completion menu, see :help live-grep
@@ -645,7 +688,7 @@ vim.opt.statusline = "%!luaeval('Status_line()')"
 -- Registered before the colorscheme so it also runs on the initial load, and
 -- again whenever the terminal reports a light/dark switch, as changing
 -- 'background' reloads the colorscheme
-vim.api.nvim_create_autocmd('ColorScheme', { callback = function() acg.popup_colors() end })
+-- vim.api.nvim_create_autocmd('ColorScheme', { callback = function() acg.popup_colors() end })
 
 -- 'background' is detected from the terminal, see :help 'background'
 vim.cmd('colorscheme zenbones')
@@ -769,7 +812,7 @@ map('n', '<leader>fr', ':Oldfiles ')
 map('n', '<leader>fh', ':help ')
 map('n', '<leader>fn', ':Notes ')
 map('n', '<leader>ft', ':Grep ')
-map('n', '<leader>fl', vim.lsp.buf.document_symbol)
+map('n', '<leader>fl', ':Symbol ')
 map('n', '<leader>fm', ':marks<cr>')
 
 -- Format json shortcut, since it's used often
