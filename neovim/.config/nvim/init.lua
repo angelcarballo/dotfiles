@@ -85,20 +85,8 @@ require('lazy').setup({
   -- custom text object support
   'kana/vim-textobj-user',
 
-  -- swap delimited items (arguments, map pairs, etc.) (g>, g<)
-  {'machakann/vim-swap', config = function()
-    map('n', 'g<', '<Plug>(swap-prev)')
-    map('n', 'g>', '<Plug>(swap-next)')
-  end},
-
-  -- Show info about current function+method (LSP)
-  'ray-x/lsp_signature.nvim',
-
   -- Clear search highlight automatically
   'romainl/vim-cool',
-
-  -- work with word variants (change casing, smart substitute, etc.)
-  {'tpope/vim-abolish'},
 
   -- Basic unix shell command helpers (mv, rm, etc.)
   {'tpope/vim-eunuch', lazy = true},
@@ -650,11 +638,6 @@ vim.api.nvim_create_autocmd('CmdlineLeavePre', {
 --   Status line {{{
 -- local status_color = '%#StatusLine#'
 
-local trailing_whitespace = function()
-  local space = vim.fn.search([[\s\+$]], 'nwc')
-  return space ~= 0 and '%#DiffDelete#TW:' .. space .. status_color or ""
-end
-
 function Status_line()
   return table.concat {
     ' %f ',                -- Relative file path
@@ -663,7 +646,6 @@ function Status_line()
     '%h',                  -- Help flag
     '%w',                  -- Preview flag
     '%=',                  -- Right aling the following...
-    trailing_whitespace(), -- Trailing space indicator
     ' %c %l/%L '           -- Current column, current line and total lines
   }
 end
