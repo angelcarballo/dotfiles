@@ -94,13 +94,11 @@ fi
 # source fzf fuzzy finder configuration is present
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# source local config if present
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
 # enable autocompletion (tab-triggered)
 #
-# Is important to do this at the end, to ensure any local configuration is
-# loaded, otherwise some completions might be missed
+# This has to happen *before* sourcing the local config: gcloud's
+# completion.zsh.inc runs its own unguarded `compinit` (a full compaudit, ~25ms)
+# unless `compdef` already exists, and we'd then pay for compinit twice.
 zmodload zsh/complist
 
 # load completions
@@ -109,6 +107,9 @@ autoload -Uz compinit
 # initialize completions (-C omit check to see if there are new functions)
 # this means new completions might require running compinit manually
 compinit -C
+
+# source local config if present
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # prompt
 eval "$(starship init zsh)"
