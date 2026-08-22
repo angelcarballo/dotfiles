@@ -11,29 +11,6 @@ function acg.augroup(name, autocmds)
   vim.cmd('augroup END')
 end
 
--- Shift `color` towards black on dark themes and towards white on light ones
-local function shaded(color, amount)
-  local target = vim.o.background == 'dark' and 0 or 255
-  local channels = { math.floor(color / 65536) % 256, math.floor(color / 256) % 256, color % 256 }
-
-  for i, channel in ipairs(channels) do
-    channels[i] = math.floor(channel + (target - channel) * amount)
-  end
-
-  return channels[1] * 65536 + channels[2] * 256 + channels[3]
-end
-
--- The status line sits directly below the completion popup and the theme paints
--- both in near identical greys. Push the popup past the buffer background, in
--- the opposite direction to the status line, so the two never read as one
-function acg.popup_colors()
-  local normal = vim.api.nvim_get_hl(0, { name = 'Normal', link = false }).bg
-
-  if normal then vim.api.nvim_set_hl(0, 'Pmenu', { bg = shaded(normal, 0.45) }) end
-
-  vim.api.nvim_set_hl(0, 'PmenuSel', { link = 'WildMenu' })
-end
-
 -- Check if the given path exists
 -- taken from https://stackoverflow.com/questions/1340230/check-if-directory-exists-in-lua
 function acg.exists(file)
