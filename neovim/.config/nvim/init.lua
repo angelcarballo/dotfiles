@@ -217,6 +217,7 @@ vim.cmd [[
 -- Tmux integration
 vim.g['VimuxRunnerType'] = 'pane' -- Use a pane
 vim.g['VimuxOrientation'] = 'v'   -- On the bottom half of the window
+vim.g['VimuxUseNearest'] = 0 -- Don't use the nearest pane, stick to the bottom one
 
 -- Generic test runner
 vim.g['test#ruby#use_binstubs'] = 1                          -- Use bin/xxx when available, which should use Spring automatically
