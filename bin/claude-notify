@@ -1,0 +1,90 @@
+#!/bin/bash
+
+# Post a macOS notification when a Claude Code session wants attention. Claude
+# fires the Notification hook both when it needs permission to run a tool and
+# when the prompt has been idle for a while, so this is the "waiting for input"
+# signal. Suppressed when the session is already on screen.
+
+set -u
+
+TERMINALS='com.mitchellh.ghostty|com.github.wez.wezterm|io.alacritty|com.googlecode.iterm2|com.apple.Terminal'
+MAX_TITLE_LENGTH=40
+
+payload=$(cat)
+
+message=$(jq -r '.message // empty' 2>/dev/null <<< "$payload")
+[ -n "$message" ] || exit 0
+
+# The pane is on screen only if it is the active pane of the active window of a
+# session someone is currently attached to.
+pane_visible() {
+  [ -n "${TMUX:-}" ] && [ -n "${TMUX_PANE:-}" ] || return 1
+
+  local flags
+  flags=$(tmux display-message -p -t "$TMUX_PANE" \
+    '#{window_active}#{pane_active}#{session_attached}' 2>/dev/null)
+
+  [ "$flags" = "111" ]
+}
+
+terminal_frontmost() {
+  local bundle_id
+  # lsappinfo prints "CFBundleIdentifier"="com.example.app"; it needs no
+  # Accessibility grant, unlike asking System Events for the same thing.
+  bundle_id=$(lsappinfo info -only bundleID "$(lsappinfo front)" 2>/dev/null |
+    cut -d= -f2 | tr -d '"')
+
+  [[ "$bundle_id" =~ ^($TERMINALS)$ ]]
+}
+
+# Nothing to announce if he is already looking at the session.
+if pane_visible && terminal_frontmost; then
+  exit 0
+fi
+
+# Name the session so it is obvious which one is waiting. Titles are appended to
+# the transcript every time they change, so the last one is current, and
+# custom-title (set by hand) wins over ai-title on the same line.
+title=""
+transcript=$(jq -r '.transcript_path // empty' 2>/dev/null <<< "$payload")
+if [ -n "$transcript" ] && [ -f "$transcript" ]; then
+  title=$(grep -e '"type":"ai-title"' -e '"type":"custom-title"' "$transcript" |
+    tail -1 |
+    jq -r '.customTitle // .aiTitle // empty')
+fi
+
+if [ -z "$title" ]; then
+  cwd=$(jq -r '.cwd // empty' 2>/dev/null <<< "$payload")
+  [ -n "$cwd" ] && title=$(basename "$cwd")
+fi
+
+[ -n "$title" ] || title="Claude Code"
+
+if [ "${#title}" -gt "$MAX_TITLE_LENGTH" ]; then
+  title="${title:0:$((MAX_TITLE_LENGTH - 1))}…"
+fi
+
+subtitle=""
+if [ -n "${TMUX:-}" ] && [ -n "${TMUX_PANE:-}" ]; then
+  subtitle=$(tmux display-message -p -t "$TMUX_PANE" \
+    '#{session_name}:#{window_name}' 2>/dev/null)
+fi
+
+# Text reaches AppleScript as argv rather than interpolated into the script, so
+# quotes and backslashes in the message cannot break it.
+osascript - "$message" "$title" "$subtitle" <<'APPLESCRIPT' 2>/dev/null
+on run argv
+  set theMessage to item 1 of argv
+  set theTitle to item 2 of argv
+  set theSubtitle to item 3 of argv
+
+  if theSubtitle is "" then
+    display notification theMessage with title theTitle sound name "Ping"
+  else
+    display notification theMessage with title theTitle subtitle theSubtitle sound name "Ping"
+  end if
+end run
+APPLESCRIPT
+
+# A hook exiting non-zero surfaces noise back into the session.
+exit 0
