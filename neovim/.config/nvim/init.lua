@@ -186,33 +186,31 @@ require('oil').setup({
 require('gitsigns').setup()
 
 -- Projections for project file navigation
-vim.cmd [[
-    let g:projectionist_heuristics = {
-    \    "mix.exs": {
-    \      "lib/*.ex": {
-    \        "type": "lib",
-    \        "make": "mix",
-    \        "alternate": "test/{}_test.exs",
-    \        "template": [
-    \          "defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize} do",
-    \          "end"
-    \        ]
-    \      },
-    \      "test/*_test.exs": {
-    \        "type": "test",
-    \        "make": "iex -S mix test",
-    \        "alternate": "lib/{}.ex",
-    \        "template": [
-    \          "defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}Test do",
-    \          "  use ExUnit.Case, async: true",
-    \          "",
-    \          "  alias {dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}",
-    \          "end"
-    \        ]
-    \      }
-    \    }
-    \  }
-    ]]
+vim.g.projectionist_heuristics = {
+  ['mix.exs'] = {
+    ['lib/*.ex'] = {
+      type = 'lib',
+      make = 'mix',
+      alternate = 'test/{}_test.exs',
+      template = {
+        'defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize} do',
+        'end'
+      }
+    },
+    ['test/*_test.exs'] = {
+      type = 'test',
+      make = 'iex -S mix test',
+      alternate = 'lib/{}.ex',
+      template = {
+        'defmodule Duffel.{dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}Test do',
+        '  use ExUnit.Case, async: true',
+        '',
+        '  alias {dirname|camelcase|capitalize|dot}.{basename|camelcase|capitalize}',
+        'end'
+      }
+    }
+  }
+}
 
 -- Tmux integration
 vim.g['VimuxRunnerType'] = 'pane' -- Use a pane
@@ -236,14 +234,11 @@ vim.g['test#elixir#exunit#options'] = {
 }
 vim.g['test#javascript#runner'] = 'yarn test'
 vim.g['test#javascript#mocha#file_pattern'] = '\\v.*\\.spec\\.(ts|tsx)$'
-vim.cmd( -- Custom strategy to avoid echoing the command to the terminal before running it
-  [[
-    function! CustomVimuxStrategy(cmd)
-    call VimuxRunCommand(a:cmd)
-    endfunction
-    let g:test#custom_strategies = {'customvimux': function('CustomVimuxStrategy')}
-    let g:test#strategy = 'customvimux'
-    ]])
+-- Custom strategy to avoid echoing the command to the terminal before running it
+vim.g['test#custom_strategies'] = {
+  customvimux = function(cmd) vim.fn.VimuxRunCommand(cmd) end
+}
+vim.g['test#strategy'] = 'customvimux'
 
 -- Auto save & restore sessions (per folder, per branch, etc.)
 require('auto-session').setup({
@@ -271,10 +266,9 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = "w", texthl = "DiagnosticSignW
 vim.fn.sign_define("DiagnosticSignInfo", { text = "i", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "h", texthl = "DiagnosticSignHint" })
 
--- vim.lsp.set_log_level('debug')
 --  }}}
 -- Settings {{{
-vim.cmd('packadd cfilter')                             -- Quickfix filter plugin (bundled with vim)
+vim.cmd.packadd('cfilter')                             -- Quickfix filter plugin (bundled with vim)
 vim.opt.cursorline = true                              -- Highlight cursor line
 vim.opt.number = true                                  -- Show line numbers
 vim.opt.confirm = true                                 -- Ask instead of just erroring if the current file has unsaved changes
@@ -324,7 +318,7 @@ vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'            -- Use ripgrep's format
 vim.g.vimsyn_embed = 1                                 -- Highlight lua and other languages inside vim files
 vim.opt.listchars = { tab = '▸ ', trail = '·' }        -- Symbols for invisible characters
 vim.opt.fillchars:append({ diff = '╱' })               -- Hatching instead of --- for diff filler
-vim.cmd [[ let &showbreak='↳ ' ]]                      -- Indicator for wrapped lines
+vim.opt.showbreak = '↳ '                               -- Indicator for wrapped lines
 vim.opt.diffopt = {
   'filler',                                            -- Show filler lines to keep diffs aligned
   'internal',                                          -- Use vim's internal diff library
@@ -436,12 +430,16 @@ vim.opt.statusline = "%!luaeval('Status_line()')"
 --  }}}
 
 -- 'background' is detected from the terminal, see :help 'background'
-vim.cmd('colorscheme zenbones')
+vim.cmd.colorscheme('zenbones')
 
-vim.cmd 'highlight clear SpellBad'                         -- Remove default spell highlighting
-vim.cmd 'highlight SpellBad cterm=underline gui=undercurl' -- Underline spelling errors
-vim.cmd 'highlight TabLineSel guifg=bg guibg=fg'           -- Highlight current tab
-vim.cmd "match ErrorMsg '\\s\\+$'"                         -- Highlight trailing spaces
+-- Drop the default spell highlighting, only underline spelling errors
+vim.api.nvim_set_hl(0, 'SpellBad', { cterm = { underline = true }, undercurl = true })
+-- Highlight current tab. Merged on top of the colorscheme's own definition,
+-- as nvim_set_hl replaces the whole group while :highlight would extend it
+vim.api.nvim_set_hl(0, 'TabLineSel', vim.tbl_extend('force',
+  vim.api.nvim_get_hl(0, { name = 'TabLineSel', link = false }),
+  { fg = 'bg', bg = 'fg' }))
+vim.fn.matchadd('ErrorMsg', '\\s\\+$')                          -- Highlight trailing spaces
 -- }}}
 -- Mappings {{{
 
@@ -514,8 +512,8 @@ map('n', '<leader>*', ':silent grep "<cWORD>"<cr>')
 
 -- args
 map('n', '<leader>aa', function()
-  vim.cmd("argadd %")
-  vim.cmd("argdedup")
+  vim.cmd.argadd('%')
+  vim.cmd.argdedup()
 end)
 
 -- b - Buffers
@@ -642,21 +640,26 @@ map('n', '<leader>tw', ':VimuxClearTerminalScreen<CR>' )
 map('n', '<leader>tc', ':VimuxInterruptRunner<cr>:VimuxInterruptRunner<cr>')
 
 
-vim.cmd [[
-" Transform a rocket map pair into a colon one
-"    before: {"something" => 1}
-"    after:  {something: 1}
-nnoremap <silent> <Plug>RocketToColon /=><cr>daWF"r:F"x
-\ :call repeat#set("\<Plug>RocketToColon", v:count)<cr>
-nmap <leader>t:  <Plug>RocketToColon
+-- Define a <Plug> mapping that can be repeated with `.` (see :help repeat#set)
+-- and return its name, so it can be mapped to an actual key
+local function repeatable(name, keys)
+  local plug = '<Plug>' .. name
+  -- Leave the <Plug> escape for vimscript to expand when repeat#set runs,
+  -- expanding it here would feed raw key codes to the command line
+  local remember = ':call repeat#set("\\' .. plug .. '", v:count)<cr>'
+  map('n', plug, keys .. remember, { silent = true })
+  return plug
+end
 
-" Transform a colon map pair into a rocket one
-"    before: {something: 1}
-"    after:  {"something" => 1}
-nnoremap <silent> <Plug>ColonToRocket f:r"bi"<esc>f a=> <esc>
-\ :call repeat#set("\<Plug>ColonToRocket", v:count)<cr>
-nmap <leader>t>  <Plug>ColonToRocket
-]]
+-- Transform a rocket map pair into a colon one
+--    before: {"something" => 1}
+--    after:  {something: 1}
+map('n', '<leader>t:', repeatable('RocketToColon', '/=><cr>daWF"r:F"x'), { remap = true })
+
+-- Transform a colon map pair into a rocket one
+--    before: {something: 1}
+--    after:  {"something" => 1}
+map('n', '<leader>t>', repeatable('ColonToRocket', 'f:r"bi"<esc>f a=> <esc>'), { remap = true })
 
 
 -- V - Vimrc
@@ -793,21 +796,31 @@ map('x', 'gt', ':<c-u>call SendTextToTmux(visualmode(), 1)<cr>' )
 
 --   }}}
 -- Autocommands {{{
-acg.augroup("forced_file_types", {
-  { 'BufRead,BufNewFile', '*.jbuilder', 'setfiletype ruby' },
-  { 'BufRead,BufNewFile', '*.prawn',    'setfiletype ruby' },
-  { 'BufRead,BufNewFile', '*.tmux',     'setfiletype tmux' },
-  { 'BufRead,BufNewFile', '*tmux/*',    'setfiletype tmux' },
-  { 'BufRead,BufNewFile', '*.cfg',      'setfiletype puppet' },
-  { 'BufRead,BufNewFile', 'init.el',    'setfiletype lisp' },
-  { 'BufRead,BufNewFile', '.spacemacs', 'setfiletype lisp' },
-  { 'BufRead,BufNewFile', '*.hocon',    'setfiletype yaml' },
-  { 'BufRead,BufNewFile', '*.md',       'setfiletype markdown' },
-  { 'BufRead,BufNewFile', '*.trello',   'setfiletype markdown' },
-  { 'BufRead,BufNewFile', '*.livemd',   'setfiletype markdown' },
-  { 'BufRead,BufNewFile', '*.notes',    'setfiletype markdown' },
-  { 'BufRead,BufNewFile', '*.vader',    'setfiletype vim' },
-  { 'BufRead,BufNewFile', '*.heex',     'setfiletype eelixir' },
+-- Forced file types. This runs as part of file type detection, so there is no
+-- need for autocommands (see :help vim.filetype.add)
+vim.filetype.add({
+  extension = {
+    jbuilder = 'ruby',
+    prawn    = 'ruby',
+    tmux     = 'tmux',
+    cfg      = 'puppet',
+    hocon    = 'yaml',
+    md       = 'markdown',
+    trello   = 'markdown',
+    livemd   = 'markdown',
+    notes    = 'markdown',
+    vader    = 'vim',
+    heex     = 'eelixir', -- default is 'heex', but our config is built around eelixir
+  },
+  filename = {
+    ['init.el']    = 'lisp',
+    ['.spacemacs'] = 'lisp',
+  },
+  -- Lua patterns, not globs
+  pattern = {
+    ['.*tmux/.*']          = 'tmux',
+    ['.*/%.git/notes%-.*'] = 'markdown', -- Own branch notes are all markdown
+  },
 })
 
 acg.augroup("file_type_templates", {
@@ -816,9 +829,9 @@ acg.augroup("file_type_templates", {
 })
 
 acg.augroup('quickfix_window', {
-  { 'QuickFixCmdPost', 'grep cwindow | redraw!' }, -- Open quickfix window after using grep
-  { 'QuickFixCmdPost', 'lgrep redraw!' },          -- Open location window after using grep
-  { 'FileType',        'qf wincmd J' },            -- Quickfix window should always be full width
+  { 'QuickFixCmdPost', 'grep',  'cwindow | redraw!' }, -- Open quickfix window after using grep
+  { 'QuickFixCmdPost', 'lgrep', 'redraw!' },           -- Open location window after using grep
+  { 'FileType',        'qf',    'wincmd J' },          -- Quickfix window should always be full width
 })
 
 acg.augroup('help_window', {
@@ -834,15 +847,11 @@ acg.augroup('diff_folds', {
   { 'OptionSet', 'diff', 'let &l:foldenable = v:option_new' },
 })
 
-acg.augroup('branch_notes', {
-  { 'Bufread,BufNewFile', '*/.git/notes-*', 'set ft=markdown' }, -- Own notes are all markdown
-})
-
 acg.augroup('lsp_format_on_save', {
   {
     'BufWritePre',
     '*.ex,*.exs,*.heex',
-    'lua vim.lsp.buf.format({ async = false })'
+    function() vim.lsp.buf.format({ async = false }) end
   },
 })
 
@@ -871,9 +880,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Automatically create directories when writting files
-vim.cmd [[
-  au BufWritePre,FileWritePre * silent! call mkdir(expand('<afile>:p:h'), 'p')
-]]
+vim.api.nvim_create_autocmd({ 'BufWritePre', 'FileWritePre' }, {
+  group = vim.api.nvim_create_augroup('auto_mkdir', { clear = true }),
+  callback = function(ev)
+    -- Ignore failures, the write itself will report anything that matters
+    pcall(vim.fn.mkdir, vim.fn.fnamemodify(ev.match, ':p:h'), 'p')
+  end,
+})
 
 -- }}}
 -- Footer {{{

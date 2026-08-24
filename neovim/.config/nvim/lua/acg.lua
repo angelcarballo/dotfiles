@@ -1,14 +1,23 @@
 local acg = {}
 
--- Helper to generate autogroups and their autocommands
--- exmaple: acg.augroup("MY_GROUP", { 'Bufread', '*.rb', 'setfiletype ruby'}, {...})
+-- Helper to generate autogroups and their autocommands.
+-- Each autocmd is { events, pattern, action }:
+--   events  - a single event or a list of them
+--   pattern - as in :autocmd, comma separated patterns are split by the api
+--   action  - an ex command (string) or a lua function
+-- example:
+--   acg.augroup("MY_GROUP", {
+--     { 'BufRead', '*.rb', 'setfiletype ruby' },
+--     { { 'BufRead', 'BufNewFile' }, '*.md', function() vim.bo.spell = true end },
+--   })
 function acg.augroup(name, autocmds)
-  vim.cmd('augroup ' .. name)
-  vim.cmd('autocmd!')
+  local group = vim.api.nvim_create_augroup(name, { clear = true })
   for _, autocmd in ipairs(autocmds) do
-    vim.cmd('autocmd ' .. table.concat(autocmd, ' '))
+    local events, pattern, action = autocmd[1], autocmd[2], autocmd[3]
+    local opts = { group = group, pattern = pattern }
+    opts[type(action) == 'function' and 'callback' or 'command'] = action
+    vim.api.nvim_create_autocmd(events, opts)
   end
-  vim.cmd('augroup END')
 end
 
 -- Check if the given path exists
@@ -84,7 +93,7 @@ function acg.quickfix_git_changed()
   end
   vim.fn.setqflist({})
   vim.fn.setqflist(vim.tbl_map(function(f) return {filename = f, text = ''} end, files))
-  vim.cmd('copen')
+  vim.cmd.copen()
 end
 
 return acg
