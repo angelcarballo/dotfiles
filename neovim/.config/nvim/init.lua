@@ -269,6 +269,7 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "h", texthl = "DiagnosticSignH
 --  }}}
 -- Settings {{{
 vim.cmd.packadd('cfilter')                             -- Quickfix filter plugin (bundled with vim)
+vim.cmd.packadd('nvim.difftool')                       -- Enable folder diffing
 vim.opt.cursorline = true                              -- Highlight cursor line
 vim.opt.number = true                                  -- Show line numbers
 vim.opt.confirm = true                                 -- Ask instead of just erroring if the current file has unsaved changes

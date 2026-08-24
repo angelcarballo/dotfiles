@@ -28,7 +28,10 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[difftool "nvim_difftool"]
+	cmd = nvim -c \"packadd nvim.difftool\" -d \"$LOCAL\" \"$REMOTE\"
 [diff]
+	tool = nvim_difftool
 	colorMoved = plain
 	algorithm = histogram
 	mnemonicPrefix = true
