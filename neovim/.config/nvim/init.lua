@@ -49,17 +49,11 @@ vim.pack.add(vim.tbl_map(gh, {
   'mcchrish/zenbones.nvim',
   'rktjmp/lush.nvim', -- colorscheme toolkit zenbones is built on
 
-  -- plantuml support
-  'aklt/plantuml-syntax',
-
   -- segments of camelcase, snake_case and similar <av>, <iv>
   'julian/vim-textobj-variable-segment',
 
   -- mdx (markdown + jsx) support
   'jxnblk/vim-mdx-js',
-
-  -- coffeescript support
-  'kchmck/vim-coffee-script',
 
   -- typescript support
   'leafgarland/typescript-vim',
@@ -79,9 +73,6 @@ vim.pack.add(vim.tbl_map(gh, {
 
   -- Rbenv support, used to get the current ruby version on `path`
   'tpope/vim-rbenv',
-
-  -- SQL Language server
-  'nanotee/sqls.nvim',
 
   -- Git signs and chunk navigation
   'lewis6991/gitsigns.nvim',
