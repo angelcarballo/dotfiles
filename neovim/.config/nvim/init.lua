@@ -406,9 +406,17 @@ require('fuzzy_find') -- Fuzzy pickers for files, buffers, symbols and grep
 --   Status line {{{
 -- local status_color = '%#StatusLine#'
 
+-- `%f` prints the name as the buffer was opened, so files under cwd reached via an
+-- absolute path (:Oldfiles, LSP jumps, shell args) show in full. `:.` re-derives it.
+function Status_line_path()
+  local name = vim.fn.bufname()
+  if name == '' then return '[No Name]' end
+  return vim.fn.fnamemodify(name, ':.')
+end
+
 function Status_line()
   return table.concat {
-    ' %f ',                -- Relative file path
+    ' %{v:lua.Status_line_path()} ', -- File path relative to cwd
     '%m',                  -- Modified flag
     '%r',                  -- Read-only flag
     '%h',                  -- Help flag
