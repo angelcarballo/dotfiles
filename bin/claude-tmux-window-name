@@ -1,30 +1,110 @@
 #!/bin/bash
 
-# Rename the tmux window hosting this Claude Code session after the session
-# title. Claude does not pass the title to hooks, so it is read back out of the
-# transcript, where it is appended as ai-title/custom-title entries.
+# Rename the tmux window hosting this Claude Code session.
+#
+# For a session that picked up a Linear ticket the name comes from the ticket
+# itself, off the PostToolUse hook on Linear's get_issue, and is pinned so
+# later events cannot overwrite it. Otherwise it is the session title, which
+# Claude hands to hooks only on SessionStart, so elsewhere it is read back out
+# of the transcript, where it is appended as ai-title/custom-title entries.
 
 set -u
 
 MAX_LENGTH=30
+PIN_DIR="${TMPDIR:-/tmp}/claude-tmux-window-name"
 
 # Only meaningful inside tmux, and only if we know which pane we are in.
 [ -n "${TMUX:-}" ] || exit 0
 [ -n "${TMUX_PANE:-}" ] || exit 0
 
-transcript=$(jq -r '.transcript_path // empty')
-[ -n "$transcript" ] && [ -f "$transcript" ] || exit 0
+payload=$(cat)
 
-# Titles are appended every time they change, so the last one is current.
-# custom-title (set by hand) takes precedence over ai-title on the same line.
-title=$(grep -e '"type":"ai-title"' -e '"type":"custom-title"' "$transcript" |
-  tail -1 |
-  jq -r '.customTitle // .aiTitle // empty')
+field() {
+  jq -r "$1 // empty" 2>/dev/null <<< "$payload"
+}
 
-[ -n "$title" ] || exit 0
+event=$(field '.hook_event_name')
+session=$(field '.session_id')
 
-if [ "${#title}" -gt "$MAX_LENGTH" ]; then
-  title="${title:0:$((MAX_LENGTH - 1))}…"
-fi
+pin=""
+[ -n "$session" ] && pin="$PIN_DIR/$session"
 
-tmux rename-window -t "$TMUX_PANE" "$title"
+# Rename and stop, so callers can just try candidate names in priority order
+# and let the first non-empty one win.
+rename() {
+  local title="$1"
+
+  [ -n "$title" ] || return 0
+
+  if [ "${#title}" -gt "$MAX_LENGTH" ]; then
+    title="${title:0:$((MAX_LENGTH - 1))}…"
+  fi
+
+  tmux rename-window -t "$TMUX_PANE" "$title"
+  exit 0
+}
+
+# Title entries are appended every time they change, so the last one of a kind
+# is current. The two kinds land on separate adjacent lines, custom-title
+# first, which is why the last line alone does not tell us which one wins.
+transcript_title() {
+  local transcript
+  transcript=$(field '.transcript_path')
+  [ -n "$transcript" ] && [ -f "$transcript" ] || return 0
+
+  grep "\"type\":\"$1\"" "$transcript" | tail -1 | jq -r "$2 // empty" 2>/dev/null
+}
+
+# A title set by hand with /title is an explicit instruction about what this
+# window is called, so it outranks both the ticket and the generated title.
+hand_title() { transcript_title custom-title .customTitle; }
+generated_title() { transcript_title ai-title .aiTitle; }
+
+# Linear answers get_issue with the ticket as JSON inside an MCP content block.
+ticket_name() {
+  local body id title
+  body=$(field '(.tool_response | if type == "array" then .[0].text else (.content[0].text // .text) end)')
+  [ -n "$body" ] || return 0
+
+  id=$(jq -r '.id // empty' 2>/dev/null <<< "$body")
+  title=$(jq -r '.title // empty' 2>/dev/null <<< "$body")
+  [ -n "$id" ] && [ -n "$title" ] || return 0
+
+  printf '%s %s' "$id" "$title"
+}
+
+case "$event" in
+  PostToolUse)
+    # agent_id is set only inside a subagent, which shares the session id but
+    # is off doing its own research: it does not get to name the window.
+    [ -n "$(field '.agent_id')" ] && exit 0
+
+    # First ticket of the session wins, so reading some other ticket for
+    # reference halfway through does not steal the window name.
+    [ -n "$pin" ] && [ -f "$pin" ] && exit 0
+
+    name=$(ticket_name)
+    [ -n "$name" ] || exit 0
+
+    [ -n "$pin" ] && mkdir -p "$PIN_DIR" && printf '%s\n' "$name" > "$pin"
+
+    rename "$name"
+    exit 0
+    ;;
+  SessionEnd)
+    [ -n "$pin" ] && rm -f "$pin"
+    # Sessions killed outright never reach this, so sweep what they left.
+    [ -d "$PIN_DIR" ] && find "$PIN_DIR" -type f -mtime +7 -delete 2>/dev/null
+    exit 0
+    ;;
+esac
+
+rename "$(hand_title)"
+
+[ -n "$pin" ] && [ -f "$pin" ] && rename "$(cat "$pin")"
+
+# SessionStart is the one event that hands us the title outright.
+rename "$(field '.session_title')"
+rename "$(generated_title)"
+
+exit 0
