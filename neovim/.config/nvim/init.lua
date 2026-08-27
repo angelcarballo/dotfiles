@@ -843,7 +843,7 @@ acg.augroup('lsp_format_on_save', {
   {
     'BufWritePre',
     '*.ex,*.exs,*.heex',
-    function() vim.lsp.buf.format({ async = false }) end
+    function() vim.lsp.buf.format({ async = true }) end
   },
 })
 
