@@ -18,8 +18,8 @@ set -g status-left " #[bold,fg=${theme_fg}]#S "
 set -g status-right "#(TZ='Europe/London' date +%%H:%%M) "
 
 # Window list
-setw -g window-status-format " #W#{?window_zoomed_flag,#[fg=${thm_red}]+#[fg=${thm_fg}],} "
-setw -g window-status-current-format "[#W#{?window_zoomed_flag,#[fg=${thm_red}]+#[fg=${thm_fg}],}]"
+setw -g window-status-format " #W#{?window_zoomed_flag,#[fg=${theme_accent}]+#[fg=${theme_fg}],} "
+setw -g window-status-current-format "[#W#{?window_zoomed_flag,#[fg=${theme_acc}]+#[fg=${theme_fg}],}]"
 
 # Pane borders
 set -g pane-border-style fg=${theme_bg}
