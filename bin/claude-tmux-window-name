@@ -10,7 +10,10 @@
 
 set -u
 
-MAX_LENGTH=30
+# A sanity bound only. How much of the name is actually shown is a display
+# decision, so it lives in the theme's window-status-format instead, where
+# tmux trims per window and stays UTF-8 aware.
+MAX_LENGTH=80
 PIN_DIR="${TMPDIR:-/tmp}/claude-tmux-window-name"
 
 # Only meaningful inside tmux, and only if we know which pane we are in.
