@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# Tear down a worktree's docker compose project when Claude removes the
+# worktree. Deleting a worktree leaves its `<project>_default` network behind,
+# and docker only has 32 subnets to hand out across its two default pools, so
+# they run out after a few weeks of worktrees.
+
+set -u
+
+payload=$(cat)
+
+docker info >/dev/null 2>&1 || exit 0
+
+repo=$(jq -r '.cwd // empty' 2>/dev/null <<< "$payload")
+cd "${repo:-$PWD}" 2>/dev/null || exit 0
+
+# Compose derives the project name from the directory, lowercased with anything
+# that isn't a letter, digit, underscore or hyphen dropped.
+project_name() {
+  basename "$1" | tr '[:upper:]' '[:lower:]' | tr -cd 'a-z0-9_-'
+}
+
+teardown() {
+  docker compose -p "$1" down --remove-orphans >/dev/null 2>&1
+  docker network rm "${1}_default" >/dev/null 2>&1
+}
+
+removed=()
+
+# Not sure yet which key carries the path, so take the first string in the
+# payload that looks like a worktree path.
+worktree=$(jq -r '[.. | strings | select(test("/.*worktree"; "i"))] | first // empty' 2>/dev/null <<< "$payload")
+
+if [ -n "$worktree" ]; then
+  project=$(project_name "$worktree")
+  [ -n "$project" ] && teardown "$project" && removed+=("$project")
+fi
+
+# Catch projects left over from worktrees deleted some other way. A project is
+# only fair game if no worktree still points at it and nothing is attached.
+live=" "
+while read -r dir; do
+  live+="$(project_name "$dir") "
+done < <(git worktree list --porcelain 2>/dev/null | awk '/^worktree /{print $2}')
+
+[ "$live" = " " ] && { printf '%s\n' "${removed[@]:+${removed[@]}}" >/dev/null; exit 0; }
+
+while read -r name count; do
+  project=${name%_default}
+  [ "$count" = "0" ] || continue
+  case "$live" in *" $project "*) continue ;; esac
+  teardown "$project" && removed+=("$project")
+done < <(docker network ls --filter driver=bridge --format '{{.Name}}' \
+  | grep '_default$' \
+  | while read -r n; do
+      echo "$n $(docker network inspect "$n" --format '{{len .Containers}}' 2>/dev/null)"
+    done)
+
+if [ ${#removed[@]} -gt 0 ]; then
+  echo "{\"systemMessage\": \"docker: removed compose project(s) ${removed[*]}\"}"
+fi
+
+exit 0
