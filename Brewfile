@@ -107,3 +107,6 @@ brew "starship"
 
 # Elixir LSP
 brew "expert"
+
+# Tooling for running headless browser from the terminal
+brew "chrome-cli"
