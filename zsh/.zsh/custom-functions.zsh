@@ -21,6 +21,14 @@ ss() {
 }
 # }}}
 
+# cd into a worktree created by Claude {{{
+wt() {
+  local dir
+  dir=$(git worktree list | grep '/.claude/worktrees/' | fzf | awk '{print $1}') &&
+    [[ -n $dir ]] && cd "$dir"
+}
+# }}}
+
 # Current WIFI network name {{{
 ssid() {
   /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}'
